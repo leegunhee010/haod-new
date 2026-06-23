@@ -11,13 +11,14 @@
   <meta property="og:type" content="website" />
   <link rel="preconnect" href="https://cdn.jsdelivr.net" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.css" />
-  <link rel="stylesheet" href="css/style.css?v=4" />
+  <link rel="stylesheet" href="css/style.css?v=5" />
+  <link rel="stylesheet" href="css/snax.css?v=2" />
 </head>
-<body>
+<body class="sx">
   <div class="progress" id="progress" aria-hidden="true"></div>
 
-  <header class="header" id="header">
-    <a href="../design/" class="brand"><img src="assets/img/logo.png" alt="하오디자인" class="brand__logo" /></a>
+  <header class="header on-dark" id="header">
+    <a href="index.html" class="brand"><img src="assets/img/logo.png" alt="하오디자인" class="brand__logo" /></a>
     <nav class="nav" id="nav">
       <a href="export.html">수출바우처</a>
       <a href="innovation.html">혁신바우처</a>
@@ -35,65 +36,128 @@
   </header>
 
   <main id="top">
-    <!-- 홈 히어로 -->
-    <section class="vhero">
-      <div class="vhero__inner">
-        <span class="vhero__badge"><i></i> 정부지원사업 공식 수행기관</span>
-        <h1 class="vhero__title">정부 지원으로,<br />전문 디자인을 <em>부담 없이</em></h1>
-        <p class="vhero__sub">수출바우처 · 혁신바우처 · 판로개척지원사업 — 신청 가능 여부 확인부터 카탈로그·브로슈어·다국어 홍보물 제작, 결과보고까지 하오디자인이 끝까지 함께합니다.</p>
-        <div class="vhero__btns">
-          <a href="#contact" class="btn-round btn-round--solid"><span>무료 가능여부 확인</span><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-          <a href="export.html" class="btn-round"><span>지원사업 알아보기</span><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <!-- HERO -->
+    <section class="sx-hero">
+      <video class="sx-hero__video" autoplay muted loop playsinline preload="metadata" poster="assets/video/hero-poster.jpg">
+        <source src="assets/video/hero.mp4" type="video/mp4" />
+      </video>
+      <div class="sx-hero__shade" aria-hidden="true"></div>
+      <div class="sx-hero__copy">
+        <p class="e">Government Voucher · Official Partner</p>
+        <h1>정부 지원으로 완성하는<br />브랜드 디자인</h1>
+      </div>
+      <span class="sx-hero__scroll" aria-hidden="true">SCROLL <i></i></span>
+    </section>
+
+    <!-- STATEMENT -->
+    <section class="sx-sec sx-state">
+      <h2 class="sx-state__big sx-rv">정부 지원으로,<br />전문 디자인을 부담 없이</h2>
+      <p class="sx-state__sub sx-rv">수출바우처 · 혁신바우처 · 판로개척지원사업 — 신청 가능 여부 확인부터 카탈로그·브로슈어·다국어 홍보물 제작, 결과보고까지 하오디자인이 끝까지 함께합니다.</p>
+      <figure class="sx-state__img sx-rv"><img src="assets/img/big_slide_02.jpg" alt="바우처 디자인 작업물" /></figure>
+    </section>
+
+    <!-- PHILOSOPHY -->
+    <section class="sx-sec">
+      <span class="sx-tag sx-rv">정부지원사업 수행 철학</span>
+      <h2 class="sx-phil__head sx-rv">복잡한 절차는 우리가,<br />좋은 디자인은 기업에게</h2>
+      <div class="sx-phil__grid">
+        <figure class="sx-phil__img sx-rv"><img src="assets/img/big_slide_03.jpg" alt="디자인 작업" /></figure>
+        <div class="sx-phil__text sx-rv">
+          <p>좋은 디자인은 더 이상 큰 기업만의 것이 아닙니다. 정부 지원사업을 활용하면 중소기업과 소상공인도 부담 없이 전문 디자인을 만날 수 있습니다.</p>
+          <p>하오디자인은 신청 가능 여부 확인부터 사용계획서 작성, 제작, 결과보고까지 <b>복잡한 과정을 대신</b>합니다. 기업은 본업에 집중하고, 완성도 높은 결과물은 그대로 남습니다.</p>
         </div>
-        <p class="vhero__trust"><b>5년 연속</b> 정부 핵심 사업 공식 수행기관 · 바우처 작업 <b>412건+</b></p>
-        <p class="vhero__orgs">수출지원기반활용사업 · 중소벤처기업부 · 소상공인시장진흥공단 수행기관</p>
       </div>
     </section>
 
-    <!-- 지표 ticket -->
-    <section class="page page--tight">
-      <div class="ticket reveal">
-        <div class="ticket__stub" aria-hidden="true">
-          <span class="ticket__brand">GOV.<br />VOUCHER</span>
-          <span class="ticket__no">HAO DESIGN · OFFICIAL PARTNER</span>
-        </div>
-        <div class="ticket__body">
-          <div class="tstat"><strong data-to="5">0</strong><span>년 연속</span><em>정부 핵심 사업 공식 수행기관</em></div>
-          <div class="tstat"><strong data-to="1370">0</strong><span>+</span><em>바우처 문의 건수</em></div>
-          <div class="tstat"><strong data-to="412">0</strong><span>+</span><em>바우처 작업 건수</em></div>
-          <div class="tstat"><strong data-to="16">0</strong><span>개</span><em>신청 가능 분야</em></div>
-        </div>
-        <div class="ticket__end" aria-hidden="true">
-          <svg class="ticket__bar" viewBox="0 0 36 110" xmlns="http://www.w3.org/2000/svg"><g fill="currentColor"><rect x="1" width="3" height="110"/><rect x="6" width="1.5" height="110"/><rect x="10" width="4" height="110"/><rect x="16" width="1.5" height="110"/><rect x="19" width="2.5" height="110"/><rect x="24" width="1.5" height="110"/><rect x="27" width="4" height="110"/><rect x="33" width="2" height="110"/></g></svg>
-          <span>1666-2027</span>
+    <!-- BELIEVE / STATS -->
+    <section class="sx-sec">
+      <p class="sx-believe__top sx-rv">준비된 기업에게, 기회는 현실이 됩니다</p>
+      <div class="sx-believe__grid">
+        <figure class="sx-believe__img sx-rv"><img src="assets/img/big_slide_04.jpg" alt="수행 현장" /></figure>
+        <div class="sx-rv">
+          <div class="sx-believe__world">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke-width="1.6"/><path d="M3 12h18M12 3c2.5 2.5 2.5 15 0 18M12 3c-2.5 2.5-2.5 15 0 18" stroke-width="1.6"/></svg>
+            <div><b>5년 연속 정부 핵심사업 공식 수행기관</b><span>수출지원기반활용사업 · 중소벤처기업부 · 소상공인시장진흥공단</span></div>
+          </div>
+          <div class="sx-stcard">
+            <strong data-to="412">0</strong><em>+</em>
+            <p>바우처 디자인 작업 건수</p>
+            <div class="sx-stcard__logos">
+              <div>수출지원기반<br />활용사업</div>
+              <div>중소벤처<br />기업부</div>
+              <div>소상공인시장<br />진흥공단</div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- 안내 카드 (각 페이지로) -->
-    <section class="page page--tight">
-      <p class="section-tag">GUIDE</p>
-      <h2 class="page__title">무엇을 도와드릴까요</h2>
-      <div class="vnav" style="margin-top:40px;grid-template-columns:repeat(3,1fr)">
-        <a class="vnav__card reveal" href="export.html" style="--d:0">
-          <span class="vnav__no">01</span><span class="vnav__t">수출바우처</span>
-          <span class="vnav__d">해외 바이어용 카탈로그·다국어 홍보물을 바우처로. 14개 서비스 분야 중 디자인 수행기관.</span>
-          <span class="vnav__go">자세히 →</span>
+    <!-- KEYWORD MARQUEE -->
+    <div class="sx-mq">
+      <div class="sx-mq__track">
+        <span>수출바우처</span><span>혁신바우처</span><span>판로개척지원사업</span><span>카탈로그</span><span>브로슈어</span><span>다국어 홍보물</span>
+        <span>수출바우처</span><span>혁신바우처</span><span>판로개척지원사업</span><span>카탈로그</span><span>브로슈어</span><span>다국어 홍보물</span>
+      </div>
+    </div>
+
+    <!-- 사업 안내 (Brand Identity style) -->
+    <section class="sx-sec">
+      <div class="sx-biz__head">
+        <div>
+          <span class="sx-tag sx-rv">지원사업 안내</span>
+        </div>
+        <div class="sx-badge sx-rv" aria-hidden="true">
+          <svg class="sx-badge__spin" viewBox="0 0 120 120"><defs><path id="bdg" d="M60,60 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0" /></defs><text><textPath href="#bdg">VOUCHER · DESIGN · HAO · OFFICIAL · </textPath></text></svg>
+          <span class="sx-badge__dot"><b style="color:#fff;font-weight:800;font-size:.8rem;letter-spacing:.04em">HAO</b></span>
+        </div>
+      </div>
+      <div class="sx-biz__grid">
+        <a class="sx-card sx-rv" href="export.html">
+          <div class="sx-card__media"><img src="assets/img/big_slide_02.jpg" alt="수출바우처" /></div>
+          <div class="sx-card__b"><p class="sx-card__no">01 EXPORT</p><h3 class="sx-card__t">수출바우처</h3><p class="sx-card__d">해외 바이어용 카탈로그·다국어 홍보물을 바우처로. 14개 서비스 분야 중 디자인 수행기관.</p></div>
         </a>
-        <a class="vnav__card reveal" href="innovation.html" style="--d:1">
-          <span class="vnav__no">02</span><span class="vnav__t">혁신바우처</span>
-          <span class="vnav__d">제조 중소기업 진단 기반 맞춤 지원. 마케팅(디자인·브랜드) 분야로 제작을 지원합니다.</span>
-          <span class="vnav__go">자세히 →</span>
+        <a class="sx-card sx-rv" href="innovation.html">
+          <div class="sx-card__media"><img src="assets/img/big_slide_03.jpg" alt="혁신바우처" /></div>
+          <div class="sx-card__b"><p class="sx-card__no">02 INNOVATION</p><h3 class="sx-card__t">혁신바우처</h3><p class="sx-card__d">제조 중소기업 진단 기반 맞춤 지원. 마케팅(디자인·브랜드) 분야로 제작을 지원합니다.</p></div>
         </a>
-        <a class="vnav__card reveal" href="market.html" style="--d:2">
-          <span class="vnav__no">03</span><span class="vnav__t">판로개척지원사업</span>
-          <span class="vnav__d">국내외 판로 확대를 위한 상세페이지·카탈로그·홍보물 제작을 지원합니다.</span>
-          <span class="vnav__go">자세히 →</span>
+        <a class="sx-card sx-rv" href="market.html">
+          <div class="sx-card__media"><img src="assets/img/big_slide_06.jpg" alt="판로개척지원사업" /></div>
+          <div class="sx-card__b"><p class="sx-card__no">03 MARKET</p><h3 class="sx-card__t">판로개척지원사업</h3><p class="sx-card__d">국내외 판로 확대를 위한 상세페이지·카탈로그·홍보물 제작을 지원합니다.</p></div>
         </a>
       </div>
     </section>
 
-    <!-- CTA -->
+    <!-- 진행 절차 (growth-story style, dark) -->
+    <section class="sx-proc">
+      <div class="sx-proc__inner">
+        <p class="sx-proc__label">HOW IT WORKS</p>
+        <div class="sx-proc__grid">
+          <div class="sx-proc__title sx-rv"><span class="y">바우처 진행</span>신청부터 결과보고까지<br />이렇게 진행됩니다</div>
+          <div class="sx-proc__steps sx-rv">
+            <div class="sx-step"><span class="sx-step__no">01</span><h3>상담 · 가능여부 확인</h3><p>기업 현황을 듣고 신청 가능한 사업과 분야를 무료로 확인해 드립니다.</p></div>
+            <div class="sx-step"><span class="sx-step__no">02</span><h3>신청 · 사용계획서</h3><p>신청서와 바우처 사용계획서 작성을 함께 준비합니다.</p></div>
+            <div class="sx-step"><span class="sx-step__no">03</span><h3>협약 · 분담금</h3><p>선정·협약 후 기업분담금 납부, 바우처 발급까지 안내합니다.</p></div>
+            <div class="sx-step"><span class="sx-step__no">04</span><h3>디자인 제작</h3><p>카탈로그·브로슈어·다국어 홍보물을 기획부터 인쇄 감리까지 제작합니다.</p></div>
+            <div class="sx-step"><span class="sx-step__no">05</span><h3>정산 · 결과보고</h3><p>증빙 등록·정산과 결과보고서 작성 기준까지 끝까지 지원합니다.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT intro -->
+    <section class="sx-sec">
+      <span class="sx-tag sx-rv">문의</span>
+      <h2 class="sx-contact__big sx-rv">신청 가능 여부부터 결과보고까지, 무엇이든 문의하세요.</h2>
+      <div class="sx-contact__row sx-rv">
+        <a class="sx-contact__get" href="#contact">GET IN TOUCH →</a>
+        <div class="sx-contact__info">
+          TEL <a href="tel:16662027">1666-2027</a> · MAIL <a href="mailto:sales@haodesign.co.kr">sales@haodesign.co.kr</a><br />
+          평일 09:00 – 18:00 · 무료 상담
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT 폼 -->
     <section class="contact" id="contact">
       <div class="contact__panel reveal">
         <svg class="contact__spin" viewBox="0 0 120 120" aria-hidden="true">
@@ -128,6 +192,14 @@
     </section>
   </main>
 
+  <!-- 푸터 마퀴 -->
+  <div class="sx-fmq" aria-hidden="true">
+    <div class="sx-fmq__track">
+      <span>신뢰</span><span>전문성</span><span>디자인</span><span>정부지원</span><span>결과보고</span>
+      <span>신뢰</span><span>전문성</span><span>디자인</span><span>정부지원</span><span>결과보고</span>
+    </div>
+  </div>
+
   <footer class="footer">
     <div class="footer__top">
       <img src="assets/img/logo-white.png" alt="HAO DESIGN" class="footer__logo" />
@@ -152,19 +224,24 @@
     var $ = function (s, c) { return (c || document).querySelector(s); };
     var $$ = function (s, c) { return [].slice.call((c || document).querySelectorAll(s)); };
     var y = $('#year'); if (y) y.textContent = new Date().getFullYear();
-    var hdr = $('#header');
-    function onScroll() { hdr.classList.toggle('is-stuck', window.scrollY > 24); }
+    var hdr = $('#header'), prog = $('#progress');
+    function onScroll() {
+      hdr.classList.toggle('is-stuck', window.scrollY > 24);
+      var h = document.documentElement; prog.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight || 1) * 100) + '%';
+    }
     addEventListener('scroll', onScroll, { passive: true }); onScroll();
     var burger = $('#burger'), nav = $('#nav');
-    burger.addEventListener('click', function () { nav.classList.toggle('is-open'); document.body.classList.toggle('menu-open'); });
-    $$('#nav a').forEach(function (a) { a.addEventListener('click', function () { nav.classList.remove('is-open'); document.body.classList.remove('menu-open'); }); });
-    function animate(el) { var to = +el.getAttribute('data-to'), t0 = null, dur = 1400;
+    burger.addEventListener('click', function () { burger.classList.toggle('is-open'); nav.classList.toggle('is-open'); document.body.classList.toggle('menu-open'); });
+    $$('#nav a').forEach(function (a) { a.addEventListener('click', function () { burger.classList.remove('is-open'); nav.classList.remove('is-open'); document.body.classList.remove('menu-open'); }); });
+
+    function animate(el) { var to = +el.getAttribute('data-to'), t0 = null, dur = 1500;
       function tick(t){ if(!t0)t0=t; var p=Math.min((t-t0)/dur,1),k=1-Math.pow(1-p,3); el.textContent=Math.round(to*k).toLocaleString(); if(p<1)requestAnimationFrame(tick);} requestAnimationFrame(tick); }
     var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (!e.isIntersecting) return;
-      e.target.classList.add('is-in');
+      e.target.classList.add('in'); e.target.classList.add('is-in');
       $$('strong[data-to]', e.target).forEach(function (n) { if (!n.dataset.done) { n.dataset.done = 1; animate(n); } });
-      io.unobserve(e.target); }); }, { threshold: .15 });
-    $$('.reveal').forEach(function (el) { io.observe(el); });
+      io.unobserve(e.target); }); }, { threshold: .18 });
+    $$('.sx-rv, .reveal').forEach(function (el) { io.observe(el); });
+
     var form = $('#quoteForm');
     if (form) form.addEventListener('submit', function (e) { e.preventDefault(); var note = $('#formNote');
       if (!form.name.value.trim() || !form.phone.value.trim()) { note.textContent = '이름과 연락처를 입력해주세요.'; return; }

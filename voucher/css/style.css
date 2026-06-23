@@ -1238,6 +1238,34 @@ img { display: block; max-width: 100%; }
 .vhero__trust b { color: var(--ink); }
 .vhero__orgs { margin-top: .5em; font-size: .8rem; color: var(--muted); letter-spacing: .02em; }
 
+/* ===== voucher 히어로: 배경 영상 버전 ===== */
+.vhero--video { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 120px clamp(20px,4vw,54px); background: #131109; }
+.vhero__video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
+.vhero__scrim { position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgba(15,12,7,.74) 0%, rgba(15,12,7,.5) 38%, rgba(15,12,7,.8) 100%); }
+.vhero--video .vhero__inner { z-index: 2; }
+.vhero--video .vhero__badge { color: #fff; background: rgba(232,56,23,.9); border-color: transparent; }
+.vhero--video .vhero__badge i { background: #fff; }
+.vhero--video .vhero__title { color: #fff; }
+.vhero--video .vhero__title em { color: #ff7a52; }
+.vhero--video .vhero__sub { color: rgba(255,255,255,.84); }
+.vhero--video .vhero__trust { color: rgba(255,255,255,.74); }
+.vhero--video .vhero__trust b { color: #fff; }
+.vhero--video .vhero__orgs { color: rgba(255,255,255,.55); }
+.vhero--video .btn-round { border-color: rgba(255,255,255,.55); color: #fff; }
+.vhero--video .btn-round:hover { background: #fff; border-color: #fff; color: var(--ink); }
+.vhero--video .btn-round--solid { background: var(--accent); border-color: var(--accent); color: #fff; }
+.vhero--video .btn-round--solid:hover { background: #fff; border-color: #fff; color: var(--accent); }
+.vhero__scroll { position: absolute; left: 50%; bottom: 24px; transform: translateX(-50%); z-index: 2; font-size: .66rem; letter-spacing: .3em; font-weight: 700; color: rgba(255,255,255,.62); }
+.vhero__scroll::after { content: ""; display: block; width: 1px; height: 26px; margin: 8px auto 0; background: linear-gradient(rgba(255,255,255,.6), transparent); }
+
+/* 영상 히어로 위 헤더: 투명 + 흰 글씨 (스크롤 시 .is-stuck로 흰배경 복귀) */
+.header.on-dark:not(.is-stuck) { background: transparent; border-bottom-color: transparent; box-shadow: none; }
+.header.on-dark:not(.is-stuck) .nav a { color: rgba(255,255,255,.9); }
+.header.on-dark:not(.is-stuck) .nav a:hover { color: #fff; }
+.header.on-dark:not(.is-stuck) .nav__center { color: #ffb9a6; }
+.header.on-dark:not(.is-stuck) .nav__div { background: rgba(255,255,255,.28); }
+.header.on-dark:not(.is-stuck) .burger span { background: #fff; }
+
 /* ===== 홈 안내 카드 (각 페이지로 분기) ===== */
 .vnav { max-width: var(--maxw, 1200px); margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; padding: 0 clamp(20px,4vw,54px); }
 .vnav__card { display: flex; flex-direction: column; gap: 8px; padding: 28px 24px; border: 1px solid var(--line); border-radius: 18px; background: #fff; transition: transform .3s var(--ease), box-shadow .3s var(--ease), border-color .3s; }
