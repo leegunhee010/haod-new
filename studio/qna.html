@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Q&amp;A | 스튜디오센터 — 하오디자인</title>
+  <meta name="description" content="제품 촬영·상세페이지·영상 콘텐츠 자주 하는 질문. 촬영·상세페이지·영상·진행/결제 카테고리별 Q&A." />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.css" />
+  <link rel="stylesheet" href="css/style.css?v=1" />
+</head>
+<body>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+
+  <header class="header" id="header">
+    <a href="index.html" class="brand"><img src="assets/img/logo.png" alt="하오디자인" class="brand__logo" /></a>
+    <nav class="nav" id="nav">
+      <a href="photo.html">제품촬영</a>
+      <a href="detailpage.html">상세페이지</a>
+      <a href="video.html">영상콘텐츠</a>
+      <a href="column.html">칼럼</a>
+      <a href="qna.html" style="color:var(--accent)">Q&amp;A</a>
+      <span class="nav__div" aria-hidden="true"></span>
+      <a class="nav__center" href="https://www.haodesign.co.kr">디자인센터 <i>↗</i></a>
+      <a class="nav__center" href="../web/">웹구축센터 <i>↗</i></a>
+      <a class="nav__center" href="https://mkt.haodesign.co.kr">마케팅센터 <i>↗</i></a>
+      <a class="nav__center" href="../voucher/">정부사업지원센터 <i>↗</i></a>
+    </nav>
+    <a href="index.html#contact" class="header__cta">촬영 문의 <span>→</span></a>
+    <button class="burger" id="burger" aria-label="메뉴"><span></span><span></span></button>
+  </header>
+
+  <main id="top">
+    <section class="subhero">
+      <div class="subhero__inner">
+        <p class="subhero__crumb"><a href="https://www.haodesign.co.kr">디자인센터</a> / <a href="index.html">스튜디오센터</a> / Q&amp;A</p>
+        <h1 class="subhero__title">자주 하는 질문</h1>
+        <p class="subhero__desc">자주 하는 질문 모음입니다. 찾으시는 정보가 없다면 <a href="index.html#contact" style="color:var(--accent);font-weight:700">문의하기</a>를 이용해 주세요.</p>
+      </div>
+    </section>
+
+    <section class="page page--tight">
+      <p class="section-tag">FAQ</p>
+      <h2 class="page__title">무엇이 궁금하신가요</h2>
+
+      <div class="qsearch">
+        <input type="text" id="qSearch" placeholder="궁금한 내용을 검색해 보세요 (예: 누끼, 견적, 일정)" />
+        <button id="qSearchBtn" type="button">검색</button>
+        <button id="qReset" type="button" class="qreset">초기화</button>
+      </div>
+
+      <div class="qcats" id="qCats"></div>
+
+      <div class="faq" id="qList"></div>
+      <p class="qempty" id="qEmpty" style="display:none">검색 결과가 없습니다. 다른 키워드로 검색하시거나 <a href="index.html#contact" style="color:var(--accent);font-weight:700">문의하기</a>를 이용해 주세요.</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__top">
+      <img src="assets/img/logo-white.png" alt="HAO DESIGN" class="footer__logo" />
+      <p>하오디자인 스튜디오센터<br />제품 촬영 · 상세페이지 · 영상 콘텐츠 제작</p>
+    </div>
+    <div class="footer__grid">
+      <div><h3>Contact</h3><a href="tel:16662027">1666-2027</a><a href="mailto:sales@haodesign.co.kr">sales@haodesign.co.kr</a><span>평일 09:00–18:00</span></div>
+      <div><h3>센터</h3><a href="https://www.haodesign.co.kr">디자인센터 ↗</a><a href="../web/">웹구축센터 ↗</a><a href="https://mkt.haodesign.co.kr">마케팅센터 ↗</a><a href="../voucher/">정부사업지원센터 ↗</a></div>
+      <div><h3>스튜디오센터</h3><a href="photo.html">제품촬영</a><a href="detailpage.html">상세페이지</a><a href="video.html">영상콘텐츠</a><a href="column.html">칼럼</a><a href="qna.html">Q&amp;A</a></div>
+    </div>
+    <div class="footer__bottom">
+      <div class="footer__biz">
+        <p><b>주식회사 하오커뮤니케이션</b><span>대표이사 박창민</span><span>사업자등록번호 528-87-01037</span></p>
+        <p><span>주소 서울시 광진구 능동로49길 9, 2F</span><span>대표번호 1666-2027</span><span>E-mail sales@haodesign.co.kr</span></p>
+      </div>
+      <span class="footer__copy">© <i id="year"></i> HAO DESIGN. 스튜디오센터.</span>
+    </div>
+  </footer>
+
+  <script>
+  (function () {
+    var $ = function (s, c) { return (c || document).querySelector(s); };
+    var $$ = function (s, c) { return [].slice.call((c || document).querySelectorAll(s)); };
+    var y = $('#year'); if (y) y.textContent = new Date().getFullYear();
+    var hdr = $('#header');
+    addEventListener('scroll', function () { hdr.classList.toggle('is-stuck', window.scrollY > 24); }, { passive: true });
+    hdr.classList.toggle('is-stuck', window.scrollY > 24);
+    var burger = $('#burger'), nav = $('#nav');
+    burger.addEventListener('click', function () { burger.classList.toggle('is-open'); nav.classList.toggle('is-open'); document.body.classList.toggle('menu-open'); });
+    $$('#nav a').forEach(function (a) { a.addEventListener('click', function () { burger.classList.remove('is-open'); nav.classList.remove('is-open'); document.body.classList.remove('menu-open'); }); });
+
+    var QNA = [
+      { c: '촬영', q: '촬영은 어디서 진행하나요?', a: '광진구 자체 스튜디오에서 진행하는 것이 기본이며, 제품·상황에 따라 현장·매장 출장 촬영도 가능합니다. 공간 조건을 알려주시면 사전에 안내드립니다.' },
+      { c: '촬영', q: '제품은 어떻게 전달하면 되나요?', a: '택배 또는 방문으로 받습니다. 촬영 후 반송도 가능하며, 파손·변질 위험이 있는 제품(식품·화장품 등)은 사전에 알려주세요.' },
+      { c: '촬영', q: '컷 수는 어떻게 정하나요?', a: '상세페이지 용도와 채널을 기준으로 필요한 컷(누끼·연출·디테일)을 함께 정합니다. 처음이시면 표준 구성으로 제안드립니다.' },
+      { c: '촬영', q: '모델 촬영도 가능한가요?', a: '네. 착용·사용 컷이 필요한 경우 모델 섭외를 함께 진행할 수 있습니다. 컨셉과 예산을 알려주시면 안내드립니다.' },
+      { c: '촬영', q: '누끼·보정도 포함되나요?', a: '기본 누끼·색보정은 촬영과 함께 진행합니다. 합성·고급 리터칭 등 작업 강도가 높은 보정은 별도 견적으로 안내드립니다.' },
+
+      { c: '상세페이지', q: '촬영 없이 상세페이지 제작만 가능한가요?', a: '네. 보유하신 이미지로 기획·디자인만 진행할 수 있습니다. 다만 이미지 퀄리티가 결과에 큰 영향을 주므로 필요 시 일부 보정·재촬영을 권해드립니다.' },
+      { c: '상세페이지', q: '원고(카피)도 작성해 주시나요?', a: '네. 제품 정보와 타깃을 주시면 후킹·강점·구매유도 카피를 함께 작성합니다. 보유 원고가 있으면 다듬어 반영합니다.' },
+      { c: '상세페이지', q: '어떤 판매 채널 규격에 맞춰주나요?', a: '스마트스토어·자사몰·쿠팡·오픈마켓 등 채널 규격에 맞춰 제작합니다. 사용하실 채널을 미리 알려주세요.' },
+      { c: '상세페이지', q: '수정은 몇 번까지 가능한가요?', a: '시안 단계에서 2~3회 수정을 기본 포함합니다. 구성을 바꾸는 대규모 수정은 별도 협의합니다.' },
+
+      { c: '영상', q: '영상 한 편 비용은 얼마인가요?', a: '길이·촬영 여부·편집 난이도에 따라 달라집니다. 레퍼런스를 주시면 비슷한 퀄리티 기준으로 견적을 안내드립니다.' },
+      { c: '영상', q: '편집만 맡길 수 있나요?', a: '네. 보유 영상 소스로 컷편집·자막·모션 작업만 진행할 수 있습니다. 소스 길이와 분량을 알려주세요.' },
+      { c: '영상', q: '여러 채널 규격으로 받을 수 있나요?', a: '9:16, 1:1, 16:9 등 필요한 비율로 함께 납품합니다. 업로드 채널을 알려주시면 그에 맞게 편집합니다.' },
+
+      { c: '진행·결제', q: '문의부터 납품까지 얼마나 걸리나요?', a: '촬영 기준 보통 촬영 후 3~7일, 상세페이지는 1~2주 내외입니다. 분량·촬영 포함 여부에 따라 달라지며 급한 일정은 사전 협의합니다.' },
+      { c: '진행·결제', q: '견적은 어떻게 받나요?', a: '제품·결과물·일정을 문의 폼이나 전화로 알려주시면 항목별 견적을 정리해 드립니다. 상담은 무료입니다.' },
+      { c: '진행·결제', q: '결제는 어떻게 진행되나요?', a: '견적 확정 후 계약금으로 진행을 시작하고, 시안 확인·납품 단계에 맞춰 잔금을 정산하는 방식이 기본입니다. 세금계산서 발행 가능합니다.' },
+      { c: '진행·결제', q: '원본 파일도 받을 수 있나요?', a: '네. 보정 완료본과 함께 규격별로 정리해 전달합니다. 촬영 원본(RAW) 제공은 사전 협의해 주세요.' },
+      { c: '진행·결제', q: '지방·원거리도 의뢰 가능한가요?', a: '네. 제품 택배 발송으로 전국 의뢰가 가능하며, 현장 촬영이 필요한 경우 출장 일정을 협의합니다.' }
+    ];
+    var CATS = ['전체', '촬영', '상세페이지', '영상', '진행·결제'];
+    var curCat = '전체', curQ = '';
+
+    var catsEl = $('#qCats'), listEl = $('#qList'), emptyEl = $('#qEmpty');
+    catsEl.innerHTML = CATS.map(function (c, i) {
+      var n = c === '전체' ? QNA.length : QNA.filter(function (x) { return x.c === c; }).length;
+      return '<button class="chip' + (i === 0 ? ' is-active' : '') + '" data-c="' + c + '">' + c + ' <b>' + n + '</b></button>';
+    }).join('');
+
+    function esc(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
+    function render() {
+      var q = curQ.trim().toLowerCase();
+      var rows = QNA.filter(function (x) {
+        if (curCat !== '전체' && x.c !== curCat) return false;
+        if (q && (x.q + ' ' + x.a).toLowerCase().indexOf(q) < 0) return false;
+        return true;
+      });
+      emptyEl.style.display = rows.length ? 'none' : 'block';
+      listEl.innerHTML = rows.map(function (x) {
+        return '<details class="faq__item"><summary>' +
+          '<span class="faq__q">Q</span>' +
+          '<b class="faq__qt">' + esc(x.q) + '</b>' +
+          '<i aria-hidden="true"></i></summary>' +
+          '<div class="faq__a"><p>' + esc(x.a) + '</p></div></details>';
+      }).join('');
+    }
+    catsEl.addEventListener('click', function (e) {
+      var b = e.target.closest('.chip'); if (!b) return;
+      $$('.chip', catsEl).forEach(function (x) { x.classList.remove('is-active'); });
+      b.classList.add('is-active'); curCat = b.dataset.c; render();
+    });
+    var searchEl = $('#qSearch');
+    searchEl.addEventListener('input', function () { curQ = searchEl.value; render(); });
+    $('#qSearchBtn').addEventListener('click', function () { curQ = searchEl.value; render(); });
+    $('#qReset').addEventListener('click', function () { curQ = ''; searchEl.value = ''; curCat = '전체';
+      $$('.chip', catsEl).forEach(function (x, i) { x.classList.toggle('is-active', i === 0); }); render(); });
+    render();
+  })();
+  </script>
+</body>
+</html>

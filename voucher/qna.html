@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Q&amp;A | 정부사업지원센터 — 하오디자인</title>
+  <meta name="description" content="수출바우처·제조혁신바우처·소상공인 지원사업 자주 하는 질문. 참여기업·바우처 운영·수행기관·하오디자인 문의 카테고리별 Q&A." />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.css" />
+  <link rel="stylesheet" href="css/style.css?v=4" />
+</head>
+<body>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+
+  <header class="header" id="header">
+    <a href="https://www.haodesign.co.kr" class="brand"><img src="assets/img/logo.png" alt="하오디자인" class="brand__logo" /></a>
+    <nav class="nav" id="nav">
+      <a href="export.html">수출바우처</a>
+      <a href="innovation.html">혁신바우처</a>
+      <a href="market.html">판로개척지원사업</a>
+      <a href="column.html">칼럼</a>
+      <a href="qna.html" style="color:var(--accent)">Q&amp;A</a>
+      <span class="nav__div" aria-hidden="true"></span>
+      <a class="nav__center" href="https://www.haodesign.co.kr">디자인센터 <i>↗</i></a>
+      <a class="nav__center" href="../web/">웹구축센터 <i>↗</i></a>
+      <a class="nav__center" href="../studio/">스튜디오센터 <i>↗</i></a>
+      <a class="nav__center" href="https://mkt.haodesign.co.kr">마케팅센터 <i>↗</i></a>
+    </nav>
+    <a href="index.html#contact" class="header__cta">상담 문의 <span>→</span></a>
+    <button class="burger" id="burger" aria-label="메뉴"><span></span><span></span></button>
+  </header>
+
+  <main id="top">
+    <section class="subhero">
+      <div class="subhero__inner">
+        <p class="subhero__crumb"><a href="https://www.haodesign.co.kr">디자인센터</a> / <a href="index.html">정부사업지원센터</a> / Q&amp;A</p>
+        <h1 class="subhero__title">자주 하는 질문</h1>
+        <p class="subhero__desc">자주 하는 질문 모음입니다. 찾으시는 정보가 없다면 <a href="index.html#contact" style="color:var(--accent);font-weight:700">문의하기</a>를 이용해 주세요.</p>
+      </div>
+    </section>
+
+    <section class="page page--tight">
+      <p class="section-tag">FAQ</p>
+      <h2 class="page__title">무엇이 궁금하신가요</h2>
+
+      <div class="qsearch">
+        <input type="text" id="qSearch" placeholder="궁금한 내용을 검색해 보세요 (예: 신청 방법, 정산, 부담금)" />
+        <button id="qSearchBtn" type="button">검색</button>
+        <button id="qReset" type="button" class="qreset">초기화</button>
+      </div>
+
+      <div class="qcats" id="qCats"></div>
+
+      <div class="faq" id="qList"></div>
+      <p class="qempty" id="qEmpty" style="display:none">검색 결과가 없습니다. 다른 키워드로 검색하시거나 <a href="index.html#contact" style="color:var(--accent);font-weight:700">문의하기</a>를 이용해 주세요.</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__top">
+      <img src="assets/img/logo-white.png" alt="HAO DESIGN" class="footer__logo" />
+      <p>정부지원사업 공식 수행기관<br />수출바우처 · 혁신바우처 · 판로개척지원사업</p>
+    </div>
+    <div class="footer__grid">
+      <div><h3>Contact</h3><a href="tel:16662027">1666-2027</a><a href="mailto:sales@haodesign.co.kr">sales@haodesign.co.kr</a><span>평일 09:00–18:00</span></div>
+      <div><h3>센터</h3><a href="https://www.haodesign.co.kr">디자인센터 ↗</a><a href="../web/">웹구축센터 ↗</a><a href="../studio/">스튜디오센터 ↗</a><a href="https://mkt.haodesign.co.kr">마케팅센터 ↗</a></div>
+      <div><h3>정부사업지원센터</h3><a href="export.html">수출바우처</a><a href="innovation.html">혁신바우처</a><a href="market.html">판로개척지원사업</a><a href="column.html">칼럼</a><a href="qna.html">Q&amp;A</a></div>
+    </div>
+    <div class="footer__bottom">
+      <div class="footer__biz">
+        <p><b>주식회사 하오커뮤니케이션</b><span>대표이사 박창민</span><span>사업자등록번호 528-87-01037</span></p>
+        <p><span>주소 서울시 광진구 능동로49길 9, 2F</span><span>대표번호 1666-2027</span><span>E-mail sales@haodesign.co.kr</span></p>
+      </div>
+      <span class="footer__copy">© <i id="year"></i> HAO DESIGN. 정부사업지원센터.</span>
+    </div>
+  </footer>
+
+  <script>
+  (function () {
+    var $ = function (s, c) { return (c || document).querySelector(s); };
+    var $$ = function (s, c) { return [].slice.call((c || document).querySelectorAll(s)); };
+    var y = $('#year'); if (y) y.textContent = new Date().getFullYear();
+    var hdr = $('#header');
+    addEventListener('scroll', function () { hdr.classList.toggle('is-stuck', window.scrollY > 24); }, { passive: true });
+    hdr.classList.toggle('is-stuck', window.scrollY > 24);
+    var burger = $('#burger'), nav = $('#nav');
+    burger.addEventListener('click', function () { nav.classList.toggle('is-open'); document.body.classList.toggle('menu-open'); });
+    $$('#nav a').forEach(function (a) { a.addEventListener('click', function () { nav.classList.remove('is-open'); document.body.classList.remove('menu-open'); }); });
+
+    var QNA = [
+      { c: '참여기업', q: '수출바우처 사업 신청 방법은 어떻게 되나요?', a: '수출바우처 누리집에서 온라인으로 신청합니다. 동일 공고 내 최대 2개 사업까지 신청 가능하나 우선순위가 높은 1개 사업만 선정됩니다. 제출 서류를 바탕으로 서면·현장 평가를 거쳐 지원 자격 심사 후 최종 선정됩니다.' },
+      { c: '참여기업', q: '바우처 사용계획서는 무엇인가요?', a: '선정된 기업이 연간 바우처를 어떤 서비스에 어떻게 사용할지 대략적으로 작성하는 계획 문서입니다. 협약 단계에서 제출하며, 이후 실제 수행 내용에 맞춰 수정할 수 있습니다.' },
+      { c: '참여기업', q: '바우처 사용계획서는 어떻게 수정하나요?', a: '수출바우처 시스템에 로그인 후 마이페이지의 협약·사용계획 관리 메뉴에서 수정합니다. 서비스 카테고리·수행기관·금액 등을 조정할 수 있으며, 일부 항목은 협약 변경 절차가 필요할 수 있습니다.' },
+      { c: '참여기업', q: '사용계획서 작성 시 해외전시회 개별참가는 어떤 서비스 카테고리에 등록하나요?', a: '‘해외 전시회·행사’ 관련 서비스 카테고리에 등록합니다. 부스 임차·장치 등 항목별 인정 범위가 다르므로 공고의 서비스 분류 기준을 확인하세요.' },
+      { c: '참여기업', q: '사용계획서를 일부만 제출했더니 ‘협약 대기중’ 팝업이 뜹니다. 어디서 마저 작성하나요?', a: '마이페이지 > 협약관리에서 작성 중인 협약을 이어서 완료할 수 있습니다. 협약이 최종 승인되어야 바우처 사용이 시작됩니다.' },
+      { c: '참여기업', q: '작년에 선정되어 진행 중인데, 올해 1차 모집 공고에도 지원할 수 있나요?', a: '운영기관과의 협약 기간이 종료되지 않은 경우 같은 기간 내 모집 사업에는 중복 참여가 불가합니다. 모집 차수에 따라 예외가 있을 수 있으니 공고문을 확인하세요.' },
+      { c: '참여기업', q: '해외전시회 개별참가, 타 정부기관·지자체에서 같은 전시회에 동시 지원받을 수 있나요?', a: '동일 비목에 대한 중복 지원은 불가합니다. 동일 전시회라도 지원 항목이 겹치지 않으면 가능한 경우가 있으니 각 사업 기준을 확인해야 합니다.' },
+      { c: '참여기업', q: '수출바우처 사업과 선택형 지원사업에 중복 신청이 가능한가요?', a: '사업 성격에 따라 중복 참여가 제한될 수 있습니다. 동일 연도·동일 목적 사업은 제한되는 경우가 많으므로 공고의 중복지원 제한 규정을 확인하세요.' },
+      { c: '참여기업', q: 'KOTRA·중진공 등 타 기관 수출지원사업과 중복 신청할 수 있나요?', a: '수출바우처와 별개로 운영되는 유관기관 지원사업은 원칙적으로 신청 제한이 없습니다. 다만 각 사업 운영 기준에 따라 일부 제한될 수 있습니다.' },
+      { c: '참여기업', q: '우선순위를 정하는 이유는 무엇인가요?', a: '동일 공고에서 최대 2개 사업을 신청할 수 있지만 최종적으로 1개 사업만 선정되기 때문에, 선정 시 우선 고려할 사업을 미리 지정하는 것입니다.' },
+
+      { c: '바우처 운영', q: '바우처 사용(협약) 기간은 얼마나 되나요?', a: '보통 협약일로부터 약 1년 내외이며 사업·연도별로 다릅니다. 기간 내 서비스 완료와 정산이 이루어져야 합니다.' },
+      { c: '바우처 운영', q: '기업분담금은 어떻게 납부하나요?', a: '선정·협약 후 운영기관 안내에 따라 지정 계좌로 납부하며, 납부가 확인되면 바우처가 발급됩니다.' },
+      { c: '바우처 운영', q: '정산은 어떻게 진행되나요?', a: '서비스 완료 후 수행기관이 증빙을 등록하면 운영기관 검토를 거쳐 수행기관과 비용을 정산합니다. 기업은 약정한 분담금 외 추가 부담이 없습니다(지원 범위 내).' },
+      { c: '바우처 운영', q: '수행기관을 중간에 변경할 수 있나요?', a: '사용계획서 수정·협약 변경 절차를 통해 가능합니다. 단 이미 진행·정산된 서비스는 변경이 제한됩니다.' },
+
+      { c: '수행기관', q: '하오디자인은 어떤 분야 수행기관인가요?', a: '카탈로그·브로슈어·리플렛·패키지·다국어 홍보물 등 디자인·인쇄 분야 수행기관입니다. 수출·제조혁신·소상공인 사업의 디자인 서비스 카테고리에서 선택하실 수 있습니다.' },
+      { c: '수행기관', q: '수행기관은 어떻게 선택하나요?', a: '바우처 시스템의 수행기관 검색에서 분야로 찾아 사용계획서에 등록합니다. 하오디자인을 지정하시면 상담을 통해 결과물 방향을 함께 잡아드립니다.' },
+
+      { c: '하오디자인 문의', q: '신청 준비 단계부터 도움을 받을 수 있나요?', a: '네. 사업 이해부터 신청서·사용계획서 작성까지 가이드를 제공합니다. 컨설팅은 무료이며 접수 순으로 안내합니다.' },
+      { c: '하오디자인 문의', q: '어떤 제작물을 바우처로 만들 수 있나요?', a: '카탈로그·브로슈어·리플렛·패키지·라벨·다국어 홍보물 등 디자인 제작 항목이 메뉴판에 포함된 경우 활용 가능합니다. 사업별 가능 항목은 문의 시 확인해 드립니다.' },
+      { c: '하오디자인 문의', q: '결과보고서 작성도 안내받을 수 있나요?', a: '네. 항목별 작성 기준과 필수 포함 내용 가이드를 제공해 결과보고 완성도를 높이도록 돕습니다.' },
+      { c: '하오디자인 문의', q: '기업 부담금은 어느 정도인가요?', a: '사업·기업 유형에 따라 정부 지원 비율이 달라 총 사업비의 일부만 부담합니다. 정확한 비율은 해당 연도 공고 기준으로 안내드립니다.' }
+    ];
+    var CATS = ['전체', '참여기업', '바우처 운영', '수행기관', '하오디자인 문의'];
+    var curCat = '전체', curQ = '';
+
+    var catsEl = $('#qCats'), listEl = $('#qList'), emptyEl = $('#qEmpty');
+    catsEl.innerHTML = CATS.map(function (c, i) {
+      var n = c === '전체' ? QNA.length : QNA.filter(function (x) { return x.c === c; }).length;
+      return '<button class="chip' + (i === 0 ? ' is-active' : '') + '" data-c="' + c + '">' + c + ' <b>' + n + '</b></button>';
+    }).join('');
+
+    function esc(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
+    function render() {
+      var q = curQ.trim().toLowerCase();
+      var rows = QNA.filter(function (x) {
+        if (curCat !== '전체' && x.c !== curCat) return false;
+        if (q && (x.q + ' ' + x.a).toLowerCase().indexOf(q) < 0) return false;
+        return true;
+      });
+      emptyEl.style.display = rows.length ? 'none' : 'block';
+      listEl.innerHTML = rows.map(function (x) {
+        return '<details class="faq__item"><summary>' +
+          '<span class="faq__q">Q</span>' +
+          '<b class="faq__qt">' + esc(x.q) + '</b>' +
+          '<i aria-hidden="true"></i></summary>' +
+          '<div class="faq__a"><p>' + esc(x.a) + '</p></div></details>';
+      }).join('');
+    }
+    catsEl.addEventListener('click', function (e) {
+      var b = e.target.closest('.chip'); if (!b) return;
+      $$('.chip', catsEl).forEach(function (x) { x.classList.remove('is-active'); });
+      b.classList.add('is-active'); curCat = b.dataset.c; render();
+    });
+    var searchEl = $('#qSearch');
+    searchEl.addEventListener('input', function () { curQ = searchEl.value; render(); });
+    $('#qSearchBtn').addEventListener('click', function () { curQ = searchEl.value; render(); });
+    $('#qReset').addEventListener('click', function () { curQ = ''; searchEl.value = ''; curCat = '전체';
+      $$('.chip', catsEl).forEach(function (x, i) { x.classList.toggle('is-active', i === 0); }); render(); });
+    render();
+  })();
+  </script>
+</body>
+</html>

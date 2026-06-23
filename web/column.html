@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>칼럼 | 웹구축센터 — 하오디자인</title>
+  <meta name="description" content="홈페이지 제작·앱·AEO·SEO·GEO 트렌드와 실무 인사이트를 전하는 하오디자인 웹구축센터 칼럼." />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.css" />
+  <link rel="stylesheet" href="css/style.css?v=1" />
+</head>
+<body>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+
+  <header class="header" id="header">
+    <a href="https://www.haodesign.co.kr" class="brand"><img src="assets/img/logo.png" alt="하오디자인" class="brand__logo" /></a>
+    <nav class="nav" id="nav">
+      <a href="index.html#service">서비스</a>
+      <a href="index.html#aeo">AEO·SEO</a>
+      <a href="index.html#portfolio">포트폴리오</a>
+      <a href="column.html" style="color:var(--accent)">칼럼</a>
+      <a href="qna.html">Q&amp;A</a>
+      <span class="nav__div" aria-hidden="true"></span>
+      <a class="nav__center" href="https://www.haodesign.co.kr">디자인센터 <i>↗</i></a>
+      <a class="nav__center" href="../studio/">스튜디오센터 <i>↗</i></a>
+      <a class="nav__center" href="https://mkt.haodesign.co.kr">마케팅센터 <i>↗</i></a>
+      <a class="nav__center" href="../voucher/">정부사업지원센터 <i>↗</i></a>
+    </nav>
+    <a href="index.html#contact" class="header__cta">제작 문의 <span>→</span></a>
+    <button class="burger" id="burger" aria-label="메뉴"><span></span><span></span></button>
+  </header>
+
+  <main>
+    <div id="listView">
+      <section class="subhero">
+        <div class="subhero__inner">
+          <p class="subhero__crumb"><a href="https://www.haodesign.co.kr">디자인센터</a> / <a href="index.html">웹구축센터</a> / Column</p>
+          <h1 class="subhero__title">Column</h1>
+          <p class="subhero__desc">홈페이지·앱·검색 최적화, 알아두면 좋은 웹 이야기를 전합니다.</p>
+        </div>
+      </section>
+      <section class="page page--tight">
+        <div class="gallery-board" id="galleryBoard"></div>
+      </section>
+    </div>
+
+    <div id="postView" hidden>
+      <section class="subhero subhero--post">
+        <div class="subhero__inner">
+          <p class="subhero__crumb"><a href="index.html">웹구축센터</a> / <a href="column.html">Column</a></p>
+          <h2 class="subhero__title post-title" id="postTitle"></h2>
+          <p class="subhero__desc" id="postDate"></p>
+        </div>
+      </section>
+      <section class="page page--tight">
+        <article class="post">
+          <div class="post__hero"><img src="" alt="" id="postImg" /></div>
+          <div class="post__body" id="postBody"></div>
+          <div class="post__nav">
+            <a href="#" id="postPrev" class="post__navlink"><span>이전 글</span><strong></strong></a>
+            <a href="column.html" class="btn-round post__list"><span>목록으로</span></a>
+            <a href="#" id="postNext" class="post__navlink post__navlink--next"><span>다음 글</span><strong></strong></a>
+          </div>
+        </article>
+      </section>
+    </div>
+
+    <section class="contact" id="contact">
+      <div class="contact__panel reveal">
+        <svg class="contact__spin" viewBox="0 0 120 120" aria-hidden="true">
+          <defs><path id="spinPath" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0" /></defs>
+          <text><textPath href="#spinPath">WEBSITE · APP · AEO · SEO · HAO DESIGN · </textPath></text>
+        </svg>
+        <div class="contact__info">
+          <p class="contact__tag">START A PROJECT</p>
+          <h2 class="contact__title">홈페이지가<br />필요하신가요?</h2>
+          <p class="contact__desc">간단한 내용만 남겨주세요.<br />담당자가 확인 후 빠르게 연락드립니다.</p>
+          <ul class="contact__rows">
+            <li><span>TEL</span><a href="tel:16662027">1666-2027</a></li>
+            <li><span>MAIL</span><a href="mailto:sales@haodesign.co.kr">sales@haodesign.co.kr</a></li>
+            <li><span>TIME</span>평일 09:00 – 18:00</li>
+          </ul>
+        </div>
+        <form class="cform cform--card" id="quoteForm" novalidate>
+          <div class="cfield"><input type="text" id="name" name="name" placeholder="이름 / 회사명" required /></div>
+          <div class="cfield"><input type="tel" id="phone" name="phone" placeholder="연락처" required /></div>
+          <div class="cfield cfield--full"><textarea id="message" name="message" rows="4" placeholder="제작하려는 서비스, 참고 사이트 등을 자유롭게 적어주세요."></textarea></div>
+          <button type="submit" class="btn-round btn-round--solid"><span>문의 보내기</span><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          <p class="cnote" id="formNote" role="status"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__top">
+      <img src="assets/img/logo-white.png" alt="HAO DESIGN" class="footer__logo" />
+      <p>홈페이지·앱 제작 / AEO·SEO·GEO<br />찾게 만드는 홈페이지를 만듭니다</p>
+    </div>
+    <div class="footer__grid">
+      <div><h3>Contact</h3><a href="tel:16662027">1666-2027</a><a href="mailto:sales@haodesign.co.kr">sales@haodesign.co.kr</a><span>평일 09:00–18:00</span></div>
+      <div><h3>센터</h3><a href="https://www.haodesign.co.kr">디자인센터 ↗</a><a href="../studio/">스튜디오센터 ↗</a><a href="https://mkt.haodesign.co.kr">마케팅센터 ↗</a><a href="../voucher/">정부사업지원센터 ↗</a></div>
+      <div><h3>웹구축센터</h3><a href="index.html#service">서비스</a><a href="index.html#aeo">AEO·SEO</a><a href="column.html">칼럼</a><a href="qna.html">Q&amp;A</a></div>
+    </div>
+    <div class="footer__bottom">
+      <div class="footer__biz">
+        <p><b>주식회사 하오커뮤니케이션</b><span>대표이사 박창민</span><span>사업자등록번호 528-87-01037</span></p>
+        <p><span>주소 서울시 광진구 능동로49길 9, 2F</span><span>대표번호 1666-2027</span><span>E-mail sales@haodesign.co.kr</span></p>
+      </div>
+      <span class="footer__copy">© <i id="year"></i> HAO DESIGN. 웹구축센터.</span>
+    </div>
+  </footer>
+
+  <script>
+  (function () {
+    var $ = function (s, c) { return (c || document).querySelector(s); };
+    var $$ = function (s, c) { return [].slice.call((c || document).querySelectorAll(s)); };
+    var y = $('#year'); if (y) y.textContent = new Date().getFullYear();
+    var hdr = $('#header');
+    addEventListener('scroll', function () { hdr.classList.toggle('is-stuck', window.scrollY > 24); }, { passive: true });
+    hdr.classList.toggle('is-stuck', window.scrollY > 24);
+    var burger = $('#burger'), nav = $('#nav');
+    burger.addEventListener('click', function () { nav.classList.toggle('is-open'); document.body.classList.toggle('menu-open'); });
+    $$('#nav a').forEach(function (a) { a.addEventListener('click', function () { nav.classList.remove('is-open'); document.body.classList.remove('menu-open'); }); });
+
+    var posts = [
+      { id: 6, title: 'SEO를 넘어 GEO·AEO 시대로', summary: 'AI가 답변에서 추천하는 홈페이지란? SEO와 GEO의 차이를 정리했습니다.', date: '2026.06.20', img: 'assets/img/big_slide_02.jpg', isNew: true,
+        body: ['검색 결과 상위 노출을 목표로 하던 시대에서, 이제는 생성형 AI가 답변 속에서 추천하는 홈페이지를 만드는 시대로 넘어가고 있습니다.', 'SEO가 검색엔진을 위한 최적화라면, GEO·AEO는 ChatGPT·Perplexity 같은 AI가 우리 콘텐츠를 인용·추천하도록 만드는 전략입니다.', '하오디자인은 제작 단계부터 구조화 데이터(스키마)와 신뢰 신호를 함께 설계해, 사람과 AI 모두에게 발견되는 홈페이지를 만듭니다.'] },
+      { id: 5, title: '네이버 AI 탭, 검색은 어떻게 바뀌나', summary: '대화형 AI 검색으로 재편되는 검색 환경과 대응 전략.', date: '2026.06.12', img: 'assets/img/big_slide_03.jpg', isNew: true,
+        body: ['네이버가 대화형 AI 검색 ‘AI 탭’을 선보이며 검색 행위 자체가 재구성되고 있습니다.', '키워드 중심에서 의도·맥락 중심으로 이동하는 만큼, 콘텐츠 구조와 데이터 정합성이 더 중요해집니다.'] },
+      { id: 4, title: '반응형 vs 적응형, 무엇을 택할까', summary: '디바이스 대응 방식의 차이와 선택 기준.', date: '2026.05.30', img: 'assets/img/big_slide_04.jpg', isNew: false,
+        body: ['반응형(Responsive)은 하나의 코드로 모든 화면에 유연하게 대응하고, 적응형(Adaptive)은 기기별 레이아웃을 따로 제공합니다.', '대부분의 기업·브랜드 사이트는 유지보수와 SEO 측면에서 반응형이 유리합니다.'] },
+      { id: 3, title: '홈페이지 리뉴얼 체크리스트', summary: '리뉴얼 전 반드시 점검해야 할 7가지.', date: '2026.05.21', img: 'assets/img/big_slide_06.jpg', isNew: false,
+        body: ['리뉴얼은 디자인 교체가 아니라 구조·성능·검색의 재설계입니다.', '기존 URL 구조와 유입 키워드를 분석해 SEO 자산을 잃지 않도록 이전 계획을 세우는 것이 핵심입니다.'] },
+      { id: 2, title: '모바일 앱 vs 웹앱, 우리에겐 뭐가 맞을까', summary: '비용·기능·배포 관점의 비교.', date: '2026.05.13', img: 'assets/img/main_07.png', isNew: false,
+        body: ['네이티브 앱은 성능·기기 기능 활용에 강하고, 웹앱(PWA)은 비용·배포·접근성에 강점이 있습니다.', '서비스 목적과 예산에 따라 하이브리드 방식이 현실적인 선택이 되기도 합니다.'] },
+      { id: 1, title: 'Core Web Vitals, 성능이 곧 순위', summary: '체감 속도 지표와 최적화 포인트.', date: '2026.04.29', img: 'assets/img/main_09.png', isNew: false,
+        body: ['LCP·INP·CLS로 대표되는 Core Web Vitals는 사용자 경험이자 검색 순위 요소입니다.', '이미지 최적화·코드 분할·캐싱으로 체감 속도를 끌어올리면 이탈률과 전환율이 함께 개선됩니다.'] }
+    ];
+
+    var listView = $('#listView'), postView = $('#postView'), gallery = $('#galleryBoard');
+    gallery.innerHTML = posts.map(function (p) {
+      return '<article class="gcard" data-id="' + p.id + '"><div class="gcard__thumb"><img src="' + p.img + '" alt="" loading="lazy" />' +
+        (p.isNew ? '<span class="gcard__badge">NEW</span>' : '') + '</div>' +
+        '<div class="gcard__body"><h3>' + p.title + '</h3><p>' + p.summary + '</p><span class="gcard__date">' + p.date + '</span></div></article>';
+    }).join('');
+    gallery.addEventListener('click', function (e) { var card = e.target.closest('.gcard'); if (!card) return; location.hash = 'post-' + card.getAttribute('data-id'); });
+    function byId(id) { return posts.filter(function (p) { return p.id === id; })[0]; }
+    function render() {
+      var m = location.hash.match(/^#post-(\d+)$/), post = m ? byId(parseInt(m[1], 10)) : null;
+      if (!post) { postView.hidden = true; listView.hidden = false; document.title = '칼럼 | 웹구축센터'; return; }
+      listView.hidden = true; postView.hidden = false; document.title = post.title + ' | 웹구축센터';
+      $('#postTitle').textContent = post.title; $('#postDate').textContent = post.date; $('#postImg').src = post.img;
+      $('#postBody').innerHTML = post.body.map(function (t) { return '<p>' + t + '</p>'; }).join('');
+      var idx = posts.indexOf(post), prev = posts[idx + 1], next = posts[idx - 1];
+      var prevEl = $('#postPrev'), nextEl = $('#postNext');
+      prevEl.style.visibility = prev ? 'visible' : 'hidden'; nextEl.style.visibility = next ? 'visible' : 'hidden';
+      if (prev) { prevEl.href = '#post-' + prev.id; prevEl.querySelector('strong').textContent = prev.title; }
+      if (next) { nextEl.href = '#post-' + next.id; nextEl.querySelector('strong').textContent = next.title; }
+      window.scrollTo(0, 0);
+    }
+    addEventListener('hashchange', render); render();
+    var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } }); }, { threshold: .15 });
+    $$('.reveal').forEach(function (el) { io.observe(el); });
+    var form = $('#quoteForm');
+    if (form) form.addEventListener('submit', function (e) { e.preventDefault(); var note = $('#formNote');
+      if (!form.name.value.trim() || !form.phone.value.trim()) { note.textContent = '이름과 연락처를 입력해주세요.'; return; }
+      note.textContent = '문의가 접수되었습니다. 빠르게 연락드리겠습니다. (데모)'; form.reset(); });
+  })();
+  </script>
+</body>
+</html>

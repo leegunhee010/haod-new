@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>칼럼 | 정부사업지원센터 — 하오디자인</title>
+  <meta name="description" content="수출바우처·제조혁신바우처·소상공인 지원사업 신청 노하우와 일정, 결과보고 팁을 정리한 하오디자인 정부사업지원센터 칼럼." />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.css" />
+  <link rel="stylesheet" href="css/style.css?v=4" />
+</head>
+<body>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+
+  <header class="header" id="header">
+    <a href="https://www.haodesign.co.kr" class="brand"><img src="assets/img/logo.png" alt="하오디자인" class="brand__logo" /></a>
+    <nav class="nav" id="nav">
+      <a href="export.html">수출바우처</a>
+      <a href="innovation.html">혁신바우처</a>
+      <a href="market.html">판로개척지원사업</a>
+      <a href="column.html" style="color:var(--accent)">칼럼</a>
+      <a href="qna.html">Q&amp;A</a>
+      <span class="nav__div" aria-hidden="true"></span>
+      <a class="nav__center" href="https://www.haodesign.co.kr">디자인센터 <i>↗</i></a>
+      <a class="nav__center" href="../web/">웹구축센터 <i>↗</i></a>
+      <a class="nav__center" href="../studio/">스튜디오센터 <i>↗</i></a>
+      <a class="nav__center" href="https://mkt.haodesign.co.kr">마케팅센터 <i>↗</i></a>
+    </nav>
+    <a href="index.html#contact" class="header__cta">상담 문의 <span>→</span></a>
+    <button class="burger" id="burger" aria-label="메뉴"><span></span><span></span></button>
+  </header>
+
+  <main>
+    <!-- 목록 뷰 -->
+    <div id="listView">
+      <section class="subhero">
+        <div class="subhero__inner">
+          <p class="subhero__crumb"><a href="https://www.haodesign.co.kr">디자인센터</a> / <a href="index.html">정부사업지원센터</a> / Column</p>
+          <h1 class="subhero__title">Column</h1>
+          <p class="subhero__desc">바우처 신청부터 결과보고까지, 실무에 바로 쓰는 정부지원사업 이야기를 전합니다.</p>
+        </div>
+      </section>
+      <section class="page page--tight">
+        <div class="gallery-board" id="galleryBoard"><!-- cards injected --></div>
+      </section>
+    </div>
+
+    <!-- 상세 뷰 -->
+    <div id="postView" hidden>
+      <section class="subhero subhero--post">
+        <div class="subhero__inner">
+          <p class="subhero__crumb"><a href="index.html">정부사업지원센터</a> / <a href="column.html">Column</a></p>
+          <h2 class="subhero__title post-title" id="postTitle"></h2>
+          <p class="subhero__desc" id="postDate"></p>
+        </div>
+      </section>
+      <section class="page page--tight">
+        <article class="post">
+          <div class="post__hero"><img src="" alt="" id="postImg" /></div>
+          <div class="post__body" id="postBody"></div>
+          <div class="post__nav">
+            <a href="#" id="postPrev" class="post__navlink"><span>이전 글</span><strong></strong></a>
+            <a href="column.html" class="btn-round post__list"><span>목록으로</span></a>
+            <a href="#" id="postNext" class="post__navlink post__navlink--next"><span>다음 글</span><strong></strong></a>
+          </div>
+        </article>
+      </section>
+    </div>
+
+    <!-- CTA -->
+    <section class="contact" id="contact">
+      <div class="contact__panel reveal">
+        <svg class="contact__spin" viewBox="0 0 120 120" aria-hidden="true">
+          <defs><path id="spinPath" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0" /></defs>
+          <text><textPath href="#spinPath">GOVERNMENT VOUCHER · HAO DESIGN · </textPath></text>
+        </svg>
+        <div class="contact__info">
+          <p class="contact__tag">VOUCHER CONSULTING</p>
+          <h2 class="contact__title">바우처가<br />궁금하신가요?</h2>
+          <p class="contact__desc">신청 가능 여부부터 무료로 확인해 드립니다.<br />담당자가 확인 후 빠르게 연락드립니다.</p>
+          <ul class="contact__rows">
+            <li><span>TEL</span><a href="tel:16662027">1666-2027</a></li>
+            <li><span>MAIL</span><a href="mailto:sales@haodesign.co.kr">sales@haodesign.co.kr</a></li>
+            <li><span>TIME</span>평일 09:00 – 18:00</li>
+          </ul>
+        </div>
+        <form class="cform cform--card" id="quoteForm" novalidate>
+          <div class="cfield"><input type="text" id="name" name="name" placeholder="이름 / 회사명" required /></div>
+          <div class="cfield"><input type="tel" id="phone" name="phone" placeholder="연락처" required /></div>
+          <div class="cfield cfield--full">
+            <select id="type" name="type">
+              <option value="">관심 사업 선택</option>
+              <option>수출바우처</option><option>혁신바우처</option><option>판로개척지원사업</option>
+              <option>신청 가능 여부 문의</option><option>기타</option>
+            </select>
+          </div>
+          <div class="cfield cfield--full"><textarea id="message" name="message" rows="4" placeholder="기업 현황, 관심 사업 등을 자유롭게 적어주세요."></textarea></div>
+          <button type="submit" class="btn-round btn-round--solid"><span>상담 신청</span><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          <p class="cnote" id="formNote" role="status"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__top">
+      <img src="assets/img/logo-white.png" alt="HAO DESIGN" class="footer__logo" />
+      <p>정부지원사업 공식 수행기관<br />수출바우처 · 혁신바우처 · 판로개척지원사업</p>
+    </div>
+    <div class="footer__grid">
+      <div><h3>Contact</h3><a href="tel:16662027">1666-2027</a><a href="mailto:sales@haodesign.co.kr">sales@haodesign.co.kr</a><span>평일 09:00–18:00</span></div>
+      <div><h3>센터</h3><a href="https://www.haodesign.co.kr">디자인센터 ↗</a><a href="../web/">웹구축센터 ↗</a><a href="../studio/">스튜디오센터 ↗</a><a href="https://mkt.haodesign.co.kr">마케팅센터 ↗</a></div>
+      <div><h3>정부사업지원센터</h3><a href="export.html">수출바우처</a><a href="innovation.html">혁신바우처</a><a href="market.html">판로개척지원사업</a><a href="column.html">칼럼</a><a href="qna.html">Q&amp;A</a></div>
+    </div>
+    <div class="footer__bottom">
+      <div class="footer__biz">
+        <p><b>주식회사 하오커뮤니케이션</b><span>대표이사 박창민</span><span>사업자등록번호 528-87-01037</span></p>
+        <p><span>주소 서울시 광진구 능동로49길 9, 2F</span><span>대표번호 1666-2027</span><span>E-mail sales@haodesign.co.kr</span></p>
+      </div>
+      <span class="footer__copy">© <i id="year"></i> HAO DESIGN. 정부사업지원센터.</span>
+    </div>
+  </footer>
+
+  <script>
+  (function () {
+    var $ = function (s, c) { return (c || document).querySelector(s); };
+    var $$ = function (s, c) { return [].slice.call((c || document).querySelectorAll(s)); };
+    var y = $('#year'); if (y) y.textContent = new Date().getFullYear();
+    var hdr = $('#header');
+    addEventListener('scroll', function () { hdr.classList.toggle('is-stuck', window.scrollY > 24); }, { passive: true });
+    hdr.classList.toggle('is-stuck', window.scrollY > 24);
+    var burger = $('#burger'), nav = $('#nav');
+    burger.addEventListener('click', function () { nav.classList.toggle('is-open'); document.body.classList.toggle('menu-open'); });
+    $$('#nav a').forEach(function (a) { a.addEventListener('click', function () { nav.classList.remove('is-open'); document.body.classList.remove('menu-open'); }); });
+
+    /* 칼럼 데이터 (최신순) */
+    var posts = [
+      { id: 6, title: '2026 수출바우처 신청 일정 한눈에 정리', summary: '차수별 모집 일정과 우선순위, 준비 서류를 시기별로 정리했습니다.', date: '2026.06.18', img: 'assets/img/big_slide_02.jpg', isNew: true,
+        body: ['수출바우처는 매년 여러 차수에 걸쳐 모집이 진행됩니다. 1차 모집은 보통 연초에 시작되며, 차수마다 배정 예산과 우선 선정 분야가 다릅니다.', '동일 공고 내 최대 2개 사업까지 신청할 수 있지만 우선순위가 높은 1개 사업만 선정되므로, 신청 전 우선순위를 명확히 정해두는 것이 중요합니다.', '신청서·사업계획·증빙 서류는 마감 직전에 몰리기 쉬우므로 최소 2주 전부터 준비하시길 권합니다. 하오디자인은 신청 준비 단계부터 무료로 안내해 드립니다.'] },
+      { id: 5, title: '우리 회사도 제조혁신바우처 대상일까?', summary: '대상 기업 요건과 진단 절차를 사례로 설명합니다.', date: '2026.06.10', img: 'assets/img/big_slide_03.jpg', isNew: true,
+        body: ['제조혁신바우처는 성장 가능성이 높은 제조 중소기업을 대상으로 합니다. 업력·매출 규모보다 기업 진단 결과와 개선 계획의 구체성이 중요하게 평가됩니다.', '진단을 통해 컨설팅·기술지원·마케팅·디자인 등 필요한 서비스를 바우처로 지원받을 수 있으며, 카탈로그·브로슈어 등 홍보물 제작도 포함됩니다.', '대상 여부가 애매하다면 무료 상담으로 먼저 확인해 보세요.'] },
+      { id: 4, title: '바우처로 카탈로그·브로슈어 제작하는 법', summary: '메뉴판에서 디자인 서비스를 고르는 기준과 효과를 높이는 팁.', date: '2026.05.29', img: 'assets/img/big_slide_04.jpg', isNew: false,
+        body: ['바우처 메뉴판에는 디자인·인쇄 서비스가 카테고리별로 등록되어 있습니다. 결과물의 용도(수출 상담회, 해외 바이어 제안 등)에 맞는 카테고리를 고르는 것이 첫 단계입니다.', '판형·페이지 수·후가공을 미리 정하면 부담금 대비 완성도를 높일 수 있습니다. 하오디자인은 인쇄 감리까지 직접 챙겨 화면과 종이의 차이를 줄입니다.'] },
+      { id: 3, title: '소상공인 지원사업, 작은 가게도 가능한가요?', summary: '리플렛·메뉴판·매장 홍보물에 활용 가능한 지원사업 안내.', date: '2026.05.20', img: 'assets/img/big_slide_06.jpg', isNew: false,
+        body: ['소상공인시장진흥공단은 소상공인의 창업·경영 안정·성장을 돕는 다양한 지원사업을 운영합니다. 규모가 작은 매장도 충분히 활용할 수 있습니다.', '리플렛·메뉴판·간판·매장 홍보물 등 소규모 제작에 적합하며, 사업별로 지원 항목과 한도가 다릅니다. 우리 매장에 맞는 사업을 함께 찾아드립니다.'] },
+      { id: 2, title: '결과보고서 작성 체크리스트 7가지', summary: '평가를 통과하는 결과보고서의 필수 항목을 정리했습니다.', date: '2026.05.12', img: 'assets/img/main_07.png', isNew: false,
+        body: ['결과보고는 사업 종료만큼 중요합니다. 평가 기준과 작성 요건을 정확히 이해해야 다음 참여에도 유리합니다.', '① 사업 목표 대비 성과 ② 정량 지표 ③ 산출물 증빙 ④ 예산 집행 내역 ⑤ 활용 계획 ⑥ 사진·이미지 자료 ⑦ 누락 항목 점검 — 이 7가지를 기준으로 점검하세요.', '하오디자인은 항목별 작성 기준과 필수 포함 내용을 가이드합니다.'] },
+      { id: 1, title: '바우처로 다국어 카탈로그 만든 수출기업 이야기', summary: '신청부터 납품까지의 흐름과 결과물이 만든 변화.', date: '2026.04.30', img: 'assets/img/main_09.png', isNew: false,
+        body: ['한 제조 수출기업은 수출바우처를 활용해 영문·중문 다국어 카탈로그를 제작했습니다. 기존에는 국문 자료를 급히 번역해 사용하던 상황이었습니다.', '업종 특성과 해외 바이어의 관점을 반영해 구성을 새로 잡고, 인쇄 감리까지 진행했습니다. 상담회에서 자료에 대한 반응이 달라졌다는 피드백을 받았습니다.'] }
+    ];
+
+    var listView = $('#listView'), postView = $('#postView'), gallery = $('#galleryBoard');
+    gallery.innerHTML = posts.map(function (p) {
+      return '<article class="gcard" data-id="' + p.id + '">' +
+        '<div class="gcard__thumb"><img src="' + p.img + '" alt="" loading="lazy" />' +
+        (p.isNew ? '<span class="gcard__badge">NEW</span>' : '') + '</div>' +
+        '<div class="gcard__body"><h3>' + p.title + '</h3><p>' + p.summary + '</p>' +
+        '<span class="gcard__date">' + p.date + '</span></div></article>';
+    }).join('');
+    gallery.addEventListener('click', function (e) {
+      var card = e.target.closest('.gcard'); if (!card) return;
+      location.hash = 'post-' + card.getAttribute('data-id');
+    });
+    function byId(id) { return posts.filter(function (p) { return p.id === id; })[0]; }
+    function render() {
+      var m = location.hash.match(/^#post-(\d+)$/);
+      var post = m ? byId(parseInt(m[1], 10)) : null;
+      if (!post) { postView.hidden = true; listView.hidden = false; document.title = '칼럼 | 정부사업지원센터'; return; }
+      listView.hidden = true; postView.hidden = false;
+      document.title = post.title + ' | 정부사업지원센터';
+      $('#postTitle').textContent = post.title;
+      $('#postDate').textContent = post.date;
+      $('#postImg').src = post.img;
+      $('#postBody').innerHTML = post.body.map(function (t) { return '<p>' + t + '</p>'; }).join('');
+      var idx = posts.indexOf(post), prev = posts[idx + 1], next = posts[idx - 1];
+      var prevEl = $('#postPrev'), nextEl = $('#postNext');
+      prevEl.style.visibility = prev ? 'visible' : 'hidden';
+      nextEl.style.visibility = next ? 'visible' : 'hidden';
+      if (prev) { prevEl.href = '#post-' + prev.id; prevEl.querySelector('strong').textContent = prev.title; }
+      if (next) { nextEl.href = '#post-' + next.id; nextEl.querySelector('strong').textContent = next.title; }
+      window.scrollTo(0, 0);
+    }
+    addEventListener('hashchange', render); render();
+
+    var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } }); }, { threshold: .15 });
+    $$('.reveal').forEach(function (el) { io.observe(el); });
+    var form = $('#quoteForm');
+    if (form) form.addEventListener('submit', function (e) { e.preventDefault(); var note = $('#formNote');
+      if (!form.name.value.trim() || !form.phone.value.trim()) { note.textContent = '이름과 연락처를 입력해주세요.'; return; }
+      note.textContent = '상담 신청이 접수되었습니다. 빠르게 연락드리겠습니다. (데모)'; form.reset(); });
+  })();
+  </script>
+</body>
+</html>

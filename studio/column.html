@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>칼럼 | 스튜디오센터 — 하오디자인</title>
+  <meta name="description" content="제품 촬영·상세페이지·영상 콘텐츠 실무 노하우. 더 잘 팔리는 비주얼을 만드는 하오디자인 스튜디오센터 칼럼." />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.css" />
+  <link rel="stylesheet" href="css/style.css?v=1" />
+</head>
+<body>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+
+  <header class="header" id="header">
+    <a href="index.html" class="brand"><img src="assets/img/logo.png" alt="하오디자인" class="brand__logo" /></a>
+    <nav class="nav" id="nav">
+      <a href="photo.html">제품촬영</a>
+      <a href="detailpage.html">상세페이지</a>
+      <a href="video.html">영상콘텐츠</a>
+      <a href="column.html" style="color:var(--accent)">칼럼</a>
+      <a href="qna.html">Q&amp;A</a>
+      <span class="nav__div" aria-hidden="true"></span>
+      <a class="nav__center" href="https://www.haodesign.co.kr">디자인센터 <i>↗</i></a>
+      <a class="nav__center" href="../web/">웹구축센터 <i>↗</i></a>
+      <a class="nav__center" href="https://mkt.haodesign.co.kr">마케팅센터 <i>↗</i></a>
+      <a class="nav__center" href="../voucher/">정부사업지원센터 <i>↗</i></a>
+    </nav>
+    <a href="index.html#contact" class="header__cta">촬영 문의 <span>→</span></a>
+    <button class="burger" id="burger" aria-label="메뉴"><span></span><span></span></button>
+  </header>
+
+  <main>
+    <div id="listView">
+      <section class="subhero">
+        <div class="subhero__inner">
+          <p class="subhero__crumb"><a href="https://www.haodesign.co.kr">디자인센터</a> / <a href="index.html">스튜디오센터</a> / Column</p>
+          <h1 class="subhero__title">Column</h1>
+          <p class="subhero__desc">촬영·상세페이지·콘텐츠, 더 잘 팔리는 비주얼을 만드는 실무 이야기를 전합니다.</p>
+        </div>
+      </section>
+      <section class="page page--tight">
+        <div class="gallery-board" id="galleryBoard"></div>
+      </section>
+    </div>
+
+    <div id="postView" hidden>
+      <section class="subhero subhero--post">
+        <div class="subhero__inner">
+          <p class="subhero__crumb"><a href="index.html">스튜디오센터</a> / <a href="column.html">Column</a></p>
+          <h2 class="subhero__title post-title" id="postTitle"></h2>
+          <p class="subhero__desc" id="postDate"></p>
+        </div>
+      </section>
+      <section class="page page--tight">
+        <article class="post">
+          <div class="post__hero"><img src="" alt="" id="postImg" /></div>
+          <div class="post__body" id="postBody"></div>
+          <div class="post__nav">
+            <a href="#" id="postPrev" class="post__navlink"><span>이전 글</span><strong></strong></a>
+            <a href="column.html" class="btn-round post__list"><span>목록으로</span></a>
+            <a href="#" id="postNext" class="post__navlink post__navlink--next"><span>다음 글</span><strong></strong></a>
+          </div>
+        </article>
+      </section>
+    </div>
+
+    <section class="contact" id="contact">
+      <div class="contact__panel reveal">
+        <svg class="contact__spin" viewBox="0 0 120 120" aria-hidden="true">
+          <defs><path id="spinPath" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0" /></defs>
+          <text><textPath href="#spinPath">HAO STUDIO · PHOTO &amp; CONTENT · </textPath></text>
+        </svg>
+        <div class="contact__info">
+          <p class="contact__tag">STUDIO INQUIRY</p>
+          <h2 class="contact__title">촬영이<br />필요하신가요?</h2>
+          <p class="contact__desc">제품과 일정만 알려주시면<br />가능 범위와 견적을 빠르게 안내드립니다.</p>
+          <ul class="contact__rows">
+            <li><span>TEL</span><a href="tel:16662027">1666-2027</a></li>
+            <li><span>MAIL</span><a href="mailto:sales@haodesign.co.kr">sales@haodesign.co.kr</a></li>
+            <li><span>TIME</span>평일 09:00 – 18:00</li>
+          </ul>
+        </div>
+        <form class="cform cform--card" id="quoteForm" novalidate>
+          <div class="cfield"><input type="text" id="name" name="name" placeholder="이름 / 브랜드명" required /></div>
+          <div class="cfield"><input type="tel" id="phone" name="phone" placeholder="연락처" required /></div>
+          <div class="cfield cfield--full">
+            <select id="type" name="type">
+              <option value="">관심 서비스 선택</option>
+              <option>제품·브랜드 촬영</option><option>상세페이지 제작</option><option>영상·릴스 콘텐츠</option>
+              <option>보정·리터칭</option><option>기타 문의</option>
+            </select>
+          </div>
+          <div class="cfield cfield--full"><textarea id="message" name="message" rows="4" placeholder="제품 종류, 원하는 결과물 등을 자유롭게 적어주세요."></textarea></div>
+          <button type="submit" class="btn-round btn-round--solid"><span>촬영 문의</span><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          <p class="cnote" id="formNote" role="status"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__top">
+      <img src="assets/img/logo-white.png" alt="HAO DESIGN" class="footer__logo" />
+      <p>하오디자인 스튜디오센터<br />제품 촬영 · 상세페이지 · 영상 콘텐츠 제작</p>
+    </div>
+    <div class="footer__grid">
+      <div><h3>Contact</h3><a href="tel:16662027">1666-2027</a><a href="mailto:sales@haodesign.co.kr">sales@haodesign.co.kr</a><span>평일 09:00–18:00</span></div>
+      <div><h3>센터</h3><a href="https://www.haodesign.co.kr">디자인센터 ↗</a><a href="../web/">웹구축센터 ↗</a><a href="https://mkt.haodesign.co.kr">마케팅센터 ↗</a><a href="../voucher/">정부사업지원센터 ↗</a></div>
+      <div><h3>스튜디오센터</h3><a href="photo.html">제품촬영</a><a href="detailpage.html">상세페이지</a><a href="video.html">영상콘텐츠</a><a href="column.html">칼럼</a><a href="qna.html">Q&amp;A</a></div>
+    </div>
+    <div class="footer__bottom">
+      <div class="footer__biz">
+        <p><b>주식회사 하오커뮤니케이션</b><span>대표이사 박창민</span><span>사업자등록번호 528-87-01037</span></p>
+        <p><span>주소 서울시 광진구 능동로49길 9, 2F</span><span>대표번호 1666-2027</span><span>E-mail sales@haodesign.co.kr</span></p>
+      </div>
+      <span class="footer__copy">© <i id="year"></i> HAO DESIGN. 스튜디오센터.</span>
+    </div>
+  </footer>
+
+  <script>
+  (function () {
+    var $ = function (s, c) { return (c || document).querySelector(s); };
+    var $$ = function (s, c) { return [].slice.call((c || document).querySelectorAll(s)); };
+    var y = $('#year'); if (y) y.textContent = new Date().getFullYear();
+    var hdr = $('#header');
+    addEventListener('scroll', function () { hdr.classList.toggle('is-stuck', window.scrollY > 24); }, { passive: true });
+    hdr.classList.toggle('is-stuck', window.scrollY > 24);
+    var burger = $('#burger'), nav = $('#nav');
+    burger.addEventListener('click', function () { burger.classList.toggle('is-open'); nav.classList.toggle('is-open'); document.body.classList.toggle('menu-open'); });
+    $$('#nav a').forEach(function (a) { a.addEventListener('click', function () { burger.classList.remove('is-open'); nav.classList.remove('is-open'); document.body.classList.remove('menu-open'); }); });
+
+    var posts = [
+      { id: 6, title: '제품 사진 하나가 전환율을 바꾼다', summary: '같은 제품도 첫 컷에 따라 클릭과 구매가 달라지는 이유.', date: '2026.06.18', img: 'assets/work-hd/thumb/w380.jpg', isNew: true,
+        body: ['상세페이지에서 가장 먼저 보이는 건 텍스트가 아니라 이미지입니다. 첫 화면의 메인 컷이 곧 "이 제품을 더 볼지 말지"를 결정합니다.', '제품 사진은 단순히 예쁘게 찍는 게 아니라, 브랜드가 말하고 싶은 가치를 한 장에 담는 일입니다. 빛의 방향, 배경 톤, 소품 하나가 신뢰감과 가격대의 인상을 바꿉니다.', '촬영 전 "이 제품의 핵심 강점은 무엇인가"를 먼저 정의하면, 그 강점이 가장 잘 보이는 컷을 설계할 수 있습니다.'] },
+      { id: 5, title: '누끼컷 vs 연출컷, 언제 무엇을 쓸까', summary: '커머스 상세에서 두 컷의 역할과 배치 순서.', date: '2026.06.09', img: 'assets/work-hd/thumb/w379.jpg', isNew: true,
+        body: ['누끼컷은 제품 자체의 정보를 정확히 전달합니다. 색·형태·구성품을 깔끔하게 보여줘 "정보"의 역할을 합니다.', '연출컷은 사용 맥락과 분위기를 전달합니다. "이걸 쓰면 내 일상이 이렇게 된다"는 상상을 만들어 "욕구"를 자극합니다.', '상세페이지는 보통 연출컷으로 분위기를 잡고, 누끼컷으로 정보를 확인시키는 순서가 효과적입니다. 둘 중 하나만으로는 부족합니다.'] },
+      { id: 4, title: '팔리는 상세페이지의 5단 구성', summary: '후킹부터 구매유도까지, 설득의 순서 설계법.', date: '2026.05.28', img: 'assets/work-hd/thumb/w402.jpg', isNew: false,
+        body: ['상세페이지는 디자인이 아니라 설득의 문제입니다. 좋은 페이지는 고객의 의심을 순서대로 풀어줍니다.', '① 후킹(첫 화면) ② 문제 제기(공감) ③ 해결(핵심 강점) ④ 증거(신뢰) ⑤ 구매 유도(정보) — 이 흐름을 따르면 자연스럽게 구매까지 이어집니다.', '핵심은 "기능 나열"이 아니라 "그래서 당신에게 좋은 점"으로 바꿔 말하는 것입니다.'] },
+      { id: 3, title: '릴스 3초, 스크롤을 멈추게 하는 법', summary: '숏폼의 첫 장면과 편집 리듬이 전부인 이유.', date: '2026.05.19', img: 'assets/work-hd/thumb/w377.jpg', isNew: false,
+        body: ['숏폼은 길이가 짧은 만큼 첫 3초가 승부입니다. 시청자가 스크롤을 멈추는 건 보통 첫 장면의 호기심 때문입니다.', '제품을 천천히 소개하기보다, 결과나 반전을 먼저 보여주고 "왜?"를 만들면 이탈이 줄어듭니다.', '자막·효과음·컷 전환의 리듬도 중요합니다. 채널 규격(9:16)과 시청 패턴에 맞춰 편집해야 끝까지 보게 됩니다.'] },
+      { id: 2, title: '촬영 의뢰 전 준비하면 좋은 3가지', summary: '레퍼런스·컷 리스트·일정을 미리 정하면 결과가 달라진다.', date: '2026.05.10', img: 'assets/work-hd/thumb/w378.jpg', isNew: false,
+        body: ['촬영 결과는 준비에서 절반이 결정됩니다. 의뢰 전 세 가지만 정리해도 훨씬 매끄럽게 진행됩니다.', '① 레퍼런스: 원하는 무드의 이미지 몇 장 ② 컷 리스트: 꼭 필요한 장면과 용도 ③ 일정: 납품 데드라인.', '이 정보가 명확할수록 콘티가 정확해지고, 재촬영 같은 리스크가 줄어듭니다.'] },
+      { id: 1, title: '브랜드 톤을 사진으로 지키는 법', summary: '시즌마다 흔들리지 않는 비주얼 일관성 만들기.', date: '2026.04.29', img: 'assets/work-hd/thumb/w375.jpg', isNew: false,
+        body: ['브랜드는 한 장의 사진이 아니라 "쌓인 인상"으로 기억됩니다. 그래서 비주얼 톤의 일관성이 중요합니다.', '색온도, 배경, 소품 스타일, 여백의 규칙을 가이드로 정해두면 누가 찍어도 같은 브랜드처럼 보입니다.', '하오 스튜디오는 첫 촬영에서 톤 가이드를 함께 정리해, 다음 시즌에도 이어지는 비주얼을 만듭니다.'] }
+    ];
+
+    var listView = $('#listView'), postView = $('#postView'), gallery = $('#galleryBoard');
+    gallery.innerHTML = posts.map(function (p) {
+      return '<article class="gcard" data-id="' + p.id + '">' +
+        '<div class="gcard__thumb"><img src="' + p.img + '" alt="" loading="lazy" />' +
+        (p.isNew ? '<span class="gcard__badge">NEW</span>' : '') + '</div>' +
+        '<div class="gcard__body"><h3>' + p.title + '</h3><p>' + p.summary + '</p>' +
+        '<span class="gcard__date">' + p.date + '</span></div></article>';
+    }).join('');
+    gallery.addEventListener('click', function (e) {
+      var card = e.target.closest('.gcard'); if (!card) return;
+      location.hash = 'post-' + card.getAttribute('data-id');
+    });
+    function byId(id) { return posts.filter(function (p) { return p.id === id; })[0]; }
+    function render() {
+      var m = location.hash.match(/^#post-(\d+)$/);
+      var post = m ? byId(parseInt(m[1], 10)) : null;
+      if (!post) { postView.hidden = true; listView.hidden = false; document.title = '칼럼 | 스튜디오센터'; return; }
+      listView.hidden = true; postView.hidden = false;
+      document.title = post.title + ' | 스튜디오센터';
+      $('#postTitle').textContent = post.title;
+      $('#postDate').textContent = post.date;
+      $('#postImg').src = post.img;
+      $('#postBody').innerHTML = post.body.map(function (t) { return '<p>' + t + '</p>'; }).join('');
+      var idx = posts.indexOf(post), prev = posts[idx + 1], next = posts[idx - 1];
+      var prevEl = $('#postPrev'), nextEl = $('#postNext');
+      prevEl.style.visibility = prev ? 'visible' : 'hidden';
+      nextEl.style.visibility = next ? 'visible' : 'hidden';
+      if (prev) { prevEl.href = '#post-' + prev.id; prevEl.querySelector('strong').textContent = prev.title; }
+      if (next) { nextEl.href = '#post-' + next.id; nextEl.querySelector('strong').textContent = next.title; }
+      window.scrollTo(0, 0);
+    }
+    addEventListener('hashchange', render); render();
+
+    var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } }); }, { threshold: .15 });
+    $$('.reveal').forEach(function (el) { io.observe(el); });
+    var form = $('#quoteForm');
+    if (form) form.addEventListener('submit', function (e) { e.preventDefault(); var note = $('#formNote');
+      if (!form.name.value.trim() || !form.phone.value.trim()) { note.textContent = '이름과 연락처를 입력해주세요.'; return; }
+      note.textContent = '문의가 접수되었습니다. 빠르게 연락드리겠습니다. (데모)'; form.reset(); });
+  })();
+  </script>
+</body>
+</html>
