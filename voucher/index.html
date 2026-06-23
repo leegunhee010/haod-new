@@ -12,28 +12,35 @@
   <link rel="preconnect" href="https://cdn.jsdelivr.net" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.css" />
   <link rel="stylesheet" href="css/style.css?v=5" />
-  <link rel="stylesheet" href="css/snax.css?v=2" />
+  <link rel="stylesheet" href="css/snax.css?v=3" />
 </head>
 <body class="sx">
   <div class="progress" id="progress" aria-hidden="true"></div>
 
-  <header class="header on-dark" id="header">
-    <a href="index.html" class="brand"><img src="assets/img/logo.png" alt="하오디자인" class="brand__logo" /></a>
-    <nav class="nav" id="nav">
+  <header class="sx-head" id="header">
+    <a href="index.html" class="brand"><img src="assets/img/logo.png" alt="하오디자인" /></a>
+    <button class="sx-menubtn" id="menuBtn" aria-label="메뉴 열기"><span>MENU</span><i></i></button>
+  </header>
+
+  <div class="sx-ov" id="overlay" aria-hidden="true">
+    <button class="sx-ov__close" id="menuClose">CLOSE</button>
+    <nav class="sx-ov__nav">
       <a href="export.html">수출바우처</a>
       <a href="innovation.html">혁신바우처</a>
       <a href="market.html">판로개척지원사업</a>
       <a href="column.html">칼럼</a>
       <a href="qna.html">Q&amp;A</a>
-      <span class="nav__div" aria-hidden="true"></span>
-      <a class="nav__center" href="../design/">디자인센터 <i>↗</i></a>
-      <a class="nav__center" href="../web/">웹구축센터 <i>↗</i></a>
-      <a class="nav__center" href="../studio/">스튜디오센터 <i>↗</i></a>
-      <a class="nav__center" href="https://mkt.haodesign.co.kr">마케팅센터 <i>↗</i></a>
     </nav>
-    <a href="#contact" class="header__cta">상담 문의 <span>→</span></a>
-    <button class="burger" id="burger" aria-label="메뉴"><span></span><span></span></button>
-  </header>
+    <div class="sx-ov__centers">
+      <a href="../design/">디자인센터 ↗</a>
+      <a href="../web/">웹구축센터 ↗</a>
+      <a href="../studio/">스튜디오센터 ↗</a>
+      <a href="https://mkt.haodesign.co.kr">마케팅센터 ↗</a>
+    </div>
+    <div class="sx-ov__foot">
+      <a href="tel:16662027">1666-2027</a> · <a href="mailto:sales@haodesign.co.kr">sales@haodesign.co.kr</a> · 평일 09:00–18:00
+    </div>
+  </div>
 
   <main id="top">
     <!-- HERO -->
@@ -42,18 +49,14 @@
         <source src="assets/video/hero.mp4" type="video/mp4" />
       </video>
       <div class="sx-hero__shade" aria-hidden="true"></div>
-      <div class="sx-hero__copy">
-        <p class="e">Government Voucher · Official Partner</p>
-        <h1>정부 지원으로 완성하는<br />브랜드 디자인</h1>
-      </div>
-      <span class="sx-hero__scroll" aria-hidden="true">SCROLL <i></i></span>
+      <span class="sx-hero__scroll" aria-hidden="true">SCROLL DOWN <i></i></span>
     </section>
 
     <!-- STATEMENT -->
     <section class="sx-sec sx-state">
       <h2 class="sx-state__big sx-rv">정부 지원으로,<br />전문 디자인을 부담 없이</h2>
       <p class="sx-state__sub sx-rv">수출바우처 · 혁신바우처 · 판로개척지원사업 — 신청 가능 여부 확인부터 카탈로그·브로슈어·다국어 홍보물 제작, 결과보고까지 하오디자인이 끝까지 함께합니다.</p>
-      <figure class="sx-state__img sx-rv"><img src="assets/img/big_slide_02.jpg" alt="바우처 디자인 작업물" /></figure>
+      <figure class="sx-state__img sx-rv"><img src="assets/work/w402.jpg" alt="바우처 디자인 작업물" /></figure>
     </section>
 
     <!-- PHILOSOPHY -->
@@ -61,7 +64,7 @@
       <span class="sx-tag sx-rv">정부지원사업 수행 철학</span>
       <h2 class="sx-phil__head sx-rv">복잡한 절차는 우리가,<br />좋은 디자인은 기업에게</h2>
       <div class="sx-phil__grid">
-        <figure class="sx-phil__img sx-rv"><img src="assets/img/big_slide_03.jpg" alt="디자인 작업" /></figure>
+        <figure class="sx-phil__img sx-rv"><img src="assets/work/w393.jpg" alt="디자인 작업" /></figure>
         <div class="sx-phil__text sx-rv">
           <p>좋은 디자인은 더 이상 큰 기업만의 것이 아닙니다. 정부 지원사업을 활용하면 중소기업과 소상공인도 부담 없이 전문 디자인을 만날 수 있습니다.</p>
           <p>하오디자인은 신청 가능 여부 확인부터 사용계획서 작성, 제작, 결과보고까지 <b>복잡한 과정을 대신</b>합니다. 기업은 본업에 집중하고, 완성도 높은 결과물은 그대로 남습니다.</p>
@@ -73,7 +76,7 @@
     <section class="sx-sec">
       <p class="sx-believe__top sx-rv">준비된 기업에게, 기회는 현실이 됩니다</p>
       <div class="sx-believe__grid">
-        <figure class="sx-believe__img sx-rv"><img src="assets/img/big_slide_04.jpg" alt="수행 현장" /></figure>
+        <figure class="sx-believe__img sx-rv"><img src="assets/work/w390.jpg" alt="수행 현장" /></figure>
         <div class="sx-rv">
           <div class="sx-believe__world">
             <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke-width="1.6"/><path d="M3 12h18M12 3c2.5 2.5 2.5 15 0 18M12 3c-2.5 2.5-2.5 15 0 18" stroke-width="1.6"/></svg>
@@ -113,15 +116,15 @@
       </div>
       <div class="sx-biz__grid">
         <a class="sx-card sx-rv" href="export.html">
-          <div class="sx-card__media"><img src="assets/img/big_slide_02.jpg" alt="수출바우처" /></div>
+          <div class="sx-card__media"><img src="assets/work/w402.jpg" alt="수출바우처" /></div>
           <div class="sx-card__b"><p class="sx-card__no">01 EXPORT</p><h3 class="sx-card__t">수출바우처</h3><p class="sx-card__d">해외 바이어용 카탈로그·다국어 홍보물을 바우처로. 14개 서비스 분야 중 디자인 수행기관.</p></div>
         </a>
         <a class="sx-card sx-rv" href="innovation.html">
-          <div class="sx-card__media"><img src="assets/img/big_slide_03.jpg" alt="혁신바우처" /></div>
+          <div class="sx-card__media"><img src="assets/work/w378.jpg" alt="혁신바우처" /></div>
           <div class="sx-card__b"><p class="sx-card__no">02 INNOVATION</p><h3 class="sx-card__t">혁신바우처</h3><p class="sx-card__d">제조 중소기업 진단 기반 맞춤 지원. 마케팅(디자인·브랜드) 분야로 제작을 지원합니다.</p></div>
         </a>
         <a class="sx-card sx-rv" href="market.html">
-          <div class="sx-card__media"><img src="assets/img/big_slide_06.jpg" alt="판로개척지원사업" /></div>
+          <div class="sx-card__media"><img src="assets/work/w362.jpg" alt="판로개척지원사업" /></div>
           <div class="sx-card__b"><p class="sx-card__no">03 MARKET</p><h3 class="sx-card__t">판로개척지원사업</h3><p class="sx-card__d">국내외 판로 확대를 위한 상세페이지·카탈로그·홍보물 제작을 지원합니다.</p></div>
         </a>
       </div>
@@ -226,13 +229,16 @@
     var y = $('#year'); if (y) y.textContent = new Date().getFullYear();
     var hdr = $('#header'), prog = $('#progress');
     function onScroll() {
-      hdr.classList.toggle('is-stuck', window.scrollY > 24);
+      hdr.classList.toggle('stuck', window.scrollY > 24);
       var h = document.documentElement; prog.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight || 1) * 100) + '%';
     }
     addEventListener('scroll', onScroll, { passive: true }); onScroll();
-    var burger = $('#burger'), nav = $('#nav');
-    burger.addEventListener('click', function () { burger.classList.toggle('is-open'); nav.classList.toggle('is-open'); document.body.classList.toggle('menu-open'); });
-    $$('#nav a').forEach(function (a) { a.addEventListener('click', function () { burger.classList.remove('is-open'); nav.classList.remove('is-open'); document.body.classList.remove('menu-open'); }); });
+    var ov = $('#overlay');
+    function openMenu(o){ ov.classList.toggle('open', o); document.body.classList.toggle('menu-open', o); }
+    $('#menuBtn').addEventListener('click', function () { openMenu(true); });
+    $('#menuClose').addEventListener('click', function () { openMenu(false); });
+    $$('.sx-ov a').forEach(function (a) { a.addEventListener('click', function () { openMenu(false); }); });
+    addEventListener('keydown', function (e) { if (e.key === 'Escape') openMenu(false); });
 
     function animate(el) { var to = +el.getAttribute('data-to'), t0 = null, dur = 1500;
       function tick(t){ if(!t0)t0=t; var p=Math.min((t-t0)/dur,1),k=1-Math.pow(1-p,3); el.textContent=Math.round(to*k).toLocaleString(); if(p<1)requestAnimationFrame(tick);} requestAnimationFrame(tick); }
