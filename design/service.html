@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>서비스 | 카탈로그·브로슈어·포스터·CI·패키지·촬영 | 하오디자인</title>
+  <meta name="description" content="카탈로그·브로슈어, 팜플렛·리플렛, 포스터·전단지, CI·로고, 패키지·라벨, 제품촬영, 다국어디자인 — 분야별 제작 서비스를 안내합니다." />
+  <meta name="keywords" content="카탈로그디자인, 브로슈어디자인, 리플렛제작, 포스터디자인, 로고제작, 패키지디자인, 제품촬영, 다국어카탈로그" />
+  <link rel="canonical" href="https://haodesign.co.kr/service.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="서비스 | 카탈로그·브로슈어·포스터·CI·패키지·촬영 | 하오디자인" />
+  <meta property="og:description" content="카탈로그·브로슈어, 팜플렛·리플렛, 포스터·전단지, CI·로고, 패키지·라벨, 제품촬영, 다국어디자인 — 분야별 제작 서비스를 안내합니다." />
+  <meta property="og:url" content="https://haodesign.co.kr/service.html" />
+  <meta property="og:image" content="https://haodesign.co.kr/assets/work-hd/large/w402.jpg" />
+  <meta property="og:site_name" content="HAO DESIGN 하오디자인" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="서비스 | 카탈로그·브로슈어·포스터·CI·패키지·촬영 | 하오디자인" />
+  <meta name="twitter:description" content="카탈로그·브로슈어, 팜플렛·리플렛, 포스터·전단지, CI·로고, 패키지·라벨, 제품촬영, 다국어디자인 — 분야별 제작 서비스를 안내합니다." />
+  <meta name="twitter:image" content="https://haodesign.co.kr/assets/work-hd/large/w402.jpg" />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" /><link rel="preconnect" href="https://oaqrjrrgntlqmyxxovfn.supabase.co" crossorigin />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.css" />
+  <link rel="stylesheet" href="css/style.css?v=104" />
+</head>
+<body>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+
+  <header class="header is-stuck" id="header">
+    <a href="index.html" class="brand" aria-label="HAO DESIGN 홈">
+      <img src="assets/img/logo.png" alt="HAO DESIGN" class="brand__logo" />
+    </a>
+    <nav class="nav" id="nav">
+      <a href="about.html">회사소개</a>
+      <div class="nav__drop">
+        <a href="service.html?cat=catalog" class="nav__drop-toggle">서비스</a>
+        <div class="nav__drop-menu">
+          <a href="service.html?cat=catalog">카탈로그 · 브로슈어</a>
+          <a href="service.html?cat=leaflet">팜플렛 · 리플렛</a>
+          <a href="service.html?cat=poster">포스터 · 전단지</a>
+          <a href="service.html?cat=ci">CI · 로고디자인</a>
+          <a href="service.html?cat=package">패키지 · 라벨</a>
+          <a href="service.html?cat=photo">촬영서비스</a>
+          <a href="service.html?cat=global">다국어디자인</a>
+        </div>
+      </div>
+      <a href="work.html">포트폴리오</a>
+      <a href="board.html">칼럼</a>
+      <span class="nav__div" aria-hidden="true"></span>
+      <a class="nav__center" href="../web/">웹구축센터 <i>↗</i></a>
+      <a class="nav__center" href="../studio/">스튜디오센터 <i>↗</i></a>
+      <a class="nav__center" href="https://mkt.haodesign.co.kr">마케팅센터 <i>↗</i></a>
+      <a class="nav__center" href="../voucher/">정부사업지원센터 <i>↗</i></a>    </nav>
+    <a href="contact.html" class="header__cta">견적 문의 <span>→</span></a>
+    <button class="burger" id="burger" aria-label="메뉴"><span></span><span></span></button>
+  </header>
+
+  <main>
+    <!-- ===== 카테고리 히어로 (좌 카피 + 우 이미지 세로 흐름) ===== -->
+    <section class="svc-cover">
+      <div class="svc-cover__inner">
+        <div class="svc-cover__text">
+          <p class="svc-cover__crumb"><a href="index.html">HOME</a> / 서비스 / <span id="svCrumb"></span></p>
+          <p class="svc-cover__eng" id="svEng"></p>
+          <h1 class="svc-cover__title" id="svHead"></h1>
+          <p class="svc-cover__desc" id="svDesc"></p>
+        </div>
+        <div class="svc-cover__cols" aria-hidden="true">
+          <div class="svc-cover__col"><div class="svc-cover__track" id="svImgsA"></div></div>
+          <div class="svc-cover__col svc-cover__col--rev"><div class="svc-cover__track" id="svImgsB"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 진행 과정 ===== -->
+    <section class="page page--tight">
+      <p class="section-tag">PROCESS</p>
+      <h2 class="page__title">진행 과정</h2>
+      <div class="timeline" id="timeline" style="margin-top:40px">
+        <div class="timeline__line"><i id="timelineFill"></i></div>
+        <div class="tstep"><span class="tstep__no">01</span><h3>문의 접수</h3><p>전화(1666-2027) 또는 견적 문의로 내용을 남겨주세요.</p></div>
+        <div class="tstep"><span class="tstep__no">02</span><h3>상담 · 견적</h3><p>담당자가 사양과 일정을 잡고 견적을 안내합니다.</p></div>
+        <div class="tstep"><span class="tstep__no">03</span><h3>디자인 작업</h3><p>자료 검토 후 시안 → 피드백 → 수정으로 완성합니다.</p></div>
+        <div class="tstep"><span class="tstep__no">04</span><h3>시안 확정 · 제작</h3><p>최종 승인 후 인쇄 · 후가공을 진행합니다.</p></div>
+        <div class="tstep"><span class="tstep__no">05</span><h3>최종 납품</h3><p>완성된 결과물을 약속한 일정에 전달합니다.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== 작업 맛보기 ===== -->
+    <section class="page page--tight">
+      <p class="section-tag">WORKS</p>
+      <h2 class="page__title" id="svWorksT">작업 사례</h2>
+      <div class="work__grid svc-mini" id="svGrid"></div>
+      <p class="svc-more reveal"><a href="work.html" class="btn-round"><span>포트폴리오에서 더 보기</span><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p>
+    </section>
+
+    <!-- ===== 서비스 소개 글 ===== -->
+    <section class="page page--tight svc-seo">
+      <div class="svc-seo__grid">
+        <h2 class="svc-seo__h" id="svSeoH"></h2>
+        <div class="svc-seo__cols">
+          <div class="svc-seo__item reveal" style="--d:0">
+            <span class="svc-seo__no">01</span>
+            <h3 id="svSeoT1"></h3>
+            <p id="svSeoP1"></p>
+          </div>
+          <div class="svc-seo__item reveal" style="--d:1">
+            <span class="svc-seo__no">02</span>
+            <h3 id="svSeoT2"></h3>
+            <p id="svSeoP2"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section class="contact" id="contact">
+      <div class="contact__panel reveal">
+        <svg class="contact__spin" viewBox="0 0 120 120" aria-hidden="true">
+          <defs><path id="spinPath" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0" /></defs>
+          <text><textPath href="#spinPath">LET'S WORK TOGETHER · HAO DESIGN STUDIO · </textPath></text>
+        </svg>
+        <div class="contact__info">
+          <p class="contact__tag">START A PROJECT</p>
+          <h2 class="contact__title">프로젝트를<br />함께 시작할까요?</h2>
+          <p class="contact__desc">간단한 내용만 남겨주세요.<br />담당자가 확인 후 빠르게 연락드립니다.</p>
+          <ul class="contact__rows">
+            <li><span>TEL</span><a href="tel:16662027">1666-2027</a></li>
+            <li><span>MAIL</span><a href="mailto:sales@haodesign.co.kr">sales@haodesign.co.kr</a></li>
+            <li><span>TIME</span>평일 09:00 – 18:00</li>
+          </ul>
+        </div>
+        <form class="cform cform--card" id="quoteForm" novalidate>
+          <div class="cfield"><input type="text" id="name" name="name" placeholder="이름 / 회사명" required /></div>
+          <div class="cfield"><input type="tel" id="phone" name="phone" placeholder="연락처" required /></div>
+          <div class="cfield cfield--full">
+            <select id="type" name="type">
+              <option value="">문의 종류 선택</option>
+              <option>카탈로그 · 브로슈어</option>
+              <option>팜플렛 · 리플렛</option>
+              <option>포스터 · 전단지</option>
+              <option>CI · 로고디자인</option>
+              <option>패키지 · 라벨</option>
+              <option>촬영서비스</option>
+              <option>다국어디자인</option>
+              <option>기타</option>
+            </select>
+          </div>
+          <div class="cfield cfield--full"><textarea id="message" name="message" rows="4" placeholder="제작 내용, 수량, 일정 등을 자유롭게 적어주세요."></textarea></div>
+          <button type="submit" class="btn-round btn-round--solid"><span>문의 보내기</span><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          <p class="cnote" id="formNote" role="status"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__top">
+      <img src="assets/img/logo-white.png" alt="HAO DESIGN" class="footer__logo" />
+      <p>카탈로그 · 브로슈어 · 포스터 · 리플렛<br />디자인 인쇄 원스톱 스튜디오</p>
+    </div>
+    <div class="footer__grid">
+      <div><h3>Contact</h3><a href="tel:16662027">1666-2027</a><a href="mailto:sales@haodesign.co.kr">sales@haodesign.co.kr</a><span>평일 09:00–18:00</span></div>
+      <div><h3>Location</h3><span>서울시 광진구 능동로49길 9, 2F</span></div>
+      <div><h3>Menu</h3><a href="about.html">회사소개</a><a href="work.html">포트폴리오</a><a href="board.html">칼럼</a><a href="../voucher/">정부사업지원센터 ↗</a><a href="contact.html">견적문의</a></div>
+    </div>
+    <div class="footer__bottom">
+      <div class="footer__biz">
+        <p><b>주식회사 하오커뮤니케이션</b><span>대표이사 박창민</span><span>사업자등록번호 528-87-01037</span></p>
+        <p><span>주소 서울시 광진구 능동로49길 9, 2F</span><span>대표번호 1666-2027</span><span>E-mail sales@haodesign.co.kr</span></p>
+      </div>
+      <span class="footer__copy">© <i id="year"></i> HAO DESIGN. All rights reserved.</span>
+    </div>
+  </footer>
+
+  <script src="js/data.js?v=33"></script>
+  <script src="js/main.js?v=62"></script>
+  <script>
+  HAO.ready.then(function () {
+    "use strict";
+    /* 서비스 카테고리 콘텐츠 — js/data.js DEFAULT_SERVICE (관리자 '서비스 페이지' 탭에서 수정) */
+    var CATS = HAO.getService();
+
+    var key = (location.search.match(/[?&]cat=([a-z]+)/) || [])[1];
+    if (!CATS[key]) key = "catalog";
+    var cat = CATS[key];
+    var seo = cat.seo;
+
+    /* ---- 카테고리별 SEO (제목·설명·canonical·OG) ---- */
+    (function () {
+      var g = HAO.getSeo();
+      var base = g.siteUrl.replace(/\/$/, "");
+      var url = base + "/service.html?cat=" + key;
+      var ttl = cat.seoTitle || (cat.label + " | HAO DESIGN");
+      var dsc = cat.seoDesc || cat.desc;
+      var ogImg = /^https?:/.test(g.ogImage) ? g.ogImage : base + "/" + g.ogImage.replace(/^\//, "");
+      document.title = ttl;
+      function m(sel, attr, k, v) {
+        var el = document.head.querySelector(sel);
+        if (!el) { el = document.createElement("meta"); el.setAttribute(attr, k); document.head.appendChild(el); }
+        el.setAttribute("content", v);
+      }
+      m('meta[name="description"]', "name", "description", dsc);
+      var can = document.head.querySelector('link[rel="canonical"]');
+      if (!can) { can = document.createElement("link"); can.setAttribute("rel", "canonical"); document.head.appendChild(can); }
+      can.setAttribute("href", url);
+      m('meta[property="og:title"]', "property", "og:title", ttl);
+      m('meta[property="og:description"]', "property", "og:description", dsc);
+      m('meta[property="og:url"]', "property", "og:url", url);
+      m('meta[property="og:image"]', "property", "og:image", ogImg);
+      m('meta[name="twitter:title"]', "name", "twitter:title", ttl);
+      m('meta[name="twitter:description"]', "name", "twitter:description", dsc);
+    })();
+
+    document.getElementById("svCrumb").textContent = cat.label;
+    document.getElementById("svDesc").textContent = cat.desc;
+    document.getElementById("svEng").textContent = cat.eng;
+    document.getElementById("svHead").innerHTML = HAO.fmt(cat.head, "b");
+
+    document.getElementById("svSeoH").textContent = seo.h;
+    document.getElementById("svSeoT1").textContent = seo.t1;
+    document.getElementById("svSeoP1").textContent = seo.p1;
+    document.getElementById("svSeoT2").textContent = seo.t2;
+    document.getElementById("svSeoP2").textContent = seo.p2;
+
+    /* 진행 과정: 인쇄형 카테고리는 '메인 페이지'의 진행 과정(pst* 카피)을 그대로 미러링,
+       촬영·다국어는 인쇄가 안 맞으니 일반 단계 사용. (메인에서 고치면 인쇄형 서비스도 자동 반영) */
+    var copyMap = {};
+    HAO.getCopy().forEach(function (c) { copyMap[c.key] = c.value; });
+    var SVC_GENERIC = [
+      { h: "문의 접수", p: "전화(1666-2027) 또는 견적 문의로 내용을 남겨주세요." },
+      { h: "상담 · 견적", p: "담당자가 사양과 일정을 잡고 견적을 안내합니다." },
+      { h: "작업 진행", p: "자료 검토 후 시안 → 피드백 → 수정으로 완성합니다." },
+      { h: "검수 · 확정", p: "충분한 검토 후 최종 결과물을 확정합니다." },
+      { h: "최종 납품", p: "완성된 결과물을 약속한 일정에 전달합니다." }
+    ];
+    /* 우선순위: ① 이 카테고리에서 따로 수정한 단계(cat.process) → ② 촬영·다국어 일반 단계
+       → ③ 그 외(인쇄형)는 메인 페이지(pst*) 미러링 */
+    var mainProc = [1, 2, 3, 4, 5].map(function (i) { return { h: copyMap["pst" + i + "_h"] || "", p: copyMap["pst" + i + "_p"] || "" }; });
+    var procSteps = (cat.process && cat.process.length) ? cat.process
+      : (key === "photo" || key === "global") ? SVC_GENERIC
+      : mainProc;
+    var tsteps = document.querySelectorAll("#timeline .tstep");
+    procSteps.forEach(function (s, i) {
+      if (!tsteps[i]) return;
+      var h = tsteps[i].querySelector("h3"); if (h) h.innerHTML = HAO.fmt(s.h, "b");
+      var p = tsteps[i].querySelector("p"); if (p) p.innerHTML = HAO.fmt(s.p, "b");
+    });
+
+    /* 서비스 '제작 사례' = 포트폴리오에서 '서비스 노출' 체크한 이 카테고리 작품 우선(모자라면 자동 채움) */
+    var works = HAO.getServiceWorks ? HAO.getServiceWorks(cat.c) : HAO.getWorks().filter(function (w) { return w.c === cat.c; });
+    var slots = HAO.getSlots ? HAO.getSlots() : {};
+
+    /* 히어로 흐르는 이미지 6장: 슬롯 지정 우선, 없으면 포트폴리오(그리드와 겹치지 않게 뒤에서부터) */
+    var heroSrc = [];
+    for (var hi = 0; hi < 6; hi++) {
+      var hov = slots["svc_" + key + "_hero_" + hi];
+      if (hov) heroSrc.push(hov);
+      else if (works.length) { var hw = works[(hi + 4) % works.length]; heroSrc.push(HAO.imgSrc(hw.f)); }
+    }
+    function icard(src) { return '<div class="svc-cover__card"><img src="' + src + '" alt="" /></div>'; }
+    var ia = heroSrc.filter(function (s, i) { return i % 2 === 0; }).map(icard).join("");
+    var ib = heroSrc.filter(function (s, i) { return i % 2 === 1; }).map(icard).join("");
+    document.getElementById("svImgsA").innerHTML = ia + ia; // 루프용 복제
+    document.getElementById("svImgsB").innerHTML = ib + ib;
+
+    document.getElementById("svWorksT").textContent = cat.label + " 작업 사례";
+    /* 작업 사례 4장: 포트폴리오에서 '서비스 노출' 체크한 이 카테고리 작품 (모자라면 자동 채움) */
+    var gridItems = works.slice(0, 4);
+    document.getElementById("svGrid").innerHTML = gridItems.map(function (w) {
+      return '<article class="wcard">' +
+        '<div class="wcard__media"><img src="' + HAO.imgSrc(w.f) + '" alt="' + w.t + '" loading="lazy" /></div>' +
+        '<div class="wcard__info"><span class="wcard__title">' + w.t + '</span><span class="wcard__cat">' + w.c + '</span></div>' +
+        '</article>';
+    }).join("");
+
+    /* ===== 사이트에서 바로 수정 (관리자 ?edit=1) — 서비스 카테고리 콘텐츠 ===== */
+    var editMode = /[?&]edit=1/.test(location.search) && localStorage.getItem("hao_edit") === "1";
+    if (editMode && window.HAOEdit) {
+      var E = window.HAOEdit;
+      function bind(id, tag, set) {
+        var el = document.getElementById(id);
+        E.mark(el, { key: "svc_" + key + "_" + id, onInput: function (n) { set(E.read(n, tag)); } });
+      }
+      bind("svHead", "b", function (v) { cat.head = v; });   // 헤드카피 (**강조**)
+      bind("svDesc", null, function (v) { cat.desc = v; });  // 히어로 설명
+      bind("svEng", null, function (v) { cat.eng = v; });    // 영문 태그
+      bind("svCrumb", null, function (v) { cat.label = v; });// 카테고리 이름
+      bind("svSeoH", null, function (v) { seo.h = v; });     // 소개 키워드 제목
+      bind("svSeoT1", null, function (v) { seo.t1 = v; });
+      bind("svSeoP1", null, function (v) { seo.p1 = v; });
+      bind("svSeoT2", null, function (v) { seo.t2 = v; });
+      bind("svSeoP2", null, function (v) { seo.p2 = v; });
+      /* 진행 과정도 이 카테고리만 따로 수정 가능. 편집하면 그때 cat.process(override) 생성
+         → 그 전까지는 기본값(메인/일반)을 따라가고, 한 번 고치면 이 카테고리만 독립 */
+      function ensureProc() {
+        if (!cat.process || !cat.process.length) {
+          cat.process = procSteps.map(function (s) { return { h: s.h, p: s.p }; });
+        }
+        return cat.process;
+      }
+      tsteps.forEach(function (ts, i) {
+        var h = ts.querySelector("h3"), p = ts.querySelector("p");
+        if (h) E.mark(h, { key: "svc_" + key + "_pst" + i + "_h", onInput: function (n) { ensureProc()[i].h = E.read(n, "b"); } });
+        if (p) E.mark(p, { key: "svc_" + key + "_pst" + i + "_p", onInput: function (n) { ensureProc()[i].p = E.read(n, "b"); } });
+      });
+      /* 저장: 전체 서비스 데이터(CATS)를 hao_service 오버라이드로 기록 */
+      E.onSave(function () { return (window.HAO && HAO.set) ? HAO.set("hao_service", CATS) : null; });
+    }
+  });
+  </script>
+</body>
+</html>

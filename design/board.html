@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>칼럼 | 인쇄와 디자인 이야기 | 하오디자인</title>
+  <meta name="description" content="카탈로그·브로슈어·인쇄 디자인을 준비할 때 알아두면 좋은 실무 이야기. 하오디자인의 디자인 칼럼." />
+  <meta name="keywords" content="인쇄 가이드, 카탈로그 제작 팁, 회사소개서 기획, 디자인 칼럼, 인쇄 데이터" />
+  <link rel="canonical" href="https://haodesign.co.kr/board.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="칼럼 | 인쇄와 디자인 이야기 | 하오디자인" />
+  <meta property="og:description" content="카탈로그·브로슈어·인쇄 디자인을 준비할 때 알아두면 좋은 실무 이야기. 하오디자인의 디자인 칼럼." />
+  <meta property="og:url" content="https://haodesign.co.kr/board.html" />
+  <meta property="og:image" content="https://haodesign.co.kr/assets/work-hd/large/w402.jpg" />
+  <meta property="og:site_name" content="HAO DESIGN 하오디자인" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="칼럼 | 인쇄와 디자인 이야기 | 하오디자인" />
+  <meta name="twitter:description" content="카탈로그·브로슈어·인쇄 디자인을 준비할 때 알아두면 좋은 실무 이야기. 하오디자인의 디자인 칼럼." />
+  <meta name="twitter:image" content="https://haodesign.co.kr/assets/work-hd/large/w402.jpg" />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" /><link rel="preconnect" href="https://oaqrjrrgntlqmyxxovfn.supabase.co" crossorigin />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.css" />
+  <link rel="stylesheet" href="css/style.css?v=104" />
+</head>
+<body>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+
+  <header class="header is-stuck" id="header">
+    <a href="index.html" class="brand" aria-label="HAO DESIGN 홈">
+      <img src="assets/img/logo.png" alt="HAO DESIGN" class="brand__logo" />
+    </a>
+    <nav class="nav" id="nav">
+      <a href="about.html">회사소개</a>
+      <div class="nav__drop">
+        <a href="service.html?cat=catalog" class="nav__drop-toggle">서비스</a>
+        <div class="nav__drop-menu">
+          <a href="service.html?cat=catalog">카탈로그 · 브로슈어</a>
+          <a href="service.html?cat=leaflet">팜플렛 · 리플렛</a>
+          <a href="service.html?cat=poster">포스터 · 전단지</a>
+          <a href="service.html?cat=ci">CI · 로고디자인</a>
+          <a href="service.html?cat=package">패키지 · 라벨</a>
+          <a href="service.html?cat=photo">촬영서비스</a>
+          <a href="service.html?cat=global">다국어디자인</a>
+        </div>
+      </div>
+      <a href="work.html">포트폴리오</a>
+      <a href="board.html">칼럼</a>
+      <span class="nav__div" aria-hidden="true"></span>
+      <a class="nav__center" href="../web/">웹구축센터 <i>↗</i></a>
+      <a class="nav__center" href="../studio/">스튜디오센터 <i>↗</i></a>
+      <a class="nav__center" href="https://mkt.haodesign.co.kr">마케팅센터 <i>↗</i></a>
+      <a class="nav__center" href="../voucher/">정부사업지원센터 <i>↗</i></a>    </nav>
+    <a href="contact.html" class="header__cta">견적 문의 <span>→</span></a>
+    <button class="burger" id="burger" aria-label="메뉴"><span></span><span></span></button>
+  </header>
+
+  <main>
+    <!-- ===== 목록 뷰 ===== -->
+    <div id="listView">
+      <section class="subhero">
+        <div class="subhero__inner">
+          <p class="subhero__crumb"><a href="index.html">HOME</a> / Column</p>
+          <h1 class="subhero__title">Column</h1>
+          <p class="subhero__desc">인쇄와 디자인, 알아두면 좋은 이야기를 전합니다.</p>
+        </div>
+      </section>
+      <section class="page page--tight">
+        <div class="gallery-board" id="galleryBoard"><!-- cards injected --></div>
+      </section>
+    </div>
+
+    <!-- ===== 상세 뷰 ===== -->
+    <div id="postView" hidden>
+      <section class="subhero subhero--post">
+        <div class="subhero__inner">
+          <p class="subhero__crumb"><a href="index.html">HOME</a> / <a href="board.html">Column</a></p>
+          <h2 class="subhero__title post-title" id="postTitle"></h2>
+          <p class="subhero__desc" id="postDate"></p>
+        </div>
+      </section>
+      <section class="page page--tight">
+        <article class="post">
+          <div class="post__hero"><img src="" alt="" id="postImg" /></div>
+          <div class="post__body" id="postBody"></div>
+          <div class="post__nav">
+            <a href="#" id="postPrev" class="post__navlink"><span>이전 글</span><strong></strong></a>
+            <a href="board.html" class="btn-round post__list"><span>목록으로</span></a>
+            <a href="#" id="postNext" class="post__navlink post__navlink--next"><span>다음 글</span><strong></strong></a>
+          </div>
+        </article>
+      </section>
+    </div>
+
+    <!-- ===== CTA ===== -->
+    <section class="contact" id="contact">
+      <div class="contact__panel reveal">
+        <svg class="contact__spin" viewBox="0 0 120 120" aria-hidden="true">
+          <defs><path id="spinPath" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0" /></defs>
+          <text><textPath href="#spinPath">LET'S WORK TOGETHER · HAO DESIGN STUDIO · </textPath></text>
+        </svg>
+        <div class="contact__info">
+          <p class="contact__tag">START A PROJECT</p>
+          <h2 class="contact__title">프로젝트를<br />함께 시작할까요?</h2>
+          <p class="contact__desc">간단한 내용만 남겨주세요.<br />담당자가 확인 후 빠르게 연락드립니다.</p>
+          <ul class="contact__rows">
+            <li><span>TEL</span><a href="tel:16662027">1666-2027</a></li>
+            <li><span>MAIL</span><a href="mailto:sales@haodesign.co.kr">sales@haodesign.co.kr</a></li>
+            <li><span>TIME</span>평일 09:00 – 18:00</li>
+          </ul>
+        </div>
+        <form class="cform cform--card" id="quoteForm" novalidate>
+          <div class="cfield"><input type="text" id="name" name="name" placeholder="이름 / 회사명" required /></div>
+          <div class="cfield"><input type="tel" id="phone" name="phone" placeholder="연락처" required /></div>
+          <div class="cfield cfield--full">
+            <select id="type" name="type">
+              <option value="">문의 종류 선택</option>
+              <option>카탈로그 · 브로슈어</option>
+              <option>팜플렛 · 리플렛</option>
+              <option>포스터 · 전단지</option>
+              <option>CI · 로고디자인</option>
+              <option>패키지 · 라벨</option>
+              <option>촬영서비스</option>
+              <option>다국어디자인</option>
+              <option>기타</option>
+            </select>
+          </div>
+          <div class="cfield cfield--full"><textarea id="message" name="message" rows="4" placeholder="제작 내용, 수량, 일정 등을 자유롭게 적어주세요."></textarea></div>
+          <button type="submit" class="btn-round btn-round--solid"><span>문의 보내기</span><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          <p class="cnote" id="formNote" role="status"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__top">
+      <img src="assets/img/logo-white.png" alt="HAO DESIGN" class="footer__logo" />
+      <p>카탈로그 · 브로슈어 · 포스터 · 리플렛<br />디자인 인쇄 원스톱 스튜디오</p>
+    </div>
+    <div class="footer__grid">
+      <div><h3>Contact</h3><a href="tel:16662027">1666-2027</a><a href="mailto:sales@haodesign.co.kr">sales@haodesign.co.kr</a><span>평일 09:00–18:00</span></div>
+      <div><h3>Location</h3><span>서울시 광진구 능동로49길 9, 2F</span></div>
+      <div><h3>Menu</h3><a href="about.html">회사소개</a><a href="work.html">포트폴리오</a><a href="board.html">칼럼</a><a href="../voucher/">정부사업지원센터 ↗</a><a href="contact.html">견적문의</a></div>
+    </div>
+    <div class="footer__bottom">
+      <div class="footer__biz">
+        <p><b>주식회사 하오커뮤니케이션</b><span>대표이사 박창민</span><span>사업자등록번호 528-87-01037</span></p>
+        <p><span>주소 서울시 광진구 능동로49길 9, 2F</span><span>대표번호 1666-2027</span><span>E-mail sales@haodesign.co.kr</span></p>
+      </div>
+      <span class="footer__copy">© <i id="year"></i> HAO DESIGN. All rights reserved.</span>
+    </div>
+  </footer>
+
+  <script src="js/data.js?v=33"></script>
+  <script src="js/main.js?v=62"></script>
+  <script>
+  HAO.ready.then(function () {
+    "use strict";
+    /* 글 데이터는 js/data.js — 관리자에서 수정 가능 */
+    var posts = HAO.getPosts();
+
+    var listView = document.getElementById("listView");
+    var postView = document.getElementById("postView");
+    var gallery = document.getElementById("galleryBoard");
+
+    /* 목록 렌더 */
+    gallery.innerHTML = posts.map(function (p) {
+      return '<article class="gcard" data-id="' + p.id + '">' +
+        '<div class="gcard__thumb"><img src="' + HAO.imgSrc(p.img) + '" alt="" loading="lazy" />' +
+        (p.isNew ? '<span class="gcard__badge">NEW</span>' : '') + '</div>' +
+        '<div class="gcard__body"><h3>' + p.title + '</h3><p>' + p.summary + '</p>' +
+        '<span class="gcard__date">' + p.date + '</span></div></article>';
+    }).join("");
+
+    gallery.addEventListener("click", function (e) {
+      var card = e.target.closest(".gcard"); if (!card) return;
+      location.hash = "post-" + card.getAttribute("data-id");
+    });
+
+    function byId(id) { return posts.filter(function (p) { return p.id === id; })[0]; }
+
+    /* 상세 렌더 */
+    function render() {
+      var m = location.hash.match(/^#post-(\d+)$/);
+      var post = m ? byId(parseInt(m[1], 10)) : null;
+      if (!post) {
+        postView.hidden = true; listView.hidden = false;
+        document.title = "Column | HAO DESIGN";
+        return;
+      }
+      listView.hidden = true; postView.hidden = false;
+      document.title = post.title + " | HAO DESIGN";
+      document.getElementById("postTitle").textContent = post.title;
+      document.getElementById("postDate").textContent = post.date;
+      document.getElementById("postImg").src = HAO.imgSrc(post.img);
+      document.getElementById("postBody").innerHTML = post.bodyHtml ||
+        (post.body || []).map(function (t) { return "<p>" + t + "</p>"; }).join("");
+
+      var idx = posts.indexOf(post);
+      var prev = posts[idx + 1], next = posts[idx - 1]; // 목록은 최신순
+      var prevEl = document.getElementById("postPrev");
+      var nextEl = document.getElementById("postNext");
+      prevEl.style.visibility = prev ? "visible" : "hidden";
+      nextEl.style.visibility = next ? "visible" : "hidden";
+      if (prev) { prevEl.href = "#post-" + prev.id; prevEl.querySelector("strong").textContent = prev.title; }
+      if (next) { nextEl.href = "#post-" + next.id; nextEl.querySelector("strong").textContent = next.title; }
+      window.scrollTo(0, 0);
+    }
+    window.addEventListener("hashchange", render);
+    render();
+  });
+  </script>
+</body>
+</html>
