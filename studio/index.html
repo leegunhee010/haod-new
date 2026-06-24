@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://cdn.jsdelivr.net" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.css" />
   <link rel="stylesheet" href="css/style.css?v=3" />
-  <link rel="stylesheet" href="css/effector.css?v=3" />
+  <link rel="stylesheet" href="css/effector.css?v=4" />
 </head>
 <body>
   <div class="progress" id="progress" aria-hidden="true"></div>
@@ -101,17 +101,22 @@
       <div class="np-grid" id="folio"></div>
     </section>
 
-    <!-- REVIEW WALL -->
-    <section class="ef-rev-sec">
-      <span class="ef-label">REVIEW</span>
-      <div class="ef-rev-head">
-        <h2>Experience a change</h2>
+    <!-- REVIEW — 테스티모니얼 캐러셀 -->
+    <section class="tw-sec">
+      <div class="ef-rev-head" style="text-align:center">
+        <span class="ef-label">REVIEW</span>
+        <h2 style="margin-top:24px">Experience a change</h2>
         <p>눈에 보이는 결과물의 차이, 판매율의 변화를 경험하셨기 때문에<br />하오 스튜디오를 다녀간 많은 담당자분들이 꾸준히 다시 찾아주십니다.</p>
       </div>
-      <div class="ef-rev-grid">
-        <div class="ef-rev-col" id="revColA"></div>
-        <div class="ef-rev-div" aria-hidden="true"></div>
-        <div class="ef-rev-col" id="revColB"></div>
+      <div class="tw">
+        <button class="tw__nav tw__nav--prev" id="twPrev" aria-label="이전">‹</button>
+        <div class="tw__viewport"><div class="tw__track" id="twTrack"></div></div>
+        <button class="tw__nav tw__nav--next" id="twNext" aria-label="다음">›</button>
+        <div class="tw__foot">
+          <span class="tw__count" id="twCount">01 <i>/ 06</i></span>
+          <div class="tw__bar"><i id="twBar"></i></div>
+          <div class="tw__dots" id="twDots"></div>
+        </div>
       </div>
     </section>
 
@@ -235,16 +240,39 @@
       {b:'리인터프릿', from:'라이프스타일', img:'w375.jpg', q:'디자인 이상의 <b>기획과 촬영</b>을 만들어 줍니다.', body:'기획 단계부터 브랜드의 많은 부분을 함께 정리해 주십니다. 각 분야 전문가와 막힘없이 진행되어 빡빡한 스케줄도 맞출 수 있었습니다.'},
       {b:'엘롬', from:'커머스', img:'w390.jpg', q:'판매될 수밖에 없는 <b>상세페이지</b>, 여기로 정착합니다!', body:'업력 8년차, 많은 업체와 작업했지만 이렇게 완벽한 결과물은 처음입니다. 고객 시선을 잡는 셀링 포인트 디자인은 정말 감탄이 나옵니다.'}
     ];
-    function revCard(r, i) {
-      return '<article class="ef-rev reveal" style="--d:' + (i%3) + '">' +
-        '<div class="ef-rev__top"><div><span class="ef-rev__from">From.</span><strong class="ef-rev__brand">' + r.b + '</strong></div>' +
-        '<a class="ef-rev__more" href="#contact">READ MORE</a></div>' +
-        '<div class="ef-rev__media"><img loading="lazy" src="assets/work-hd/thumb/' + r.img + '" alt="' + r.b + ' 프로젝트" /></div>' +
-        '<p class="ef-rev__q">“' + r.q + '”</p>' +
-        '<p class="ef-rev__body">' + r.body + '</p></article>';
+    var twTrack = $('#twTrack'), twDots = $('#twDots'), twBar = $('#twBar'), twCount = $('#twCount'), twWrap = $('.tw');
+    twTrack.innerHTML = REV.map(function (r) {
+      return '<div class="tw__slide">' +
+        '<figure class="tw__media"><img loading="lazy" src="assets/work-hd/thumb/' + r.img + '" alt="' + r.b + ' 프로젝트" /></figure>' +
+        '<div class="tw__body">' +
+          '<p class="tw__from">From. <b>' + r.b + '</b> · ' + r.from + '</p>' +
+          '<p class="tw__q">“' + r.q + '”</p>' +
+          '<p class="tw__txt">' + r.body + '</p>' +
+          '<a class="tw__more" href="#contact">READ MORE</a>' +
+        '</div></div>';
+    }).join('');
+    var twSlides = $$('.tw__slide', twTrack);
+    twDots.innerHTML = REV.map(function (_, i) { return '<button data-i="' + i + '" aria-label="후기 ' + (i + 1) + '"></button>'; }).join('');
+    var twDotBtns = $$('button', twDots);
+    function pad(n) { return ('0' + n).slice(-2); }
+    var twi = 0, twTimer;
+    function twGo(n) {
+      twi = (n + REV.length) % REV.length;
+      twTrack.style.transform = 'translateX(' + (-twi * 100) + '%)';
+      twSlides.forEach(function (s, i) { s.classList.toggle('is-on', i === twi); });
+      twDotBtns.forEach(function (b, i) { b.classList.toggle('is-on', i === twi); });
+      twCount.innerHTML = pad(twi + 1) + ' <i>/ ' + pad(REV.length) + '</i>';
+      twBar.style.transition = 'none'; twBar.style.width = '0%';
+      requestAnimationFrame(function () { requestAnimationFrame(function () { twBar.style.transition = 'width 6.5s linear'; twBar.style.width = '100%'; }); });
+      twRestart();
     }
-    $('#revColA').innerHTML = REV.slice(0,3).map(revCard).join('');
-    $('#revColB').innerHTML = REV.slice(3).map(revCard).join('');
+    function twRestart() { clearInterval(twTimer); twTimer = setInterval(function () { twGo(twi + 1); }, 6500); }
+    $('#twPrev').addEventListener('click', function () { twGo(twi - 1); });
+    $('#twNext').addEventListener('click', function () { twGo(twi + 1); });
+    twDots.addEventListener('click', function (e) { var b = e.target.closest('button'); if (b) twGo(+b.dataset.i); });
+    twWrap.addEventListener('mouseenter', function () { clearInterval(twTimer); });
+    twWrap.addEventListener('mouseleave', twRestart);
+    twGo(0);
 
     /* portfolio (대형 풀블리드) */
     var PF = [
