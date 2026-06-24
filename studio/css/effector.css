@@ -126,3 +126,32 @@
 .header.on-dark:not(.is-stuck) .nav__center { color: #ffb9a6; }
 .header.on-dark:not(.is-stuck) .burger span { background: #fff; }
 .header.on-dark:not(.is-stuck) .nav__div { background: rgba(255,255,255,.25); }
+
+/* ===================================================
+   nhome-style 대형 풀블리드 포트폴리오 (포폴로 승부)
+=================================================== */
+.np-folio { width: 100%; padding-bottom: clamp(40px,6vh,70px); }
+.np-folio__head { max-width: 1320px; margin: 0 auto; padding: clamp(70px,11vh,130px) clamp(20px,4vw,54px) clamp(40px,6vh,64px); }
+.np-folio__eng { font-size: .8rem; font-weight: 800; letter-spacing: .22em; color: var(--accent); }
+.np-folio__title { margin-top: 16px; font-size: clamp(1.7rem,3.4vw,2.7rem); font-weight: 800; letter-spacing: -.03em; line-height: 1.32; color: var(--ink); }
+.np-folio__title b { color: var(--accent); }
+.np-folio__title em { font-style: normal; color: var(--muted); }
+/* 풀블리드 그리드 — 가장자리까지, 무간격 */
+.np-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
+.np-item { position: relative; display: block; aspect-ratio: 4 / 5; overflow: hidden; background: var(--bg-2); }
+.np-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s var(--ease); }
+.np-item:hover img { transform: scale(1.05); }
+/* 호버 시 어둡게 + 제목/태그 노출 */
+.np-item::before { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, transparent 45%, rgba(15,13,10,.72) 100%); opacity: 0; transition: opacity .4s var(--ease); }
+.np-item:hover::before { opacity: 1; }
+.np-item__cap { position: absolute; left: 0; right: 0; bottom: 0; z-index: 2; padding: 26px clamp(18px,2vw,28px); transform: translateY(12px); opacity: 0; transition: opacity .4s var(--ease), transform .4s var(--ease); }
+.np-item:hover .np-item__cap { opacity: 1; transform: none; }
+.np-item__t { color: #fff; font-size: clamp(1.05rem,1.5vw,1.3rem); font-weight: 800; letter-spacing: -.02em; }
+.np-item__c { display: block; margin-top: 6px; color: var(--accent-2); font-size: .82rem; font-weight: 700; }
+/* 상단 ↗ 어포던스 */
+.np-item::after { content: "↗"; position: absolute; top: 16px; right: 16px; z-index: 2; width: 42px; height: 42px; border-radius: 50%; background: #fff; color: var(--ink); display: grid; place-items: center; font-size: 1.1rem; font-weight: 700; opacity: 0; transform: translateY(8px) scale(.8); transition: opacity .35s var(--ease), transform .35s var(--ease); }
+.np-item:hover::after { opacity: 1; transform: none; }
+@media (max-width: 900px) { .np-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .np-grid { grid-template-columns: 1fr; } .np-item { aspect-ratio: 4/3.4; } }
+/* 풀블리드 띠 CTA */
+.np-more { text-align: center; padding: clamp(40px,6vh,60px) 20px 0; }

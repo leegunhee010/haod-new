@@ -11,8 +11,8 @@
   <meta property="og:type" content="website" />
   <link rel="preconnect" href="https://cdn.jsdelivr.net" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.css" />
-  <link rel="stylesheet" href="css/style.css?v=2" />
-  <link rel="stylesheet" href="css/effector.css?v=2" />
+  <link rel="stylesheet" href="css/style.css?v=3" />
+  <link rel="stylesheet" href="css/effector.css?v=3" />
 </head>
 <body>
   <div class="progress" id="progress" aria-hidden="true"></div>
@@ -119,13 +119,14 @@
       <div class="ef-stat reveal"><strong data-to="98">0</strong><strong style="display:none"></strong><em>재의뢰·만족도 (%)</em></div>
     </div>
 
-    <!-- PORTFOLIO -->
-    <section class="ef-sys" style="padding-bottom:0">
-      <span class="ef-label">STUDIO WORK</span>
+    <!-- PORTFOLIO (대형 풀블리드) -->
+    <section class="np-folio" id="work">
+      <div class="np-folio__head">
+        <p class="np-folio__eng">PORTFOLIO</p>
+        <h2 class="np-folio__title">다양한 <b>제품·브랜드 촬영</b>이 가능한<br /><em>전문 콘텐츠 스튜디오</em>입니다.</h2>
+      </div>
+      <div class="np-grid" id="folio"></div>
     </section>
-    <div class="ef-folio">
-      <div class="ef-folio__grid" id="folio"></div>
-    </div>
 
     <!-- CONTACT -->
     <section class="contact" id="contact">
@@ -245,21 +246,22 @@
     $('#revColA').innerHTML = REV.slice(0,3).map(revCard).join('');
     $('#revColB').innerHTML = REV.slice(3).map(revCard).join('');
 
-    /* portfolio */
+    /* portfolio (대형 풀블리드) */
     var PF = [
-      {f:'w380.jpg', t:'오뚜기 제품 촬영', tags:['상세페이지','사진촬영','제품연출촬영','식품촬영']},
-      {f:'w379.jpg', t:'서울우유 비주얼', tags:['상세페이지','사진촬영','제품연출촬영','모델촬영']},
-      {f:'w378.jpg', t:'연세유업 촬영', tags:['사진촬영','제품연출촬영','모델촬영']},
-      {f:'w347.jpg', t:'엠킨 클렌저', tags:['패키지','사진촬영','제품연출촬영']},
-      {f:'w402.jpg', t:'해븐코리아 카탈로그', tags:['상세페이지','사진촬영','편집디자인']},
-      {f:'w362.jpg', t:'자이 가이스트', tags:['상세페이지','브랜드영상','제품연출촬영']}
+      {f:'w380.jpg', t:'오뚜기 제품 촬영', c:'PRODUCT'},
+      {f:'w379.jpg', t:'서울우유 비주얼', c:'PRODUCT'},
+      {f:'w378.jpg', t:'연세유업 촬영', c:'PRODUCT'},
+      {f:'w347.jpg', t:'엠킨 클렌저 패키지', c:'PACKAGE'},
+      {f:'w377.jpg', t:'리서쳐스 브랜드', c:'BRAND'},
+      {f:'w402.jpg', t:'해븐코리아 카탈로그', c:'CATALOG'},
+      {f:'w376.jpg', t:'열정코리아 촬영', c:'PRODUCT'},
+      {f:'w375.jpg', t:'비스비바 제품', c:'PRODUCT'},
+      {f:'w362.jpg', t:'자이 가이스트', c:'DETAIL'}
     ];
-    $('#folio').innerHTML = PF.map(function (p, i) {
-      return '<a class="ef-pf reveal" style="--d:' + (i%3) + '" href="photo.html">' +
-        '<div class="ef-pf__media"><img loading="lazy" src="assets/work-hd/thumb/' + p.f + '" alt="' + p.t + '" /></div>' +
-        '<h3 class="ef-pf__t">' + p.t + '</h3>' +
-        '<div class="ef-pf__tags">' + p.tags.map(function (t) { return '<span>#' + t + '</span>'; }).join('') + '</div>' +
-        '<span class="ef-pf__by">by.hao studio</span></a>';
+    $('#folio').innerHTML = PF.map(function (p) {
+      return '<a class="np-item" href="photo.html">' +
+        '<img loading="lazy" src="assets/work-hd/thumb/' + p.f + '" alt="' + p.t + '" />' +
+        '<span class="np-item__cap"><span class="np-item__t">' + p.t + '</span><span class="np-item__c">' + p.c + '</span></span></a>';
     }).join('');
     $$('.reveal').forEach(function (el) { io.observe(el); });
 
