@@ -28,7 +28,15 @@
     { f: 'hs21.jpg', t: 'FROG', c: '제품', main: false },
     { f: 'hs22.jpg', t: 'BBRICK', c: '제품', main: false },
     { f: 'hs23.jpg', t: '1982웨이홈', c: '음식', main: false },
-    { f: 'hs24.jpg', t: '424오마카세', c: '음식', main: true }
+    { f: 'hs24.jpg', t: '424오마카세', c: '음식', main: true },
+    { f: 'hs25.jpg', t: '블랙로엘 피톤치드', c: '상세페이지', main: true },
+    { f: 'hs26.jpg', t: '오아가 뮤커스케어', c: '상세페이지', main: false },
+    { f: 'hs27.jpg', t: '지문인식 IoT 도어락', c: '상세페이지', main: true },
+    { f: 'hs28.jpg', t: '올케어 매트리스', c: '상세페이지', main: false },
+    { f: 'hs29.jpg', t: '초고속 충전 어댑터', c: '상세페이지', main: true },
+    { f: 'hs30.jpg', t: '쥬스멜로우 액상담배', c: '상세페이지', main: false },
+    { f: 'hs31.jpg', t: '워터리스 309 세정제', c: '상세페이지', main: true },
+    { f: 'hs32.jpg', t: '바로잰 Fit', c: '상세페이지', main: false }
   ];
 
   // 관리자 저장분 병합 (브라우저 localStorage — 라이브 반영은 백엔드 연동 시)
