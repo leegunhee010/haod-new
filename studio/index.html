@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://cdn.jsdelivr.net" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.css" />
   <link rel="stylesheet" href="css/style.css?v=3" />
-  <link rel="stylesheet" href="css/effector.css?v=7" />
+  <link rel="stylesheet" href="css/effector.css?v=8" />
 </head>
 <body>
   <div class="progress" id="progress" aria-hidden="true"></div>
@@ -23,6 +23,7 @@
       <a href="photo.html">제품촬영</a>
       <a href="detailpage.html">상세페이지</a>
       <a href="video.html">영상콘텐츠</a>
+      <a href="portfolio.html">포트폴리오</a>
       <a href="column.html">칼럼</a>
       <a href="qna.html">Q&amp;A</a>
       <span class="nav__div" aria-hidden="true"></span>
@@ -99,6 +100,7 @@
         <h2 class="np-folio__title">다양한 <b>제품·브랜드 촬영</b>이 가능한<br /><em>전문 콘텐츠 스튜디오</em>입니다.</h2>
       </div>
       <div class="np-grid" id="folio"></div>
+      <p class="np-more"><a class="btn-round" href="portfolio.html"><span>전체 포트폴리오 보기</span><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p>
     </section>
 
     <!-- REVIEW — 테스티모니얼 캐러셀 -->
@@ -193,6 +195,7 @@
     <a class="fab__btn fab--phone" href="tel:16662027" aria-label="전화"><span class="fab__ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24c1.1.37 2.3.57 3.6.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.3.2 2.5.57 3.6a1 1 0 0 1-.25 1z"/></svg></span><span class="fab__label">전화 문의</span></a>
   </div>
 
+  <script src="js/portfolio.js?v=1"></script>
   <script>
   (function () {
     var $ = function (s, c) { return (c || document).querySelector(s); };
@@ -274,26 +277,18 @@
     twWrap.addEventListener('mouseleave', twRestart);
     twGo(0);
 
-    /* portfolio (대형 풀블리드) */
-    var PF = [
-      {f:'hs01.jpg', t:'제품 연출 촬영', c:'PRODUCT'},
-      {f:'hs02.jpg', t:'뷰티 제품 촬영', c:'BEAUTY'},
-      {f:'hs03.jpg', t:'푸드 스타일링', c:'FOOD'},
-      {f:'hs04.jpg', t:'건강식품 촬영', c:'HEALTH'},
-      {f:'hs05.jpg', t:'제품 연출 촬영', c:'PRODUCT'},
-      {f:'hs06.jpg', t:'스낵 연출 촬영', c:'FOOD'},
-      {f:'hs07.jpg', t:'음식 촬영', c:'FOOD'},
-      {f:'hs08.jpg', t:'화장품 촬영', c:'BEAUTY'},
-      {f:'hs09.jpg', t:'제품 연출 촬영', c:'PRODUCT'},
-      {f:'hs10.jpg', t:'건강식품 촬영', c:'HEALTH'},
-      {f:'hs11.jpg', t:'스튜디오 공간', c:'SPACE'},
-      {f:'hs12.jpg', t:'푸드 스타일링', c:'FOOD'}
-    ];
-    $('#folio').innerHTML = PF.map(function (p) {
-      return '<a class="np-item" href="photo.html">' +
-        '<img loading="lazy" src="assets/haostudio/' + p.f + '" alt="' + p.t + '" />' +
-        '<span class="np-item__cap"><span class="np-item__t">' + p.t + '</span><span class="np-item__c">' + p.c + '</span></span></a>';
+    /* portfolio (대형 풀블리드) — 메인 노출(main:true) 항목만, 클릭 시 라이트박스 */
+    var PF = (window.HAO_WORKS || []).filter(function (w) { return w.main; });
+    var folio = $('#folio');
+    folio.innerHTML = PF.map(function (p) {
+      return '<a class="np-item" href="#" data-i="' + PF.indexOf(p) + '">' +
+        '<img loading="lazy" src="' + HAO_imgPath(p.f) + '" alt="' + p.t + '" />' +
+        '<span class="np-item__cap"><span class="np-item__t">' + p.t + '</span><span class="np-item__c">' + (p.c || '') + '</span></span></a>';
     }).join('');
+    folio.addEventListener('click', function (e) {
+      var a = e.target.closest('.np-item'); if (!a) return;
+      e.preventDefault(); HAO_openLightbox(PF, +a.dataset.i);
+    });
     $$('.reveal').forEach(function (el) { io.observe(el); });
 
     /* form */

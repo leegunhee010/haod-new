@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>포트폴리오 | 스튜디오센터 — 하오디자인</title>
+  <meta name="description" content="하오스튜디오 제품·음식·뷰티·건강식품 촬영 포트폴리오. 실제 진행한 촬영 작업을 카테고리별로 확인하세요." />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.css" />
+  <link rel="stylesheet" href="css/style.css?v=3" />
+  <link rel="stylesheet" href="css/effector.css?v=8" />
+</head>
+<body>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+
+  <header class="header is-stuck" id="header">
+    <a href="index.html" class="brand"><img src="assets/img/logo.png" alt="하오디자인" class="brand__logo" /></a>
+    <nav class="nav" id="nav">
+      <a href="photo.html">제품촬영</a>
+      <a href="detailpage.html">상세페이지</a>
+      <a href="video.html">영상콘텐츠</a>
+      <a href="portfolio.html" style="color:var(--accent)">포트폴리오</a>
+      <a href="column.html">칼럼</a>
+      <a href="qna.html">Q&amp;A</a>
+      <span class="nav__div" aria-hidden="true"></span>
+      <a class="nav__center" href="../design/">디자인센터 <i>↗</i></a>
+      <a class="nav__center" href="../web/">웹구축센터 <i>↗</i></a>
+      <a class="nav__center" href="https://mkt.haodesign.co.kr">마케팅센터 <i>↗</i></a>
+      <a class="nav__center" href="../voucher/">정부사업지원센터 <i>↗</i></a>
+    </nav>
+    <a href="index.html#contact" class="header__cta">촬영 문의 <span>→</span></a>
+    <button class="burger" id="burger" aria-label="메뉴"><span></span><span></span></button>
+  </header>
+
+  <main id="top">
+    <section class="subhero">
+      <div class="subhero__inner">
+        <p class="subhero__crumb"><a href="../design/">디자인센터</a> / <a href="index.html">스튜디오센터</a> / 포트폴리오</p>
+        <h1 class="subhero__title">PORTFOLIO</h1>
+        <p class="subhero__desc">제품·음식·뷰티·건강식품 — 하오스튜디오가 실제 진행한 촬영 작업입니다. 클릭하면 크게 볼 수 있어요.</p>
+        <div class="subnav" id="filter"></div>
+      </div>
+    </section>
+
+    <div class="np-folio" style="padding-top:8px">
+      <div class="np-grid" id="folio"></div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__top">
+      <img src="assets/img/logo-white.png" alt="HAO DESIGN" class="footer__logo" />
+      <p>하오디자인 스튜디오센터<br />제품 촬영 · 상세페이지 · 영상 콘텐츠 제작</p>
+    </div>
+    <div class="footer__grid">
+      <div><h3>Contact</h3><a href="tel:16662027">1666-2027</a><a href="mailto:sales@haodesign.co.kr">sales@haodesign.co.kr</a><span>평일 09:00–18:00</span></div>
+      <div><h3>센터</h3><a href="../design/">디자인센터 ↗</a><a href="../web/">웹구축센터 ↗</a><a href="https://mkt.haodesign.co.kr">마케팅센터 ↗</a><a href="../voucher/">정부사업지원센터 ↗</a></div>
+      <div><h3>스튜디오센터</h3><a href="photo.html">제품촬영</a><a href="detailpage.html">상세페이지</a><a href="video.html">영상콘텐츠</a><a href="portfolio.html">포트폴리오</a><a href="qna.html">Q&amp;A</a></div>
+    </div>
+    <div class="footer__bottom">
+      <div class="footer__biz">
+        <p><b>주식회사 하오커뮤니케이션</b><span>대표이사 박창민</span><span>사업자등록번호 528-87-01037</span></p>
+        <p><span>주소 서울시 광진구 능동로49길 9, 2F</span><span>대표번호 1666-2027</span><span>E-mail sales@haodesign.co.kr</span></p>
+      </div>
+      <span class="footer__copy">© <i id="year"></i> HAO DESIGN. 스튜디오센터.</span>
+    </div>
+  </footer>
+
+  <script src="js/portfolio.js?v=1"></script>
+  <script>
+  (function () {
+    var $ = function (s, c) { return (c || document).querySelector(s); };
+    var $$ = function (s, c) { return [].slice.call((c || document).querySelectorAll(s)); };
+    var y = $('#year'); if (y) y.textContent = new Date().getFullYear();
+    var hdr = $('#header');
+    addEventListener('scroll', function () { hdr.classList.toggle('is-stuck', window.scrollY > 24); }, { passive: true });
+    var burger = $('#burger'), nav = $('#nav');
+    burger.addEventListener('click', function () { burger.classList.toggle('is-open'); nav.classList.toggle('is-open'); document.body.classList.toggle('menu-open'); });
+    $$('#nav a').forEach(function (a) { a.addEventListener('click', function () { burger.classList.remove('is-open'); nav.classList.remove('is-open'); document.body.classList.remove('menu-open'); }); });
+
+    var WORKS = window.HAO_WORKS || [];
+    var CATS = ['전체'];
+    WORKS.forEach(function (w) { if (CATS.indexOf(w.c) < 0) CATS.push(w.c); });
+    var cur = '전체';
+    var folio = $('#folio'), filter = $('#filter');
+    filter.innerHTML = CATS.map(function (c, i) { return '<a href="#" class="' + (i === 0 ? 'is-active' : '') + '" data-c="' + c + '">' + c + '</a>'; }).join('');
+
+    function list() { return cur === '전체' ? WORKS : WORKS.filter(function (w) { return w.c === cur; }); }
+    function render() {
+      var L = list();
+      folio.innerHTML = L.map(function (p, i) {
+        return '<a class="np-item" href="#" data-i="' + i + '">' +
+          '<img loading="lazy" src="' + HAO_imgPath(p.f) + '" alt="' + p.t + '" />' +
+          '<span class="np-item__cap"><span class="np-item__t">' + p.t + '</span><span class="np-item__c">' + (p.c || '') + '</span></span></a>';
+      }).join('');
+    }
+    filter.addEventListener('click', function (e) {
+      var a = e.target.closest('a'); if (!a) return; e.preventDefault();
+      $$('a', filter).forEach(function (x) { x.classList.remove('is-active'); });
+      a.classList.add('is-active'); cur = a.dataset.c; render();
+    });
+    folio.addEventListener('click', function (e) {
+      var a = e.target.closest('.np-item'); if (!a) return; e.preventDefault();
+      HAO_openLightbox(list(), +a.dataset.i);
+    });
+    render();
+  })();
+  </script>
+</body>
+</html>
