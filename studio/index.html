@@ -133,6 +133,16 @@
       <div class="ef-stat reveal"><strong data-to="98">0</strong><strong style="display:none"></strong><em>재의뢰·만족도 (%)</em></div>
     </div>
 
+    <!-- PARTNERS (client logo marquee) -->
+    <section class="partners" aria-label="함께한 브랜드">
+      <div class="partners__head reveal">
+        <p class="ef-label">CLIENTS</p>
+        <h2>하오 스튜디오와 함께한 브랜드</h2>
+      </div>
+      <div class="partners__marquee"><div class="partners__track" id="ptrackA"></div></div>
+      <div class="partners__marquee partners__marquee--rev"><div class="partners__track" id="ptrackB"></div></div>
+    </section>
+
     <!-- CONTACT -->
     <section class="contact" id="contact">
       <div class="contact__panel reveal">
@@ -232,6 +242,18 @@
       io.unobserve(e.target); }); }, { threshold: .2 });
     $$('.reveal').forEach(function (el) { io.observe(el); });
 
+    /* partners (client logo marquee) */
+    var PLOGOS = [];
+    for (var pi = 1; pi <= 29; pi++) PLOGOS.push('assets/partners-hs/hp' + ('0' + pi).slice(-2) + '.png');
+    function fillP(el, list) {
+      if (!el) return;
+      var set = list.map(function (s) { return '<span class="plogo"><img src="' + s + '" alt="파트너 로고" decoding="async" /></span>'; }).join('');
+      el.innerHTML = set + set;
+    }
+    var pHalf = Math.ceil(PLOGOS.length / 2);
+    fillP($('#ptrackA'), PLOGOS.slice(0, pHalf));
+    fillP($('#ptrackB'), PLOGOS.slice(pHalf));
+
     /* review wall */
     var REV = [
       {b:'세라젬', from:'헬스케어 가전', img:'hs13.jpg', q:'성공적인 파트너십, 앞으로도 잘 부탁드립니다.', body:'다양한 분야에서 이해도가 높고 제품 촬영·고퀄리티 비주얼 경험이 많은 전문 파트너가 필요했는데, 협업이 쌓일수록 결과물도 척척 나옵니다.'},
@@ -275,8 +297,8 @@
     twWrap.addEventListener('mouseleave', twRestart);
     twGo(0);
 
-    /* portfolio (대형 풀블리드) — 메인 노출(main:true) 항목만, 클릭 시 라이트박스 */
-    var PF = (window.HAO_WORKS || []).filter(function (w) { return w.main; });
+    /* portfolio (대형 풀블리드) — 메인 노출(main:true), 4열×3행=12개만 노출(나머지는 전체 보기) */
+    var PF = (window.HAO_WORKS || []).filter(function (w) { return w.main; }).slice(0, 12);
     var folio = $('#folio');
     folio.innerHTML = PF.map(function (p) {
       return '<a class="np-item" href="#" data-i="' + PF.indexOf(p) + '">' +
