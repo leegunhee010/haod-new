@@ -54,19 +54,26 @@
   window.HAO_WORKS_DEFAULT = DEFAULT_WORKS;
   window.HAO_imgPath = function (f) { return 'assets/haostudio/' + f; };
 
-  /* ---------- 라이트박스 ---------- */
-  var ov, imgEl, capEl, curList = [], curIdx = 0;
+  /* ---------- 라이트박스 (긴 상세페이지·GIF 세로 스크롤 지원) ---------- */
+  var ov, imgEl, capEl, scrollEl, curList = [], curIdx = 0;
   function build() {
     ov = document.createElement('div');
     ov.className = 'lb';
     ov.innerHTML =
       '<button class="lb__close" aria-label="닫기">✕</button>' +
       '<button class="lb__nav lb__prev" aria-label="이전">‹</button>' +
-      '<figure class="lb__stage"><img alt="" /><figcaption></figcaption></figure>' +
+      '<figure class="lb__stage"><div class="lb__scroll"><img alt="" /></div><figcaption></figcaption><span class="lb__hint">↕ 스크롤하여 전체 보기</span></figure>' +
       '<button class="lb__nav lb__next" aria-label="다음">›</button>';
     document.body.appendChild(ov);
     imgEl = ov.querySelector('img');
     capEl = ov.querySelector('figcaption');
+    scrollEl = ov.querySelector('.lb__scroll');
+    // 이미지 로드 후 세로로 길면 스크롤 모드(is-tall)로 전환
+    imgEl.addEventListener('load', function () {
+      var tall = imgEl.naturalWidth && (imgEl.naturalHeight / imgEl.naturalWidth) >= 2.2;
+      ov.classList.toggle('is-tall', !!tall);
+      scrollEl.scrollTop = 0;
+    });
     ov.querySelector('.lb__close').addEventListener('click', close);
     ov.querySelector('.lb__prev').addEventListener('click', function (e) { e.stopPropagation(); go(-1); });
     ov.querySelector('.lb__next').addEventListener('click', function (e) { e.stopPropagation(); go(1); });
@@ -80,6 +87,8 @@
   }
   function render() {
     var w = curList[curIdx];
+    ov.classList.remove('is-tall');           // 새 이미지 로드 전 초기화
+    if (scrollEl) scrollEl.scrollTop = 0;
     imgEl.src = window.HAO_imgPath(w.f);
     imgEl.alt = w.t;
     capEl.innerHTML = '<b>' + w.t + '</b><span>' + (w.c || '') + ' · ' + (curIdx + 1) + ' / ' + curList.length + '</span>';
