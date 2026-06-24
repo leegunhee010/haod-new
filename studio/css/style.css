@@ -492,12 +492,13 @@ img { display: block; max-width: 100%; }
 .partners__marquee:hover .partners__track { animation-play-state: paused; }
 .plogo {
   display: flex; align-items: center; justify-content: center; flex: 0 0 auto;
-  width: clamp(260px,26vw,360px); height: clamp(100px,11vw,150px);
+  height: clamp(82px,8.6vw,104px); min-width: clamp(140px,14vw,168px); padding: 0 clamp(22px,2.6vw,36px);
   background: #fff; border: 1px solid var(--line); border-radius: 16px;
   transition: transform .3s var(--ease), box-shadow .3s var(--ease), border-color .3s;
 }
 .plogo:hover { transform: translateY(-5px); box-shadow: 0 22px 44px -24px rgba(23,21,15,.35); border-color: transparent; }
-.plogo img { max-width: 82%; max-height: 72%; object-fit: contain; filter: grayscale(1) opacity(.8); transition: filter .3s; }
+/* 로고는 '높이'만 통일, 카드 폭은 로고에 맞춰 가변 — 시각적 크기를 눈높이로 맞춤 */
+.plogo img { width: auto; height: clamp(28px,3.4vw,38px); max-width: 210px; object-fit: contain; filter: grayscale(1) opacity(.78); transition: filter .3s; }
 .plogo:hover img { filter: none; }
 @keyframes partnerSlide { from { transform: translateX(0); } to { transform: translateX(calc(-50% - 11px)); } }
 

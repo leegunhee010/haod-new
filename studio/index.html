@@ -11,7 +11,7 @@
   <meta property="og:type" content="website" />
   <link rel="preconnect" href="https://cdn.jsdelivr.net" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.css" />
-  <link rel="stylesheet" href="css/style.css?v=3" />
+  <link rel="stylesheet" href="css/style.css?v=4" />
   <link rel="stylesheet" href="css/effector.css?v=12" />
 </head>
 <body>
@@ -253,6 +253,17 @@
     var pHalf = Math.ceil(PLOGOS.length / 2);
     fillP($('#ptrackA'), PLOGOS.slice(0, pHalf));
     fillP($('#ptrackB'), PLOGOS.slice(pHalf));
+    /* 로고 광학 보정: 높이를 기준으로 통일하되, 컴팩트(정사각/뱃지형) 로고는 살짝 키워 시각적 크기를 맞춤 */
+    function sizeLogo(im) {
+      if (!im.naturalWidth) return;
+      var vw = innerWidth, base = Math.min(38, Math.max(28, vw * 0.034));
+      var ar = im.naturalWidth / im.naturalHeight;
+      var fac = Math.min(1.35, Math.max(1, Math.sqrt(2.2 / ar)));
+      im.style.height = (base * fac).toFixed(1) + 'px';
+    }
+    var pImgs = $$('.partners img');
+    pImgs.forEach(function (im) { if (im.complete) sizeLogo(im); else im.addEventListener('load', function () { sizeLogo(im); }); });
+    var pRz; addEventListener('resize', function () { clearTimeout(pRz); pRz = setTimeout(function () { pImgs.forEach(sizeLogo); }, 150); }, { passive: true });
 
     /* review wall */
     var REV = [
