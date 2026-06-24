@@ -14,16 +14,16 @@
   <link rel="preconnect" href="https://cdn.jsdelivr.net" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Fragment+Mono&display=swap" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.css" />
-  <link rel="stylesheet" href="css/cs.css?v=1" />
+  <link rel="stylesheet" href="css/cs.css?v=2" />
 </head>
 <body>
   <div class="progress" id="progress" aria-hidden="true"></div>
 
   <!-- SVG defs: 3D gradient arrow mark -->
   <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
-    <linearGradient id="ga" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#00e7c4"/><stop offset="1" stop-color="#0a8bff"/></linearGradient>
-    <linearGradient id="gb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a8bff"/><stop offset="1" stop-color="#5041ff"/></linearGradient>
-    <linearGradient id="gc" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#3a2bd6"/><stop offset="1" stop-color="#7c3aed"/></linearGradient>
+    <linearGradient id="ga" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffb14d"/><stop offset="1" stop-color="#f25b35"/></linearGradient>
+    <linearGradient id="gb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f25b35"/><stop offset="1" stop-color="#e83817"/></linearGradient>
+    <linearGradient id="gc" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#c42d12"/><stop offset="1" stop-color="#e8631f"/></linearGradient>
   </defs></svg>
 
   <header class="header" id="header">
@@ -91,8 +91,8 @@
               </div>
               <svg class="chart" id="heroChart" viewBox="0 0 520 170" preserveAspectRatio="none"></svg>
               <div class="chart-row">
-                <span class="chart-pill"><i style="background:#0a8bff"></i> 구글·네이버 SEO</span>
-                <span class="chart-pill"><i style="background:#5041ff"></i> AI 답변 인용(AEO)</span>
+                <span class="chart-pill"><i style="background:#f25b35"></i> 구글·네이버 SEO</span>
+                <span class="chart-pill"><i style="background:#e83817"></i> AI 답변 인용(AEO)</span>
               </div>
             </div>
             <div style="background:#fff;padding:20px;display:flex;flex-direction:column;gap:12px">
@@ -137,7 +137,7 @@
             <div class="mock__top"><b>검색 순위 리포트</b><span>SEO</span></div>
             <div class="mock__body">
               <svg class="chart" viewBox="0 0 520 170" preserveAspectRatio="none"><polyline class="seochart" fill="none" stroke="url(#gb)" stroke-width="3" points="0,150 80,140 160,120 240,128 320,90 400,70 520,28"/></svg>
-              <div class="chart-row"><span class="chart-pill"><i style="background:#0a8bff"></i> 평균 검색순위 1.2위</span><span class="chart-pill"><i style="background:#00e7c4"></i> 유입 +240%</span></div>
+              <div class="chart-row"><span class="chart-pill"><i style="background:#f25b35"></i> 평균 검색순위 1.2위</span><span class="chart-pill"><i style="background:#f6a13a"></i> 유입 +240%</span></div>
             </div>
           </div>
         </div>
@@ -414,10 +414,10 @@
       var ns='http://www.w3.org/2000/svg';
       var area=document.createElementNS(ns,'polygon');
       area.setAttribute('points','0,150 80,135 160,108 240,118 320,72 400,52 520,20 520,170 0,170');
-      area.setAttribute('fill','rgba(80,65,255,.08)');
+      area.setAttribute('fill','rgba(232,56,23,.09)');
       hc.appendChild(area);
-      var p1=buildChart(hc,'0,150 80,140 160,120 240,128 320,100 400,86 520,58','#0a8bff');
-      var p2=buildChart(hc,'0,158 80,150 160,132 240,140 320,92 400,66 520,24','#5041ff');
+      var p1=buildChart(hc,'0,150 80,140 160,120 240,128 320,100 400,86 520,58','#f25b35');
+      var p2=buildChart(hc,'0,158 80,150 160,132 240,140 320,92 400,66 520,24','#e83817');
       var fired=false;
       var io1=new IntersectionObserver(function(es){es.forEach(function(e){ if(e.isIntersecting&&!fired){fired=true; p1.style.strokeDashoffset=0; setTimeout(function(){p2.style.strokeDashoffset=0;},250);} });},{threshold:.3});
       io1.observe(hc);
@@ -434,13 +434,13 @@
       nodes.slice(1).forEach(function(n){
         var l=document.createElementNS(ns2,'line');
         l.setAttribute('x1',center.x);l.setAttribute('y1',center.y);l.setAttribute('x2',n.x);l.setAttribute('y2',n.y);
-        l.setAttribute('stroke','rgba(0,231,196,.35)');l.setAttribute('stroke-width','1.2');
+        l.setAttribute('stroke','rgba(232,56,23,.3)');l.setAttribute('stroke-width','1.2');
         net.appendChild(l);
       });
       nodes.forEach(function(n,i){
         var c=document.createElementNS(ns2,'circle');
         c.setAttribute('cx',n.x);c.setAttribute('cy',n.y);c.setAttribute('r',n.r||9);
-        c.setAttribute('fill', n.c || (i%2?'rgba(10,139,255,.85)':'rgba(0,231,196,.85)'));
+        c.setAttribute('fill', n.c || (i%2?'rgba(242,121,47,.9)':'rgba(246,161,58,.9)'));
         c.style.transformOrigin=n.x+'px '+n.y+'px';
         c.style.animation='pulse '+(2.5+i*.2)+'s ease-in-out '+(i*.15)+'s infinite';
         net.appendChild(c);
