@@ -3,25 +3,42 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>웹구축센터 | 하오디자인 — 홈페이지·앱 제작 / AEO·SEO·GEO</title>
-  <meta name="description" content="하오디자인 웹구축센터. 반응형 홈페이지·모바일 앱 제작부터 AI 시대의 검색 최적화(AEO·SEO·GEO)까지. 찾게 만드는 홈페이지를 만듭니다." />
-  <meta name="keywords" content="홈페이지 제작, 반응형 홈페이지, 모바일 앱 개발, SEO, AEO, GEO, 검색최적화, CMS, 하오디자인 웹구축센터" />
-  <meta property="og:title" content="웹구축센터 | 하오디자인" />
-  <meta property="og:description" content="홈페이지·앱 제작부터 AEO·SEO·GEO 검색 최적화까지 — 하오디자인 웹구축센터." />
+  <title>웹구축센터 | 하오디자인 — SEO·AEO 홈페이지·앱 제작</title>
+  <meta name="description" content="하오디자인 웹구축센터. 검색되는 홈페이지부터 AI가 답하는 브랜드까지 — SEO·AEO 설계가 들어간 홈페이지·앱을 제작합니다. 만드는 데서 끝나지 않고, 발견되게 만듭니다." />
+  <meta name="keywords" content="홈페이지 제작, 앱 제작, SEO, AEO, GEO, AI 검색 최적화, 반응형 홈페이지, 모바일 앱, 구조화 데이터, 하오디자인 웹구축센터" />
+  <meta property="og:title" content="웹구축센터 | 하오디자인 — SEO·AEO 홈페이지·앱 제작" />
+  <meta property="og:description" content="검색되는 홈페이지, AI가 답하는 브랜드. SEO·AEO 설계가 들어간 홈페이지·앱 제작 — 하오디자인 웹구축센터." />
   <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Fragment+Mono&display=swap" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.css" />
-  <link rel="stylesheet" href="css/style.css?v=1" />
+  <link rel="stylesheet" href="css/cs.css?v=1" />
 </head>
 <body>
   <div class="progress" id="progress" aria-hidden="true"></div>
 
+  <!-- SVG defs: 3D gradient arrow mark -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+    <linearGradient id="ga" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#00e7c4"/><stop offset="1" stop-color="#0a8bff"/></linearGradient>
+    <linearGradient id="gb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a8bff"/><stop offset="1" stop-color="#5041ff"/></linearGradient>
+    <linearGradient id="gc" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#3a2bd6"/><stop offset="1" stop-color="#7c3aed"/></linearGradient>
+  </defs></svg>
+
   <header class="header" id="header">
-    <a href="index.html" class="brand"><img src="assets/img/logo.png" alt="하오디자인" class="brand__logo" /></a>
+    <a href="index.html" class="brand">
+      <svg class="brand__mark" viewBox="0 0 100 100" aria-hidden="true">
+        <polygon points="82,18 18,62 50,52" fill="url(#ga)"/>
+        <polygon points="82,18 50,52 60,84" fill="url(#gb)"/>
+        <polygon points="18,62 60,84 50,52" fill="url(#gc)"/>
+      </svg>
+      <span>하오디자인 <b style="font-weight:500;color:var(--muted)">웹구축</b></span>
+    </a>
     <nav class="nav" id="nav">
       <a href="#service">서비스</a>
-      <a href="#aeo">AEO·SEO</a>
-      <a href="#portfolio">포트폴리오</a>
+      <a href="#approach">차별점</a>
+      <a href="#work">포트폴리오</a>
       <a href="column.html">칼럼</a>
       <a href="qna.html">Q&amp;A</a>
       <span class="nav__div" aria-hidden="true"></span>
@@ -31,171 +48,442 @@
       <a class="nav__center" href="../voucher/">정부사업지원센터 <i>↗</i></a>
     </nav>
     <a href="#contact" class="header__cta">제작 문의 <span>→</span></a>
-    <button class="burger" id="burger" aria-label="메뉴"><span></span><span></span></button>
+    <button class="burger" id="burger" aria-label="메뉴"><span></span><span></span><span></span></button>
   </header>
 
   <main id="top">
-    <!-- HERO -->
-    <section class="whero">
-      <div class="whero__inner">
-        <span class="whero__badge"><i></i> 홈페이지·앱 제작 / AEO·SEO·GEO</span>
-        <h1 class="whero__title">검색을 넘어,<br /><em>AI가 추천하는</em> 홈페이지</h1>
-        <p class="whero__sub">반응형 홈페이지와 모바일 앱 제작부터, 사람과 AI 모두에게 찾히는 검색 최적화(SEO·AEO·GEO)까지. 만드는 것에서 끝나지 않고, 발견되게 만듭니다.</p>
-        <div class="whero__btns">
-          <a href="#contact" class="btn-round btn-round--solid"><span>제작 문의하기</span><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-          <a href="#service" class="btn-round"><span>서비스 보기</span><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+      <div class="hero__in">
+        <div class="hero__text">
+          <span class="eyebrow hero__eyebrow">SEO · AEO · 홈페이지 · 앱</span>
+          <h1 class="hero__title">검색되는 홈페이지,<br /><span class="g">AI가 답하는</span> 브랜드.</h1>
+          <p class="hero__sub">반응형 홈페이지와 앱을 제작하고, 사람의 검색(SEO)과 AI의 답변(AEO)에 모두 노출되도록 설계합니다. 만드는 데서 끝나지 않고, 발견되게 만듭니다.</p>
+          <div class="hero__btns">
+            <a href="#contact" class="btn btn--grad"><span>무료 진단·제작 문의</span><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <a href="#service" class="btn btn--ghost"><span>서비스 보기</span><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+          <div class="hero__stats">
+            <div class="hero__stat"><strong>500+</strong><span>제작 프로젝트</span></div>
+            <div class="hero__stat"><strong>12년</strong><span>웹·디자인 경력</span></div>
+            <div class="hero__stat"><strong>7개</strong><span>대응 AI 검색엔진</span></div>
+          </div>
+        </div>
+        <div class="hero__art">
+          <div class="hero__glow"></div>
+          <svg class="hero__arrow" viewBox="0 0 100 100" aria-hidden="true">
+            <polygon points="82,18 18,62 50,52" fill="url(#ga)"/>
+            <polygon points="82,18 50,52 60,84" fill="url(#gb)"/>
+            <polygon points="18,62 60,84 50,52" fill="url(#gc)"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- hero dashboard mockup -->
+      <div class="hero__mock reveal">
+        <div class="bframe">
+          <div class="bframe__bar"><i></i><i></i><i></i><span class="bframe__url">https://yourbrand.co.kr — 검색 성과 대시보드</span></div>
+          <div class="bframe__body" style="display:grid;grid-template-columns:1.4fr 1fr;gap:1px;background:var(--line-2)">
+            <div style="background:#fff;padding:20px">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+                <b style="font-size:.92rem">검색 노출 추이 (SEO + AEO)</b>
+                <span class="kpi" style="padding:0;border:0;background:none"><b class="g" style="font-size:1.1rem">+312%</b></span>
+              </div>
+              <svg class="chart" id="heroChart" viewBox="0 0 520 170" preserveAspectRatio="none"></svg>
+              <div class="chart-row">
+                <span class="chart-pill"><i style="background:#0a8bff"></i> 구글·네이버 SEO</span>
+                <span class="chart-pill"><i style="background:#5041ff"></i> AI 답변 인용(AEO)</span>
+              </div>
+            </div>
+            <div style="background:#fff;padding:20px;display:flex;flex-direction:column;gap:12px">
+              <b style="font-size:.92rem">핵심 지표</b>
+              <div class="kpi"><b class="g">87<small style="font-size:.6em">%</small></b><span>Visibility</span></div>
+              <div class="kpi"><b class="g">1.4<small style="font-size:.6em">k</small></b><span>AI Citation</span></div>
+              <div class="kpi"><b class="g">x3.1</b><span>전환 유입</span></div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- 해시태그 마퀴 -->
-    <div class="htag" aria-hidden="true">
-      <div class="htag__track" id="htagTrack"></div>
-    </div>
+    <!-- ===== TRUST ===== -->
+    <section class="trust">
+      <p class="trust__lead">이미 많은 브랜드가 <b>하오디자인</b>과 함께 홈페이지·앱을 만들었습니다</p>
+      <div class="marquee"><div class="marquee__track" id="trustTrack"></div></div>
+    </section>
 
-    <!-- 4대 역량 -->
-    <section class="page page--tight" id="service">
-      <p class="section-tag">WHAT WE DO</p>
-      <h2 class="page__title">우리는 이런 걸 만듭니다</h2>
-      <div class="cap">
-        <div class="capcard reveal"><span class="capcard__no">01</span><div class="capcard__t">홈페이지 제작</div><div class="capcard__e">Website</div>
-          <ul><li>반응형·적응형 홈페이지</li><li>기업·병원·브랜드 사이트</li><li>홈페이지 리뉴얼</li><li>CMS·관리자 구축</li></ul></div>
-        <div class="capcard reveal"><span class="capcard__no">02</span><div class="capcard__t">앱·시스템 개발</div><div class="capcard__e">App &amp; System</div>
-          <ul><li>모바일 앱(iOS·Android)</li><li>프론트·백엔드 개발</li><li>API·외부 연동(결제·예약)</li><li>성능 최적화·보안(SSL)</li></ul></div>
-        <div class="capcard reveal"><span class="capcard__no">03</span><div class="capcard__t">AEO·SEO·GEO 최적화</div><div class="capcard__e">Search Growth</div>
-          <ul><li>SEO 기술 최적화</li><li>AI 검색 최적화(AEO·GEO)</li><li>구조화 데이터·스키마</li><li>전환 최적화(CRO)</li></ul></div>
-        <div class="capcard reveal"><span class="capcard__no">04</span><div class="capcard__t">전략·UX 디자인</div><div class="capcard__e">Strategy &amp; UX</div>
-          <ul><li>정보구조·UX 기획</li><li>UI·인터랙션 디자인</li><li>콘텐츠·카피 전략</li><li>대시보드·리포팅</li></ul></div>
+    <!-- ===== SERVICES (feature rows) ===== -->
+    <section class="sec" id="service">
+      <div class="sec__head center">
+        <span class="eyebrow">WHAT WE BUILD</span>
+        <h2 class="sec__title">하나의 팀이 <span class="g">제작부터 검색 노출까지</span> 책임집니다</h2>
+        <p class="sec__lead">홈페이지·앱을 만들고, 사람의 검색과 AI의 답변 양쪽에서 발견되도록 설계합니다. 네 가지를 따로가 아니라 한 번에.</p>
       </div>
-    </section>
 
-    <!-- AEO·SEO·GEO -->
-    <section class="page page--tight" id="aeo">
-      <p class="section-tag">SEO → AEO · GEO</p>
-      <h2 class="page__title">이제는 'AI가 추천하는' 홈페이지</h2>
-      <p class="sp-lead reveal">검색 상위 노출을 넘어, ChatGPT·Perplexity·네이버 AI가 답변에 <em>인용하고 추천하는</em> 홈페이지를 설계합니다. 하오디자인은 만들 때부터 구조화 데이터·AEO를 함께 심습니다.</p>
-      <div class="seo2">
-        <div class="seocard reveal"><h3><b>SEO</b> · 검색엔진 최적화</h3><p>사용자가 직접 검색했을 때 결과 상단에 노출되도록 키워드·메타·성능·구조를 최적화합니다. (네이버·구글)</p></div>
-        <div class="seocard seocard--geo reveal"><h3><b>AEO·GEO</b> · AI 답변 최적화</h3><p>생성형 AI가 답변을 만들 때 우리 브랜드·콘텐츠를 참고·인용하도록 구조화 데이터와 신뢰 신호를 설계합니다.</p></div>
-      </div>
-    </section>
-
-    <!-- 포트폴리오 -->
-    <section class="page page--tight" id="portfolio">
-      <p class="section-tag">PORTFOLIO</p>
-      <h2 class="page__title">최근 제작 사례</h2>
-      <div class="gallery-board" id="galleryBoard"><!-- JS --></div>
-    </section>
-
-    <!-- 절차 -->
-    <section class="page page--tight" id="process">
-      <p class="section-tag">PROCESS</p>
-      <h2 class="page__title">제작은 이렇게</h2>
-      <div class="timeline" id="timeline" style="margin-top:40px">
-        <div class="timeline__line"><i id="timelineFill"></i></div>
-        <div class="tstep"><span class="tstep__no">01</span><h3>상담·견적</h3><p>목표·기능·일정을 듣고 방향과 견적을 잡습니다.</p></div>
-        <div class="tstep"><span class="tstep__no">02</span><h3>기획·설계</h3><p>정보구조·화면설계와 SEO·AEO 구조를 함께 잡습니다.</p></div>
-        <div class="tstep"><span class="tstep__no">03</span><h3>디자인</h3><p>브랜드에 맞는 UI·인터랙션을 디자인합니다.</p></div>
-        <div class="tstep"><span class="tstep__no">04</span><h3>개발·구축</h3><p>반응형 퍼블리싱·개발과 CMS를 구축합니다.</p></div>
-        <div class="tstep"><span class="tstep__no">05</span><h3>런칭·운영</h3><p>검색 최적화 적용 후 오픈, 유지보수까지 함께합니다.</p></div>
-      </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="contact" id="contact">
-      <div class="contact__panel reveal">
-        <svg class="contact__spin" viewBox="0 0 120 120" aria-hidden="true">
-          <defs><path id="spinPath" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0" /></defs>
-          <text><textPath href="#spinPath">WEBSITE · APP · AEO · SEO · HAO DESIGN · </textPath></text>
-        </svg>
-        <div class="contact__info">
-          <p class="contact__tag">START A PROJECT</p>
-          <h2 class="contact__title">홈페이지,<br />제대로 만들까요?</h2>
-          <p class="contact__desc">간단한 내용만 남겨주세요.<br />담당자가 확인 후 빠르게 연락드립니다.</p>
-          <ul class="contact__rows">
-            <li><span>TEL</span><a href="tel:16662027">1666-2027</a></li>
-            <li><span>MAIL</span><a href="mailto:sales@haodesign.co.kr">sales@haodesign.co.kr</a></li>
-            <li><span>TIME</span>평일 09:00 – 18:00</li>
+      <!-- SEO -->
+      <div class="feat">
+        <div class="feat__text">
+          <p class="feat__num">01 — SEO</p>
+          <h3 class="feat__t">검색엔진 상위노출,<br />구조부터 다르게</h3>
+          <p class="feat__d">키워드·메타·속도·구조화 데이터까지 — 네이버·구글이 좋아하는 기술 구조를 만들 때부터 심습니다. 출시 후 유입이 늘어나는 홈페이지를 설계합니다.</p>
+          <ul class="feat__list">
+            <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>키워드·콘텐츠 설계 & 메타 최적화</li>
+            <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Core Web Vitals·속도·모바일 최적화</li>
+            <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>구조화 데이터(Schema)·사이트맵</li>
           </ul>
         </div>
-        <form class="cform cform--card" id="quoteForm" novalidate>
-          <div class="cfield"><input type="text" id="name" name="name" placeholder="이름 / 회사명" required /></div>
-          <div class="cfield"><input type="tel" id="phone" name="phone" placeholder="연락처" required /></div>
-          <div class="cfield cfield--full">
-            <select id="type" name="type">
-              <option value="">제작 종류 선택</option>
-              <option>홈페이지 제작</option><option>홈페이지 리뉴얼</option><option>모바일 앱</option>
-              <option>AEO·SEO·GEO 최적화</option><option>쇼핑몰·CMS</option><option>기타</option>
-            </select>
+        <div class="feat__visual">
+          <div class="mock"><div class="mock__glow"></div>
+            <div class="mock__top"><b>검색 순위 리포트</b><span>SEO</span></div>
+            <div class="mock__body">
+              <svg class="chart" viewBox="0 0 520 170" preserveAspectRatio="none"><polyline class="seochart" fill="none" stroke="url(#gb)" stroke-width="3" points="0,150 80,140 160,120 240,128 320,90 400,70 520,28"/></svg>
+              <div class="chart-row"><span class="chart-pill"><i style="background:#0a8bff"></i> 평균 검색순위 1.2위</span><span class="chart-pill"><i style="background:#00e7c4"></i> 유입 +240%</span></div>
+            </div>
           </div>
-          <div class="cfield cfield--full"><textarea id="message" name="message" rows="4" placeholder="제작하려는 서비스, 참고 사이트, 일정·예산 등을 자유롭게 적어주세요."></textarea></div>
-          <button type="submit" class="btn-round btn-round--solid"><span>문의 보내기</span><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
-          <p class="cnote" id="formNote" role="status"></p>
-        </form>
+        </div>
+      </div>
+
+      <!-- AEO -->
+      <div class="feat feat--rev">
+        <div class="feat__text">
+          <p class="feat__num">02 — AEO · GEO</p>
+          <h3 class="feat__t">ChatGPT·Gemini가<br /><span class="g">인용하는</span> 콘텐츠</h3>
+          <p class="feat__d">검색의 무게추가 'AI 답변'으로 옮겨가고 있습니다. 생성형 AI가 답변을 만들 때 우리 브랜드를 참고·인용하도록 신뢰 신호와 답변형 콘텐츠를 설계합니다.</p>
+          <ul class="feat__list">
+            <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>AI 답변 노출·인용(Citation) 설계</li>
+            <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>플랫폼별(ChatGPT·Gemini·Perplexity) 대응</li>
+            <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Owned Media·FAQ·엔티티 구조화</li>
+          </ul>
+        </div>
+        <div class="feat__visual">
+          <div class="mock"><div class="mock__glow"></div>
+            <div class="mock__top"><b>AI 답변 인용 모니터링</b><span>AEO</span></div>
+            <div class="mock__body">
+              <table class="tbl">
+                <thead><tr><th>플랫폼</th><th>인용</th><th>점유</th></tr></thead>
+                <tbody>
+                  <tr><td>ChatGPT</td><td class="up">▲ 인용됨</td><td><div class="bar" style="width:82%"></div></td></tr>
+                  <tr><td>Gemini</td><td class="up">▲ 인용됨</td><td><div class="bar" style="width:64%"></div></td></tr>
+                  <tr><td>Perplexity</td><td class="up">▲ 인용됨</td><td><div class="bar" style="width:71%"></div></td></tr>
+                  <tr><td>네이버 Cue:</td><td class="up">▲ 인용됨</td><td><div class="bar" style="width:55%"></div></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 홈페이지 -->
+      <div class="feat">
+        <div class="feat__text">
+          <p class="feat__num">03 — WEBSITE</p>
+          <h3 class="feat__t">반응형 홈페이지·<br />랜딩·쇼핑몰 제작</h3>
+          <p class="feat__d">기업·병원·브랜드 사이트부터 랜딩페이지, 쇼핑몰, CMS·관리자까지. 디자인·퍼블리싱·개발을 한 팀이 맡아 톤과 성능이 흔들리지 않습니다.</p>
+          <ul class="feat__list">
+            <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>반응형·적응형 / 다국어 사이트</li>
+            <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>CMS·관리자·쇼핑몰 구축</li>
+            <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>홈페이지 리뉴얼 & 유지보수</li>
+          </ul>
+        </div>
+        <div class="feat__visual">
+          <div class="mock"><div class="mock__glow"></div>
+            <div class="mock__top"><b>brand.co.kr</b><span>WEB</span></div>
+            <div class="mock__body" style="display:grid;gap:10px">
+              <div style="height:96px;border-radius:10px;background:var(--grad-soft);border:1px solid var(--line-2)"></div>
+              <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px">
+                <div style="height:60px;border-radius:9px;background:var(--bg-soft)"></div>
+                <div style="height:60px;border-radius:9px;background:var(--bg-soft)"></div>
+                <div style="height:60px;border-radius:9px;background:var(--bg-soft)"></div>
+              </div>
+              <div style="height:14px;border-radius:6px;background:var(--bg-soft);width:70%"></div>
+              <div style="height:14px;border-radius:6px;background:var(--bg-soft);width:48%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 앱 -->
+      <div class="feat feat--rev">
+        <div class="feat__text">
+          <p class="feat__num">04 — APP</p>
+          <h3 class="feat__t">모바일 앱·<br />시스템 개발</h3>
+          <p class="feat__d">iOS·Android 네이티브부터 웹앱·하이브리드까지. 결제·예약·로그인 등 외부 연동과 백엔드·API, 보안(SSL)까지 안정적으로 구축합니다.</p>
+          <ul class="feat__list">
+            <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>iOS·Android·웹앱 / 하이브리드</li>
+            <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>API·결제·예약·외부 시스템 연동</li>
+            <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>백엔드 개발·성능·보안</li>
+          </ul>
+        </div>
+        <div class="feat__visual">
+          <div class="phone">
+            <div class="phone__scr">
+              <div class="phone__nav"><b>HAO App</b><span>brand mobile</span></div>
+              <div class="phone__cells">
+                <div class="phone__cell lg"></div>
+                <div class="phone__cell"></div>
+                <div class="phone__cell"></div>
+                <div class="phone__cell"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== DIFFERENTIATOR (dark) ===== -->
+    <section class="diff" id="approach">
+      <div class="sec">
+        <div class="sec__head">
+          <span class="eyebrow" style="color:var(--cyan)">WHY HAO</span>
+          <h2 class="sec__title">‘만들기’가 아니라<br /><span class="g">검색의 끝까지</span> 설계합니다</h2>
+          <p class="sec__lead">대부분은 AEO만, 혹은 제작만 합니다. 하오디자인은 SEO·AEO 구조를 처음부터 심은 홈페이지·앱을 만들어, 사람과 AI 양쪽에서 발견되게 합니다.</p>
+        </div>
+        <div class="diff__grid">
+          <div class="diff__points">
+            <div class="dpoint"><b><i>01</i> 제작 + 검색을 한 팀이</b><p>기획·디자인·개발·SEO·AEO가 따로 놀지 않습니다. 만들 때부터 검색 구조를 심어 출시 직후부터 노출됩니다.</p></div>
+            <div class="dpoint"><b><i>02</i> SEO와 AEO를 동시에</b><p>사람의 검색(상위노출)과 AI의 답변(인용)을 한 번에 설계 — 단일 채널에 의존하지 않습니다.</p></div>
+            <div class="dpoint"><b><i>03</i> 노출 → 유입 → 전환까지</b><p>단순 노출이 아니라 자사 홈페이지 유입·전환으로 이어지는 흐름을 함께 설계합니다.</p></div>
+          </div>
+          <div class="netcard">
+            <div class="netcard__top"><b>AI 인용 출처 네트워크</b><span>FANOUT MAP</span></div>
+            <svg class="net" viewBox="0 0 420 320" id="netGraph" aria-hidden="true"></svg>
+            <div class="kpis" style="margin-top:14px">
+              <div class="kpi" style="background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.12)"><b class="g">87%</b><span style="color:rgba(255,255,255,.6)">Visibility</span></div>
+              <div class="kpi" style="background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.12)"><b class="g">1.2위</b><span style="color:rgba(255,255,255,.6)">평균 순위</span></div>
+              <div class="kpi" style="background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.12)"><b class="g">x3.1</b><span style="color:rgba(255,255,255,.6)">전환 유입</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PORTFOLIO ===== -->
+    <section class="sec" id="work">
+      <div class="sec__head center">
+        <span class="eyebrow">PORTFOLIO</span>
+        <h2 class="sec__title">최근 제작 사례</h2>
+        <p class="sec__lead">하오디자인이 직접 기획·제작한 홈페이지·앱·검색 최적화 프로젝트입니다.</p>
+      </div>
+      <div class="tgrid" id="workGrid"></div>
+    </section>
+
+    <!-- ===== PROCESS ===== -->
+    <section class="sec" id="process" style="padding-top:0">
+      <div class="sec__head center">
+        <span class="eyebrow">HOW IT WORKS</span>
+        <h2 class="sec__title">제작은 이렇게 진행됩니다</h2>
+      </div>
+      <div class="proc">
+        <div class="pstep reveal"><div class="pstep__no">01</div><h3>상담·견적</h3><p>목표·기능·일정을 듣고 방향과 견적을 잡습니다.</p></div>
+        <div class="pstep reveal"><div class="pstep__no">02</div><h3>기획·설계</h3><p>정보구조·화면설계와 SEO·AEO 구조를 함께 잡습니다.</p></div>
+        <div class="pstep reveal"><div class="pstep__no">03</div><h3>디자인</h3><p>브랜드에 맞는 UI·인터랙션을 디자인합니다.</p></div>
+        <div class="pstep reveal"><div class="pstep__no">04</div><h3>개발·구축</h3><p>반응형 퍼블리싱·개발과 CMS를 구축합니다.</p></div>
+        <div class="pstep reveal"><div class="pstep__no">05</div><h3>런칭·운영</h3><p>검색 최적화 적용 후 오픈, 유지보수까지 함께합니다.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== TESTIMONIALS ===== -->
+    <section class="sec" id="reviews" style="padding-top:0">
+      <div class="sec__head center">
+        <span class="eyebrow">CLIENT VOICE</span>
+        <h2 class="sec__title">함께한 담당자들의 이야기</h2>
+      </div>
+      <div class="tgrid">
+        <div class="tcard reveal"><div class="tstars">★★★★★</div><p>“리뉴얼 후 검색 유입이 눈에 띄게 늘었어요. 만들 때부터 SEO를 같이 잡아주신 게 컸습니다.”</p><footer><span class="tcard__av">병</span><div><cite>○○병원</cite><small>홈페이지 · CMS</small></div></footer></div>
+        <div class="tcard reveal"><div class="tstars">★★★★★</div><p>“ChatGPT에 우리 브랜드가 인용되기 시작했어요. AEO가 뭔지 막막했는데 구조까지 잡아주셨습니다.”</p><footer><span class="tcard__av">뷰</span><div><cite>뷰티 브랜드</cite><small>AEO · 콘텐츠 설계</small></div></footer></div>
+        <div class="tcard reveal"><div class="tstars">★★★★★</div><p>“앱·홈페이지·검색까지 한 팀에서 끝나니 소통이 빨랐어요. 일정도 정확했습니다.”</p><footer><span class="tcard__av">커</span><div><cite>커머스 기업</cite><small>앱 · 쇼핑몰</small></div></footer></div>
+      </div>
+    </section>
+
+    <!-- ===== FAQ ===== -->
+    <section class="sec" id="faq" style="padding-top:0">
+      <div class="sec__head center">
+        <span class="eyebrow">FAQ</span>
+        <h2 class="sec__title">자주 묻는 질문</h2>
+      </div>
+      <div class="faq" id="faq">
+        <div class="qa"><button class="qa__q">SEO와 AEO는 무엇이 다른가요?</button><div class="qa__a"><div class="qa__a-in"><b>SEO</b>는 사람이 직접 검색했을 때 결과 상단에 노출되도록 하는 것이고, <b>AEO(Answer Engine Optimization)</b>는 ChatGPT·Gemini 같은 생성형 AI가 답변을 만들 때 우리 브랜드를 인용·추천하도록 하는 것입니다. 하오디자인은 둘을 따로가 아니라 제작 단계에서 함께 설계합니다.</div></div></div>
+        <div class="qa"><button class="qa__q">홈페이지만, 또는 앱만 의뢰해도 되나요?</button><div class="qa__a"><div class="qa__a-in">네. 홈페이지 제작·리뉴얼, 모바일 앱, 쇼핑몰, 검색 최적화(SEO·AEO)만 단독으로도 의뢰하실 수 있습니다. 필요한 범위만 말씀해 주시면 그에 맞춰 견적을 잡아드립니다.</div></div></div>
+        <div class="qa"><button class="qa__q">제작 기간과 비용은 어떻게 되나요?</button><div class="qa__a"><div class="qa__a-in">프로젝트 규모·기능·페이지 수에 따라 달라집니다. 일반적인 기업·브랜드 홈페이지는 4~8주가 기준이며, 상담 시 기능 목록을 함께 정리해 정확한 견적과 일정을 안내드립니다.</div></div></div>
+        <div class="qa"><button class="qa__q">이미 있는 홈페이지도 검색 최적화가 가능한가요?</button><div class="qa__a"><div class="qa__a-in">가능합니다. 기존 사이트를 진단해 기술 SEO·구조화 데이터·콘텐츠를 보완하고, AI 답변에 인용되도록 AEO 구조를 추가합니다. 리뉴얼 없이 최적화만 진행하는 것도 가능합니다.</div></div></div>
+        <div class="qa"><button class="qa__q">제작 후 운영·유지보수도 해주나요?</button><div class="qa__a"><div class="qa__a-in">네. 오픈 후 수정·보안·성능 점검과 검색 성과 모니터링까지 유지보수로 함께합니다. 월 단위 운영 또는 건별 수정 모두 가능합니다.</div></div></div>
+      </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section class="contact" id="contact">
+      <div class="sec">
+        <div class="cwrap">
+          <div class="cinfo">
+            <span class="eyebrow">START A PROJECT</span>
+            <h2 class="cinfo__title">검색되는 홈페이지,<br />지금 시작할까요?</h2>
+            <p class="cinfo__desc">간단한 내용만 남겨주세요. 담당자가 확인 후 빠르게 연락드립니다. 현재 홈페이지의 검색 노출 진단도 무료로 도와드립니다.</p>
+            <ul class="crows">
+              <li><span>TEL</span><a href="tel:16662027">1666-2027</a></li>
+              <li><span>MAIL</span><a href="mailto:sales@haodesign.co.kr">sales@haodesign.co.kr</a></li>
+              <li><span>TIME</span><div>평일 09:00 – 18:00</div></li>
+            </ul>
+          </div>
+          <form class="cform" id="quoteForm" novalidate>
+            <div class="cfield"><label>이름</label><input type="text" id="name" name="name" placeholder="이름" required /></div>
+            <div class="cfield"><label>연락처</label><input type="tel" id="phone" name="phone" placeholder="010-0000-0000" required /></div>
+            <div class="cfield cfield--full"><label>회사·브랜드명</label><input type="text" id="company" name="company" placeholder="회사 또는 브랜드명" /></div>
+            <div class="cfield cfield--full"><label>제작 종류</label>
+              <select id="type" name="type">
+                <option value="">선택해주세요</option>
+                <option>홈페이지 제작</option><option>홈페이지 리뉴얼</option><option>모바일 앱·시스템</option>
+                <option>SEO·AEO 검색 최적화</option><option>쇼핑몰·CMS</option><option>기타 문의</option>
+              </select>
+            </div>
+            <div class="cfield cfield--full"><label>문의 내용</label><textarea id="message" name="message" rows="4" placeholder="제작하려는 서비스, 참고 사이트, 일정·예산 등을 자유롭게 적어주세요."></textarea></div>
+            <button type="submit" class="btn btn--grad"><span>문의 보내기</span><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+            <p class="cnote" id="formNote" role="status"></p>
+          </form>
+        </div>
       </div>
     </section>
   </main>
 
   <footer class="footer">
-    <div class="footer__top">
-      <img src="assets/img/logo-white.png" alt="HAO DESIGN" class="footer__logo" />
-      <p>홈페이지·앱 제작 / AEO·SEO·GEO<br />찾게 만드는 홈페이지를 만듭니다</p>
-    </div>
-    <div class="footer__grid">
-      <div><h3>Contact</h3><a href="tel:16662027">1666-2027</a><a href="mailto:sales@haodesign.co.kr">sales@haodesign.co.kr</a><span>평일 09:00–18:00</span></div>
-      <div><h3>센터</h3><a href="../design/">디자인센터 ↗</a><a href="../studio/">스튜디오센터 ↗</a><a href="https://mkt.haodesign.co.kr">마케팅센터 ↗</a><a href="../voucher/">정부사업지원센터 ↗</a></div>
-      <div><h3>웹구축센터</h3><a href="#service">서비스</a><a href="#aeo">AEO·SEO</a><a href="#portfolio">포트폴리오</a><a href="column.html">칼럼</a><a href="qna.html">Q&amp;A</a></div>
-    </div>
-    <div class="footer__bottom">
-      <div class="footer__biz">
-        <p><b>주식회사 하오커뮤니케이션</b><span>대표이사 박창민</span><span>사업자등록번호 528-87-01037</span></p>
-        <p><span>주소 서울시 광진구 능동로49길 9, 2F</span><span>대표번호 1666-2027</span><span>E-mail sales@haodesign.co.kr</span></p>
+    <div class="footer__in">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <img src="assets/img/logo-white.png" alt="HAO DESIGN" />
+          <p>SEO·AEO 홈페이지·앱 제작 — 만드는 데서 끝나지 않고, 발견되게 만듭니다.</p>
+        </div>
+        <div class="footer__cols">
+          <div class="footer__col"><h4>Service</h4>
+            <a href="#service">홈페이지 제작</a><a href="#service">앱·시스템</a><a href="#service">SEO·AEO</a><a href="#work">포트폴리오</a></div>
+          <div class="footer__col"><h4>Center</h4>
+            <a href="../design/">디자인센터 ↗</a><a href="../studio/">스튜디오센터 ↗</a><a href="https://mkt.haodesign.co.kr">마케팅센터 ↗</a><a href="../voucher/">정부사업지원센터 ↗</a></div>
+          <div class="footer__col"><h4>Contact</h4>
+            <a href="tel:16662027">1666-2027</a><a href="mailto:sales@haodesign.co.kr">sales@haodesign.co.kr</a><span>평일 09:00–18:00</span></div>
+        </div>
       </div>
-      <span class="footer__copy">© <i id="year"></i> HAO DESIGN. 웹구축센터.</span>
+      <div class="footer__biz">
+        <b>주식회사 하오커뮤니케이션</b> &nbsp;·&nbsp; 대표이사 박창민 &nbsp;·&nbsp; 사업자등록번호 528-87-01037<br />
+        서울시 광진구 능동로49길 9, 2F &nbsp;·&nbsp; 1666-2027 &nbsp;·&nbsp; sales@haodesign.co.kr
+        <span class="footer__copy">© <i id="year"></i> HAO DESIGN. 웹구축센터.</span>
+      </div>
     </div>
   </footer>
+
+  <div class="fab">
+    <a class="fab__kakao" href="#contact" aria-label="카카오 상담"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.5 3 2 6.6 2 11c0 2.8 1.9 5.3 4.7 6.7-.2.7-.7 2.6-.8 3-.1.5.2.5.4.4.2-.1 2.7-1.8 3.8-2.6.6.1 1.3.1 1.9.1 5.5 0 10-3.6 10-8s-4.5-8-10-8z"/></svg></a>
+    <a class="fab__call" href="tel:16662027" aria-label="전화"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24c1.1.37 2.3.57 3.6.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.3.2 2.5.57 3.6a1 1 0 0 1-.25 1z"/></svg></a>
+  </div>
 
   <script>
   (function () {
     var $ = function (s, c) { return (c || document).querySelector(s); };
     var $$ = function (s, c) { return [].slice.call((c || document).querySelectorAll(s)); };
     var y = $('#year'); if (y) y.textContent = new Date().getFullYear();
-    var hdr = $('#header');
-    addEventListener('scroll', function () { hdr.classList.toggle('is-stuck', window.scrollY > 24); }, { passive: true });
-    hdr.classList.toggle('is-stuck', window.scrollY > 24);
+
+    /* header + progress */
+    var hdr = $('#header'), prog = $('#progress');
+    function onScroll(){ hdr.classList.toggle('is-stuck', scrollY > 24);
+      var h = document.documentElement; prog.style.width = (h.scrollTop/(h.scrollHeight-h.clientHeight||1)*100)+'%'; }
+    addEventListener('scroll', onScroll, { passive:true }); onScroll();
+
+    /* burger */
     var burger = $('#burger'), nav = $('#nav');
-    burger.addEventListener('click', function () { nav.classList.toggle('is-open'); document.body.classList.toggle('menu-open'); });
-    $$('#nav a').forEach(function (a) { a.addEventListener('click', function () { nav.classList.remove('is-open'); document.body.classList.remove('menu-open'); }); });
+    burger.addEventListener('click', function(){ burger.classList.toggle('is-open'); nav.classList.toggle('is-open'); document.body.classList.toggle('menu-open'); });
+    $$('#nav a').forEach(function(a){ a.addEventListener('click', function(){ burger.classList.remove('is-open'); nav.classList.remove('is-open'); document.body.classList.remove('menu-open'); }); });
 
-    /* 해시태그 마퀴 */
-    var tags = ['홈페이지제작','반응형홈페이지','모바일앱','AEO','SEO','GEO','구조화데이터','CMS개발','홈페이지리뉴얼','쇼핑몰','API연동','UI/UX','병원홈페이지','기업홈페이지','랜딩페이지','챗봇·AI','성능최적화','웹접근성'];
-    var html = tags.map(function (t) { return '<span>' + t + '</span>'; }).join('');
-    $('#htagTrack').innerHTML = html + html;
+    /* trust marquee */
+    var P = [46,48,50,52,54,56,58,68,70,72,74,76,78,80,89,91,93,95,97,99].map(function(n){ return 'assets/partners/p'+n+'.png'; });
+    var set = P.map(function(s){ return '<span class="plogo"><img src="'+s+'" alt="파트너" decoding="async" /></span>'; }).join('');
+    $('#trustTrack').innerHTML = set + set;
 
-    /* 포트폴리오 */
-    var works = [
-      { t: '○○병원 반응형 홈페이지', c: '홈페이지 · CMS · UI/UX', img: 'assets/img/big_slide_02.jpg', badge: 'NEW' },
-      { t: '브랜드 글로벌 사이트', c: '반응형 · 다국어 · 인터랙티브', img: 'assets/img/big_slide_03.jpg', badge: '' },
-      { t: '쇼핑몰 구축 · 리뉴얼', c: '이커머스 · UI/UX · 유지보수', img: 'assets/img/big_slide_04.jpg', badge: '' },
-      { t: '기업 모바일 앱', c: '앱 개발 · API 연동 · 디자인', img: 'assets/img/big_slide_06.jpg', badge: '' },
-      { t: '랜딩페이지 · 영업DB', c: '랜딩 · CRO · 자동화', img: 'assets/img/main_07.png', badge: '' },
-      { t: 'AEO·SEO 리뉴얼 프로젝트', c: 'SEO · GEO · 구조화데이터', img: 'assets/img/main_09.png', badge: 'NEW' }
+    /* hero chart (animated line) */
+    function buildChart(svg, pts, stroke, fillId){
+      var ns='http://www.w3.org/2000/svg';
+      var poly=document.createElementNS(ns,'polyline');
+      poly.setAttribute('fill','none'); poly.setAttribute('stroke',stroke); poly.setAttribute('stroke-width','3');
+      poly.setAttribute('stroke-linejoin','round'); poly.setAttribute('stroke-linecap','round');
+      poly.setAttribute('points', pts);
+      svg.appendChild(poly);
+      var len=poly.getTotalLength?poly.getTotalLength():1000;
+      poly.style.strokeDasharray=len; poly.style.strokeDashoffset=len;
+      poly.style.transition='stroke-dashoffset 1.8s cubic-bezier(.16,1,.3,1)';
+      return poly;
+    }
+    var hc=$('#heroChart');
+    if(hc){
+      // area fill
+      var ns='http://www.w3.org/2000/svg';
+      var area=document.createElementNS(ns,'polygon');
+      area.setAttribute('points','0,150 80,135 160,108 240,118 320,72 400,52 520,20 520,170 0,170');
+      area.setAttribute('fill','rgba(80,65,255,.08)');
+      hc.appendChild(area);
+      var p1=buildChart(hc,'0,150 80,140 160,120 240,128 320,100 400,86 520,58','#0a8bff');
+      var p2=buildChart(hc,'0,158 80,150 160,132 240,140 320,92 400,66 520,24','#5041ff');
+      var fired=false;
+      var io1=new IntersectionObserver(function(es){es.forEach(function(e){ if(e.isIntersecting&&!fired){fired=true; p1.style.strokeDashoffset=0; setTimeout(function(){p2.style.strokeDashoffset=0;},250);} });},{threshold:.3});
+      io1.observe(hc);
+    }
+
+    /* network graph (AEO fanout) */
+    var net=$('#netGraph');
+    if(net){
+      var ns2='http://www.w3.org/2000/svg';
+      var center={x:210,y:160};
+      var nodes=[{x:210,y:160,r:26,c:'url(#gb)',label:1},
+        {x:80,y:60,r:13},{x:120,y:250,r:11},{x:330,y:70,r:14},{x:360,y:210,r:12},
+        {x:60,y:170,r:10},{x:230,y:40,r:10},{x:300,y:280,r:11},{x:160,y:90,r:8},{x:380,y:130,r:9}];
+      nodes.slice(1).forEach(function(n){
+        var l=document.createElementNS(ns2,'line');
+        l.setAttribute('x1',center.x);l.setAttribute('y1',center.y);l.setAttribute('x2',n.x);l.setAttribute('y2',n.y);
+        l.setAttribute('stroke','rgba(0,231,196,.35)');l.setAttribute('stroke-width','1.2');
+        net.appendChild(l);
+      });
+      nodes.forEach(function(n,i){
+        var c=document.createElementNS(ns2,'circle');
+        c.setAttribute('cx',n.x);c.setAttribute('cy',n.y);c.setAttribute('r',n.r||9);
+        c.setAttribute('fill', n.c || (i%2?'rgba(10,139,255,.85)':'rgba(0,231,196,.85)'));
+        c.style.transformOrigin=n.x+'px '+n.y+'px';
+        c.style.animation='pulse '+(2.5+i*.2)+'s ease-in-out '+(i*.15)+'s infinite';
+        net.appendChild(c);
+      });
+      if(!document.getElementById('netKf')){var st=document.createElement('style');st.id='netKf';
+        st.textContent='@keyframes pulse{0%,100%{opacity:.85;transform:scale(1)}50%{opacity:.5;transform:scale(.86)}}';
+        document.head.appendChild(st);}
+    }
+
+    /* portfolio */
+    var works=[
+      {t:'○○병원 반응형 홈페이지',c:'홈페이지 · CMS · SEO',img:'assets/img/big_slide_02.jpg'},
+      {t:'브랜드 글로벌 사이트',c:'반응형 · 다국어 · 인터랙티브',img:'assets/img/big_slide_03.jpg'},
+      {t:'쇼핑몰 구축·리뉴얼',c:'이커머스 · UI/UX · 유지보수',img:'assets/img/big_slide_04.jpg'},
+      {t:'기업 모바일 앱',c:'앱 개발 · API 연동',img:'assets/img/big_slide_06.jpg'},
+      {t:'랜딩페이지·영업DB',c:'랜딩 · CRO · 자동화',img:'assets/img/main_07.png'},
+      {t:'AEO·SEO 리뉴얼',c:'SEO · AEO · 구조화데이터',img:'assets/img/main_09.png'}
     ];
-    $('#galleryBoard').innerHTML = works.map(function (w) {
-      return '<article class="gcard"><div class="gcard__thumb"><img src="' + w.img + '" alt="" loading="lazy" />' +
-        (w.badge ? '<span class="gcard__badge">' + w.badge + '</span>' : '') + '</div>' +
-        '<div class="gcard__body"><h3>' + w.t + '</h3><p>' + w.c + '</p></div></article>';
+    $('#workGrid').innerHTML = works.map(function(w){
+      return '<article class="tcard reveal" style="padding:0;overflow:hidden">'+
+        '<div style="aspect-ratio:16/10;overflow:hidden;background:var(--bg-soft)"><img src="'+w.img+'" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover" /></div>'+
+        '<div style="padding:20px 22px"><h3 style="font-size:1.06rem;font-weight:800;letter-spacing:-.02em">'+w.t+'</h3>'+
+        '<p style="margin-top:6px;color:var(--muted);font-size:.86rem">'+w.c+'</p></div></article>';
     }).join('');
 
-    var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (!e.isIntersecting) return;
-      e.target.classList.add('is-in');
-      if (e.target.id === 'timeline') { var f = $('#timelineFill'); if (f) { f.style.width = '100%'; f.style.height = '100%'; } }
-      io.unobserve(e.target); }); }, { threshold: .15 });
-    $$('.reveal, #timeline').forEach(function (el) { io.observe(el); });
-    var form = $('#quoteForm');
-    if (form) form.addEventListener('submit', function (e) { e.preventDefault(); var note = $('#formNote');
-      if (!form.name.value.trim() || !form.phone.value.trim()) { note.textContent = '이름과 연락처를 입력해주세요.'; return; }
-      note.textContent = '문의가 접수되었습니다. 빠르게 연락드리겠습니다. (데모)'; form.reset(); });
+    /* FAQ accordion */
+    $$('#faq .qa__q').forEach(function(q){
+      q.addEventListener('click', function(){
+        var qa=q.parentElement, a=q.nextElementSibling, open=qa.classList.contains('is-open');
+        $$('#faq .qa').forEach(function(x){ x.classList.remove('is-open'); x.querySelector('.qa__a').style.maxHeight=null; });
+        if(!open){ qa.classList.add('is-open'); a.style.maxHeight=a.scrollHeight+'px'; }
+      });
+    });
+
+    /* reveal */
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('is-in'); io.unobserve(e.target); } });},{threshold:.12});
+    $$('.reveal').forEach(function(el){ io.observe(el); });
+
+    /* form */
+    var form=$('#quoteForm');
+    if(form) form.addEventListener('submit', function(e){ e.preventDefault(); var note=$('#formNote');
+      if(!form.name.value.trim()||!form.phone.value.trim()){ note.textContent='이름과 연락처를 입력해주세요.'; return; }
+      note.textContent='문의가 접수되었습니다. 빠르게 연락드리겠습니다. (데모)'; form.reset(); });
   })();
   </script>
 </body>
