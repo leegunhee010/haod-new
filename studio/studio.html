@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://cdn.jsdelivr.net" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.css" />
   <link rel="stylesheet" href="css/style.css?v=4" />
-  <link rel="stylesheet" href="css/effector.css?v=13" />
+  <link rel="stylesheet" href="css/effector.css?v=14" />
 </head>
 <body>
   <div class="progress" id="progress" aria-hidden="true"></div>
@@ -48,6 +48,15 @@
         <p>하오스튜디오는 촬영·영상·디자인·AI 디렉션까지 한 팀이 함께 움직입니다. 고객이 눈으로 확인하고 피부로 느끼는 진정한 만족, 그 기준을 채우기 위해 잘하는 사람들이 모였습니다.</p>
         <p>잘하니까, 좋아하니까 — 그래서 HAO. 소통의 가치를 생각하며 브랜드의 한 컷을 끝까지 책임집니다.</p>
       </div>
+    </section>
+
+    <!-- STUDIO SPACE — 왼쪽으로 흐르는 공간 사진 갤러리 (assets/studio-space/s1~s8.jpg 교체 가능) -->
+    <section class="sgal" aria-label="하오 스튜디오 공간">
+      <div class="sgal__head reveal">
+        <p class="np-folio__eng">STUDIO SPACE</p>
+        <h2 class="np-folio__title">콘텐츠가 만들어지는 <b>하오 스튜디오의 공간</b></h2>
+      </div>
+      <div class="sgal__marquee"><div class="sgal__track" id="sgalTrack"></div></div>
     </section>
 
     <!-- STUDIO WORK BAND -->
@@ -133,6 +142,15 @@
     var burger = $('#burger'), nav = $('#nav');
     burger.addEventListener('click', function () { burger.classList.toggle('is-open'); nav.classList.toggle('is-open'); document.body.classList.toggle('menu-open'); });
     $$('#nav a').forEach(function (a) { a.addEventListener('click', function () { burger.classList.remove('is-open'); nav.classList.remove('is-open'); document.body.classList.remove('menu-open'); }); });
+
+    /* 스튜디오 공간 갤러리 — 왼쪽으로 흐름 (assets/studio-space/s1~s8.jpg) */
+    var sgalTrack = $('#sgalTrack');
+    if (sgalTrack) {
+      var SPACE = [];
+      for (var si = 1; si <= 8; si++) SPACE.push('assets/studio-space/s' + si + '.jpg');
+      var one = SPACE.map(function (s) { return '<figure class="sgal__item"><img src="' + s + '" alt="하오 스튜디오 공간" decoding="async" /></figure>'; }).join('');
+      sgalTrack.innerHTML = one + one;
+    }
 
     /* 스튜디오 워크 밴드 — 메인 노출 작품 8컷 + 라이트박스 */
     var WORKS = (window.HAO_WORKS || []).filter(function (w) { return w.main; }).slice(0, 8);

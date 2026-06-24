@@ -232,6 +232,20 @@ body.lb-open { overflow: hidden; }
 .sst-band { padding: clamp(20px,3vh,40px) 0 clamp(70px,10vh,120px); }
 .sst-statwrap { background: var(--sx-ink,#14130f); }
 
+/* STUDIO SPACE — 왼쪽으로 흐르는 공간 사진 갤러리 */
+.sgal { padding: clamp(20px,4vh,46px) 0 clamp(50px,8vh,90px); overflow: hidden; }
+.sgal__head { max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(20px,4vw,54px) clamp(28px,4vh,46px); }
+.sgal__marquee { overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 5%, #000 95%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0, #000 5%, #000 95%, transparent 100%); }
+.sgal__track { display: flex; gap: 20px; width: max-content; animation: sgalSlide 48s linear infinite; }
+.sgal__marquee:hover .sgal__track { animation-play-state: paused; }
+.sgal__item { flex: 0 0 auto; height: clamp(240px,30vw,380px); aspect-ratio: 3 / 4; margin: 0; border-radius: 16px; overflow: hidden; background: var(--bg-2); }
+.sgal__item img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s var(--ease); }
+.sgal__item:hover img { transform: scale(1.05); }
+@keyframes sgalSlide { from { transform: translateX(0); } to { transform: translateX(calc(-50% - 10px)); } }
+@media (prefers-reduced-motion: reduce) { .sgal__track { animation: none; } }
+
 /* ===================================================
    포트폴리오 필터 — 심플 텍스트 탭 (알약X)
 =================================================== */
