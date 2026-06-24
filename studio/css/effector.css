@@ -100,7 +100,7 @@
 .ef-stats { max-width: var(--maxw); margin: 0 auto; padding: clamp(40px,6vh,60px) clamp(20px,4vw,54px) clamp(80px,12vh,130px); display: grid; grid-template-columns: repeat(4,1fr); gap: 24px; }
 .ef-stat { text-align: center; border-left: 1px solid var(--line); padding: 0 14px; }
 .ef-stat:first-child { border-left: 0; }
-.ef-stat strong { display: block; font-size: clamp(2.2rem,4.4vw,3.4rem); font-weight: 800; letter-spacing: -.04em; color: var(--ink); line-height: 1; }
+.ef-stat strong { display: block; font-size: clamp(2.2rem,4.4vw,3.4rem); font-weight: 800; letter-spacing: -.04em; color: var(--accent); line-height: 1; }
 .ef-stat strong i { font-style: normal; color: var(--accent); }
 .ef-stat em { display: block; margin-top: 14px; font-style: normal; color: var(--muted); font-size: .9rem; font-weight: 600; }
 @media (max-width: 760px) { .ef-stats { grid-template-columns: repeat(2,1fr); gap: 36px 24px; } .ef-stat:nth-child(3) { border-left: 0; } }
