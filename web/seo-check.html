@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>무료 SEO 진단 | 웹구축센터 — 하오디자인</title>
+  <meta name="description" content="URL만 넣으면 웹사이트 SEO 점수를 100점 만점으로 무료 진단합니다. 타이틀·메타·H1·구조화 데이터·sitemap·robots·Open Graph 등 24개 항목을 분석해 개선 방향을 제안합니다. 하오디자인 웹구축센터." />
+  <meta property="og:title" content="무료 SEO 진단 — 하오디자인 웹구축센터" />
+  <meta property="og:description" content="URL만 넣으면 SEO 점수를 100점 만점으로 무료 진단. 검색되는 홈페이지의 시작." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Fragment+Mono&display=swap" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.css" />
+  <link rel="stylesheet" href="css/cs.css?v=10" />
+  <style>
+    .sct{max-width:900px;margin:0 auto;padding:130px clamp(18px,4vw,44px) 80px}
+    .sct__head{text-align:center;margin-bottom:38px}
+    .sct__title{margin-top:16px;font-size:clamp(2.1rem,5vw,3.4rem);font-weight:800;letter-spacing:-.035em;line-height:1.12}
+    .sct__title .g{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+    .sct__lead{margin-top:16px;color:var(--muted);font-size:1.06rem;line-height:1.7}
+    /* 입력 */
+    .sform{display:flex;gap:10px;max-width:640px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:16px;padding:8px;box-shadow:var(--shadow)}
+    .sform__url{flex:1;border:0;background:none;font:inherit;font-size:1.04rem;padding:14px 16px;color:var(--ink);outline:none}
+    .sform__url::placeholder{color:var(--faint)}
+    .sform__btn{flex:none;border:0;border-radius:11px;background:var(--grad);color:#fff;font-weight:800;font-size:1rem;padding:0 26px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:box-shadow .3s,transform .3s}
+    .sform__btn:hover{transform:translateY(-1px);box-shadow:0 14px 30px -14px rgba(232,56,23,.6)}
+    .sform__btn:disabled{opacity:.6;cursor:default;transform:none;box-shadow:none}
+    .snote{text-align:center;margin-top:14px;font-size:.86rem;color:var(--faint)}
+    .sex{text-align:center;margin-top:8px;font-size:.84rem;color:var(--muted)}
+    .sex a{color:var(--accent);font-weight:600;cursor:pointer}
+    /* 로딩 */
+    .sload{display:none;text-align:center;padding:60px 0}
+    .sload.on{display:block}
+    .sload__ring{width:64px;height:64px;margin:0 auto 20px;border:5px solid var(--line);border-top-color:var(--accent);border-radius:50%;animation:spin .9s linear infinite}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .sload p{color:var(--muted);font-weight:600}
+    .serr{display:none;margin:24px auto 0;max-width:640px;padding:18px 20px;border-radius:14px;background:#fff5f3;border:1px solid rgba(232,56,23,.25);color:#b3361b;font-size:.94rem;line-height:1.6}
+    .serr.on{display:block}
+    /* 결과 */
+    .sres{display:none;margin-top:50px}
+    .sres.on{display:block;animation:resIn .6s var(--ease) both}
+    @keyframes resIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+    .sscore{display:grid;grid-template-columns:auto 1fr;gap:clamp(26px,5vw,54px);align-items:center;
+      padding:clamp(26px,4vw,40px);border-radius:24px;border:1px solid var(--line);background:#fff;box-shadow:var(--shadow)}
+    .sdonut{position:relative;width:clamp(150px,20vw,200px);height:clamp(150px,20vw,200px);flex:none}
+    .sdonut svg{width:100%;height:100%;transform:rotate(-90deg)}
+    .sdonut circle{fill:none;stroke-width:13;stroke-linecap:round}
+    .sdonut .trk{stroke:var(--bg-soft)}
+    .sdonut .bar{stroke:url(#scgrad);stroke-dasharray:534;stroke-dashoffset:534;transition:stroke-dashoffset 1.4s var(--ease)}
+    .sdonut__num{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+    .sdonut__num b{font-size:clamp(2.6rem,5vw,3.6rem);font-weight:800;letter-spacing:-.04em;line-height:1}
+    .sdonut__num span{font-size:.8rem;color:var(--muted);font-weight:600}
+    .sgrade__tag{display:inline-flex;align-items:center;gap:8px;font-family:"Fragment Mono",monospace;font-size:.78rem;letter-spacing:.14em;color:var(--accent);font-weight:600;text-transform:uppercase}
+    .sgrade__t{margin-top:12px;font-size:clamp(1.5rem,3vw,2.1rem);font-weight:800;letter-spacing:-.03em}
+    .sgrade__d{margin-top:10px;color:var(--muted);line-height:1.7}
+    .sgrade__url{margin-top:12px;font-family:"Fragment Mono",monospace;font-size:.82rem;color:var(--faint);word-break:break-all}
+    /* 카테고리 바 */
+    .scats{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:22px}
+    .scat{padding:18px 20px;border:1px solid var(--line);border-radius:16px;background:#fff}
+    .scat__top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px}
+    .scat__top b{font-weight:700;font-size:.98rem}
+    .scat__top em{font-style:normal;font-family:"Fragment Mono",monospace;font-weight:700;color:var(--accent)}
+    .scat__bar{height:8px;border-radius:5px;background:var(--bg-soft);overflow:hidden}
+    .scat__bar i{display:block;height:100%;width:0;border-radius:5px;background:var(--grad);transition:width 1s var(--ease) .3s}
+    /* 체크리스트 */
+    .schk{margin-top:30px}
+    .schk__cat{margin-top:24px;font-size:.82rem;font-family:"Fragment Mono",monospace;letter-spacing:.12em;color:var(--muted);text-transform:uppercase;font-weight:600}
+    .sitem{display:flex;gap:14px;align-items:flex-start;padding:15px 18px;border:1px solid var(--line-2);border-radius:13px;margin-top:10px;background:#fff;
+      opacity:0;transform:translateY(10px)}
+    .sitem.in{opacity:1;transform:none;transition:opacity .5s var(--ease),transform .5s var(--ease)}
+    .sicon{flex:none;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-size:.9rem;font-weight:800;color:#fff;margin-top:1px}
+    .sicon--pass{background:#16b364}.sicon--warn{background:#f6a13a}.sicon--fail{background:#e83817}
+    .sitem__b{flex:1}
+    .sitem__t{font-weight:700;font-size:1rem;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+    .sitem__got{font-family:"Fragment Mono",monospace;font-size:.74rem;color:var(--muted);font-weight:500;background:var(--bg-soft);padding:2px 8px;border-radius:6px}
+    .sitem__d{margin-top:5px;font-size:.9rem;color:var(--muted);line-height:1.55}
+    .scta{margin-top:40px;text-align:center;padding:clamp(30px,5vw,46px);border-radius:24px;background:var(--grad);color:#fff}
+    .scta h3{font-size:clamp(1.4rem,3vw,2rem);font-weight:800;letter-spacing:-.03em}
+    .scta p{margin-top:10px;opacity:.92;line-height:1.6}
+    .scta a{display:inline-flex;align-items:center;gap:8px;margin-top:22px;background:#fff;color:var(--accent);font-weight:800;padding:13px 26px;border-radius:999px;transition:transform .3s}
+    .scta a:hover{transform:translateY(-2px)}
+    @media(max-width:680px){.sscore{grid-template-columns:1fr;text-align:center}.sdonut{margin:0 auto}.scats{grid-template-columns:1fr}.sgrade__tag,.sgrade__url{justify-content:center}}
+  </style>
+</head>
+<body>
+  <header class="header is-stuck" id="header">
+    <a href="index.html" class="brand"><img src="assets/img/logo.png" class="brand__logo" alt="하오디자인" /><b class="brand__sub">웹구축센터</b></a>
+    <nav class="nav" id="nav">
+      <a href="index.html#service">서비스</a>
+      <a href="seo-check.html" style="color:var(--accent)">SEO 진단</a>
+      <a href="index.html#work">포트폴리오</a>
+      <a href="column.html">칼럼</a>
+      <a href="qna.html">Q&amp;A</a>
+      <span class="nav__div" aria-hidden="true"></span>
+      <a class="nav__center" href="../design/">디자인센터 <i>↗</i></a>
+      <a class="nav__center" href="../studio/">스튜디오센터 <i>↗</i></a>
+      <a class="nav__center" href="https://mkt.haodesign.co.kr">마케팅센터 <i>↗</i></a>
+      <a class="nav__center" href="../voucher/">정부사업지원센터 <i>↗</i></a>
+    </nav>
+    <a href="index.html#contact" class="header__cta">제작 문의 <span>→</span></a>
+    <button class="burger" id="burger" aria-label="메뉴"><span></span><span></span><span></span></button>
+  </header>
+
+  <svg width="0" height="0" style="position:absolute"><defs>
+    <linearGradient id="scgrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff8a3d"/><stop offset="1" stop-color="#e83817"/></linearGradient>
+  </defs></svg>
+
+  <main class="sct">
+    <div class="sct__head">
+      <span class="eyebrow">FREE SEO CHECKER</span>
+      <h1 class="sct__title">우리 홈페이지,<br /><span class="g">검색에 잘 잡힐까?</span></h1>
+      <p class="sct__lead">URL만 넣으면 SEO 상태를 <b>100점 만점</b>으로 진단합니다.<br />타이틀·메타·구조화 데이터·sitemap·Open Graph 등 24개 항목을 분석해 개선 방향을 알려드려요.</p>
+    </div>
+
+    <form class="sform" id="sform">
+      <input class="sform__url" id="surl" type="text" placeholder="진단할 주소 입력 (예: haodesign.co.kr)" autocomplete="off" />
+      <button class="sform__btn" id="sbtn" type="submit"><span>분석하기</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+    </form>
+    <p class="snote">입력한 URL의 공개 페이지를 읽어 분석합니다 · 약 5~15초 소요</p>
+    <p class="sex">예시로 진단해보기: <a data-ex="https://www.naver.com">naver.com</a> · <a data-ex="https://haodesign.co.kr">haodesign.co.kr</a></p>
+
+    <div class="sload" id="sload"><div class="sload__ring"></div><p id="sloadtxt">페이지를 불러오는 중…</p></div>
+    <div class="serr" id="serr"></div>
+
+    <section class="sres" id="sres">
+      <div class="sscore">
+        <div class="sdonut">
+          <svg viewBox="0 0 200 200"><circle class="trk" cx="100" cy="100" r="85"/><circle class="bar" id="sbar" cx="100" cy="100" r="85"/></svg>
+          <div class="sdonut__num"><b id="snum">0</b><span>/ 100점</span></div>
+        </div>
+        <div class="sgrade">
+          <span class="sgrade__tag" id="sgtag">SEO SCORE</span>
+          <div class="sgrade__t" id="sgt">분석 결과</div>
+          <p class="sgrade__d" id="sgd"></p>
+          <p class="sgrade__url" id="sgurl"></p>
+        </div>
+      </div>
+      <div class="scats" id="scats"></div>
+      <div class="schk" id="schk"></div>
+      <div class="scta">
+        <h3>점수를 올리고 싶으세요?</h3>
+        <p>하오디자인이 SEO·AEO 구조를 처음부터 심은 홈페이지를 만들어 드립니다.<br />사람의 검색과 AI의 답변, 양쪽에서 발견되게.</p>
+        <a href="index.html#contact">무료 상담·제작 문의 <span>→</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__in">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <img src="assets/img/logo-white.png" alt="HAO DESIGN" />
+          <p>SEO·AEO 홈페이지·앱 제작 — 만드는 데서 끝나지 않고, 발견되게 만듭니다.</p>
+        </div>
+        <div class="footer__cols">
+          <div class="footer__col"><h4>Service</h4><a href="index.html#service">홈페이지 제작</a><a href="index.html#service">앱·시스템</a><a href="seo-check.html">SEO 진단</a></div>
+          <div class="footer__col"><h4>Center</h4><a href="../design/">디자인센터 ↗</a><a href="../studio/">스튜디오센터 ↗</a><a href="../voucher/">정부사업지원센터 ↗</a></div>
+          <div class="footer__col"><h4>Contact</h4><a href="tel:16662027">1666-2027</a><a href="mailto:sales@haodesign.co.kr">sales@haodesign.co.kr</a></div>
+        </div>
+      </div>
+      <div class="footer__biz"><b>주식회사 하오커뮤니케이션</b> · 대표이사 박창민 · 사업자등록번호 528-87-01037<br />서울시 광진구 능동로49길 9, 2F · 1666-2027 · sales@haodesign.co.kr<span class="footer__copy">© <i id="year"></i> HAO DESIGN. 웹구축센터.</span></div>
+    </div>
+  </footer>
+
+  <script>
+  (function () {
+    var $ = function (s) { return document.querySelector(s); };
+    var y = $('#year'); if (y) y.textContent = new Date().getFullYear();
+    var burger = $('#burger'), nav = $('#nav');
+    burger.addEventListener('click', function () { burger.classList.toggle('is-open'); nav.classList.toggle('is-open'); document.body.classList.toggle('menu-open'); });
+
+    var form = $('#sform'), urlIn = $('#surl'), btn = $('#sbtn'),
+        load = $('#sload'), loadTxt = $('#sloadtxt'), err = $('#serr'), res = $('#sres');
+    document.querySelectorAll('[data-ex]').forEach(function (a) {
+      a.addEventListener('click', function () { urlIn.value = a.dataset.ex; form.requestSubmit ? form.requestSubmit() : run(); });
+    });
+
+    function normUrl(v) {
+      v = v.trim(); if (!v) return '';
+      if (!/^https?:\/\//i.test(v)) v = 'https://' + v;
+      return v;
+    }
+    // 프록시: jina reader(메인) → allorigins(폴백)
+    async function viaJina(u) {
+      var r = await fetch('https://r.jina.ai/' + u, { headers: { 'X-Return-Format': 'html', 'Accept': 'text/html' } });
+      if (!r.ok) throw new Error('jina'); var b = await r.text();
+      if (!b || b.length < 30) throw new Error('jina-empty'); return b;
+    }
+    async function viaAllOrigins(u) {
+      var r = await fetch('https://api.allorigins.win/get?url=' + encodeURIComponent(u));
+      if (!r.ok) throw new Error('ao'); var j = await r.json();
+      if (!j.contents) throw new Error('ao-empty'); return j.contents;
+    }
+    async function getHTML(u) { try { return await viaJina(u); } catch (e) { return await viaAllOrigins(u); } }
+    async function checkRes(u, re) {
+      try { var b = await viaJina(u); } catch (e) { try { b = await viaAllOrigins(u); } catch (e2) { return null; } }
+      return re.test(String(b).toLowerCase());
+    }
+
+    form.addEventListener('submit', function (e) { e.preventDefault(); run(); });
+
+    async function run() {
+      var target = normUrl(urlIn.value);
+      if (!target) { urlIn.focus(); return; }
+      res.classList.remove('on'); err.classList.remove('on'); load.classList.add('on');
+      btn.disabled = true; loadTxt.textContent = '페이지를 불러오는 중…';
+      try {
+        var body = await getHTML(target);
+        if (!body || body.length < 50) throw new Error('빈 응답');
+        var doc = new DOMParser().parseFromString(body, 'text/html');
+        var origin = (new URL(target)).origin;
+
+        loadTxt.textContent = 'sitemap·robots 확인 중…';
+        var pair = await Promise.all([
+          checkRes(origin + '/sitemap.xml', /<urlset|<sitemapindex|<url>|sitemap/i),
+          checkRes(origin + '/robots.txt', /user-agent|disallow|sitemap/i)
+        ]);
+
+        var checks = analyze(doc, body, target, pair[0], pair[1]);
+        render(checks, target);
+      } catch (ex) {
+        load.classList.remove('on');
+        err.textContent = '페이지를 불러오지 못했습니다. 주소가 정확한지 확인해주세요. (일부 사이트는 외부 접근을 차단할 수 있어요.)';
+        err.classList.add('on');
+      } finally { btn.disabled = false; }
+    }
+
+    function analyze(doc, raw, url, sm, rb) {
+      var C = [], rawL = raw.toLowerCase();
+      function add(cat, name, weight, status, got, desc) { C.push({ cat: cat, name: name, weight: weight, status: status, got: got, desc: desc }); }
+      var pass = 'pass', warn = 'warn', fail = 'fail';
+
+      // ===== 콘텐츠 SEO (44) =====
+      var title = (doc.querySelector('title') || {}).textContent || '';
+      title = title.trim();
+      add('콘텐츠 SEO', '타이틀 태그', 8, title ? pass : fail, title ? '있음' : '없음', '검색결과에 표시되는 제목. 핵심 키워드 포함 필수');
+      add('콘텐츠 SEO', '타이틀 길이', 5, !title ? fail : (title.length >= 10 && title.length <= 60 ? pass : warn), title.length + '자', '한글 기준 25~40자(영문 50~60자) 권장');
+      var desc = (doc.querySelector('meta[name="description"]') || {}).content || '';
+      desc = desc.trim();
+      add('콘텐츠 SEO', '메타 디스크립션', 8, desc ? pass : fail, desc ? '있음' : '없음', '검색결과 설명문. 클릭률(CTR)에 직접 영향');
+      add('콘텐츠 SEO', '디스크립션 길이', 5, !desc ? fail : (desc.length >= 50 && desc.length <= 160 ? pass : warn), desc.length + '자', '70~155자 권장. 너무 짧거나 길면 잘림');
+      var h1 = doc.querySelectorAll('h1');
+      add('콘텐츠 SEO', 'H1 태그', 8, h1.length ? pass : fail, h1.length + '개', '페이지 대표 제목. 검색엔진의 주제 파악에 핵심');
+      add('콘텐츠 SEO', 'H1 단일 사용', 4, h1.length === 1 ? pass : (h1.length === 0 ? fail : warn), h1.length + '개', 'H1은 페이지당 1개가 이상적');
+      var h2 = doc.querySelectorAll('h2');
+      add('콘텐츠 SEO', 'H2 구조화', 3, h2.length ? pass : warn, h2.length + '개', '소제목으로 콘텐츠 구조를 명확히');
+      var imgs = doc.querySelectorAll('img'), withAlt = 0;
+      imgs.forEach(function (im) { if ((im.getAttribute('alt') || '').trim()) withAlt++; });
+      var altPct = imgs.length ? Math.round(withAlt / imgs.length * 100) : 100;
+      add('콘텐츠 SEO', '이미지 ALT 속성', 3, !imgs.length ? warn : (altPct >= 80 ? pass : (altPct >= 40 ? warn : fail)), imgs.length ? altPct + '% (' + withAlt + '/' + imgs.length + ')' : '이미지 없음', '이미지 검색 노출·접근성 필수');
+
+      // ===== 기술 SEO (24) =====
+      add('기술 SEO', 'HTTPS 보안', 6, /^https:/i.test(url) ? pass : fail, /^https:/i.test(url) ? '적용' : '미적용', 'SSL 보안. 검색 랭킹 가산점·신뢰 지표');
+      add('기술 SEO', 'Viewport 설정', 5, doc.querySelector('meta[name="viewport"]') ? pass : fail, doc.querySelector('meta[name="viewport"]') ? '있음' : '없음', '모바일 대응 필수. 모바일 우선 색인 대비');
+      var canon = doc.querySelector('link[rel="canonical"]');
+      add('기술 SEO', 'Canonical 태그', 5, canon ? pass : warn, canon ? '있음' : '없음', '중복 콘텐츠 방지. 대표 URL 지정');
+      var lang = (doc.documentElement.getAttribute('lang') || '').trim() || (/<html[^>]+lang=/i.test(raw) ? 'set' : '');
+      add('기술 SEO', '언어(lang) 속성', 4, lang ? pass : warn, lang ? '설정됨' : '없음', 'html lang 속성으로 언어 명시');
+      add('기술 SEO', '문자셋(charset)', 2, doc.querySelector('meta[charset]') || /charset=/i.test(rawL) ? pass : warn, '확인', 'UTF-8 등 문자 인코딩 선언');
+
+      // ===== 검색엔진 친화 (24) =====
+      var ogi = doc.querySelector('meta[property="og:image"]'), ogt = doc.querySelector('meta[property="og:title"]'), ogd = doc.querySelector('meta[property="og:description"]');
+      add('검색엔진 친화', 'Open Graph 이미지', 4, ogi ? pass : fail, ogi ? '있음' : '없음', 'SNS·검색 공유 시 썸네일 표시');
+      add('검색엔진 친화', 'Open Graph 제목', 3, ogt ? pass : warn, ogt ? '있음' : '없음', 'og:title — 공유 시 제목');
+      add('검색엔진 친화', 'Open Graph 설명', 3, ogd ? pass : warn, ogd ? '있음' : '없음', 'og:description — 공유 시 설명');
+      var ld = doc.querySelector('script[type="application/ld+json"]');
+      add('검색엔진 친화', '구조화 데이터(Schema)', 6, ld ? pass : warn, ld ? '있음' : '없음', 'JSON-LD. 리치 결과·AI 검색 이해도 향상');
+      add('검색엔진 친화', 'sitemap.xml', 6, sm === null ? warn : (sm ? pass : fail), sm === null ? '확인불가' : (sm ? '있음' : '없음'), '크롤러의 사이트 구조 안내');
+      add('검색엔진 친화', 'robots.txt', 4, rb === null ? warn : (rb ? pass : fail), rb === null ? '확인불가' : (rb ? '있음' : '없음'), '크롤러 접근 규칙. 크롤링 효율');
+
+      // ===== 속도·품질 (8) =====
+      var lazy = doc.querySelectorAll('img[loading="lazy"]').length;
+      add('속도·품질', '이미지 지연 로딩', 5, lazy ? pass : warn, lazy + '개', 'loading=lazy로 초기 로딩 속도 향상');
+      var webp = /\.webp/i.test(raw);
+      add('속도·품질', 'WebP 이미지', 3, webp ? pass : warn, webp ? '사용' : '미사용', '차세대 포맷으로 용량·속도 개선');
+
+      return C;
+    }
+
+    function render(checks, url) {
+      var total = 0, max = 0, cats = {};
+      checks.forEach(function (c) {
+        var f = c.status === 'pass' ? 1 : (c.status === 'warn' ? 0.5 : 0);
+        total += c.weight * f; max += c.weight;
+        if (!cats[c.cat]) cats[c.cat] = { got: 0, max: 0 };
+        cats[c.cat].got += c.weight * f; cats[c.cat].max += c.weight;
+      });
+      var score = Math.round(total / max * 100);
+
+      var grade = score >= 90 ? ['우수', '검색엔진에 최적화가 잘 되어 있어요.'] :
+                  score >= 75 ? ['양호', '기본기는 탄탄해요. 몇 가지만 보완하면 완벽합니다.'] :
+                  score >= 60 ? ['보통', '핵심은 갖췄지만 개선 여지가 많습니다.'] :
+                  score >= 40 ? ['개선 필요', '검색 노출에 불리한 항목이 많아요. 점검이 필요합니다.'] :
+                                ['위험', '검색엔진이 사이트를 제대로 읽기 어려운 상태입니다.'];
+      $('#sgt').textContent = '"' + grade[0] + '"';
+      $('#sgd').textContent = grade[1];
+      $('#sgurl').textContent = url;
+
+      load.classList.remove('on'); res.classList.add('on');
+      // 도넛
+      var bar = $('#sbar'), circ = 534;
+      requestAnimationFrame(function () { bar.style.strokeDashoffset = circ - circ * score / 100; });
+      // 숫자 카운트업
+      (function () { var t0 = null; function tk(t) { if (!t0) t0 = t; var p = Math.min((t - t0) / 1400, 1), k = 1 - Math.pow(1 - p, 3); $('#snum').textContent = Math.round(score * k); if (p < 1) requestAnimationFrame(tk); } requestAnimationFrame(tk); setTimeout(function () { $('#snum').textContent = score; }, 1600); })();
+
+      // 카테고리 바
+      var order = ['콘텐츠 SEO', '기술 SEO', '검색엔진 친화', '속도·품질'];
+      $('#scats').innerHTML = order.map(function (k) {
+        var c = cats[k]; if (!c) return '';
+        var pc = Math.round(c.got / c.max * 100);
+        return '<div class="scat"><div class="scat__top"><b>' + k + '</b><em>' + Math.round(c.got) + '/' + c.max + '</em></div><div class="scat__bar"><i data-w="' + pc + '"></i></div></div>';
+      }).join('');
+      requestAnimationFrame(function () { document.querySelectorAll('.scat__bar i').forEach(function (el) { el.style.width = el.dataset.w + '%'; }); });
+
+      // 체크리스트
+      var html = '', cur = '';
+      var ic = { pass: '✓', warn: '!', fail: '✕' };
+      order.forEach(function (k) {
+        html += '<div class="schk__cat">' + k + '</div>';
+        checks.filter(function (c) { return c.cat === k; }).forEach(function (c) {
+          html += '<div class="sitem"><span class="sicon sicon--' + c.status + '">' + ic[c.status] + '</span>' +
+            '<div class="sitem__b"><div class="sitem__t">' + c.name + ' <span class="sitem__got">' + c.got + '</span></div>' +
+            '<div class="sitem__d">' + c.desc + '</div></div></div>';
+        });
+      });
+      $('#schk').innerHTML = html;
+      var items = document.querySelectorAll('.sitem');
+      items.forEach(function (el, i) { setTimeout(function () { el.classList.add('in'); }, 120 + i * 45); });
+
+      res.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  })();
+  </script>
+</body>
+</html>
