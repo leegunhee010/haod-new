@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://cdn.jsdelivr.net" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Fragment+Mono&display=swap" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.css" />
-  <link rel="stylesheet" href="css/cs.css?v=10" />
+  <link rel="stylesheet" href="css/cs.css?v=11" />
 </head>
 <body>
   <div class="progress" id="progress" aria-hidden="true"></div>
@@ -70,6 +70,57 @@
     <section class="trust">
       <p class="trust__lead">이미 많은 브랜드가 <b>하오디자인</b>과 함께 홈페이지·앱을 만들었습니다</p>
       <div class="marquee"><div class="marquee__track" id="trustTrack"></div></div>
+    </section>
+
+    <!-- ===== CAROUSEL (검색→AI 통합 전략) ===== -->
+    <section class="gcar" id="strategy">
+      <span class="gcar__glow" aria-hidden="true"></span>
+      <div class="gcar__in">
+        <div class="gcar__head">
+          <div>
+            <span class="eyebrow" style="color:var(--accent-2)">SEO → GEO · AEO</span>
+            <h2 class="gcar__title">검색의 시대에서,<br />AI의 시대로 <span class="g">SEO를 넘어 GEO·AEO</span>까지</h2>
+            <p class="gcar__sub">변화하는 검색 환경에 대응하는 통합 최적화 전략.<br />검색 환경부터 사용자 경험까지, 결과를 만드는 모든 조건을 설계합니다.</p>
+          </div>
+          <div class="gcar__nav">
+            <button class="gcar__arr" id="gcarPrev" aria-label="이전"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>
+            <button class="gcar__arr" id="gcarNext" aria-label="다음"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button>
+          </div>
+        </div>
+
+        <div class="gcar__track" id="gcarTrack">
+          <article class="gcard">
+            <h3 class="gcard__t">SEO 최적화</h3>
+            <p class="gcard__d">키워드·메타·속도·구조화 데이터까지, 네이버·구글이 좋아하는 기술 구조로 검색 상위노출을 설계합니다.</p>
+            <svg class="gcard__ill" viewBox="0 0 120 80" aria-hidden="true"><rect x="14" y="14" width="92" height="58" rx="6" fill="none" stroke="url(#gb)" stroke-width="2.5"/><polyline points="26,58 44,46 58,52 76,32 96,24" fill="none" stroke="url(#gb)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="96" cy="24" r="4" fill="#f25b35"/></svg>
+          </article>
+          <article class="gcard">
+            <h3 class="gcard__t">AEO · GEO</h3>
+            <p class="gcard__d">ChatGPT·Gemini·Perplexity가 답변에 우리 브랜드를 인용하도록 신뢰 신호와 답변형 콘텐츠를 설계합니다.</p>
+            <svg class="gcard__ill" viewBox="0 0 120 80" aria-hidden="true"><rect x="16" y="20" width="54" height="30" rx="8" fill="rgba(232,56,23,.18)" stroke="url(#gb)" stroke-width="2"/><rect x="52" y="40" width="48" height="26" rx="8" fill="rgba(242,121,47,.14)" stroke="url(#gb)" stroke-width="2"/><circle cx="30" cy="35" r="3" fill="#f6a13a"/><circle cx="42" cy="35" r="3" fill="#f6a13a"/></svg>
+          </article>
+          <article class="gcard">
+            <h3 class="gcard__t">반응형 홈페이지</h3>
+            <p class="gcard__d">기업·병원·브랜드 사이트부터 랜딩·쇼핑몰·관리자까지. 디자인·퍼블리싱·개발을 한 팀이 책임집니다.</p>
+            <svg class="gcard__ill" viewBox="0 0 120 80" aria-hidden="true"><rect x="20" y="16" width="64" height="44" rx="5" fill="none" stroke="url(#gb)" stroke-width="2.5"/><rect x="26" y="22" width="52" height="10" rx="2" fill="rgba(232,56,23,.3)"/><rect x="88" y="30" width="16" height="30" rx="3" fill="none" stroke="url(#gb)" stroke-width="2.5"/></svg>
+          </article>
+          <article class="gcard">
+            <h3 class="gcard__t">모바일 앱·시스템</h3>
+            <p class="gcard__d">iOS·Android·웹앱부터 결제·예약·API 연동, 백엔드·보안까지 안정적으로 구축합니다.</p>
+            <svg class="gcard__ill" viewBox="0 0 120 80" aria-hidden="true"><rect x="48" y="12" width="30" height="56" rx="7" fill="none" stroke="url(#gb)" stroke-width="2.5"/><rect x="53" y="20" width="20" height="8" rx="2" fill="rgba(242,121,47,.4)"/><rect x="53" y="32" width="20" height="6" rx="2" fill="rgba(255,255,255,.12)"/><rect x="53" y="42" width="20" height="6" rx="2" fill="rgba(255,255,255,.12)"/></svg>
+          </article>
+          <article class="gcard gcard--cta">
+            <h3 class="gcard__t">무료 SEO 진단</h3>
+            <p class="gcard__d">URL만 넣으면 22개 항목을 100점으로 진단. 우리 홈페이지는 비닐하우스일까, 펜트하우스일까?</p>
+            <a href="seo-check.html" class="gcard__link">진단하러 가기 <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </article>
+          <article class="gcard">
+            <h3 class="gcard__t">유지보수·운영</h3>
+            <p class="gcard__d">오픈 후 수정·보안·성능 점검과 검색 성과 모니터링까지. 만든 뒤에도 계속 발견되게 함께합니다.</p>
+            <svg class="gcard__ill" viewBox="0 0 120 80" aria-hidden="true"><circle cx="60" cy="40" r="22" fill="none" stroke="url(#gb)" stroke-width="2.5"/><path d="M60 26v14l10 6" fill="none" stroke="#f25b35" stroke-width="3" stroke-linecap="round"/></svg>
+          </article>
+        </div>
+      </div>
     </section>
 
     <!-- ===== SERVICES (showcase) ===== -->
@@ -353,6 +404,14 @@
     var P = [46,48,50,52,54,56,58,68,70,72,74,76,78,80,89,91,93,95,97,99].map(function(n){ return 'assets/partners/p'+n+'.png'; });
     var set = P.map(function(s){ return '<span class="plogo"><img src="'+s+'" alt="파트너" decoding="async" /></span>'; }).join('');
     $('#trustTrack').innerHTML = set + set;
+
+    /* 전략 카드 캐러셀 화살표 */
+    var gt=$('#gcarTrack'), gp=$('#gcarPrev'), gn=$('#gcarNext');
+    if(gt){
+      function gScroll(d){ var c=gt.querySelector('.gcard'); var w=c?c.offsetWidth+18:320; gt.scrollBy({left:d*w,behavior:'smooth'}); }
+      if(gp)gp.addEventListener('click',function(){gScroll(-1);});
+      if(gn)gn.addEventListener('click',function(){gScroll(1);});
+    }
 
     /* hero — 좌측 내비 자동 롤링 + 진행링 (상공식) */
     var rslides=$$('.rslide'), rnav=$('#rheroNav'), rcat=$('#rheroCat'), rprog=$('#rheroProg'), ridx=0, rtimer, RDUR=6000;
