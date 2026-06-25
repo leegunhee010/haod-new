@@ -29,6 +29,13 @@ body { background: #faf6f1; }
   transition: background-position cubic-bezier(.22,.7,.2,1) 1.1s !important;
 }
 
+/* 4) 이미지 라운드 코너 — 한큐의 각진 풀스퀘어와 확실히 다른 느낌 */
+.projects-img img,
+.portfolio-item .img, .portfolio-item .img img,
+.imgbox li .img, .imgbox li .img img,
+.section7 .img-area .img, .section7 .img-area .img img { border-radius: 16px !important; overflow: hidden; }
+.section3 .imgbox li .img { border-radius: 18px !important; }
+
 /* 한큐 커스텀 커서 제거 → 네이티브 마우스 복구 */
 .theBall-outer, ._cursor, ._cursor2 { display: none !important; }
 * { cursor: auto !important; }
