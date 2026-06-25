@@ -16,6 +16,39 @@ html, body, button, input, select, textarea { font-family: 'Pretendard', 'SUIT',
 /* 1) 화이트 팔레트 (깨끗한 화이트 느낌) */
 body { background: #ffffff; }
 
+/* ===== 풀 화이트 테마: 다크 섹션 전부 흰 배경 + 어두운 글씨 ===== */
+/* 헤더: 히어로가 흰색이므로 처음부터 흰 헤더 고정 */
+.header.on-dark:not(.is-stuck) { background: rgba(255,255,255,.96) !important; border-bottom: 1px solid var(--line) !important; box-shadow: 0 1px 0 var(--line); }
+.header.on-dark:not(.is-stuck) .nav a { color: var(--ink) !important; }
+.header.on-dark:not(.is-stuck) .nav a.nav__center { color: var(--accent) !important; }
+.header.on-dark:not(.is-stuck) .nav__div { background: var(--line) !important; }
+.header.on-dark:not(.is-stuck) .burger span { background: var(--ink) !important; }
+
+/* 히어로: 영상 숨기고 흰 배경 + 어두운 카피 */
+.mVisual { background: #fff !important; }
+.mVisual .pc-video, .mVisual .mo-video { display: none !important; }
+.mVisual .visual-image .swiper-slide::after { display: none !important; }
+.mVisual .visual-title .tit-circle { color: #16140f !important; }
+.mVisual .visual-title p { color: #6e6a60 !important; }
+.mVisual .visual-image .progress-num .bullet { background-color: #16140f !important; }
+.mVisual .visual-arr { filter: invert(1) brightness(.3); }
+
+/* 솔루션(section5) / Who We Are(section7): 흰 배경 + 어두운 글씨 */
+#main .section5, #main .section7 { background-color: #fff !important; }
+#main .section5 .txt h3, #main .section5 .txt p,
+#main .section7 .tit-box h3, #main .section7 .tit-box p { color: #16140f !important; }
+#main .section7 .img-area:after { background: linear-gradient(180deg, rgba(255,255,255,.85) 0%, rgba(255,255,255,.45) 45%, rgba(255,255,255,.45) 55%, rgba(255,255,255,.85) 100%) !important; }
+
+/* 파트너(section6): 흰 배경 + 검은 페이드 제거 + 어두운 로고명 */
+#main .section6 { background-color: #fff !important; }
+#main .section6 .gradient .top, #main .section6 .gradient .bottom { display: none !important; }
+#main .section6 .list p { color: #16140f !important; }
+
+/* 다크 섹션의 fill-text도 잉크로 (이미 잉크↔웜그레이 트위스트 적용됨) */
+#main .section5 .fill-text, #main .section7 .fill-text { -webkit-text-fill-color: transparent; }
+/* keyword cloud 중앙 원: 화이트테마에 맞춰 오렌지로 복귀 */
+#main .section4 .main-txt .circle-wrap .circle { background-color: var(--accent) !important; }
+
 /* 2) 시그니처 모티프 교체: 떠있는 동그란 점 → 길쭉한 라운드 바(언더라인 틱) */
 .tit-circle::after { width: 64px !important; height: 12px !important; border-radius: 8px !important; bottom: 14px !important; right: -14px !important; background: var(--accent) !important; }
 #main .section4 .main-txt .circle-wrap .circle { background-color: #16120e !important; }  /* 중앙 원: 오렌지 → 차콜(오렌지 글씨 대비) */
