@@ -249,7 +249,7 @@
       var imgs = doc.querySelectorAll('img'), withAlt = 0;
       imgs.forEach(function (im) { if ((im.getAttribute('alt') || '').trim()) withAlt++; });
       var altPct = imgs.length ? Math.round(withAlt / imgs.length * 100) : 100;
-      add('콘텐츠 SEO', '이미지 ALT 속성', 3, !imgs.length ? warn : (altPct >= 80 ? pass : (altPct >= 40 ? warn : fail)), imgs.length ? altPct + '% (' + withAlt + '/' + imgs.length + ')' : '이미지 없음', '이미지 검색 노출·접근성 필수');
+      add('콘텐츠 SEO', '이미지 ALT 속성', 5, !imgs.length ? warn : (altPct >= 80 ? pass : (altPct >= 40 ? warn : fail)), imgs.length ? altPct + '% (' + withAlt + '/' + imgs.length + ')' : '이미지 없음', '이미지 검색 노출·접근성 필수');
 
       // ===== 기술 SEO (24) =====
       add('기술 SEO', 'HTTPS 보안', 6, /^https:/i.test(url) ? pass : fail, /^https:/i.test(url) ? '적용' : '미적용', 'SSL 보안. 검색 랭킹 가산점·신뢰 지표');
@@ -258,7 +258,6 @@
       add('기술 SEO', 'Canonical 태그', 5, canon ? pass : warn, canon ? '있음' : '없음', '중복 콘텐츠 방지. 대표 URL 지정');
       var lang = (doc.documentElement.getAttribute('lang') || '').trim() || (/<html[^>]+lang=/i.test(raw) ? 'set' : '');
       add('기술 SEO', '언어(lang) 속성', 4, lang ? pass : warn, lang ? '설정됨' : '없음', 'html lang 속성으로 언어 명시');
-      add('기술 SEO', '문자셋(charset)', 2, doc.querySelector('meta[charset]') || /charset=/i.test(rawL) ? pass : warn, '확인', 'UTF-8 등 문자 인코딩 선언');
 
       // ===== 검색엔진 친화 (24) =====
       var ogi = doc.querySelector('meta[property="og:image"]'), ogt = doc.querySelector('meta[property="og:title"]'), ogd = doc.querySelector('meta[property="og:description"]');
