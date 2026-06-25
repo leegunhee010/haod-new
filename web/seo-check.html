@@ -30,6 +30,24 @@
     .snote{text-align:center;margin-top:14px;font-size:.86rem;color:var(--faint)}
     .sex{text-align:center;margin-top:8px;font-size:.84rem;color:var(--muted)}
     .sex a{color:var(--accent);font-weight:600;cursor:pointer}
+    /* 분석 항목 안내 */
+    .spv{margin-top:48px}
+    .spv__head{text-align:center;margin-bottom:24px}
+    .spv__head h2{font-size:clamp(1.4rem,3vw,1.9rem);font-weight:800;letter-spacing:-.03em}
+    .spv__head p{margin-top:8px;color:var(--muted);font-size:.96rem}
+    .spv__head b{color:var(--accent);font-weight:700}
+    .spv__grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .spcard{border:1px solid var(--ink);border-radius:18px;overflow:hidden;background:#fff}
+    .spcard__top{display:flex;justify-content:space-between;align-items:center;padding:15px 20px;background:var(--ink);color:#fff}
+    .spcard__top span{font-weight:800;font-size:1.04rem}
+    .spcard__top b{background:#16b364;color:#fff;font-size:.8rem;font-weight:800;padding:5px 13px;border-radius:999px}
+    .spcard ul{padding:4px 20px 12px}
+    .spcard li{padding:12px 0;border-top:1px solid var(--line-2)}
+    .spcard li:first-child{border-top:0}
+    .spcard li b{display:block;font-weight:700;font-size:.96rem}
+    .spcard li b.acc{color:var(--accent)}
+    .spcard li span{display:block;margin-top:4px;font-size:.84rem;color:var(--muted);line-height:1.5}
+    @media(max-width:680px){.spv__grid{grid-template-columns:1fr}}
     /* 로딩 */
     .sload{display:none;text-align:center;padding:60px 0}
     .sload.on{display:block}
@@ -125,6 +143,58 @@
     <p class="snote">입력한 URL의 공개 페이지를 읽어 분석합니다 · 약 5~15초 소요</p>
     <p class="sex">예시로 진단해보기: <a data-ex="https://www.naver.com">naver.com</a> · <a data-ex="https://haodesign.co.kr">haodesign.co.kr</a></p>
 
+    <!-- 분석 항목 안내 -->
+    <section class="spv" id="sitemsPrev">
+      <div class="spv__head">
+        <h2>SEO 점수 분석 항목</h2>
+        <p>하오 SEO Checker는 총 <b>100점 만점</b>으로 22개 항목을 <b>실제 코드</b>로 점검합니다.</p>
+      </div>
+      <div class="spv__grid">
+        <div class="spcard">
+          <div class="spcard__top"><span>📝 콘텐츠 SEO</span><b>50점</b></div>
+          <ul>
+            <li><b>타이틀 태그</b><span>검색결과에 표시되는 페이지 제목. 핵심 키워드 포함 필수</span></li>
+            <li><b>타이틀 길이</b><span>한글 25~40자(영문 50~60자)가 적정 길이</span></li>
+            <li><b>메타 디스크립션</b><span>검색결과 설명문. 클릭률(CTR)에 직접 영향</span></li>
+            <li><b>디스크립션 길이</b><span>70~155자 권장. 너무 짧거나 길면 잘림</span></li>
+            <li><b>H1 태그 존재</b><span>페이지 대표 제목. 검색엔진의 주제 파악에 핵심</span></li>
+            <li><b>H1 단일 사용</b><span>H1은 페이지당 1개를 사용하여 주제 명확화</span></li>
+            <li><b>H2 소제목</b><span>소제목으로 콘텐츠 구조를 명확히</span></li>
+            <li><b>H3 세부 구조</b><span>헤딩 위계로 콘텐츠 깊이를 표현</span></li>
+            <li><b class="acc">이미지 ALT 속성</b><span>이미지 검색 노출 및 접근성 필수 요소</span></li>
+          </ul>
+        </div>
+        <div class="spcard">
+          <div class="spcard__top"><span>⚙️ 기술적 SEO</span><b>20점</b></div>
+          <ul>
+            <li><b>HTTPS 보안</b><span>SSL 보안. 검색 랭킹 가산점·신뢰 지표</span></li>
+            <li><b>혼합 콘텐츠</b><span>HTTPS 페이지의 http 리소스 점검. 보안 경고 방지</span></li>
+            <li><b>Canonical 태그</b><span>중복 콘텐츠 방지. 대표 URL을 검색엔진에 명시</span></li>
+            <li><b>Viewport 설정</b><span>모바일 대응 필수. 모바일 우선 색인 대비</span></li>
+            <li><b>언어(lang) 속성</b><span>html lang 속성으로 콘텐츠 언어 명시</span></li>
+          </ul>
+        </div>
+        <div class="spcard">
+          <div class="spcard__top"><span>🔍 검색엔진 친화도</span><b>20점</b></div>
+          <ul>
+            <li><b class="acc">Open Graph 이미지</b><span>SNS·검색 공유 시 썸네일로 표시</span></li>
+            <li><b>Open Graph 제목</b><span>og:title — 공유 시 표시되는 제목</span></li>
+            <li><b>Open Graph 설명</b><span>og:description — 공유 시 표시되는 설명</span></li>
+            <li><b>구조화 데이터(Schema)</b><span>JSON-LD. 리치 결과·AI 검색 이해도 향상</span></li>
+            <li><b class="acc">sitemap.xml</b><span>검색엔진 크롤러에게 사이트 구조 제공</span></li>
+            <li><b class="acc">robots.txt</b><span>크롤러 접근 규칙. 크롤링 효율 관리</span></li>
+          </ul>
+        </div>
+        <div class="spcard">
+          <div class="spcard__top"><span>⚡ 속도 최적화</span><b>10점</b></div>
+          <ul>
+            <li><b>이미지 지연 로딩</b><span>loading=lazy로 초기 로딩 속도 개선</span></li>
+            <li><b>WebP 이미지</b><span>차세대 포맷으로 용량·속도 개선</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
     <div class="sload" id="sload"><div class="sload__ring"></div><p id="sloadtxt">페이지를 불러오는 중…</p></div>
     <div class="serr" id="serr"></div>
 
@@ -209,6 +279,7 @@
       var target = normUrl(urlIn.value);
       if (!target) { urlIn.focus(); return; }
       res.classList.remove('on'); err.classList.remove('on'); load.classList.add('on');
+      var prev = document.getElementById('sitemsPrev'); if (prev) prev.style.display = 'none';
       btn.disabled = true; loadTxt.textContent = '페이지를 불러오는 중…';
       try {
         var body = await getHTML(target);
