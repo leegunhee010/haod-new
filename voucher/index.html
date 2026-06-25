@@ -30,8 +30,10 @@
     <!-- HAO 브랜드 폰트(Pretendard) -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!-- HAO 표준 센터 헤더/푸터/FAB -->
+    <link rel="stylesheet" href="css/hao-chrome.css?v=1">
     <!-- HAO 기본 스타일 오버라이드 (맨 마지막) -->
-    <link rel="stylesheet" href="css/hao-brand.css?v=1">
+    <link rel="stylesheet" href="css/hao-brand.css?v=2">
 
     <!-- scripts -->
     <script src="js/hq_jquery-1.12.0.min.js"></script>
@@ -59,131 +61,27 @@
 <body>
 <div class="wrapper">
 
-    <header id="header" class="dark wide header-effect-sticky">
-        <div class="header-body">
-            <div class="header-inner">
-                <div class="header-row between gap-20">
-                    <div class="header-column">
-                        <h1 class="logo">
-                            <a href="index.html" class="flex-center">
-                                <img src="assets/img/logo-white.png" alt="하오디자인" width="120" height="40" class="logoImg lo_wh"/>
-                                <img src="assets/img/logo.png" alt="하오디자인" width="120" height="40" class="logoImg lo_bl"/>
-                            </a>
-                        </h1>
-                    </div>
-                    <div class="header-column nav-column wid100">
-                        <nav class="header-nav pc dropdown-mine wid100">
-                            <ul class="depth1 list-inline flex-center-between">
-                                <li class="dropdown">
-                                    <a href="#s-about" class="text_primary fs18 fw500 text-white"><span>About us</span></a>
-                                    <ul class="depth2">
-                                        <li><div class="link-wrap"><a href="#s-about" class="text_secondary original">센터소개</a><a href="#s-about" class="text_secondary clone">센터소개</a></div></li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown">
-                                    <a href="export.html" class="text_primary fs18 fw500 text-white"><span>Service</span></a>
-                                    <ul class="depth2">
-                                        <li><div class="link-wrap"><a href="export.html" class="text_secondary original">수출바우처</a><a href="export.html" class="text_secondary clone">수출바우처</a></div></li>
-                                        <li><div class="link-wrap"><a href="innovation.html" class="text_secondary original">혁신바우처</a><a href="innovation.html" class="text_secondary clone">혁신바우처</a></div></li>
-                                        <li><div class="link-wrap"><a href="market.html" class="text_secondary original">판로개척지원사업</a><a href="market.html" class="text_secondary clone">판로개척지원사업</a></div></li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown">
-                                    <a href="#s-portfolio" class="text_primary fs18 fw500 text-white"><span>Portfolio</span></a>
-                                    <ul class="depth2">
-                                        <li><div class="link-wrap"><a href="#s-portfolio" class="text_secondary original">디자인 포트폴리오</a><a href="#s-portfolio" class="text_secondary clone">디자인 포트폴리오</a></div></li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown">
-                                    <a href="column.html" class="text_primary fs18 fw500 text-white"><span>Story</span></a>
-                                    <ul class="depth2">
-                                        <li><div class="link-wrap"><a href="column.html" class="text_secondary original">바우처 칼럼</a><a href="column.html" class="text_secondary clone">바우처 칼럼</a></div></li>
-                                        <li><div class="link-wrap"><a href="qna.html" class="text_secondary original">자주 묻는 질문</a><a href="qna.html" class="text_secondary clone">자주 묻는 질문</a></div></li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown">
-                                    <a href="#contact" class="text_primary fs18 fw500 text-white"><span>Contact us</span></a>
-                                    <ul class="depth2">
-                                        <li><div class="link-wrap"><a href="#contact" class="text_secondary original">상담문의</a><a href="#contact" class="text_secondary clone">상담문의</a></div></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                    <div class="header-column util-column">
-                        <div class="header-util wid100">
-                            <ul class="list-inline p-relative left-list-inline flex-center-between wid100 gap-30">
-                                <li>
-                                    <a href="tel:1666-2027" class="flex-center gap-8 fs20 fw900 lh-1 tell"><img src="img/ico_tell.svg" alt="">1666.2027</a>
-                                </li>
-                                <li class="no768 com_download">
-                                    <a href="#contact" class="flex-center wid100 company-introduce">
-                                        <p class="fs16 fw500 text-white lh-1">무료 가능여부 확인</p>
-                                        <img src="img/ico_company.svg" alt="" class="d-block">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:;" class="d-block mo-toggle">
-                                        <img src="img/ico_menu.svg" width="30" height="30" alt="메뉴" class="open">
-                                        <img src="img/ico_close.svg" width="30" height="30" alt="메뉴" class="close">
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="mobile-inner slide-move">
-                <div class="header-row">
-                    <div class="header-column">
-                        <nav class="header-nav mo-nav flex-box align-items-center">
-                            <ul class="depth1 list-inline wrap list-w100 flex-center" data-lenis-prevent-wheel>
-                                <li class="gap-80">
-                                    <a href="#s-about" class="text_primary fs56 fw700"><p><span class="original">About us</span><span class="clone">About us</span></p><img src="img/ico_arrow_b.svg" alt="" width="20" height="13" class="mo1280"></a>
-                                    <ul class="depth2"><li><a href="#s-about" class="text_secondary">센터소개</a></li></ul>
-                                </li>
-                                <li class="gap-80">
-                                    <a href="export.html" class="text_primary fs56 fw700"><p><span class="original">Service</span><span class="clone">Service</span></p><img src="img/ico_arrow_b.svg" alt="" width="20" height="13" class="mo1280"></a>
-                                    <ul class="depth2">
-                                        <li><a href="export.html" class="text_secondary">수출바우처</a></li>
-                                        <li><a href="innovation.html" class="text_secondary">혁신바우처</a></li>
-                                        <li><a href="market.html" class="text_secondary">판로개척지원사업</a></li>
-                                    </ul>
-                                </li>
-                                <li class="gap-80">
-                                    <a href="#s-portfolio" class="text_primary fs56 fw700"><p><span class="original">Portfolio</span><span class="clone">Portfolio</span></p><img src="img/ico_arrow_b.svg" alt="" width="20" height="13" class="mo1280"></a>
-                                    <ul class="depth2"><li><a href="#s-portfolio" class="text_secondary">디자인 포트폴리오</a></li></ul>
-                                </li>
-                                <li class="gap-80">
-                                    <a href="column.html" class="text_primary fs56 fw700"><p><span class="original">Story</span><span class="clone">Story</span></p><img src="img/ico_arrow_b.svg" alt="" width="20" height="13" class="mo1280"></a>
-                                    <ul class="depth2"><li><a href="column.html" class="text_secondary">바우처 칼럼</a></li><li><a href="qna.html" class="text_secondary">자주 묻는 질문</a></li></ul>
-                                </li>
-                                <li class="gap-80">
-                                    <a href="#contact" class="text_primary fs56 fw700"><p><span class="original">Contact us</span><span class="clone">Contact us</span></p><img src="img/ico_arrow_b.svg" alt="" width="20" height="13" class="mo1280"></a>
-                                    <ul class="depth2"><li><a href="#contact" class="text_secondary">상담문의</a></li></ul>
-                                </li>
-                            </ul>
-                        </nav>
-                        <div class="sns-txt flex-center-between wid100">
-                            <ul class="flex-center gap-20">
-                                <li><a href="../design/" target="_blank" class="d-block svg-bg youtube dark">디자인센터</a></li>
-                                <li><a href="../web/" target="_blank" class="d-block svg-bg instagram dark">웹구축센터</a></li>
-                                <li><a href="../studio/" target="_blank" class="d-block svg-bg facebook dark">스튜디오센터</a></li>
-                                <li><a href="https://mkt.haodesign.co.kr" target="_blank" class="d-block svg-bg blog dark">마케팅센터</a></li>
-                            </ul>
-                            <p class="fs24 fw600 text-black0">모든 정부지원 디자인을 <b class="text-point">하오</b>에</p>
-                        </div>
-                        <a href="#contact" class="flex-center company-introduce mobtn gap-5 mt-30">
-                            <p class="fs16 fw500 text-white lh-1">무료 가능여부 확인</p>
-                            <img src="img/ico_company.svg" alt="" class="d-block">
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="theBall-outer" style="display:none" aria-hidden="true"><div class="theBall theBall1"><div class="theBall theBall2"></div></div></div>
+
+    <div class="progress" id="progress" aria-hidden="true"></div>
+
+    <header class="header on-dark" id="haoHeader">
+      <a href="index.html" class="brand"><img src="assets/img/logo.png" alt="하오디자인" class="brand__logo" /></a>
+      <nav class="nav" id="haoNav">
+        <a href="export.html">수출바우처</a>
+        <a href="innovation.html">혁신바우처</a>
+        <a href="market.html">판로개척지원사업</a>
+        <a href="column.html">칼럼</a>
+        <a href="qna.html">Q&amp;A</a>
+        <span class="nav__div" aria-hidden="true"></span>
+        <a class="nav__center" href="../design/">디자인센터 <i>↗</i></a>
+        <a class="nav__center" href="../web/">웹구축센터 <i>↗</i></a>
+        <a class="nav__center" href="../studio/">스튜디오센터 <i>↗</i></a>
+        <a class="nav__center" href="https://mkt.haodesign.co.kr">마케팅센터 <i>↗</i></a>
+      </nav>
+      <a href="#contact" class="header__cta">무료 상담 <span>→</span></a>
+      <button class="burger" id="haoBurger" aria-label="메뉴"><span></span><span></span></button>
     </header>
-    <div class="gnb_bg"></div>
-    <div class="dep_bg"></div>
 
     <script>
         const pageTitle = "412"; // 프로젝트 수(바우처 디자인 작업 건수)
@@ -641,106 +539,44 @@
     </main>
     <script src="js/hq_main.js"></script>
 
-    <footer id="footer" class="wide dark">
-        <div class="footer-body">
-            <div class="footer-inner">
-                <div class="footer-row column">
-                    <div class="footer-column align-items-start justify-content-between wid100">
-                        <div class="footer-tit">
-                            <b class="d-block fs36 fw900 text-point">Contact us for your voucher!</b>
-                            <h5 class="d-block fs56 fw900 mt-16">결과보고까지 책임지는 정부지원 디자인의 시작</h5>
-                        </div>
-                        <div class="footer-util br-line pc">
-                            <ul class="list-float flex-center gap-20">
-                                <li><a href="../design/" target="_blank" class="svg-bg youtube">디자인센터</a></li>
-                                <li><a href="../web/" target="_blank" class="svg-bg instagram">웹구축센터</a></li>
-                                <li><a href="../studio/" target="_blank" class="svg-bg facebook">스튜디오센터</a></li>
-                                <li><a href="https://mkt.haodesign.co.kr" target="_blank" class="svg-bg blog">마케팅센터</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="footer-column logo-contact flex-center-between gap-40 mt-24 wid100">
-                        <div class="footer-logo"><img src="assets/img/logo-white.png" alt="HAO DESIGN" height="64"></div>
-                        <div class="line"></div>
-                        <p class="circle-wrap flex-center pc" onclick="location.href='#contact'"></p>
-                        <p class="circle-wrap flex-center fs16 fw700 lh-1 mo" onclick="location.href='#contact'">Contact</p>
-                    </div>
-                    <div class="footer-column flex-column mt-60 wid100">
-                        <b class="d-block fs16 fw600 lh-1 company-title p-relative">(주)하오커뮤니케이션</b>
-                        <div class="info-agree flex-center-between gap-30 mt-20">
-                            <ul class="footer-info flex-center-start flex-wrap gap-60">
-                                <li><em class="d-block fs12 fw400 text-default lh-1">Address.</em><span class="d-block fs16 fw500 mt-10 lh-1">서울시 광진구 능동로49길 9, 2F</span></li>
-                                <li><em class="d-block fs12 fw400 text-default lh-1">CEO.</em><span class="d-block fs16 fw500 mt-10 lh-1">박창민</span></li>
-                                <li><em class="d-block fs12 fw400 text-default lh-1">Business registration number.</em><span class="d-block fs16 fw500 mt-10 lh-1">528-87-01037</span></li>
-                                <li class="tel-li"><em class="d-block fs12 fw400 text-default lh-1">Tel.</em><span class="d-block fs16 fw500 mt-10 lh-1"><a href="tel:1666-2027" class="d-block">1666-2027</a></span></li>
-                                <li><em class="d-block fs12 fw400 text-default lh-1">E-mail.</em><span class="d-block fs16 fw500 mt-10 lh-1"><a href="mailto:sales@haodesign.co.kr" class="d-block">sales@haodesign.co.kr</a></span></li>
-                            </ul>
-                            <ul class="footer-agree flex-center gap-10">
-                                <li class="flex-center"><a href="qna.html" class="fs12 fw500 text-default lh-1">자주 묻는 질문</a></li>
-                                <li class="flex-center"><a href="#contact" class="fs12 fw500 text-default lh-1">상담문의</a></li>
-                            </ul>
-                        </div>
-                        <em class="d-block fs12 fw400 text-default lh-1 copyright mt-40">Copyright ⓒ HAO DESIGN. 정부사업지원센터. All rights reserved.</em>
-                    </div>
-                </div>
+    <footer class="footer">
+        <div class="footer__top">
+            <img src="assets/img/logo-white.png" alt="HAO DESIGN" class="footer__logo" />
+            <p>정부지원사업 공식 디자인 수행기관<br />수출바우처 · 혁신바우처 · 판로개척지원사업</p>
+        </div>
+        <div class="footer__grid">
+            <div><h3>Contact</h3><a href="tel:1666-2027">1666-2027</a><a href="mailto:sales@haodesign.co.kr">sales@haodesign.co.kr</a><span>평일 09:00–18:00</span></div>
+            <div><h3>센터</h3><a href="../design/">디자인센터 ↗</a><a href="../web/">웹구축센터 ↗</a><a href="../studio/">스튜디오센터 ↗</a><a href="https://mkt.haodesign.co.kr">마케팅센터 ↗</a></div>
+            <div><h3>정부사업지원센터</h3><a href="export.html">수출바우처</a><a href="innovation.html">혁신바우처</a><a href="market.html">판로개척지원사업</a><a href="column.html">칼럼</a><a href="qna.html">Q&amp;A</a></div>
+        </div>
+        <div class="footer__bottom">
+            <div class="footer__biz">
+                <p><b>주식회사 하오커뮤니케이션</b><span>대표이사 박창민</span><span>사업자등록번호 528-87-01037</span></p>
+                <p><span>주소 서울시 광진구 능동로49길 9, 2F</span><span>대표번호 1666-2027</span><span>E-mail sales@haodesign.co.kr</span></p>
             </div>
+            <span class="footer__copy">© <i id="year"></i> HAO DESIGN. 정부사업지원센터.</span>
         </div>
     </footer>
 
-    <div class="quick flex-center flex-column">
-        <div class="contact-us">
-            <a href="#contact" class="flex-center"><span class="fs12 fw500 txt-c">간편상담<br>원하세요?</span><img src="img/arrow_outward.svg" alt="" width="20" class="arrow-outward"></a>
-        </div>
-        <a href="javascript:;" class="top-btn"><span class="fs13 fw600 lh-1 flex-center">TOP</span><i><img src="img/ico_arrow_up.svg" width="20" height="20" alt="TOP"></i></a>
-    </div>
-
-    <div class="float-btn flex-center pc-float-btn on">
-        <p class="flex-box align-items-center fs13 fw600 text-white txt">CLOSE</p>
-        <ul class="floatlist">
-            <li><a href="https://www.exportvoucher.com/" target="_blank" class="flex-center"><img src="img/floatlist_2.jpg" width="128" height="20" alt="수출지원기반활용사업"></a></li>
-            <li><a href="https://www.mssmiv.com/" target="_blank" class="flex-center"><img src="img/floatlist_3.jpg" width="140" height="22" alt="중소기업혁신바우처플랫폼"></a></li>
-            <li><a href="tel:1666-2027" class="flex-center gap-5"><span class="fs12 fw600 text-black">전화상담 1666-2027</span></a></li>
-        </ul>
-    </div>
-
-    <!-- custom cursor -->
-    <div class="theBall-outer flex-center">
-        <div class="theBall theBall1">
-            <div class="cursor-img"><img src="img/cursor_svg_1.svg" alt="cursor" width="26.35" height="35.5"></div>
-            <div class="theBall theBall2 flex-center">
-                <span class="arrow"><img src="img/ico_cursor_arrow.svg" width="30" height="30" alt=""></span>
-                <div>
-                    <svg viewBox="0 0 200 200" class="text-circle">
-                        <path id="text-path" fill="transparent" d="M100,100 m-80,0 a80,80 0 1,1 160,0 a80,80 0 1,1 -160,0"/>
-                        <text class="fs12 fw400"><textPath xlink:href="#text-path" textLength="490">VIEW MORE • VIEW MORE • VIEW MORE •</textPath></text>
-                    </svg>
-                </div>
-            </div>
-        </div>
+    <div class="fab">
+        <a class="fab__btn fab--kakao" href="http://pf.kakao.com/" target="_blank" aria-label="카카오톡 상담"><span class="fab__ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.5 3 2 6.6 2 11c0 2.8 1.9 5.3 4.7 6.7-.2.7-.7 2.6-.8 3-.1.5.2.6.5.4.3-.2 2.7-1.8 3.7-2.5.6.1 1.3.1 1.9.1 5.5 0 10-3.6 10-8S17.5 3 12 3z"/></svg></span><span class="fab__label">카톡 상담</span></a>
+        <a class="fab__btn fab--phone" href="tel:1666-2027" aria-label="전화 문의"><span class="fab__ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24c1.1.37 2.3.57 3.6.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.3.2 2.5.57 3.6a1 1 0 0 1-.25 1z"/></svg></span><span class="fab__label">전화 문의</span></a>
     </div>
 </div>
 
 <script>
-    let allManagedScrollTriggers = [];
-
-    $('.float-btn.pc-float-btn').on('click', function(){
-        $(this).toggleClass('on');
-        if($(this).hasClass('on')){ $(this).find('.txt').text('CLOSE'); }
-        else { $(this).find('.txt').text('OPEN'); }
-    });
-
-    function setupFooterAnimation() {
-        if (window.footerAniTrigger) { window.footerAniTrigger.kill(); }
-        let footerAni = gsap.from("#footer", {
-            scrollTrigger: { trigger: "#footer", start: "top 70%", toggleActions: "play none none reverse", invalidateOnRefresh: true },
-            opacity: 0, y: 150, duration: 1, ease: "power2.out",
-            onComplete: function(){ $('#footer .logo-contact').addClass('on'); },
-            onReverseComplete: function(){ $('#footer .logo-contact').removeClass('on'); }
-        });
-        window.footerAniTrigger = footerAni.scrollTrigger;
-        allManagedScrollTriggers.push(footerAni.scrollTrigger);
-    }
-    if (window.gsap && window.ScrollTrigger) { setupFooterAnimation(); }
+    // HAO 헤더/버거/프로그레스
+    (function(){
+        var header=document.getElementById('haoHeader'),prog=document.getElementById('progress'),burger=document.getElementById('haoBurger'),nav=document.getElementById('haoNav'),yEl=document.getElementById('year');
+        if(yEl)yEl.textContent=new Date().getFullYear();
+        if(burger&&nav){burger.addEventListener('click',function(){burger.classList.toggle('is-open');nav.classList.toggle('is-open');document.body.classList.toggle('menu-open');});
+        [].forEach.call(nav.querySelectorAll('a'),function(a){a.addEventListener('click',function(){burger.classList.remove('is-open');nav.classList.remove('is-open');document.body.classList.remove('menu-open');});});}
+        function onScroll(){var h=document.documentElement;var y=window.scrollY||h.scrollTop;if(header)header.classList.toggle('is-stuck',y>24);if(prog)prog.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight||1)*100)+'%';}
+        window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+        if(window.lenis&&window.lenis.on){window.lenis.on('scroll',onScroll);}
+    })();
+    // 푸터 등장
+    if (window.gsap && window.ScrollTrigger) { gsap.from('.footer',{scrollTrigger:{trigger:'.footer',start:'top 80%',toggleActions:'play none none reverse'},opacity:0,y:80,duration:.9,ease:'power2.out'}); }
 
     // 데모 폼
     (function(){

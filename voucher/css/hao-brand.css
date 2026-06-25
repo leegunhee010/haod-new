@@ -5,3 +5,9 @@ html, body, button, input, select, textarea { font-family: 'Pretendard', 'SUIT',
 
 /* 포인트 컬러 보강(혹시 남은 곳) */
 .text-point { color: #e83817 !important; }
+
+/* HAO 헤더 상태별 글자색 보정 */
+.header .nav a { color: var(--ink); }                       /* 흰 헤더(스크롤 시): 진한 잉크 */
+.header .nav a.nav__center { color: var(--accent); }         /* 센터 링크: 하오 오렌지 */
+.header.on-dark:not(.is-stuck) .nav a { color: rgba(255,255,255,.92); }        /* 히어로 위(투명): 흰 글씨 */
+.header.on-dark:not(.is-stuck) .nav a.nav__center { color: #ffd9cf; }
