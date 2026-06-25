@@ -13,9 +13,8 @@ html, body, button, input, select, textarea { font-family: 'Pretendard', 'SUIT',
 .header.on-dark:not(.is-stuck) .nav a.nav__center { color: #ffd9cf; }
 
 /* ===== 한큐 차별화: 색·모티프·모션 살짝 틀기 ===== */
-/* 1) 웜 크림 팔레트 (한큐의 차가운 화이트 → 하오 웜톤) */
-body { background: #faf6f1; }
-#main .section5, #main .section7 { background-color: #16120e !important; }   /* 순검정 → 웜 차콜 */
+/* 1) 화이트 팔레트 (깨끗한 화이트 느낌) */
+body { background: #ffffff; }
 
 /* 2) 시그니처 모티프 교체: 떠있는 동그란 점 → 길쭉한 라운드 바(언더라인 틱) */
 .tit-circle::after { width: 64px !important; height: 12px !important; border-radius: 8px !important; bottom: 14px !important; right: -14px !important; background: var(--accent) !important; }
