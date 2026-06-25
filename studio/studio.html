@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://cdn.jsdelivr.net" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.css" />
   <link rel="stylesheet" href="css/style.css?v=4" />
-  <link rel="stylesheet" href="css/effector.css?v=16" />
+  <link rel="stylesheet" href="css/effector.css?v=17" />
 </head>
 <body>
   <div class="progress" id="progress" aria-hidden="true"></div>
@@ -143,11 +143,11 @@
     burger.addEventListener('click', function () { burger.classList.toggle('is-open'); nav.classList.toggle('is-open'); document.body.classList.toggle('menu-open'); });
     $$('#nav a').forEach(function (a) { a.addEventListener('click', function () { burger.classList.remove('is-open'); nav.classList.remove('is-open'); document.body.classList.remove('menu-open'); }); });
 
-    /* 스튜디오 공간 갤러리 — 왼쪽으로 흐름 (assets/studio-space/s1~s8.jpg) */
+    /* 스튜디오 공간 갤러리 — 왼쪽으로 흐름 (assets/studio-space/s1~s36.jpg, 실제 스튜디오 내부) */
     var sgalTrack = $('#sgalTrack');
     if (sgalTrack) {
       var SPACE = [];
-      for (var si = 1; si <= 8; si++) SPACE.push('assets/studio-space/s' + si + '.jpg');
+      for (var si = 1; si <= 36; si++) SPACE.push('assets/studio-space/s' + si + '.jpg');
       var one = SPACE.map(function (s) { return '<figure class="sgal__item"><img src="' + s + '" alt="하오 스튜디오 공간" decoding="async" /></figure>'; }).join('');
       sgalTrack.innerHTML = one + one;
     }
