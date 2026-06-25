@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://cdn.jsdelivr.net" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Fragment+Mono&display=swap" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.css" />
-  <link rel="stylesheet" href="css/cs.css?v=8" />
+  <link rel="stylesheet" href="css/cs.css?v=10" />
 </head>
 <body>
   <div class="progress" id="progress" aria-hidden="true"></div>
@@ -72,118 +72,117 @@
       <div class="marquee"><div class="marquee__track" id="trustTrack"></div></div>
     </section>
 
-    <!-- ===== SERVICES (feature rows) ===== -->
-    <section class="sec" id="service">
-      <div class="sec__head center">
+    <!-- ===== SERVICES (showcase) ===== -->
+    <section class="show" id="service">
+      <div class="show__head reveal">
         <span class="eyebrow">WHAT WE BUILD</span>
-        <h2 class="sec__title">하나의 팀이 <span class="g">제작부터 검색 노출까지</span> 책임집니다</h2>
-        <p class="sec__lead">홈페이지·앱을 만들고, 사람의 검색과 AI의 답변 양쪽에서 발견되도록 설계합니다. 네 가지를 따로가 아니라 한 번에.</p>
+        <h2 class="show__title">하나의 팀이 <span class="g">제작부터 검색 노출까지</span><br />책임집니다</h2>
+        <p class="show__lead">홈페이지·앱을 만들고, 사람의 검색과 AI의 답변 양쪽에서 발견되도록 설계합니다. 네 가지를 따로가 아니라 한 번에.</p>
       </div>
 
-      <!-- SEO -->
-      <div class="feat">
-        <div class="feat__text">
-          <p class="feat__num">01 — SEO</p>
-          <h3 class="feat__t">검색엔진 상위노출,<br />구조부터 다르게</h3>
-          <p class="feat__d">키워드·메타·속도·구조화 데이터까지 — 네이버·구글이 좋아하는 기술 구조를 만들 때부터 심습니다. 출시 후 유입이 늘어나는 홈페이지를 설계합니다.</p>
-          <ul class="feat__list">
+      <!-- 01 SEO -->
+      <div class="show__item" data-show>
+        <span class="show__big" data-parallax>01</span>
+        <div class="show__text">
+          <span class="show__tag"><i></i> SEO</span>
+          <h3 class="show__t">검색엔진 상위노출,<br />구조부터 다르게</h3>
+          <p class="show__d">키워드·메타·속도·구조화 데이터까지 — 네이버·구글이 좋아하는 기술 구조를 만들 때부터 심습니다.</p>
+          <ul class="show__list">
             <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>키워드·콘텐츠 설계 & 메타 최적화</li>
             <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Core Web Vitals·속도·모바일 최적화</li>
             <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>구조화 데이터(Schema)·사이트맵</li>
           </ul>
         </div>
-        <div class="feat__visual">
-          <div class="mock"><div class="mock__glow"></div>
-            <div class="mock__top"><b>검색 순위 리포트</b><span>SEO</span></div>
-            <div class="mock__body">
-              <svg class="chart" viewBox="0 0 520 170" preserveAspectRatio="none"><polyline class="seochart" fill="none" stroke="url(#gb)" stroke-width="3" points="0,150 80,140 160,120 240,128 320,90 400,70 520,28"/></svg>
-              <div class="chart-row"><span class="chart-pill"><i style="background:#f25b35"></i> 평균 검색순위 1.2위</span><span class="chart-pill"><i style="background:#f6a13a"></i> 유입 +240%</span></div>
+        <div class="show__visual" data-tilt>
+          <div class="vcard"><span class="vcard__glow"></span>
+            <div class="vcard__top"><b>검색 노출 추이</b><span>SEO</span></div>
+            <div class="vcard__body">
+              <div class="vbig" data-count="240" data-suffix="%" data-prefix="+">+0%</div>
+              <p class="vsub">리뉴얼 후 6개월 검색 유입 증가</p>
+              <svg class="vchart" viewBox="0 0 520 200" preserveAspectRatio="none">
+                <polygon class="vfill" points="0,180 80,168 160,150 240,154 320,110 400,84 520,32 520,200 0,200" fill="rgba(232,56,23,.08)"/>
+                <polyline fill="none" stroke="url(#gb)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" points="0,180 80,168 160,150 240,154 320,110 400,84 520,32"/>
+              </svg>
+              <div class="vpills"><span class="vpill"><i style="background:#f25b35"></i>평균 검색순위 1.2위</span><span class="vpill"><i style="background:#f6a13a"></i>구글·네이버 동시</span></div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- AEO -->
-      <div class="feat feat--rev">
-        <div class="feat__text">
-          <p class="feat__num">02 — AEO · GEO</p>
-          <h3 class="feat__t">ChatGPT·Gemini가<br /><span class="g">인용하는</span> 콘텐츠</h3>
-          <p class="feat__d">검색의 무게추가 'AI 답변'으로 옮겨가고 있습니다. 생성형 AI가 답변을 만들 때 우리 브랜드를 참고·인용하도록 신뢰 신호와 답변형 콘텐츠를 설계합니다.</p>
-          <ul class="feat__list">
+      <!-- 02 AEO -->
+      <div class="show__item rev" data-show>
+        <span class="show__big" data-parallax>02</span>
+        <div class="show__text">
+          <span class="show__tag"><i></i> AEO · GEO</span>
+          <h3 class="show__t">ChatGPT·Gemini가<br /><span class="g">인용하는</span> 콘텐츠</h3>
+          <p class="show__d">검색의 무게추가 'AI 답변'으로 옮겨갑니다. 생성형 AI가 답변에 우리 브랜드를 인용하도록 설계합니다.</p>
+          <ul class="show__list">
             <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>AI 답변 노출·인용(Citation) 설계</li>
             <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>플랫폼별(ChatGPT·Gemini·Perplexity) 대응</li>
             <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Owned Media·FAQ·엔티티 구조화</li>
           </ul>
         </div>
-        <div class="feat__visual">
-          <div class="mock"><div class="mock__glow"></div>
-            <div class="mock__top"><b>AI 답변 인용 모니터링</b><span>AEO</span></div>
-            <div class="mock__body">
-              <table class="tbl">
-                <thead><tr><th>플랫폼</th><th>인용</th><th>점유</th></tr></thead>
-                <tbody>
-                  <tr><td>ChatGPT</td><td class="up">▲ 인용됨</td><td><div class="bar" style="width:82%"></div></td></tr>
-                  <tr><td>Gemini</td><td class="up">▲ 인용됨</td><td><div class="bar" style="width:64%"></div></td></tr>
-                  <tr><td>Perplexity</td><td class="up">▲ 인용됨</td><td><div class="bar" style="width:71%"></div></td></tr>
-                  <tr><td>네이버 Cue:</td><td class="up">▲ 인용됨</td><td><div class="bar" style="width:55%"></div></td></tr>
-                </tbody>
-              </table>
+        <div class="show__visual" data-tilt>
+          <div class="vcard"><span class="vcard__glow"></span>
+            <div class="vcard__top"><b>AI 인용 점유율</b><span>AEO</span></div>
+            <div class="vcard__body">
+              <div class="vbars">
+                <div class="vrow"><b>ChatGPT</b><div class="vtrack"><div class="vbar" style="--w:88%"></div></div><em>88%</em></div>
+                <div class="vrow"><b>Gemini</b><div class="vtrack"><div class="vbar" style="--w:74%;--d:.12s"></div></div><em>74%</em></div>
+                <div class="vrow"><b>Perplexity</b><div class="vtrack"><div class="vbar" style="--w:69%;--d:.24s"></div></div><em>69%</em></div>
+                <div class="vrow"><b>네이버 Cue</b><div class="vtrack"><div class="vbar" style="--w:58%;--d:.36s"></div></div><em>58%</em></div>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- 홈페이지 -->
-      <div class="feat">
-        <div class="feat__text">
-          <p class="feat__num">03 — WEBSITE</p>
-          <h3 class="feat__t">반응형 홈페이지·<br />랜딩·쇼핑몰 제작</h3>
-          <p class="feat__d">기업·병원·브랜드 사이트부터 랜딩페이지, 쇼핑몰, CMS·관리자까지. 디자인·퍼블리싱·개발을 한 팀이 맡아 톤과 성능이 흔들리지 않습니다.</p>
-          <ul class="feat__list">
+      <!-- 03 WEBSITE -->
+      <div class="show__item" data-show>
+        <span class="show__big" data-parallax>03</span>
+        <div class="show__text">
+          <span class="show__tag"><i></i> WEBSITE</span>
+          <h3 class="show__t">반응형 홈페이지·<br />랜딩·쇼핑몰 제작</h3>
+          <p class="show__d">기업·병원·브랜드 사이트부터 랜딩·쇼핑몰·CMS까지. 디자인·퍼블리싱·개발을 한 팀이 맡습니다.</p>
+          <ul class="show__list">
             <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>반응형·적응형 / 다국어 사이트</li>
             <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>CMS·관리자·쇼핑몰 구축</li>
             <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>홈페이지 리뉴얼 & 유지보수</li>
           </ul>
         </div>
-        <div class="feat__visual">
-          <div class="mock"><div class="mock__glow"></div>
-            <div class="mock__top"><b>brand.co.kr</b><span>WEB</span></div>
-            <div class="mock__body" style="display:grid;gap:10px">
-              <div style="height:96px;border-radius:10px;background:var(--grad-soft);border:1px solid var(--line-2)"></div>
-              <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px">
-                <div style="height:60px;border-radius:9px;background:var(--bg-soft)"></div>
-                <div style="height:60px;border-radius:9px;background:var(--bg-soft)"></div>
-                <div style="height:60px;border-radius:9px;background:var(--bg-soft)"></div>
+        <div class="show__visual" data-tilt>
+          <div class="vcard"><span class="vcard__glow"></span>
+            <div class="vcard__top"><b>yourbrand.co.kr</b><span>WEB</span></div>
+            <div class="vcard__body">
+              <div class="vweb">
+                <div class="vweb__hero"></div>
+                <div class="vweb__cards"><span></span><span></span><span></span></div>
+                <div class="vweb__ln" style="width:72%"></div>
+                <div class="vweb__ln" style="width:50%"></div>
               </div>
-              <div style="height:14px;border-radius:6px;background:var(--bg-soft);width:70%"></div>
-              <div style="height:14px;border-radius:6px;background:var(--bg-soft);width:48%"></div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- 앱 -->
-      <div class="feat feat--rev">
-        <div class="feat__text">
-          <p class="feat__num">04 — APP</p>
-          <h3 class="feat__t">모바일 앱·<br />시스템 개발</h3>
-          <p class="feat__d">iOS·Android 네이티브부터 웹앱·하이브리드까지. 결제·예약·로그인 등 외부 연동과 백엔드·API, 보안(SSL)까지 안정적으로 구축합니다.</p>
-          <ul class="feat__list">
+      <!-- 04 APP -->
+      <div class="show__item rev" data-show>
+        <span class="show__big" data-parallax>04</span>
+        <div class="show__text">
+          <span class="show__tag"><i></i> APP · SYSTEM</span>
+          <h3 class="show__t">모바일 앱·<br />시스템 개발</h3>
+          <p class="show__d">iOS·Android 네이티브부터 웹앱·하이브리드까지. 결제·예약 연동과 백엔드·API, 보안까지 구축합니다.</p>
+          <ul class="show__list">
             <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>iOS·Android·웹앱 / 하이브리드</li>
             <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>API·결제·예약·외부 시스템 연동</li>
             <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>백엔드 개발·성능·보안</li>
           </ul>
         </div>
-        <div class="feat__visual">
-          <div class="phone">
-            <div class="phone__scr">
-              <div class="phone__nav"><b>HAO App</b><span>brand mobile</span></div>
-              <div class="phone__cells">
-                <div class="phone__cell lg"></div>
-                <div class="phone__cell"></div>
-                <div class="phone__cell"></div>
-                <div class="phone__cell"></div>
-              </div>
+        <div class="show__visual" data-tilt>
+          <div class="vphone">
+            <div class="vphone__scr">
+              <div class="vphone__nav"><b>HAO App</b><span>brand mobile</span></div>
+              <div class="vphone__cells"><span class="lg"></span><span></span><span></span><span></span></div>
             </div>
           </div>
         </div>
@@ -431,6 +430,37 @@
     /* reveal */
     var io=new IntersectionObserver(function(es){es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('is-in'); io.unobserve(e.target); } });},{threshold:.12});
     $$('.reveal').forEach(function(el){ io.observe(el); });
+
+    /* ===== 서비스 쇼케이스 모션 ===== */
+    function countUp(el){
+      var to=+el.dataset.count, pre=el.dataset.prefix||'', suf=el.dataset.suffix||'', t0=null, dur=1500;
+      function tick(t){ if(!t0)t0=t; var p=Math.min((t-t0)/dur,1), k=1-Math.pow(1-p,3);
+        el.textContent=pre+Math.round(to*k).toLocaleString()+suf; if(p<1)requestAnimationFrame(tick); }
+      requestAnimationFrame(tick);
+    }
+    var showIo=new IntersectionObserver(function(es){es.forEach(function(e){ if(!e.isIntersecting)return;
+      e.target.classList.add('in');
+      var c=e.target.querySelector('[data-count]'); if(c&&!c.dataset.done){c.dataset.done=1; setTimeout(function(){countUp(c);},300);}
+      showIo.unobserve(e.target); });},{threshold:.25});
+    $$('.show__item').forEach(function(el){ showIo.observe(el); });
+
+    /* 호버 3D 틸트 */
+    $$('[data-tilt]').forEach(function(wrap){
+      var card=wrap.querySelector('.vcard, .vphone'); if(!card)return;
+      wrap.addEventListener('pointermove', function(e){
+        var r=wrap.getBoundingClientRect(), px=(e.clientX-r.left)/r.width-.5, py=(e.clientY-r.top)/r.height-.5;
+        card.style.transform='rotateX('+(-py*7)+'deg) rotateY('+(px*9)+'deg) translateZ(0)';
+      });
+      wrap.addEventListener('pointerleave', function(){ card.style.transform=''; });
+    });
+
+    /* 거대 넘버 패럴랙스 */
+    var paras=$$('[data-parallax]');
+    function onParallax(){ var vh=innerHeight;
+      paras.forEach(function(el){ var r=el.getBoundingClientRect(), mid=r.top+r.height/2, off=(mid-vh/2)/vh;
+        el.style.transform='translateY('+(off*-46)+'px)'; });
+    }
+    addEventListener('scroll', onParallax, {passive:true}); onParallax();
 
     /* form */
     var form=$('#quoteForm');
