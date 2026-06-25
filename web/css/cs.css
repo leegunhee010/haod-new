@@ -48,8 +48,11 @@ em{font-style:normal}
   border-bottom:1px solid transparent}
 .header.is-stuck{background:rgba(255,255,255,.78);backdrop-filter:saturate(160%) blur(16px);border-bottom-color:var(--line)}
 .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:-.02em;font-size:1.05rem}
-.brand__logo{height:26px;width:auto}
-.brand__mark{width:24px;height:24px}
+.brand__logo{height:30px;width:auto}
+.brand__logo--dark{display:none}
+.header.is-stuck .brand__logo--white{display:none}
+.header.is-stuck .brand__logo--dark{display:inline-block}
+.brand__sub{font-size:.82rem;font-weight:600;color:var(--muted);padding-left:11px;border-left:1px solid var(--line)}
 .nav{display:flex;align-items:center;gap:24px}
 .nav a{font-size:.92rem;font-weight:500;color:var(--ink);opacity:.82;transition:opacity .2s}
 .nav a:hover{opacity:1}
@@ -169,7 +172,7 @@ em{font-style:normal}
 .rcard__phone span.lg{height:40px;background:var(--grad);opacity:.7}
 /* 헤더가 다크 히어로 위 */
 .header:not(.is-stuck) .brand,.header:not(.is-stuck) .nav a{color:#fff}
-.header:not(.is-stuck) .brand b{color:rgba(255,255,255,.6)!important}
+.header:not(.is-stuck) .brand__sub{color:rgba(255,255,255,.7)!important;border-left-color:rgba(255,255,255,.25)}
 .header:not(.is-stuck) .nav__center{color:rgba(255,255,255,.66)!important}
 .header:not(.is-stuck) .burger span{background:#fff}
 .header:not(.is-stuck) .header__cta{background:var(--grad)}
