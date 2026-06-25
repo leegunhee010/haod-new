@@ -11,3 +11,18 @@ html, body, button, input, select, textarea { font-family: 'Pretendard', 'SUIT',
 .header .nav a.nav__center { color: var(--accent); }         /* 센터 링크: 하오 오렌지 */
 .header.on-dark:not(.is-stuck) .nav a { color: rgba(255,255,255,.92); }        /* 히어로 위(투명): 흰 글씨 */
 .header.on-dark:not(.is-stuck) .nav a.nav__center { color: #ffd9cf; }
+
+/* HAO 헤더 스케일 업 — 한큐 CSS가 html을 62.5%(1rem=10px)로 잡아 rem이 작아지므로 px로 고정 */
+.header { padding: 30px clamp(28px, 4.2vw, 70px); }
+.header.is-stuck { padding-top: 18px; padding-bottom: 18px; }
+.header .brand__logo { height: 58px; }
+.header.is-stuck .brand__logo { height: 46px; transition: height .3s var(--ease); }
+.header .nav { gap: clamp(24px, 2.4vw, 44px); }
+.header .nav a { font-size: 19px; font-weight: 600; }
+.header .nav__div { height: 22px; }
+.header .header__cta { font-size: 18px; padding: 16px 38px; }
+@media (max-width: 760px){
+  .header { padding: 16px 20px; }
+  .header .brand__logo { height: 40px; }
+  .header .nav a { font-size: 17px; }
+}
