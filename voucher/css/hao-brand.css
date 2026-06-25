@@ -1,0 +1,7 @@
+/* HAO 기본 브랜드 오버라이드 — Pretendard 폰트 + 하오 오렌지 포인트(#e83817) */
+html, body, button, input, select, textarea { font-family: 'Pretendard', 'SUIT', sans-serif; }
+* { font-family: 'Pretendard', 'SUIT', sans-serif; }
+.mont, .prog-num, .prog-total { font-family: 'Pretendard', 'SUIT', sans-serif; }
+
+/* 포인트 컬러 보강(혹시 남은 곳) */
+.text-point { color: #e83817 !important; }

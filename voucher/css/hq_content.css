@@ -6,7 +6,7 @@
 ================================================== */
 /* 메인비주얼 */
 .tit-circle{width: fit-content; position: relative;}
-.tit-circle::after{content: ''; display: block; width: 20px; height: 20px; background: #FF2500; border-radius: 500px; position: absolute; bottom: 24px; right: -25px;}
+.tit-circle::after{content: ''; display: block; width: 20px; height: 20px; background: #e83817; border-radius: 500px; position: absolute; bottom: 24px; right: -25px;}
 .mVisual .visual-body{height: 100%;}
 .mVisual .visual-title{padding: 0 25px 0 20px; box-sizing: border-box; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 2; pointer-events: none;}
 .mVisual .visual-image { position: absolute; top: 0; left: 0; width: 100%; height: 100svh; clip-path: inset(85% 10% 0% 10% round 0);}
@@ -19,7 +19,7 @@
 .mVisual .visual-image .progress-num > p span{padding: 0 8px; box-sizing: border-box;}
 .mVisual .visual-image .progress-num .bullet{width: 4px; height: 4px; background-color: #fff; border-radius: 50px;}
 #main .mVisual .visual-image .visual-arr{width: 24px; height: 24px;}
-.mVisual .visual-image .text-point{color: #FF2500 !important;}
+.mVisual .visual-image .text-point{color: #e83817 !important;}
 .mo-img, .mo-video{display: none;}
 
 /* 초기 로딩 시 다른 섹션 숨김 */
@@ -38,7 +38,7 @@
 /* 커서 커스텀 */
 .theBall-outer {position: fixed; z-index: 9999; pointer-events: none; left: 0; top: 0; pointer-events: none;}
 .theBall-outer .theBall1.bl{border: 1px solid #000;}
-.theBall-outer .theBall2{position: relative; top: -20px; right: -28px; width: 9px; height: 9px; background-color: #FF2500; border-radius: 500px; overflow: hidden; mix-blend-mode: exclusion; transition: 0.3s all ease;}
+.theBall-outer .theBall2{position: relative; top: -20px; right: -28px; width: 9px; height: 9px; background-color: #e83817; border-radius: 500px; overflow: hidden; mix-blend-mode: exclusion; transition: 0.3s all ease;}
 .theBall-outer.on .theBall2{width: 160px; height: 160px;}
 .theBall-outer .cursor-img{transition: 0.3s all ease;}
 .theBall-outer .cursor-img img{filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.50));}
@@ -123,11 +123,11 @@ img{max-width: 100%;}
 #main .section4 .txt-bg > span{line-height: 180px; white-space: nowrap;}
 #main .section4 .txt-bg > span > span{transition: 0.3s all ease;}
 #main .section4 .txt-bg > span > span + span{margin-left: 40px;}
-#main .section4 .txt-bg > span > span:hover{color: #FF2500;}
+#main .section4 .txt-bg > span > span:hover{color: #e83817;}
 #main .section4 .main-txt{position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: fit-content; height: fit-content; z-index: -1;}
 #main .section4 .main-txt strong{font-size: 13.2rem; letter-spacing: -2.64px; opacity: 0; white-space: nowrap;}
 #main .section4 .main-txt .circle-wrap{margin: 34px auto 0;}
-#main .section4 .main-txt .circle-wrap .circle{width: 152px; height: 152px; background-color: #FF2500; border-radius: 500px; transition: 0.3s all ease;}
+#main .section4 .main-txt .circle-wrap .circle{width: 152px; height: 152px; background-color: #e83817; border-radius: 500px; transition: 0.3s all ease;}
 #main .section4 .main-txt .circle-wrap .circle.on{width: 800px;}
 #main .section4 .main-txt .circle-wrap strong{position: absolute; top: 0; left: 0; width: 100%; height: 100%;}
 /* section5 */
@@ -165,8 +165,8 @@ img{max-width: 100%;}
 #main .section6 .back{will-change: transform; position: absolute; width: 100%; height: 100%; /*background-color: #000;*/ left: 0; top: 0; transform: rotateX(30deg);}
 #main .section6 .list{will-change: transform; position: absolute; backface-visibility: hidden; transform-origin: center;}
 #main .section6 p{cursor: none; text-rendering: optimizeLegibility; font-size: 9.6rem; font-weight: 500; letter-spacing: -1.92px; line-height: 1; transition: color .5s; position: relative;}
-#main .section6 .list::after{content: ''; display: block; width: 12px; height: 12px; background: #FF2500; border-radius: 500px; position: absolute; bottom: 0; right: -25px; opacity: 0; transition: 0.3s all ease;}
-#main .section6 .list::before{content: ''; display: block; width: 12px; height: 12px; background: #FF2500; border-radius: 500px; position: absolute; top: 0; left: -25px; opacity: 0; transition: 0.3s all ease;}
+#main .section6 .list::after{content: ''; display: block; width: 12px; height: 12px; background: #e83817; border-radius: 500px; position: absolute; bottom: 0; right: -25px; opacity: 0; transition: 0.3s all ease;}
+#main .section6 .list::before{content: ''; display: block; width: 12px; height: 12px; background: #e83817; border-radius: 500px; position: absolute; top: 0; left: -25px; opacity: 0; transition: 0.3s all ease;}
 @media screen and (min-width: 960px){
     #main .section6 .list.active::before,
     #main .section6 .list:hover::before {
@@ -392,7 +392,7 @@ img{max-width: 100%;}
 #sub.about .section2 .tag-wrap{height: calc(100svh - 450px); margin-bottom: -40px; overflow: hidden;}
 #sub.about .section2 .tag-box{position: relative; height: 100%;}
 #sub.about .section2 .tag-box li{padding: 19px 59px; border: 1px solid #fff; border-radius: 500px; box-sizing: border-box; width: fit-content; line-height: 29px; position: absolute; transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;}
-#sub.about .section2 .tag-box li.red{color: #FF2500 !important; border: 1px solid #FF2500;}
+#sub.about .section2 .tag-box li.red{color: #e83817 !important; border: 1px solid #e83817;}
 #sub.about .section2 .tag-box li.yellow{color: #F9EC38 !important; border: 1px solid #F9EC38;}
 /* Photo */
 #sub.about .section2 .tag-box li:nth-child(1) {
@@ -1289,8 +1289,8 @@ img{max-width: 100%;}
 .history-con{}
 .history-year-group-box{opacity: 0.3; transition: 0.3s all ease;}
 .history-percent-bar {position: absolute; left: 50%; transform: translateX(-50%); width: 5px; height: 100%; background: #999;}
-.history-percent-bar .percent-bar-child {position: absolute; content: ""; width: 100%;  height: 0; background: linear-gradient(0deg, #FF2500 0%, #F9EC38 100%); z-index: 1; /* transition: all 0.3s; */}
-.history-percent-bar .point {width: 30px; height: 30px; background: #FF2500; border-radius: 50%; position: absolute; top: 0; left: 50%; transform: translateX(-50%); z-index: 2; animation: glow 2s infinite ease-in-out;}
+.history-percent-bar .percent-bar-child {position: absolute; content: ""; width: 100%;  height: 0; background: linear-gradient(0deg, #e83817 0%, #F9EC38 100%); z-index: 1; /* transition: all 0.3s; */}
+.history-percent-bar .point {width: 30px; height: 30px; background: #e83817; border-radius: 50%; position: absolute; top: 0; left: 50%; transform: translateX(-50%); z-index: 2; animation: glow 2s infinite ease-in-out;}
 /* 빛나는 효과를 위한 가상 요소 추가 */
 .history-percent-bar .point::before {content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 35px; height: 35px; background: radial-gradient(circle at center,  rgba(255, 37, 0, 0.4) 0%, rgba(255, 37, 0, 0) 90%); border-radius: 50%; z-index: -1;animation: pulse 2s infinite ease-in-out;}
 @keyframes glow {
@@ -1322,7 +1322,7 @@ img{max-width: 100%;}
 .history-year-group-tit{letter-spacing: unset;}
 .history-year-list-box{padding-left: 10rem;}
 .history-year-list-box li{position: relative; padding-left: 13px;}
-.history-year-list-box li::before{content: ''; display: block; width: 5px; height: 5px; background-color: #FF2500; border-radius: 50%; position: absolute; top: 13.5px; left: 0;}
+.history-year-list-box li::before{content: ''; display: block; width: 5px; height: 5px; background-color: #e83817; border-radius: 50%; position: absolute; top: 13.5px; left: 0;}
 
 
 
@@ -1370,8 +1370,8 @@ img{max-width: 100%;}
 .consulting > li + li::before,
 .governmentlist > li + li:before{content: ''; clear: both; display: block; width: 100%; height: 1px; background-color: rgba(255, 255, 255, 0.20); position: absolute; top: 0; left: 0;}
 .promiselist > li {padding: 60px; box-sizing: border-box; position: relative;}
-.promiselist > li strong{max-width: 480px; width: 100%;  text-shadow: -1px -1px 0 #FF2500, 1px -1px 0 #FF2500, -1px 1px 0 #FF2500, 1px 1px 0 #FF2500; color: #000; transition: color 0.3s ease;}
-.promiselist > li:hover strong{color:  #FF2500; }
+.promiselist > li strong{max-width: 480px; width: 100%;  text-shadow: -1px -1px 0 #e83817, 1px -1px 0 #e83817, -1px 1px 0 #e83817, 1px 1px 0 #e83817; color: #000; transition: color 0.3s ease;}
+.promiselist > li:hover strong{color:  #e83817; }
 .promiselist > li:hover span{color: #fff !important;}
 .promiselist > li p{max-width: calc(100% - 540px); width: 100%;}
 .promiselist > li p span{transition: 0.3s all ease;}
@@ -1429,7 +1429,7 @@ img{max-width: 100%;}
 #sub.story .news-story-list li > a{padding: 60px 0; box-sizing: border-box;}
 #sub.story .news-story-list li > a .le{max-width: calc(100% - 180px); width: 100%;}
 #sub.story .news-story-list li > em{padding-left: 13px;}
-#sub.story .news-story-list li:hover::after{background-color: #FF2500;}
+#sub.story .news-story-list li:hover::after{background-color: #e83817;}
 #sub.story .news-story-list li .le p:not(.catelist){transition: 0.3s all ease;}
 #sub.story .news-story-list li:hover .le p:not(.catelist){color: #fff !important;}
 /* 우리의 문화 */
@@ -1443,7 +1443,7 @@ img{max-width: 100%;}
 .virtuelist li h5{transition: 0.5s all ease;}
 .virtuelist li{padding: 80px 0; position: relative;}
 .virtuelist li + li::before{content: ''; clear: both; display: block; width: 100%; height: 1px; background-color: rgba(255, 255, 255, 0.20); position: absolute; top: 0; left: 0;}
-.virtuelist li:hover h5{color: #FF2500;}
+.virtuelist li:hover h5{color: #e83817;}
 .virtuelist li .hovertxt{display: none;}
 .welfarelist em{min-height: 54px;}
 .welfarelist li{padding: 40px; box-sizing: border-box; border-top: 1px solid rgba(255, 255, 255, 0.20); position: relative;}
@@ -1465,12 +1465,12 @@ img{max-width: 100%;}
 #sub.contact .section-column + .section-column{max-width: 750px; width: 100%;}
 #sub.contact .cont-area table tr + tr em{margin-top: 40px;}
 .essential{width: fit-content; line-height: 29px;}
-.essential::after{content: ''; clear: both; display: block; width: 5px; height: 5px; border-radius: 50%; background-color: #FF2500; position: absolute; top: 0; right: -8px;}
+.essential::after{content: ''; clear: both; display: block; width: 5px; height: 5px; border-radius: 50%; background-color: #e83817; position: absolute; top: 0; right: -8px;}
 #sub.contact .section1 .tit-area .imgbox{max-width: 678px; width: calc(100% + 160px); padding-bottom: 186.667%; margin-left: -160px;}
 #sub.contact .section1 .tit-box{z-index: 9;}
 #sub.contact .tab-wrap{padding: 9px 10px; border: 1px solid rgba(255, 255, 255, 0.20); box-sizing: border-box;}
 #sub.contact .tab-wrap li a{height: 60px; line-height: 60px; padding: 0 14px; box-sizing: border-box; transition: 0.3s all ease;}
-#sub.contact .tab-wrap li a.on{background-color: #FF2500;}
+#sub.contact .tab-wrap li a.on{background-color: #e83817;}
 
 .loading{position: fixed; top: 0; left: 0; background: rgba(0, 0, 0, 0.50); width: 100%; height: 100%; z-index: -1;}
 .loading.on{z-index: 99999;}
@@ -1479,7 +1479,7 @@ img{max-width: 100%;}
 .loading .dot:nth-of-type(2){background-color: #FFBFB4;}
 .loading .dot:nth-of-type(3){background-color: #FF917E;}
 .loading .dot:nth-of-type(4){background-color: #FF6045;}
-.loading .dot:nth-of-type(5){background-color: #FF2500;}
+.loading .dot:nth-of-type(5){background-color: #e83817;}
 .loading .dot:before {position: absolute; content: ""; width: 100%; height: 100%; background: inherit; border-radius: inherit; animation: wave 2s ease-out infinite;}
 .loading .dot:nth-child(1)::before {
     background: #FFFFFF;
@@ -1502,7 +1502,7 @@ img{max-width: 100%;}
   }
   
   .loading .dot:nth-child(5)::before {
-    background: #FF2500;
+    background: #e83817;
     animation-delay: 1s;
   }
 
