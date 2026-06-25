@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://cdn.jsdelivr.net" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Fragment+Mono&display=swap" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.css" />
-  <link rel="stylesheet" href="css/cs.css?v=4" />
+  <link rel="stylesheet" href="css/cs.css?v=5" />
 </head>
 <body>
   <div class="progress" id="progress" aria-hidden="true"></div>
@@ -51,66 +51,64 @@
   <main id="top">
     <!-- ===== HERO (dark rolling) ===== -->
     <section class="rhero" id="hero">
+      <!-- 다크 테크 배경 -->
       <div class="rhero__bg" aria-hidden="true">
         <span class="rhero__glow rhero__glow--1"></span>
         <span class="rhero__glow rhero__glow--2"></span>
-        <span class="rhero__gridlines"></span>
+        <span class="rhero__dots"></span>
       </div>
-      <!-- 떠다니는 대시보드 카드 (테크 무드) -->
-      <div class="rhero__cards" aria-hidden="true">
-        <div class="rcard rcard--a">
-          <div class="rcard__top"><b>검색 노출</b><span class="rcard__up">+312%</span></div>
-          <svg class="rcard__chart" viewBox="0 0 180 60" preserveAspectRatio="none"><polyline fill="none" stroke="url(#gb)" stroke-width="3" stroke-linecap="round" points="0,52 30,46 60,40 90,30 120,22 150,14 180,6"/></svg>
-        </div>
-        <div class="rcard rcard--b">
-          <div class="rcard__ring"><svg viewBox="0 0 44 44"><circle cx="22" cy="22" r="18" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="5"/><circle cx="22" cy="22" r="18" fill="none" stroke="url(#gb)" stroke-width="5" stroke-linecap="round" stroke-dasharray="113" stroke-dashoffset="22" transform="rotate(-90 22 22)"/></svg><b>87%</b></div>
-          <span>AI Visibility</span>
-        </div>
-        <div class="rcard rcard--c">
-          <div class="rcard__row"><i></i> ChatGPT <em>인용</em></div>
-          <div class="rcard__row"><i></i> Gemini <em>인용</em></div>
-          <div class="rcard__row"><i></i> 네이버 Cue <em>인용</em></div>
-        </div>
-        <div class="rcard rcard--d">
-          <div class="rcard__phone"><span></span><span></span><span class="lg"></span></div>
-        </div>
+      <!-- 배경 떠다니는 대시보드 카드(씬) -->
+      <div class="rhero__scene" aria-hidden="true">
+        <span class="rhero__ring"></span>
+        <div class="scard scard--chat"><b>Chat</b><span class="scard__bub"></span><span class="scard__bub scard__bub--2"></span><span class="scard__in"></span></div>
+        <div class="scard scard--ana"><b>Analytics</b><svg viewBox="0 0 120 56" preserveAspectRatio="none"><g fill="url(#gb)"><rect x="4" y="30" width="10" height="22"/><rect x="20" y="20" width="10" height="32"/><rect x="36" y="34" width="10" height="18"/><rect x="52" y="14" width="10" height="38"/><rect x="68" y="24" width="10" height="28"/><rect x="84" y="8" width="10" height="44"/><rect x="100" y="18" width="10" height="34"/></g></svg></div>
+        <div class="scard scard--auto"><b>Automation</b><div class="scard__flow"><i></i><i></i><i class="ok"></i></div><span class="scard__ln"></span></div>
+        <div class="scard scard--data"><div class="scard__donut"><svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="24" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="7"/><circle cx="30" cy="30" r="24" fill="none" stroke="url(#gb)" stroke-width="7" stroke-linecap="round" stroke-dasharray="150" stroke-dashoffset="40" transform="rotate(-90 30 30)"/></svg><em>78%</em></div></div>
+        <div class="scard scard--ins"><b>AI Insights</b><svg viewBox="0 0 120 50" preserveAspectRatio="none"><polyline fill="none" stroke="url(#gb)" stroke-width="3" stroke-linecap="round" points="2,44 24,34 46,40 68,20 90,24 118,6"/></svg></div>
+        <div class="scard scard--pre"><b>Predictive</b><span class="scard__acc">92.4%</span><svg viewBox="0 0 120 40" preserveAspectRatio="none"><polyline fill="none" stroke="rgba(255,255,255,.4)" stroke-width="2.4" points="2,34 30,28 58,30 86,14 118,10"/></svg></div>
       </div>
 
-      <div class="rhero__inner">
-        <div class="rhero__slides" id="rheroSlides">
-          <article class="rslide is-on">
-            <p class="rslide__eg">SEO · AEO · 홈페이지 · 앱</p>
-            <h1 class="rslide__t"><span class="g">검색되는 홈페이지</span>로<br />시작하세요.</h1>
-            <p class="rslide__d">SEO·AEO 설계가 들어간 홈페이지·앱을 제작합니다.<br />만드는 데서 끝나지 않고, 발견되게 만듭니다.</p>
+      <!-- 좌측 세로 슬라이드 내비 -->
+      <ul class="rhero__nav" id="rheroNav"></ul>
+
+      <!-- 좌우 화살표 -->
+      <button class="rhero__arr rhero__arr--prev" id="rheroPrev" aria-label="이전">&#8249;</button>
+      <button class="rhero__arr rhero__arr--next" id="rheroNext" aria-label="다음">&#8250;</button>
+
+      <div class="rhero__center">
+        <div class="rslides" id="rheroSlides">
+          <article class="rslide is-on" data-label="SEO·AEO 통합" data-cat="SEO · AEO">
+            <h1 class="rslide__t">검색되는 홈페이지로<br />시작하세요.</h1>
+            <p class="rslide__d">SEO·AEO 설계가 들어간 홈페이지·앱을 제작합니다. 만드는 데서 끝나지 않고, 발견되게 만듭니다.</p>
           </article>
-          <article class="rslide">
-            <p class="rslide__eg">WEBSITE · SHOPPING · CMS</p>
-            <h1 class="rslide__t">비즈니스에 맞춘<br /><span class="g">맞춤 제작</span>으로.</h1>
-            <p class="rslide__d">기업·브랜드 사이트부터 랜딩·쇼핑몰·관리자까지,<br />한 팀이 디자인·개발·운영을 책임집니다.</p>
+          <article class="rslide" data-label="홈페이지·쇼핑몰" data-cat="WEBSITE">
+            <h1 class="rslide__t">비즈니스에 맞춘<br />맞춤 제작으로.</h1>
+            <p class="rslide__d">기업·브랜드 사이트부터 랜딩·쇼핑몰·관리자까지, 한 팀이 디자인·개발·운영을 책임집니다.</p>
           </article>
-          <article class="rslide">
-            <p class="rslide__eg">AEO · GEO · AI SEARCH</p>
-            <h1 class="rslide__t"><span class="g">AI가 답하는</span><br />브랜드로.</h1>
-            <p class="rslide__d">ChatGPT·Gemini·Perplexity가 답변에 인용하도록<br />신뢰 신호와 답변형 콘텐츠를 설계합니다.</p>
+          <article class="rslide" data-label="AI 검색 최적화" data-cat="AEO · GEO">
+            <h1 class="rslide__t">AI가 답하는<br />브랜드로.</h1>
+            <p class="rslide__d">ChatGPT·Gemini·Perplexity가 답변에 인용하도록 신뢰 신호와 답변형 콘텐츠를 설계합니다.</p>
           </article>
-          <article class="rslide">
-            <p class="rslide__eg">APP · SYSTEM · BACKEND</p>
-            <h1 class="rslide__t">앱부터 <span class="g">백엔드</span>까지<br />한 번에.</h1>
-            <p class="rslide__d">iOS·Android·웹앱과 결제·예약·API 연동, 보안까지<br />안정적으로 구축합니다.</p>
+          <article class="rslide" data-label="모바일 앱·시스템" data-cat="APP">
+            <h1 class="rslide__t">앱부터 백엔드까지<br />한 번에.</h1>
+            <p class="rslide__d">iOS·Android·웹앱과 결제·예약·API 연동, 보안까지 안정적으로 구축합니다.</p>
+          </article>
+          <article class="rslide" data-label="검색 성과 관리" data-cat="ANALYTICS">
+            <h1 class="rslide__t">노출부터 전환까지<br />데이터로.</h1>
+            <p class="rslide__d">검색 노출·AI 인용·유입·전환을 지표로 관리하며 지속적으로 성장시킵니다.</p>
           </article>
         </div>
 
-        <div class="rhero__ctrl">
-          <button class="rcircle rcircle--prog" id="rheroProg" aria-label="다음 슬라이드">
-            <svg class="rcircle__ring" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="47" /><circle class="rcircle__bar" id="rheroBar" cx="50" cy="50" r="47" /></svg>
-            <span class="rcircle__num"><b id="rheroNum">01</b><i>/ 04</i></span>
+        <div class="rhero__btns">
+          <button class="rcircle rcircle--story" id="rheroProg" aria-label="다음 슬라이드">
+            <svg class="rcircle__ring" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="48" /><circle class="rcircle__bar" cx="50" cy="50" r="48" /></svg>
+            <span>스토리<br />보기</span><i class="rcircle__arr">&#8595;</i>
           </button>
-          <a class="rcircle rcircle--cta" href="#contact"><span>제작<br />문의</span></a>
+          <a class="rcircle rcircle--cta" href="#contact"><span>제작<br />문의</span><i class="rcircle__arr">&#8594;</i></a>
         </div>
-        <div class="rhero__dots" id="rheroDots" aria-hidden="true"></div>
       </div>
 
-      <a class="rhero__scroll" href="#service" aria-label="아래로 스크롤"><span></span></a>
+      <span class="rhero__cat" id="rheroCat">SEO · AEO</span>
     </section>
 
     <!-- ===== TRUST ===== -->
@@ -402,19 +400,23 @@
     var set = P.map(function(s){ return '<span class="plogo"><img src="'+s+'" alt="파트너" decoding="async" /></span>'; }).join('');
     $('#trustTrack').innerHTML = set + set;
 
-    /* hero — 자동 롤링 슬라이드 + 원형 진행링 */
-    var rslides=$$('.rslide'), rdots=$('#rheroDots'), rnum=$('#rheroNum'), rprog=$('#rheroProg'), ridx=0, rtimer, RDUR=5000;
+    /* hero — 좌측 내비 자동 롤링 + 진행링 (상공식) */
+    var rslides=$$('.rslide'), rnav=$('#rheroNav'), rcat=$('#rheroCat'), rprog=$('#rheroProg'), ridx=0, rtimer, RDUR=6000;
     if(rslides.length){
-      rslides.forEach(function(_,i){ var b=document.createElement('button'); if(i===0)b.className='is-on'; b.addEventListener('click',function(){rgo(i);}); rdots.appendChild(b); });
-      var rdotBtns=$$('button',rdots);
+      if(rnav) rnav.innerHTML = rslides.map(function(s,i){ return '<li data-i="'+i+'" class="'+(i===0?'is-on':'')+'"><span class="rdot"></span>'+(s.dataset.label||('0'+(i+1)).slice(-2))+'</li>'; }).join('');
+      var rnavItems=rnav?$$('li',rnav):[];
       function rgo(n){
         ridx=(n+rslides.length)%rslides.length;
         rslides.forEach(function(s,i){ s.classList.toggle('is-on', i===ridx); });
-        rdotBtns.forEach(function(b,i){ b.classList.toggle('is-on', i===ridx); });
-        if(rnum) rnum.textContent=('0'+(ridx+1)).slice(-2);
+        rnavItems.forEach(function(b,i){ b.classList.toggle('is-on', i===ridx); });
+        if(rcat) rcat.textContent = rslides[ridx].dataset.cat || '';
         if(rprog){ rprog.classList.remove('is-run'); void rprog.offsetWidth; rprog.style.setProperty('--dur',(RDUR/1000)+'s'); rprog.classList.add('is-run'); }
         clearTimeout(rtimer); rtimer=setTimeout(function(){ rgo(ridx+1); }, RDUR);
       }
+      if(rnav) rnav.addEventListener('click', function(e){ var li=e.target.closest('li'); if(li) rgo(+li.dataset.i); });
+      var rp=$('#rheroPrev'), rn=$('#rheroNext');
+      if(rp) rp.addEventListener('click', function(){ rgo(ridx-1); });
+      if(rn) rn.addEventListener('click', function(){ rgo(ridx+1); });
       if(rprog) rprog.addEventListener('click', function(){ rgo(ridx+1); });
       rgo(0);
     }
