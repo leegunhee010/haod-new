@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="4.8mm" height="4.8mm" viewBox="0 0 13.59 13.59">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #fff;
+        stroke-linecap: round;
+        stroke-miterlimit: 10;
+        stroke-width: 2px;
+      }
+    </style>
+  </defs>
+  <title>ico_close_wht</title>
+  <g id="레이어_2" data-name="레이어 2">
+    <g id="Layer_1" data-name="Layer 1">
+      <g>
+        <line class="cls-1" x1="12.59" y1="1" x2="1" y2="12.59"/>
+        <line class="cls-1" x1="1" y1="1" x2="12.59" y2="12.59"/>
+      </g>
+    </g>
+  </g>
+</svg>
