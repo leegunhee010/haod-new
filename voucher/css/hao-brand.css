@@ -27,6 +27,22 @@ body { background: #ffffff; }
 
 /* 기존 영상 히어로 숨김 (GROOVE 스타일 새 히어로로 대체) */
 .mVisual { display: none !important; }
+/* ★ 한큐는 "히어로 완료 후 섹션 표시"(#main>section:not(.mVisual){opacity:0;visibility:hidden}) 구조라,
+   mVisual을 숨기면 트리거가 끊겨 전 섹션이 안 보임 → 섹션을 항상 표시로 강제 */
+#main > section { opacity: 1 !important; visibility: visible !important; }
+/* 텍스트/카드/포폴 콘텐츠도 항상 표시 (스크롤 리빌 트리거가 히어로 교체로 불안정 → 정적 표시) */
+#main .tit-box b, #main .tit-box h3, #main .fill-text, #main .count,
+#main .ani_items, #main .ani_items1,
+#main .projects-img, #main .portfolio-item, #main .story-item, #main .imgbox li,
+#main .card_wrapper .txt-wrap, #main .it-wrap, #main .section6 .list,
+#main .section7 .tit-box, #main .section7 .img-area .img {
+  opacity: 1 !important; visibility: visible !important;
+}
+/* 헤딩·카피류는 위치 이동 리빌도 제거(정적) — 단 카드스택/파트너 3D는 제외 */
+#main .tit-box b, #main .tit-box h3, #main .fill-text, #main .count,
+#main .tit-area .ani_items, #main .tit-box .ani_items {
+  transform: none !important;
+}
 
 /* ===== GROOVE 스타일 히어로 (하오 오렌지) ===== */
 .ghero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 170px 24px 96px; overflow: hidden; box-sizing: border-box;
