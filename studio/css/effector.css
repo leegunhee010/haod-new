@@ -209,6 +209,14 @@ body.lb-open { overflow: hidden; }
 .lb__stage figcaption { margin-top: 16px; flex: none; text-align: center; color: #fff; }
 .lb.is-tall .lb__hint { display: block; }
 .lb__hint { display: none; margin-top: 8px; font-size: .76rem; color: rgba(255,255,255,.5); letter-spacing: .02em; }
+/* 확대(줌) 컨트롤 */
+.lb__zoom { position: absolute; bottom: clamp(16px,3vw,28px); left: 50%; transform: translateX(-50%); z-index: 4; display: flex; align-items: center; gap: 2px; padding: 5px; border-radius: 999px; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+.lb__zoom button { width: 36px; height: 36px; border-radius: 50%; border: 0; background: transparent; color: #fff; font-size: 1.1rem; line-height: 1; cursor: pointer; display: grid; place-items: center; transition: background .2s; }
+.lb__zoom button:hover { background: rgba(255,255,255,.2); }
+.lb__zval { color: #fff; font-size: .8rem; min-width: 48px; text-align: center; font-weight: 700; font-variant-numeric: tabular-nums; }
+.lb.is-tall .lb__zoom { display: none; }
+.lb.is-zoom .lb__nav, .lb.is-zoom .lb__hint { opacity: 0; pointer-events: none; }
+.lb:not(.is-tall) .lb__scroll img { touch-action: none; }
 .lb__stage figcaption b { display: block; font-size: 1.1rem; font-weight: 800; letter-spacing: -.02em; }
 .lb__stage figcaption span { display: block; margin-top: 6px; font-size: .82rem; color: rgba(255,255,255,.55); letter-spacing: .03em; }
 .lb__close { position: absolute; top: clamp(18px,3vw,30px); right: clamp(18px,3vw,30px); width: 48px; height: 48px; border-radius: 50%; border: 1px solid rgba(255,255,255,.25); background: rgba(255,255,255,.06); color: #fff; font-size: 1.2rem; cursor: pointer; transition: background .25s, transform .25s; }

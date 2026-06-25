@@ -54,8 +54,18 @@
   window.HAO_WORKS_DEFAULT = DEFAULT_WORKS;
   window.HAO_imgPath = function (f) { return 'assets/haostudio/' + f; };
 
-  /* ---------- 라이트박스 (긴 상세페이지·GIF 세로 스크롤 지원) ---------- */
-  var ov, imgEl, capEl, scrollEl, curList = [], curIdx = 0;
+  /* ---------- 라이트박스 (긴 상세페이지·GIF 스크롤 + 확대/이동 줌) ---------- */
+  var ov, imgEl, capEl, scrollEl, zvalEl, curList = [], curIdx = 0;
+  var scale = 1, tx = 0, ty = 0, drag = false, dsx = 0, dsy = 0;
+  function applyZoom() {
+    if (scale === 1) { tx = 0; ty = 0; imgEl.style.transform = ''; imgEl.style.cursor = ''; }
+    else { imgEl.style.transform = 'translate(' + tx + 'px,' + ty + 'px) scale(' + scale + ')'; imgEl.style.cursor = drag ? 'grabbing' : 'grab'; }
+    imgEl.style.transition = drag ? 'none' : '';
+    if (zvalEl) zvalEl.textContent = Math.round(scale * 100) + '%';
+    ov.classList.toggle('is-zoom', scale > 1);
+  }
+  function setScale(s) { scale = Math.max(1, Math.min(4, Math.round(s * 100) / 100)); applyZoom(); }
+  function resetZoom() { scale = 1; tx = 0; ty = 0; drag = false; if (imgEl) { imgEl.style.transform = ''; imgEl.style.cursor = ''; } if (zvalEl) zvalEl.textContent = '100%'; ov && ov.classList.remove('is-zoom'); }
   function build() {
     ov = document.createElement('div');
     ov.className = 'lb';
@@ -63,17 +73,53 @@
       '<button class="lb__close" aria-label="닫기">✕</button>' +
       '<button class="lb__nav lb__prev" aria-label="이전">‹</button>' +
       '<figure class="lb__stage"><div class="lb__scroll"><img alt="" /></div><figcaption></figcaption><span class="lb__hint">↕ 스크롤하여 전체 보기</span></figure>' +
-      '<button class="lb__nav lb__next" aria-label="다음">›</button>';
+      '<button class="lb__nav lb__next" aria-label="다음">›</button>' +
+      '<div class="lb__zoom"><button data-z="out" aria-label="축소">&minus;</button><span class="lb__zval">100%</span><button data-z="in" aria-label="확대">+</button><button data-z="reset" aria-label="원래대로">⟲</button></div>';
     document.body.appendChild(ov);
     imgEl = ov.querySelector('img');
     capEl = ov.querySelector('figcaption');
     scrollEl = ov.querySelector('.lb__scroll');
-    // 이미지 로드 후 세로로 길면 스크롤 모드(is-tall)로 전환
+    zvalEl = ov.querySelector('.lb__zval');
+    // 이미지 로드 후 세로로 길면 스크롤 모드(is-tall)
     imgEl.addEventListener('load', function () {
       var tall = imgEl.naturalWidth && (imgEl.naturalHeight / imgEl.naturalWidth) >= 2.2;
       ov.classList.toggle('is-tall', !!tall);
       scrollEl.scrollTop = 0;
     });
+    // 줌 버튼
+    ov.querySelector('.lb__zoom').addEventListener('click', function (e) {
+      var b = e.target.closest('button'); if (!b) return; e.stopPropagation();
+      var z = b.dataset.z;
+      if (z === 'in') setScale(scale + 0.5);
+      else if (z === 'out') setScale(scale - 0.5);
+      else resetZoom();
+    });
+    // 클릭으로 확대/원복 (긴 이미지 스크롤 모드에선 무시)
+    imgEl.addEventListener('click', function (e) {
+      if (ov.classList.contains('is-tall')) return;
+      e.stopPropagation();
+      if (drag) return;
+      setScale(scale > 1 ? 1 : 2);
+    });
+    // 휠 줌
+    scrollEl.addEventListener('wheel', function (e) {
+      if (ov.classList.contains('is-tall')) return;   // 스크롤 모드는 스크롤 우선
+      e.preventDefault();
+      setScale(scale + (e.deltaY < 0 ? 0.3 : -0.3));
+    }, { passive: false });
+    // 드래그로 이동(확대 상태일 때)
+    imgEl.addEventListener('pointerdown', function (e) {
+      if (scale <= 1) return; e.preventDefault();
+      drag = true; dsx = e.clientX - tx; dsy = e.clientY - ty; imgEl.style.cursor = 'grabbing';
+      imgEl.setPointerCapture && imgEl.setPointerCapture(e.pointerId);
+    });
+    imgEl.addEventListener('pointermove', function (e) {
+      if (!drag) return; tx = e.clientX - dsx; ty = e.clientY - dsy; applyZoom();
+    });
+    function endDrag() { if (drag) { drag = false; setTimeout(function () { drag = false; }, 0); applyZoom(); } }
+    imgEl.addEventListener('pointerup', endDrag);
+    imgEl.addEventListener('pointercancel', endDrag);
+
     ov.querySelector('.lb__close').addEventListener('click', close);
     ov.querySelector('.lb__prev').addEventListener('click', function (e) { e.stopPropagation(); go(-1); });
     ov.querySelector('.lb__next').addEventListener('click', function (e) { e.stopPropagation(); go(1); });
@@ -83,11 +129,14 @@
       if (e.key === 'Escape') close();
       else if (e.key === 'ArrowLeft') go(-1);
       else if (e.key === 'ArrowRight') go(1);
+      else if (e.key === '+' || e.key === '=') setScale(scale + 0.5);
+      else if (e.key === '-') setScale(scale - 0.5);
     });
   }
   function render() {
     var w = curList[curIdx];
     ov.classList.remove('is-tall');           // 새 이미지 로드 전 초기화
+    resetZoom();
     if (scrollEl) scrollEl.scrollTop = 0;
     imgEl.src = window.HAO_imgPath(w.f);
     imgEl.alt = w.t;
