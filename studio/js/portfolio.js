@@ -36,7 +36,8 @@
     { f: 'hs29.jpg', t: '초고속 충전 어댑터', c: '상세페이지', main: true },
     { f: 'hs30.jpg', t: '쥬스멜로우 액상담배', c: '상세페이지', main: false },
     { f: 'hs31.jpg', t: '워터리스 309 세정제', c: '상세페이지', main: true },
-    { f: 'hs32.jpg', t: '바로잰 Fit', c: '상세페이지', main: false }
+    { f: 'hs32.jpg', t: '바로잰 Fit', c: '상세페이지', main: false },
+    { f: 'detail-ssaju.jpg', t: '싸주아리 섬쑥차 상세페이지', c: '상세페이지', main: true }
   ];
 
   // 관리자 저장분 병합 (브라우저 localStorage — 라이브 반영은 백엔드 연동 시)
