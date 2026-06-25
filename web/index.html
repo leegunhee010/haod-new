@@ -52,58 +52,68 @@
   </header>
 
   <main id="top">
-    <!-- ===== HERO ===== -->
-    <section class="hero">
-      <div class="hero__in">
-        <div class="hero__text">
-          <span class="eyebrow hero__eyebrow">SEO · AEO · 홈페이지 · 앱</span>
-          <h1 class="hero__title">검색되는 홈페이지,<br /><span class="g">AI가 답하는</span> 브랜드.</h1>
-          <p class="hero__sub">반응형 홈페이지와 앱을 제작하고, 사람의 검색(SEO)과 AI의 답변(AEO)에 모두 노출되도록 설계합니다. 만드는 데서 끝나지 않고, 발견되게 만듭니다.</p>
-          <div class="hero__btns">
-            <a href="#contact" class="btn btn--grad"><span>무료 진단·제작 문의</span><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-            <a href="#service" class="btn btn--ghost"><span>서비스 보기</span><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-          </div>
-          <div class="hero__stats">
-            <div class="hero__stat"><strong>500+</strong><span>제작 프로젝트</span></div>
-            <div class="hero__stat"><strong>12년</strong><span>웹·디자인 경력</span></div>
-            <div class="hero__stat"><strong>7개</strong><span>대응 AI 검색엔진</span></div>
-          </div>
+    <!-- ===== HERO (dark rolling) ===== -->
+    <section class="rhero" id="hero">
+      <div class="rhero__bg" aria-hidden="true">
+        <span class="rhero__glow rhero__glow--1"></span>
+        <span class="rhero__glow rhero__glow--2"></span>
+        <span class="rhero__gridlines"></span>
+      </div>
+      <!-- 떠다니는 대시보드 카드 (테크 무드) -->
+      <div class="rhero__cards" aria-hidden="true">
+        <div class="rcard rcard--a">
+          <div class="rcard__top"><b>검색 노출</b><span class="rcard__up">+312%</span></div>
+          <svg class="rcard__chart" viewBox="0 0 180 60" preserveAspectRatio="none"><polyline fill="none" stroke="url(#gb)" stroke-width="3" stroke-linecap="round" points="0,52 30,46 60,40 90,30 120,22 150,14 180,6"/></svg>
         </div>
-        <div class="hero__art">
-          <div class="hero__glow"></div>
-          <svg class="hero__arrow" viewBox="0 0 100 100" aria-hidden="true">
-            <polygon points="82,18 18,62 50,52" fill="url(#ga)"/>
-            <polygon points="82,18 50,52 60,84" fill="url(#gb)"/>
-            <polygon points="18,62 60,84 50,52" fill="url(#gc)"/>
-          </svg>
+        <div class="rcard rcard--b">
+          <div class="rcard__ring"><svg viewBox="0 0 44 44"><circle cx="22" cy="22" r="18" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="5"/><circle cx="22" cy="22" r="18" fill="none" stroke="url(#gb)" stroke-width="5" stroke-linecap="round" stroke-dasharray="113" stroke-dashoffset="22" transform="rotate(-90 22 22)"/></svg><b>87%</b></div>
+          <span>AI Visibility</span>
+        </div>
+        <div class="rcard rcard--c">
+          <div class="rcard__row"><i></i> ChatGPT <em>인용</em></div>
+          <div class="rcard__row"><i></i> Gemini <em>인용</em></div>
+          <div class="rcard__row"><i></i> 네이버 Cue <em>인용</em></div>
+        </div>
+        <div class="rcard rcard--d">
+          <div class="rcard__phone"><span></span><span></span><span class="lg"></span></div>
         </div>
       </div>
 
-      <!-- hero dashboard mockup -->
-      <div class="hero__mock reveal">
-        <div class="bframe">
-          <div class="bframe__bar"><i></i><i></i><i></i><span class="bframe__url">https://yourbrand.co.kr — 검색 성과 대시보드</span></div>
-          <div class="bframe__body" style="display:grid;grid-template-columns:1.4fr 1fr;gap:1px;background:var(--line-2)">
-            <div style="background:#fff;padding:20px">
-              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
-                <b style="font-size:.92rem">검색 노출 추이 (SEO + AEO)</b>
-                <span class="kpi" style="padding:0;border:0;background:none"><b class="g" style="font-size:1.1rem">+312%</b></span>
-              </div>
-              <svg class="chart" id="heroChart" viewBox="0 0 520 170" preserveAspectRatio="none"></svg>
-              <div class="chart-row">
-                <span class="chart-pill"><i style="background:#f25b35"></i> 구글·네이버 SEO</span>
-                <span class="chart-pill"><i style="background:#e83817"></i> AI 답변 인용(AEO)</span>
-              </div>
-            </div>
-            <div style="background:#fff;padding:20px;display:flex;flex-direction:column;gap:12px">
-              <b style="font-size:.92rem">핵심 지표</b>
-              <div class="kpi"><b class="g">87<small style="font-size:.6em">%</small></b><span>Visibility</span></div>
-              <div class="kpi"><b class="g">1.4<small style="font-size:.6em">k</small></b><span>AI Citation</span></div>
-              <div class="kpi"><b class="g">x3.1</b><span>전환 유입</span></div>
-            </div>
-          </div>
+      <div class="rhero__inner">
+        <div class="rhero__slides" id="rheroSlides">
+          <article class="rslide is-on">
+            <p class="rslide__eg">SEO · AEO · 홈페이지 · 앱</p>
+            <h1 class="rslide__t"><span class="g">검색되는 홈페이지</span>로<br />시작하세요.</h1>
+            <p class="rslide__d">SEO·AEO 설계가 들어간 홈페이지·앱을 제작합니다.<br />만드는 데서 끝나지 않고, 발견되게 만듭니다.</p>
+          </article>
+          <article class="rslide">
+            <p class="rslide__eg">WEBSITE · SHOPPING · CMS</p>
+            <h1 class="rslide__t">비즈니스에 맞춘<br /><span class="g">맞춤 제작</span>으로.</h1>
+            <p class="rslide__d">기업·브랜드 사이트부터 랜딩·쇼핑몰·관리자까지,<br />한 팀이 디자인·개발·운영을 책임집니다.</p>
+          </article>
+          <article class="rslide">
+            <p class="rslide__eg">AEO · GEO · AI SEARCH</p>
+            <h1 class="rslide__t"><span class="g">AI가 답하는</span><br />브랜드로.</h1>
+            <p class="rslide__d">ChatGPT·Gemini·Perplexity가 답변에 인용하도록<br />신뢰 신호와 답변형 콘텐츠를 설계합니다.</p>
+          </article>
+          <article class="rslide">
+            <p class="rslide__eg">APP · SYSTEM · BACKEND</p>
+            <h1 class="rslide__t">앱부터 <span class="g">백엔드</span>까지<br />한 번에.</h1>
+            <p class="rslide__d">iOS·Android·웹앱과 결제·예약·API 연동, 보안까지<br />안정적으로 구축합니다.</p>
+          </article>
         </div>
+
+        <div class="rhero__ctrl">
+          <button class="rcircle rcircle--prog" id="rheroProg" aria-label="다음 슬라이드">
+            <svg class="rcircle__ring" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="47" /><circle class="rcircle__bar" id="rheroBar" cx="50" cy="50" r="47" /></svg>
+            <span class="rcircle__num"><b id="rheroNum">01</b><i>/ 04</i></span>
+          </button>
+          <a class="rcircle rcircle--cta" href="#contact"><span>제작<br />문의</span></a>
+        </div>
+        <div class="rhero__dots" id="rheroDots" aria-hidden="true"></div>
       </div>
+
+      <a class="rhero__scroll" href="#service" aria-label="아래로 스크롤"><span></span></a>
     </section>
 
     <!-- ===== TRUST ===== -->
@@ -267,27 +277,18 @@
       <div class="tgrid" id="workGrid"></div>
     </section>
 
-    <!-- ===== PROCESS (timeline, dark) ===== -->
-    <section class="ptl" id="process">
-      <div class="sec">
-        <div class="sec__head center">
-          <span class="eyebrow">PROCESS</span>
-          <h2 class="sec__title">제작 <span class="g">프로세스</span></h2>
-        </div>
-        <div class="ptl__line">
-          <span class="ptl__cap">BEGIN</span>
-          <div class="ptl__circles">
-            <div class="ptl__node reveal"><div class="ptl__circle"><b>상담</b><span>프로젝트 이해</span></div></div>
-            <div class="ptl__node reveal"><div class="ptl__circle"><b>기획</b><span>구조·흐름 설계</span></div></div>
-            <div class="ptl__node reveal"><div class="ptl__circle"><b>디자인</b><span>3단계 내부 컨펌</span></div></div>
-            <div class="ptl__node reveal"><div class="ptl__circle"><b>개발</b><span>맞춤 커스텀 구현</span></div></div>
-            <div class="ptl__node reveal"><div class="ptl__circle"><b>검수</b><span>기능·오류 점검</span></div></div>
-            <div class="ptl__node reveal"><div class="ptl__circle"><b>런칭</b><span>사이트 오픈</span></div></div>
-            <div class="ptl__node reveal"><div class="ptl__circle"><b>사후관리</b><span>유지보수 지원</span></div></div>
-          </div>
-          <span class="ptl__cap">CARE</span>
-        </div>
-        <p class="ptl__desc">복잡한 웹 제작 과정, 하오디자인이 가장 단순하고 명확하게 정리해 드립니다.<br />단계별 전문 인력의 밀착 케어로 당신의 비즈니스가 더 빠르게 성장하도록 돕습니다.</p>
+    <!-- ===== PROCESS ===== -->
+    <section class="sec" id="process" style="padding-top:0">
+      <div class="sec__head center">
+        <span class="eyebrow">HOW IT WORKS</span>
+        <h2 class="sec__title">제작은 이렇게 진행됩니다</h2>
+      </div>
+      <div class="proc">
+        <div class="pstep reveal"><div class="pstep__no">01</div><h3>상담·견적</h3><p>목표·기능·일정을 듣고 방향과 견적을 잡습니다.</p></div>
+        <div class="pstep reveal"><div class="pstep__no">02</div><h3>기획·설계</h3><p>정보구조·화면설계와 SEO·AEO 구조를 함께 잡습니다.</p></div>
+        <div class="pstep reveal"><div class="pstep__no">03</div><h3>디자인</h3><p>브랜드에 맞는 UI·인터랙션을 디자인합니다.</p></div>
+        <div class="pstep reveal"><div class="pstep__no">04</div><h3>개발·구축</h3><p>반응형 퍼블리싱·개발과 CMS를 구축합니다.</p></div>
+        <div class="pstep reveal"><div class="pstep__no">05</div><h3>런칭·운영</h3><p>검색 최적화 적용 후 오픈, 유지보수까지 함께합니다.</p></div>
       </div>
     </section>
 
@@ -404,32 +405,21 @@
     var set = P.map(function(s){ return '<span class="plogo"><img src="'+s+'" alt="파트너" decoding="async" /></span>'; }).join('');
     $('#trustTrack').innerHTML = set + set;
 
-    /* hero chart (animated line) */
-    function buildChart(svg, pts, stroke, fillId){
-      var ns='http://www.w3.org/2000/svg';
-      var poly=document.createElementNS(ns,'polyline');
-      poly.setAttribute('fill','none'); poly.setAttribute('stroke',stroke); poly.setAttribute('stroke-width','3');
-      poly.setAttribute('stroke-linejoin','round'); poly.setAttribute('stroke-linecap','round');
-      poly.setAttribute('points', pts);
-      svg.appendChild(poly);
-      var len=poly.getTotalLength?poly.getTotalLength():1000;
-      poly.style.strokeDasharray=len; poly.style.strokeDashoffset=len;
-      poly.style.transition='stroke-dashoffset 1.8s cubic-bezier(.16,1,.3,1)';
-      return poly;
-    }
-    var hc=$('#heroChart');
-    if(hc){
-      // area fill
-      var ns='http://www.w3.org/2000/svg';
-      var area=document.createElementNS(ns,'polygon');
-      area.setAttribute('points','0,150 80,135 160,108 240,118 320,72 400,52 520,20 520,170 0,170');
-      area.setAttribute('fill','rgba(232,56,23,.09)');
-      hc.appendChild(area);
-      var p1=buildChart(hc,'0,150 80,140 160,120 240,128 320,100 400,86 520,58','#f25b35');
-      var p2=buildChart(hc,'0,158 80,150 160,132 240,140 320,92 400,66 520,24','#e83817');
-      var fired=false;
-      var io1=new IntersectionObserver(function(es){es.forEach(function(e){ if(e.isIntersecting&&!fired){fired=true; p1.style.strokeDashoffset=0; setTimeout(function(){p2.style.strokeDashoffset=0;},250);} });},{threshold:.3});
-      io1.observe(hc);
+    /* hero — 자동 롤링 슬라이드 + 원형 진행링 */
+    var rslides=$$('.rslide'), rdots=$('#rheroDots'), rnum=$('#rheroNum'), rprog=$('#rheroProg'), ridx=0, rtimer, RDUR=5000;
+    if(rslides.length){
+      rslides.forEach(function(_,i){ var b=document.createElement('button'); if(i===0)b.className='is-on'; b.addEventListener('click',function(){rgo(i);}); rdots.appendChild(b); });
+      var rdotBtns=$$('button',rdots);
+      function rgo(n){
+        ridx=(n+rslides.length)%rslides.length;
+        rslides.forEach(function(s,i){ s.classList.toggle('is-on', i===ridx); });
+        rdotBtns.forEach(function(b,i){ b.classList.toggle('is-on', i===ridx); });
+        if(rnum) rnum.textContent=('0'+(ridx+1)).slice(-2);
+        if(rprog){ rprog.classList.remove('is-run'); void rprog.offsetWidth; rprog.style.setProperty('--dur',(RDUR/1000)+'s'); rprog.classList.add('is-run'); }
+        clearTimeout(rtimer); rtimer=setTimeout(function(){ rgo(ridx+1); }, RDUR);
+      }
+      if(rprog) rprog.addEventListener('click', function(){ rgo(ridx+1); });
+      rgo(0);
     }
 
     /* network graph (AEO fanout) */
