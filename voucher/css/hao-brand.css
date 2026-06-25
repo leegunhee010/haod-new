@@ -24,14 +24,16 @@ body { background: #ffffff; }
 .header.on-dark:not(.is-stuck) .nav__div { background: var(--line) !important; }
 .header.on-dark:not(.is-stuck) .burger span { background: var(--ink) !important; }
 
-/* 히어로: 영상 숨기고 흰 배경 + 어두운 카피 */
+/* 히어로: 높이 구조는 원본 그대로(영상 sticky), 색만 화이트 워시 + 어두운 카피 */
 .mVisual { background: #fff !important; }
-.mVisual .pc-video, .mVisual .mo-video { display: none !important; }
-.mVisual .visual-image .swiper-slide::after { display: none !important; }
+.mVisual .pc-video, .mVisual .mo-video { opacity: .16 !important; }            /* 영상 아주 옅게 */
+.mVisual .visual-image .swiper-slide::after { background: #ffffff !important; opacity: .80 !important; }  /* 검은 오버레이 → 흰색 워시 */
 .mVisual .visual-title .tit-circle { color: #16140f !important; }
 .mVisual .visual-title p { color: #6e6a60 !important; }
+.mVisual .visual-image .progress-num .prog-total,
+.mVisual .visual-image .progress-num .prog-num { color: #16140f !important; }
 .mVisual .visual-image .progress-num .bullet { background-color: #16140f !important; }
-.mVisual .visual-arr { filter: invert(1) brightness(.3); }
+.mVisual .visual-arr { filter: invert(1) brightness(.25); }
 
 /* 솔루션(section5) / Who We Are(section7): 흰 배경 + 어두운 글씨 */
 #main .section5, #main .section7 { background-color: #fff !important; }
