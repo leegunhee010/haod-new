@@ -12,6 +12,15 @@ html, body, button, input, select, textarea { font-family: 'Pretendard', 'SUIT',
 .header.on-dark:not(.is-stuck) .nav a { color: rgba(255,255,255,.92); }        /* 히어로 위(투명): 흰 글씨 */
 .header.on-dark:not(.is-stuck) .nav a.nav__center { color: #ffd9cf; }
 
+/* 한큐 커스텀 커서 제거 → 네이티브 마우스 복구 */
+.theBall-outer, ._cursor, ._cursor2 { display: none !important; }
+* { cursor: auto !important; }
+a, button, [onclick], [role="button"], .morecursor, .card_wrapper, .more-portfolio,
+.nav a, .header__cta, .fab__btn, .burger, label, select, .visual-arr,
+.projects-img, .portfolio-item, .story-item, .imgbox li, .swiper-slide { cursor: pointer !important; }
+input[type="text"], input[type="tel"], input[type="email"], textarea { cursor: text !important; }
+#main .section6 p, #main .section8 .story-list .story-item span { cursor: pointer !important; }
+
 /* HAO 헤더 스케일 업 — 한큐 CSS가 html을 62.5%(1rem=10px)로 잡아 rem이 작아지므로 px로 고정 */
 .header { padding: 30px clamp(28px, 4.2vw, 70px); }
 .header.is-stuck { padding-top: 18px; padding-bottom: 18px; }
