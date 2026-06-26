@@ -555,23 +555,23 @@ $(function(){
 					// markers: true
 				}
 			})
-			.to('.section1 .tit-area, .section1 .cont-area', {
+			.from('.section1 .tit-area, .section1 .cont-area', {
 				x: '-65vw',
 				duration: 3.5,
 				ease: 'none',
 			})
 			.to('.section1 .projects-img-box:nth-child(1)', {
-				y: '60%',
+				y: '45%',
 				duration: 5,
 				ease: 'none'
 			}, 0)
 			.to('.section1 .projects-img-box:nth-child(2)', {
-				y: '50%',
+				y: '82%',
 				duration: 5,
 				ease: 'none'
 			}, 0)
 			.to('.section1 .projects-img-box:nth-child(3)', {
-				y: '95%',
+				y: '62%',
 				duration: 5,
 				ease: 'none'
 			}, 0);
@@ -612,54 +612,23 @@ $(function(){
 		}
 	});
 
-	// 카드 애니메이션
-	const cards = gsap.utils.toArray(".card_wrapper");
-	const totalCards = cards.length;
-
-	// ✅ 뷰포트에 따라 end 값 설정
-	const isMobile = window.matchMedia("(max-width: 768px)").matches;
-	const scrollEnd = isMobile ? `+=${totalCards * 120}%` : `+=${totalCards * 50}%`;
-
-	// 초기 상태 설정
-	gsap.set(cards, { yPercent: 100, scale: 1, filter: "blur(0px)" });
-	gsap.set(cards[0], { yPercent: 0 });
-
-	// 타임라인 생성
-	const tl = gsap.timeline({
-	scrollTrigger: {
-		trigger: ".card_list_wrapper",
-		start: "center center",
-		end: scrollEnd,
-		scrub: 1,
-		pin: true,
-		// markers: true,
-		snap: {
-		snapTo: (progress) => {
-			const sections = totalCards - 1;
-			return Math.round(progress * sections) / sections;
-		},
-		duration: { min: 0.3, max: 0.6 },
-		delay: 0.2,
-		ease: "power1.inOut"
-		}
-	}
-	});
-
-	// 카드 전환 타임라인 구성
-	for (let i = 0; i < totalCards - 1; i++) {
-	tl.to(cards[i], {
-		scale: 0.8,
-		filter: "blur(5px)",
-		ease: "none",
-		duration: 1
-	}, `+=0.2`) // 전환 간격 확보
-
-	.to(cards[i + 1], {
-		yPercent: 0,
-		opacity: 1,
-		ease: "none",
-		duration: 1
-	}, `-=${0.6}`); // 살짝 겹쳐서 부드럽게 연결
+	// What We Do 카드 — 가로 슬라이더(Swiper)로 전환 (기존 핀 카드스택 제거)
+	if (document.querySelector('.cards-swiper') && typeof Swiper !== 'undefined') {
+		new Swiper('.cards-swiper', {
+			slidesPerView: 1.1,
+			spaceBetween: 18,
+			centeredSlides: true,
+			loop: true,
+			grabCursor: true,
+			speed: 650,
+			autoplay: { delay: 3000, disableOnInteraction: false },
+			pagination: { el: '.cards-pagination', clickable: true },
+			navigation: { nextEl: '.cards-next', prevEl: '.cards-prev' },
+			breakpoints: {
+				768:  { slidesPerView: 2.1, spaceBetween: 22 },
+				1200: { slidesPerView: 3,   spaceBetween: 26 }
+			}
+		});
 	}
 
 	/*

@@ -182,3 +182,158 @@ input[type="text"], input[type="tel"], input[type="email"], textarea { cursor: t
 #quoteForm .nice-select, #quoteForm .nice-select .current,
 #quoteForm .nice-select .list .option,
 #quoteForm select, #quoteForm option { color: var(--ink) !important; -webkit-text-fill-color: var(--ink) !important; }
+
+/* ============================================================
+   GROOVE-WEB 동일 히어로 — 블루 글로시 + 롤링 헤드라인 (최종)
+   ============================================================ */
+.ghero{
+  display:flex !important; align-items:center !important; justify-content:center !important;  /* 스크롤 후 block 전환 방지 */
+  min-height:100vh !important;
+  padding:180px 24px 120px !important;
+  background:linear-gradient(155deg,#fffaf8 0%,#fff1ea 30%,#ffe1d5 64%,#ffcebd 100%) !important;
+}
+/* 부드러운 빛 덩어리 (웜) */
+.ghero__bg{
+  background:
+    radial-gradient(52% 46% at 15% 8%, rgba(255,255,255,.92), transparent 60%),
+    radial-gradient(60% 58% at 97% 24%, rgba(255,182,152,.5), transparent 64%),
+    radial-gradient(85% 78% at 84% 114%, rgba(255,150,110,.52), transparent 60%) !important;
+}
+/* groove식 광택 곡선(아크) — 겹치는 큰 원호 빛줄기 */
+.ghero__bg::before{
+  inset:-32% -22% !important; transform:rotate(-12deg);
+  background:
+    radial-gradient(closest-side at 80% 46%, transparent 61%, rgba(255,255,255,.62) 62%, transparent 66%),
+    radial-gradient(closest-side at 88% 39%, transparent 52%, rgba(255,255,255,.46) 53%, transparent 57%),
+    radial-gradient(closest-side at 71% 58%, transparent 71%, rgba(255,255,255,.40) 72%, transparent 76%),
+    radial-gradient(closest-side at 58% 30%, transparent 80%, rgba(255,255,255,.34) 81%, transparent 84%) !important;
+}
+.ghero__bg::after{
+  background:radial-gradient(135% 96% at 50% -28%, rgba(255,255,255,0) 52%, rgba(255,255,255,.42) 100%) !important;
+}
+/* eyebrow — 박스/라인 제거, "6년 연속" 블루 강조, 글자 키움 */
+.ghero__eyebrow{
+  background:none !important; border:0 !important; box-shadow:none !important; backdrop-filter:none !important;
+  padding:0 !important; margin-bottom:28px !important;
+  color:#46566e !important; font-size:20px !important; font-weight:600 !important; letter-spacing:.01em !important;
+  gap:8px !important;
+}
+.ghero__eyebrow b{
+  display:inline !important; width:auto !important; height:auto !important; border-radius:0 !important;
+  background:none !important; color:#e83817 !important; font-weight:800 !important;
+}
+/* 타이포 — groove 실제값 그대로 (weight 600, clamp 86px, #0d213e) */
+.ghero__title.gw-hero{
+  display:flex !important; flex-direction:column; align-items:center; justify-content:center;
+  margin:0; font-weight:600 !important; letter-spacing:0 !important;
+}
+.ghero .ghero__inner{ max-width:1480px !important; margin-left:auto !important; margin-right:auto !important; }   /* 히어로만 넓게 + 무조건 중앙(flex/block 무관) */
+.gw-hero .hero-line{
+  font-size:clamp(32px,6vw,86px) !important; font-weight:600 !important;
+  line-height:1.2 !important; letter-spacing:-.04em !important;
+  display:flex; flex-wrap:nowrap; justify-content:center; align-items:center;
+  text-align:center; color:#241a14 !important; white-space:nowrap;
+}
+@media (max-width:760px){ .gw-hero .hero-line{ flex-wrap:wrap; white-space:normal; } }
+/* 롤링 (inline-grid 겹침 + active/exit, groove 동일) */
+.gw-hero .rolling-words{ display:inline-grid; overflow:hidden; vertical-align:bottom; text-align:left;
+  transition:width .5s cubic-bezier(.22,1,.36,1); }
+.gw-hero .word{
+  grid-area:1/1; color:#e83817 !important; opacity:0; white-space:nowrap;
+  transform:translateY(100%);
+  transition:opacity .5s ease, transform .5s cubic-bezier(.22,1,.36,1);
+}
+.gw-hero .word.active{ opacity:1; transform:translateY(0); }
+.gw-hero .word.exit{ opacity:0; transform:translateY(-100%); }
+.ghero__sub{
+  color:#7a6a60 !important; font-size:clamp(16px,1.32vw,21px) !important;
+  margin-top:36px !important; line-height:1.75 !important;
+}
+/* CTA: 흰 알약 + 오렌지 원형 화살표 */
+.ghero__cta{
+  margin-top:56px !important; color:#241a14 !important;
+  box-shadow:0 24px 64px -22px rgba(36,26,20,.42) !important;
+}
+.ghero__cta span{ color:#241a14 !important; }
+.ghero__cta i{ background:#e83817 !important; }
+.ghero__cta:hover{ box-shadow:0 32px 74px -18px rgba(232,56,23,.5) !important; }
+/* 헤더: 글로시 배경이 비치도록 투명(스크롤 시 흰 헤더로 복귀) */
+.header.on-dark:not(.is-stuck){
+  background:transparent !important; border-bottom-color:transparent !important; box-shadow:none !important;
+}
+
+/* ============================================================
+   Our Projects(section1) 카드 리디자인 — 스크롤 모션은 유지, '느낌'만 변경
+   (타사 시그니처 호버: 알약변형+흑백+캡션중앙확대 → 둥근카드+줌+하단캡션+오렌지워시)
+   ============================================================ */
+#main .section1 .projects-img{
+  border-radius:22px !important; overflow:hidden;
+  box-shadow:0 20px 44px -24px rgba(36,26,20,.5);
+  transition:transform .5s cubic-bezier(.22,.7,.2,1), box-shadow .5s ease !important;
+}
+@media (min-width:960px){
+  #main .section1 .projects-img:hover{
+    border-radius:22px !important;                 /* 알약 변형 제거 */
+    transform:translateY(-6px) scale(1.018);
+    box-shadow:0 30px 64px -20px rgba(232,56,23,.42);
+  }
+  #main .section1 .projects-img:hover > a img{ mix-blend-mode:normal !important; transform:scale(1.08); }  /* 흑백 제거 */
+  #main .section1 .projects-img:hover > a span{   /* 캡션 중앙확대 제거 → 하단 유지 */
+    left:24px !important; top:auto !important; bottom:28px !important; transform:none !important;
+    font-size:1.7rem !important;
+  }
+}
+/* 항상 은은한 하단 그라디언트, 호버 시 브랜드 오렌지 워시 */
+#main .section1 .projects-img > a::before{
+  background:linear-gradient(180deg, rgba(0,0,0,0) 38%, rgba(20,12,8,.74) 100%) !important;
+  opacity:1 !important; z-index:1 !important;
+}
+#main .section1 .projects-img:hover > a::before{
+  background:linear-gradient(180deg, rgba(232,56,23,.14) 0%, rgba(20,12,8,.84) 100%) !important;
+}
+#main .section1 .projects-img > a::after{ display:none !important; }   /* 회색 베이스 제거 */
+/* 캡션: 이미지 위 흰 글씨, 항상 하단 좌측 */
+#main .section1 .projects-img > a span{
+  left:24px !important; bottom:22px !important; top:auto !important; transform:none !important;
+  color:#fff !important; -webkit-text-fill-color:#fff !important;
+  font-size:1.55rem !important; font-weight:600 !important; z-index:3 !important;
+  text-shadow:0 2px 12px rgba(0,0,0,.45);
+}
+
+/* ============================================================
+   What We Do(section2) — 핀 카드스택 → 가로 슬라이더(Swiper)
+   ============================================================ */
+#main .section2 .card_list_wrapper{ overflow:visible !important; }
+#main .section2 .cards-swiper{ position:relative; overflow:hidden; padding:12px 0 8px; }
+/* 슬라이드 카드: 절대배치 해제 → 일반 카드 */
+#main .section2 .cards-swiper .card_wrapper{
+  position:relative !important; top:auto !important; left:auto !important;
+  height:clamp(400px,54vh,560px) !important;   /* width는 Swiper가 계산 → 강제 X */
+  border-radius:24px !important; overflow:hidden; box-sizing:border-box;
+  box-shadow:0 24px 54px -26px rgba(36,26,20,.5);
+}
+/* 가독성 스크림 */
+#main .section2 .cards-swiper .card_wrapper::before{
+  content:''; position:absolute; inset:0; z-index:0;
+  background:linear-gradient(180deg, rgba(20,12,8,.18) 0%, rgba(20,12,8,.58) 100%);
+}
+#main .section2 .cards-swiper .card_wrapper .txt-wrap{ z-index:1; }
+/* 카드 내 타이포 슬라이드 크기에 맞춤 */
+#main .section2 .cards-swiper .card_wrapper .txt-wrap h4{ font-size:clamp(30px,3vw,52px) !important; margin-top:8px !important; }
+#main .section2 .cards-swiper .card_wrapper .txt-wrap p{ font-size:17px !important; }
+#main .section2 .cards-swiper .card_wrapper .txt-wrap em{ font-size:14px !important; line-height:1.55; margin-top:14px !important; padding:0 24px; }
+/* 활성 슬라이드 강조 */
+#main .section2 .cards-swiper .swiper-slide{ transition:transform .5s ease, opacity .5s ease; opacity:.5; transform:scale(.9); }
+#main .section2 .cards-swiper .swiper-slide-active{ opacity:1; transform:scale(1); }
+/* 페이지네이션 */
+#main .section2 .cards-pagination{ position:static; margin-top:30px; display:flex; justify-content:center; gap:8px; }
+#main .section2 .cards-pagination .swiper-pagination-bullet{ background:#241a14; opacity:.22; width:9px; height:9px; margin:0 !important; transition:all .3s; }
+#main .section2 .cards-pagination .swiper-pagination-bullet-active{ background:#e83817; opacity:1; width:28px; border-radius:5px; }
+/* 화살표 */
+#main .section2 .cards-arr{ position:absolute; top:calc(50% - 20px); transform:translateY(-50%); z-index:5; width:56px; height:56px; border-radius:50%; background:#fff; box-shadow:0 12px 28px -12px rgba(0,0,0,.45); cursor:pointer; display:flex; align-items:center; justify-content:center; transition:transform .25s ease; }
+#main .section2 .cards-arr:hover{ transform:translateY(-50%) scale(1.08); }
+#main .section2 .cards-prev{ left:14px; }
+#main .section2 .cards-next{ right:14px; }
+#main .section2 .cards-arr::before{ content:''; width:12px; height:12px; border-top:2.5px solid #241a14; border-right:2.5px solid #241a14; }
+#main .section2 .cards-prev::before{ transform:rotate(-135deg); margin-left:5px; }
+#main .section2 .cards-next::before{ transform:rotate(45deg); margin-right:5px; }
