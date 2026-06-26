@@ -54,11 +54,23 @@ body { background: #ffffff; }
     radial-gradient(60% 60% at 8% 0%, rgba(255,210,195,.5), transparent 65%); }
 .ghero__bg::after { content:''; position:absolute; inset:0;
   background: radial-gradient(120% 80% at 50% -20%, rgba(255,255,255,.0) 60%, rgba(255,255,255,.6) 100%); }
+/* groove식 광택 곡선(아크) 빛줄기 */
+.ghero__bg::before { content:''; position:absolute; inset:-25% -15%; pointer-events:none; transform: rotate(-10deg);
+  background:
+    radial-gradient(closest-side at 72% 52%, transparent 60%, rgba(255,255,255,.55) 61%, transparent 64%),
+    radial-gradient(closest-side at 80% 46%, transparent 51%, rgba(255,255,255,.40) 52%, transparent 55%),
+    radial-gradient(closest-side at 64% 60%, transparent 70%, rgba(255,255,255,.35) 71%, transparent 74%); }
 .ghero__inner { position: relative; z-index: 1; max-width: 1120px; }
 .ghero__eyebrow { display:inline-flex; align-items:center; gap:8px; font-size:15px; font-weight:700; letter-spacing:.02em; color:var(--accent); background:rgba(232,56,23,.08); border:1px solid rgba(232,56,23,.18); padding:9px 18px; border-radius:999px; margin-bottom:30px; }
 .ghero__eyebrow b { width:7px; height:7px; border-radius:50%; background:var(--accent); display:inline-block; }
 .ghero__title { font-size: clamp(38px, 6.4vw, 104px); font-weight: 800; line-height: 1.04; letter-spacing: -.035em; color: #16140f; margin: 0; }
 .ghero__ac { color: var(--accent); }
+/* 롤링 단어 (groove식 세로 슬라이드 교체) */
+.ghero__roll { color: var(--accent); display: inline-block; vertical-align: bottom; overflow: hidden; }
+.ghero__roll-word { display: inline-block; will-change: transform, opacity; }
+.ghero__roll-word.is-out { transform: translateY(-0.52em); opacity: 0; transition: transform .36s cubic-bezier(.5,0,.5,1), opacity .36s ease; }
+.ghero__roll-word.is-in { animation: ghRollIn .48s cubic-bezier(.22,.85,.25,1); }
+@keyframes ghRollIn { from { transform: translateY(0.55em); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 .ghero__sub { margin: 34px auto 0; max-width: 760px; font-size: clamp(16px, 1.35vw, 21px); line-height: 1.72; color: #6e6a60; font-weight: 500; }
 .ghero__cta { margin-top: 52px; display: inline-flex; align-items: center; gap: 16px; background: #fff; border-radius: 999px; padding: 12px 12px 12px 32px; box-shadow: 0 20px 54px -20px rgba(23,21,15,.32); font-weight: 700; font-size: clamp(16px,1.2vw,19px); color: #16140f !important; transition: transform .3s var(--ease), box-shadow .3s var(--ease); }
 .ghero__cta span { color: #16140f !important; }
@@ -130,3 +142,43 @@ input[type="text"], input[type="tel"], input[type="email"], textarea { cursor: t
   .header .brand__logo { height: 40px; }
   .header .nav a { font-size: 17px; }
 }
+
+/* ===== 가시성 보정: 흰 배경에 묻히던 글자 고정 표시 =====
+   - .count(412+): 원본은 흰 글씨 → 흰 배경에서 안 보임
+   - .fill-text: 스크롤 채움 효과의 쉬는 상태가 옅은 회색 + 트리거 불안정 → 안 보임
+   둘 다 잉크색으로 정적 표시(다른 요소들도 이미 정적 표시 처리됨) */
+#main .count {
+  color: var(--ink) !important;
+  -webkit-text-fill-color: var(--ink) !important;
+  background-image: none !important;
+}
+#main .fill-text {
+  -webkit-text-fill-color: var(--ink) !important;
+  color: var(--ink) !important;
+}
+/* 포트폴리오 카드 제목도 동일 이슈(옅은 회색 채움) → 잉크 고정 */
+#main .portfolio-list li .txt span:first-child {
+  -webkit-text-fill-color: var(--ink) !important;
+  color: var(--ink) !important;
+}
+
+/* ===== 흰 글자 일괄 보정 (다크→화이트 테마 전환 잔여, 흰 배경에 묻힘) =====
+   ※ 어두운 배경 위 흰 글자(카드 사진/검정 태그/검정 원·버튼)는 그대로 둠 */
+/* 섹션 제목 h3 (text-point b 주황은 유지) */
+#main .tit-box h3 { color: var(--ink) !important; -webkit-text-fill-color: var(--ink) !important; }
+/* Our Projects 이미지 캡션 */
+#main .projects-img span { color: var(--ink) !important; -webkit-text-fill-color: var(--ink) !important; }
+/* Our Centers 센터명/설명 */
+#main .section3 .imgbox li .txt b,
+#main .section3 .imgbox li .txt em { color: var(--ink) !important; -webkit-text-fill-color: var(--ink) !important; }
+/* 키워드클라우드 상단 카피(검정 원 안 "최적의 디자인"은 흰색 유지) */
+#main .section4 .main-txt > strong { color: var(--ink) !important; -webkit-text-fill-color: var(--ink) !important; }
+/* 솔루션 스와이퍼 진행 숫자 */
+#main .section5 .prog-num, #main .section5 .prog-total { color: var(--ink) !important; -webkit-text-fill-color: var(--ink) !important; }
+#main .section5 .progress-num .bar { background: var(--ink) !important; }
+/* 헤더 센터링크 화살표(주황 톤 유지) */
+.header .nav a.nav__center i { color: inherit !important; }
+/* 상담 폼 셀렉트 드롭다운(nice-select) 글자 */
+#quoteForm .nice-select, #quoteForm .nice-select .current,
+#quoteForm .nice-select .list .option,
+#quoteForm select, #quoteForm option { color: var(--ink) !important; -webkit-text-fill-color: var(--ink) !important; }

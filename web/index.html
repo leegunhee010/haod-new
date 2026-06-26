@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://cdn.jsdelivr.net" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Fragment+Mono&display=swap" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.css" />
-  <link rel="stylesheet" href="css/cs.css?v=11" />
+  <link rel="stylesheet" href="css/cs.css?v=12" />
 </head>
 <body>
   <div class="progress" id="progress" aria-hidden="true"></div>
@@ -45,8 +45,8 @@
   </header>
 
   <main id="top">
-    <!-- ===== HERO (라운드 미디어 카드) ===== -->
-    <section class="hero2">
+    <!-- ===== HERO (라운드 미디어 카드 · 키네틱) ===== -->
+    <section class="hero2" id="hero">
       <div class="hero2__card">
         <!-- 사진: 아래 img 교체 / 영상으로 쓰려면 img 대신 아래 주석의 video 사용 -->
         <img class="hero2__media" src="assets/img/hero.jpg" alt="" />
@@ -54,15 +54,30 @@
         <video class="hero2__media" autoplay muted loop playsinline poster="assets/img/hero.jpg"><source src="assets/video/hero.mp4" type="video/mp4" /></video>
         -->
         <span class="hero2__overlay" aria-hidden="true"></span>
+        <span class="hero2__glow hero2__glow--a" aria-hidden="true"></span>
+        <span class="hero2__glow hero2__glow--b" aria-hidden="true"></span>
+        <span class="hero2__grid" aria-hidden="true"></span>
+
+        <div class="hero2__chips" aria-hidden="true">
+          <span class="hchip hchip--1"><b>SEO</b> 검색 1위</span>
+          <span class="hchip hchip--2"><i>★</i> 만족도 98%</span>
+          <span class="hchip hchip--3"><b>AI</b> 답변에 인용</span>
+        </div>
+
         <div class="hero2__copy">
-          <span class="hero2__eg">SEO · AEO · 홈페이지 · 앱</span>
-          <h1 class="hero2__t">검색되는 홈페이지,<br />AI가 답하는 브랜드.</h1>
+          <span class="hero2__eg"><i></i>SEO · AEO · 홈페이지 · 앱</span>
+          <h1 class="hero2__t">
+            <span class="ln">검색되는 홈페이지,</span>
+            <span class="ln">AI가 답하는 <span class="rot" id="heroRot"><span class="rot__w is-on">브랜드</span></span></span>
+          </h1>
           <p class="hero2__d">SEO·AEO 설계가 들어간 홈페이지·앱을 제작합니다. 만드는 데서 끝나지 않고, 발견되게 만듭니다.</p>
           <div class="hero2__btns">
             <a href="#contact" class="btn btn--grad"><span>제작 문의</span><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
             <a href="#service" class="btn hero2__ghost"><span>서비스 보기</span><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           </div>
         </div>
+
+        <a href="#strategy" class="hero2__scroll" aria-label="아래로 스크롤"><span></span></a>
       </div>
     </section>
 
@@ -489,6 +504,19 @@
     /* reveal */
     var io=new IntersectionObserver(function(es){es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('is-in'); io.unobserve(e.target); } });},{threshold:.12});
     $$('.reveal').forEach(function(el){ io.observe(el); });
+
+    /* hero word rotator */
+    (function(){
+      var rot=document.getElementById('heroRot'); if(!rot) return;
+      var words=['브랜드','비즈니스','쇼핑몰','서비스'], i=0;
+      setInterval(function(){
+        i=(i+1)%words.length;
+        var cur=rot.querySelector('.rot__w.is-on');
+        var w=document.createElement('span'); w.className='rot__w'; w.textContent=words[i];
+        rot.appendChild(w); void w.offsetWidth; w.classList.add('is-on');
+        if(cur){ cur.classList.remove('is-on'); cur.classList.add('is-out'); setTimeout(function(){ cur.remove(); },650); }
+      },2600);
+    })();
 
     /* ===== 서비스 쇼케이스 모션 ===== */
     function countUp(el){
