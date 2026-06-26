@@ -202,3 +202,53 @@ em{font-style:normal;color:var(--accent)}
   .holo__s,.holo__s::before,.hero__scroll i::after,.contact__glow{animation:none!important}
   .reveal{opacity:1!important;transform:none!important}
 }
+
+/* ============ 서브페이지 (칼럼·Q&A) ============ */
+.subhero{position:relative;overflow:hidden;padding:clamp(130px,18vh,200px) clamp(20px,4vw,60px) clamp(40px,6vh,70px);border-bottom:1px solid var(--line)}
+.subhero__glow{position:absolute;top:-34%;right:3%;width:min(40vw,460px);aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,138,61,.4),rgba(232,56,23,.16) 45%,transparent 70%);filter:blur(18px);pointer-events:none}
+.crumb{position:relative;font-family:"Poppins",sans-serif;font-size:.82rem;letter-spacing:.03em;color:var(--muted)}
+.crumb a{color:var(--accent)}
+.subhero__title{position:relative;margin-top:14px;font-size:clamp(2.4rem,6vw,4.4rem);font-weight:800;letter-spacing:-.03em;line-height:1.05}
+.subhero__desc{position:relative;margin-top:18px;max-width:58ch;color:var(--muted);font-size:clamp(1rem,1.4vw,1.15rem);line-height:1.75}
+.subhero__desc a{color:var(--accent);font-weight:700}
+.page{max-width:1180px;margin:0 auto;padding:clamp(56px,8vh,100px) clamp(20px,4vw,60px)}
+.page--tight{max-width:920px}
+.section-tag{font-family:"Poppins",sans-serif;font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-weight:600}
+.page__title{margin-top:12px;font-size:clamp(1.8rem,3.6vw,2.8rem);font-weight:800;letter-spacing:-.03em}
+
+.qsearch{display:flex;gap:10px;margin:30px 0 22px;flex-wrap:wrap}
+.qsearch input{flex:1;min-width:240px;padding:.95em 1.2em;border:1.5px solid var(--line);border-radius:14px;font-size:.96rem;font-family:inherit;color:var(--ink)}
+.qsearch input:focus{outline:none;border-color:var(--accent)}
+.qsearch button{padding:.95em 1.5em;border:0;border-radius:14px;background:var(--ink);color:#fff;font-weight:700;cursor:pointer;font-family:inherit}
+.qsearch .qreset{background:#fff;color:var(--muted);border:1.5px solid var(--line)}
+.qcats{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:30px}
+.chip{padding:.6em 1.1em;border:1.5px solid var(--line);border-radius:999px;background:#fff;font-weight:600;font-size:.9rem;cursor:pointer;color:var(--ink-2);transition:.24s var(--ease)}
+.chip b{color:var(--accent)}
+.chip.is-active{background:var(--ink);color:#fff;border-color:var(--ink)}
+.chip.is-active b{color:var(--accent-3)}
+
+.faq{display:flex;flex-direction:column;gap:12px}
+.faq__item{border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:border-color .24s,box-shadow .24s}
+.faq__item[open]{border-color:var(--accent);box-shadow:0 20px 40px -30px rgba(232,56,23,.4)}
+.faq__item summary{display:flex;align-items:center;gap:14px;padding:22px 24px;cursor:pointer;list-style:none}
+.faq__item summary::-webkit-details-marker{display:none}
+.faq__q{font-family:"Poppins",sans-serif;font-weight:800;color:var(--accent)}
+.faq__qt{flex:1;font-weight:700;font-size:1.02rem;letter-spacing:-.01em}
+.faq__item summary i{width:11px;height:11px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(45deg);transition:transform .3s;flex:none}
+.faq__item[open] summary i{transform:rotate(-135deg)}
+.faq__a{padding:0 24px 24px 58px;color:var(--muted);line-height:1.8;font-size:.98rem}
+.qempty{margin-top:24px;color:var(--muted)}
+.qempty a{color:var(--accent);font-weight:700}
+
+.colgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,2vw,30px)}
+.colcard{display:block;border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:.28s var(--ease);background:#fff}
+.colcard:hover{transform:translateY(-4px);box-shadow:0 30px 60px -36px rgba(0,0,0,.3);border-color:transparent}
+.colcard__media{aspect-ratio:16/10;display:flex;align-items:flex-end;padding:18px;color:#fff;font-family:"Poppins",sans-serif;font-weight:800;font-size:1.2rem;letter-spacing:.02em}
+.colcard__body{padding:22px 22px 26px}
+.colcard__cat{font-family:"Poppins",sans-serif;font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-weight:600}
+.colcard__t{margin-top:10px;font-size:1.12rem;font-weight:800;letter-spacing:-.02em;line-height:1.35;color:var(--ink)}
+.colcard__d{margin-top:10px;font-size:.92rem;color:var(--muted);line-height:1.65}
+.colcard__date{margin-top:14px;font-size:.8rem;color:var(--faint);font-family:"Poppins",sans-serif}
+@media(max-width:900px){.colgrid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.colgrid{grid-template-columns:1fr}}

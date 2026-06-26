@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>칼럼 | 마케팅센터 — 하오디자인</title>
+  <meta name="description" content="퍼포먼스 마케팅·콘텐츠·브랜딩 인사이트. 하오디자인 마케팅센터 칼럼." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&display=swap" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.css" />
+  <link rel="stylesheet" href="css/style.css?v=2" />
+</head>
+<body>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+
+  <header class="header is-stuck" id="header">
+    <a href="index.html" class="brand"><img src="assets/img/logo.png" class="brand__logo" alt="하오디자인" /><b class="brand__sub">마케팅센터</b></a>
+    <nav class="nav" id="nav">
+      <a href="index.html#works">Works</a>
+      <a href="index.html#services">Services</a>
+      <a href="column.html" style="color:var(--accent)">칼럼</a>
+      <a href="qna.html">Q&amp;A</a>
+      <span class="nav__div" aria-hidden="true"></span>
+      <a class="nav__center" href="../design/">디자인센터 <i>↗</i></a>
+      <a class="nav__center" href="../web/">웹구축센터 <i>↗</i></a>
+      <a class="nav__center" href="../studio/">스튜디오센터 <i>↗</i></a>
+      <a class="nav__center" href="../voucher/">정부사업지원센터 <i>↗</i></a>
+    </nav>
+    <a href="index.html#contact" class="header__cta">마케팅 문의 <span>→</span></a>
+    <button class="burger" id="burger" aria-label="메뉴"><span></span><span></span><span></span></button>
+  </header>
+
+  <main id="top">
+    <section class="subhero">
+      <span class="subhero__glow" aria-hidden="true"></span>
+      <p class="crumb"><a href="index.html">마케팅센터</a> / 칼럼</p>
+      <h1 class="subhero__title">마케팅 칼럼</h1>
+      <p class="subhero__desc">퍼포먼스·콘텐츠·브랜딩 현장에서 쌓은 인사이트를 나눕니다. 데이터로 브랜드를 키우는 관점을 전합니다.</p>
+    </section>
+
+    <section class="page">
+      <p class="section-tag">Insights</p>
+      <h2 class="page__title">최신 칼럼</h2>
+      <div class="qcats" id="cCats" style="margin-top:26px"></div>
+      <div class="colgrid" id="colGrid"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <img src="assets/img/logo.png" alt="하오디자인 마케팅센터" class="footer__logo" />
+        <p class="footer__biz">주식회사 하오커뮤니케이션 · 대표 박창민 · 528-87-01037<br />서울특별시 광진구 · sales@haodesign.co.kr</p>
+        <p class="footer__copy">© 2026 HAO DESIGN Marketing. All rights reserved.</p>
+      </div>
+      <div class="footer__contact">
+        <span class="footer__label">대표번호</span>
+        <a href="tel:16662027" class="footer__tel">1666-2027</a>
+        <p class="footer__hours">09:30 ~ 18:30 (점심 13:00~14:00)</p>
+        <div class="footer__btns">
+          <a href="index.html#contact" class="pillbtn pillbtn--dark">회사소개서 받기</a>
+          <a href="index.html#contact" class="pillbtn pillbtn--dark">문의하기</a>
+        </div>
+      </div>
+    </div>
+    <nav class="footer__centers">
+      <a href="../design/">디자인센터 ↗</a>
+      <a href="../web/">웹구축센터 ↗</a>
+      <a href="../studio/">스튜디오센터 ↗</a>
+      <a href="../voucher/">정부사업지원센터 ↗</a>
+    </nav>
+  </footer>
+
+  <script>
+  (function () {
+    var $ = function (s, c) { return (c || document).querySelector(s); };
+    var $$ = function (s, c) { return [].slice.call((c || document).querySelectorAll(s)); };
+    var burger = $('#burger'), nav = $('#nav');
+    if (burger) burger.addEventListener('click', function () { nav.classList.toggle('is-open'); });
+    $$('#nav a').forEach(function (a) { a.addEventListener('click', function () { nav.classList.remove('is-open'); }); });
+
+    var POSTS = [
+      { cat: '퍼포먼스', t: 'ROAS만 보면 안 되는 이유 — 퍼널 전체로 보는 광고 성과', d: '전환 한 지표에 갇히면 놓치는 것들. 인지부터 재구매까지 퍼널 단위로 성과를 읽는 법.', date: '2026.06.20', g: 'linear-gradient(160deg,#ff8a3d,#e83817)' },
+      { cat: '콘텐츠', t: '숏폼 시대의 브랜드 메시지 설계법', d: '3초 안에 멈추게 하는 후킹과, 끝까지 보게 만드는 구조. 숏폼 기획의 기본기.', date: '2026.06.14', g: 'linear-gradient(160deg,#f472b6,#be185d)' },
+      { cat: 'IMC', t: '채널이 늘수록 메시지는 하나로 — 통합 캠페인 정렬', d: '매체별로 따로 노는 캠페인을 하나의 브랜드 경험으로 묶는 IMC 정렬 원칙.', date: '2026.06.07', g: 'linear-gradient(160deg,#6366f1,#3b1d8f)' },
+      { cat: '데이터', t: 'GA4·픽셀, 처음 세팅할 때 꼭 잡아야 할 것', d: '나중에 다시 손대면 손해. 전환 추적·이벤트 설계를 시작부터 제대로 잡는 체크리스트.', date: '2026.05.30', g: 'linear-gradient(160deg,#22c55e,#0f766e)' },
+      { cat: '퍼포먼스', t: '소재 피로도, 데이터로 잡아내는 신호들', d: 'CTR·빈도·전환율의 변화로 소재 교체 타이밍을 읽는 법.', date: '2026.05.22', g: 'linear-gradient(160deg,#38bdf8,#0369a1)' },
+      { cat: '브랜딩', t: '작은 브랜드일수록 톤앤매너가 무기다', d: '예산이 적을수록 일관된 톤이 만든 신뢰가 전환을 만든다.', date: '2026.05.15', g: 'linear-gradient(160deg,#f59e0b,#b45309)' }
+    ];
+    var CATS = ['전체', '퍼포먼스', '콘텐츠', 'IMC', '데이터', '브랜딩'];
+    var cur = '전체';
+    var catsEl = $('#cCats'), grid = $('#colGrid');
+    catsEl.innerHTML = CATS.map(function (c, i) {
+      return '<button class="chip' + (i === 0 ? ' is-active' : '') + '" data-c="' + c + '">' + c + '</button>';
+    }).join('');
+    function esc(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
+    function render() {
+      var rows = POSTS.filter(function (p) { return cur === '전체' || p.cat === cur; });
+      grid.innerHTML = rows.map(function (p) {
+        return '<a class="colcard" href="index.html#contact">' +
+          '<div class="colcard__media" style="background:' + p.g + '">' + p.cat + '</div>' +
+          '<div class="colcard__body"><span class="colcard__cat">' + p.cat + '</span>' +
+          '<h3 class="colcard__t">' + esc(p.t) + '</h3>' +
+          '<p class="colcard__d">' + esc(p.d) + '</p>' +
+          '<p class="colcard__date">' + p.date + '</p></div></a>';
+      }).join('');
+    }
+    catsEl.addEventListener('click', function (e) { var b = e.target.closest('.chip'); if (!b) return;
+      $$('.chip', catsEl).forEach(function (x) { x.classList.remove('is-active'); }); b.classList.add('is-active'); cur = b.dataset.c; render(); });
+    render();
+  })();
+  </script>
+</body>
+</html>
