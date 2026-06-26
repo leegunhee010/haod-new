@@ -29,6 +29,7 @@ $map = [ordered]@{
   web     = 'haodesign-web'
   studio  = 'haodesign-studio'
   voucher = 'haodesign-voucher'
+  mkt     = 'haodesign-mkt'
 }
 
 # 로컬 localhost 링크 → 배포 상대경로 (순서 중요: 슬래시 포함형 먼저)
@@ -81,9 +82,10 @@ foreach ($c in $Centers) {
 
 if ($changed.Count -eq 0) { Write-Host "배포할 센터 없음." -ForegroundColor Yellow; exit }
 
-# 3) commit
+# 3) commit (배포한 센터 폴더 + 스크립트만 스테이징 — 무관한 변경분 제외)
 Set-Location $repo
-git add -A
+foreach ($c in $changed) { git add -- $c }
+git add -- deploy.ps1
 git diff --cached --quiet
 if ($LASTEXITCODE -eq 0) {
   Write-Host "변경 사항 없음 — 커밋 생략." -ForegroundColor Yellow
