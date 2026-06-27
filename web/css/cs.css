@@ -277,6 +277,27 @@ em{font-style:normal}
 .gcard__link{display:inline-flex;align-items:center;gap:8px;margin-top:auto;font-weight:800;color:#fff;background:var(--grad);padding:12px 20px;border-radius:999px;align-self:flex-start;transition:transform .3s,box-shadow .3s}
 .gcard__link svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2}
 .gcard__link:hover{transform:translateX(3px);box-shadow:0 14px 30px -14px rgba(232,56,23,.6)}
+/* ── 콜로세움 톤: 전략 섹션 라이트 클린 그리드 ── */
+.gcar--clean{background:linear-gradient(180deg,#ffffff 0%,#fff7f3 100%);color:var(--ink)}
+.gcar--clean .gcar__glow{opacity:.4}
+.gcar--clean .gcar__head{display:block;text-align:center;max-width:840px;margin:0 auto clamp(40px,6vh,72px)}
+.gcar--clean .gcar__head .eyebrow{justify-content:center;color:var(--accent)}
+.gcar--clean .gcar__head .eyebrow::before,.gcar--clean .gcar__head .eyebrow::after{content:"";width:18px;height:1px;background:var(--accent);display:inline-block}
+.gcar--clean .gcar__title{color:var(--ink)}
+.gcar--clean .gcar__sub{margin-left:auto;margin-right:auto;max-width:60ch;color:var(--muted)}
+.gcar--clean .gcar__nav{display:none}
+.gcar--clean .gcar__chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:26px}
+.gcar--clean .gchip{padding:.6em 1.15em;border-radius:999px;background:#fff;border:1px solid var(--line);font-size:.86rem;font-weight:600;color:var(--ink-2)}
+.gcar--clean .gcar__track{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;overflow:visible}
+.gcar--clean .gcard{flex:none;min-height:0;background:#fff;border:1px solid var(--line);border-radius:20px;color:var(--ink);
+  box-shadow:0 24px 50px -40px rgba(0,0,0,.45);padding:30px}
+.gcar--clean .gcard:hover{transform:translateY(-6px);border-color:rgba(232,56,23,.4);background:#fff;box-shadow:0 30px 60px -34px rgba(232,56,23,.3)}
+.gcar--clean .gcard__t{color:var(--ink)}
+.gcar--clean .gcard__d{color:var(--muted)}
+.gcar--clean .gcard--cta{background:linear-gradient(160deg,#fff3ee,#fff);border-color:rgba(232,56,23,.35)}
+.gcar--clean .gcard__link{color:#fff}
+@media(max-width:1100px) and (min-width:861px){.gcar--clean .gcar__track{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:860px){.gcar--clean .gcar__track{grid-template-columns:1fr}}
 @media(max-width:760px){.gcar__head{flex-direction:column;align-items:flex-start}.gcar__nav{align-self:flex-end;margin-top:-10px}.gcard{flex-basis:80%}}
 
 /* ---------------- Trust marquee ---------------- */
