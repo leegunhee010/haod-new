@@ -244,6 +244,18 @@ input[type="text"], input[type="tel"], input[type="email"], textarea { cursor: t
 }
 .gw-hero .word.active{ opacity:1; transform:translateY(0); }
 .gw-hero .word.exit{ opacity:0; transform:translateY(-100%); }
+/* 전체 줄 롤링: "하오가 디자인하는 + 단어"를 통째로 롤 → 매 줄 통째 중앙정렬(빈칸·치우침 없음) */
+.gw-hero .rolling-lines{ display:grid; overflow:hidden; justify-items:center; }
+.gw-hero .rline{
+  grid-area:1/1; white-space:nowrap;
+  font-size:clamp(32px,6vw,86px); font-weight:600; line-height:1.2; letter-spacing:-.04em; color:#241a14;
+  opacity:0; transform:translateY(100%);
+  transition:opacity .5s ease, transform .5s cubic-bezier(.22,1,.36,1);
+}
+.gw-hero .rline.active{ opacity:1; transform:translateY(0); }
+.gw-hero .rline.exit{ opacity:0; transform:translateY(-100%); }
+.gw-hero .rline em{ color:#e83817; font-style:normal; }
+@media (max-width:760px){ .gw-hero .rline{ white-space:normal; text-align:center; } }
 .ghero__sub{
   color:#7a6a60 !important; font-size:clamp(16px,1.32vw,21px) !important;
   margin-top:36px !important; line-height:1.75 !important;
