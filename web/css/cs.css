@@ -120,6 +120,7 @@ em{font-style:normal}
 .hero2__glow--b{right:-11%;bottom:-18%;background:radial-gradient(circle,rgba(232,56,23,.9),transparent 64%);animation:heroGlowB 19s ease-in-out infinite alternate}
 @keyframes heroGlowA{0%{transform:translate3d(0,0,0) scale(1)}100%{transform:translate3d(20%,14%,0) scale(1.28)}}
 @keyframes heroGlowB{0%{transform:translate3d(0,0,0) scale(1.12)}100%{transform:translate3d(-16%,-12%,0) scale(.88)}}
+.holo3d{position:absolute;inset:0;z-index:2;width:100%;height:100%;pointer-events:none;display:block}
 .hero2__grid{position:absolute;inset:0;z-index:1;opacity:.14;pointer-events:none;
   background-image:linear-gradient(rgba(255,255,255,.5) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.5) 1px,transparent 1px);
   background-size:48px 48px;-webkit-mask-image:radial-gradient(120% 78% at 50% 0,#000,transparent 72%);mask-image:radial-gradient(120% 78% at 50% 0,#000,transparent 72%)}
