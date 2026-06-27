@@ -456,19 +456,21 @@ html.lenis,html.lenis body{height:auto}
 .net{width:100%;height:auto}
 
 /* ---------------- Process ---------------- */
-.proc{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;counter-reset:s}
-.pstep{position:relative;padding:24px 20px;border:1px solid var(--line);border-radius:14px;background:#fff;
-  transition:transform .3s var(--ease),box-shadow .3s}
-.pstep:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
-.pstep__no{font-family:"Fragment Mono",monospace;font-size:.78rem;color:var(--accent)}
-.pstep h3{margin-top:12px;font-size:1.06rem;font-weight:800;letter-spacing:-.02em}
-.pstep p{margin-top:8px;font-size:.86rem;color:var(--muted);line-height:1.65;word-break:keep-all}
+.proc{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;counter-reset:s}
+.pstep{position:relative;padding:34px 24px 30px;border:1.5px solid var(--line);border-radius:24px;background:#fff;
+  transition:transform .32s var(--ease),box-shadow .32s,border-color .32s}
+.pstep:hover{transform:translateY(-8px);border-color:var(--accent);box-shadow:0 30px 60px -34px rgba(232,56,23,.34)}
+.pstep__no{display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:50%;
+  background:var(--grad);color:#fff;font-family:"Geist",sans-serif;font-size:1.04rem;font-weight:800;
+  box-shadow:0 12px 26px -10px rgba(232,56,23,.5)}
+.pstep h3{margin-top:22px;font-size:1.18rem;font-weight:800;letter-spacing:-.02em}
+.pstep p{margin-top:10px;font-size:.92rem;color:var(--muted);line-height:1.7;word-break:keep-all}
 
 /* ---------------- Testimonials ---------------- */
 .tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.tcard{padding:26px;border:1px solid var(--line);border-radius:16px;background:#fff;
-  display:flex;flex-direction:column;gap:16px;transition:transform .3s var(--ease),box-shadow .3s}
-.tcard:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.tcard{padding:30px;border:1.5px solid var(--line);border-radius:22px;background:#fff;
+  display:flex;flex-direction:column;gap:16px;transition:transform .32s var(--ease),box-shadow .32s,border-color .32s}
+.tcard:hover{transform:translateY(-8px);border-color:var(--accent);box-shadow:0 30px 60px -34px rgba(232,56,23,.3)}
 .tcard p{font-size:1rem;line-height:1.7;color:var(--ink);font-weight:500;word-break:keep-all}
 .tcard footer{display:flex;align-items:center;gap:10px;margin-top:auto}
 .tcard__av{width:34px;height:34px;border-radius:50%;background:var(--grad);display:grid;place-items:center;
