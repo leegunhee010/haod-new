@@ -587,12 +587,20 @@ img { display: block; max-width: 100%; }
 .section-tag { font-size: .78rem; letter-spacing: .25em; font-weight: 700; color: var(--accent); }
 
 /* ---------- Subpages ---------- */
-.subhero { background: #f6f4f0; border-bottom: 1px solid var(--line); padding: 150px clamp(20px,4vw,54px) 56px; }
-.subhero__inner { max-width: var(--maxw); margin: 0 auto; }
-.subhero__crumb { font-size: .82rem; color: var(--muted); margin-bottom: 14px; }
+.subhero { position: relative; overflow: hidden; border-bottom: 1px solid var(--line);
+  padding: 172px clamp(20px,4vw,54px) 76px;
+  background: linear-gradient(155deg, #fffaf8 0%, #fff1ea 45%, #ffe2d6 100%); }
+.subhero::before { content: ""; position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(52% 62% at 88% 118%, rgba(232,56,23,.16), transparent 62%),
+    radial-gradient(closest-side at 82% 38%, transparent 60%, rgba(255,255,255,.55) 61%, transparent 64%),
+    radial-gradient(closest-side at 70% 62%, transparent 72%, rgba(255,255,255,.4) 73%, transparent 76%); }
+.subhero__inner { position: relative; z-index: 1; max-width: var(--maxw); margin: 0 auto; }
+.subhero__crumb { font-size: .82rem; color: var(--muted); margin-bottom: 18px; }
 .subhero__crumb a:hover { color: var(--accent); }
-.subhero__title { font-size: clamp(2.2rem,5vw,3.6rem); font-weight: 800; letter-spacing: -.03em; }
-.subhero__desc { color: var(--muted); margin-top: 14px; font-size: 1.05rem; }
+.subhero__title { position: relative; display: inline-block; font-size: clamp(2.4rem,5.4vw,4rem); font-weight: 800; letter-spacing: -.035em; line-height: 1.08; }
+.subhero:not(.subhero--post) .subhero__title::after { content: ""; position: absolute; left: 0; bottom: -16px; width: 56px; height: 6px; border-radius: 4px; background: var(--accent); }
+.subhero__desc { color: #6e6258; margin-top: 30px; font-size: 1.08rem; line-height: 1.65; max-width: 680px; }
 .subnav { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 30px; }
 .subnav a { font-size: .92rem; font-weight: 600; padding: 9px 18px; border-radius: 999px; border: 1px solid var(--line); background: #fff; transition: .25s var(--ease); }
 .subnav a:hover, .subnav a.is-active { background: var(--accent); border-color: var(--accent); color: #fff; }
