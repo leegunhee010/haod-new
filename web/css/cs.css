@@ -197,6 +197,9 @@ html.lenis,html.lenis body{height:auto}
 @media(max-width:600px){.ibadge{width:90px;height:90px;left:14px;bottom:16px}.ibadge__core{width:46px;height:46px}}
 @media(prefers-reduced-motion:reduce){.ibadge__ring{animation:none}}
 
+/* eyebrow 라벨 전부 제거 (소이정 감성 — 군더더기 라벨 삭제) */
+.eyebrow{display:none!important}
+
 /* ── 거대 키네틱 타이포 띠 (소이정 감성) ── */
 .ktype{padding:clamp(46px,8vh,104px) 0;overflow:hidden;background:#fff;border-bottom:1px solid var(--line-2)}
 .ktype__line{overflow:hidden;white-space:nowrap;display:flex}
