@@ -41,7 +41,9 @@ $links = @(
   @('http://localhost:5603/', '../studio/'),
   @('http://localhost:5603',  '../studio/'),
   @('http://localhost:5601/', '../voucher/'),
-  @('http://localhost:5601',  '../voucher/')
+  @('http://localhost:5601',  '../voucher/'),
+  @('http://localhost:5604/', '../mkt/'),
+  @('http://localhost:5604',  '../mkt/')
 )
 
 # 'all' 확장
