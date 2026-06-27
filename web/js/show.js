@@ -50,6 +50,14 @@
       }
     });
 
+    // .reveal 요소(포트폴리오·프로세스·후기 등) 등장 — IO가 Lenis와 충돌해 미발화 → GSAP로 대체
+    gsap.utils.toArray('.reveal').forEach(function (el) {
+      gsap.from(el, {
+        opacity: 0, y: 28, duration: .75, ease: 'power2.out',
+        scrollTrigger: { trigger: el, start: 'top 90%' }
+      });
+    });
+
     ScrollTrigger.refresh();
   } catch (e) {
     // 실패 시 GSAP 인라인 스타일 제거하고 CSS 폴백으로 복귀

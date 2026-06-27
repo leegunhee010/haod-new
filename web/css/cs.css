@@ -536,8 +536,10 @@ html.lenis,html.lenis body{height:auto}
 .footer__copy{display:block;margin-top:16px;font-size:.78rem;color:rgba(255,255,255,.4)}
 
 /* reveal */
-.reveal{opacity:0;transform:translateY(26px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+/* .reveal: 기본은 보이게(IO가 Lenis와 충돌해 미발화 → GSAP가 등장 처리, 실패해도 항상 표시) */
+.reveal{transition:opacity .8s var(--ease),transform .8s var(--ease)}
 .reveal.is-in{opacity:1;transform:none}
+.show.gsap-on ~ * .reveal{will-change:opacity,transform}
 
 /* FAB */
 .fab{position:fixed;right:20px;bottom:20px;z-index:90;display:flex;flex-direction:column;gap:10px}
