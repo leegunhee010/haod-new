@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://cdn.jsdelivr.net" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Fragment+Mono&display=swap" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.css" />
-  <link rel="stylesheet" href="css/cs.css?v=25" />
+  <link rel="stylesheet" href="css/cs.css?v=26" />
   <script type="importmap">
   { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.171.0/build/three.module.js" } }
   </script>
@@ -70,11 +70,6 @@
 
         <a href="#strategy" class="hero2__scroll" aria-label="아래로 스크롤"><span></span></a>
       </div>
-    </section>
-
-    <!-- ===== TRUST ===== -->
-    <section class="trust">
-      <div class="marquee"><div class="marquee__track" id="trustTrack"></div></div>
     </section>
 
     <!-- ===== 거대 키네틱 타이포 (소이정 감성) ===== -->
@@ -374,6 +369,13 @@
         </div>
       </div>
     </section>
+
+    <!-- ===== 파트너사 (맨 마지막 · 2줄 양방향) ===== -->
+    <section class="trust" id="partners">
+      <h2 class="trust__title">함께한 파트너사</h2>
+      <div class="marquee"><div class="marquee__track marquee__track--l" id="trustTrack"></div></div>
+      <div class="marquee"><div class="marquee__track marquee__track--r" id="trustTrack2"></div></div>
+    </section>
   </main>
 
   <footer class="footer">
@@ -432,8 +434,10 @@
 
     /* trust marquee */
     var P = [46,48,50,52,54,56,58,68,70,72,74,76,78,80,89,91,93,95,97,99].map(function(n){ return 'assets/partners/p'+n+'.png'; });
-    var set = P.map(function(s){ return '<span class="plogo"><img src="'+s+'" alt="파트너" decoding="async" /></span>'; }).join('');
+    function row(arr){ return arr.map(function(s){ return '<span class="plogo"><img src="'+s+'" alt="파트너" decoding="async" /></span>'; }).join(''); }
+    var set = row(P), set2 = row(P.slice().reverse());
     $('#trustTrack').innerHTML = set + set;
+    var t2 = $('#trustTrack2'); if (t2) t2.innerHTML = set2 + set2;
 
     /* 전략 카드 캐러셀 화살표 */
     var gt=$('#gcarTrack'), gp=$('#gcarPrev'), gn=$('#gcarNext');

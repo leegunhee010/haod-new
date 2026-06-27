@@ -358,7 +358,10 @@ html.lenis,html.lenis body{height:auto}
 @media(max-width:760px){.gcar__head{flex-direction:column;align-items:flex-start}.gcar__nav{align-self:flex-end;margin-top:-10px}.gcard{flex-basis:80%}}
 
 /* ---------------- Trust marquee ---------------- */
-.trust{padding:clamp(26px,4vh,46px) 0;text-align:center;background:#000}
+.trust{padding:clamp(64px,9vh,116px) 0;text-align:center;background:#000}
+.trust__title{color:#fff;font-size:clamp(1.5rem,2.8vw,2.2rem);font-weight:800;letter-spacing:-.025em;margin-bottom:clamp(30px,4.5vh,56px)}
+.trust .marquee+.marquee{margin-top:clamp(16px,2.4vh,34px)}
+.marquee__track--r{animation-direction:reverse;animation-duration:50s}
 .trust__lead{font-size:.92rem;color:rgba(255,255,255,.5);margin-bottom:30px;padding:0 24px}
 .trust__lead b{color:#fff;font-weight:700}
 .marquee{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
