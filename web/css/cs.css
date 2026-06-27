@@ -200,10 +200,6 @@ html.lenis,html.lenis body{height:auto}
 /* eyebrow 라벨 전부 제거 (소이정 감성 — 군더더기 라벨 삭제) */
 .eyebrow{display:none!important}
 
-/* 헤딩 클립 와이프 등장 (소이정 감성) */
-.gcar__title,.sec__title,.cinfo__title{clip-path:inset(0 -.12em 104% 0);opacity:0;transition:clip-path 1s cubic-bezier(.66,0,.2,1),opacity .55s ease}
-.gcar__title.is-in,.sec__title.is-in,.cinfo__title.is-in{clip-path:inset(-.16em -.12em -.24em 0);opacity:1}
-@media(prefers-reduced-motion:reduce){.gcar__title,.sec__title,.cinfo__title{clip-path:none!important;opacity:1!important}}
 
 /* ── 거대 키네틱 타이포 띠 (소이정 감성) ── */
 .ktype{padding:clamp(46px,8vh,104px) 0;overflow:hidden;background:#fff;border-bottom:1px solid var(--line-2)}
