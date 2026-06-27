@@ -54,12 +54,12 @@ function initBalloons(canvas) {
   const sphereGeo = new THREE.SphereGeometry(1, 48, 48);
   const capGeo = new THREE.CapsuleGeometry(0.5, 1.1, 24, 40);
 
-  const BOUND = { x: 7.2, y: 3.6, z: 2.4 };
+  const BOUND = { x: 7.8, y: 3.7, z: 2.6 };
   const balloons = [];
-  const COUNT = innerWidth < 760 ? 16 : 26;
+  const COUNT = innerWidth < 760 ? 22 : 40;
   for (let i = 0; i < COUNT; i++) {
-    const isCap = Math.random() < 0.28;
-    const r = isCap ? rnd(0.32, 0.6) : rnd(0.42, 1.25);
+    const isCap = Math.random() < 0.26;
+    const r = isCap ? rnd(0.3, 0.58) : rnd(0.32, 1.2);
     const mesh = new THREE.Mesh(isCap ? capGeo : sphereGeo, balloonMat(pick(PALETTE)));
     // 가장자리에 더 몰리도록 중앙 회피 분포
     let px, py;
@@ -144,18 +144,40 @@ function initBalloons(canvas) {
           b.vel.x += (dx / d) * f; b.vel.y += (dy / d) * f;
         }
       }
+      // 중앙(텍스트 영역) 비우기 — 앞쪽 풍선만 바깥으로
+      const cd = Math.hypot(p.x, p.y * 1.5);
+      if (cd < 3.0 && p.z > 0.2) {
+        const f = (1 - cd / 3.0) * 0.004, n = cd || 0.001;
+        b.vel.x += (p.x / n) * f; b.vel.y += (p.y / n) * f;
+      }
       p.addScaledVector(b.vel, 1);
       p.y += Math.sin(t + b.ph) * 0.0016; // 부유
-      // 경계 반사
       if (p.x > BOUND.x || p.x < -BOUND.x) b.vel.x *= -1;
       if (p.y > BOUND.y || p.y < -BOUND.y) b.vel.y *= -1;
       if (p.z > BOUND.z || p.z < -BOUND.z) b.vel.z *= -1;
       p.x = Math.max(-BOUND.x, Math.min(BOUND.x, p.x));
       p.y = Math.max(-BOUND.y, Math.min(BOUND.y, p.y));
-      b.vel.multiplyScalar(0.992); // 감쇠
-      // 최소 떠다님 유지
-      if (b.vel.lengthSq() < 1e-6) b.vel.set(rnd(-0.003, 0.003), rnd(-0.003, 0.003), 0);
+      p.z = Math.max(-BOUND.z, Math.min(BOUND.z, p.z));
+      b.vel.multiplyScalar(0.99); // 감쇠
+      if (b.vel.lengthSq() < 4e-7) b.vel.set(rnd(-0.003, 0.003), rnd(-0.003, 0.003), 0);
       b.mesh.rotation.x += b.spin.x; b.mesh.rotation.y += b.spin.y;
+    }
+    // 충돌 분리 — 서로 통과하지 않고 자연스럽게 밀어냄
+    for (let i = 0; i < balloons.length; i++) {
+      const a = balloons[i], pa = a.mesh.position;
+      for (let j = i + 1; j < balloons.length; j++) {
+        const bb = balloons[j], pb = bb.mesh.position;
+        const dx = pa.x - pb.x, dy = pa.y - pb.y, dz = pa.z - pb.z;
+        const minD = (a.r + bb.r) * 0.9, d2 = dx * dx + dy * dy + dz * dz;
+        if (d2 < minD * minD && d2 > 1e-6) {
+          const d = Math.sqrt(d2), ov = (minD - d) * 0.5;
+          const nx = dx / d, ny = dy / d, nz = dz / d;
+          pa.x += nx * ov; pa.y += ny * ov; pa.z += nz * ov;
+          pb.x -= nx * ov; pb.y -= ny * ov; pb.z -= nz * ov;
+          a.vel.x += nx * 0.0008; a.vel.y += ny * 0.0008;
+          bb.vel.x -= nx * 0.0008; bb.vel.y -= ny * 0.0008;
+        }
+      }
     }
     renderer.render(scene, camera);
     if (!reduce) requestAnimationFrame(frame);
