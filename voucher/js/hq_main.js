@@ -631,22 +631,17 @@ $(function(){
 		});
 	}
 
-	// 포트폴리오 — 기울어진 사진 카드 슬라이더
-	if (document.querySelector('.pf-swiper') && typeof Swiper !== 'undefined') {
-		new Swiper('.pf-swiper', {
-			slidesPerView: 1.3,
-			spaceBetween: 30,
-			centeredSlides: true,
-			loop: true,
-			grabCursor: true,
-			speed: 700,
-			autoplay: { delay: 2800, disableOnInteraction: false },
-			breakpoints: {
-				768:  { slidesPerView: 2.2, spaceBetween: 40 },
-				1200: { slidesPerView: 3,   spaceBetween: 56 }
-			}
-		});
-	}
+	// 포트폴리오 — 원형 회전 휠(큰 원 둘레에 카드 분포, 회전은 CSS가 담당)
+	(function(){
+		var wheel = document.getElementById('pfWheel');
+		if(!wheel) return;
+		var base = Array.prototype.slice.call(wheel.querySelectorAll('.pf-card'));
+		// 카드 복제(8→16)로 원에 촘촘히 분포 → 양옆 기울기 완만
+		base.forEach(function(c){ wheel.appendChild(c.cloneNode(true)); });
+		var all = wheel.querySelectorAll('.pf-card');
+		var n = all.length, step = 360 / n;
+		all.forEach(function(c, i){ c.style.setProperty('--a', (i*step) + 'deg'); });
+	})();
 
 	/*
 	| ----------------------------------------------------------------------------------------
