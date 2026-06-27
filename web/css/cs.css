@@ -217,13 +217,6 @@ html.lenis,html.lenis body{height:auto}
 @media(prefers-reduced-motion:reduce){.ktype__track{animation:none}}
 
 .show{position:relative;max-width:1340px;margin:0 auto;padding:clamp(80px,12vh,150px) clamp(20px,4vw,44px);overflow:hidden}
-/* 무빙 오로라 배경 */
-.show::before{content:"";position:absolute;inset:-10%;z-index:-1;pointer-events:none;
-  background:radial-gradient(38% 38% at 18% 22%,rgba(255,138,61,.14),transparent 70%),
-    radial-gradient(42% 42% at 84% 70%,rgba(232,56,23,.12),transparent 72%),
-    radial-gradient(32% 32% at 60% 12%,rgba(255,200,120,.1),transparent 72%);
-  animation:showAurora 20s ease-in-out infinite alternate}
-@keyframes showAurora{0%{transform:translate3d(0,0,0) scale(1) rotate(0deg)}100%{transform:translate3d(4%,-3%,0) scale(1.18) rotate(3deg)}}
 /* GSAP 제어 시 CSS .in 등장 애니메이션 비활성(중복 방지) */
 .show.gsap-on .show__item.in .show__text,
 .show.gsap-on .show__item.rev.in .show__text,
@@ -242,7 +235,7 @@ html.lenis,html.lenis body{height:auto}
 .show__item{position:relative;display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(40px,6vw,96px);align-items:center;padding:clamp(56px,9vh,120px) 0}
 .show__item+.show__item{border-top:1px solid var(--line-2)}
 .show__item.rev .show__text{order:2}
-.show__big{position:absolute;top:-.18em;left:-.06em;z-index:0;font-family:"Geist",sans-serif;font-size:clamp(7rem,17vw,17rem);font-weight:800;line-height:.8;letter-spacing:-.05em;-webkit-text-stroke:1.6px rgba(232,56,23,.18);color:transparent;pointer-events:none;user-select:none;will-change:transform}
+.show__big{position:absolute;top:-.18em;left:-.06em;z-index:0;font-family:"Geist",sans-serif;font-size:clamp(7rem,17vw,17rem);font-weight:800;line-height:.8;letter-spacing:-.05em;color:rgba(232,56,23,.09);pointer-events:none;user-select:none;will-change:transform}
 .show__item.rev .show__big{left:auto;right:-.06em}
 .show__text{position:relative;z-index:2}
 .show__tag{display:inline-flex;align-items:center;gap:9px;font-family:"Fragment Mono",monospace;font-size:.8rem;letter-spacing:.16em;color:var(--accent);text-transform:uppercase;font-weight:600}
