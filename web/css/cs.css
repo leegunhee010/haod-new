@@ -361,12 +361,12 @@ html.lenis,html.lenis body{height:auto}
 .trust{padding:clamp(64px,9vh,116px) 0;text-align:center;background:#000}
 .trust__title{color:#fff;font-size:clamp(1.5rem,2.8vw,2.2rem);font-weight:800;letter-spacing:-.025em;margin-bottom:clamp(30px,4.5vh,56px)}
 .trust .marquee+.marquee{margin-top:clamp(16px,2.4vh,34px)}
-.marquee__track--r{animation-direction:reverse;animation-duration:50s}
 .trust__lead{font-size:.92rem;color:rgba(255,255,255,.5);margin-bottom:30px;padding:0 24px}
 .trust__lead b{color:#fff;font-weight:700}
 .marquee{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
   mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
 .marquee__track{display:flex;align-items:center;gap:clamp(40px,5vw,86px);width:max-content;animation:slide 44s linear infinite}
+.marquee__track--r{animation-direction:reverse;animation-duration:50s}
 .marquee:hover .marquee__track{animation-play-state:paused}
 .plogo{flex:0 0 auto;height:84px;display:flex;align-items:center;justify-content:center;padding:0 10px}
 .plogo img{width:auto;height:70px;max-width:270px;object-fit:contain;
