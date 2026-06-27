@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://cdn.jsdelivr.net" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Fragment+Mono&display=swap" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.css" />
-  <link rel="stylesheet" href="css/cs.css?v=27" />
+  <link rel="stylesheet" href="css/cs.css?v=28" />
   <script type="importmap">
   { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.171.0/build/three.module.js" } }
   </script>
@@ -522,7 +522,7 @@
 
     /* reveal */
     var io=new IntersectionObserver(function(es){es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('is-in'); io.unobserve(e.target); } });},{threshold:.12});
-    $$('.reveal').forEach(function(el){ io.observe(el); });
+    $$('.reveal, .gcar__title, .sec__title, .cinfo__title').forEach(function(el){ io.observe(el); });
 
     /* hero word rotator */
     (function(){

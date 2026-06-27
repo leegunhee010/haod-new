@@ -200,6 +200,11 @@ html.lenis,html.lenis body{height:auto}
 /* eyebrow 라벨 전부 제거 (소이정 감성 — 군더더기 라벨 삭제) */
 .eyebrow{display:none!important}
 
+/* 헤딩 클립 와이프 등장 (소이정 감성) */
+.gcar__title,.sec__title,.cinfo__title{clip-path:inset(0 -.12em 104% 0);opacity:0;transition:clip-path 1s cubic-bezier(.66,0,.2,1),opacity .55s ease}
+.gcar__title.is-in,.sec__title.is-in,.cinfo__title.is-in{clip-path:inset(-.16em -.12em -.24em 0);opacity:1}
+@media(prefers-reduced-motion:reduce){.gcar__title,.sec__title,.cinfo__title{clip-path:none!important;opacity:1!important}}
+
 /* ── 거대 키네틱 타이포 띠 (소이정 감성) ── */
 .ktype{padding:clamp(46px,8vh,104px) 0;overflow:hidden;background:#fff;border-bottom:1px solid var(--line-2)}
 .ktype__line{overflow:hidden;white-space:nowrap;display:flex}
@@ -235,7 +240,7 @@ html.lenis,html.lenis body{height:auto}
   background:radial-gradient(circle,rgba(232,56,23,.32),transparent 70%);filter:blur(54px);opacity:.7;
   animation:glowPulse 5s ease-in-out infinite}
 .show__head{text-align:center;max-width:860px;margin:0 auto clamp(40px,7vh,90px)}
-.show__title{margin-top:18px;font-size:clamp(2rem,4.6vw,3.6rem);font-weight:800;letter-spacing:-.035em;line-height:1.18}
+.show__title{margin-top:18px;font-size:clamp(2.4rem,5.6vw,4.8rem);font-weight:800;letter-spacing:-.04em;line-height:1.1}
 .show__title .g{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
 .show__lead{margin-top:18px;font-size:1.06rem;color:var(--muted);line-height:1.8}
 .show__item{position:relative;display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(40px,6vw,96px);align-items:center;padding:clamp(56px,9vh,120px) 0}
@@ -314,7 +319,7 @@ html.lenis,html.lenis body{height:auto}
 .gcar__glow{position:absolute;right:-6%;top:-12%;width:50vw;height:50vw;border-radius:50%;background:radial-gradient(circle,rgba(232,56,23,.3),transparent 64%);filter:blur(72px);pointer-events:none}
 .gcar__in{position:relative;z-index:2;max-width:var(--maxw);margin:0 auto;padding:clamp(70px,11vh,130px) clamp(20px,4vw,44px)}
 .gcar__head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:clamp(34px,5vh,52px)}
-.gcar__title{margin-top:16px;font-size:clamp(1.9rem,4vw,3.1rem);font-weight:800;letter-spacing:-.035em;line-height:1.22;color:#fff}
+.gcar__title{margin-top:16px;font-size:clamp(2.4rem,5.4vw,4.6rem);font-weight:800;letter-spacing:-.04em;line-height:1.12;color:#fff}
 .gcar__title .g{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
 .gcar__sub{margin-top:20px;color:rgba(255,255,255,.64);line-height:1.7;font-size:1.02rem}
 .gcar__nav{display:flex;gap:12px;flex:none}
@@ -378,7 +383,7 @@ html.lenis,html.lenis body{height:auto}
 .sec{max-width:var(--maxw);margin:0 auto;padding:clamp(70px,11vh,130px) clamp(18px,4vw,44px)}
 .sec__head{max-width:720px;margin-bottom:clamp(38px,6vh,64px)}
 .sec__head.center{margin-left:auto;margin-right:auto;text-align:center}
-.sec__title{margin-top:18px;font-size:clamp(1.8rem,3.6vw,2.9rem);font-weight:800;letter-spacing:-.035em;line-height:1.22;color:var(--ink)}
+.sec__title{margin-top:18px;font-size:clamp(2.2rem,5vw,4.2rem);font-weight:800;letter-spacing:-.04em;line-height:1.14;color:var(--ink)}
 .sec__title .g{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
 .sec__lead{margin-top:18px;font-size:1.04rem;color:var(--muted);line-height:1.8;word-break:keep-all}
 
@@ -501,7 +506,7 @@ html.lenis,html.lenis body{height:auto}
   background:radial-gradient(circle,rgba(242,121,47,.4),transparent 68%);filter:blur(40px)}
 .contact .sec{position:relative;z-index:2}
 .cwrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,5vw,70px);align-items:start}
-.cinfo__title{font-size:clamp(1.8rem,3.4vw,2.6rem);font-weight:800;letter-spacing:-.035em;line-height:1.2;margin-top:16px}
+.cinfo__title{font-size:clamp(2.2rem,4.6vw,3.8rem);font-weight:800;letter-spacing:-.04em;line-height:1.12;margin-top:16px}
 .cinfo__desc{margin-top:18px;color:var(--muted);line-height:1.8}
 .crows{margin-top:30px;display:flex;flex-direction:column;gap:2px}
 .crows li{display:flex;gap:14px;padding:15px 0;border-top:1px solid var(--line);align-items:center}
