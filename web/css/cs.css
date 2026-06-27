@@ -285,11 +285,11 @@ em{font-style:normal}
 .trust__lead b{color:var(--ink);font-weight:700}
 .marquee{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);
   mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
-.marquee__track{display:flex;align-items:center;gap:18px;width:max-content;animation:slide 44s linear infinite}
+.marquee__track{display:flex;align-items:center;gap:28px;width:max-content;animation:slide 44s linear infinite}
 .marquee:hover .marquee__track{animation-play-state:paused}
-.plogo{flex:0 0 auto;height:84px;min-width:160px;padding:0 28px;display:flex;align-items:center;justify-content:center;
-  background:#fff;border:1px solid var(--line-2);border-radius:14px}
-.plogo img{width:auto;height:34px;max-width:160px;object-fit:contain;filter:grayscale(1);opacity:.62;transition:.3s}
+.plogo{flex:0 0 auto;height:128px;min-width:240px;padding:0 46px;display:flex;align-items:center;justify-content:center;
+  background:#fff;border:1px solid var(--line-2);border-radius:18px}
+.plogo img{width:auto;height:56px;max-width:230px;object-fit:contain;filter:grayscale(1);opacity:.62;transition:.3s}
 .plogo:hover img{filter:none;opacity:1}
 @keyframes slide{from{transform:translateX(0)}to{transform:translateX(calc(-50% - 9px))}}
 
