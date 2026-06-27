@@ -33,7 +33,7 @@
     <!-- HAO 표준 센터 헤더/푸터/FAB -->
     <link rel="stylesheet" href="css/hao-chrome.css?v=16">
     <!-- HAO 기본 스타일 오버라이드 (맨 마지막) -->
-    <link rel="stylesheet" href="css/hao-brand.css?v=49">
+    <link rel="stylesheet" href="css/hao-brand.css?v=50">
 
     <!-- scripts -->
     <script src="js/hq_jquery-1.12.0.min.js"></script>
@@ -113,6 +113,7 @@
           var words = document.querySelectorAll('.gw-hero .rolling-words .word');
           if(!box || !words.length) return;
           var cur = 0, total = words.length;
+          function fit(){ box.style.width = words[cur].offsetWidth + 'px'; }  // 박스 폭=현재 단어 폭 → 빈칸 없이 타이트
           function rotate(){
             words[cur].classList.remove('active');
             words[cur].classList.add('exit');
@@ -120,8 +121,11 @@
             setTimeout(function(){ words[exitIdx].classList.remove('exit'); }, 500);
             cur = (cur + 1) % total;
             words[cur].classList.add('active');
+            fit();
           }
+          fit();
           setInterval(rotate, 1800);
+          window.addEventListener('resize', fit);
         });
         </script>
         <!-- (구) 영상 히어로 — 숨김 처리, main.js 스와이퍼 참조용 유지 -->

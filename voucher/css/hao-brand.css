@@ -236,7 +236,7 @@ input[type="text"], input[type="tel"], input[type="email"], textarea { cursor: t
 }
 @media (max-width:760px){ .gw-hero .hero-line{ flex-wrap:wrap; white-space:normal; } }
 /* 롤링 (inline-grid 겹침 + active/exit, groove 동일) */
-.gw-hero .rolling-words{ display:inline-grid; overflow:hidden; vertical-align:bottom; text-align:center; }
+.gw-hero .rolling-words{ display:inline-grid; overflow:hidden; vertical-align:bottom; text-align:left; }
 .gw-hero .word{
   grid-area:1/1; color:#e83817 !important; opacity:0; white-space:nowrap;
   transform:translateY(100%);
