@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://cdn.jsdelivr.net" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Fragment+Mono&display=swap" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.css" />
-  <link rel="stylesheet" href="css/cs.css?v=21" />
+  <link rel="stylesheet" href="css/cs.css?v=22" />
   <script type="importmap">
   { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.171.0/build/three.module.js" } }
   </script>
@@ -532,13 +532,7 @@
       wrap.addEventListener('pointerleave', function(){ card.style.transform=''; });
     });
 
-    /* 거대 넘버 패럴랙스 */
-    var paras=$$('[data-parallax]');
-    function onParallax(){ var vh=innerHeight;
-      paras.forEach(function(el){ var r=el.getBoundingClientRect(), mid=r.top+r.height/2, off=(mid-vh/2)/vh;
-        el.style.transform='translateY('+(off*-46)+'px)'; });
-    }
-    addEventListener('scroll', onParallax, {passive:true}); onParallax();
+    /* 거대 넘버 패럴랙스는 js/show.js(GSAP)에서 처리 */
 
     /* form */
     var form=$('#quoteForm');
@@ -548,5 +542,8 @@
   })();
   </script>
   <script type="module" src="js/holo.js?v=3"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="js/show.js?v=1"></script>
 </body>
 </html>
