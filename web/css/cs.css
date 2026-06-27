@@ -301,17 +301,17 @@ em{font-style:normal}
 @media(max-width:760px){.gcar__head{flex-direction:column;align-items:flex-start}.gcar__nav{align-self:flex-end;margin-top:-10px}.gcard{flex-basis:80%}}
 
 /* ---------------- Trust marquee ---------------- */
-.trust{padding:clamp(44px,7vh,72px) 0 clamp(20px,3vh,34px);text-align:center;background:#fff}
-.trust__lead{font-size:.92rem;color:var(--muted);margin-bottom:30px;padding:0 24px}
-.trust__lead b{color:var(--ink);font-weight:700}
-.marquee{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);
-  mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
-.marquee__track{display:flex;align-items:center;gap:28px;width:max-content;animation:slide 44s linear infinite}
+.trust{padding:clamp(56px,9vh,96px) 0;text-align:center;background:#000}
+.trust__lead{font-size:.92rem;color:rgba(255,255,255,.5);margin-bottom:30px;padding:0 24px}
+.trust__lead b{color:#fff;font-weight:700}
+.marquee{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.marquee__track{display:flex;align-items:center;gap:clamp(40px,5vw,86px);width:max-content;animation:slide 44s linear infinite}
 .marquee:hover .marquee__track{animation-play-state:paused}
-.plogo{flex:0 0 auto;height:128px;min-width:240px;padding:0 46px;display:flex;align-items:center;justify-content:center;
-  background:#fff;border:1px solid var(--line-2);border-radius:18px}
-.plogo img{width:auto;height:56px;max-width:230px;object-fit:contain;filter:grayscale(1);opacity:.62;transition:.3s}
-.plogo:hover img{filter:none;opacity:1}
+.plogo{flex:0 0 auto;height:120px;display:flex;align-items:center;justify-content:center;padding:0 10px}
+.plogo img{width:auto;height:54px;max-width:230px;object-fit:contain;
+  filter:grayscale(1) invert(1) contrast(1.5) brightness(1.05);opacity:.72;transition:opacity .3s}
+.plogo:hover img{opacity:1}
 @keyframes slide{from{transform:translateX(0)}to{transform:translateX(calc(-50% - 9px))}}
 
 /* ---------------- Section base ---------------- */
