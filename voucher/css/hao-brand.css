@@ -300,6 +300,60 @@ input[type="text"], input[type="tel"], input[type="email"], textarea { cursor: t
   text-shadow:0 2px 12px rgba(0,0,0,.45);
 }
 
+/* 섹션4·5·6 삭제로 Our Centers(section3) ↔ Who We Are(section7) 간격이 붙음 → 위 여백 확보 */
+#main .section7{ padding-top:clamp(140px,16vh,240px) !important; }
+
+/* ============================================================
+   바우처 칼럼(section8) — 칼럼 게시판 카드 그리드
+   ============================================================ */
+#main .section8 .column-board{
+  list-style:none; margin:clamp(56px,7vh,100px) 0 0; padding:0;
+  display:grid; grid-template-columns:repeat(3,1fr); gap:52px 36px;
+}
+#main .section8 .board-card{
+  cursor:pointer; background:#fff; border-radius:18px; overflow:hidden;
+  box-shadow:0 16px 42px -26px rgba(36,26,20,.42);
+  transition:transform .35s ease, box-shadow .35s ease;
+}
+#main .section8 .board-card:hover{ transform:translateY(-6px); box-shadow:0 28px 58px -22px rgba(232,56,23,.32); }
+#main .section8 .board-thumb{ aspect-ratio:16/10; overflow:hidden; }
+#main .section8 .board-thumb img{ width:100%; height:100%; object-fit:cover; transition:transform .55s ease; }
+#main .section8 .board-card:hover .board-thumb img{ transform:scale(1.06); }
+#main .section8 .board-body{ padding:24px 26px 30px; }
+#main .section8 .board-tag{ display:inline-block; font-size:13px; font-weight:700; color:#e83817; background:rgba(232,56,23,.1); padding:5px 13px; border-radius:999px; }
+#main .section8 .board-title{
+  font-size:22px; font-weight:700; line-height:1.42; color:#241a14; margin:15px 0 0;
+  display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;
+}
+#main .section8 .board-desc{ font-size:15px; color:#8a7d72; margin:10px 0 0; font-weight:500; }
+@media (max-width:960px){ #main .section8 .column-board{ grid-template-columns:repeat(2,1fr); gap:36px 24px; } }
+@media (max-width:600px){ #main .section8 .column-board{ grid-template-columns:1fr; } }
+
+/* ============================================================
+   포트폴리오(section9) — 기울어진 사진 카드 + 웨이브 라인
+   ============================================================ */
+#main .section9{ background:linear-gradient(180deg,#ffffff 0%,#fff6f2 100%) !important; }
+#main .section9 .tit-box h3{ color:#241a14 !important; -webkit-text-fill-color:#241a14 !important; }
+#main .section9 .tit-box .fill-text{ color:#7a6a60 !important; -webkit-text-fill-color:#7a6a60 !important; }
+#main .section9 .pf-stage{ position:relative; margin-top:clamp(56px,7vh,110px); }
+#main .section9 .pf-wave{ position:absolute; left:-5%; top:46%; transform:translateY(-50%); width:110%; height:62%; pointer-events:none; z-index:0; }
+#main .section9 .pf-swiper{ position:relative; z-index:1; overflow:visible; padding:30px 0 10px; }
+#main .section9 .pf-swiper .swiper-wrapper{ align-items:center; }
+/* 기울어진 카드 (희망조약돌식 스캐터 배치) */
+#main .section9 .pf-card{ cursor:pointer; transition:transform .6s cubic-bezier(.22,.7,.2,1), opacity .6s ease;
+  transform:rotate(-6deg) scale(.8); opacity:.5; }
+#main .section9 .pf-swiper .swiper-slide-prev{ transform:rotate(-8deg) scale(.86); opacity:.85; }
+#main .section9 .pf-swiper .swiper-slide-next{ transform:rotate(8deg) scale(.86); opacity:.85; }
+#main .section9 .pf-swiper .swiper-slide-active{ transform:rotate(0deg) scale(1); opacity:1; }
+#main .section9 .pf-img{ border-radius:30px; overflow:hidden; aspect-ratio:3/4;
+  box-shadow:0 36px 72px -30px rgba(36,26,20,.5); }
+#main .section9 .pf-img img{ width:100%; height:100%; object-fit:cover; transition:transform .6s ease; }
+#main .section9 .pf-swiper .swiper-slide-active:hover .pf-img img{ transform:scale(1.05); }
+#main .section9 .pf-cap{ text-align:center; margin-top:24px; transition:opacity .5s ease; }
+#main .section9 .pf-card:not(.swiper-slide-active) .pf-cap{ opacity:0; }
+#main .section9 .pf-cat{ display:inline-block; font-size:14px; font-weight:700; color:#e83817; background:rgba(232,56,23,.1); padding:5px 14px; border-radius:999px; }
+#main .section9 .pf-title{ display:block; font-size:24px; font-weight:700; color:#241a14; margin-top:13px; }
+
 /* ============================================================
    What We Do(section2) — 핀 카드스택 → 가로 슬라이더(Swiper)
    ============================================================ */
@@ -308,7 +362,7 @@ input[type="text"], input[type="tel"], input[type="email"], textarea { cursor: t
 /* 슬라이드 카드: 절대배치 해제 → 일반 카드 */
 #main .section2 .cards-swiper .card_wrapper{
   position:relative !important; top:auto !important; left:auto !important;
-  height:clamp(300px,40vh,430px) !important;   /* 가로로 긴 직사각형 (width는 Swiper가 계산) */
+  height:clamp(440px,64vh,640px) !important;   /* 세로로 더 길게 (width는 Swiper가 계산) */
   border-radius:24px !important; overflow:hidden; box-sizing:border-box;
   box-shadow:0 24px 54px -26px rgba(36,26,20,.5);
 }
@@ -319,11 +373,11 @@ input[type="text"], input[type="tel"], input[type="email"], textarea { cursor: t
 }
 #main .section2 .cards-swiper .card_wrapper .txt-wrap{ z-index:1; }
 /* 카드 내 타이포 슬라이드 크기에 맞춤 */
-#main .section2 .cards-swiper .card_wrapper .txt-wrap h4{ font-size:clamp(30px,3vw,52px) !important; margin-top:8px !important; }
-#main .section2 .cards-swiper .card_wrapper .txt-wrap p{ font-size:17px !important; }
-#main .section2 .cards-swiper .card_wrapper .txt-wrap em{ font-size:14px !important; line-height:1.55; margin-top:14px !important; padding:0 24px; }
-/* 활성 슬라이드 강조 */
-#main .section2 .cards-swiper .swiper-slide{ transition:transform .5s ease, opacity .5s ease; opacity:.5; transform:scale(.9); }
+#main .section2 .cards-swiper .card_wrapper .txt-wrap h4{ font-size:clamp(44px,4.6vw,82px) !important; margin-top:10px !important; }
+#main .section2 .cards-swiper .card_wrapper .txt-wrap p{ font-size:clamp(19px,1.5vw,26px) !important; }
+#main .section2 .cards-swiper .card_wrapper .txt-wrap em{ font-size:clamp(15px,1.15vw,19px) !important; line-height:1.6; margin-top:18px !important; padding:0 26px; }
+/* 활성(중앙) 카드만 크게·선명, 양옆은 작게·흐리게 */
+#main .section2 .cards-swiper .swiper-slide{ transition:transform .5s ease, opacity .5s ease; opacity:.35; transform:scale(.82); }
 #main .section2 .cards-swiper .swiper-slide-active{ opacity:1; transform:scale(1); }
 /* 페이지네이션 */
 #main .section2 .cards-pagination{ position:static; margin-top:30px; display:flex; justify-content:center; gap:8px; }

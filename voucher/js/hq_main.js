@@ -615,8 +615,8 @@ $(function(){
 	// What We Do 카드 — 가로 슬라이더(Swiper)로 전환 (기존 핀 카드스택 제거)
 	if (document.querySelector('.cards-swiper') && typeof Swiper !== 'undefined') {
 		new Swiper('.cards-swiper', {
-			slidesPerView: 1.05,
-			spaceBetween: 18,
+			slidesPerView: 1.12,
+			spaceBetween: 16,
 			centeredSlides: true,
 			loop: true,
 			grabCursor: true,
@@ -625,8 +625,25 @@ $(function(){
 			pagination: { el: '.cards-pagination', clickable: true },
 			navigation: { nextEl: '.cards-next', prevEl: '.cards-prev' },
 			breakpoints: {
-				768:  { slidesPerView: 1.5, spaceBetween: 24 },
-				1200: { slidesPerView: 2.1, spaceBetween: 30 }
+				768:  { slidesPerView: 1.22, spaceBetween: 26 },
+				1200: { slidesPerView: 1.32, spaceBetween: 36 }
+			}
+		});
+	}
+
+	// 포트폴리오 — 기울어진 사진 카드 슬라이더
+	if (document.querySelector('.pf-swiper') && typeof Swiper !== 'undefined') {
+		new Swiper('.pf-swiper', {
+			slidesPerView: 1.3,
+			spaceBetween: 30,
+			centeredSlides: true,
+			loop: true,
+			grabCursor: true,
+			speed: 700,
+			autoplay: { delay: 2800, disableOnInteraction: false },
+			breakpoints: {
+				768:  { slidesPerView: 2.2, spaceBetween: 40 },
+				1200: { slidesPerView: 3,   spaceBetween: 56 }
 			}
 		});
 	}
@@ -737,6 +754,7 @@ const myTimeline = gsap.timeline({
 	| section5 애니메이션 함수
 	| ----------------------------------------------------------------------------------------
 	*/
+	if (document.querySelector('.section5')) {
 	var progTotal1 = $('.solution-swiper .swiper-slide').length;
 
 	var solutionSwiper = new Swiper(".solution-swiper", {
@@ -817,6 +835,7 @@ const myTimeline = gsap.timeline({
 			solutionSwiper.autoplay.stop();
 		}
 	});
+	} // /section5 guard
 
 	/*
 	| ----------------------------------------------------------------------------------------
@@ -1151,7 +1170,7 @@ const myTimeline = gsap.timeline({
 		y: 50 
 	});
 
-	if(window.innerWidth > 1024) {
+	if(window.innerWidth > 1024 && document.querySelector(".section8 .story-list .story-item:last-child")) {
 		// section8이 top에 도달하면 고정되고 story-list만 위로 올라가는 애니메이션
 		const lastItem = document.querySelector(".section8 .story-list .story-item:last-child");
 		const titArea = document.querySelector(".section8 .tit-area");
