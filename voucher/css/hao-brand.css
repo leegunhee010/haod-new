@@ -308,7 +308,7 @@ input[type="text"], input[type="tel"], input[type="email"], textarea { cursor: t
 /* 슬라이드 카드: 절대배치 해제 → 일반 카드 */
 #main .section2 .cards-swiper .card_wrapper{
   position:relative !important; top:auto !important; left:auto !important;
-  height:clamp(400px,54vh,560px) !important;   /* width는 Swiper가 계산 → 강제 X */
+  height:clamp(300px,40vh,430px) !important;   /* 가로로 긴 직사각형 (width는 Swiper가 계산) */
   border-radius:24px !important; overflow:hidden; box-sizing:border-box;
   box-shadow:0 24px 54px -26px rgba(36,26,20,.5);
 }

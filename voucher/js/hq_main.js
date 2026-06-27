@@ -615,7 +615,7 @@ $(function(){
 	// What We Do 카드 — 가로 슬라이더(Swiper)로 전환 (기존 핀 카드스택 제거)
 	if (document.querySelector('.cards-swiper') && typeof Swiper !== 'undefined') {
 		new Swiper('.cards-swiper', {
-			slidesPerView: 1.1,
+			slidesPerView: 1.05,
 			spaceBetween: 18,
 			centeredSlides: true,
 			loop: true,
@@ -625,8 +625,8 @@ $(function(){
 			pagination: { el: '.cards-pagination', clickable: true },
 			navigation: { nextEl: '.cards-next', prevEl: '.cards-prev' },
 			breakpoints: {
-				768:  { slidesPerView: 2.1, spaceBetween: 22 },
-				1200: { slidesPerView: 3,   spaceBetween: 26 }
+				768:  { slidesPerView: 1.5, spaceBetween: 24 },
+				1200: { slidesPerView: 2.1, spaceBetween: 30 }
 			}
 		});
 	}
@@ -714,8 +714,8 @@ const myTimeline = gsap.timeline({
 		scale: 1, 
 		duration: 0.3, 
 		ease: "power2.out",
-		onComplete: () => document.querySelector(".section4 .circle.ani_items1").classList.add("on"),
-		onReverseComplete: () => document.querySelector(".section4 .circle.ani_items1").classList.remove("on")
+		onComplete: () => document.querySelector(".section4 .circle.ani_items1")?.classList.add("on"),
+		onReverseComplete: () => document.querySelector(".section4 .circle.ani_items1")?.classList.remove("on")
 	  }
 	)
 	.fromTo(".section4 .circle-wrap > strong.ani_items1",
@@ -1007,7 +1007,7 @@ const myTimeline = gsap.timeline({
 		section6resize = true;
 	}
 
-	section6init();
+	if (document.querySelector('.section6')) section6init();
 
 	// 커서
 	$(window).mousemove(function (event) {
