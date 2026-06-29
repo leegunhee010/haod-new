@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://cdn.jsdelivr.net" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Fragment+Mono&display=swap" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.css" />
-  <link rel="stylesheet" href="css/cs.css?v=10" />
+  <link rel="stylesheet" href="css/cs.css?v=34" />
   <style>
     .sct{max-width:860px;margin:0 auto;padding:128px clamp(18px,4vw,40px) 96px}
     .sct__head{text-align:center;margin-bottom:34px}
@@ -106,7 +106,7 @@
   </style>
 </head>
 <body>
-  <header class="header is-stuck" id="header">
+  <header class="header" id="header">
     <a href="index.html" class="brand"><img src="assets/img/logo.png" class="brand__logo" alt="하오디자인" /><b class="brand__sub">웹구축센터</b></a>
     <nav class="nav" id="nav">
       <a href="index.html#service">서비스</a>
@@ -242,6 +242,9 @@
     var y = $('#year'); if (y) y.textContent = new Date().getFullYear();
     var burger = $('#burger'), nav = $('#nav');
     burger.addEventListener('click', function () { burger.classList.toggle('is-open'); nav.classList.toggle('is-open'); document.body.classList.toggle('menu-open'); });
+    var hdr = $('#header');
+    addEventListener('scroll', function () { hdr.classList.toggle('is-stuck', window.scrollY > 24); }, { passive: true });
+    hdr.classList.toggle('is-stuck', window.scrollY > 24);
 
     var form = $('#sform'), urlIn = $('#surl'), btn = $('#sbtn'),
         load = $('#sload'), loadTxt = $('#sloadtxt'), err = $('#serr'), res = $('#sres');
