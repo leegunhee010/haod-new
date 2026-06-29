@@ -141,18 +141,14 @@
       });
     });
 
-    // 프로세스: 연결 라인 드로우 + 배지 순차 팝 + 텍스트 등장
+    // 프로세스: 카드 순차 등장 + 아이콘 팝
     var proc = document.querySelector('.proc');
     if (proc) {
-      var pline = proc.querySelector('.proc__line i');
       var psteps = [].slice.call(proc.querySelectorAll('.pstep'));
-      var pnos = psteps.map(function (s) { return s.querySelector('.pstep__no'); });
-      var ptexts = [];
-      psteps.forEach(function (s) { var h = s.querySelector('h3'), p = s.querySelector('p'); if (h) ptexts.push(h); if (p) ptexts.push(p); });
+      var picons = psteps.map(function (s) { return s.querySelector('.pstep__icon'); });
       var ptl = gsap.timeline({ scrollTrigger: { trigger: proc, start: 'top 80%' } });
-      if (pline) ptl.fromTo(pline, { scaleX: 0 }, { scaleX: 1, duration: 1.1, ease: 'power2.inOut' }, 0);
-      ptl.fromTo(pnos, { scale: 0 }, { scale: 1, duration: .5, stagger: .15, ease: 'back.out(2)' }, .15);
-      ptl.fromTo(ptexts, { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: .5, stagger: .07, ease: 'power3.out' }, .35);
+      ptl.fromTo(psteps, { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: .65, stagger: .12, ease: 'power3.out' }, 0);
+      ptl.fromTo(picons, { scale: 0, rotate: -30 }, { scale: 1, rotate: 0, duration: .55, stagger: .12, ease: 'back.out(2.2)' }, .15);
     }
 
     ScrollTrigger.refresh();
@@ -163,7 +159,7 @@
     [].slice.call(show.querySelectorAll('.show__text > *, .show__visual, .show__big')).forEach(function (el) {
       el.style.opacity = ''; el.style.transform = '';
     });
-    [].slice.call(document.querySelectorAll('.proc__line i, .pstep__no, .pstep h3, .pstep p')).forEach(function (el) {
+    [].slice.call(document.querySelectorAll('.pstep, .pstep__icon')).forEach(function (el) {
       el.style.opacity = ''; el.style.transform = '';
     });
   }
