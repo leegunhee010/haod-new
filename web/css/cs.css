@@ -542,15 +542,20 @@ html.lenis,html.lenis body{height:auto}
 .net{width:100%;height:auto}
 
 /* ---------------- Process ---------------- */
-.proc{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;counter-reset:s}
-.pstep{position:relative;padding:34px 24px 30px;border:1.5px solid var(--line);border-radius:24px;background:#fff;
-  transition:transform .32s var(--ease),box-shadow .32s,border-color .32s}
-.pstep:hover{transform:translateY(-8px);border-color:var(--accent);box-shadow:0 30px 60px -34px rgba(232,56,23,.34)}
-.pstep__no{display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:50%;
-  background:var(--grad);color:#fff;font-family:"Geist",sans-serif;font-size:1.04rem;font-weight:800;
-  box-shadow:0 12px 26px -10px rgba(232,56,23,.5)}
-.pstep h3{margin-top:22px;font-size:1.18rem;font-weight:800;letter-spacing:-.02em}
-.pstep p{margin-top:10px;font-size:.92rem;color:var(--muted);line-height:1.7;word-break:keep-all}
+/* 프로세스: 연결 타임라인 */
+.proc{position:relative;display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(10px,1.6vw,22px)}
+.proc__line{position:absolute;top:27px;left:10%;right:10%;height:2px;background:var(--line);border-radius:2px;z-index:0;overflow:hidden}
+.proc__line i{display:block;height:100%;width:100%;background:var(--grad);transform-origin:left center}
+.pstep{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 8px;
+  border:0;background:transparent;transition:transform .32s var(--ease)}
+.pstep:hover{transform:translateY(-6px)}
+.pstep__no{position:relative;display:inline-flex;align-items:center;justify-content:center;width:54px;height:54px;border-radius:50%;
+  background:var(--grad);color:#fff;font-family:"Fragment Mono",monospace;font-size:1rem;font-weight:700;
+  box-shadow:0 14px 28px -10px rgba(232,56,23,.6);border:5px solid var(--bg);
+  transition:transform .3s var(--ease),box-shadow .3s}
+.pstep:hover .pstep__no{transform:scale(1.09);box-shadow:0 18px 36px -10px rgba(232,56,23,.72)}
+.pstep h3{margin-top:20px;font-size:1.12rem;font-weight:800;letter-spacing:-.02em}
+.pstep p{margin-top:9px;font-size:.9rem;color:var(--muted);line-height:1.65;word-break:keep-all;max-width:190px}
 
 /* ---------------- Testimonials ---------------- */
 .tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
@@ -686,7 +691,8 @@ html.lenis,html.lenis body{height:auto}
   .hero__arrow{width:180px}
   .feat,.diff__grid,.cwrap{grid-template-columns:1fr;gap:30px}
   .feat--rev .feat__text{order:0}
-  .proc{grid-template-columns:repeat(2,1fr)}
+  .proc{grid-template-columns:repeat(2,1fr);gap:30px 18px}
+  .proc__line{display:none}
   .tgrid{grid-template-columns:1fr}
   .kpis{grid-template-columns:repeat(3,1fr)}
 }
