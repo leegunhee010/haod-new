@@ -10,7 +10,7 @@
   <meta property="og:type" content="website" />
   <link rel="preconnect" href="https://cdn.jsdelivr.net" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.css" />
-  <link rel="stylesheet" href="css/style.css?v=7" />
+  <link rel="stylesheet" href="css/style.css?v=8" />
 </head>
 <body>
   <div class="progress" id="progress" aria-hidden="true"></div>
@@ -39,7 +39,6 @@
         <p class="subhero__eng">PORTFOLIO</p>
         <h1 class="subhero__title">포트폴리오</h1>
         <p class="subhero__desc">하오디자인 웹구축센터가 직접 기획·제작한 홈페이지·앱·검색 최적화 프로젝트입니다. 클릭하면 크게 볼 수 있어요.</p>
-        <div class="pf-filter" id="filter"></div>
       </div>
     </section>
 
@@ -82,31 +81,16 @@
 
     function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
     var WORKS = window.HAO_WORKS || [];
-    var CATS = ['전체'];
-    WORKS.forEach(function (w) { if (CATS.indexOf(w.c) < 0) CATS.push(w.c); });
-    var cur = '전체';
-    var folio = $('#folio'), filter = $('#filter');
-    filter.innerHTML = CATS.map(function (c, i) { return '<a href="#" class="' + (i === 0 ? 'is-active' : '') + '" data-c="' + esc(c) + '">' + esc(c) + '</a>'; }).join('');
-
-    function list() { return cur === '전체' ? WORKS : WORKS.filter(function (w) { return w.c === cur; }); }
-    function render() {
-      var L = list();
-      folio.innerHTML = L.map(function (p, i) {
-        return '<a class="np-item" href="#" data-i="' + i + '">' +
-          '<img loading="lazy" src="' + window.HAO_imgPath(p.f) + '" alt="' + esc(p.t) + '" />' +
-          '<span class="np-item__cap"><span class="np-item__t">' + esc(p.t) + '</span><span class="np-item__c">' + esc(p.c || '') + '</span></span></a>';
-      }).join('');
-    }
-    filter.addEventListener('click', function (e) {
-      var a = e.target.closest('a'); if (!a) return; e.preventDefault();
-      $$('a', filter).forEach(function (x) { x.classList.remove('is-active'); });
-      a.classList.add('is-active'); cur = a.dataset.c; render();
-    });
+    var folio = $('#folio');
+    folio.innerHTML = WORKS.map(function (p, i) {
+      return '<a class="np-item" href="#" data-i="' + i + '">' +
+        '<img loading="lazy" src="' + window.HAO_imgPath(p.f) + '" alt="' + esc(p.t) + '" />' +
+        '<span class="np-item__cap"><span class="np-item__t">' + esc(p.t) + '</span><span class="np-item__c">' + esc(p.c || '') + '</span></span></a>';
+    }).join('');
     folio.addEventListener('click', function (e) {
       var a = e.target.closest('.np-item'); if (!a) return; e.preventDefault();
-      window.HAO_openLightbox(list(), +a.dataset.i);
+      window.HAO_openLightbox(WORKS, +a.dataset.i);
     });
-    render();
   })();
   </script>
 </body>
