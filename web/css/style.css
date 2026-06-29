@@ -1337,3 +1337,9 @@ img { display: block; max-width: 100%; }
 .seocard p { color: var(--muted); margin-top: 12px; line-height: 1.7; font-size: .97rem; }
 .seocard--geo p { color: rgba(255,255,255,.72); }
 @media (max-width: 760px) { .seo2 { grid-template-columns: 1fr; } }
+
+/* 포트폴리오 카테고리 필터칩 */
+.pf-cats { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: clamp(28px, 4vh, 44px); }
+.pf-chip { padding: .62em 1.2em; border-radius: 999px; border: 1.5px solid var(--line); background: #fff; font-weight: 600; font-size: .9rem; color: var(--ink); cursor: pointer; transition: background .24s, color .24s, border-color .24s; }
+.pf-chip:hover { border-color: var(--accent); }
+.pf-chip.is-active { background: var(--ink); color: #fff; border-color: var(--ink); }
