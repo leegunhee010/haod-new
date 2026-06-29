@@ -121,6 +121,30 @@ em{font-style:normal}
 @keyframes heroGlowA{0%{transform:translate3d(0,0,0) scale(1)}100%{transform:translate3d(20%,14%,0) scale(1.28)}}
 @keyframes heroGlowB{0%{transform:translate3d(0,0,0) scale(1.12)}100%{transform:translate3d(-16%,-12%,0) scale(.88)}}
 .holo3d{position:absolute;inset:0;z-index:2;width:100%;height:100%;pointer-events:none;display:block}
+
+/* ── WebGL 미지원/실패 폴백: 항상 떠다니는 글로시 공 (WebGL OK면 숨김) ── */
+.hero2__orbs{position:absolute;inset:0;z-index:2;pointer-events:none;overflow:hidden}
+.hero2__card.webgl-ok .hero2__orbs{display:none}
+.orb{position:absolute;border-radius:50%;
+  box-shadow:inset -9px -12px 28px rgba(0,0,0,.4), 0 34px 64px -22px rgba(0,0,0,.6);
+  animation:orbFloat 10s ease-in-out infinite}
+.orb::after{content:"";position:absolute;top:13%;left:19%;width:36%;height:28%;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,255,255,.9),transparent 72%);filter:blur(2px)}
+.orb--o{background:radial-gradient(circle at 34% 30%,#ffc274,#f25b35 56%,#c42d12)}
+.orb--r{background:radial-gradient(circle at 34% 30%,#ff905c,#e83817 56%,#8f1c0a)}
+.orb--k{background:radial-gradient(circle at 34% 30%,#4d4842,#1a1814 60%,#000)}
+.orb--w{background:radial-gradient(circle at 34% 30%,#ffffff,#ece5d9 60%,#cabfad)}
+.orb--1{width:clamp(96px,12vw,180px);aspect-ratio:1;left:9%;top:22%;animation-duration:11s}
+.orb--2{width:clamp(70px,8vw,124px);aspect-ratio:1;left:21%;bottom:13%;animation-duration:9s;animation-delay:-2s}
+.orb--3{width:clamp(54px,6vw,94px);aspect-ratio:1;left:37%;top:15%;animation-duration:8s;animation-delay:-1s}
+.orb--4{width:clamp(120px,15vw,220px);aspect-ratio:1;right:9%;top:17%;animation-duration:13s;animation-delay:-3s}
+.orb--5{width:clamp(80px,9vw,136px);aspect-ratio:1;right:21%;bottom:15%;animation-duration:10s;animation-delay:-4s}
+.orb--6{width:clamp(44px,5vw,76px);aspect-ratio:1;right:33%;top:30%;animation-duration:7.5s;animation-delay:-2.5s}
+.orb--7{width:clamp(62px,7vw,106px);aspect-ratio:1;left:46%;bottom:18%;animation-duration:9.5s;animation-delay:-1.5s}
+.orb--8{width:clamp(40px,5vw,64px);aspect-ratio:1;left:13%;top:54%;animation-duration:8.5s;animation-delay:-3.5s}
+@keyframes orbFloat{0%,100%{transform:translateY(0) translateX(0)}33%{transform:translateY(-28px) translateX(13px)}66%{transform:translateY(15px) translateX(-11px)}}
+@media(prefers-reduced-motion:reduce){.orb{animation:none}}
+
 /* ── eimok 풍선 히어로 오버라이드 (특정도↑로 기본 규칙보다 우선) ── */
 .hero2 .hero2__media,.hero2 .hero2__glow,.hero2 .hero2__grid,.hero2 .hero2__overlay{display:none}
 .hero2 .hero2__card{background:radial-gradient(120% 92% at 50% 30%,#1c2a4d 0%,#0c1018 56%,#06080f 100%)}
