@@ -18,6 +18,85 @@
       });
     }
 
+    // <p> 안의 텍스트를 단어 span으로 쪼개기(<b> 스타일 유지) — AI답변 워드 리빌용
+    function splitWords(p) {
+      var words = [];
+      [].slice.call(p.childNodes).forEach(function (node) {
+        if (node.nodeType === 3) {
+          var frag = document.createDocumentFragment();
+          node.textContent.split(/(\s+)/).forEach(function (t) {
+            if (!t) return;
+            if (!t.trim()) { frag.appendChild(document.createTextNode(t)); }
+            else { var s = document.createElement('span'); s.className = 'w'; s.textContent = t; frag.appendChild(s); words.push(s); }
+          });
+          p.replaceChild(frag, node);
+        } else if (node.nodeType === 1) {
+          var host = node; host.textContent.split(/(\s+)/);
+          var parts = node.textContent.split(/(\s+)/); node.textContent = '';
+          parts.forEach(function (t) {
+            if (!t) return;
+            if (!t.trim()) { host.appendChild(document.createTextNode(t)); }
+            else { var s = document.createElement('span'); s.className = 'w'; s.textContent = t; host.appendChild(s); words.push(s); }
+          });
+        }
+      });
+      return words;
+    }
+
+    // 카드 내부 콘텐츠 모션 — 카드 플립인 뒤에 이어서 재생
+    function addContentMotion(vwrap, tl) {
+      var POS = 0.8;
+      var chat = vwrap.querySelector('.vchat');
+      if (chat) {
+        var q = chat.querySelector('.vchat__q'), a = chat.querySelector('.vchat__a'),
+            p = chat.querySelector('.vchat__a p'), cite = chat.querySelector('.vchat__cite');
+        var words = p ? splitWords(p) : [];
+        gsap.set(q, { opacity: 0, scale: .82, y: 10, transformOrigin: '100% 100%' });
+        gsap.set(a, { opacity: 0, y: 14 });
+        gsap.set(words, { opacity: 0, yPercent: 60, filter: 'blur(3px)' });
+        if (cite) gsap.set(cite, { opacity: 0, scale: .6, y: 6, transformOrigin: '0% 50%' });
+        tl.to(q, { opacity: 1, scale: 1, y: 0, duration: .5, ease: 'back.out(1.7)' }, POS);
+        tl.to(a, { opacity: 1, y: 0, duration: .45, ease: 'power3.out' }, POS + 0.5);
+        tl.to(words, { opacity: 1, yPercent: 0, filter: 'blur(0px)', duration: .42, stagger: .022, ease: 'power2.out' }, POS + 0.75);
+        if (cite) tl.to(cite, { opacity: 1, scale: 1, y: 0, duration: .5, ease: 'back.out(2)' }, '>-0.1');
+        return;
+      }
+      var serp = vwrap.querySelector('.vserp');
+      if (serp) {
+        var search = serp.querySelector('.vserp__search'),
+            hits = [].slice.call(serp.querySelectorAll('.vserp__hit')),
+            rank = serp.querySelector('.vserp__rank'), top = serp.querySelector('.vserp__hit--top');
+        gsap.set(search, { opacity: 0, y: -10 });
+        gsap.set(hits, { opacity: 0, y: 18 });
+        if (rank) gsap.set(rank, { scale: 0, rotate: -45, transformOrigin: '50% 50%' });
+        tl.to(search, { opacity: 1, y: 0, duration: .5, ease: 'power3.out' }, POS);
+        tl.to(hits, { opacity: 1, y: 0, duration: .55, stagger: .12, ease: 'power3.out' }, POS + 0.28);
+        if (top) tl.to(top, { scale: 1.03, duration: .22, yoyo: true, repeat: 1, ease: 'power1.inOut', transformOrigin: '50% 50%' }, POS + 0.82);
+        if (rank) tl.to(rank, { scale: 1, rotate: 0, duration: .6, ease: 'back.out(2.4)' }, POS + 0.85);
+        return;
+      }
+      var web = vwrap.querySelector('.vweb');
+      if (web) {
+        var heroKids = [].slice.call(web.querySelectorAll('.vweb__hero > *')),
+            cards = [].slice.call(web.querySelectorAll('.vweb__card'));
+        gsap.set(heroKids, { opacity: 0, x: -14 });
+        gsap.set(cards, { opacity: 0, y: 22 });
+        tl.to(heroKids, { opacity: 1, x: 0, duration: .5, stagger: .1, ease: 'power3.out' }, POS);
+        tl.to(cards, { opacity: 1, y: 0, duration: .55, stagger: .1, ease: 'back.out(1.4)' }, POS + 0.4);
+        return;
+      }
+      var phone = vwrap.querySelector('.vphone');
+      if (phone) {
+        var nav = phone.querySelector('.vphone__nav'),
+            cells = [].slice.call(phone.querySelectorAll('.vphone__cells span'));
+        gsap.set(nav, { opacity: 0, y: -12 });
+        gsap.set(cells, { opacity: 0, scale: .86, transformOrigin: '50% 50%' });
+        tl.to(nav, { opacity: 1, y: 0, duration: .5, ease: 'power3.out' }, POS);
+        tl.to(cells, { opacity: 1, scale: 1, duration: .5, stagger: .1, ease: 'back.out(1.6)' }, POS + 0.3);
+        return;
+      }
+    }
+
     [].slice.call(document.querySelectorAll('.show__item')).forEach(function (item) {
       var rev = item.classList.contains('rev');
       var text = item.querySelector('.show__text');
@@ -36,6 +115,7 @@
       if (vwrap) tl.to(vwrap, {
         opacity: 1, y: 0, scale: 1, rotationY: 0, duration: 1.15, ease: 'power4.out'
       }, .12);
+      if (vwrap) addContentMotion(vwrap, tl);
 
       // 거대 넘버: 드라마틱 등장 + 스크럽 패럴랙스
       if (big) {

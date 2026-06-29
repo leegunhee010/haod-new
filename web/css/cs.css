@@ -224,6 +224,9 @@ html.lenis,html.lenis body{height:auto}
 .show.gsap-on .show__item.rev.in .show__visual,
 .show.gsap-on .show__item.in .show__big{animation:none!important}
 .show.gsap-on .show__visual{will-change:transform,opacity}
+/* GSAP가 카드 내부 콘텐츠를 직접 제어 → CSS 키프레임 등장 비활성(중복 방지) */
+.show.gsap-on .vweb__hero>*,.show.gsap-on .vweb__card,.show.gsap-on .vserp>*,.show.gsap-on .vserp__rank,.show.gsap-on .vchat>*,.show.gsap-on .vphone__cells span,.show.gsap-on .vphone__nav{animation:none!important}
+.vchat__a .w{display:inline-block;will-change:transform,filter,opacity}
 .show__head{text-align:center;max-width:1040px;margin:0 auto clamp(40px,7vh,90px)}
 .show__title{margin-top:18px;font-size:clamp(2.1rem,4.8vw,4rem);font-weight:800;letter-spacing:-.04em;line-height:1.14;word-break:keep-all}
 .show__title .g{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
