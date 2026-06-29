@@ -37,7 +37,28 @@
     { f: 'hs30.jpg', t: '쥬스멜로우 액상담배', c: '상세페이지', main: false },
     { f: 'hs31.jpg', t: '워터리스 309 세정제', c: '상세페이지', main: true },
     { f: 'hs32.jpg', t: '바로잰 Fit', c: '상세페이지', main: false },
-    { f: 'detail-ssaju.jpg', t: '싸주아리 섬쑥차 상세페이지', c: '상세페이지', main: true }
+    { f: 'detail-ssaju.jpg', t: '싸주아리 섬쑥차 상세페이지', c: '상세페이지', main: true },
+    { f: 'hs33.jpg', t: '피에르파브르', c: '뷰티', main: false },
+    { f: 'hs34.jpg', t: '뷰티스', c: '뷰티', main: true },
+    { f: 'hs35.jpg', t: '서진바이오팜', c: '뷰티', main: false },
+    { f: 'hs36.jpg', t: '자미원', c: '뷰티', main: false },
+    { f: 'hs37.jpg', t: '투쿨포스쿨', c: '뷰티', main: true },
+    { f: 'hs38.jpg', t: '이노맥스글로벌', c: '제품', main: false },
+    { f: 'hs39.jpg', t: '힐미', c: '제품', main: false },
+    { f: 'hs40.jpg', t: 'CP컴퍼니', c: '제품', main: false },
+    { f: 'hs41.jpg', t: '베리굿스트로베리', c: '음식', main: true },
+    { f: 'hs42.jpg', t: '레이델', c: '건강식품', main: false },
+    { f: 'hs43.jpg', t: '더에이치큐', c: '건강식품', main: false },
+    { f: 'hs44.jpg', t: '한독', c: '건강식품', main: true },
+    { f: 'hs45.jpg', t: '태양생활건강', c: '건강식품', main: false },
+    { f: 'hs46.jpg', t: '초당약품', c: '건강식품', main: false },
+    { f: 'hs47.jpg', t: '진성케미칼', c: '기업', main: false },
+    { f: 'hs48.jpg', t: '신원의료재단', c: '기업', main: true },
+    { f: 'hs49.jpg', t: '아이앤디', c: '기업', main: false },
+    { f: 'hs50.jpg', t: '일성탄소', c: '기업', main: false },
+    { f: 'hs51.jpg', t: '구리한양요양병원', c: '기업', main: false },
+    { f: 'hs52.jpg', t: '가산메탈', c: '기업', main: false },
+    { f: 'hs53.jpg', t: '대양수산', c: '기업', main: false }
   ];
 
   // 관리자 저장분 병합 (브라우저 localStorage — 라이브 반영은 백엔드 연동 시)
