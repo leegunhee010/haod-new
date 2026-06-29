@@ -72,7 +72,19 @@
     } catch (e) {}
     return DEFAULT_WORKS.slice();
   }
+  // 등록일(촬영 등록일) — 최신순 정렬용
+  var DATES = {
+    'hs01.jpg':'20250522','hs02.jpg':'20250522','hs03.jpg':'20250522','hs04.jpg':'20250522','hs05.jpg':'20250522','hs06.jpg':'20250522',
+    'hs08.jpg':'20250417','hs09.jpg':'20250417','hs10.jpg':'20250417','hs11.jpg':'20250417','hs12.jpg':'20250417','hs13.jpg':'20250417','hs14.jpg':'20250417','hs15.jpg':'20250417','hs16.jpg':'20250417',
+    'hs17.jpg':'20250331','hs18.jpg':'20250331',
+    'hs33.jpg':'20250319','hs34.jpg':'20250319','hs35.jpg':'20250319','hs36.jpg':'20250319','hs37.jpg':'20250319','hs38.jpg':'20250319','hs39.jpg':'20250319','hs40.jpg':'20250319','hs41.jpg':'20250319','hs42.jpg':'20250319','hs43.jpg':'20250319','hs44.jpg':'20250319',
+    'hs45.jpg':'20241017','hs46.jpg':'20241017','hs47.jpg':'20241017','hs48.jpg':'20241017','hs49.jpg':'20241017','hs50.jpg':'20241017','hs51.jpg':'20241017','hs52.jpg':'20241017',
+    'hs53.jpg':'20201218',
+    'hs07.jpg':'20240301','hs19.jpg':'20240301','hs20.jpg':'20240301','hs21.jpg':'20240301','hs22.jpg':'20240301','hs23.jpg':'20240301','hs24.jpg':'20240301'
+  };
+  function dateOf(f) { return DATES[f] || '20240601'; }   // 상세페이지 등 미지정은 중간값
   window.HAO_WORKS = load();
+  window.HAO_WORKS.sort(function (a, b) { return dateOf(b.f).localeCompare(dateOf(a.f)); });  // 최신 등록일 먼저
   window.HAO_WORKS_DEFAULT = DEFAULT_WORKS;
   window.HAO_imgPath = function (f) { return 'assets/haostudio/' + f; };
 
