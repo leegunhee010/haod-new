@@ -3,15 +3,8 @@ import * as THREE from 'three';
 
 const canvas = document.getElementById('holo3d');
 if (canvas) {
-  const card = canvas.closest('.hero2__card');
-  try {
-    initBalloons(canvas);
-    if (card) card.classList.add('webgl-ok');   // 성공 → CSS 폴백 공 숨김, 글래스 풍선 표시
-  }
-  catch (e) {
-    console.warn('balloons init 실패 — CSS 폴백 공으로 대체:', e);
-    canvas.style.display = 'none';               // 실패 → 캔버스 숨기고 폴백 공 유지
-  }
+  try { initBalloons(canvas); }
+  catch (e) { console.warn('balloons init 실패:', e); canvas.style.display = 'none'; }
 }
 
 function initBalloons(canvas) {
