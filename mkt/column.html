@@ -37,7 +37,7 @@
       <span class="subhero__glow" aria-hidden="true"></span>
       <p class="crumb"><a href="index.html">마케팅센터</a> / 칼럼</p>
       <h1 class="subhero__title">마케팅 칼럼</h1>
-      <p class="subhero__desc">퍼포먼스·콘텐츠·브랜딩 현장에서 쌓은 인사이트를 나눕니다. 데이터로 브랜드를 키우는 관점을 전합니다.</p>
+      <p class="subhero__desc">브랜딩·이커머스·패키지·전시 현장에서 쌓은 이야기를 나눕니다. 작은 브랜드를 디자인으로 키우는 관점을 전합니다.</p>
     </section>
 
     <section class="page">
@@ -82,14 +82,14 @@
     $$('#nav a').forEach(function (a) { a.addEventListener('click', function () { nav.classList.remove('is-open'); }); });
 
     var POSTS = [
-      { cat: '퍼포먼스', t: 'ROAS만 보면 안 되는 이유 — 퍼널 전체로 보는 광고 성과', d: '전환 한 지표에 갇히면 놓치는 것들. 인지부터 재구매까지 퍼널 단위로 성과를 읽는 법.', date: '2026.06.20', g: 'linear-gradient(160deg,#ff8a3d,#e83817)' },
-      { cat: '콘텐츠', t: '숏폼 시대의 브랜드 메시지 설계법', d: '3초 안에 멈추게 하는 후킹과, 끝까지 보게 만드는 구조. 숏폼 기획의 기본기.', date: '2026.06.14', g: 'linear-gradient(160deg,#f472b6,#be185d)' },
-      { cat: 'IMC', t: '채널이 늘수록 메시지는 하나로 — 통합 캠페인 정렬', d: '매체별로 따로 노는 캠페인을 하나의 브랜드 경험으로 묶는 IMC 정렬 원칙.', date: '2026.06.07', g: 'linear-gradient(160deg,#6366f1,#3b1d8f)' },
-      { cat: '데이터', t: 'GA4·픽셀, 처음 세팅할 때 꼭 잡아야 할 것', d: '나중에 다시 손대면 손해. 전환 추적·이벤트 설계를 시작부터 제대로 잡는 체크리스트.', date: '2026.05.30', g: 'linear-gradient(160deg,#22c55e,#0f766e)' },
-      { cat: '퍼포먼스', t: '소재 피로도, 데이터로 잡아내는 신호들', d: 'CTR·빈도·전환율의 변화로 소재 교체 타이밍을 읽는 법.', date: '2026.05.22', g: 'linear-gradient(160deg,#38bdf8,#0369a1)' },
-      { cat: '브랜딩', t: '작은 브랜드일수록 톤앤매너가 무기다', d: '예산이 적을수록 일관된 톤이 만든 신뢰가 전환을 만든다.', date: '2026.05.15', g: 'linear-gradient(160deg,#f59e0b,#b45309)' }
+      { cat: '브랜딩', t: '작은 브랜드일수록 ‘첫인상’이 전부입니다', d: '로고·색·톤. 고객이 3초 안에 받는 인상이 브랜드의 신뢰를 결정합니다.', date: '2026.06.20', img: '../design/assets/work/work01.jpeg' },
+      { cat: '이커머스', t: '상세페이지 하나로 전환율이 달라진다', d: '같은 제품도 ‘어떻게 보여주느냐’에 따라 매출이 갈립니다. 사는 순간까지의 흐름 설계법.', date: '2026.06.14', img: '../voucher/assets/work/w379.jpg' },
+      { cat: '패키지', t: '패키지는 말없는 영업사원입니다', d: '진열대에서 손이 가게 만드는 패키지 디자인의 감성 포인트.', date: '2026.06.07', img: '../voucher/assets/work/w378.jpg' },
+      { cat: '콘텐츠', t: 'SNS 콘텐츠, 브랜드 톤부터 잡으세요', d: '게시물 하나하나가 아니라 ‘결’을 맞추면 작은 계정도 브랜드가 됩니다.', date: '2026.05.30', img: '../design/assets/work/work03.jpeg' },
+      { cat: '전시', t: '전시회, 부스 하나로 기억되게 하는 법', d: '수많은 부스 속에서 발길을 멈추게 하는 공간·그래픽 연출.', date: '2026.05.22', img: '../design/assets/work/work05.jpeg' },
+      { cat: '편집', t: '회사소개서가 거래의 첫 단추를 만든다', d: '잘 정리된 한 권의 소개서가 만드는 신뢰. 편집 디자인의 힘.', date: '2026.05.15', img: '../voucher/assets/work/w362.jpg' }
     ];
-    var CATS = ['전체', '퍼포먼스', '콘텐츠', 'IMC', '데이터', '브랜딩'];
+    var CATS = ['전체', '브랜딩', '이커머스', '패키지', '콘텐츠', '전시', '편집'];
     var cur = '전체';
     var catsEl = $('#cCats'), grid = $('#colGrid');
     catsEl.innerHTML = CATS.map(function (c, i) {
@@ -100,7 +100,7 @@
       var rows = POSTS.filter(function (p) { return cur === '전체' || p.cat === cur; });
       grid.innerHTML = rows.map(function (p) {
         return '<a class="colcard" href="index.html#contact">' +
-          '<div class="colcard__media" style="background:' + p.g + '">' + p.cat + '</div>' +
+          '<div class="colcard__media" style="background-image:url(' + p.img + ');background-size:cover;background-position:center;background-repeat:no-repeat"></div>' +
           '<div class="colcard__body"><span class="colcard__cat">' + p.cat + '</span>' +
           '<h3 class="colcard__t">' + esc(p.t) + '</h3>' +
           '<p class="colcard__d">' + esc(p.d) + '</p>' +
