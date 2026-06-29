@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://cdn.jsdelivr.net" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Fragment+Mono&display=swap" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.css" />
-  <link rel="stylesheet" href="css/cs.css?v=52" />
+  <link rel="stylesheet" href="css/cs.css?v=55" />
   <script type="importmap">
   { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.171.0/build/three.module.js" } }
   </script>
@@ -261,15 +261,28 @@
         <div class="show__visual" data-tilt>
           <div class="vphone">
             <div class="vphone__scr">
-              <div class="vphone__nav"><b>HAO App</b><span>brand mobile</span></div>
+              <div class="vphone__status"><span>9:41</span><span class="vphone__ind"><i></i><i></i><b></b></span></div>
+              <div class="vphone__nav">
+                <div class="vphone__brand"><span class="vphone__logo">H</span><div class="vphone__name"><b>HAO App</b><span>brand mobile</span></div></div>
+                <span class="vphone__bell"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg><u></u></span>
+              </div>
               <div class="vphone__app">
-                <div class="vphone__banner"><b>오늘의 혜택</b><u>지금 예약하고 10% 적립</u></div>
-                <div class="vphone__grid">
-                  <span class="vphone__tile"><i></i>예약</span>
-                  <span class="vphone__tile"><i></i>결제</span>
-                  <span class="vphone__tile"><i></i>멤버십</span>
-                  <span class="vphone__tile"><i></i>알림</span>
+                <div class="vphone__banner">
+                  <span class="vphone__banner-ic"><svg viewBox="0 0 24 24"><path d="M20 12v9H4v-9"/><path d="M2 7h20v5H2zM12 22V7M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg></span>
+                  <div class="vphone__banner-txt"><b>오늘의 혜택</b><u>지금 예약하고 10% 적립</u></div>
+                  <span class="vphone__banner-btn">받기</span>
                 </div>
+                <div class="vphone__grid">
+                  <span class="vphone__tile"><i><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></i><b>예약</b><em>간편 예약</em></span>
+                  <span class="vphone__tile"><i><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></i><b>결제</b><em>간편 결제</em></span>
+                  <span class="vphone__tile"><i><svg viewBox="0 0 24 24"><path d="M3 8l4 3 5-7 5 7 4-3-2 10H5z"/></svg></i><b>멤버십</b><em>등급·쿠폰</em></span>
+                  <span class="vphone__tile"><i><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg></i><b>알림</b><em>소식 받기</em></span>
+                </div>
+              </div>
+              <div class="vphone__tabbar">
+                <span class="is-on"><svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></svg></span>
+                <span><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></span>
+                <span><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></span>
               </div>
             </div>
           </div>
