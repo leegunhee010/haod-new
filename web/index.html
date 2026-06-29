@@ -14,13 +14,25 @@
   <link rel="preconnect" href="https://cdn.jsdelivr.net" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Fragment+Mono&display=swap" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.css" />
-  <link rel="stylesheet" href="css/cs.css?v=58" />
+  <link rel="stylesheet" href="css/cs.css?v=59" />
   <script type="importmap">
   { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.171.0/build/three.module.js" } }
   </script>
 </head>
 <body>
   <div class="progress" id="progress" aria-hidden="true"></div>
+
+  <!-- 커스텀 커서 (원형 회전 텍스트 + 호버 모핑) -->
+  <div class="hcursor" id="hcursor" aria-hidden="true">
+    <div class="hcursor__in">
+      <span class="hcursor__ring"></span>
+      <span class="hcursor__dot"></span>
+      <span class="hcursor__text">
+        <svg viewBox="0 0 66 66"><defs><path id="hcPath" d="M33,33 m-26,0 a26,26 0 1,1 52,0 a26,26 0 1,1 -52,0" /></defs><text><textPath href="#hcPath">HAO · DESIGN · WEB · SEO · AEO · </textPath></text></svg>
+      </span>
+      <span class="hcursor__label" id="hcLabel">VIEW</span>
+    </div>
+  </div>
 
   <!-- SVG defs: 3D gradient arrow mark -->
   <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
@@ -443,6 +455,30 @@
     var burger = $('#burger'), nav = $('#nav');
     burger.addEventListener('click', function(){ burger.classList.toggle('is-open'); nav.classList.toggle('is-open'); document.body.classList.toggle('menu-open'); });
     $$('#nav a').forEach(function(a){ a.addEventListener('click', function(){ burger.classList.remove('is-open'); nav.classList.remove('is-open'); document.body.classList.remove('menu-open'); }); });
+
+    /* 커스텀 커서 (원형 회전 텍스트 + 호버 모핑) */
+    (function(){
+      if(!window.matchMedia || !matchMedia('(pointer:fine)').matches) return;
+      var cur=$('#hcursor'); if(!cur) return;
+      var label=$('#hcLabel');
+      var SEL='a, button, [data-cursor], .vcard, .gcard, .pcard, .qa__q, summary, .show__visual, .btn';
+      document.body.classList.add('has-hcursor');
+      var mx=innerWidth/2, my=innerHeight/2, cx=mx, cy=my, run=true;
+      addEventListener('mousemove', function(e){ mx=e.clientX; my=e.clientY; }, {passive:true});
+      (function loop(){ cx+=(mx-cx)*0.2; cy+=(my-cy)*0.2; cur.style.transform='translate3d('+cx+'px,'+cy+'px,0)'; if(run) requestAnimationFrame(loop); })();
+      document.addEventListener('mouseover', function(e){
+        var t=e.target.closest(SEL); if(!t) return;
+        var lbl=t.getAttribute('data-cursor') || (t.closest('.vcard, .gcard, .show__visual') ? 'VIEW' : '→');
+        label.textContent=lbl; cur.classList.add('is-hover');
+      });
+      document.addEventListener('mouseout', function(e){
+        var t=e.target.closest(SEL); if(!t) return;
+        var to=e.relatedTarget && e.relatedTarget.closest ? e.relatedTarget.closest(SEL) : null;
+        if(!to) cur.classList.remove('is-hover');
+      });
+      document.addEventListener('mouseleave', function(){ cur.style.opacity='0'; });
+      document.addEventListener('mouseenter', function(){ cur.style.opacity=''; });
+    })();
 
     /* trust marquee */
     var P = [46,48,50,52,54,56,58,68,70,72,74,76,78,80,89,91,93,95,97,99].map(function(n){ return 'assets/partners/p'+n+'.png'; });

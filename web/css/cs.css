@@ -771,3 +771,22 @@ html.lenis,html.lenis body{height:auto}
 @keyframes tmScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 .tmarquee .tcard{width:clamp(296px,27vw,352px);flex:none}
 @media(prefers-reduced-motion:reduce){.tmarquee__track{animation:none}}
+
+/* ===== 커스텀 커서 (원형 회전 텍스트 + 호버 모핑) ===== */
+.hcursor{position:fixed;left:0;top:0;z-index:9999;pointer-events:none;opacity:0;transition:opacity .3s;will-change:transform}
+.has-hcursor .hcursor{opacity:1}
+.hcursor__in{position:absolute;left:0;top:0;transform:translate(-50%,-50%);width:44px;height:44px;transition:width .32s var(--ease),height .32s var(--ease)}
+.hcursor__ring{position:absolute;inset:0;border-radius:50%;border:1.5px solid var(--accent);background:transparent;transition:background .3s var(--ease),border-color .3s}
+.hcursor__dot{position:absolute;left:50%;top:50%;width:6px;height:6px;border-radius:50%;background:var(--accent);transform:translate(-50%,-50%);transition:opacity .25s}
+.hcursor__text{position:absolute;inset:-11px;animation:hcSpin 7s linear infinite;transition:opacity .3s}
+.hcursor__text svg{width:100%;height:100%;display:block;overflow:visible}
+.hcursor__text text{font-family:"Fragment Mono",monospace;font-size:11px;letter-spacing:.5px;fill:var(--accent);font-weight:700}
+@keyframes hcSpin{to{transform:rotate(360deg)}}
+.hcursor__label{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) scale(.4);color:#fff;font-weight:800;font-size:.78rem;letter-spacing:.02em;opacity:0;white-space:nowrap;transition:opacity .25s,transform .3s var(--ease)}
+.hcursor.is-hover .hcursor__in{width:86px;height:86px}
+.hcursor.is-hover .hcursor__ring{background:var(--accent);border-color:var(--accent)}
+.hcursor.is-hover .hcursor__dot,.hcursor.is-hover .hcursor__text{opacity:0}
+.hcursor.is-hover .hcursor__label{opacity:1;transform:translate(-50%,-50%) scale(1)}
+@media (pointer:fine){.has-hcursor *{cursor:none!important}.has-hcursor input,.has-hcursor textarea,.has-hcursor select{cursor:auto!important}}
+@media (pointer:coarse){.hcursor{display:none}}
+@media (prefers-reduced-motion:reduce){.hcursor__text{animation:none}}
