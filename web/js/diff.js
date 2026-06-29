@@ -68,7 +68,7 @@
     } else {
       var floatPh = nodes.map(function () { return Math.random() * 6.28; });
       var mx = 0, my = 0, tmx = 0, tmy = 0;
-      var card = net.closest('.netcard') || net;
+      var card = net.closest('.diff__stage') || net;
       card.addEventListener('pointermove', function (e) {
         var b = card.getBoundingClientRect();
         tmx = ((e.clientX - b.left) / b.width - .5) * 18;
@@ -119,7 +119,7 @@
     try {
       gsap.registerPlugin(ScrollTrigger);
 
-      var kpis = [].slice.call(document.querySelectorAll('.netcard .kpi b'));
+      var kpis = [].slice.call(document.querySelectorAll('.diff__kpis .kchip b'));
       kpis.forEach(function (b) {
         var m = b.textContent.trim().match(/^([^\d]*)([\d.]+)(.*)$/);
         if (!m) return;
@@ -129,24 +129,24 @@
         b.textContent = pre + (0).toFixed(dec) + suf;
         gsap.to(obj, {
           v: target, duration: 1.7, ease: 'power2.out',
-          scrollTrigger: { trigger: '.netcard', start: 'top 82%' },
+          scrollTrigger: { trigger: '.diff__stage', start: 'top 78%' },
           onUpdate: function () { b.textContent = pre + obj.v.toFixed(dec) + suf; }
         });
       });
 
-      var pts = document.querySelectorAll('.diff__points .dpoint');
+      var pts = document.querySelectorAll('.diff__stage .fpoint');
       if (pts.length) {
         gsap.from(pts, {
-          opacity: 0, x: -34, duration: .7, stagger: .15, ease: 'power3.out',
-          scrollTrigger: { trigger: '.diff__points', start: 'top 80%' }
+          opacity: 0, y: 26, scale: .92, duration: .75, stagger: .14, ease: 'power3.out',
+          scrollTrigger: { trigger: '.diff__stage', start: 'top 78%' }
         });
       }
 
-      var nc = document.querySelector('.netcard');
-      if (nc) {
-        gsap.from(nc, {
-          opacity: 0, y: 40, scale: .94, duration: 1, ease: 'power3.out',
-          scrollTrigger: { trigger: nc, start: 'top 84%' }
+      var ns = document.querySelector('.netstage .net');
+      if (ns) {
+        gsap.from(ns, {
+          opacity: 0, scale: .84, duration: 1.1, ease: 'power3.out',
+          scrollTrigger: { trigger: '.diff__stage', start: 'top 82%' }
         });
       }
     } catch (e) { /* 폴백: 정적 표시 */ }

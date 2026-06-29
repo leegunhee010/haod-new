@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://cdn.jsdelivr.net" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Fragment+Mono&display=swap" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.css" />
-  <link rel="stylesheet" href="css/cs.css?v=48" />
+  <link rel="stylesheet" href="css/cs.css?v=49" />
   <script type="importmap">
   { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.171.0/build/three.module.js" } }
   </script>
@@ -279,27 +279,35 @@
 
     <!-- ===== DIFFERENTIATOR (dark) ===== -->
     <section class="diff" id="approach">
-      <div class="sec">
-        <div class="sec__head">
-          <span class="eyebrow" style="color:var(--cyan)">WHY HAO</span>
-          <h2 class="sec__title">‘만들기’가 아니라<br /><span class="g">검색의 끝까지</span> 설계합니다</h2>
-          <p class="sec__lead">대부분은 AEO만, 혹은 제작만 합니다. 하오디자인은 SEO·AEO 구조를 처음부터 심은 홈페이지·앱을 만들어, 사람과 AI 양쪽에서 발견되게 합니다.</p>
+      <div class="diff__head">
+        <span class="eyebrow" style="color:var(--cyan)">WHY HAO</span>
+        <h2 class="sec__title">‘만들기’가 아니라<br /><span class="g">검색의 끝까지</span> 설계합니다</h2>
+        <p class="sec__lead">대부분은 AEO만, 혹은 제작만 합니다. 하오디자인은 SEO·AEO 구조를 처음부터 심은 홈페이지·앱을 만들어, 사람과 AI 양쪽에서 발견되게 합니다.</p>
+      </div>
+
+      <div class="diff__stage">
+        <div class="netstage">
+          <span class="netstage__label">AI 인용 출처 네트워크 · FANOUT MAP</span>
+          <svg class="net" viewBox="0 0 420 336" id="netGraph" aria-hidden="true"></svg>
         </div>
-        <div class="diff__grid">
-          <div class="diff__points">
-            <div class="dpoint"><span class="dpoint__no">01</span><div class="dpoint__body"><b>제작 + 검색을 한 팀이</b><p>기획·디자인·개발·SEO·AEO가 따로 놀지 않습니다. 만들 때부터 검색 구조를 심어 출시 직후부터 노출됩니다.</p></div></div>
-            <div class="dpoint"><span class="dpoint__no">02</span><div class="dpoint__body"><b>SEO와 AEO를 동시에</b><p>사람의 검색(상위노출)과 AI의 답변(인용)을 한 번에 설계 — 단일 채널에 의존하지 않습니다.</p></div></div>
-            <div class="dpoint"><span class="dpoint__no">03</span><div class="dpoint__body"><b>노출 → 유입 → 전환까지</b><p>단순 노출이 아니라 자사 홈페이지 유입·전환으로 이어지는 흐름을 함께 설계합니다.</p></div></div>
-          </div>
-          <div class="netcard">
-            <div class="netcard__top"><b>AI 인용 출처 네트워크</b><span>FANOUT MAP</span></div>
-            <svg class="net" viewBox="0 0 420 320" id="netGraph" aria-hidden="true"></svg>
-            <div class="kpis" style="margin-top:14px">
-              <div class="kpi" style="background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.12)"><b class="g">87%</b><span style="color:rgba(255,255,255,.6)">Visibility</span></div>
-              <div class="kpi" style="background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.12)"><b class="g">1.2위</b><span style="color:rgba(255,255,255,.6)">평균 순위</span></div>
-              <div class="kpi" style="background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.12)"><b class="g">x3.1</b><span style="color:rgba(255,255,255,.6)">전환 유입</span></div>
-            </div>
-          </div>
+
+        <article class="fpoint fpoint--a">
+          <b><i>01</i> 제작 + 검색을 한 팀이</b>
+          <p>기획·디자인·개발·SEO·AEO가 따로 놀지 않습니다. 만들 때부터 검색 구조를 심어 출시 직후부터 노출됩니다.</p>
+        </article>
+        <article class="fpoint fpoint--b">
+          <b><i>02</i> SEO와 AEO를 동시에</b>
+          <p>사람의 검색(상위노출)과 AI의 답변(인용)을 한 번에 설계 — 단일 채널에 의존하지 않습니다.</p>
+        </article>
+        <article class="fpoint fpoint--c">
+          <b><i>03</i> 노출 → 유입 → 전환까지</b>
+          <p>단순 노출이 아니라 자사 홈페이지 유입·전환으로 이어지는 흐름을 함께 설계합니다.</p>
+        </article>
+
+        <div class="diff__kpis">
+          <div class="kchip"><b class="g">87%</b><span>Visibility</span></div>
+          <div class="kchip"><b class="g">1.2위</b><span>평균 순위</span></div>
+          <div class="kchip"><b class="g">x3.1</b><span>전환 유입</span></div>
         </div>
       </div>
     </section>
@@ -578,6 +586,6 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <script src="js/smooth.js?v=1"></script>
   <script src="js/show.js?v=4"></script>
-  <script src="js/diff.js?v=1"></script>
+  <script src="js/diff.js?v=2"></script>
 </body>
 </html>
