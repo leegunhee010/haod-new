@@ -33,7 +33,7 @@
     <!-- HAO 표준 센터 헤더/푸터/FAB -->
     <link rel="stylesheet" href="css/hao-chrome.css?v=16">
     <!-- HAO 기본 스타일 오버라이드 (맨 마지막) -->
-    <link rel="stylesheet" href="css/hao-brand.css?v=16">
+    <link rel="stylesheet" href="css/hao-brand.css?v=52">
 
     <!-- scripts -->
     <script src="js/hq_jquery-1.12.0.min.js"></script>
@@ -77,7 +77,7 @@
         <a class="nav__center" href="../design/">디자인센터 <i>↗</i></a>
         <a class="nav__center" href="../web/">웹구축센터 <i>↗</i></a>
         <a class="nav__center" href="../studio/">스튜디오센터 <i>↗</i></a>
-        <a class="nav__center" href="https://mkt.haodesign.co.kr">마케팅센터 <i>↗</i></a>
+        <a class="nav__center" href="../mkt/">마케팅센터 <i>↗</i></a>
       </nav>
       <a href="#contact" class="header__cta">무료 상담 <span>→</span></a>
       <button class="burger" id="haoBurger" aria-label="메뉴"><span></span><span></span></button>
@@ -88,16 +88,42 @@
     </script>
 
     <main id="main">
-        <!-- GROOVE 스타일 히어로 -->
+        <!-- GROOVE 스타일 히어로 (롤링 헤드라인) -->
         <section class="ghero">
             <div class="ghero__bg" aria-hidden="true"></div>
             <div class="ghero__inner">
-                <span class="ghero__eyebrow"><b></b> 정부지원사업 공식 디자인 수행기관</span>
-                <h1 class="ghero__title">정부지원 디자인의<br><span class="ghero__ac">확실한 기준</span></h1>
+                <span class="ghero__eyebrow"><b>6년 연속</b> 정부지원사업 공식 수행기관</span>
+                <h1 class="ghero__title gw-hero">
+                  <span class="hero-line">하오가 디자인하는&nbsp;<span class="rolling-words" id="ghRoll"><span class="word active">수출바우처</span><span class="word">혁신바우처</span><span class="word">판로개척지원사업</span><span class="word">다국어 카탈로그</span><span class="word">브랜드 디자인</span></span></span>
+                  <span class="hero-line">정부지원 디자인의 기준.</span>
+                </h1>
                 <p class="ghero__sub">수출바우처·혁신바우처·판로개척지원사업 — 신청 가능 여부 확인부터<br>카탈로그·브로슈어·다국어 홍보물 제작, 결과보고까지 하오디자인이 함께합니다.</p>
                 <a class="ghero__cta" href="#contact"><span>무료 가능여부 상담하기</span><i>↗</i></a>
             </div>
         </section>
+        <script>
+        document.addEventListener('DOMContentLoaded', function(){
+          var box = document.querySelector('.gw-hero .rolling-words');
+          var words = document.querySelectorAll('.gw-hero .rolling-words .word');
+          if(!box || !words.length) return;
+          var cur = 0, total = words.length;
+          function fit(){ box.style.width = words[cur].offsetWidth + 'px'; }  // 박스 폭=단어 폭(빈칸 없음), 즉시 → 앞부분 플립/슬라이드 없음
+          function rotate(){
+            words[cur].classList.remove('active');
+            words[cur].classList.add('exit');
+            var exitIdx = cur;
+            setTimeout(function(){ words[exitIdx].classList.remove('exit'); }, 500);
+            cur = (cur + 1) % total;
+            words[cur].classList.add('active');
+            fit();
+          }
+          fit();
+          if(document.fonts&&document.fonts.ready){ document.fonts.ready.then(fit); }  // 폰트 로드 후 재정렬(레이스 방지)
+          window.addEventListener('load', fit);
+          setInterval(rotate, 1800);
+          window.addEventListener('resize', fit);
+        });
+        </script>
         <!-- (구) 영상 히어로 — 숨김 처리, main.js 스와이퍼 참조용 유지 -->
         <section id="mVisual" class="mVisual">
             <div class="visual-body">
@@ -218,6 +244,45 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="section-column card-cont-wrap">
+                            <div class="cont-area">
+                                <div class="cont-wrap">
+                                    <div class="card_list_wrapper">
+                                        <div class="swiper cards-swiper">
+                                            <div class="swiper-wrapper">
+                                                <div class="swiper-slide card_wrapper morecursor" style="background-image: url('img/card_img1.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;" onclick="location.href='export.html'">
+                                                    <div class="txt-wrap txt-c"><p class="fs24 fw500 lh-1">수출바우처</p><h4 class="d-block fs100 fw800 txt-uppercase mt-16">Export</h4><em class="d-block fs20 fw500 mt-32">해외 바이어용 카탈로그·다국어 홍보물을 바우처로.<i class="br768"></i> 14개 서비스 분야 중 디자인 수행기관입니다.</em></div>
+                                                </div>
+                                                <div class="swiper-slide card_wrapper morecursor" style="background-image: url('img/card_img2.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;" onclick="location.href='innovation.html'">
+                                                    <div class="txt-wrap txt-c"><p class="fs24 fw500 lh-1">혁신바우처</p><h4 class="d-block fs100 fw800 txt-uppercase mt-16">Innovation</h4><em class="d-block fs20 fw500 mt-32">제조 중소기업 진단 기반 맞춤 지원.<i class="br768"></i> 마케팅(디자인·브랜드) 분야로 제작을 지원합니다.</em></div>
+                                                </div>
+                                                <div class="swiper-slide card_wrapper morecursor" style="background-image: url('img/card_img3.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;" onclick="location.href='market.html'">
+                                                    <div class="txt-wrap txt-c"><p class="fs24 fw500 lh-1">판로개척지원사업</p><h4 class="d-block fs100 fw800 txt-uppercase mt-16">Market</h4><em class="d-block fs20 fw500 mt-32">국내외 판로 확대를 위한 상세페이지·카탈로그·<i class="br768"></i>홍보물 제작을 지원합니다.</em></div>
+                                                </div>
+                                                <div class="swiper-slide card_wrapper morecursor" style="background-image: url('img/card_img4.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;" onclick="location.href='#s-portfolio'">
+                                                    <div class="txt-wrap txt-c"><p class="fs24 fw500 lh-1">카탈로그·브로슈어</p><h4 class="d-block fs100 fw800 txt-uppercase mt-16">Catalog</h4><em class="d-block fs20 fw500 mt-32">기획부터 인쇄 감리까지, 브랜드를 담은<i class="br768"></i> 고품질 인쇄물 디자인을 제작합니다.</em></div>
+                                                </div>
+                                                <div class="swiper-slide card_wrapper morecursor" style="background-image: url('img/card_img5.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;" onclick="location.href='#s-portfolio'">
+                                                    <div class="txt-wrap txt-c"><p class="fs24 fw500 lh-1">다국어 홍보물</p><h4 class="d-block fs100 fw800 txt-uppercase mt-16">Global Content</h4><em class="d-block fs20 fw500 mt-32">영어·중국어·일본어 등 수출 시장에 맞춘<i class="br768"></i> 다국어 콘텐츠로 해외 진출을 돕습니다.</em></div>
+                                                </div>
+                                                <div class="swiper-slide card_wrapper morecursor" style="background-image: url('img/card_img6.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;" onclick="location.href='#s-portfolio'">
+                                                    <div class="txt-wrap txt-c"><p class="fs24 fw500 lh-1">상세페이지</p><h4 class="d-block fs100 fw800 txt-uppercase mt-16">Detail Page</h4><em class="d-block fs20 fw500 mt-32">스마트스토어·자사몰 등 온라인 판매 전환을<i class="br768"></i> 높이는 상세페이지를 기획·제작합니다.</em></div>
+                                                </div>
+                                                <div class="swiper-slide card_wrapper morecursor" style="background-image: url('img/card_img7.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;" onclick="location.href='#s-portfolio'">
+                                                    <div class="txt-wrap txt-c"><p class="fs24 fw500 lh-1">브랜드 디자인</p><h4 class="d-block fs100 fw800 txt-uppercase mt-16">Branding</h4><em class="d-block fs20 fw500 mt-32">로고·패키지·BI까지 일관된 브랜드<i class="br768"></i> 아이덴티티로 기업의 가치를 높입니다.</em></div>
+                                                </div>
+                                                <div class="swiper-slide card_wrapper morecursor" style="background-image: url('img/card_img8.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;" onclick="location.href='#contact'">
+                                                    <div class="txt-wrap txt-c"><p class="fs24 fw500 lh-1">결과보고 지원</p><h4 class="d-block fs100 fw800 txt-uppercase mt-16">Reporting</h4><em class="d-block fs20 fw500 mt-32">증빙 등록·정산과 결과보고서 작성 기준까지<i class="br768"></i> 사업이 끝나는 순간까지 함께합니다.</em></div>
+                                                </div>
+                                            </div>
+                                            <div class="cards-arr cards-prev" aria-label="이전"></div>
+                                            <div class="cards-arr cards-next" aria-label="다음"></div>
+                                            <div class="swiper-pagination cards-pagination"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -267,124 +332,6 @@
         </section>
         <!-- //section3 -->
 
-        <!-- section4 : keyword cloud -->
-        <section class="section section4">
-            <div class="section-body animation-trigger">
-                <div class="section-inner">
-                    <div class="section-row">
-                        <div class="section-column">
-                            <div class="cont-area">
-                                <div class="cont-wrap p-relative">
-                                    <div class="txt-bg pc-960 p-relative">
-                                        <span class="flex-center fs120 fw700 text-black ani_items"><span>수출바우처</span> <span>혁신바우처</span> <span>판로개척지원사업</span> <span>카탈로그</span></span>
-                                        <span class="flex-center fs120 fw700 text-black ani_items"><span>브로슈어</span> <span>다국어홍보물</span> <span>상세페이지</span> <span>브랜드디자인</span></span>
-                                        <span class="flex-center fs120 fw700 text-black ani_items"><span>회사소개서</span> <span>패키지디자인</span> <span>리플릿</span> <span>홍보영상</span> <span>BI</span></span>
-                                        <span class="flex-center fs120 fw700 text-black ani_items"><span>사용계획서</span> <span>가능여부확인</span> <span>인쇄감리</span> <span>결과보고</span></span>
-                                        <span class="flex-center fs120 fw700 text-black ani_items"><span>수출지원기반활용사업</span> <span>제조혁신바우처</span> <span>소상공인지원사업</span></span>
-                                        <span class="flex-center fs120 fw700 text-black ani_items"><span>중소벤처기업부</span> <span>KOTRA</span> <span>해외전시</span> <span>바이어상담회</span></span>
-                                    </div>
-                                    <div class="txt-bg mo-960 p-relative">
-                                        <span class="flex-center fs120 fw700 text-black ani_items">수출바우처 혁신바우처<i class="br1024"></i> <span>판로개척지원사업 카탈로그</span></span>
-                                        <span class="flex-center fs120 fw700 text-black ani_items">브로슈어 다국어홍보물<i class="br1024"></i> 상세페이지 브랜드디자인</span>
-                                        <span class="flex-center fs120 fw700 text-black ani_items">회사소개서 패키지디자인<i class="br1024"></i> 리플릿 홍보영상 BI</span>
-                                        <span class="flex-center fs120 fw700 text-black ani_items">사용계획서 가능여부확인<i class="br1024"></i> 인쇄감리 결과보고</span>
-                                        <span class="flex-center fs120 fw700 text-black ani_items pc-1024 br640">수출지원기반활용사업 제조혁신바우처 소상공인지원사업</span>
-                                        <span class="flex-center fs120 fw700 text-black ani_items pc-1024 br640">중소벤처기업부 KOTRA 해외전시 바이어상담회</span>
-                                    </div>
-                                    <div class="main-txt flex-center flex-column">
-                                        <strong class="d-block fw700 lh-1 ani_items1">다양한 지원사업</strong>
-                                        <div class="circle-wrap p-relative">
-                                            <p class="circle flex-center ani_items1"></p>
-                                            <strong class="flex-center fw700 txt-c lh-1 ani_items1">최적의 디자인</strong>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- //section4 -->
-
-        <!-- section5 : solution swiper -->
-        <section class="section section5">
-            <div class="section-body">
-                <div class="section-inner">
-                    <div class="section-row column">
-                        <div class="section-column">
-                            <div class="tit-area">
-                                <div class="tit-box ani_items">
-                                    <p class="fs32 fw500 text-default mt-64">
-                                        <span class="d-block fs32 fw500 text-default fill-text line1">신청 가능 여부 확인부터 제작, 결과보고까지</span>
-                                        <span class="d-block fs32 fw500 text-default fill-text line2">하오디자인은 기업 맞춤형 정부지원 디자인 솔루션을 제공합니다.</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="section-column mt-100">
-                            <div class="cont-area">
-                                <div class="cont-wrap">
-                                    <div class="swiper solution-swiper">
-                                        <div class="swiper-wrapper">
-                                            <div class="swiper-slide"><div class="it-wrap flex-box align-items-center p-relative">
-                                                <div class="img"><img src="img/main_solution_1.jpg" alt=""></div>
-                                                <div class="txt"><h3 class="d-block fs120 fw900">HAO</h3><h3 class="d-block fs120 fw900 p-relative tit-circle">Consulting</h3><p class="fs24 fw500 mt-40">신청 가능 여부부터 무료로 확인해 드립니다.</p></div>
-                                            </div></div>
-                                            <div class="swiper-slide"><div class="it-wrap flex-box align-items-center p-relative">
-                                                <div class="img"><img src="img/main_solution_2.jpg" alt=""></div>
-                                                <div class="txt"><h3 class="d-block fs120 fw900">Government</h3><h3 class="d-block fs120 fw900 p-relative tit-circle">Support</h3><p class="fs24 fw500 mt-40">선정·협약부터 제작·결과보고까지 끝까지 수행합니다.</p></div>
-                                            </div></div>
-                                            <div class="swiper-slide"><div class="it-wrap flex-box align-items-center p-relative">
-                                                <div class="img"><img src="img/main_solution_3.jpg" alt=""></div>
-                                                <div class="txt"><h3 class="d-block fs120 fw900">Domestic</h3><h3 class="d-block fs120 fw900 p-relative tit-circle">Design</h3><p class="fs24 fw500 mt-40">카탈로그·상세페이지·브랜딩으로 국내 판로를 넓힙니다.</p></div>
-                                            </div></div>
-                                            <div class="swiper-slide"><div class="it-wrap flex-box align-items-center p-relative">
-                                                <div class="img"><img src="img/main_solution_4.jpg" alt=""></div>
-                                                <div class="txt"><h3 class="d-block fs120 fw900">Global</h3><h3 class="d-block fs120 fw900 p-relative tit-circle">Content</h3><p class="fs24 fw500 mt-40">수출용 다국어 홍보물로 해외 진출을 지원합니다.</p></div>
-                                            </div></div>
-                                        </div>
-                                        <div class="control-wrap mt-40 flex-box gap-20">
-                                            <div class="progress-num"><p class="flex-center gap-5 fs18 fw500 mont lh-1"><span class="prog-num">현재 숫자</span><span class="bar"></span><span class="prog-total"> 총 개수</span></p></div>
-                                            <div class="arr-box flex-center gap-5"><div class="visual-arr prev"></div><div class="visual-arr next"></div></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- //section5 -->
-
-        <!-- section6 : partners -->
-        <section class="section section6">
-            <div class="wrap flex-center">
-                <div class="gradient"><div class="top"></div><div class="bottom"></div></div>
-                <div class="listArea flex-center ani_items">
-                    <div class="listBx flex-center">
-                        <div class="back"></div>
-                        <div class="list n1 p-relative" data-src="img/partner_img1.svg"><p class="d-block">중소벤처기업부</p><div class="moimg flex-center"><img src="img/partner_img1.svg" alt=""></div></div>
-                        <div class="list n2 p-relative" data-src="img/partner_img2.svg"><p class="d-block">한국중소벤처기업유통원</p><div class="moimg flex-center"><img src="img/partner_img2.svg" alt=""></div></div>
-                        <div class="list n3 p-relative" data-src="img/partner_img3.svg"><p class="d-block">소상공인시장진흥공단</p><div class="moimg flex-center"><img src="img/partner_img3.svg" alt=""></div></div>
-                        <div class="list n4 p-relative" data-src="img/partner_img5.svg"><p class="d-block">한국공예·디자인문화진흥원</p><div class="moimg flex-center"><img src="img/partner_img5.svg" alt=""></div></div>
-                        <div class="list n5 p-relative" data-src="img/partner_img6.svg"><p class="d-block">대한무역투자진흥공사</p><div class="moimg flex-center"><img src="img/partner_img6.svg" alt=""></div></div>
-                        <div class="list n6 p-relative" data-src="img/partner_img7.svg"><p class="d-block">산업통상자원부</p><div class="moimg flex-center"><img src="img/partner_img7.svg" alt=""></div></div>
-                        <div class="list n7 p-relative" data-src="img/partner_img8.svg"><p class="d-block">한국장애인개발원</p><div class="moimg flex-center"><img src="img/partner_img8.svg" alt=""></div></div>
-                        <div class="list n8 p-relative" data-src="img/partner_img9.svg"><p class="d-block">한국디자인진흥원</p><div class="moimg flex-center"><img src="img/partner_img9.svg" alt=""></div></div>
-                        <div class="list n9 p-relative" data-src="img/partner_img10.svg"><p class="d-block">서울산업진흥원</p><div class="moimg flex-center"><img src="img/partner_img10.svg" alt=""></div></div>
-                        <div class="list n10 p-relative" data-src="img/partner_img14.svg"><p class="d-block">중소상공인희망재단</p><div class="moimg flex-center"><img src="img/partner_img14.svg" alt=""></div></div>
-                        <div class="list n11 p-relative" data-src="img/partner_img16.svg"><p class="d-block">신세계면세점</p><div class="moimg flex-center"><img src="img/partner_img16.svg" alt=""></div></div>
-                        <div class="list n12 p-relative" data-src="img/partner_img17.svg"><p class="d-block">현대백화점면세점</p><div class="moimg flex-center"><img src="img/partner_img17.svg" alt=""></div></div>
-                        <div class="list n13 p-relative" data-src="img/partner_img18.svg"><p class="d-block">롯데면세점</p><div class="moimg flex-center"><img src="img/partner_img18.svg" alt=""></div></div>
-                        <div class="list n14 p-relative" data-src="img/partner_img19.svg"><p class="d-block">신라면세점</p><div class="moimg flex-center"><img src="img/partner_img19.svg" alt=""></div></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- //section6 -->
-
         <!-- section7 : Who We Are -->
         <section id="s-about" class="section section7 pt-0">
             <div class="section-body">
@@ -418,30 +365,37 @@
         <!-- //section7 -->
 
         <!-- section8 : Story -->
-        <section class="section section8 pt-0">
+        <section class="section section8">
             <div class="section-body">
                 <div class="section-inner">
-                    <div class="section-row justify-content-between gap-20">
-                        <div class="section-column tit-column">
-                            <div class="tit-area">
-                                <div class="tit-box ani_items">
-                                    <b class="d-block fs36 fw900 text-point">Story From HAO</b>
-                                    <h3 class="d-block fs120 fw900 p-relative tit-circle mt-16">바우처 칼럼</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="section-column list-column">
-                            <div class="cont-area">
-                                <ul class="cont-wrap story-list">
-                                    <li class="story-item mt-64" onclick="location.href='column.html'" data-src="assets/work/w402.jpg"><p class="catelist"><span class="d-inline fs14 fw700 text-white small">칼럼</span></p><span class="d-block fs36 fw700 text-default t-rw rw-2">수출바우처, 디자인 분야 100% 활용하는 법</span></li>
-                                    <li class="story-item mt-64" onclick="location.href='column.html'" data-src="assets/work/w390.jpg"><p class="catelist"><span class="d-inline fs14 fw700 text-white small">칼럼</span></p><span class="d-block fs36 fw700 text-default t-rw rw-2">2026 제조혁신바우처 신청 가이드</span></li>
-                                    <li class="story-item mt-64" onclick="location.href='column.html'" data-src="assets/work/w379.jpg"><p class="catelist"><span class="d-inline fs14 fw700 text-white small">칼럼</span></p><span class="d-block fs36 fw700 text-default t-rw rw-2">판로개척지원사업으로 상세페이지 만들기</span></li>
-                                    <li class="story-item mt-64" onclick="location.href='column.html'" data-src="assets/work/w393.jpg"><p class="catelist"><span class="d-inline fs14 fw700 text-white small">칼럼</span></p><span class="d-block fs36 fw700 text-default t-rw rw-2">바우처 사용계획서 작성 핵심 포인트</span></li>
-                                    <li class="story-item mt-64" onclick="location.href='column.html'" data-src="assets/work/w362.jpg"><p class="catelist"><span class="d-inline fs14 fw700 text-white small">칼럼</span></p><span class="d-block fs36 fw700 text-default t-rw rw-2">결과보고, 이것만 알면 끝납니다</span></li>
-                                </ul>
-                            </div>
+                    <div class="tit-area">
+                        <div class="tit-box ani_items">
+                            <b class="d-block fs36 fw900 text-point">Story From HAO</b>
+                            <h3 class="d-inline fs120 fw900 p-relative tit-circle mt-16">바우처 칼럼</h3>
                         </div>
                     </div>
+                    <ul class="column-board">
+                        <li class="board-card" onclick="location.href='column.html'">
+                            <div class="board-thumb"><img src="assets/work/w402.jpg" alt="수출바우처, 디자인 분야 100% 활용하는 법"></div>
+                            <div class="board-body"><span class="board-tag">칼럼</span><h4 class="board-title">수출바우처, 디자인 분야 100% 활용하는 법</h4><p class="board-desc">정부지원 디자인을 200% 활용하는 노하우</p></div>
+                        </li>
+                        <li class="board-card" onclick="location.href='column.html'">
+                            <div class="board-thumb"><img src="assets/work/w390.jpg" alt="2026 제조혁신바우처 신청 가이드"></div>
+                            <div class="board-body"><span class="board-tag">칼럼</span><h4 class="board-title">2026 제조혁신바우처 신청 가이드</h4><p class="board-desc">신청 자격부터 일정까지 한눈에</p></div>
+                        </li>
+                        <li class="board-card" onclick="location.href='column.html'">
+                            <div class="board-thumb"><img src="assets/work/w379.jpg" alt="판로개척지원사업으로 상세페이지 만들기"></div>
+                            <div class="board-body"><span class="board-tag">칼럼</span><h4 class="board-title">판로개척지원사업으로 상세페이지 만들기</h4><p class="board-desc">전환율 높이는 상세페이지 기획</p></div>
+                        </li>
+                        <li class="board-card" onclick="location.href='column.html'">
+                            <div class="board-thumb"><img src="assets/work/w393.jpg" alt="바우처 사용계획서 작성 핵심 포인트"></div>
+                            <div class="board-body"><span class="board-tag">칼럼</span><h4 class="board-title">바우처 사용계획서 작성 핵심 포인트</h4><p class="board-desc">선정 확률 높이는 작성 팁</p></div>
+                        </li>
+                        <li class="board-card" onclick="location.href='column.html'">
+                            <div class="board-thumb"><img src="assets/work/w362.jpg" alt="결과보고, 이것만 알면 끝납니다"></div>
+                            <div class="board-body"><span class="board-tag">칼럼</span><h4 class="board-title">결과보고, 이것만 알면 끝납니다</h4><p class="board-desc">증빙·정산 실수 없이 마무리하기</p></div>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </section>
@@ -465,20 +419,19 @@
                             </div>
                         </div>
                         <div class="section-column">
-                            <ul class="cont-area portfolio-list mt-100 grid-box col3 grid-c-gap-80 grid-r-gap-80">
-                                <li class="morecursor portfolio-item"><a href="export.html" class="d-block"><div class="img"><img src="assets/work/w402.jpg" alt="수출바우처 영문 카탈로그"></div><div class="txt mt-10"><span class="d-block fill-text fs24 fw500 text-default t-rw rw-1">수출바우처 영문 카탈로그</span><span class="d-block fs24 fw500 text-default t-rw rw-1">카탈로그, 다국어 편집, 인쇄 감리</span></div></a></li>
-                                <li class="morecursor portfolio-item"><a href="market.html" class="d-block"><div class="img"><img src="assets/work/w393.jpg" alt="도시정비사업 사업안내서"></div><div class="txt mt-10"><span class="d-block fill-text fs24 fw500 text-default t-rw rw-1">도시정비사업 사업안내서</span><span class="d-block fs24 fw500 text-default t-rw rw-1">기획, 편집 디자인, 인쇄 감리</span></div></a></li>
-                                <li class="morecursor portfolio-item"><a href="innovation.html" class="d-block"><div class="img"><img src="assets/work/w390.jpg" alt="전력설비 기술 카탈로그"></div><div class="txt mt-10"><span class="d-block fill-text fs24 fw500 text-default t-rw rw-1">전력설비 기술 카탈로그</span><span class="d-block fs24 fw500 text-default t-rw rw-1">제품 촬영, 카탈로그, 인포그래픽</span></div></a></li>
-                                <li class="morecursor portfolio-item"><a href="export.html" class="d-block"><div class="img"><img src="assets/work/w380.jpg" alt="식품 수출 다국어 브로슈어"></div><div class="txt mt-10"><span class="d-block fill-text fs24 fw500 text-default t-rw rw-1">식품 수출 다국어 브로슈어</span><span class="d-block fs24 fw500 text-default t-rw rw-1">브로슈어, 영·중 번역 편집</span></div></a></li>
-                                <li class="morecursor portfolio-item"><a href="market.html" class="d-block"><div class="img"><img src="assets/work/w379.jpg" alt="뷰티 디바이스 상세페이지"></div><div class="txt mt-10"><span class="d-block fill-text fs24 fw500 text-default t-rw rw-1">뷰티 디바이스 상세페이지</span><span class="d-block fs24 fw500 text-default t-rw rw-1">상세페이지, 제품 촬영, 디자인</span></div></a></li>
-                                <li class="morecursor portfolio-item"><a href="innovation.html" class="d-block"><div class="img"><img src="assets/work/w378.jpg" alt="건강식품 패키지 디자인"></div><div class="txt mt-10"><span class="d-block fill-text fs24 fw500 text-default t-rw rw-1">건강식품 패키지 디자인</span><span class="d-block fs24 fw500 text-default t-rw rw-1">패키지, 브랜드 디자인</span></div></a></li>
-                                <li class="morecursor portfolio-item"><a href="market.html" class="d-block"><div class="img"><img src="assets/work/w377.jpg" alt="생활용품 제품 카탈로그"></div><div class="txt mt-10"><span class="d-block fill-text fs24 fw500 text-default t-rw rw-1">생활용품 제품 카탈로그</span><span class="d-block fs24 fw500 text-default t-rw rw-1">카탈로그, 제품 촬영</span></div></a></li>
-                                <li class="morecursor portfolio-item"><a href="export.html" class="d-block"><div class="img"><img src="assets/work/w376.jpg" alt="브랜드 리플릿 디자인"></div><div class="txt mt-10"><span class="d-block fill-text fs24 fw500 text-default t-rw rw-1">브랜드 리플릿 디자인</span><span class="d-block fs24 fw500 text-default t-rw rw-1">리플릿, BI, 편집 디자인</span></div></a></li>
-                                <li class="morecursor portfolio-item"><a href="innovation.html" class="d-block"><div class="img"><img src="assets/work/w362.jpg" alt="산업기자재 회사소개서"></div><div class="txt mt-10"><span class="d-block fill-text fs24 fw500 text-default t-rw rw-1">산업기자재 회사소개서</span><span class="d-block fs24 fw500 text-default t-rw rw-1">회사소개서, 인포그래픽</span></div></a></li>
-                                <li class="morecursor portfolio-item"><a href="innovation.html" class="d-block"><div class="img"><img src="assets/work/w347.jpg" alt="제조혁신 제품 브로슈어"></div><div class="txt mt-10"><span class="d-block fill-text fs24 fw500 text-default t-rw rw-1">제조혁신 제품 브로슈어</span><span class="d-block fs24 fw500 text-default t-rw rw-1">브로슈어, 제품 촬영, 편집</span></div></a></li>
-                                <li class="morecursor portfolio-item"><a href="market.html" class="d-block"><div class="img"><img src="assets/img/big_slide_02.jpg" alt="글로벌 홍보 포스터"></div><div class="txt mt-10"><span class="d-block fill-text fs24 fw500 text-default t-rw rw-1">글로벌 홍보 포스터</span><span class="d-block fs24 fw500 text-default t-rw rw-1">포스터, 키비주얼 디자인</span></div></a></li>
-                                <li class="morecursor portfolio-item"><a href="export.html" class="d-block"><div class="img"><img src="assets/img/big_slide_03.jpg" alt="전시·박람회 홍보물"></div><div class="txt mt-10"><span class="d-block fill-text fs24 fw500 text-default t-rw rw-1">전시·박람회 홍보물</span><span class="d-block fs24 fw500 text-default t-rw rw-1">부스 그래픽, 배너, 카탈로그</span></div></a></li>
-                            </ul>
+                            <div class="pf-stage">
+                                <svg class="pf-wave" viewBox="0 0 1440 240" preserveAspectRatio="none" aria-hidden="true"><path d="M0,150 C230,60 440,210 670,130 C880,55 1090,215 1440,120" fill="none" stroke="rgba(232,56,23,.35)" stroke-width="2.5"/></svg>
+                                <div class="pf-wheel" id="pfWheel">
+                                    <div class="pf-card" onclick="location.href='export.html'"><div class="pf-img"><img src="assets/work/w402.jpg" alt="수출바우처 영문 카탈로그"></div><div class="pf-cap"><span class="pf-cat">수출바우처</span><b class="pf-title">영문 카탈로그</b></div></div>
+                                    <div class="pf-card" onclick="location.href='market.html'"><div class="pf-img"><img src="assets/work/w393.jpg" alt="도시정비사업 사업안내서"></div><div class="pf-cap"><span class="pf-cat">판로개척</span><b class="pf-title">도시정비사업 안내서</b></div></div>
+                                    <div class="pf-card" onclick="location.href='innovation.html'"><div class="pf-img"><img src="assets/work/w390.jpg" alt="전력설비 기술 카탈로그"></div><div class="pf-cap"><span class="pf-cat">혁신바우처</span><b class="pf-title">전력설비 기술 카탈로그</b></div></div>
+                                    <div class="pf-card" onclick="location.href='export.html'"><div class="pf-img"><img src="assets/work/w380.jpg" alt="식품 수출 다국어 브로슈어"></div><div class="pf-cap"><span class="pf-cat">수출바우처</span><b class="pf-title">식품 다국어 브로슈어</b></div></div>
+                                    <div class="pf-card" onclick="location.href='market.html'"><div class="pf-img"><img src="assets/work/w379.jpg" alt="뷰티 디바이스 상세페이지"></div><div class="pf-cap"><span class="pf-cat">판로개척</span><b class="pf-title">뷰티 디바이스 상세페이지</b></div></div>
+                                    <div class="pf-card" onclick="location.href='innovation.html'"><div class="pf-img"><img src="assets/work/w378.jpg" alt="건강식품 패키지 디자인"></div><div class="pf-cap"><span class="pf-cat">혁신바우처</span><b class="pf-title">건강식품 패키지</b></div></div>
+                                    <div class="pf-card" onclick="location.href='market.html'"><div class="pf-img"><img src="assets/work/w377.jpg" alt="생활용품 제품 카탈로그"></div><div class="pf-cap"><span class="pf-cat">판로개척</span><b class="pf-title">생활용품 제품 카탈로그</b></div></div>
+                                    <div class="pf-card" onclick="location.href='innovation.html'"><div class="pf-img"><img src="assets/work/w362.jpg" alt="산업기자재 회사소개서"></div><div class="pf-cap"><span class="pf-cat">혁신바우처</span><b class="pf-title">산업기자재 회사소개서</b></div></div>
+                                </div>
+                            </div>
                             <div class="btnSet flex-center mt-80 mo480">
                                 <button class="btn more-portfolio fs16 fw500 flex-center gap-8" onclick="location.href='export.html'">지원사업 자세히 보기 <img src="img/ico_portfolio.svg" alt="" width="14" height="14" class="toggle-icon"></button>
                             </div>
@@ -490,30 +443,45 @@
         <!-- //section9 -->
 
         <!-- contact form -->
-        <section class="section" id="contact">
-            <div class="section-body">
-                <div class="section-inner">
-                    <div class="tit-box txt-c">
-                        <b class="d-block fs36 fw900 text-point">Contact us</b>
-                        <h3 class="fs120 fw900 p-relative m0-auto tit-circle d-inline mt-16">무료 상담</h3>
-                        <p class="fs32 fw500 text-default mt-64"><span class="d-block fs32 fw500 text-default fill-text line1">신청 가능 여부부터 무료로 확인해 드립니다. 담당자가 확인 후 빠르게 연락드립니다.</span></p>
+        <section class="section section-contact" id="contact">
+            <div class="contact">
+                <div class="contact__panel">
+                    <svg class="contact__spin" viewBox="0 0 120 120" aria-hidden="true">
+                        <defs><path id="spinPathV" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0" /></defs>
+                        <text><textPath href="#spinPathV">FREE CONSULTING · 하오디자인 정부사업지원센터 · </textPath></text>
+                    </svg>
+                    <div class="contact__info">
+                        <p class="contact__tag">START A PROJECT</p>
+                        <h2 class="contact__title">정부지원 디자인,<br />무료로 시작해볼까요?</h2>
+                        <p class="contact__desc">신청 가능 여부부터 무료로 확인해 드립니다.<br />담당자가 확인 후 빠르게 연락드립니다.</p>
+                        <ul class="contact__rows">
+                            <li><span>TEL</span><a href="tel:16662027">1666-2027</a></li>
+                            <li><span>MAIL</span><a href="mailto:sales@haodesign.co.kr">sales@haodesign.co.kr</a></li>
+                            <li><span>TIME</span>평일 09:00 – 18:00</li>
+                        </ul>
                     </div>
-                    <form class="cform mt-80 m0-auto" id="quoteForm" novalidate style="max-width:760px;width:100%;display:flex;flex-wrap:wrap;gap:16px;">
-                        <input type="text" id="name" name="name" placeholder="이름 / 회사명" required style="flex:1 1 240px;padding:18px 20px;border:1px solid #ddd;border-radius:12px;font-size:18px;" />
-                        <input type="tel" id="phone" name="phone" placeholder="연락처" required style="flex:1 1 240px;padding:18px 20px;border:1px solid #ddd;border-radius:12px;font-size:18px;" />
-                        <select id="type" name="type" style="flex:1 1 100%;padding:18px 20px;border:1px solid #ddd;border-radius:12px;font-size:18px;">
-                            <option value="">관심 사업 선택</option><option>수출바우처</option><option>혁신바우처</option><option>판로개척지원사업</option><option>신청 가능 여부 문의</option><option>기타</option>
-                        </select>
-                        <textarea id="message" name="message" rows="5" placeholder="기업 현황, 관심 사업, 제작하고 싶은 결과물 등을 자유롭게 적어주세요." style="flex:1 1 100%;padding:18px 20px;border:1px solid #ddd;border-radius:12px;font-size:18px;"></textarea>
-                        <button type="submit" class="btn more-portfolio fs18 fw600 flex-center gap-8" style="flex:1 1 100%;padding:20px;border-radius:14px;cursor:pointer;">상담 신청하기</button>
-                        <p class="cnote fs16 fw500 text-default" id="formNote" role="status" style="flex:1 1 100%;text-align:center;"></p>
+                    <form class="cform cform--card" id="quoteForm" novalidate>
+                        <div class="cfield"><input type="text" id="name" name="name" placeholder="이름 / 회사명" required /></div>
+                        <div class="cfield"><input type="tel" id="phone" name="phone" placeholder="연락처" required /></div>
+                        <div class="cfield cfield--full">
+                            <select id="type" name="type">
+                                <option value="">관심 사업 선택</option>
+                                <option>수출바우처</option>
+                                <option>혁신바우처</option>
+                                <option>판로개척지원사업</option>
+                                <option>신청 가능 여부 문의</option>
+                                <option>기타</option>
+                            </select>
+                        </div>
+                        <div class="cfield cfield--full"><textarea id="message" name="message" rows="4" placeholder="기업 현황, 관심 사업, 제작하고 싶은 결과물 등을 자유롭게 적어주세요."></textarea></div>
+                        <button type="submit" class="btn-round btn-round--solid"><span>상담 신청하기</span><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+                        <p class="cnote" id="formNote" role="status"></p>
                     </form>
-                    <p class="fs20 fw500 text-default txt-c mt-40">TEL <a href="tel:1666-2027" class="text-point fw700">1666-2027</a> · MAIL <a href="mailto:sales@haodesign.co.kr" class="text-point fw700">sales@haodesign.co.kr</a> · 평일 09:00–18:00</p>
                 </div>
             </div>
         </section>
     </main>
-    <script src="js/hq_main.js"></script>
+    <script src="js/hq_main.js?v=12"></script>
 
     <footer class="footer">
         <div class="footer__top">
@@ -522,7 +490,7 @@
         </div>
         <div class="footer__grid">
             <div><h3>Contact</h3><a href="tel:1666-2027">1666-2027</a><a href="mailto:sales@haodesign.co.kr">sales@haodesign.co.kr</a><span>평일 09:00–18:00</span></div>
-            <div><h3>센터</h3><a href="../design/">디자인센터 ↗</a><a href="../web/">웹구축센터 ↗</a><a href="../studio/">스튜디오센터 ↗</a><a href="https://mkt.haodesign.co.kr">마케팅센터 ↗</a></div>
+            <div><h3>센터</h3><a href="../design/">디자인센터 ↗</a><a href="../web/">웹구축센터 ↗</a><a href="../studio/">스튜디오센터 ↗</a><a href="../mkt/">마케팅센터 ↗</a></div>
             <div><h3>정부사업지원센터</h3><a href="export.html">수출바우처</a><a href="innovation.html">혁신바우처</a><a href="market.html">판로개척지원사업</a><a href="column.html">칼럼</a><a href="qna.html">Q&amp;A</a></div>
         </div>
         <div class="footer__bottom">
