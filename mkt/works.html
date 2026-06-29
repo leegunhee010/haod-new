@@ -108,7 +108,7 @@
     function render() {
       var rows = WORKS.filter(function (w) { return cur === '전체' || w.c === cur; });
       grid.innerHTML = rows.map(function (w) {
-        return '<a class="colcard" href="index.html#contact">' +
+        return '<a class="colcard" href="javascript:void(0)">' +
           '<div class="colcard__media" style="background-image:url(' + w.img + ');background-size:cover;background-position:center;background-repeat:no-repeat"></div>' +
           '<div class="colcard__body"><span class="colcard__cat">' + esc(w.c) + '</span>' +
           '<h3 class="colcard__t">' + esc(w.t) + '</h3></div></a>';
