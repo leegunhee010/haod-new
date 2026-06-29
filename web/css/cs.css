@@ -288,36 +288,34 @@ html.lenis,html.lenis body{height:auto}
 .vweb__card b{width:80%;height:9px;border-radius:5px;background:rgba(23,21,15,.15)}
 .vweb__card u{width:55%;height:7px;border-radius:4px;background:var(--bg-soft)}
 
-/* 01 SEO — 검색결과(SERP) 미리보기 */
-.vserp{display:flex;flex-direction:column;gap:12px}
+/* 01 SEO — 실제 검색결과(SERP) 미리보기 */
+.vserp{display:flex;flex-direction:column;gap:10px}
 .show__item.in .vserp>*{animation:vrise .6s var(--ease) both}
-.show__item.in .vserp>*:nth-child(1){animation-delay:.22s}.show__item.in .vserp>*:nth-child(2){animation-delay:.36s}.show__item.in .vserp>*:nth-child(3){animation-delay:.5s}.show__item.in .vserp>*:nth-child(4){animation-delay:.64s}
+.show__item.in .vserp>*:nth-child(1){animation-delay:.2s}.show__item.in .vserp>*:nth-child(2){animation-delay:.34s}.show__item.in .vserp>*:nth-child(3){animation-delay:.48s}.show__item.in .vserp>*:nth-child(4){animation-delay:.62s}
 .vserp__search{display:flex;align-items:center;gap:11px;padding:12px 16px;border-radius:999px;border:1px solid var(--line-2);background:var(--bg-soft)}
-.vserp__search i{width:15px;height:15px;border-radius:50%;border:2px solid var(--accent);flex:none}
-.vserp__search span{height:9px;width:52%;border-radius:5px;background:rgba(23,21,15,.16)}
-.vserp__row{display:flex;align-items:center;gap:13px;padding:11px 6px}
-.vserp__row+.vserp__row{border-top:1px solid var(--line-2)}
-.vserp__row--top{background:rgba(232,56,23,.05);border:1px solid rgba(232,56,23,.16);border-radius:13px;padding:13px 15px}
+.vserp__search svg{width:17px;height:17px;flex:none;fill:none;stroke:var(--accent);stroke-width:2.2;stroke-linecap:round}
+.vserp__search span{font-size:.92rem;font-weight:600;color:var(--ink)}
+.vserp__hit{display:flex;align-items:center;gap:13px;padding:10px 6px}
+.vserp__hit+.vserp__hit{border-top:1px solid var(--line-2)}
+.vserp__hit--top{background:rgba(232,56,23,.06);border:1px solid rgba(232,56,23,.18);border-radius:13px;padding:13px 15px}
 .vserp__rank{flex:none;width:27px;height:27px;border-radius:50%;background:var(--grad);color:#fff;font-weight:800;font-size:.82rem;display:grid;place-items:center;box-shadow:0 7px 15px -6px rgba(232,56,23,.55)}
-.vserp__lines{flex:1;display:flex;flex-direction:column;gap:7px}
-.vserp__lines .t{height:11px;width:74%;border-radius:6px;background:rgba(23,21,15,.18)}
-.vserp__lines .t.accent{background:var(--grad);width:66%}
-.vserp__lines .u{height:8px;width:46%;border-radius:4px;background:var(--bg-soft)}
+.vserp__info{display:flex;flex-direction:column;gap:3px;min-width:0}
+.vserp__info b{font-size:.95rem;font-weight:700;letter-spacing:-.01em;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.vserp__hit--top .vserp__info b{color:var(--accent)}
+.vserp__hit:not(.vserp__hit--top) .vserp__info b{color:rgba(23,21,15,.5);font-weight:600}
+.vserp__info em{font-style:normal;font-size:.76rem;color:var(--muted);font-family:"Fragment Mono",monospace;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 
-/* 02 AEO — AI 답변 미리보기 */
+/* 02 AEO — 실제 AI 답변 미리보기 */
 .vchat{display:flex;flex-direction:column;gap:14px;padding:4px 2px}
 .show__item.in .vchat>*{animation:vrise .6s var(--ease) both}
 .show__item.in .vchat>*:nth-child(1){animation-delay:.24s}.show__item.in .vchat>*:nth-child(2){animation-delay:.42s}
-.vchat__q{align-self:flex-end;max-width:64%;padding:13px 17px;border-radius:16px 16px 4px 16px;background:var(--grad);box-shadow:0 12px 24px -12px rgba(232,56,23,.55)}
-.vchat__q span{display:block;height:9px;width:130px;max-width:100%;border-radius:5px;background:rgba(255,255,255,.75)}
-.vchat__a{align-self:flex-start;width:90%;padding:17px;border-radius:16px 16px 16px 4px;border:1px solid var(--line-2);background:var(--bg-soft);display:flex;flex-direction:column;gap:14px}
-.vchat__lines{display:flex;flex-direction:column;gap:9px}
-.vchat__lines span{height:9px;border-radius:5px;background:rgba(23,21,15,.15)}
-.vchat__lines span:nth-child(1){width:96%}.vchat__lines span:nth-child(2){width:86%}
-.vchat__lines span.short{width:58%}
-.vchat__cite{display:inline-flex;align-items:center;gap:9px;align-self:flex-start;padding:8px 13px;border-radius:999px;background:#fff;border:1px solid rgba(232,56,23,.3)}
-.vchat__cite i{width:15px;height:15px;border-radius:5px;background:var(--grad);flex:none}
-.vchat__cite b{height:8px;width:104px;border-radius:4px;background:rgba(232,56,23,.42)}
+.vchat__q{align-self:flex-end;max-width:78%;padding:12px 18px;border-radius:18px 18px 5px 18px;background:var(--grad);box-shadow:0 12px 24px -12px rgba(232,56,23,.55)}
+.vchat__q span{display:block;font-size:.9rem;font-weight:600;color:#fff}
+.vchat__a{align-self:flex-start;width:94%;padding:18px;border-radius:18px 18px 18px 5px;border:1px solid var(--line-2);background:var(--bg-soft);display:flex;flex-direction:column;gap:14px}
+.vchat__a p{font-size:.95rem;line-height:1.65;color:var(--ink);word-break:keep-all}
+.vchat__a p b{color:var(--accent);font-weight:800}
+.vchat__cite{display:inline-flex;align-items:center;gap:8px;align-self:flex-start;padding:7px 13px;border-radius:999px;background:#fff;border:1px solid rgba(232,56,23,.3);font-family:"Fragment Mono",monospace;font-size:.74rem;font-weight:600;color:var(--accent)}
+.vchat__cite i{width:13px;height:13px;border-radius:4px;background:var(--grad);flex:none}
 .vphone{width:clamp(190px,22vw,230px);margin:0 auto;border-radius:34px;border:9px solid #15130f;background:#15130f;box-shadow:0 40px 80px -40px rgba(60,30,18,.5)}
 .vphone__scr{border-radius:26px;overflow:hidden;background:#fff;aspect-ratio:9/18}
 .vphone__nav{padding:20px 16px 14px;background:var(--grad);color:#fff}
