@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://cdn.jsdelivr.net" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Fragment+Mono&display=swap" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.css" />
-  <link rel="stylesheet" href="css/cs.css?v=43" />
+  <link rel="stylesheet" href="css/cs.css?v=44" />
   <script type="importmap">
   { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.171.0/build/three.module.js" } }
   </script>
@@ -163,15 +163,17 @@
         </div>
         <div class="show__visual" data-tilt>
           <div class="vcard"><span class="vcard__glow"></span>
-            <div class="vcard__top"><b>검색 노출 추이</b><span>SEO</span></div>
+            <div class="vcard__top"><b>검색 결과</b><span>SEO</span></div>
             <div class="vcard__body">
-              <div class="vbig" data-count="240" data-suffix="%" data-prefix="+">+0%</div>
-              <p class="vsub">리뉴얼 후 6개월 검색 유입 증가</p>
-              <svg class="vchart" viewBox="0 0 520 200" preserveAspectRatio="none">
-                <polygon class="vfill" points="0,180 80,168 160,150 240,154 320,110 400,84 520,32 520,200 0,200" fill="rgba(232,56,23,.08)"/>
-                <polyline fill="none" stroke="url(#gb)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" points="0,180 80,168 160,150 240,154 320,110 400,84 520,32"/>
-              </svg>
-              <div class="vpills"><span class="vpill"><i style="background:#f25b35"></i>평균 검색순위 1.2위</span><span class="vpill"><i style="background:#f6a13a"></i>구글·네이버 동시</span></div>
+              <div class="vserp">
+                <div class="vserp__search"><i></i><span></span></div>
+                <div class="vserp__row vserp__row--top">
+                  <span class="vserp__rank">1</span>
+                  <div class="vserp__lines"><span class="t accent"></span><span class="u"></span></div>
+                </div>
+                <div class="vserp__row"><div class="vserp__lines"><span class="t"></span><span class="u"></span></div></div>
+                <div class="vserp__row"><div class="vserp__lines"><span class="t"></span><span class="u"></span></div></div>
+              </div>
             </div>
           </div>
         </div>
@@ -192,13 +194,14 @@
         </div>
         <div class="show__visual" data-tilt>
           <div class="vcard"><span class="vcard__glow"></span>
-            <div class="vcard__top"><b>AI 인용 점유율</b><span>AEO</span></div>
+            <div class="vcard__top"><b>AI 답변</b><span>AEO</span></div>
             <div class="vcard__body">
-              <div class="vbars">
-                <div class="vrow"><b>ChatGPT</b><div class="vtrack"><div class="vbar" style="--w:88%"></div></div><em>88%</em></div>
-                <div class="vrow"><b>Gemini</b><div class="vtrack"><div class="vbar" style="--w:74%;--d:.12s"></div></div><em>74%</em></div>
-                <div class="vrow"><b>Perplexity</b><div class="vtrack"><div class="vbar" style="--w:69%;--d:.24s"></div></div><em>69%</em></div>
-                <div class="vrow"><b>네이버 Cue</b><div class="vtrack"><div class="vbar" style="--w:58%;--d:.36s"></div></div><em>58%</em></div>
+              <div class="vchat">
+                <div class="vchat__q"><span></span></div>
+                <div class="vchat__a">
+                  <div class="vchat__lines"><span></span><span></span><span class="short"></span></div>
+                  <div class="vchat__cite"><i></i><b></b></div>
+                </div>
               </div>
             </div>
           </div>
