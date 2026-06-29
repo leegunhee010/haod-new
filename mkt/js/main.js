@@ -21,20 +21,20 @@
 
   /* ---- Works 플레이스홀더 (구조만) ---- */
   var WORKS = [
-    { t: '브랜드 A', c: 'IMC', g: 'linear-gradient(160deg,#ff8a3d,#e83817)' },
-    { t: '브랜드 B', c: 'Performance', g: 'linear-gradient(160deg,#6366f1,#3b1d8f)' },
-    { t: '브랜드 C', c: 'IMC', c2: 'linear', g: 'linear-gradient(160deg,#22c55e,#0f766e)' },
-    { t: '브랜드 D', c: 'Performance', g: 'linear-gradient(160deg,#f472b6,#be185d)' },
-    { t: '브랜드 E', c: 'IMC', g: 'linear-gradient(160deg,#f59e0b,#b45309)' },
-    { t: '브랜드 F', c: 'Performance', g: 'linear-gradient(160deg,#38bdf8,#0369a1)' },
-    { t: '브랜드 G', c: 'IMC', g: 'linear-gradient(160deg,#a78bfa,#6d28d9)' },
-    { t: '브랜드 H', c: 'Performance', g: 'linear-gradient(160deg,#fb7185,#9f1239)' }
+    { img: '../design/assets/work/work01.jpeg', t: '브랜드 카탈로그', c: '비주얼 리뉴얼' },
+    { img: '../voucher/assets/work/w379.jpg', t: '뷰티 디바이스 상세페이지', c: '이커머스 디자인' },
+    { img: '../design/assets/work/work03.jpeg', t: '제품 키비주얼', c: '브랜드 콘텐츠' },
+    { img: '../voucher/assets/work/w378.jpg', t: '건강식품 패키지', c: '패키지 디자인' },
+    { img: '../design/assets/work/work07.jpeg', t: '기업 회사소개서', c: '편집 디자인' },
+    { img: '../voucher/assets/work/w402.jpg', t: '수출 영문 카탈로그', c: '비주얼 리뉴얼' },
+    { img: '../design/assets/work/work12.jpeg', t: '브랜드 홍보 포스터', c: '브랜드 콘텐츠' },
+    { img: '../design/assets/work/work05.jpeg', t: '전시·박람회 홍보물', c: '전시·부스' }
   ];
   var track = $('#worksTrack');
   if (track) {
     track.innerHTML = WORKS.map(function (w) {
       return '<div class="swiper-slide"><div class="wcard">' +
-        '<div class="wcard__media" style="background:' + w.g + '"><span>' + w.t + '</span></div>' +
+        '<div class="wcard__media" style="background-image:url(' + w.img + ');background-size:cover;background-position:center;background-repeat:no-repeat"></div>' +
         '<h3 class="wcard__t">' + w.t + '</h3><p class="wcard__c">' + w.c + '</p></div></div>';
     }).join('');
   }
