@@ -496,32 +496,7 @@
       rgo(0);
     }
 
-    /* network graph (AEO fanout) */
-    var net=$('#netGraph');
-    if(net){
-      var ns2='http://www.w3.org/2000/svg';
-      var center={x:210,y:160};
-      var nodes=[{x:210,y:160,r:26,c:'url(#gb)',label:1},
-        {x:80,y:60,r:13},{x:120,y:250,r:11},{x:330,y:70,r:14},{x:360,y:210,r:12},
-        {x:60,y:170,r:10},{x:230,y:40,r:10},{x:300,y:280,r:11},{x:160,y:90,r:8},{x:380,y:130,r:9}];
-      nodes.slice(1).forEach(function(n){
-        var l=document.createElementNS(ns2,'line');
-        l.setAttribute('x1',center.x);l.setAttribute('y1',center.y);l.setAttribute('x2',n.x);l.setAttribute('y2',n.y);
-        l.setAttribute('stroke','rgba(232,56,23,.3)');l.setAttribute('stroke-width','1.2');
-        net.appendChild(l);
-      });
-      nodes.forEach(function(n,i){
-        var c=document.createElementNS(ns2,'circle');
-        c.setAttribute('cx',n.x);c.setAttribute('cy',n.y);c.setAttribute('r',n.r||9);
-        c.setAttribute('fill', n.c || (i%2?'rgba(242,121,47,.9)':'rgba(246,161,58,.9)'));
-        c.style.transformOrigin=n.x+'px '+n.y+'px';
-        c.style.animation='pulse '+(2.5+i*.2)+'s ease-in-out '+(i*.15)+'s infinite';
-        net.appendChild(c);
-      });
-      if(!document.getElementById('netKf')){var st=document.createElement('style');st.id='netKf';
-        st.textContent='@keyframes pulse{0%,100%{opacity:.85;transform:scale(1)}50%{opacity:.5;transform:scale(.86)}}';
-        document.head.appendChild(st);}
-    }
+    /* network graph(AEO fanout) → js/diff.js 에서 살아있는 모션으로 처리 */
 
     /* portfolio */
     var works=[
@@ -603,5 +578,6 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <script src="js/smooth.js?v=1"></script>
   <script src="js/show.js?v=4"></script>
+  <script src="js/diff.js?v=1"></script>
 </body>
 </html>
