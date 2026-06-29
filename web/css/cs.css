@@ -224,10 +224,6 @@ html.lenis,html.lenis body{height:auto}
 .show.gsap-on .show__item.rev.in .show__visual,
 .show.gsap-on .show__item.in .show__big{animation:none!important}
 .show.gsap-on .show__visual{will-change:transform,opacity}
-/* 비주얼 카드 글로우 강화 */
-.show__visual::after{content:"";position:absolute;inset:auto -12% -22% -12%;height:55%;z-index:-1;border-radius:50%;
-  background:radial-gradient(circle,rgba(232,56,23,.32),transparent 70%);filter:blur(54px);opacity:.7;
-  animation:glowPulse 5s ease-in-out infinite}
 .show__head{text-align:center;max-width:1040px;margin:0 auto clamp(40px,7vh,90px)}
 .show__title{margin-top:18px;font-size:clamp(2.1rem,4.8vw,4rem);font-weight:800;letter-spacing:-.04em;line-height:1.14;word-break:keep-all}
 .show__title .g{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
@@ -248,7 +244,7 @@ html.lenis,html.lenis body{height:auto}
 .show__list svg{width:24px;height:24px;flex:none;stroke:#fff;fill:none;stroke-width:3;background:var(--grad);border-radius:50%;padding:5px;box-sizing:border-box}
 .show__visual{position:relative;z-index:1;perspective:1300px}
 .vcard{position:relative;border-radius:22px;border:1px solid var(--line);background:#fff;box-shadow:0 50px 90px -52px rgba(60,30,18,.42);overflow:hidden;transform-style:preserve-3d;transition:transform .25s var(--ease),box-shadow .3s}
-.vcard__glow{position:absolute;inset:auto -16% -28% -16%;height:64%;z-index:-1;border-radius:50%;background:radial-gradient(circle,rgba(232,56,23,.34),transparent 70%);filter:blur(48px);opacity:.7;animation:glowPulse 5s ease-in-out infinite}
+.vcard__glow{position:absolute;inset:auto -10% -22% -10%;height:50%;z-index:-1;border-radius:50%;background:radial-gradient(circle,rgba(232,56,23,.16),transparent 72%);filter:blur(52px);opacity:.5}
 @keyframes glowPulse{0%,100%{opacity:.55;transform:scale(1)}50%{opacity:.85;transform:scale(1.08)}}
 .vcard__top{display:flex;justify-content:space-between;align-items:center;padding:18px 24px;border-bottom:1px solid var(--line-2)}
 .vcard__top b{font-size:1.02rem;font-weight:800}
@@ -273,14 +269,24 @@ html.lenis,html.lenis body{height:auto}
 .show__item.in .vbar{animation:vgrow 1.3s var(--ease) var(--d,0s) both}
 @keyframes vgrow{from{width:0}to{width:var(--w)}}
 .vrow em{font-style:normal;font-family:"Fragment Mono",monospace;font-size:.8rem;font-weight:700;color:var(--accent);width:42px;text-align:right}
-.vweb{display:grid;gap:12px}
+.vweb{display:flex;flex-direction:column;gap:14px}
 .show__item.in .vweb>*{animation:vrise .6s var(--ease) both}
-.show__item.in .vweb>*:nth-child(1){animation-delay:.25s}.show__item.in .vweb>*:nth-child(2){animation-delay:.4s}.show__item.in .vweb>*:nth-child(3){animation-delay:.55s}.show__item.in .vweb>*:nth-child(4){animation-delay:.7s}
+.show__item.in .vweb>*:nth-child(1){animation-delay:.25s}.show__item.in .vweb>*:nth-child(2){animation-delay:.42s}
 @keyframes vrise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
-.vweb__hero{height:clamp(96px,12vw,130px);border-radius:12px;background:var(--grad-soft);border:1px solid var(--line-2)}
+/* 실제 웹사이트 프리뷰 (랜딩 히어로 + 피처카드) */
+.vweb__hero{position:relative;padding:22px;border-radius:14px;border:1px solid var(--line-2);overflow:hidden;
+  background:linear-gradient(135deg,rgba(255,142,61,.16),rgba(232,56,23,.07));display:flex;flex-direction:column;align-items:flex-start;gap:9px}
+.vweb__hero::after{content:"";position:absolute;right:-34px;top:-34px;width:120px;height:120px;border-radius:50%;
+  background:radial-gradient(circle,rgba(232,56,23,.16),transparent 70%)}
+.vweb__htag{width:62px;height:13px;border-radius:7px;background:rgba(232,56,23,.28)}
+.vweb__htitle{width:78%;height:17px;border-radius:6px;background:rgba(23,21,15,.16)}
+.vweb__htitle--accent{width:52%;background:var(--grad)}
+.vweb__btn{margin-top:5px;width:100px;height:30px;border-radius:999px;background:var(--grad);box-shadow:0 9px 18px -8px rgba(232,56,23,.5)}
 .vweb__cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.vweb__cards span{height:clamp(56px,7vw,74px);border-radius:10px;background:var(--bg-soft)}
-.vweb__ln{height:14px;border-radius:7px;background:var(--bg-soft)}
+.vweb__card{display:flex;flex-direction:column;gap:9px;padding:14px;border-radius:12px;border:1px solid var(--line-2);background:#fff}
+.vweb__card i{width:30px;height:30px;border-radius:9px;background:var(--grad);box-shadow:0 6px 14px -6px rgba(232,56,23,.5)}
+.vweb__card b{width:80%;height:9px;border-radius:5px;background:rgba(23,21,15,.15)}
+.vweb__card u{width:55%;height:7px;border-radius:4px;background:var(--bg-soft)}
 .vphone{width:clamp(190px,22vw,230px);margin:0 auto;border-radius:34px;border:9px solid #15130f;background:#15130f;box-shadow:0 40px 80px -40px rgba(60,30,18,.5)}
 .vphone__scr{border-radius:26px;overflow:hidden;background:#fff;aspect-ratio:9/18}
 .vphone__nav{padding:20px 16px 14px;background:var(--grad);color:#fff}
