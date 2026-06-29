@@ -7,13 +7,13 @@
   <meta name="description" content="중소기업·소상공인 판로개척지원사업 안내 — 국내외 판로 확대를 위한 전시·마케팅·홍보물 제작 지원. 하오디자인이 카탈로그·상세페이지·홍보물을 제작합니다." />
   <link rel="preconnect" href="https://cdn.jsdelivr.net" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.css" />
-  <link rel="stylesheet" href="css/style.css?v=7" />
+  <link rel="stylesheet" href="css/style.css?v=5" />
 </head>
 <body>
   <div class="progress" id="progress" aria-hidden="true"></div>
 
   <header class="header" id="header">
-    <a href="index.html" class="brand"><img src="assets/img/logo.png" alt="하오디자인" class="brand__logo" /><b class="brand__sub">정부사업지원센터</b></a>
+    <a href="index.html" class="brand"><img src="assets/img/logo.png" alt="하오디자인" class="brand__logo" /></a>
     <nav class="nav" id="nav">
       <a href="export.html">수출바우처</a>
       <a href="innovation.html">혁신바우처</a>
@@ -24,7 +24,7 @@
       <a class="nav__center" href="../design/">디자인센터 <i>↗</i></a>
       <a class="nav__center" href="../web/">웹구축센터 <i>↗</i></a>
       <a class="nav__center" href="../studio/">스튜디오센터 <i>↗</i></a>
-      <a class="nav__center" href="../mkt/">마케팅센터 <i>↗</i></a>
+      <a class="nav__center" href="https://mkt.haodesign.co.kr">마케팅센터 <i>↗</i></a>
     </nav>
     <a href="index.html#contact" class="header__cta">상담 문의 <span>→</span></a>
     <button class="burger" id="burger" aria-label="메뉴"><span></span><span></span></button>
@@ -33,7 +33,7 @@
   <main id="top">
     <section class="subhero">
       <div class="subhero__inner">
-        <p class="subhero__crumb"><a href="index.html">정부사업지원센터</a> / 판로개척지원사업</p>
+        <p class="subhero__crumb"><a href="../design/">디자인센터</a> / <a href="index.html">정부사업지원센터</a> / 판로개척지원사업</p>
         <h1 class="subhero__title">판로개척지원사업</h1>
         <p class="subhero__desc">국내외 판로 확대를 위한 전시·마케팅·홍보물 제작 지원 — 중소기업·소상공인 대상.</p>
       </div>
@@ -57,7 +57,7 @@
     <section class="page page--tight">
       <p class="section-tag">SERVICES</p>
       <h2 class="page__title">지원내용</h2>
-      <p class="sp-lead reveal">온·오프라인 판로 개척과 마케팅·홍보 분야의 서비스를 지원받아 새로운 판로를 열 수 있습니다.</p>
+      <p class="sp-lead reveal"><em>하오디자인은 판로개척에 필요한 디자인·제작</em>을 담당합니다 — 카탈로그·리플렛·상세페이지·홍보물.</p>
       <div class="specgrid">
         <div class="speccard reveal"><h3><span>온·오프라인 판로</span></h3><ul><li>국내외 전시회·박람회 참가</li><li>판촉전·기획전</li><li>온라인몰 입점 지원</li></ul></div>
         <div class="speccard reveal"><h3><span>마케팅·홍보</span>하오디자인 수행 분야</h3><ul><li>상세페이지·제품 콘텐츠</li><li>카탈로그·리플렛·홍보물</li><li>SNS·브랜딩 디자인</li></ul></div>
@@ -86,7 +86,7 @@
     </div>
     <div class="footer__grid">
       <div><h3>Contact</h3><a href="tel:16662027">1666-2027</a><a href="mailto:sales@haodesign.co.kr">sales@haodesign.co.kr</a><span>평일 09:00–18:00</span></div>
-      <div><h3>센터</h3><a href="../design/">디자인센터 ↗</a><a href="../web/">웹구축센터 ↗</a><a href="../studio/">스튜디오센터 ↗</a><a href="../mkt/">마케팅센터 ↗</a></div>
+      <div><h3>센터</h3><a href="../design/">디자인센터 ↗</a><a href="../web/">웹구축센터 ↗</a><a href="../studio/">스튜디오센터 ↗</a><a href="https://mkt.haodesign.co.kr">마케팅센터 ↗</a></div>
       <div><h3>정부사업지원센터</h3><a href="export.html">수출바우처</a><a href="innovation.html">혁신바우처</a><a href="market.html">판로개척지원사업</a><a href="column.html">칼럼</a><a href="qna.html">Q&amp;A</a></div>
     </div>
     <div class="footer__bottom">
@@ -109,18 +109,9 @@
     var burger = $('#burger'), nav = $('#nav');
     burger.addEventListener('click', function () { nav.classList.toggle('is-open'); document.body.classList.toggle('menu-open'); });
     $$('#nav a').forEach(function (a) { a.addEventListener('click', function () { nav.classList.remove('is-open'); document.body.classList.remove('menu-open'); }); });
-    function runTimeline(tl) {
-      var steps = $$('.tstep', tl), fill = $('#timelineFill'), n = steps.length;
-      steps.forEach(function (s, i) {
-        setTimeout(function () {
-          s.classList.add('is-on');
-          if (fill) fill.style.width = (n > 1 ? (i / (n - 1)) * 100 : 100) + '%';
-        }, 250 + i * 420);
-      });
-    }
     var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (!e.isIntersecting) return;
       e.target.classList.add('is-in');
-      if (e.target.id === 'timeline') runTimeline(e.target);
+      if (e.target.id === 'timeline') { var f = $('#timelineFill'); if (f) { f.style.width = '100%'; f.style.height = '100%'; } }
       io.unobserve(e.target); }); }, { threshold: .15 });
     $$('.reveal, #timeline').forEach(function (el) { io.observe(el); });
   })();

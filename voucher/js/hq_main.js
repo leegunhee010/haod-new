@@ -555,23 +555,23 @@ $(function(){
 					// markers: true
 				}
 			})
-			.from('.section1 .tit-area, .section1 .cont-area', {
+			.to('.section1 .tit-area, .section1 .cont-area', {
 				x: '-65vw',
 				duration: 3.5,
 				ease: 'none',
 			})
 			.to('.section1 .projects-img-box:nth-child(1)', {
-				y: '45%',
+				y: '60%',
 				duration: 5,
 				ease: 'none'
 			}, 0)
 			.to('.section1 .projects-img-box:nth-child(2)', {
-				y: '82%',
+				y: '50%',
 				duration: 5,
 				ease: 'none'
 			}, 0)
 			.to('.section1 .projects-img-box:nth-child(3)', {
-				y: '62%',
+				y: '95%',
 				duration: 5,
 				ease: 'none'
 			}, 0);
@@ -612,36 +612,55 @@ $(function(){
 		}
 	});
 
-	// What We Do 카드 — 가로 슬라이더(Swiper)로 전환 (기존 핀 카드스택 제거)
-	if (document.querySelector('.cards-swiper') && typeof Swiper !== 'undefined') {
-		new Swiper('.cards-swiper', {
-			slidesPerView: 1.12,
-			spaceBetween: 16,
-			centeredSlides: true,
-			loop: true,
-			grabCursor: true,
-			speed: 650,
-			autoplay: { delay: 3000, disableOnInteraction: false },
-			pagination: { el: '.cards-pagination', clickable: true },
-			navigation: { nextEl: '.cards-next', prevEl: '.cards-prev' },
-			breakpoints: {
-				768:  { slidesPerView: 1.22, spaceBetween: 26 },
-				1200: { slidesPerView: 1.32, spaceBetween: 36 }
-			}
-		});
-	}
+	// 카드 애니메이션
+	const cards = gsap.utils.toArray(".card_wrapper");
+	const totalCards = cards.length;
 
-	// 포트폴리오 — 원형 회전 휠(큰 원 둘레에 카드 분포, 회전은 CSS가 담당)
-	(function(){
-		var wheel = document.getElementById('pfWheel');
-		if(!wheel) return;
-		var base = Array.prototype.slice.call(wheel.querySelectorAll('.pf-card'));
-		// 카드 복제(8→16)로 원에 촘촘히 분포 → 양옆 기울기 완만
-		base.forEach(function(c){ wheel.appendChild(c.cloneNode(true)); });
-		var all = wheel.querySelectorAll('.pf-card');
-		var n = all.length, step = 360 / n;
-		all.forEach(function(c, i){ c.style.setProperty('--a', (i*step) + 'deg'); });
-	})();
+	// ✅ 뷰포트에 따라 end 값 설정
+	const isMobile = window.matchMedia("(max-width: 768px)").matches;
+	const scrollEnd = isMobile ? `+=${totalCards * 120}%` : `+=${totalCards * 50}%`;
+
+	// 초기 상태 설정
+	gsap.set(cards, { yPercent: 100, scale: 1, filter: "blur(0px)" });
+	gsap.set(cards[0], { yPercent: 0 });
+
+	// 타임라인 생성
+	const tl = gsap.timeline({
+	scrollTrigger: {
+		trigger: ".card_list_wrapper",
+		start: "center center",
+		end: scrollEnd,
+		scrub: 1,
+		pin: true,
+		// markers: true,
+		snap: {
+		snapTo: (progress) => {
+			const sections = totalCards - 1;
+			return Math.round(progress * sections) / sections;
+		},
+		duration: { min: 0.3, max: 0.6 },
+		delay: 0.2,
+		ease: "power1.inOut"
+		}
+	}
+	});
+
+	// 카드 전환 타임라인 구성
+	for (let i = 0; i < totalCards - 1; i++) {
+	tl.to(cards[i], {
+		scale: 0.8,
+		filter: "blur(5px)",
+		ease: "none",
+		duration: 1
+	}, `+=0.2`) // 전환 간격 확보
+
+	.to(cards[i + 1], {
+		yPercent: 0,
+		opacity: 1,
+		ease: "none",
+		duration: 1
+	}, `-=${0.6}`); // 살짝 겹쳐서 부드럽게 연결
+	}
 
 	/*
 	| ----------------------------------------------------------------------------------------
@@ -726,8 +745,8 @@ const myTimeline = gsap.timeline({
 		scale: 1, 
 		duration: 0.3, 
 		ease: "power2.out",
-		onComplete: () => document.querySelector(".section4 .circle.ani_items1")?.classList.add("on"),
-		onReverseComplete: () => document.querySelector(".section4 .circle.ani_items1")?.classList.remove("on")
+		onComplete: () => document.querySelector(".section4 .circle.ani_items1").classList.add("on"),
+		onReverseComplete: () => document.querySelector(".section4 .circle.ani_items1").classList.remove("on")
 	  }
 	)
 	.fromTo(".section4 .circle-wrap > strong.ani_items1",
@@ -749,7 +768,6 @@ const myTimeline = gsap.timeline({
 	| section5 애니메이션 함수
 	| ----------------------------------------------------------------------------------------
 	*/
-	if (document.querySelector('.section5')) {
 	var progTotal1 = $('.solution-swiper .swiper-slide').length;
 
 	var solutionSwiper = new Swiper(".solution-swiper", {
@@ -830,7 +848,6 @@ const myTimeline = gsap.timeline({
 			solutionSwiper.autoplay.stop();
 		}
 	});
-	} // /section5 guard
 
 	/*
 	| ----------------------------------------------------------------------------------------
@@ -1021,7 +1038,7 @@ const myTimeline = gsap.timeline({
 		section6resize = true;
 	}
 
-	if (document.querySelector('.section6')) section6init();
+	section6init();
 
 	// 커서
 	$(window).mousemove(function (event) {
@@ -1165,7 +1182,7 @@ const myTimeline = gsap.timeline({
 		y: 50 
 	});
 
-	if(window.innerWidth > 1024 && document.querySelector(".section8 .story-list .story-item:last-child")) {
+	if(window.innerWidth > 1024) {
 		// section8이 top에 도달하면 고정되고 story-list만 위로 올라가는 애니메이션
 		const lastItem = document.querySelector(".section8 .story-list .story-item:last-child");
 		const titArea = document.querySelector(".section8 .tit-area");
