@@ -126,9 +126,18 @@
     var burger = $('#burger'), nav = $('#nav');
     burger.addEventListener('click', function () { nav.classList.toggle('is-open'); document.body.classList.toggle('menu-open'); });
     $$('#nav a').forEach(function (a) { a.addEventListener('click', function () { nav.classList.remove('is-open'); document.body.classList.remove('menu-open'); }); });
+    function runTimeline(tl) {
+      var steps = $$('.tstep', tl), fill = $('#timelineFill'), n = steps.length;
+      steps.forEach(function (s, i) {
+        setTimeout(function () {
+          s.classList.add('is-on');
+          if (fill) fill.style.width = (n > 1 ? (i / (n - 1)) * 100 : 100) + '%';
+        }, 250 + i * 420);
+      });
+    }
     var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (!e.isIntersecting) return;
       e.target.classList.add('is-in');
-      if (e.target.id === 'timeline') { var f = $('#timelineFill'); if (f) { f.style.width = '100%'; f.style.height = '100%'; } }
+      if (e.target.id === 'timeline') runTimeline(e.target);
       io.unobserve(e.target); }); }, { threshold: .15 });
     $$('.reveal, #timeline').forEach(function (el) { io.observe(el); });
   })();
