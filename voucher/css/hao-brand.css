@@ -449,3 +449,32 @@ input[type="text"], input[type="tel"], input[type="email"], textarea { cursor: t
 #main .section2 .cards-arr::before{ content:''; width:12px; height:12px; border-top:2.5px solid #241a14; border-right:2.5px solid #241a14; }
 #main .section2 .cards-prev::before{ transform:rotate(-135deg); margin-left:5px; }
 #main .section2 .cards-next::before{ transform:rotate(45deg); margin-right:5px; }
+
+/* ── section2 배경: CI 오렌지 그라데이션 울렁임(2겹 블롭, 서로 다른 리듬) ── */
+#main .section2{ position:relative; overflow:hidden; }
+#main .section2 > .section-body{ position:relative; z-index:1; }
+#main .section2::before,
+#main .section2::after{
+  content:""; position:absolute; inset:-25%; z-index:0; pointer-events:none; will-change:transform;
+  background:
+    radial-gradient(38% 38% at 22% 32%, rgba(255,142,61,.30), transparent 62%),
+    radial-gradient(42% 42% at 78% 24%, rgba(232,56,23,.22), transparent 62%),
+    radial-gradient(46% 46% at 62% 82%, rgba(255,177,77,.28), transparent 64%),
+    radial-gradient(40% 40% at 18% 80%, rgba(242,91,53,.20), transparent 62%);
+  filter:blur(58px);
+}
+#main .section2::before{ animation:s2flowA 16s ease-in-out infinite alternate; }
+#main .section2::after{ animation:s2flowB 23s ease-in-out infinite alternate; opacity:.7; }
+@keyframes s2flowA{
+  0%{ transform:translate(-3%,0) scale(1) rotate(0deg); }
+  50%{ transform:translate(3%,-3%) scale(1.14) rotate(5deg); }
+  100%{ transform:translate(-2%,3%) scale(1.07) rotate(-5deg); }
+}
+@keyframes s2flowB{
+  0%{ transform:translate(2%,2%) scale(1.08) rotate(0deg); }
+  50%{ transform:translate(-3%,-2%) scale(1) rotate(-6deg); }
+  100%{ transform:translate(3%,-3%) scale(1.16) rotate(6deg); }
+}
+@media (prefers-reduced-motion:reduce){
+  #main .section2::before, #main .section2::after{ animation:none; }
+}
