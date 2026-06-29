@@ -763,3 +763,11 @@ html.lenis,html.lenis body{height:auto}
 .tstep h3{font-size:1.2rem;font-weight:700;margin-bottom:8px}
 .tstep p{color:var(--muted);font-size:.94rem}
 @media(max-width:1000px){.timeline{grid-template-columns:repeat(2,1fr);gap:36px 24px;padding-top:10px}.timeline__line{display:none}.tstep::before{display:none}}
+
+/* ===== 후기 마퀴 (자동 흐름 + 호버 일시정지) ===== */
+.tmarquee{position:relative;margin-top:46px;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.tmarquee__track{display:flex;gap:22px;width:max-content;padding:10px 2px;animation:tmScroll 52s linear infinite}
+.tmarquee:hover .tmarquee__track{animation-play-state:paused}
+@keyframes tmScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.tmarquee .tcard{width:clamp(296px,27vw,352px);flex:none}
+@media(prefers-reduced-motion:reduce){.tmarquee__track{animation:none}}

@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://cdn.jsdelivr.net" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Fragment+Mono&display=swap" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.css" />
-  <link rel="stylesheet" href="css/cs.css?v=56" />
+  <link rel="stylesheet" href="css/cs.css?v=57" />
   <script type="importmap">
   { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.171.0/build/three.module.js" } }
   </script>
@@ -325,10 +325,8 @@
         <span class="eyebrow">CLIENT VOICE</span>
         <h2 class="sec__title">함께한 담당자들의 이야기</h2>
       </div>
-      <div class="tgrid">
-        <div class="tcard reveal"><div class="tstars">★★★★★</div><p>“리뉴얼 후 검색 유입이 눈에 띄게 늘었어요. 만들 때부터 SEO를 같이 잡아주신 게 컸습니다.”</p><footer><span class="tcard__av">병</span><div><cite>○○병원</cite><small>홈페이지 · CMS</small></div></footer></div>
-        <div class="tcard reveal"><div class="tstars">★★★★★</div><p>“ChatGPT에 우리 브랜드가 인용되기 시작했어요. AEO가 뭔지 막막했는데 구조까지 잡아주셨습니다.”</p><footer><span class="tcard__av">뷰</span><div><cite>뷰티 브랜드</cite><small>AEO · 콘텐츠 설계</small></div></footer></div>
-        <div class="tcard reveal"><div class="tstars">★★★★★</div><p>“앱·홈페이지·검색까지 한 팀에서 끝나니 소통이 빨랐어요. 일정도 정확했습니다.”</p><footer><span class="tcard__av">커</span><div><cite>커머스 기업</cite><small>앱 · 쇼핑몰</small></div></footer></div>
+      <div class="tmarquee" aria-label="고객 후기">
+        <div class="tmarquee__track" id="tmTrack"></div>
       </div>
     </section>
 
@@ -524,6 +522,24 @@
     /* reveal */
     var io=new IntersectionObserver(function(es){es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('is-in'); io.unobserve(e.target); } });},{threshold:.12});
     $$('.reveal').forEach(function(el){ io.observe(el); });
+
+    /* 후기 마퀴 (자동 흐름) */
+    var REVIEWS=[
+      {av:'병',name:'○○병원',meta:'홈페이지 · CMS',q:'리뉴얼 후 검색 유입이 눈에 띄게 늘었어요. 만들 때부터 SEO를 같이 잡아주신 게 컸습니다.'},
+      {av:'뷰',name:'뷰티 브랜드',meta:'AEO · 콘텐츠 설계',q:'ChatGPT에 우리 브랜드가 인용되기 시작했어요. AEO가 뭔지 막막했는데 구조까지 잡아주셨습니다.'},
+      {av:'커',name:'커머스 기업',meta:'앱 · 쇼핑몰',q:'앱·홈페이지·검색까지 한 팀에서 끝나니 소통이 빨랐어요. 일정도 정확했습니다.'},
+      {av:'제',name:'제조 기업',meta:'국·영문 홈페이지',q:'국문·영문 사이트를 한 번에 정리했어요. 해외 바이어 문의가 늘었습니다.'},
+      {av:'스',name:'스타트업',meta:'랜딩 · 전환',q:'랜딩페이지 전환율이 확 올랐어요. 데이터를 보고 계속 개선해 주십니다.'},
+      {av:'교',name:'교육 기관',meta:'리뉴얼 · 관리자',q:'관리자에서 직접 공지·자료를 올릴 수 있어 운영이 훨씬 편해졌습니다.'},
+      {av:'F',name:'F&B 브랜드',meta:'쇼핑몰 · 상세',q:'상세페이지까지 톤을 맞춰주셔서 브랜드가 한결 정돈돼 보입니다.'},
+      {av:'의',name:'의료 그룹',meta:'다지점 홈페이지',q:'여러 지점을 하나의 구조로 묶어주셔서 관리가 단순해졌어요.'}
+    ];
+    var tmTrack=$('#tmTrack');
+    if(tmTrack){
+      function tcardHTML(r){ return '<div class="tcard"><div class="tstars">★★★★★</div><p>“'+r.q+'”</p>'+
+        '<footer><span class="tcard__av">'+r.av+'</span><div><cite>'+r.name+'</cite><small>'+r.meta+'</small></div></footer></div>'; }
+      tmTrack.innerHTML = REVIEWS.concat(REVIEWS).map(tcardHTML).join('');
+    }
 
     /* hero word rotator */
     (function(){
