@@ -603,11 +603,7 @@ $(function(){
 		y: 50,
 		duration: 0.5,
 		ease: 'power2.out',
-	}).from('.section2 .card-cont-wrap', {
-		opacity: 0,
-		duration: 1,
-		ease: 'power2.out',
-		onComplete: function() { 
+		onComplete: function() {
 			startTextAnimation('.section2');
 		}
 	});
