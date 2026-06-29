@@ -88,11 +88,14 @@
       var phone = vwrap.querySelector('.vphone');
       if (phone) {
         var nav = phone.querySelector('.vphone__nav'),
-            cells = [].slice.call(phone.querySelectorAll('.vphone__cells span'));
+            banner = phone.querySelector('.vphone__banner'),
+            tiles = [].slice.call(phone.querySelectorAll('.vphone__tile'));
         gsap.set(nav, { opacity: 0, y: -12 });
-        gsap.set(cells, { opacity: 0, scale: .86, transformOrigin: '50% 50%' });
+        if (banner) gsap.set(banner, { opacity: 0, y: 14 });
+        gsap.set(tiles, { opacity: 0, scale: .84, transformOrigin: '50% 50%' });
         tl.to(nav, { opacity: 1, y: 0, duration: .5, ease: 'power3.out' }, POS);
-        tl.to(cells, { opacity: 1, scale: 1, duration: .5, stagger: .1, ease: 'back.out(1.6)' }, POS + 0.3);
+        if (banner) tl.to(banner, { opacity: 1, y: 0, duration: .5, ease: 'power3.out' }, POS + 0.25);
+        tl.to(tiles, { opacity: 1, scale: 1, duration: .5, stagger: .09, ease: 'back.out(1.6)' }, POS + 0.45);
         return;
       }
     }

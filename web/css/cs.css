@@ -225,7 +225,7 @@ html.lenis,html.lenis body{height:auto}
 .show.gsap-on .show__item.in .show__big{animation:none!important}
 .show.gsap-on .show__visual{will-change:transform,opacity}
 /* GSAP가 카드 내부 콘텐츠를 직접 제어 → CSS 키프레임 등장 비활성(중복 방지) */
-.show.gsap-on .vweb__hero>*,.show.gsap-on .vweb__card,.show.gsap-on .vserp>*,.show.gsap-on .vserp__rank,.show.gsap-on .vchat>*,.show.gsap-on .vphone__cells span,.show.gsap-on .vphone__nav{animation:none!important}
+.show.gsap-on .vweb__hero>*,.show.gsap-on .vweb__card,.show.gsap-on .vserp>*,.show.gsap-on .vserp__rank,.show.gsap-on .vchat>*,.show.gsap-on .vphone__banner,.show.gsap-on .vphone__tile,.show.gsap-on .vphone__nav{animation:none!important}
 .vchat__a .w{display:inline-block;will-change:transform,filter,opacity}
 .show__head{text-align:center;max-width:1040px;margin:0 auto clamp(40px,7vh,90px)}
 .show__title{margin-top:18px;font-size:clamp(2.1rem,4.8vw,4rem);font-weight:800;letter-spacing:-.04em;line-height:1.14;word-break:keep-all}
@@ -326,6 +326,14 @@ html.lenis,html.lenis body{height:auto}
 .vphone__cells{padding:14px;display:grid;gap:10px}
 .vphone__cells span{height:46px;border-radius:11px;background:var(--bg-soft)}
 .vphone__cells span.lg{height:90px;background:linear-gradient(135deg,rgba(255,142,61,.2),rgba(232,56,23,.1));border:1px solid var(--line-2)}
+/* 앱 홈 화면 (혜택 배너 + 메뉴 타일) */
+.vphone__app{padding:13px;display:flex;flex-direction:column;gap:11px}
+.vphone__banner{padding:14px;border-radius:14px;border:1px solid var(--line-2);background:linear-gradient(135deg,rgba(255,142,61,.2),rgba(232,56,23,.1));display:flex;flex-direction:column;gap:4px}
+.vphone__banner b{font-size:.82rem;font-weight:800;color:var(--ink)}
+.vphone__banner u{font-size:.68rem;color:var(--muted);text-decoration:none}
+.vphone__grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.vphone__tile{display:flex;flex-direction:column;align-items:flex-start;gap:9px;padding:13px;border-radius:13px;border:1px solid var(--line-2);background:#fff;font-size:.78rem;font-weight:700;color:var(--ink)}
+.vphone__tile i{width:26px;height:26px;border-radius:8px;background:var(--grad);box-shadow:0 5px 12px -5px rgba(232,56,23,.5)}
 .show__item.in .vphone__cells span{animation:vpop .5s var(--ease) both}
 .show__item.in .vphone__cells span:nth-child(1){animation-delay:.3s}.show__item.in .vphone__cells span:nth-child(2){animation-delay:.42s}.show__item.in .vphone__cells span:nth-child(3){animation-delay:.54s}.show__item.in .vphone__cells span:nth-child(4){animation-delay:.66s}
 @keyframes vpop{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:none}}
