@@ -83,8 +83,12 @@
     'hs07.jpg':'20240301','hs19.jpg':'20240301','hs20.jpg':'20240301','hs21.jpg':'20240301','hs22.jpg':'20240301','hs23.jpg':'20240301','hs24.jpg':'20240301'
   };
   function dateOf(f) { return DATES[f] || '20240601'; }   // 상세페이지 등 미지정은 중간값
+  // 이번에 새로 추가(최근 등록)한 작업 — 맨 위로
+  var NEWADDED = {};
+  for (var i = 33; i <= 53; i++) NEWADDED['hs' + i + '.jpg'] = 1;
+  function regKey(f) { return (NEWADDED[f] ? '1' : '0') + dateOf(f); }  // 최근 추가분 우선, 그 안에서 촬영일 최신순
   window.HAO_WORKS = load();
-  window.HAO_WORKS.sort(function (a, b) { return dateOf(b.f).localeCompare(dateOf(a.f)); });  // 최신 등록일 먼저
+  window.HAO_WORKS.sort(function (a, b) { return regKey(b.f).localeCompare(regKey(a.f)); });
   window.HAO_WORKS_DEFAULT = DEFAULT_WORKS;
   window.HAO_imgPath = function (f) { return 'assets/haostudio/' + f; };
 
