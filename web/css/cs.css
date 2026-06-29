@@ -120,9 +120,8 @@ em{font-style:normal}
 .hero2__glow--b{right:-11%;bottom:-18%;background:radial-gradient(circle,rgba(232,56,23,.9),transparent 64%);animation:heroGlowB 19s ease-in-out infinite alternate}
 @keyframes heroGlowA{0%{transform:translate3d(0,0,0) scale(1)}100%{transform:translate3d(20%,14%,0) scale(1.28)}}
 @keyframes heroGlowB{0%{transform:translate3d(0,0,0) scale(1.12)}100%{transform:translate3d(-16%,-12%,0) scale(.88)}}
-.holo3d{display:none}
-/* ── 풍선 히어로 (2D 캔버스 공) ── */
-.balls2d{position:absolute;inset:0;z-index:2;width:100%;height:100%;pointer-events:none}
+.holo3d{position:absolute;inset:0;z-index:2;width:100%;height:100%;pointer-events:none;display:block}
+/* ── eimok 풍선 히어로 오버라이드 ── */
 .hero2 .hero2__media,.hero2 .hero2__glow,.hero2 .hero2__grid,.hero2 .hero2__overlay{display:none}
 .hero2 .hero2__card{background:radial-gradient(120% 92% at 50% 30%,#1c2a4d 0%,#0c1018 56%,#06080f 100%)}
 .hero2__copy--eimok .hero2__eg--plain{border:0;background:none;-webkit-backdrop-filter:none;backdrop-filter:none;padding:0;font-size:.92rem;letter-spacing:.34em;opacity:.92;font-weight:600;color:#fff}
