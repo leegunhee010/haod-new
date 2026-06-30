@@ -483,15 +483,27 @@
     // 푸터 등장
     if (window.gsap && window.ScrollTrigger) { gsap.from('.footer',{scrollTrigger:{trigger:'.footer',start:'top 80%',toggleActions:'play none none reverse'},opacity:0,y:80,duration:.9,ease:'power2.out'}); }
 
-    // 데모 폼
+    // 상담 폼 → Supabase 저장
     (function(){
         var form = document.getElementById('quoteForm');
-        if(form){ form.addEventListener('submit', function(e){ e.preventDefault();
+        if(!form) return;
+        form.addEventListener('submit', function(e){
+            e.preventDefault();
             var note = document.getElementById('formNote');
             if(!form.name.value.trim() || !form.phone.value.trim()){ note.textContent='이름과 연락처를 입력해주세요.'; return; }
-            note.textContent='상담 신청이 접수되었습니다. 빠르게 연락드리겠습니다. (데모)'; form.reset();
-        }); }
+            var sbtn = form.querySelector('button[type=submit]'); if(sbtn) sbtn.disabled = true; note.textContent='접수 중…';
+            var done = function(msg){ note.textContent = msg; };
+            var typeEl = document.getElementById('type'), msgEl = document.getElementById('message');
+            if(window.HAO && HAO.saveInquiry){
+                HAO.saveInquiry({ name: form.name.value, phone: form.phone.value, type: typeEl ? typeEl.value : '', message: msgEl ? msgEl.value : '' })
+                    .then(function(){ done('상담 신청이 접수되었습니다. 빠르게 연락드리겠습니다.'); form.reset(); })
+                    .catch(function(){ done('접수 중 오류가 발생했습니다. 전화로 문의해 주세요.'); })
+                    .then(function(){ if(sbtn) sbtn.disabled = false; });
+            } else { done('상담 신청이 접수되었습니다. 빠르게 연락드리겠습니다.'); form.reset(); if(sbtn) sbtn.disabled = false; }
+        });
     })();
 </script>
+<script src="js/data.js?v=1"></script>
+<script src="js/boot.js?v=1"></script>
 </body>
 </html>

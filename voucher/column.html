@@ -121,6 +121,8 @@
     </div>
   </footer>
 
+  <script src="js/data.js?v=1"></script>
+  <script src="js/boot.js?v=1"></script>
   <script>
   (function () {
     var $ = function (s, c) { return (c || document).querySelector(s); };
@@ -149,14 +151,20 @@
         body: ['한 제조 수출기업은 수출바우처를 활용해 영문·중문 다국어 카탈로그를 제작했습니다. 기존에는 국문 자료를 급히 번역해 사용하던 상황이었습니다.', '업종 특성과 해외 바이어의 관점을 반영해 구성을 새로 잡고, 인쇄 감리까지 진행했습니다. 상담회에서 자료에 대한 반응이 달라졌다는 피드백을 받았습니다.'] }
     ];
 
+    if (window.HAO && HAO.getPosts) posts = HAO.getPosts();
+
     var listView = $('#listView'), postView = $('#postView'), gallery = $('#galleryBoard');
-    gallery.innerHTML = posts.map(function (p) {
-      return '<article class="gcard" data-id="' + p.id + '">' +
-        '<div class="gcard__thumb"><img src="' + p.img + '" alt="" loading="lazy" />' +
-        (p.isNew ? '<span class="gcard__badge">NEW</span>' : '') + '</div>' +
-        '<div class="gcard__body"><h3>' + p.title + '</h3><p>' + p.summary + '</p>' +
-        '<span class="gcard__date">' + p.date + '</span></div></article>';
-    }).join('');
+    function pimg(f) { return (window.HAO && HAO.imgSrc) ? HAO.imgSrc(f) : f; }
+    function buildGallery() {
+      gallery.innerHTML = posts.map(function (p) {
+        return '<article class="gcard" data-id="' + p.id + '">' +
+          '<div class="gcard__thumb"><img src="' + pimg(p.img) + '" alt="" loading="lazy" />' +
+          (p.isNew ? '<span class="gcard__badge">NEW</span>' : '') + '</div>' +
+          '<div class="gcard__body"><h3>' + p.title + '</h3><p>' + p.summary + '</p>' +
+          '<span class="gcard__date">' + p.date + '</span></div></article>';
+      }).join('');
+    }
+    buildGallery();
     gallery.addEventListener('click', function (e) {
       var card = e.target.closest('.gcard'); if (!card) return;
       location.hash = 'post-' + card.getAttribute('data-id');
@@ -170,7 +178,7 @@
       document.title = post.title + ' | 정부사업지원센터';
       $('#postTitle').textContent = post.title;
       $('#postDate').textContent = post.date;
-      $('#postImg').src = post.img;
+      $('#postImg').src = pimg(post.img);
       $('#postBody').innerHTML = post.body.map(function (t) { return '<p>' + t + '</p>'; }).join('');
       var idx = posts.indexOf(post), prev = posts[idx + 1], next = posts[idx - 1];
       var prevEl = $('#postPrev'), nextEl = $('#postNext');
@@ -181,13 +189,23 @@
       window.scrollTo(0, 0);
     }
     addEventListener('hashchange', render); render();
+    if (window.HAO && HAO.ready && HAO.ready.then) HAO.ready.then(function () { posts = HAO.getPosts(); buildGallery(); render(); });
 
     var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } }); }, { threshold: .15 });
     $$('.reveal').forEach(function (el) { io.observe(el); });
     var form = $('#quoteForm');
-    if (form) form.addEventListener('submit', function (e) { e.preventDefault(); var note = $('#formNote');
+    if (form) form.addEventListener('submit', function (e) {
+      e.preventDefault(); var note = $('#formNote');
       if (!form.name.value.trim() || !form.phone.value.trim()) { note.textContent = '이름과 연락처를 입력해주세요.'; return; }
-      note.textContent = '상담 신청이 접수되었습니다. 빠르게 연락드리겠습니다. (데모)'; form.reset(); });
+      var sbtn = form.querySelector('button[type=submit]'); if (sbtn) sbtn.disabled = true; note.textContent = '접수 중…';
+      var done = function (msg) { note.textContent = msg; };
+      if (window.HAO && HAO.saveInquiry) {
+        HAO.saveInquiry({ name: form.name.value, phone: form.phone.value, type: $('#type') ? $('#type').value : '', message: $('#message') ? $('#message').value : '' })
+          .then(function () { done('상담 신청이 접수되었습니다. 빠르게 연락드리겠습니다.'); form.reset(); })
+          .catch(function () { done('접수 중 오류가 발생했습니다. 전화로 문의해 주세요.'); })
+          .then(function () { if (sbtn) sbtn.disabled = false; });
+      } else { done('상담 신청이 접수되었습니다. 빠르게 연락드리겠습니다.'); form.reset(); if (sbtn) sbtn.disabled = false; }
+    });
   })();
   </script>
 </body>
