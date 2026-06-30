@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>관리자 | 마케팅센터 — 하오디자인</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+  <style>
+    :root { --ink:#17150f; --muted:#6e6a60; --line:rgba(23,21,15,.12); --accent:#e83817; --bg:#f6f4f0; --ease:cubic-bezier(.16,1,.3,1); }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body { font-family:"Pretendard",system-ui,sans-serif; background:var(--bg); color:var(--ink); line-height:1.6; letter-spacing:-.01em; -webkit-font-smoothing:antialiased; }
+    a { color:inherit; text-decoration:none; }
+    button { font-family:inherit; cursor:pointer; }
+    [hidden] { display:none !important; }
+    img { max-width:100%; }
+
+    .login-wrap { min-height:100vh; display:flex; align-items:center; justify-content:center; padding:24px; }
+    .login { width:100%; max-width:400px; background:#fff; border:1px solid var(--line); border-radius:18px; padding:42px 38px; text-align:center; box-shadow:0 30px 70px -40px rgba(23,21,15,.35); }
+    .login img { height:34px; margin:0 auto 14px; }
+    .login h1 { font-size:1.05rem; font-weight:800; margin-bottom:26px; color:var(--muted); letter-spacing:.04em; }
+    .login label { display:block; text-align:left; font-size:.78rem; font-weight:700; color:var(--muted); margin:0 0 6px 2px; }
+    .login input { width:100%; background:var(--bg); border:1.5px solid transparent; border-radius:12px; padding:13px 16px; font-family:inherit; font-size:.95rem; margin-bottom:14px; }
+    .login input:focus { outline:none; border-color:var(--accent); background:#fff; }
+    .login .err { color:var(--accent); font-size:.85rem; min-height:1.2em; margin-bottom:10px; }
+    .login button { width:100%; background:var(--accent); color:#fff; border:0; border-radius:12px; padding:14px; font-size:.98rem; font-weight:800; transition:background .25s; }
+    .login button:hover { background:var(--ink); }
+    .login .hint { margin-top:18px; font-size:.78rem; color:var(--muted); line-height:1.6; }
+
+    .shell { display:grid; grid-template-columns:230px 1fr; min-height:100vh; }
+    .side { background:#14130f; color:rgba(244,241,234,.85); padding:26px 0; display:flex; flex-direction:column; position:sticky; top:0; height:100vh; }
+    .side__brand { display:flex; align-items:center; gap:10px; padding:0 22px 22px; border-bottom:1px solid rgba(255,255,255,.08); }
+    .side__brand img { height:24px; }
+    .side__brand b { font-size:.8rem; letter-spacing:.1em; color:rgba(244,241,234,.6); }
+    .side__menu { flex:1; padding:14px 12px; display:flex; flex-direction:column; gap:2px; overflow-y:auto; }
+    .side__menu button { display:flex; align-items:center; gap:10px; width:100%; text-align:left; background:none; border:0; color:rgba(244,241,234,.65); font-size:.92rem; font-weight:600; padding:11px 14px; border-radius:10px; transition:background .2s,color .2s; }
+    .side__menu button:hover { background:rgba(255,255,255,.06); color:#fff; }
+    .side__menu button.is-active { background:var(--accent); color:#fff; }
+    .side__menu .cnt { margin-left:auto; font-size:.72rem; background:rgba(255,255,255,.14); padding:2px 8px; border-radius:999px; }
+    .side__foot { padding:14px 22px 0; border-top:1px solid rgba(255,255,255,.08); display:grid; gap:8px; }
+    .side__foot a, .side__foot button { display:block; width:100%; text-align:left; background:none; border:0; color:rgba(244,241,234,.55); font-size:.85rem; font-weight:600; padding:4px 0; transition:color .2s; }
+    .side__foot a:hover, .side__foot button:hover { color:var(--accent); }
+
+    .main { padding:34px clamp(20px,3.5vw,48px); max-width:1100px; }
+    .main__head { display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+    .main__head h1 { font-size:1.45rem; font-weight:800; letter-spacing:-.02em; }
+    .panel { background:#fff; border:1px solid var(--line); border-radius:16px; padding:26px; margin-bottom:18px; }
+    .panel h2 { font-size:1rem; font-weight:800; margin-bottom:16px; }
+    .note { font-size:.84rem; color:var(--muted); line-height:1.65; }
+    .note b { color:var(--accent); }
+
+    .btn { font-size:.82rem; font-weight:700; padding:8px 16px; border-radius:999px; border:1px solid var(--line); background:#fff; transition:.2s; }
+    .btn:hover { border-color:var(--accent); color:var(--accent); }
+    .btn--primary { background:var(--accent); border-color:var(--accent); color:#fff; }
+    .btn--primary:hover { background:var(--ink); border-color:var(--ink); color:#fff; }
+    .btn--danger:hover { border-color:#d33; color:#d33; }
+    .frm { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+    .frm .full { grid-column:1 / -1; }
+    .frm label { display:block; font-size:.76rem; font-weight:700; color:var(--muted); margin-bottom:5px; }
+    .frm input, .frm select, .frm textarea { width:100%; background:var(--bg); border:1.5px solid transparent; border-radius:10px; padding:11px 14px; font-family:inherit; font-size:.92rem; resize:vertical; }
+    .frm input:focus, .frm select:focus, .frm textarea:focus { outline:none; border-color:var(--accent); background:#fff; }
+    .frm .actions { display:flex; gap:8px; justify-content:flex-end; }
+
+    .stats { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+    .stat { background:#fff; border:1px solid var(--line); border-radius:14px; padding:20px; }
+    .stat strong { display:block; font-size:1.9rem; font-weight:800; color:var(--accent); }
+    .stat span { color:var(--muted); font-size:.85rem; }
+
+    .row { display:flex; align-items:center; gap:14px; padding:12px 4px; border-bottom:1px solid var(--line); }
+    .row img { width:62px; height:46px; object-fit:cover; border-radius:6px; flex:0 0 auto; background:var(--bg); }
+    .row .t { flex:1; min-width:0; }
+    .row .t b { display:block; font-size:.93rem; }
+    .row .t small { color:var(--muted); font-size:.79rem; }
+    .row .ops { display:flex; gap:6px; flex:0 0 auto; }
+    .empty { padding:32px 0; text-align:center; color:var(--muted); font-size:.88rem; }
+    .tagpill { display:inline-block; font-size:.72rem; font-weight:700; color:var(--muted); background:var(--bg); border-radius:999px; padding:2px 9px; }
+
+    .ptnrow { display:grid; grid-template-columns:1fr 1.4fr auto; gap:10px; align-items:center; margin-bottom:10px; }
+    .ptnrow input { width:100%; background:var(--bg); border:1.5px solid transparent; border-radius:10px; padding:10px 13px; font-family:inherit; font-size:.9rem; }
+    .ptnrow input:focus { outline:none; border-color:var(--accent); background:#fff; }
+
+    .hero-card { padding:20px; }
+    .hero-card h3 { font-size:.92rem; font-weight:800; margin-bottom:12px; }
+    .toast { position:fixed; left:50%; bottom:28px; transform:translateX(-50%) translateY(20px); background:var(--ink); color:#fff; padding:13px 26px; border-radius:999px; font-weight:700; font-size:.9rem; opacity:0; pointer-events:none; transition:opacity .3s, transform .3s var(--ease); z-index:50; }
+    .toast.show { opacity:1; transform:translateX(-50%) translateY(0); }
+    .seochk { font-size:.82rem; line-height:1.8; }
+    .seochk .ok { color:#1a8a4a; } .seochk .warn { color:var(--accent); }
+    @media (max-width:760px){ .shell{ grid-template-columns:1fr; } .side{ position:static; height:auto; } .stats{ grid-template-columns:repeat(2,1fr); } .frm{ grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <!-- 로그인 -->
+  <div id="loginView">
+    <div class="login-wrap">
+      <form class="login" id="loginForm">
+        <img src="assets/img/logo.png" alt="HAO MARKETING" />
+        <h1>MARKETING ADMIN</h1>
+        <label for="loginId">아이디</label>
+        <input type="text" id="loginId" autocomplete="username" />
+        <label for="loginPw">비밀번호</label>
+        <input type="password" id="loginPw" autocomplete="current-password" />
+        <p class="err" id="loginErr"></p>
+        <button type="submit">로그인</button>
+        <p class="hint">마케팅센터 콘텐츠 관리자입니다.</p>
+      </form>
+    </div>
+  </div>
+
+  <!-- 어드민 -->
+  <div id="adminView" hidden>
+    <div class="shell">
+      <aside class="side">
+        <div class="side__brand"><img src="assets/img/logo.png" alt="" /><b>MARKETING</b></div>
+        <nav class="side__menu" id="sideMenu">
+          <button class="is-active" data-tab="dash">대시보드</button>
+          <button data-tab="hero">히어로</button>
+          <button data-tab="copy">카피 수정</button>
+          <button data-tab="works">작업 사례 <span class="cnt" id="cntWorks">0</span></button>
+          <button data-tab="posts">칼럼 <span class="cnt" id="cntPosts">0</span></button>
+          <button data-tab="qna">Q&amp;A <span class="cnt" id="cntQna">0</span></button>
+          <button data-tab="partners">파트너 <span class="cnt" id="cntPtn">0</span></button>
+          <button data-tab="inq">마케팅 문의 <span class="cnt" id="cntInq">0</span></button>
+          <button data-tab="media">로고</button>
+          <button data-tab="seo">SEO 관리</button>
+          <button data-tab="set">사이트 설정</button>
+          <button data-tab="acc">관리자 계정</button>
+        </nav>
+        <div class="side__foot">
+          <a href="index.html" target="_blank">사이트 보기 ↗</a>
+          <button id="logoutBtn">로그아웃</button>
+        </div>
+      </aside>
+
+      <main class="main">
+        <!-- 대시보드 -->
+        <section id="tab-dash">
+          <div class="main__head"><h1>대시보드</h1></div>
+          <div class="stats">
+            <div class="stat"><strong id="stWorks">0</strong><span>작업 사례</span></div>
+            <div class="stat"><strong id="stPosts">0</strong><span>칼럼 글</span></div>
+            <div class="stat"><strong id="stQna">0</strong><span>Q&amp;A</span></div>
+            <div class="stat"><strong id="stInq">0</strong><span>마케팅 문의</span></div>
+          </div>
+          <div class="panel" style="margin-top:18px">
+            <h2>안내</h2>
+            <p class="note">
+              저장하면 <b>Supabase 서버에 기록되어 모든 방문자</b>에게 반영됩니다(이 브라우저에도 캐시).
+              다른 센터와 같은 서버를 쓰지만 마케팅센터 데이터는 <b>hm_ 키</b>로 분리되어 섞이지 않습니다.<br /><br />
+              <button class="btn btn--danger" id="resetBtn">모든 수정 내용 초기화</button>
+            </p>
+          </div>
+        </section>
+
+        <!-- 히어로 -->
+        <section id="tab-hero" hidden>
+          <div class="main__head"><h1>히어로</h1><button class="btn btn--primary" id="heroSaveBtn">저장</button></div>
+          <p class="note" style="margin-bottom:14px">메인 상단 히어로 문구입니다. 영문 2줄 + 한글 슬로건. (워드마크 ‘HAO’는 고정)</p>
+          <div class="panel">
+            <div class="frm" style="grid-template-columns:1fr">
+              <div><label>영문 1줄</label><input type="text" id="hLead1" /></div>
+              <div><label>영문 2줄</label><input type="text" id="hLead2" /></div>
+              <div><label>한글 슬로건</label><input type="text" id="hSub" /></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 카피 -->
+        <section id="tab-copy" hidden>
+          <div class="main__head"><h1>카피 수정</h1><button class="btn btn--primary" id="copySaveBtn">전체 저장</button></div>
+          <p class="note" style="margin-bottom:14px">페이지를 선택해 문구를 직접 수정합니다. <b>**단어**</b> 는 강조, 줄바꿈은 그대로 반영됩니다.</p>
+          <div class="panel">
+            <div class="frm" style="grid-template-columns:1fr"><div><label>페이지 선택</label><select id="copyPage"></select></div></div>
+            <div class="frm" id="copyFields" style="grid-template-columns:1fr;margin-top:12px"></div>
+          </div>
+        </section>
+
+        <!-- 작업 사례 -->
+        <section id="tab-works" hidden>
+          <div class="main__head"><h1>작업 사례</h1><button class="btn btn--primary" id="workAddBtn">+ 새 작업</button></div>
+          <p class="note" style="margin-bottom:14px">메인·Works 페이지에 노출됩니다(메인은 상단 8개). 위에 있을수록 먼저 노출됩니다.</p>
+          <div class="panel">
+            <div id="workList"></div>
+            <form class="frm" id="workForm" hidden style="margin-top:18px;padding-top:18px;border-top:2px solid var(--ink)">
+              <input type="hidden" id="wIdx" />
+              <div><label>제목 (작업명)</label><input type="text" id="wTitle" required /></div>
+              <div><label>카테고리</label>
+                <select id="wCat"><option>비주얼 리뉴얼</option><option>브랜드 콘텐츠</option><option>이커머스 디자인</option><option>패키지 디자인</option><option>편집 디자인</option><option>전시·부스</option></select>
+              </div>
+              <div><label>이미지 — 내 컴퓨터에서 업로드</label><input type="file" id="wFile" accept="image/*" /></div>
+              <div><label>또는 이미지 경로/URL</label><input type="text" id="wImgUrl" placeholder="../design/assets/work/work01.jpeg 또는 https://…" /></div>
+              <input type="hidden" id="wImgData" />
+              <div class="full"><img id="wPrev" alt="" style="max-width:200px;border-radius:8px;display:none" /></div>
+              <div class="full actions"><button type="button" class="btn" id="wCancel">취소</button><button type="submit" class="btn btn--primary">저장</button></div>
+            </form>
+          </div>
+        </section>
+
+        <!-- 칼럼 -->
+        <section id="tab-posts" hidden>
+          <div class="main__head"><h1>칼럼</h1><button class="btn btn--primary" id="postAddBtn">✚ 글쓰기</button></div>
+          <div class="panel" id="postListPanel">
+            <div class="frm" style="grid-template-columns:1fr;margin-bottom:14px"><input type="search" id="postSearch" placeholder="제목 · 요약으로 검색" /></div>
+            <div id="postList"></div>
+          </div>
+          <div class="panel" id="postEditPanel" hidden>
+            <h2 id="postFormTitle">글쓰기</h2>
+            <form class="frm" id="postForm">
+              <input type="hidden" id="pId" />
+              <input type="hidden" id="pImgData" />
+              <div class="full"><label>제목</label><input type="text" id="pTitle" required /></div>
+              <div><label>카테고리</label>
+                <select id="pCat"><option>브랜딩</option><option>이커머스</option><option>패키지</option><option>콘텐츠</option><option>전시</option><option>편집</option></select>
+              </div>
+              <div><label>날짜 (예: 2026.06.20)</label><input type="text" id="pDate" placeholder="2026.06.20" /></div>
+              <div class="full"><label>썸네일 업로드</label><input type="file" id="pFile" accept="image/*" /></div>
+              <div class="full"><label>또는 썸네일 경로/URL</label><input type="text" id="pImgUrl" placeholder="../design/assets/work/work01.jpeg 또는 https://…" /></div>
+              <div class="full"><img id="pPrev" alt="" style="max-width:180px;border-radius:8px;display:none" /></div>
+              <div class="full"><label>요약 (목록 카드 한 줄)</label><input type="text" id="pSummary" /></div>
+              <div class="full"><label>본문 (문단은 빈 줄로 구분)</label><textarea id="pBody" rows="10"></textarea></div>
+              <div class="full actions"><button type="button" class="btn" id="pCancel">← 목록으로</button><button type="submit" class="btn btn--primary">저장</button></div>
+            </form>
+          </div>
+        </section>
+
+        <!-- Q&A -->
+        <section id="tab-qna" hidden>
+          <div class="main__head"><h1>Q&amp;A</h1><button class="btn btn--primary" id="qnaAddBtn">+ 새 질문</button></div>
+          <div class="panel">
+            <div id="qnaList"></div>
+            <form class="frm" id="qnaForm" hidden style="margin-top:18px;padding-top:18px;border-top:2px solid var(--ink)">
+              <input type="hidden" id="qIdx" />
+              <div><label>카테고리</label>
+                <select id="qCat"><option>퍼포먼스 마케팅</option><option>IMC·브랜딩</option><option>콘텐츠 제작</option><option>운영·기타</option></select>
+              </div>
+              <div class="full"><label>질문</label><input type="text" id="qQ" required /></div>
+              <div class="full"><label>답변</label><textarea id="qA" rows="4" required></textarea></div>
+              <div class="full actions"><button type="button" class="btn" id="qCancel">취소</button><button type="submit" class="btn btn--primary">저장</button></div>
+            </form>
+          </div>
+        </section>
+
+        <!-- 파트너 -->
+        <section id="tab-partners" hidden>
+          <div class="main__head"><h1>파트너</h1><span><button class="btn" id="ptnAddBtn">+ 추가</button> <button class="btn btn--primary" id="ptnSaveBtn">저장</button></span></div>
+          <p class="note" style="margin-bottom:14px">메인 Power 섹션의 파트너 카드입니다. <b>브랜드명 + 설명</b> 텍스트로 표시됩니다.</p>
+          <div class="panel"><div id="ptnList"></div></div>
+        </section>
+
+        <!-- 문의 -->
+        <section id="tab-inq" hidden>
+          <div class="main__head"><h1>마케팅 문의</h1><button class="btn" id="inqRefresh">새로고침</button></div>
+          <div class="panel"><div id="inqList"></div><p class="note" style="margin-top:14px">마케팅센터 문의 폼으로 접수된 내역입니다.</p></div>
+        </section>
+
+        <!-- 로고 -->
+        <section id="tab-media" hidden>
+          <div class="main__head"><h1>로고</h1></div>
+          <div class="panel">
+            <h2>로고 (헤더 · 푸터 공통)</h2>
+            <p class="note" style="margin-bottom:12px">전체 페이지 상단·하단 로고입니다. 가로형 PNG(투명) 권장.</p>
+            <div style="display:flex;align-items:center;gap:18px;flex-wrap:wrap">
+              <img id="logoPrev" alt="" style="height:44px;background:#14130f;border-radius:8px;padding:6px 12px" />
+              <input type="file" id="logoFile" accept="image/*" />
+              <button class="btn" id="logoReset">기본 로고로</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- SEO -->
+        <section id="tab-seo" hidden>
+          <div class="main__head"><h1>SEO 관리</h1><button class="btn btn--primary" id="seoSaveBtn">전체 저장</button></div>
+          <p class="note" style="margin-bottom:14px">검색엔진에 표시되는 제목·설명·키워드를 관리합니다. <b>제목 35자, 설명 80자</b> 안팎 권장.</p>
+          <div class="panel">
+            <div class="frm" style="grid-template-columns:1fr">
+              <div><label>사이트 기본 주소</label><input type="text" id="seoSiteUrl" placeholder="https://haodesign.co.kr" /></div>
+              <div><label>대표 공유 이미지(og:image) 경로</label><input type="text" id="seoOgImage" placeholder="../design/assets/work/work01.jpeg" /></div>
+              <div><label>페이지 선택</label><select id="seoPage"></select></div>
+            </div>
+            <div class="frm" id="seoFields" style="grid-template-columns:1fr;margin-top:12px"></div>
+            <div class="frm" style="grid-template-columns:1fr;margin-top:6px">
+              <div><label style="display:inline-flex;align-items:center;gap:8px;cursor:pointer"><input type="checkbox" id="seoNoindex" style="width:auto" /> 이 페이지를 검색에서 제외 (noindex)</label></div>
+            </div>
+            <div class="seochk" id="seoCheck" style="margin-top:12px"></div>
+          </div>
+          <div class="panel">
+            <h2>맞춤 HEAD 코드</h2>
+            <p class="note" style="margin-bottom:10px">모든 페이지 <b>&lt;head&gt;</b>에 삽입됩니다. 서치콘솔/네이버 인증 메타, 애널리틱스 스크립트 등.</p>
+            <textarea id="headCode" rows="6" style="width:100%;font-family:monospace;font-size:.85rem" placeholder='&lt;meta name="google-site-verification" content="..." /&gt;'></textarea>
+            <div class="actions" style="margin-top:10px"><button class="btn btn--primary" id="headCodeSave">HEAD 코드 저장</button></div>
+          </div>
+        </section>
+
+        <!-- 설정 -->
+        <section id="tab-set" hidden>
+          <div class="main__head"><h1>사이트 설정</h1></div>
+          <div class="panel">
+            <h2>연락처 · 사업자</h2>
+            <form class="frm" id="setForm">
+              <div><label>대표 전화</label><input type="text" id="setTel" /></div>
+              <div><label>대표 이메일</label><input type="email" id="setEmail" /></div>
+              <div><label>운영 시간</label><input type="text" id="setTime" /></div>
+              <div><label>주소</label><input type="text" id="setAddr" /></div>
+              <div><label>상호</label><input type="text" id="setBizName" /></div>
+              <div><label>대표자</label><input type="text" id="setCeo" /></div>
+              <div><label>사업자등록번호</label><input type="text" id="setBizNo" /></div>
+              <div class="full actions"><button type="submit" class="btn btn--primary">저장</button></div>
+            </form>
+          </div>
+          <div class="panel">
+            <h2>문의 메일 알림</h2>
+            <p class="note" style="margin-bottom:12px">문의 접수 시 지정 메일로 알림. <b>연동 URL</b>은 Google Apps Script /exec 또는 백엔드 주소.</p>
+            <form class="frm" id="mailForm" style="grid-template-columns:1fr">
+              <div><label style="display:inline-flex;align-items:center;gap:8px;cursor:pointer"><input type="checkbox" id="mailOn" style="width:auto" /> 메일 알림 사용</label></div>
+              <div><label>받는 메일</label><input type="email" id="mailTo" placeholder="sales@haodesign.co.kr" /></div>
+              <div><label>연동 URL</label><input type="text" id="mailUrl" placeholder="https://script.google.com/macros/s/.../exec" /></div>
+              <div class="full actions"><button type="submit" class="btn btn--primary">저장</button></div>
+            </form>
+          </div>
+          <div class="panel">
+            <h2>우측 하단 빠른버튼 (선택)</h2>
+            <form class="frm" id="socialForm">
+              <div class="full"><label>카카오톡 링크</label><input type="text" id="soKakao" placeholder="https://pf.kakao.com/... (비우면 숨김)" /></div>
+              <div class="full"><label>인스타그램 링크</label><input type="text" id="soInsta" placeholder="https://instagram.com/..." /></div>
+              <div class="full"><label>블로그 링크</label><input type="text" id="soBlog" placeholder="https://blog.naver.com/..." /></div>
+              <div class="full actions"><button type="submit" class="btn btn--primary">저장</button></div>
+            </form>
+          </div>
+        </section>
+
+        <!-- 계정 -->
+        <section id="tab-acc" hidden>
+          <div class="main__head"><h1>관리자 계정</h1></div>
+          <div class="panel">
+            <h2>아이디 · 비밀번호 변경</h2>
+            <form class="frm" id="accForm">
+              <div class="full"><label>현재 비밀번호</label><input type="password" id="accCur" autocomplete="current-password" /></div>
+              <div><label>새 아이디</label><input type="text" id="accId" autocomplete="username" /></div>
+              <div><label>새 비밀번호</label><input type="password" id="accPw" autocomplete="new-password" /></div>
+              <p class="err note" id="accMsg" style="grid-column:1/-1;min-height:1.2em"></p>
+              <div class="full actions"><button type="submit" class="btn btn--primary">변경</button></div>
+            </form>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <div class="toast" id="toast">저장되었습니다</div>
+
+  <script src="js/data.js?v=1"></script>
+  <script>
+  HAO.ready.then(function () {
+    "use strict";
+    var $ = function (id) { return document.getElementById(id); };
+    function esc(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[c]; }); }
+    function toast(msg) { var t = $("toast"); t.textContent = msg || "저장되었습니다"; t.classList.add("show"); setTimeout(function () { t.classList.remove("show"); }, 1800); }
+
+    function fileToDataURL(file, cb) {
+      if (!file || !/^image\//.test(file.type)) { alert("이미지 파일을 선택해주세요."); return; }
+      var img = new Image(), url = URL.createObjectURL(file);
+      img.onload = function () {
+        var MAX = 1280, scale = Math.min(1, MAX / Math.max(img.width, img.height));
+        var c = document.createElement("canvas");
+        c.width = Math.round(img.width * scale); c.height = Math.round(img.height * scale);
+        c.getContext("2d").drawImage(img, 0, 0, c.width, c.height);
+        URL.revokeObjectURL(url);
+        var b64 = c.toDataURL("image/jpeg", 0.82);
+        if (HAO.uploadImage && c.toBlob) {
+          c.toBlob(function (blob) { if (!blob) { cb(b64); return; } HAO.uploadImage(blob, "jpg").then(function (u) { cb(u || b64); }); }, "image/jpeg", 0.82);
+        } else cb(b64);
+      };
+      img.onerror = function () { URL.revokeObjectURL(url); alert("이미지를 읽을 수 없습니다."); };
+      img.src = url;
+    }
+
+    function store(key, value) {
+      try { localStorage.setItem(key, JSON.stringify(value)); } catch (e) {}
+      if (HAO.set) HAO.set(key, value).catch(function () { console.warn("서버 저장 실패", key); });
+      return true;
+    }
+
+    /* 로그인 */
+    function showAdmin() { $("loginView").hidden = true; $("adminView").hidden = false; renderAll(); }
+    $("loginForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      var cred = HAO.getCred();
+      if ($("loginId").value.trim() === cred.id && $("loginPw").value === cred.pw) { sessionStorage.setItem("hm_admin", "1"); showAdmin(); }
+      else $("loginErr").textContent = "아이디 또는 비밀번호가 올바르지 않습니다.";
+    });
+    $("logoutBtn").addEventListener("click", function () { sessionStorage.removeItem("hm_admin"); location.reload(); });
+
+    /* 탭 */
+    var TABS = ["dash","hero","copy","works","posts","qna","partners","inq","media","seo","set","acc"];
+    document.querySelectorAll("#sideMenu button").forEach(function (b) {
+      b.addEventListener("click", function () {
+        document.querySelectorAll("#sideMenu button").forEach(function (x) { x.classList.remove("is-active"); });
+        b.classList.add("is-active");
+        TABS.forEach(function (t) { $("tab-" + t).hidden = t !== b.getAttribute("data-tab"); });
+        if (b.getAttribute("data-tab") === "inq") refreshInq();
+      });
+    });
+
+    /* 데이터 */
+    var works = HAO.getWorksRaw();
+    var posts = HAO.getPosts();
+    var qna = HAO.getQna();
+    var hero = HAO.getHero();
+    var partners = HAO.getPartners();
+
+    function saveWorks() { store("hm_works", works); renderAll(); toast(); }
+    function savePosts() { posts.sort(function (a, b) { return (b.date || "").localeCompare(a.date || "") || (b.id - a.id); }); store("hm_posts", posts); renderAll(); toast(); }
+    function saveQna() { store("hm_qna", qna); renderAll(); toast(); }
+
+    /* 문의 */
+    function refreshInq() {
+      HAO.fetchInquiries().then(function (inq) {
+        $("stInq").textContent = inq.length; $("cntInq").textContent = inq.length;
+        $("inqList").innerHTML = inq.length ? inq.map(function (q) {
+          return '<div class="row"><div class="t"><b>' + esc(q.name) + " · " + esc(q.phone) + (q.type ? " · " + esc(q.type) : "") + "</b>" +
+            "<small>" + esc(q.date) + (q.message ? " — " + esc(q.message) : "") + "</small></div>" +
+            '<div class="ops"><button class="btn btn--danger" data-del-inq="' + q.id + '">삭제</button></div></div>';
+        }).join("") : '<p class="empty">접수된 문의가 없습니다.</p>';
+      });
+    }
+    $("inqRefresh").addEventListener("click", refreshInq);
+    $("inqList").addEventListener("click", function (e) {
+      var b = e.target.closest("[data-del-inq]"); if (!b) return;
+      if (!confirm("이 문의를 삭제할까요?")) return;
+      HAO.deleteInquiry(b.getAttribute("data-del-inq")).then(refreshInq);
+    });
+
+    /* ===== 렌더 ===== */
+    function renderAll() {
+      $("stWorks").textContent = works.length; $("cntWorks").textContent = works.length;
+      $("stPosts").textContent = posts.length; $("cntPosts").textContent = posts.length;
+      $("stQna").textContent = qna.length; $("cntQna").textContent = qna.length;
+      $("cntPtn").textContent = partners.length;
+      renderHero(); renderCopy(); renderWorks(); renderPosts(); renderQna(); renderPartners(); renderMedia(); renderSeo(); renderSet();
+    }
+
+    /* 히어로 */
+    function renderHero() {
+      var h = hero[0] || {};
+      $("hLead1").value = h.lead1 || ""; $("hLead2").value = h.lead2 || ""; $("hSub").value = h.sub || "";
+    }
+    $("heroSaveBtn").addEventListener("click", function () {
+      hero[0] = { lead1: $("hLead1").value, lead2: $("hLead2").value, sub: $("hSub").value };
+      store("hm_hero", hero); toast();
+    });
+
+    /* 카피 */
+    var copyOv = {}; try { copyOv = JSON.parse(localStorage.getItem("hm_copy")) || {}; } catch (e) { copyOv = {}; }
+    var COPY = HAO.getCopy();
+    function copyPages() { var seen = {}, arr = []; COPY.forEach(function (c) { var p = c.page === "all" ? "공통" : c.page; if (!seen[p]) { seen[p] = 1; arr.push(p); } }); return arr; }
+    function syncCopyInputs() {
+      document.querySelectorAll("#copyFields [data-ck]").forEach(function (el) { copyOv[el.getAttribute("data-ck")] = el.value; });
+    }
+    function renderCopy() {
+      var sel = $("copyPage");
+      if (!sel.options.length) { sel.innerHTML = copyPages().map(function (p) { return '<option>' + p + "</option>"; }).join(""); }
+      var cur = sel.value || copyPages()[0];
+      var fields = COPY.filter(function (c) { return (c.page === "all" ? "공통" : c.page) === cur; });
+      $("copyFields").innerHTML = fields.map(function (c) {
+        var v = esc(typeof copyOv[c.key] === "string" ? copyOv[c.key] : c.value);
+        var rows = (c.value || "").length > 40 || (c.value || "").indexOf("\n") >= 0 ? 3 : 1;
+        return '<div><label>' + esc(c.label) + "</label><textarea rows='" + rows + "' data-ck='" + c.key + "'>" + v + "</textarea></div>";
+      }).join("") || '<p class="empty">이 페이지에는 수정 가능한 카피가 없습니다.</p>';
+    }
+    $("copyPage").addEventListener("change", function () { syncCopyInputs(); renderCopy(); });
+    $("copyFields").addEventListener("input", function (e) { var k = e.target.getAttribute("data-ck"); if (k) copyOv[k] = e.target.value; });
+    $("copySaveBtn").addEventListener("click", function () { syncCopyInputs(); store("hm_copy", copyOv); toast(); });
+
+    /* 작업 사례 */
+    var CATS_W = ["비주얼 리뉴얼","브랜드 콘텐츠","이커머스 디자인","패키지 디자인","편집 디자인","전시·부스"];
+    function renderWorks() {
+      $("workList").innerHTML = works.length ? works.map(function (w, i) {
+        return '<div class="row"><img src="' + esc(HAO.imgSrc(w.img)) + '" alt="" />' +
+          '<div class="t"><b>' + esc(w.t) + "</b><small>" + esc(w.c) + "</small></div>" +
+          '<div class="ops"><button class="btn" data-w-edit="' + i + '">수정</button><button class="btn btn--danger" data-w-del="' + i + '">삭제</button></div></div>';
+      }).join("") : '<p class="empty">등록된 작업이 없습니다.</p>';
+    }
+    var wForm = $("workForm");
+    function openWork(i) {
+      wForm.hidden = false;
+      $("wIdx").value = i; var w = i >= 0 ? works[i] : { t: "", c: "비주얼 리뉴얼", img: "" };
+      $("wTitle").value = w.t || ""; $("wCat").value = CATS_W.indexOf(w.c) >= 0 ? w.c : "비주얼 리뉴얼";
+      $("wImgUrl").value = (w.img && !/^data:/.test(w.img)) ? w.img : ""; $("wImgData").value = /^(data:|https?:)/.test(w.img || "") ? w.img : "";
+      var prev = $("wPrev"), src = HAO.imgSrc(w.img); if (src) { prev.src = src; prev.style.display = "block"; } else prev.style.display = "none";
+    }
+    $("workAddBtn").addEventListener("click", function () { openWork(-1); });
+    $("wCancel").addEventListener("click", function () { wForm.hidden = true; });
+    $("wFile").addEventListener("change", function () { fileToDataURL(this.files[0], function (url) { $("wImgData").value = url; var p = $("wPrev"); p.src = url; p.style.display = "block"; }); });
+    $("wImgUrl").addEventListener("input", function () { var p = $("wPrev"); var s = HAO.imgSrc(this.value); if (s) { p.src = s; p.style.display = "block"; } });
+    wForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var i = +$("wIdx").value;
+      var f = $("wImgData").value || $("wImgUrl").value.trim();
+      var obj = { t: $("wTitle").value.trim(), c: $("wCat").value, img: f };
+      if (i >= 0) works[i] = Object.assign(works[i], obj); else works.unshift(obj);
+      wForm.hidden = true; saveWorks();
+    });
+    $("workList").addEventListener("click", function (e) {
+      var ed = e.target.closest("[data-w-edit]"), dl = e.target.closest("[data-w-del]");
+      if (ed) openWork(+ed.getAttribute("data-w-edit"));
+      if (dl) { if (confirm("이 작업을 삭제할까요?")) { works.splice(+dl.getAttribute("data-w-del"), 1); saveWorks(); } }
+    });
+
+    /* 칼럼 */
+    var CATS_P = ["브랜딩","이커머스","패키지","콘텐츠","전시","편집"];
+    function renderPosts() {
+      var q = ($("postSearch").value || "").toLowerCase();
+      var list = posts.filter(function (p) { return !q || (p.t + " " + (p.d || "")).toLowerCase().indexOf(q) >= 0; });
+      $("postList").innerHTML = list.length ? list.map(function (p) {
+        var i = posts.indexOf(p);
+        return '<div class="row"><img src="' + esc(HAO.imgSrc(p.img)) + '" alt="" />' +
+          '<div class="t"><b><span class="tagpill">' + esc(p.cat) + "</span> " + esc(p.t) + "</b><small>" + esc(p.date) + " — " + esc(p.d || "") + "</small></div>" +
+          '<div class="ops"><button class="btn" data-p-edit="' + i + '">수정</button><button class="btn btn--danger" data-p-del="' + i + '">삭제</button></div></div>';
+      }).join("") : '<p class="empty">글이 없습니다.</p>';
+    }
+    $("postSearch").addEventListener("input", renderPosts);
+    var pForm = $("postForm");
+    function todayDot() { return new Date().toISOString().slice(0, 10).replace(/-/g, "."); }
+    function openPost(i) {
+      $("postListPanel").hidden = true; $("postEditPanel").hidden = false;
+      $("postFormTitle").textContent = i >= 0 ? "글 수정" : "글쓰기";
+      var p = i >= 0 ? posts[i] : { id: 0, cat: "브랜딩", t: "", d: "", date: todayDot(), img: "", body: [] };
+      $("pId").value = i; $("pTitle").value = p.t || ""; $("pCat").value = CATS_P.indexOf(p.cat) >= 0 ? p.cat : "브랜딩";
+      $("pDate").value = p.date || ""; $("pSummary").value = p.d || ""; $("pBody").value = (p.body || []).join("\n\n");
+      $("pImgUrl").value = (p.img && !/^data:/.test(p.img)) ? p.img : ""; $("pImgData").value = /^(data:|https?:)/.test(p.img || "") ? p.img : "";
+      var prev = $("pPrev"), src = HAO.imgSrc(p.img); if (src) { prev.src = src; prev.style.display = "block"; } else prev.style.display = "none";
+    }
+    function closePost() { $("postEditPanel").hidden = true; $("postListPanel").hidden = false; }
+    $("postAddBtn").addEventListener("click", function () { openPost(-1); });
+    $("pCancel").addEventListener("click", closePost);
+    $("pFile").addEventListener("change", function () { fileToDataURL(this.files[0], function (url) { $("pImgData").value = url; var p = $("pPrev"); p.src = url; p.style.display = "block"; }); });
+    $("pImgUrl").addEventListener("input", function () { var p = $("pPrev"); var s = HAO.imgSrc(this.value); if (s) { p.src = s; p.style.display = "block"; } });
+    pForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var i = +$("pId").value;
+      var img = $("pImgData").value || $("pImgUrl").value.trim();
+      var body = $("pBody").value.split(/\n\s*\n/).map(function (s) { return s.trim(); }).filter(Boolean);
+      var obj = { cat: $("pCat").value, t: $("pTitle").value.trim(), d: $("pSummary").value.trim(), date: $("pDate").value.trim() || todayDot(), body: body, img: img };
+      if (i >= 0) posts[i] = Object.assign(posts[i], obj);
+      else { var maxId = posts.reduce(function (m, p) { return Math.max(m, p.id || 0); }, 0); obj.id = maxId + 1; posts.unshift(obj); }
+      closePost(); savePosts();
+    });
+    $("postList").addEventListener("click", function (e) {
+      var ed = e.target.closest("[data-p-edit]"), dl = e.target.closest("[data-p-del]");
+      if (ed) openPost(+ed.getAttribute("data-p-edit"));
+      if (dl) { if (confirm("이 글을 삭제할까요?")) { posts.splice(+dl.getAttribute("data-p-del"), 1); savePosts(); } }
+    });
+
+    /* Q&A */
+    var CATS_Q = ["퍼포먼스 마케팅","IMC·브랜딩","콘텐츠 제작","운영·기타"];
+    function renderQna() {
+      $("qnaList").innerHTML = qna.length ? qna.map(function (x, i) {
+        return '<div class="row"><div class="t"><b><span class="tagpill">' + esc(x.c) + "</span> " + esc(x.q) + "</b><small>" + esc(x.a) + "</small></div>" +
+          '<div class="ops"><button class="btn" data-q-edit="' + i + '">수정</button><button class="btn btn--danger" data-q-del="' + i + '">삭제</button></div></div>';
+      }).join("") : '<p class="empty">등록된 질문이 없습니다.</p>';
+    }
+    var qForm = $("qnaForm");
+    function openQna(i) {
+      qForm.hidden = false; $("qIdx").value = i;
+      var x = i >= 0 ? qna[i] : { c: "퍼포먼스 마케팅", q: "", a: "" };
+      $("qCat").value = CATS_Q.indexOf(x.c) >= 0 ? x.c : "퍼포먼스 마케팅"; $("qQ").value = x.q || ""; $("qA").value = x.a || "";
+    }
+    $("qnaAddBtn").addEventListener("click", function () { openQna(-1); });
+    $("qCancel").addEventListener("click", function () { qForm.hidden = true; });
+    qForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var i = +$("qIdx").value, obj = { c: $("qCat").value, q: $("qQ").value.trim(), a: $("qA").value.trim() };
+      if (i >= 0) qna[i] = obj; else qna.push(obj);
+      qForm.hidden = true; saveQna();
+    });
+    $("qnaList").addEventListener("click", function (e) {
+      var ed = e.target.closest("[data-q-edit]"), dl = e.target.closest("[data-q-del]");
+      if (ed) openQna(+ed.getAttribute("data-q-edit"));
+      if (dl) { if (confirm("이 질문을 삭제할까요?")) { qna.splice(+dl.getAttribute("data-q-del"), 1); saveQna(); } }
+    });
+
+    /* 파트너 (텍스트 카드) */
+    function renderPartners() {
+      $("ptnList").innerHTML = partners.length ? partners.map(function (p, i) {
+        return '<div class="ptnrow"><input type="text" data-pk="b" data-pi="' + i + '" value="' + esc(p.b) + '" placeholder="브랜드명" />' +
+          '<input type="text" data-pk="s" data-pi="' + i + '" value="' + esc(p.s) + '" placeholder="설명 (예: 공식 파트너)" />' +
+          '<button class="btn btn--danger" data-ptn-del="' + i + '">삭제</button></div>';
+      }).join("") : '<p class="empty">파트너가 없습니다. ‘+ 추가’를 눌러 등록하세요.</p>';
+    }
+    $("ptnList").addEventListener("input", function (e) {
+      var el = e.target, pi = el.getAttribute("data-pi"), pk = el.getAttribute("data-pk");
+      if (pi == null) return; partners[+pi][pk] = el.value;
+    });
+    $("ptnList").addEventListener("click", function (e) {
+      var b = e.target.closest("[data-ptn-del]"); if (!b) return;
+      partners.splice(+b.getAttribute("data-ptn-del"), 1); renderPartners();
+    });
+    $("ptnAddBtn").addEventListener("click", function () { partners.push({ b: "", s: "" }); renderPartners(); });
+    $("ptnSaveBtn").addEventListener("click", function () {
+      partners = partners.filter(function (p) { return (p.b || "").trim(); });
+      store("hm_partners", partners); $("cntPtn").textContent = partners.length; renderPartners(); toast();
+    });
+
+    /* 로고 */
+    function renderMedia() { $("logoPrev").src = HAO.getLogo(); }
+    $("logoFile").addEventListener("change", function () { fileToDataURL(this.files[0], function (url) { store("hm_logo", url); $("logoPrev").src = url; toast(); }); });
+    $("logoReset").addEventListener("click", function () { HAO.remove("hm_logo"); localStorage.removeItem("hm_logo"); $("logoPrev").src = "assets/img/logo.png"; toast("기본 로고로 되돌렸습니다"); });
+
+    /* SEO */
+    var seo = HAO.getSeo();
+    var SEO_PAGES = { index:"메인", works:"Works", services:"Services", column:"칼럼", qna:"Q&A", detail:"칼럼 상세" };
+    function seoCheckHtml(p) {
+      var t = (p.title || "").length, d = (p.desc || "").length;
+      return "제목 길이: <b class='" + (t > 0 && t <= 40 ? "ok" : "warn") + "'>" + t + "자</b> (권장 ~35) &nbsp;·&nbsp; 설명 길이: <b class='" + (d > 0 && d <= 90 ? "ok" : "warn") + "'>" + d + "자</b> (권장 ~80)";
+    }
+    function renderSeo() {
+      $("seoSiteUrl").value = seo.siteUrl || ""; $("seoOgImage").value = seo.ogImage || "";
+      var sel = $("seoPage");
+      if (!sel.options.length) sel.innerHTML = Object.keys(SEO_PAGES).map(function (k) { return '<option value="' + k + '">' + SEO_PAGES[k] + "</option>"; }).join("");
+      var k = sel.value || "index", p = seo.pages[k] || {};
+      $("seoFields").innerHTML =
+        "<div><label>제목 (title)</label><input type='text' data-seo='title' value='" + esc(p.title || "") + "' /></div>" +
+        "<div><label>설명 (description)</label><textarea rows='2' data-seo='desc'>" + esc(p.desc || "") + "</textarea></div>" +
+        "<div><label>키워드 (쉼표 구분)</label><input type='text' data-seo='keywords' value='" + esc(p.keywords || "") + "' /></div>";
+      $("seoNoindex").checked = !!p.noindex;
+      $("seoCheck").innerHTML = seoCheckHtml(p);
+      $("headCode").value = HAO.getHeadCode();
+    }
+    $("seoPage").addEventListener("change", renderSeo);
+    $("seoFields").addEventListener("input", function () { var k = $("seoPage").value; if (!seo.pages[k]) seo.pages[k] = {}; document.querySelectorAll("#seoFields [data-seo]").forEach(function (el) { seo.pages[k][el.getAttribute("data-seo")] = el.value; }); $("seoCheck").innerHTML = seoCheckHtml(seo.pages[k]); });
+    $("seoNoindex").addEventListener("change", function () { var k = $("seoPage").value; if (!seo.pages[k]) seo.pages[k] = {}; seo.pages[k].noindex = this.checked; });
+    $("seoSaveBtn").addEventListener("click", function () { seo.siteUrl = $("seoSiteUrl").value.trim(); seo.ogImage = $("seoOgImage").value.trim(); store("hm_seo", seo); toast(); });
+    $("headCodeSave").addEventListener("click", function () { store("hm_headcode", $("headCode").value); toast("HEAD 코드 저장됨"); });
+
+    /* 설정 */
+    function renderSet() {
+      var s = HAO.getSettings();
+      $("setTel").value = s.tel || ""; $("setEmail").value = s.email || ""; $("setTime").value = s.time || ""; $("setAddr").value = s.addr || "";
+      $("setBizName").value = s.bizName || ""; $("setCeo").value = s.ceo || ""; $("setBizNo").value = s.bizNo || "";
+      var m = HAO.getMail(); $("mailOn").checked = !!m.on; $("mailTo").value = m.to || ""; $("mailUrl").value = m.url || "";
+      var so = HAO.getSocial(); $("soKakao").value = so.kakao || ""; $("soInsta").value = so.instagram || ""; $("soBlog").value = so.blog || "";
+    }
+    $("setForm").addEventListener("submit", function (e) { e.preventDefault(); store("hm_settings", { tel:$("setTel").value.trim(), email:$("setEmail").value.trim(), time:$("setTime").value.trim(), addr:$("setAddr").value.trim(), bizName:$("setBizName").value.trim(), ceo:$("setCeo").value.trim(), bizNo:$("setBizNo").value.trim() }); toast(); });
+    $("mailForm").addEventListener("submit", function (e) { e.preventDefault(); store("hm_mail", { on:$("mailOn").checked, to:$("mailTo").value.trim(), url:$("mailUrl").value.trim() }); toast(); });
+    $("socialForm").addEventListener("submit", function (e) { e.preventDefault(); store("hm_social", { kakao:$("soKakao").value.trim(), instagram:$("soInsta").value.trim(), blog:$("soBlog").value.trim(), phone:$("setTel").value.trim() }); toast(); });
+
+    /* 계정 */
+    $("accForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      var cred = HAO.getCred();
+      if ($("accCur").value !== cred.pw) { $("accMsg").textContent = "현재 비밀번호가 올바르지 않습니다."; return; }
+      var id = $("accId").value.trim() || cred.id, pw = $("accPw").value || cred.pw;
+      store("hm_admin_cred", { id: id, pw: pw }); $("accMsg").textContent = "변경되었습니다."; $("accMsg").style.color = "#1a8a4a";
+      $("accCur").value = $("accPw").value = "";
+    });
+
+    /* 초기화 */
+    $("resetBtn").addEventListener("click", function () {
+      if (!confirm("마케팅센터 관리자 수정 내용을 모두 초기화할까요? (서버·캐시의 hm_ 데이터 삭제)")) return;
+      ["hm_works","hm_posts","hm_qna","hm_hero","hm_partners","hm_copy","hm_seo","hm_settings","hm_social","hm_mail","hm_logo","hm_headcode"].forEach(function (k) { HAO.remove(k); localStorage.removeItem(k); });
+      toast("초기화됨 — 새로고침합니다"); setTimeout(function () { location.reload(); }, 1200);
+    });
+
+    if (sessionStorage.getItem("hm_admin") === "1") showAdmin();
+  });
+  </script>
+</body>
+</html>

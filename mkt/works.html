@@ -73,6 +73,8 @@
     </nav>
   </footer>
 
+  <script src="js/data.js?v=1"></script>
+  <script src="js/boot.js?v=1"></script>
   <script>
   (function () {
     var $ = function (s, c) { return (c || document).querySelector(s); };
@@ -81,7 +83,7 @@
     if (burger) burger.addEventListener('click', function () { nav.classList.toggle('is-open'); });
     $$('#nav a').forEach(function (a) { a.addEventListener('click', function () { nav.classList.remove('is-open'); }); });
 
-    var WORKS = [
+    var FALLBACK_WORKS = [
       { img: '../design/assets/work/work01.jpeg', t: '브랜드 카탈로그', c: '비주얼 리뉴얼' },
       { img: '../voucher/assets/work/w379.jpg', t: '뷰티 디바이스 상세페이지', c: '이커머스 디자인' },
       { img: '../design/assets/work/work03.jpeg', t: '제품 키비주얼', c: '브랜드 콘텐츠' },
@@ -98,6 +100,8 @@
       { img: '../design/assets/work/work18.jpeg', t: '전시 부스 그래픽', c: '전시·부스' },
       { img: '../voucher/assets/work/w362.jpg', t: '산업기자재 회사소개서', c: '편집 디자인' }
     ];
+    function imgP(f) { return (window.HAO && HAO.imgSrc) ? HAO.imgSrc(f) : f; }
+    var WORKS = (window.HAO && HAO.getWorks) ? HAO.getWorks() : FALLBACK_WORKS;
     var CATS = ['전체', '비주얼 리뉴얼', '브랜드 콘텐츠', '이커머스 디자인', '패키지 디자인', '편집 디자인', '전시·부스'];
     var cur = '전체';
     var catsEl = $('#wCats'), grid = $('#workGrid');
@@ -109,7 +113,7 @@
       var rows = WORKS.filter(function (w) { return cur === '전체' || w.c === cur; });
       grid.innerHTML = rows.map(function (w) {
         return '<a class="colcard" href="javascript:void(0)">' +
-          '<div class="colcard__media" style="background-image:url(' + w.img + ');background-size:cover;background-position:center;background-repeat:no-repeat"></div>' +
+          '<div class="colcard__media" style="background-image:url(' + imgP(w.img) + ');background-size:cover;background-position:center;background-repeat:no-repeat"></div>' +
           '<div class="colcard__body"><span class="colcard__cat">' + esc(w.c) + '</span>' +
           '<h3 class="colcard__t">' + esc(w.t) + '</h3></div></a>';
       }).join('');
@@ -117,6 +121,7 @@
     catsEl.addEventListener('click', function (e) { var b = e.target.closest('.chip'); if (!b) return;
       $$('.chip', catsEl).forEach(function (x) { x.classList.remove('is-active'); }); b.classList.add('is-active'); cur = b.dataset.c; render(); });
     render();
+    if (window.HAO && HAO.ready && HAO.ready.then) HAO.ready.then(function () { WORKS = HAO.getWorks(); render(); });
   })();
   </script>
 </body>

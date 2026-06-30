@@ -73,7 +73,9 @@
     </nav>
   </footer>
 
-  <script src="js/posts.js?v=1"></script>
+  <script src="js/data.js?v=1"></script>
+  <script src="js/posts.js?v=2"></script>
+  <script src="js/boot.js?v=1"></script>
   <script>
   (function () {
     var $ = function (s, c) { return (c || document).querySelector(s); };
@@ -104,6 +106,7 @@
     catsEl.addEventListener('click', function (e) { var b = e.target.closest('.chip'); if (!b) return;
       $$('.chip', catsEl).forEach(function (x) { x.classList.remove('is-active'); }); b.classList.add('is-active'); cur = b.dataset.c; render(); });
     render();
+    if (window.HAO && HAO.ready && HAO.ready.then) HAO.ready.then(function () { POSTS = HAO.getPosts(); render(); });
   })();
   </script>
 </body>

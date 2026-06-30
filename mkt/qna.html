@@ -79,6 +79,8 @@
     </nav>
   </footer>
 
+  <script src="js/data.js?v=1"></script>
+  <script src="js/boot.js?v=1"></script>
   <script>
   (function () {
     var $ = function (s, c) { return (c || document).querySelector(s); };
@@ -87,7 +89,7 @@
     if (burger) burger.addEventListener('click', function () { nav.classList.toggle('is-open'); });
     $$('#nav a').forEach(function (a) { a.addEventListener('click', function () { nav.classList.remove('is-open'); }); });
 
-    var QNA = [
+    var FALLBACK_QNA = [
       { c: '퍼포먼스 마케팅', q: '광고비는 어느 정도부터 시작하나요?', a: '브랜드 목표와 매체에 따라 다르지만, 보통 월 단위 예산을 함께 설계합니다. 적정 예산과 기대 성과를 상담 시 시뮬레이션해 드립니다.' },
       { c: '퍼포먼스 마케팅', q: '어떤 매체를 운영하나요?', a: '메타(인스타·페이스북), 구글·유튜브, 네이버 GFA·검색광고, 카카오, 틱톡 등 브랜드 목적에 맞는 다매체·다채널을 통합 운영합니다.' },
       { c: '퍼포먼스 마케팅', q: '성과(ROAS)는 어떻게 관리하나요?', a: '퍼널별 KPI를 설정하고 데이터 기반으로 소재·타겟·예산을 지속 최적화합니다. 전환 추적 세팅부터 함께 잡습니다.' },
@@ -102,14 +104,19 @@
       { c: '운영·기타', q: '계약 기간이 정해져 있나요?', a: '캠페인 단발성부터 월 단위 운영 대행까지 가능합니다. 목적에 맞는 형태를 함께 정합니다.' },
       { c: '운영·기타', q: '다른 센터 서비스와 연계되나요?', a: '네. 홈페이지(웹구축센터)·촬영(스튜디오센터)·카탈로그(디자인센터)가 필요하면 하오디자인 패밀리 센터와 원스톱으로 진행합니다.' }
     ];
-    var CATS = ['전체', '퍼포먼스 마케팅', 'IMC·브랜딩', '콘텐츠 제작', '운영·기타'];
+    var QNA = (window.HAO && HAO.getQna) ? HAO.getQna() : FALLBACK_QNA;
+    function uniqCats() { var s = []; QNA.forEach(function (x) { if (s.indexOf(x.c) < 0) s.push(x.c); }); return ['전체'].concat(s); }
+    var CATS = uniqCats();
     var curCat = '전체', curQ = '';
 
     var catsEl = $('#qCats'), listEl = $('#qList'), emptyEl = $('#qEmpty');
-    catsEl.innerHTML = CATS.map(function (c, i) {
-      var n = c === '전체' ? QNA.length : QNA.filter(function (x) { return x.c === c; }).length;
-      return '<button class="chip' + (i === 0 ? ' is-active' : '') + '" data-c="' + c + '">' + c + ' <b>' + n + '</b></button>';
-    }).join('');
+    function buildCats() {
+      catsEl.innerHTML = CATS.map(function (c) {
+        var n = c === '전체' ? QNA.length : QNA.filter(function (x) { return x.c === c; }).length;
+        return '<button class="chip' + (c === curCat ? ' is-active' : '') + '" data-c="' + c + '">' + c + ' <b>' + n + '</b></button>';
+      }).join('');
+    }
+    buildCats();
     function esc(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
     function render() {
       var q = curQ.trim().toLowerCase();
@@ -131,6 +138,7 @@
     $('#qReset').addEventListener('click', function () { curQ = ''; searchEl.value = ''; curCat = '전체';
       $$('.chip', catsEl).forEach(function (x, i) { x.classList.toggle('is-active', i === 0); }); render(); });
     render();
+    if (window.HAO && HAO.ready && HAO.ready.then) HAO.ready.then(function () { QNA = HAO.getQna(); CATS = uniqCats(); buildCats(); render(); });
   })();
   </script>
 </body>

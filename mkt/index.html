@@ -128,6 +128,59 @@
     <section class="contact" id="contact">
       <h2 class="contact__big">CONTACT US</h2>
       <span class="contact__glow" aria-hidden="true"></span>
+
+      <style>
+        .mc-wrap{position:relative;z-index:3;max-width:760px;margin:34px auto 0;padding:0 20px}
+        .mc-lead{text-align:center;color:#55525a;font-size:1.02rem;line-height:1.7;margin-bottom:26px;word-break:keep-all}
+        .mc-lead b{color:var(--accent,#e83817)}
+        .mc-card{background:#fff;border:1px solid rgba(23,21,15,.1);border-radius:22px;
+          box-shadow:0 30px 70px -44px rgba(60,30,18,.4);padding:clamp(24px,3.5vw,40px)}
+        .mc-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+        @media(max-width:560px){.mc-row{grid-template-columns:1fr}}
+        .mc-field{margin-bottom:14px}
+        .mc-field--full{grid-column:1/-1}
+        .mc-field label{display:block;font-size:.78rem;font-weight:700;color:#6e6a60;margin:0 0 6px 2px}
+        .mc-field input,.mc-field select,.mc-field textarea{width:100%;background:#f6f4f0;border:1.5px solid transparent;
+          border-radius:12px;padding:13px 15px;font-family:inherit;font-size:.95rem;color:#17150f;resize:vertical}
+        .mc-field input:focus,.mc-field select:focus,.mc-field textarea:focus{outline:none;border-color:var(--accent,#e83817);background:#fff}
+        .mc-submit{width:100%;margin-top:6px;background:linear-gradient(120deg,#ff8a3d,#e83817);color:#fff;border:0;
+          border-radius:999px;padding:15px;font-family:inherit;font-size:1rem;font-weight:800;letter-spacing:.01em;transition:filter .2s}
+        .mc-submit:hover{filter:brightness(1.06)}
+        .mc-submit:disabled{opacity:.6;cursor:default}
+        .mc-note{text-align:center;font-size:.88rem;color:#6e6a60;min-height:1.2em;margin-top:12px}
+        .mc-contact{display:flex;gap:8px 24px;flex-wrap:wrap;justify-content:center;margin-top:18px;font-size:.9rem;color:#6e6a60}
+        .mc-contact a{color:#17150f;font-weight:700}
+      </style>
+
+      <div class="mc-wrap">
+        <p class="mc-lead">우리 브랜드엔 어떤 마케팅이 맞을까요?<br /><b>고민부터 같이 시작</b>하겠습니다. 간단히 남겨주시면 빠르게 연락드립니다.</p>
+        <div class="mc-card">
+          <form id="quoteForm" novalidate>
+            <div class="mc-row">
+              <div class="mc-field"><label>이름</label><input type="text" id="name" name="name" placeholder="이름 / 담당자" required /></div>
+              <div class="mc-field"><label>연락처</label><input type="tel" id="phone" name="phone" placeholder="010-0000-0000" required /></div>
+            </div>
+            <div class="mc-row">
+              <div class="mc-field"><label>회사·브랜드명</label><input type="text" id="company" name="company" placeholder="회사 또는 브랜드명" /></div>
+              <div class="mc-field"><label>문의 분야</label>
+                <select id="type" name="type">
+                  <option value="">선택해주세요</option>
+                  <option>브랜드 콘텐츠</option><option>이커머스·상세페이지</option><option>패키지 디자인</option>
+                  <option>전시·박람회 부스</option><option>편집·인쇄</option><option>통합 마케팅</option><option>기타 문의</option>
+                </select>
+              </div>
+            </div>
+            <div class="mc-field mc-field--full"><label>문의 내용</label><textarea id="message" name="message" rows="4" placeholder="브랜드 현황, 필요한 작업, 일정·예산 등을 자유롭게 적어주세요."></textarea></div>
+            <button type="submit" class="mc-submit">문의 보내기</button>
+            <p class="mc-note" id="formNote" role="status"></p>
+          </form>
+          <div class="mc-contact">
+            <span>TEL <a href="tel:16662027">1666-2027</a></span>
+            <span>MAIL <a href="mailto:sales@haodesign.co.kr">sales@haodesign.co.kr</a></span>
+            <span>평일 09:30 – 18:30</span>
+          </div>
+        </div>
+      </div>
     </section>
   </main>
 
@@ -159,7 +212,29 @@
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-  <script src="js/main.js?v=3"></script>
+  <script src="js/data.js?v=1"></script>
+  <script src="js/main.js?v=4"></script>
+  <script src="js/boot.js?v=1"></script>
+  <script>
+  (function () {
+    var form = document.getElementById('quoteForm');
+    if (!form) return;
+    var $ = function (id) { return document.getElementById(id); };
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var note = $('formNote');
+      if (!$('name').value.trim() || !$('phone').value.trim()) { note.textContent = '이름과 연락처를 입력해주세요.'; return; }
+      var sbtn = form.querySelector('button[type=submit]'); if (sbtn) sbtn.disabled = true; note.textContent = '접수 중…';
+      var done = function (msg) { note.textContent = msg; };
+      if (window.HAO && HAO.saveInquiry) {
+        HAO.saveInquiry({ name: $('name').value, phone: $('phone').value, company: $('company').value, type: $('type').value, message: $('message').value })
+          .then(function () { done('문의가 접수되었습니다. 빠르게 연락드리겠습니다.'); form.reset(); })
+          .catch(function () { done('접수 중 오류가 발생했습니다. 전화로 문의해 주세요.'); })
+          .then(function () { if (sbtn) sbtn.disabled = false; });
+      } else { done('문의가 접수되었습니다. 빠르게 연락드리겠습니다.'); form.reset(); if (sbtn) sbtn.disabled = false; }
+    });
+  })();
+  </script>
   <script type="module" src="js/holo.js?v=8"></script>
 </body>
 </html>

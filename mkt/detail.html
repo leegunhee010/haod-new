@@ -82,7 +82,9 @@
     </nav>
   </footer>
 
-  <script src="js/posts.js?v=1"></script>
+  <script src="js/data.js?v=1"></script>
+  <script src="js/posts.js?v=2"></script>
+  <script src="js/boot.js?v=1"></script>
   <script>
   (function () {
     var $ = function (s, c) { return (c || document).querySelector(s); };
@@ -92,31 +94,30 @@
     $$('#nav a').forEach(function (a) { a.addEventListener('click', function () { nav.classList.remove('is-open'); }); });
 
     function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
-    var posts = window.MKT_POSTS || [];
-    var id = parseInt((location.search.match(/[?&]p=(\d+)/) || [])[1], 10);
-    var post = posts.filter(function (p) { return p.id === id; })[0] || posts[0];
     var box = $('#post');
-
-    if (!post) {
-      box.innerHTML = '<p class="post__body">글을 찾을 수 없습니다. <a href="column.html">칼럼 목록으로</a></p>';
-      return;
+    var id = parseInt((location.search.match(/[?&]p=(\d+)/) || [])[1], 10);
+    function pimg(f) { return (window.HAO && HAO.imgSrc) ? HAO.imgSrc(f) : f; }
+    function paint() {
+      var posts = (window.HAO && HAO.getPosts) ? HAO.getPosts() : (window.MKT_POSTS || []);
+      var post = posts.filter(function (p) { return p.id === id; })[0] || posts[0];
+      if (!post) {
+        box.innerHTML = '<p class="post__body">글을 찾을 수 없습니다. <a href="column.html">칼럼 목록으로</a></p>';
+        return;
+      }
+      document.title = post.t + ' | 마케팅센터 — 하오디자인';
+      $('#crumbTitle').textContent = post.cat;
+      var bodyHtml = (post.body || []).map(function (para) { return '<p>' + esc(para) + '</p>'; }).join('');
+      box.innerHTML =
+        '<div class="post__top"><span class="post__cat">' + esc(post.cat) + '</span>' +
+        '<span class="post__date">' + esc(post.date) + '</span></div>' +
+        '<h2 class="post__title">' + esc(post.t) + '</h2>' +
+        '<div class="post__hero"><img src="' + pimg(post.img) + '" alt="' + esc(post.t) + '" /></div>' +
+        '<div class="post__body">' + bodyHtml + '</div>' +
+        '<div class="post__cta"><a class="post__back" href="column.html">← 칼럼 목록으로</a>' +
+        '<a class="pillbtn pillbtn--dark" href="index.html#contact">이런 작업, 문의하기</a></div>';
     }
-
-    document.title = post.t + ' | 마케팅센터 — 하오디자인';
-    $('#crumbTitle').textContent = post.cat;
-
-    var bodyHtml = (post.body || []).map(function (para) {
-      return '<p>' + esc(para) + '</p>';
-    }).join('');
-
-    box.innerHTML =
-      '<div class="post__top"><span class="post__cat">' + esc(post.cat) + '</span>' +
-      '<span class="post__date">' + esc(post.date) + '</span></div>' +
-      '<h2 class="post__title">' + esc(post.t) + '</h2>' +
-      '<div class="post__hero"><img src="' + post.img + '" alt="' + esc(post.t) + '" /></div>' +
-      '<div class="post__body">' + bodyHtml + '</div>' +
-      '<div class="post__cta"><a class="post__back" href="column.html">← 칼럼 목록으로</a>' +
-      '<a class="pillbtn pillbtn--dark" href="index.html#contact">이런 작업, 문의하기</a></div>';
+    paint();
+    if (window.HAO && HAO.ready && HAO.ready.then) HAO.ready.then(paint);
   })();
   </script>
 </body>

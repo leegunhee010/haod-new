@@ -19,8 +19,8 @@
   if (burger) burger.addEventListener('click', function () { nav.classList.toggle('is-open'); });
   $$('#nav a').forEach(function (a) { a.addEventListener('click', function () { nav.classList.remove('is-open'); }); });
 
-  /* ---- Works 플레이스홀더 (구조만) ---- */
-  var WORKS = [
+  /* ---- Works (메인 상단 8개) — 데이터는 js/data.js(HAO), 관리자에서 수정 ---- */
+  var FALLBACK_WORKS = [
     { img: '../design/assets/work/work01.jpeg', t: '브랜드 카탈로그', c: '비주얼 리뉴얼' },
     { img: '../voucher/assets/work/w379.jpg', t: '뷰티 디바이스 상세페이지', c: '이커머스 디자인' },
     { img: '../design/assets/work/work03.jpeg', t: '제품 키비주얼', c: '브랜드 콘텐츠' },
@@ -30,20 +30,23 @@
     { img: '../design/assets/work/work12.jpeg', t: '브랜드 홍보 포스터', c: '브랜드 콘텐츠' },
     { img: '../design/assets/work/work05.jpeg', t: '전시·박람회 홍보물', c: '전시·부스' }
   ];
+  function imgPath(f) { return (window.HAO && HAO.imgSrc) ? HAO.imgSrc(f) : f; }
+  var WORKS = (window.HAO && HAO.getWorks) ? HAO.getWorks().slice(0, 8) : FALLBACK_WORKS;
   var track = $('#worksTrack');
   if (track) {
     track.innerHTML = WORKS.map(function (w) {
       return '<div class="swiper-slide"><div class="wcard">' +
-        '<div class="wcard__media" style="background-image:url(' + w.img + ');background-size:cover;background-position:center;background-repeat:no-repeat"></div>' +
+        '<div class="wcard__media" style="background-image:url(' + imgPath(w.img) + ');background-size:cover;background-position:center;background-repeat:no-repeat"></div>' +
         '<h3 class="wcard__t">' + w.t + '</h3><p class="wcard__c">' + w.c + '</p></div></div>';
     }).join('');
   }
 
-  /* ---- Partners 플레이스홀더 ---- */
-  var PARTNERS = [
+  /* ---- Partners (Power 섹션 텍스트 카드) — 관리자에서 수정 ---- */
+  var FALLBACK_PARTNERS = [
     { b: 'Google', s: '공식 파트너' }, { b: 'NAVER', s: 'GFA 공식 대행사' }, { b: 'Meta', s: '비즈니스 파트너' },
     { b: 'Kakao', s: '프리미어 파트너' }, { b: 'TikTok', s: '공식 파트너' }, { b: 'YouTube', s: '인증 대행사' }
   ];
+  var PARTNERS = (window.HAO && HAO.getPartners) ? HAO.getPartners() : FALLBACK_PARTNERS;
   var pwrap = $('#partners');
   if (pwrap) {
     pwrap.innerHTML = PARTNERS.map(function (p) {

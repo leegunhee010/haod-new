@@ -1,5 +1,6 @@
-/* 마케팅센터 칼럼 글 데이터 (목록 column.html + 상세 detail.html 공용) */
-window.MKT_POSTS = [
+/* 마케팅센터 칼럼 글 데이터 (목록 column.html + 상세 detail.html 공용)
+   실제 데이터는 js/data.js(HAO) — 관리자에서 수정. data.js 미로드 시 아래 폴백 사용. */
+var MKT_FALLBACK = [
   {
     id: 1, cat: '브랜딩', date: '2026.06.20',
     t: '작은 브랜드일수록 ‘첫인상’이 전부입니다',
@@ -69,3 +70,4 @@ window.MKT_POSTS = [
     ]
   }
 ];
+window.MKT_POSTS = (window.HAO && HAO.getPosts) ? HAO.getPosts() : MKT_FALLBACK;
