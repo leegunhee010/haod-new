@@ -61,7 +61,7 @@ function sandbox(){
 }
 function loadHAO(center){ const sb=sandbox(); vm.runInContext(read(path.join(ROOT,center,"js","data.js")),sb,{filename:"data.js"}); return sb.HAO||sb.window.HAO; }
 
-let nCanon=0,nOrg=0,nFaq=0,nSvc=0,nPort=0;
+let nCanon=0,nOrg=0,nFaq=0,nSvc=0,nPort=0,nOg=0;
 
 /* 1) canonical + Organization + FAQPage */
 Object.keys(PUBLIC).forEach(function(center){
@@ -70,6 +70,7 @@ Object.keys(PUBLIC).forEach(function(center){
     const fp=path.join(ROOT,center,file); if(!fs.existsSync(fp)) return;
     let html=read(fp), add="";
     if(!/rel="canonical"/.test(html)){ const loc=BASE+"/"+center+"/"+(file==="index.html"?"":file); add+='  <link rel="canonical" href="'+loc+'" />\n'; nCanon++; }
+    if(!/property="og:image"/.test(html)){ try{ if(!hao) hao=loadHAO(center); var s=hao&&hao.getSeo?hao.getSeo():null; var oi=s&&s.ogImage?absUrl(s.ogImage,center):null; if(oi){ add+='  <meta property="og:image" content="'+oi+'" />\n'; nOg++; } }catch(e){} }
     if(file==="index.html" && !/"Organization"/.test(html)){ add+=ld(ORG); nOrg++; }
     if(file==="qna.html" && !/FAQPage/.test(html)){
       try{ if(!hao) hao=loadHAO(center); const q=(hao&&hao.getQna)?hao.getQna():[];
@@ -107,4 +108,4 @@ PORTFOLIO_PAGES.forEach(function(pg){
   nPort++;
 });
 
-console.log("=== canonical "+nCanon+" / Organization "+nOrg+" / FAQPage "+nFaq+" / Service "+nSvc+" / Portfolio "+nPort+" 주입 ===");
+console.log("=== canonical "+nCanon+" / og:image "+nOg+" / Organization "+nOrg+" / FAQPage "+nFaq+" / Service "+nSvc+" / Portfolio "+nPort+" 주입 ===");
