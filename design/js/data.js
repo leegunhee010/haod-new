@@ -569,11 +569,20 @@
     return JSON.parse(JSON.stringify(fallback));
   }
 
+  /* ===== 통합 관리자(허브) 계정 — 모든 센터 공통 로그인 ===== */
+  var HUB_ACCOUNTS = [{ id: "admin", pw: "haohub1234" }];
+  function loadHubAccounts() {
+    return fetch(SB_URL + "/rest/v1/overrides?select=v&k=eq.hub_accounts", { headers: SB_H })
+      .then(function (r) { return r.ok ? r.json() : []; })
+      .then(function (rows) { if (rows[0] && Array.isArray(rows[0].v) && rows[0].v.length) HUB_ACCOUNTS = rows[0].v; })
+      .catch(function () {});
+  }
+
   window.HAO = {
     imgSrc: imgSrc,
     fullSrc: fullSrc,
     /* 서버 로딩 완료 Promise — 페이지/관리자는 이걸 기다린 뒤 렌더 */
-    ready: sbLoad(),
+    ready: Promise.all([sbLoad(), loadHubAccounts()]),
     /* 관리자 저장: localStorage + 서버 동시 기록 */
     set: function (k, v) {
       try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {}
@@ -656,7 +665,18 @@
       return out;
     },
     /* 관리자 계정 (데모 — 실서비스에선 서버 인증으로 교체) */
-    getCred: function () { return loadObj("hao_admin_cred", { id: "admin", pw: "first1234" }); },
+    getAccounts: function () {
+      try { var v = JSON.parse(localStorage.getItem("hao_accounts")); if (Array.isArray(v) && v.length) return v; } catch (e) {}
+      var c = loadObj("hao_admin_cred", null);
+      if (c && c.id) return [c];
+      return [{ id: "admin", pw: "first1234" }];
+    },
+    saveAccounts: function (list) { return this.set("hao_accounts", list); },
+    getCred: function () { return this.getAccounts()[0]; },
+    verifyLogin: function (id, pw) {
+      var hit = function (list) { return (list || []).some(function (a) { return a && a.id === id && a.pw === pw; }); };
+      return hit(this.getAccounts()) || hit(HUB_ACCOUNTS);
+    },
     /* 견적문의 메일 알림 설정 (관리자 '사이트 설정'에서 수정) — 코드 수정 없이 admin에서 변경.
        나중에 백엔드 붙이면 url 만 백엔드 주소로 바꾸면 됨. */
     getMail: function () { return loadObj("hao_mail", { on: !!MAIL_ENDPOINT, url: MAIL_ENDPOINT, to: "sales@haodesign.co.kr" }); },

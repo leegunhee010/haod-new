@@ -334,16 +334,13 @@
 
         <!-- 계정 -->
         <section id="tab-acc" hidden>
-          <div class="main__head"><h1>관리자 계정</h1></div>
+          <div class="main__head"><h1>관리자 계정</h1><button class="btn btn--primary" id="accSave">저장</button></div>
+          <p class="note" style="margin-bottom:14px">이 센터에 로그인할 수 있는 계정입니다. 추가·수정·삭제 후 <b>저장</b>하세요. <b>통합 관리자 계정</b>은 모든 센터에 로그인할 수 있습니다(허브에서 관리).</p>
           <div class="panel">
-            <h2>아이디 · 비밀번호 변경</h2>
-            <form class="frm" id="accForm">
-              <div class="full"><label>현재 비밀번호</label><input type="password" id="accCur" autocomplete="current-password" /></div>
-              <div><label>새 아이디</label><input type="text" id="accId" autocomplete="username" /></div>
-              <div><label>새 비밀번호</label><input type="password" id="accPw" autocomplete="new-password" /></div>
-              <p class="err note" id="accMsg" style="grid-column:1/-1;min-height:1.2em"></p>
-              <div class="full actions"><button type="submit" class="btn btn--primary">변경</button></div>
-            </form>
+            <div id="accList"></div>
+            <div class="actions" style="margin-top:14px;justify-content:flex-start"><button class="btn" id="accAdd">+ 계정 추가</button></div>
+            <p class="note" id="accMsg" style="margin-top:10px;min-height:1.2em"></p>
+            <p class="note" style="margin-top:6px">⚠️ 비밀번호는 단순 접근 제한용입니다(서버에 평문 저장). 강력한 보안이 필요하면 별도 인증을 권장합니다.</p>
           </div>
         </section>
       </main>
@@ -394,8 +391,7 @@
     function showAdmin() { localStorage.setItem("hw_edit", "1"); $("loginView").hidden = true; $("adminView").hidden = false; renderAll(); }
     $("loginForm").addEventListener("submit", function (e) {
       e.preventDefault();
-      var cred = HAO.getCred();
-      if ($("loginId").value.trim() === cred.id && $("loginPw").value === cred.pw) { sessionStorage.setItem("hw_admin", "1"); showAdmin(); }
+      if (HAO.verifyLogin($("loginId").value.trim(), $("loginPw").value)) { sessionStorage.setItem("hw_admin", "1"); showAdmin(); }
       else $("loginErr").textContent = "아이디 또는 비밀번호가 올바르지 않습니다.";
     });
     $("logoutBtn").addEventListener("click", function () { sessionStorage.removeItem("hw_admin"); localStorage.removeItem("hw_edit"); location.reload(); });
@@ -670,15 +666,32 @@
     $("mailForm").addEventListener("submit", function (e) { e.preventDefault(); store("hw_mail", { on:$("mailOn").checked, to:$("mailTo").value.trim(), url:$("mailUrl").value.trim() }); toast(); });
     $("socialForm").addEventListener("submit", function (e) { e.preventDefault(); store("hw_social", { kakao:$("soKakao").value.trim(), instagram:$("soInsta").value.trim(), blog:$("soBlog").value.trim(), phone:$("setTel").value.trim() }); toast(); });
 
-    /* 계정 */
-    $("accForm").addEventListener("submit", function (e) {
-      e.preventDefault();
-      var cred = HAO.getCred();
-      if ($("accCur").value !== cred.pw) { $("accMsg").textContent = "현재 비밀번호가 올바르지 않습니다."; return; }
-      var id = $("accId").value.trim() || cred.id, pw = $("accPw").value || cred.pw;
-      store("hw_admin_cred", { id: id, pw: pw }); $("accMsg").textContent = "변경되었습니다."; $("accMsg").style.color = "#1a8a4a";
-      $("accCur").value = $("accPw").value = "";
+    /* 계정 관리 (다중 계정) */
+    var accounts = HAO.getAccounts().slice();
+    function accInput(i, k, v) { return '<input type="text" data-ai="' + i + '" data-ak="' + k + '" value="' + esc(v) + '" placeholder="' + (k === "id" ? "아이디" : "비밀번호") + '" autocomplete="off" style="width:100%;background:var(--bg);border:1.5px solid transparent;border-radius:10px;padding:11px 14px;font-family:inherit;font-size:.92rem" />'; }
+    function renderAccounts() {
+      $("accList").innerHTML = accounts.length ? accounts.map(function (a, i) {
+        return '<div style="display:grid;grid-template-columns:1fr 1fr auto;gap:10px;align-items:center;margin-bottom:10px">' +
+          accInput(i, "id", a.id || "") + accInput(i, "pw", a.pw || "") +
+          '<button class="btn btn--danger" data-acc-del="' + i + '">삭제</button></div>';
+      }).join("") : '<p class="empty">계정이 없습니다. ‘+ 계정 추가’로 등록하세요.</p>';
+    }
+    $("accList").addEventListener("input", function (e) {
+      var el = e.target, i = el.getAttribute("data-ai"), k = el.getAttribute("data-ak");
+      if (i == null) return; accounts[+i][k] = el.value;
     });
+    $("accList").addEventListener("click", function (e) {
+      var b = e.target.closest("[data-acc-del]"); if (!b) return;
+      accounts.splice(+b.getAttribute("data-acc-del"), 1); renderAccounts();
+    });
+    $("accAdd").addEventListener("click", function () { accounts.push({ id: "", pw: "" }); renderAccounts(); });
+    $("accSave").addEventListener("click", function () {
+      var clean = accounts.map(function (a) { return { id: (a.id || "").trim(), pw: (a.pw || "") }; }).filter(function (a) { return a.id && a.pw; });
+      if (!clean.length) { $("accMsg").textContent = "아이디·비밀번호를 입력한 계정이 최소 1개 필요합니다."; $("accMsg").style.color = "var(--accent)"; return; }
+      accounts = clean; store("hw_accounts", accounts); renderAccounts();
+      $("accMsg").textContent = "저장되었습니다. 다음 로그인부터 적용됩니다."; $("accMsg").style.color = "#1a8a4a";
+    });
+    renderAccounts();
 
     /* 초기화 */
     $("resetBtn").addEventListener("click", function () {

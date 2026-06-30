@@ -195,9 +195,18 @@
     return JSON.parse(JSON.stringify(fallback));
   }
 
+  /* ===== 통합 관리자(허브) 계정 — 모든 센터 공통 로그인 ===== */
+  var HUB_ACCOUNTS = [{ id: "admin", pw: "haohub1234" }];
+  function loadHubAccounts() {
+    return fetch(SB_URL + "/rest/v1/overrides?select=v&k=eq.hub_accounts", { headers: SB_H })
+      .then(function (r) { return r.ok ? r.json() : []; })
+      .then(function (rows) { if (rows[0] && Array.isArray(rows[0].v) && rows[0].v.length) HUB_ACCOUNTS = rows[0].v; })
+      .catch(function () {});
+  }
+
   window.HAO = {
     imgSrc: imgSrc,
-    ready: sbLoad(),
+    ready: Promise.all([sbLoad(), loadHubAccounts()]),
     set: function (k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} return sbSave(k, v); },
     remove: function (k) { localStorage.removeItem(k); return sbDelete(k); },
     uploadImage: sbUpload,
@@ -227,7 +236,18 @@
       return out;
     },
     getHeadCode: function () { try { var v = JSON.parse(localStorage.getItem("hv_headcode")); return typeof v === "string" ? v : ""; } catch (e) { return ""; } },
-    getCred: function () { return loadObj("hv_admin_cred", { id: "admin", pw: "voucher1234" }); },
+    getAccounts: function () {
+      try { var v = JSON.parse(localStorage.getItem("hv_accounts")); if (Array.isArray(v) && v.length) return v; } catch (e) {}
+      var c = loadObj("hv_admin_cred", null);
+      if (c && c.id) return [c];
+      return [{ id: "admin", pw: "voucher1234" }];
+    },
+    saveAccounts: function (list) { return this.set("hv_accounts", list); },
+    getCred: function () { return this.getAccounts()[0]; },
+    verifyLogin: function (id, pw) {
+      var hit = function (list) { return (list || []).some(function (a) { return a && a.id === id && a.pw === pw; }); };
+      return hit(this.getAccounts()) || hit(HUB_ACCOUNTS);
+    },
     getMail: function () { return loadObj("hv_mail", { on: false, url: "", to: "sales@haodesign.co.kr" }); },
 
     saveInquiry: function (q) {

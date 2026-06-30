@@ -111,16 +111,13 @@
         <div id="inqList"><p class="empty">불러오는 중…</p></div>
       </div>
 
-      <h2 class="sec">허브 계정</h2>
+      <h2 class="sec">통합 관리자 계정 <button class="refresh" id="accSave" style="margin-left:6px">저장</button></h2>
+      <p class="note" style="margin-bottom:12px">여기 등록된 계정은 <b>허브 + 모든 센터</b>에 로그인할 수 있습니다. 추가·수정·삭제 후 저장하세요.</p>
       <div class="panel">
-        <p class="note" style="margin-bottom:14px">이 통합 관리자(허브)의 로그인 정보입니다. 각 센터 관리자 계정과는 별도입니다.</p>
-        <form class="frm" id="accForm">
-          <div class="full"><label>현재 비밀번호</label><input type="password" id="accCur" autocomplete="current-password" /></div>
-          <div><label>새 아이디</label><input type="text" id="accId" autocomplete="username" /></div>
-          <div><label>새 비밀번호</label><input type="password" id="accPw" autocomplete="new-password" /></div>
-          <p class="msg full" id="accMsg"></p>
-          <button type="submit" class="save full" style="justify-self:start">변경</button>
-        </form>
+        <div id="accList"></div>
+        <div style="margin-top:14px"><button class="refresh" id="accAdd">+ 계정 추가</button></div>
+        <p class="msg" id="accMsg" style="margin-top:10px"></p>
+        <p class="note" style="margin-top:6px;color:var(--muted)">⚠️ 비밀번호는 단순 접근 제한용입니다(서버에 평문 저장). 강력한 보안이 필요하면 별도 인증을 권장합니다.</p>
       </div>
     </div>
   </div>
@@ -151,27 +148,28 @@
     }
     function colorOf(key) { for (var i = 0; i < CENTERS.length; i++) if (CENTERS[i].key === key) return CENTERS[i].color; return "#e83817"; }
 
-    /* ---- 허브 계정 (overrides: hub_admin_cred) ---- */
-    var cred = { id: "admin", pw: "haohub1234" };
-    function loadCred() {
-      return fetch(SB_URL + "/rest/v1/overrides?select=v&k=eq.hub_admin_cred", { headers: SB_H })
+    /* ---- 통합 관리자 계정 (overrides: hub_accounts — 허브 + 모든 센터 로그인) ---- */
+    var accounts = [{ id: "admin", pw: "haohub1234" }];
+    function loadAccounts() {
+      return fetch(SB_URL + "/rest/v1/overrides?select=v&k=eq.hub_accounts", { headers: SB_H })
         .then(function (r) { return r.ok ? r.json() : []; })
-        .then(function (rows) { if (rows[0] && rows[0].v && rows[0].v.id) cred = rows[0].v; })
+        .then(function (rows) { if (rows[0] && Array.isArray(rows[0].v) && rows[0].v.length) accounts = rows[0].v; })
         .catch(function () {});
     }
-    function saveCred(c) {
+    function saveAccounts(list) {
       return fetch(SB_URL + "/rest/v1/overrides", {
         method: "POST",
         headers: { "apikey": SB_KEY, "Authorization": "Bearer " + SB_KEY, "Content-Type": "application/json", "Prefer": "resolution=merge-duplicates" },
-        body: JSON.stringify([{ k: "hub_admin_cred", v: c, updated_at: new Date().toISOString() }])
+        body: JSON.stringify([{ k: "hub_accounts", v: list, updated_at: new Date().toISOString() }])
       });
     }
 
     /* ---- 로그인 ---- */
-    function showMain() { $("loginView").hidden = true; $("mainView").hidden = false; renderCards(); refreshInq(); }
+    function showMain() { $("loginView").hidden = true; $("mainView").hidden = false; renderCards(); renderAccounts(); refreshInq(); }
     $("loginForm").addEventListener("submit", function (e) {
       e.preventDefault();
-      if ($("loginId").value.trim() === cred.id && $("loginPw").value === cred.pw) { sessionStorage.setItem("hub_admin", "1"); showMain(); }
+      var id = $("loginId").value.trim(), pw = $("loginPw").value;
+      if (accounts.some(function (a) { return a && a.id === id && a.pw === pw; })) { sessionStorage.setItem("hub_admin", "1"); showMain(); }
       else $("loginErr").textContent = "아이디 또는 비밀번호가 올바르지 않습니다.";
     });
     $("logoutBtn").addEventListener("click", function () { sessionStorage.removeItem("hub_admin"); location.reload(); });
@@ -237,18 +235,34 @@
     });
     $("inqRefresh").addEventListener("click", refreshInq);
 
-    /* ---- 허브 계정 변경 ---- */
-    $("accForm").addEventListener("submit", function (e) {
-      e.preventDefault();
-      if ($("accCur").value !== cred.pw) { $("accMsg").textContent = "현재 비밀번호가 올바르지 않습니다."; $("accMsg").style.color = "var(--accent)"; return; }
-      var nc = { id: $("accId").value.trim() || cred.id, pw: $("accPw").value || cred.pw };
+    /* ---- 통합 관리자 계정 관리 (CRUD) ---- */
+    function accInput(i, k, v) { return '<input type="text" data-ai="' + i + '" data-ak="' + k + '" value="' + esc(v) + '" placeholder="' + (k === "id" ? "아이디" : "비밀번호") + '" autocomplete="off" style="width:100%;background:var(--bg);border:1.5px solid transparent;border-radius:10px;padding:11px 14px;font-family:inherit;font-size:.92rem" />'; }
+    function renderAccounts() {
+      $("accList").innerHTML = accounts.length ? accounts.map(function (a, i) {
+        return '<div style="display:grid;grid-template-columns:1fr 1fr auto;gap:10px;align-items:center;margin-bottom:10px">' +
+          accInput(i, "id", a.id || "") + accInput(i, "pw", a.pw || "") +
+          '<button class="del" data-acc-del="' + i + '">삭제</button></div>';
+      }).join("") : '<p class="empty">계정이 없습니다. ‘+ 계정 추가’로 등록하세요.</p>';
+    }
+    $("accList").addEventListener("input", function (e) {
+      var el = e.target, i = el.getAttribute("data-ai"), k = el.getAttribute("data-ak");
+      if (i == null) return; accounts[+i][k] = el.value;
+    });
+    $("accList").addEventListener("click", function (e) {
+      var b = e.target.closest("[data-acc-del]"); if (!b) return;
+      accounts.splice(+b.getAttribute("data-acc-del"), 1); renderAccounts();
+    });
+    $("accAdd").addEventListener("click", function () { accounts.push({ id: "", pw: "" }); renderAccounts(); });
+    $("accSave").addEventListener("click", function () {
+      var clean = accounts.map(function (a) { return { id: (a.id || "").trim(), pw: (a.pw || "") }; }).filter(function (a) { return a.id && a.pw; });
+      if (!clean.length) { $("accMsg").textContent = "아이디·비밀번호를 입력한 계정이 최소 1개 필요합니다."; $("accMsg").style.color = "var(--accent)"; return; }
       $("accMsg").textContent = "저장 중…"; $("accMsg").style.color = "var(--muted)";
-      saveCred(nc).then(function () { cred = nc; $("accMsg").textContent = "변경되었습니다."; $("accMsg").style.color = "#1a8a4a"; $("accCur").value = $("accPw").value = ""; })
+      saveAccounts(clean).then(function () { accounts = clean; renderAccounts(); $("accMsg").textContent = "저장되었습니다. 다음 로그인부터 적용됩니다."; $("accMsg").style.color = "#1a8a4a"; })
         .catch(function () { $("accMsg").textContent = "저장에 실패했습니다. 연결을 확인해 주세요."; $("accMsg").style.color = "var(--accent)"; });
     });
 
     /* ---- 부팅 ---- */
-    loadCred().then(function () { if (sessionStorage.getItem("hub_admin") === "1") showMain(); });
+    loadAccounts().then(function () { if (sessionStorage.getItem("hub_admin") === "1") showMain(); });
   })();
   </script>
 </body>
