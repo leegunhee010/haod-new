@@ -592,6 +592,7 @@
     $("logoutBtn").addEventListener("click", function () {
       sessionStorage.removeItem("hao_admin");
       localStorage.removeItem("hao_edit");
+      localStorage.removeItem("hub_session");
       location.reload();
     });
 
@@ -1246,7 +1247,8 @@
     });
 
     /* ---- 세션 복원 (모든 초기화 후) ---- */
-    if (sessionStorage.getItem("hao_admin") === "1") { localStorage.setItem("hao_edit", "1"); showAdmin(); }
+    var _hubT = +localStorage.getItem("hub_session");
+    if (sessionStorage.getItem("hao_admin") === "1" || (_hubT && Date.now() < _hubT)) { sessionStorage.setItem("hao_admin", "1"); localStorage.setItem("hao_edit", "1"); showAdmin(); }
   });
   </script>
 </body>

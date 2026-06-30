@@ -169,10 +169,10 @@
     $("loginForm").addEventListener("submit", function (e) {
       e.preventDefault();
       var id = $("loginId").value.trim(), pw = $("loginPw").value;
-      if (accounts.some(function (a) { return a && a.id === id && a.pw === pw; })) { sessionStorage.setItem("hub_admin", "1"); showMain(); }
+      if (accounts.some(function (a) { return a && a.id === id && a.pw === pw; })) { sessionStorage.setItem("hub_admin", "1"); localStorage.setItem("hub_session", String(Date.now() + 12 * 60 * 60 * 1000)); showMain(); }
       else $("loginErr").textContent = "아이디 또는 비밀번호가 올바르지 않습니다.";
     });
-    $("logoutBtn").addEventListener("click", function () { sessionStorage.removeItem("hub_admin"); location.reload(); });
+    $("logoutBtn").addEventListener("click", function () { sessionStorage.removeItem("hub_admin"); localStorage.removeItem("hub_session"); location.reload(); });
 
     /* ---- 센터 카드 ---- */
     function renderCards() {
@@ -262,7 +262,10 @@
     });
 
     /* ---- 부팅 ---- */
-    loadAccounts().then(function () { if (sessionStorage.getItem("hub_admin") === "1") showMain(); });
+    loadAccounts().then(function () {
+      var t = +localStorage.getItem("hub_session");
+      if (sessionStorage.getItem("hub_admin") === "1" || (t && Date.now() < t)) { sessionStorage.setItem("hub_admin", "1"); showMain(); }
+    });
   })();
   </script>
 </body>

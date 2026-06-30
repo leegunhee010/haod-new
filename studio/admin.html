@@ -401,7 +401,7 @@
       if (HAO.verifyLogin($("loginId").value.trim(), $("loginPw").value)) { sessionStorage.setItem("hs_admin", "1"); showAdmin(); }
       else $("loginErr").textContent = "아이디 또는 비밀번호가 올바르지 않습니다.";
     });
-    $("logoutBtn").addEventListener("click", function () { sessionStorage.removeItem("hs_admin"); localStorage.removeItem("hs_edit"); location.reload(); });
+    $("logoutBtn").addEventListener("click", function () { sessionStorage.removeItem("hs_admin"); localStorage.removeItem("hs_edit"); localStorage.removeItem("hub_session"); location.reload(); });
 
     /* 탭 */
     var TABS = ["dash","hero","copy","works","posts","qna","partners","inq","media","seo","set","acc"];
@@ -710,7 +710,8 @@
     });
 
     /* 세션 유지 */
-    if (sessionStorage.getItem("hs_admin") === "1") showAdmin();
+    var _hubT = +localStorage.getItem("hub_session");
+    if (sessionStorage.getItem("hs_admin") === "1" || (_hubT && Date.now() < _hubT)) { sessionStorage.setItem("hs_admin", "1"); showAdmin(); }
   });
   </script>
 </body>
