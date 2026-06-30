@@ -35,7 +35,16 @@ const PORTFOLIO_PAGES = [
   { center:"web",    file:"portfolio.html", label:"웹구축센터" },
   { center:"mkt",    file:"works.html",     label:"마케팅센터" }
 ];
-const ORG = { "@context":"https://schema.org","@type":"Organization", name:"하오디자인", alternateName:"HAO DESIGN", url:BASE+"/", logo:BASE+"/design/assets/img/logo.png", telephone:"+82-1666-2027", email:"sales@haodesign.co.kr", address:{ "@type":"PostalAddress", streetAddress:"광진구 능동로49길 9, 2F", addressLocality:"서울특별시", addressCountry:"KR" } };
+const ORG = { "@context":"https://schema.org","@type":"Organization", name:"하오디자인", alternateName:"HAO DESIGN", url:BASE+"/", logo:BASE+"/design/assets/img/logo.png", telephone:"+82-1666-2027", email:"sales@haodesign.co.kr", address:{ "@type":"PostalAddress", streetAddress:"광진구 능동로49길 9, 2F", addressLocality:"서울특별시", addressCountry:"KR" },
+  sameAs:[
+    "https://portfolio.haodesign.co.kr/",
+    "https://www.instagram.com/haodesign_official/",
+    "https://blog.naver.com/xmfostlsh2",
+    "https://pf.kakao.com/_exlVrxd",
+    "https://haodesign05.tistory.com/",
+    "https://www.threads.com/@haodesign_official",
+    "https://map.naver.com/p/search/하오디자인"
+  ] };
 
 function ld(o){ return '  <script type="application/ld+json">\n'+JSON.stringify(o)+'\n  </script>\n'; }
 function inject(fp, str){ let h=fs.readFileSync(fp,"utf8"); h=h.replace("</head>", str+"</head>"); fs.writeFileSync(fp,h,"utf8"); }
@@ -78,6 +87,14 @@ Object.keys(PUBLIC).forEach(function(center){
     }
     if(add){ inject(fp,add); }
   });
+});
+
+/* 1b) Organization 블록 최신화(sameAs 등) — 기존 블록을 새 ORG로 교체 */
+Object.keys(PUBLIC).forEach(function(center){
+  const fp=path.join(ROOT,center,"index.html"); if(!fs.existsSync(fp)) return;
+  let html=read(fp);
+  const orgRe=/<script type="application\/ld\+json">\s*\{"@context":"https:\/\/schema\.org","@type":"Organization"[\s\S]*?<\/script>/;
+  if(orgRe.test(html)){ html=html.replace(orgRe, '<script type="application/ld+json">\n'+JSON.stringify(ORG)+'\n  </script>'); fs.writeFileSync(fp,html,"utf8"); nOrg++; }
 });
 
 /* 2) Service */
