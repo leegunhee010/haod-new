@@ -221,7 +221,9 @@
     <a class="fab__btn fab--phone" href="tel:16662027" aria-label="전화"><span class="fab__ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24c1.1.37 2.3.57 3.6.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.3.2 2.5.57 3.6a1 1 0 0 1-.25 1z"/></svg></span><span class="fab__label">전화 문의</span></a>
   </div>
 
-  <script src="js/portfolio.js?v=8"></script>
+  <script src="js/data.js?v=1"></script>
+  <script src="js/portfolio.js?v=9"></script>
+  <script src="js/boot.js?v=1"></script>
   <script>
   (function () {
     var $ = function (s, c) { return (c || document).querySelector(s); };
@@ -273,8 +275,8 @@
     $$('.reveal').forEach(function (el) { io.observe(el); });
 
     /* partners (client logo marquee) */
-    var PLOGOS = [];
-    for (var pi = 1; pi <= 29; pi++) PLOGOS.push('assets/partners-hs/hp' + ('0' + pi).slice(-2) + '.png');
+    var PLOGOS = (window.HAO && HAO.getPartners) ? HAO.getPartners().map(function (s) { return HAO.imgSrc(s); }) : [];
+    if (!PLOGOS.length) { for (var pi = 1; pi <= 29; pi++) PLOGOS.push('assets/partners-hs/hp' + ('0' + pi).slice(-2) + '.png'); }
     function fillP(el, list) {
       if (!el) return;
       var set = list.map(function (s) { return '<span class="plogo"><img src="' + s + '" alt="파트너 로고" decoding="async" /></span>'; }).join('');
@@ -338,25 +340,49 @@
     twWrap.addEventListener('mouseleave', twRestart);
     twGo(0);
 
-    /* portfolio (대형 풀블리드) — 메인 노출(main:true), 4열×3행=12개만 노출(나머지는 전체 보기) */
-    var PF = (window.HAO_WORKS || []).filter(function (w) { return w.main; }).slice(0, 12);
+    /* portfolio (대형 풀블리드) — 메인 노출 우선, 12개 노출 */
+    var PF = [];
     var folio = $('#folio');
-    folio.innerHTML = PF.map(function (p) {
-      return '<a class="np-item" href="#" data-i="' + PF.indexOf(p) + '">' +
-        '<img loading="lazy" src="' + HAO_imgPath(p.f) + '" alt="' + p.t + '" />' +
-        '<span class="np-item__cap"><span class="np-item__t">' + p.t + '</span><span class="np-item__c">' + (p.c || '') + '</span></span></a>';
-    }).join('');
+    function renderFolio() {
+      PF = (window.HAO && HAO.getMainWorks) ? HAO.getMainWorks(12) : (window.HAO_WORKS || []).filter(function (w) { return w.main; }).slice(0, 12);
+      folio.innerHTML = PF.map(function (p, i) {
+        return '<a class="np-item" href="#" data-i="' + i + '">' +
+          '<img loading="lazy" src="' + (window.HAO ? HAO.imgSrc(p.f) : HAO_imgPath(p.f)) + '" alt="' + p.t + '" />' +
+          '<span class="np-item__cap"><span class="np-item__t">' + p.t + '</span><span class="np-item__c">' + (p.c || '') + '</span></span></a>';
+      }).join('');
+    }
+    renderFolio();
     folio.addEventListener('click', function (e) {
       var a = e.target.closest('.np-item'); if (!a) return;
       e.preventDefault(); HAO_openLightbox(PF, +a.dataset.i);
     });
     $$('.reveal').forEach(function (el) { io.observe(el); });
 
-    /* form */
+    /* form → Supabase 저장 */
     var form = $('#quoteForm');
-    if (form) form.addEventListener('submit', function (e) { e.preventDefault(); var note = $('#formNote');
-      if (!form.name.value.trim() || !form.phone.value.trim()) { note.textContent = '이름과 연락처를 입력해주세요.'; return; }
-      note.textContent = '문의가 접수되었습니다. 빠르게 연락드리겠습니다. (데모)'; form.reset(); });
+    if (form) form.addEventListener('submit', function (e) {
+      e.preventDefault(); var note = $('#formNote');
+      if (!$('#name').value.trim() || !$('#phone').value.trim()) { note.textContent = '이름과 연락처를 입력해주세요.'; return; }
+      var sbtn = form.querySelector('button[type=submit]'); if (sbtn) sbtn.disabled = true; note.textContent = '접수 중…';
+      HAO.saveInquiry({ name: $('#name').value, phone: $('#phone').value, type: $('#type') ? $('#type').value : '', message: $('#message') ? $('#message').value : '' })
+        .then(function () { note.textContent = '문의가 접수되었습니다. 빠르게 연락드리겠습니다.'; form.reset(); })
+        .catch(function () { note.textContent = '접수 중 오류가 발생했습니다. 전화로 문의해 주세요.'; })
+        .then(function () { if (sbtn) sbtn.disabled = false; });
+    });
+
+    /* 관리자(Supabase) 반영 — 서버 로드 후 히어로/포트폴리오 갱신 */
+    if (window.HAO && HAO.ready) HAO.ready.then(function () {
+      try {
+        var H = HAO.getHero();
+        slides.forEach(function (s, i) { var h = H[i]; if (!h) return;
+          var eng = s.querySelector('.ef-hero__eng'); if (eng) eng.textContent = h.eng;
+          var ti = s.querySelector('.ef-hero__title'); if (ti) ti.innerHTML = HAO.fmt(h.title, 'em');
+          var mo = s.querySelector('.ef-hero__more'); if (mo) { var sp = mo.querySelector('span'); mo.setAttribute('href', h.href); mo.textContent = h.btn + ' '; if (sp) mo.appendChild(sp); }
+        });
+        heroBgs.forEach(function (b, i) { if (H[i]) b.src = HAO.imgSrc(H[i].img); });
+        renderFolio();
+      } catch (e) {}
+    });
   })();
   </script>
 </body>

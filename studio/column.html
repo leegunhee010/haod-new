@@ -117,6 +117,8 @@
     </div>
   </footer>
 
+  <script src="js/data.js?v=1"></script>
+  <script src="js/boot.js?v=1"></script>
   <script>
   (function () {
     var $ = function (s, c) { return (c || document).querySelector(s); };
@@ -143,6 +145,7 @@
       { id: 1, title: '브랜드 톤을 사진으로 지키는 법', summary: '시즌마다 흔들리지 않는 비주얼 일관성 만들기.', date: '2026.04.29', img: 'assets/work-hd/thumb/w375.jpg', isNew: false,
         body: ['브랜드는 한 장의 사진이 아니라 "쌓인 인상"으로 기억됩니다. 그래서 비주얼 톤의 일관성이 중요합니다.', '색온도, 배경, 소품 스타일, 여백의 규칙을 가이드로 정해두면 누가 찍어도 같은 브랜드처럼 보입니다.', '하오 스튜디오는 첫 촬영에서 톤 가이드를 함께 정리해, 다음 시즌에도 이어지는 비주얼을 만듭니다.'] }
     ];
+    if (window.HAO && HAO.getPosts) posts = HAO.getPosts();
 
     var listView = $('#listView'), postView = $('#postView'), gallery = $('#galleryBoard');
     gallery.innerHTML = posts.map(function (p) {
@@ -176,13 +179,29 @@
       window.scrollTo(0, 0);
     }
     addEventListener('hashchange', render); render();
+    if (window.HAO && HAO.ready) HAO.ready.then(function () {
+      posts = HAO.getPosts();
+      gallery.innerHTML = posts.map(function (p) {
+        return '<article class="gcard" data-id="' + p.id + '">' +
+          '<div class="gcard__thumb"><img src="' + HAO.imgSrc(p.img) + '" alt="" loading="lazy" />' +
+          (p.isNew ? '<span class="gcard__badge">NEW</span>' : '') + '</div>' +
+          '<div class="gcard__body"><h3>' + p.title + '</h3><p>' + p.summary + '</p>' +
+          '<span class="gcard__date">' + p.date + '</span></div></article>';
+      }).join('');
+      render();
+    });
 
     var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } }); }, { threshold: .15 });
     $$('.reveal').forEach(function (el) { io.observe(el); });
     var form = $('#quoteForm');
     if (form) form.addEventListener('submit', function (e) { e.preventDefault(); var note = $('#formNote');
       if (!form.name.value.trim() || !form.phone.value.trim()) { note.textContent = '이름과 연락처를 입력해주세요.'; return; }
-      note.textContent = '문의가 접수되었습니다. 빠르게 연락드리겠습니다. (데모)'; form.reset(); });
+      var sbtn = form.querySelector('button[type=submit]'); if (sbtn) sbtn.disabled = true; note.textContent = '접수 중…';
+      HAO.saveInquiry({ name: $('#name').value, phone: $('#phone').value, type: $('#type') ? $('#type').value : '', message: $('#message') ? $('#message').value : '' })
+        .then(function () { note.textContent = '문의가 접수되었습니다. 빠르게 연락드리겠습니다.'; form.reset(); })
+        .catch(function () { note.textContent = '접수 중 오류가 발생했습니다. 전화로 문의해 주세요.'; })
+        .then(function () { if (sbtn) sbtn.disabled = false; });
+    });
   })();
   </script>
 </body>

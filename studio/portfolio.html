@@ -64,7 +64,9 @@
     </div>
   </footer>
 
-  <script src="js/portfolio.js?v=8"></script>
+  <script src="js/data.js?v=1"></script>
+  <script src="js/portfolio.js?v=9"></script>
+  <script src="js/boot.js?v=1"></script>
   <script>
   (function () {
     var $ = function (s, c) { return (c || document).querySelector(s); };
@@ -102,6 +104,12 @@
       HAO_openLightbox(list(), +a.dataset.i);
     });
     render();
+    if (window.HAO && HAO.ready) HAO.ready.then(function () {
+      WORKS = HAO.getWorks();
+      CATS = ['전체']; WORKS.forEach(function (w) { if (CATS.indexOf(w.c) < 0) CATS.push(w.c); });
+      filter.innerHTML = CATS.map(function (c) { return '<a href="#" class="' + (c === cur ? 'is-active' : '') + '" data-c="' + c + '">' + c + '</a>'; }).join('');
+      render();
+    });
   })();
   </script>
 </body>

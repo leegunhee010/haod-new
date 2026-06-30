@@ -74,6 +74,8 @@
     </div>
   </footer>
 
+  <script src="js/data.js?v=1"></script>
+  <script src="js/boot.js?v=1"></script>
   <script>
   (function () {
     var $ = function (s, c) { return (c || document).querySelector(s); };
@@ -135,6 +137,7 @@
       { c: '진행·결제', q: '급한 일정(긴급 작업)도 가능한가요?', a: '일정에 여유가 있으면 긴급 진행이 가능합니다. 마감일을 먼저 알려주시면 가능 여부와 조건을 안내드립니다.' },
       { c: '진행·결제', q: '정기(월 단위) 촬영 계약도 되나요?', a: '네. 신제품이 꾸준한 브랜드는 월 단위 정기 촬영으로 운영하면 톤도 일관되고 비용도 효율적입니다. 볼륨에 맞춰 제안드립니다.' }
     ];
+    if (window.HAO && HAO.getQna) QNA = HAO.getQna();
     var CATS = ['전체', '용어 설명', '촬영', '상세페이지', '영상', '진행·결제'];
     var curCat = '전체', curQ = '';
 
@@ -173,6 +176,11 @@
     $('#qReset').addEventListener('click', function () { curQ = ''; searchEl.value = ''; curCat = '전체';
       $$('.chip', catsEl).forEach(function (x, i) { x.classList.toggle('is-active', i === 0); }); render(); });
     render();
+    if (window.HAO && HAO.ready) HAO.ready.then(function () {
+      QNA = HAO.getQna();
+      catsEl.innerHTML = CATS.map(function (c, i) { var n = c === '전체' ? QNA.length : QNA.filter(function (x) { return x.c === c; }).length; return '<button class="chip' + (curCat === c ? ' is-active' : '') + '" data-c="' + c + '">' + c + ' <b>' + n + '</b></button>'; }).join('');
+      render();
+    });
   })();
   </script>
 </body>

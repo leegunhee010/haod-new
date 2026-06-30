@@ -87,8 +87,7 @@
   var NEWADDED = {};
   for (var i = 33; i <= 53; i++) NEWADDED['hs' + i + '.jpg'] = 1;
   function regKey(f) { return (NEWADDED[f] ? '1' : '0') + dateOf(f); }  // 최근 추가분 우선, 그 안에서 촬영일 최신순
-  window.HAO_WORKS = load();
-  window.HAO_WORKS.sort(function (a, b) { return regKey(b.f).localeCompare(regKey(a.f)); });
+  window.HAO_WORKS = (window.HAO && HAO.getWorks) ? HAO.getWorks() : (function () { var a = load(); a.sort(function (b1, b2) { return regKey(b2.f).localeCompare(regKey(b1.f)); }); return a; })();
   window.HAO_WORKS_DEFAULT = DEFAULT_WORKS;
   window.HAO_imgPath = function (f) { return 'assets/haostudio/' + f; };
 

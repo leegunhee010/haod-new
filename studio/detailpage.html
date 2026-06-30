@@ -130,6 +130,8 @@
     </div>
   </footer>
 
+  <script src="js/data.js?v=1"></script>
+  <script src="js/boot.js?v=1"></script>
   <script>
   (function () {
     var $ = function (s, c) { return (c || document).querySelector(s); };
@@ -152,7 +154,12 @@
     var form = $('#quoteForm');
     if (form) form.addEventListener('submit', function (e) { e.preventDefault(); var note = $('#formNote');
       if (!$('#name').value.trim() || !$('#phone').value.trim()) { note.textContent = '이름과 연락처를 입력해주세요.'; return; }
-      note.textContent = '문의가 접수되었습니다. 빠르게 연락드리겠습니다. (데모)'; form.reset(); });
+      var sbtn = form.querySelector('button[type=submit]'); if (sbtn) sbtn.disabled = true; note.textContent = '접수 중…';
+      HAO.saveInquiry({ name: $('#name').value, phone: $('#phone').value, type: $('#type') ? $('#type').value : '', message: $('#message') ? $('#message').value : '' })
+        .then(function () { note.textContent = '문의가 접수되었습니다. 빠르게 연락드리겠습니다.'; form.reset(); })
+        .catch(function () { note.textContent = '접수 중 오류가 발생했습니다. 전화로 문의해 주세요.'; })
+        .then(function () { if (sbtn) sbtn.disabled = false; });
+    });
   })();
   </script>
 </body>

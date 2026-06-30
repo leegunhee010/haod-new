@@ -131,7 +131,9 @@
     </div>
   </footer>
 
-  <script src="js/portfolio.js?v=8"></script>
+  <script src="js/data.js?v=1"></script>
+  <script src="js/portfolio.js?v=9"></script>
+  <script src="js/boot.js?v=1"></script>
   <script>
   (function () {
     var $ = function (s, c) { return (c || document).querySelector(s); };
@@ -161,6 +163,10 @@
         '<span class="np-item__cap"><span class="np-item__t">' + p.t + '</span><span class="np-item__c">' + (p.c || '') + '</span></span></a>';
     }).join('');
     band.addEventListener('click', function (e) { var a = e.target.closest('.np-item'); if (!a) return; e.preventDefault(); HAO_openLightbox(WORKS, +a.dataset.i); });
+    if (window.HAO && HAO.ready) HAO.ready.then(function () {
+      WORKS = HAO.getMainWorks ? HAO.getMainWorks(8) : WORKS;
+      band.innerHTML = WORKS.map(function (p, i) { return '<a class="np-item" href="#" data-i="' + i + '"><img loading="lazy" src="' + HAO.imgSrc(p.f) + '" alt="' + p.t + '" /><span class="np-item__cap"><span class="np-item__t">' + p.t + '</span><span class="np-item__c">' + (p.c || '') + '</span></span></a>'; }).join('');
+    });
 
     /* 카운터 + reveal */
     function animate(el) { var to = +el.getAttribute('data-to'), t0 = null, dur = 1500;
@@ -174,7 +180,12 @@
     var form = $('#quoteForm');
     if (form) form.addEventListener('submit', function (e) { e.preventDefault(); var note = $('#formNote');
       if (!$('#name').value.trim() || !$('#phone').value.trim()) { note.textContent = '이름과 연락처를 입력해주세요.'; return; }
-      note.textContent = '문의가 접수되었습니다. 빠르게 연락드리겠습니다. (데모)'; form.reset(); });
+      var sbtn = form.querySelector('button[type=submit]'); if (sbtn) sbtn.disabled = true; note.textContent = '접수 중…';
+      HAO.saveInquiry({ name: $('#name').value, phone: $('#phone').value, type: $('#type') ? $('#type').value : '', message: $('#message') ? $('#message').value : '' })
+        .then(function () { note.textContent = '문의가 접수되었습니다. 빠르게 연락드리겠습니다.'; form.reset(); })
+        .catch(function () { note.textContent = '접수 중 오류가 발생했습니다. 전화로 문의해 주세요.'; })
+        .then(function () { if (sbtn) sbtn.disabled = false; });
+    });
   })();
   </script>
 </body>
