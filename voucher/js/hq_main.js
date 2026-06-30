@@ -467,12 +467,10 @@ $(function(){
 			this.targets()[0].innerHTML = value.toLocaleString() + '+';
 		}
 	}, "+=0.1")  // p 애니메이션 완료 후 0.1초 뒤
-	.from('.section1 .projects-img-wrap', {
-		opacity: 0,
-		y: 100,
-		duration: 0.5,
-		ease: 'power2.out'
-	}, "+=0.1");  // count 완료 후 0.1초 뒤
+	.set('.section1 .projects-img-wrap', {
+		opacity: 1,
+		y: 0
+	});  // 캐러셀은 진입 모션(흰배경→페이드업) 없이 바로 표시 — 기존 .from(opacity:0) 제거
 
 	// 전역 변수로 선언
 	let isMobileInitialized = false;
