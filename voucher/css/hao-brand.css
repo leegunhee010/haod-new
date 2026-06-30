@@ -137,7 +137,18 @@ input[type="text"], input[type="tel"], input[type="email"], textarea { cursor: t
 .header .nav a { font-size: 19px; font-weight: 600; }
 .header .nav__div { height: 22px; }
 .header .header__cta { font-size: 18px; padding: 16px 38px; }
-@media (max-width: 760px){
+/* 중간 폭: 메뉴가 많아 풀사이즈로는 ~1700px 아래서 두 줄로 넘침 → gap·폰트·패딩을 압축해 한 줄 유지 (버거 전환폭 1200px까지) */
+@media (max-width: 1700px){
+  .header { padding: 24px clamp(18px, 2.2vw, 38px); }
+  .header.is-stuck { padding-top: 15px; padding-bottom: 15px; }
+  .header .brand__logo { height: 48px; }
+  .header.is-stuck .brand__logo { height: 40px; }
+  .header .nav { gap: clamp(14px, 1.5vw, 24px); }
+  .header .nav a { font-size: 16px; }
+  .header .nav__div { height: 18px; }
+  .header .header__cta { font-size: 16px; padding: 12px 26px; }
+}
+@media (max-width: 1200px){
   .header { padding: 16px 20px; }
   .header .brand__logo { height: 40px; }
   .header .nav a { font-size: 17px; }
