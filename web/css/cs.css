@@ -54,7 +54,7 @@ em{font-style:normal}
 .nav a{font-size:.92rem;font-weight:500;color:var(--ink);opacity:.82;transition:opacity .2s}
 .nav a:hover{opacity:1}
 .nav__div{width:1px;height:16px;background:var(--line);margin:0 2px}
-.nav__center{font-size:.84rem!important;color:var(--muted)!important;display:inline-flex;align-items:center;gap:3px}
+.nav__center{font-size:.84rem!important;color:var(--accent)!important;opacity:1!important;font-weight:600!important;display:inline-flex;align-items:center;gap:3px}
 .nav__center i{font-style:normal;font-size:.7em;opacity:.6}
 .header__cta{display:inline-flex;align-items:center;gap:7px;font-weight:600;font-size:.9rem;
   padding:10px 18px;border-radius:999px;background:var(--ink);color:#fff;transition:transform .3s var(--ease),box-shadow .3s}
