@@ -240,3 +240,20 @@ em{font-style:normal;color:var(--accent)}
 .colcard__date{margin-top:14px;font-size:.8rem;color:var(--faint);font-family:"Poppins",sans-serif}
 @media(max-width:900px){.colgrid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:560px){.colgrid{grid-template-columns:1fr}}
+
+/* ===== 작업사례(#workGrid)만 포트폴리오 스타일 — 다른 센터 .np-item 통일 (column 블로그 카드와 분리) ===== */
+#workGrid{grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.6vw,22px)}
+#workGrid .colcard{position:relative;aspect-ratio:16/10;border:0;border-radius:14px;overflow:hidden;background:var(--bg-soft);box-shadow:0 14px 34px -20px rgba(14,14,16,.32)}
+#workGrid .colcard:hover{transform:none;box-shadow:0 22px 46px -26px rgba(14,14,16,.42)}
+#workGrid .colcard__media{position:absolute;inset:0;background-position:top center;transition:transform .8s var(--ease)}
+#workGrid .colcard:hover .colcard__media{transform:scale(1.06)}
+#workGrid .colcard::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,transparent 42%,rgba(14,14,16,.8) 100%);opacity:0;transition:opacity .4s var(--ease)}
+#workGrid .colcard:hover::before{opacity:1}
+#workGrid .colcard__body{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:24px clamp(18px,2vw,26px);transform:translateY(12px);opacity:0;transition:opacity .4s var(--ease),transform .4s var(--ease)}
+#workGrid .colcard:hover .colcard__body{opacity:1;transform:none}
+#workGrid .colcard__cat{color:var(--accent-3)}
+#workGrid .colcard__t{margin-top:8px;font-size:clamp(1.05rem,1.4vw,1.28rem);color:#fff}
+#workGrid .colcard::after{content:"↗";position:absolute;top:15px;right:15px;z-index:2;width:42px;height:42px;border-radius:50%;background:#fff;color:var(--ink);display:grid;place-items:center;font-size:1.1rem;font-weight:700;opacity:0;transform:translateY(8px) scale(.8);transition:opacity .35s var(--ease),transform .35s var(--ease)}
+#workGrid .colcard:hover::after{opacity:1;transform:none}
+@media(max-width:1024px){#workGrid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){#workGrid{grid-template-columns:1fr}}
