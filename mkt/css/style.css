@@ -242,7 +242,7 @@ em{font-style:normal;color:var(--accent)}
 @media(max-width:560px){.colgrid{grid-template-columns:1fr}}
 
 /* ===== 작업사례(#workGrid)만 포트폴리오 스타일 — 다른 센터 .np-item 통일 (column 블로그 카드와 분리) ===== */
-#workGrid{grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.6vw,22px)}
+#workGrid{grid-template-columns:repeat(2,1fr);gap:clamp(16px,1.8vw,28px)}
 #workGrid .colcard{position:relative;aspect-ratio:16/10;border:0;border-radius:14px;overflow:hidden;background:var(--bg-soft);box-shadow:0 14px 34px -20px rgba(14,14,16,.32)}
 #workGrid .colcard:hover{transform:none;box-shadow:0 22px 46px -26px rgba(14,14,16,.42)}
 #workGrid .colcard__media{position:absolute;inset:0;background-position:top center;transition:transform .8s var(--ease)}
