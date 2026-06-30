@@ -80,18 +80,17 @@
 
   /* ===== 기본 포트폴리오 (웹·앱 제작) — main:true 는 메인페이지 노출 ===== */
   var DEFAULT_WORKS = [
-    { f: 'big_slide_02.jpg', t: '○○병원 반응형 홈페이지', c: '홈페이지', main: true },
-    { f: 'big_slide_03.jpg', t: '브랜드 글로벌 사이트', c: '홈페이지', main: true },
-    { f: 'main_03.png', t: '뷰티 브랜드 리뉴얼', c: '홈페이지', main: true },
-    { f: 'big_slide_04.jpg', t: '쇼핑몰 구축·리뉴얼', c: '쇼핑몰', main: true },
-    { f: 'main_12.png', t: '라이프스타일 커머스', c: '쇼핑몰', main: true },
-    { f: 'big_slide_06.jpg', t: '기업 모바일 앱', c: '앱', main: true },
-    { f: 'main_13.png', t: '멤버십·예약 앱', c: '앱', main: true },
-    { f: 'main_07.png', t: '랜딩페이지·영업DB', c: '랜딩', main: true },
-    { f: 'main_09.png', t: 'AEO·SEO 리뉴얼', c: 'SEO·AEO', main: false },
-    { f: 'hero.jpg', t: '인터랙티브 브랜드 사이트', c: '홈페이지', main: false },
-    { f: 'blog.png', t: '콘텐츠·블로그 채널', c: 'SEO·AEO', main: false },
-    { f: 'character.png', t: '브랜드 캐릭터·아이덴티티', c: '브랜딩', main: false }
+    { f: 'pf-kongjin.jpg', t: '㈜공진', c: '홈페이지', main: true },
+    { f: 'pf-daeyangsusan.jpg', t: '대양수산영어조합법인', c: '홈페이지', main: true },
+    { f: 'pf-neopwr.jpg', t: '㈜네오파워텍', c: '홈페이지', main: true },
+    { f: 'pf-pharmicellbc.jpg', t: '파미셀㈜ 바이오케미컬', c: '홈페이지', main: true },
+    { f: 'pf-gnlifekorea.jpg', t: '금산글로벌인삼', c: '홈페이지', main: true },
+    { f: 'pf-bestdh.jpg', t: '대현공업㈜', c: '홈페이지', main: true },
+    { f: 'pf-krafm.jpg', t: '한국마사회시설관리㈜', c: '홈페이지', main: true },
+    { f: 'pf-royalchef.jpg', t: '대령숙수', c: '홈페이지', main: true },
+    { f: 'pf-ycdis.jpg', t: 'YCDIS', c: '홈페이지', main: true },
+    { f: 'pf-happytrekking.jpg', t: '해피트레킹', c: '홈페이지', main: true },
+    { f: 'pf-dysf.jpg', t: '대영에스에프', c: '홈페이지', main: true }
   ];
 
   /* ===== 메인 히어로 (단일) — title 의 줄바꿈 = <br>, **단어** = em 강조 ===== */
