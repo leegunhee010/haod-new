@@ -538,7 +538,10 @@
       {t:'대령숙수',c:'홈페이지',img:'assets/img/pf-royalchef.jpg'}
     ];
     function renderWorkGrid(){
-      var works = (window.HAO && HAO.getMainWorks) ? HAO.getMainWorks(8).map(function(w){ return {t:w.t,c:w.c,img:HAO.imgSrc(w.f)}; }) : FALLBACK_WORKS;
+      var src = (window.HAO && HAO.getMainWorks) ? HAO.getMainWorks(9).map(function(w){ return {t:w.t,c:w.c,img:HAO.imgSrc(w.f)}; }) : FALLBACK_WORKS;
+      /* 3열 그리드에 딱 맞게 — 마지막 줄 빈 칸 방지(3의 배수만 노출) */
+      var works = src.slice(0, src.length - (src.length % 3));
+      if (!works.length) works = src;
       $('#workGrid').innerHTML = works.map(function(w){
         return '<a class="np-item" href="portfolio.html">'+
           '<img src="'+w.img+'" alt="'+w.t+'" loading="lazy" />'+
