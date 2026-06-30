@@ -165,7 +165,16 @@
         <!-- 카피 -->
         <section id="tab-copy" hidden>
           <div class="main__head"><h1>카피 수정</h1><button class="btn btn--primary" id="copySaveBtn">전체 저장</button></div>
-          <p class="note" style="margin-bottom:14px">페이지를 선택해 문구를 직접 수정합니다. <b>**단어**</b> 는 강조, 줄바꿈은 그대로 반영됩니다.</p>
+          <div class="panel">
+            <p class="note" style="margin-bottom:12px"><b>✏️ 사이트에서 바로 수정</b> — 아래 버튼으로 페이지를 열면 점선 표시된 글을 화면에서 직접 클릭해 고칠 수 있습니다.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:8px">
+              <a class="btn" href="index.html?edit=1" target="_blank">메인 ↗</a>
+              <a class="btn" href="portfolio.html?edit=1" target="_blank">포트폴리오 ↗</a>
+              <a class="btn" href="column.html?edit=1" target="_blank">칼럼 ↗</a>
+              <a class="btn" href="qna.html?edit=1" target="_blank">Q&amp;A ↗</a>
+            </div>
+          </div>
+          <p class="note" style="margin-bottom:14px">또는 아래에서 페이지를 선택해 문구를 직접 수정합니다. <b>**단어**</b> 는 강조, 줄바꿈은 그대로 반영됩니다.</p>
           <div class="panel">
             <div class="frm" style="grid-template-columns:1fr"><div><label>페이지 선택</label><select id="copyPage"></select></div></div>
             <div class="frm" id="copyFields" style="grid-template-columns:1fr;margin-top:12px"></div>
@@ -382,14 +391,14 @@
     }
 
     /* 로그인 */
-    function showAdmin() { $("loginView").hidden = true; $("adminView").hidden = false; renderAll(); }
+    function showAdmin() { localStorage.setItem("hw_edit", "1"); $("loginView").hidden = true; $("adminView").hidden = false; renderAll(); }
     $("loginForm").addEventListener("submit", function (e) {
       e.preventDefault();
       var cred = HAO.getCred();
       if ($("loginId").value.trim() === cred.id && $("loginPw").value === cred.pw) { sessionStorage.setItem("hw_admin", "1"); showAdmin(); }
       else $("loginErr").textContent = "아이디 또는 비밀번호가 올바르지 않습니다.";
     });
-    $("logoutBtn").addEventListener("click", function () { sessionStorage.removeItem("hw_admin"); location.reload(); });
+    $("logoutBtn").addEventListener("click", function () { sessionStorage.removeItem("hw_admin"); localStorage.removeItem("hw_edit"); location.reload(); });
 
     /* 탭 */
     var TABS = ["dash","hero","copy","works","posts","qna","partners","inq","media","seo","set","acc"];

@@ -171,7 +171,19 @@
     { key: "col_title", page: "column", sel: "#listView .subhero__title", tag: "b", label: "상단 제목", value: "Column" },
     { key: "col_desc", page: "column", sel: "#listView .subhero__desc", tag: "b", label: "상단 설명", value: "바우처 신청부터 결과보고까지, 실무에 바로 쓰는 정부지원사업 이야기를 전합니다." },
     { key: "qna_title", page: "qna", sel: ".subhero__title", tag: "b", label: "상단 제목", value: "자주 하는 질문" },
-    { key: "qna_ptitle", page: "qna", sel: ".page__title", tag: "b", label: "섹션 제목", value: "무엇이 궁금하신가요" }
+    { key: "qna_ptitle", page: "qna", sel: ".page__title", tag: "b", label: "섹션 제목", value: "무엇이 궁금하신가요" },
+
+    /* ───── 수출바우처 ───── */
+    { key: "ex_title", page: "export", sel: ".subhero__title", tag: "b", label: "상단 제목", value: "수출바우처" },
+    { key: "ex_desc", page: "export", sel: ".subhero__desc", tag: "b", label: "상단 설명", value: "수출역량에 맞는 지원 서비스를 바우처로 자유롭게 — 수출지원기반활용사업." },
+
+    /* ───── 혁신바우처 ───── */
+    { key: "in_title", page: "innovation", sel: ".subhero__title", tag: "b", label: "상단 제목", value: "혁신바우처" },
+    { key: "in_desc", page: "innovation", sel: ".subhero__desc", tag: "b", label: "상단 설명", value: "진단 기반 맞춤형 지원으로 제조 중소기업의 경쟁력을 강화하는 중소기업 혁신바우처사업." },
+
+    /* ───── 판로개척지원사업 ───── */
+    { key: "mk_title", page: "market", sel: ".subhero__title", tag: "b", label: "상단 제목", value: "판로개척지원사업" },
+    { key: "mk_desc", page: "market", sel: ".subhero__desc", tag: "b", label: "상단 설명", value: "국내외 판로 확대를 위한 전시·마케팅·홍보물 제작 지원 — 중소기업·소상공인 대상." }
   ];
 
   function load(key, fallback) {

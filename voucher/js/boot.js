@@ -89,6 +89,67 @@
         });
       });
     } catch (e) {}
+
+    /* ---- 사이트에서 바로 수정 (관리자 ?edit=1) ---- */
+    try {
+      if (/[?&]edit=1/.test(location.search) && localStorage.getItem("hv_edit") === "1") startEditMode("hv_copy");
+    } catch (e) {}
+  }
+
+  /* 화면에서 카피를 직접 클릭해 고치는 인라인 편집 모드 (관리자 전용) */
+  function startEditMode(copyKey) {
+    var edited = {}, marked = [];
+    HAO.getCopy().forEach(function (c) {
+      if (c.page !== "all" && c.page !== page) return;
+      if (c.attr) return;
+      var el = document.querySelector(c.sel);
+      if (!el) return;
+      el.dataset.haoKey = c.key;
+      el.dataset.haoTag = c.tag || "b";
+      el.setAttribute("contenteditable", "true");
+      el.setAttribute("spellcheck", "false");
+      el.classList.add("hao-editable");
+      el.addEventListener("input", function () { edited[c.key] = true; updateBar(); });
+      marked.push(el);
+    });
+    var st = document.createElement("style");
+    st.textContent =
+      ".hao-editable{outline:2px dashed rgba(232,56,23,.55);outline-offset:3px;border-radius:3px;cursor:text;}" +
+      ".hao-editable:hover{outline:2px solid #e83817;}" +
+      ".hao-editable:focus{outline:2px solid #e83817;background:rgba(232,56,23,.06);}" +
+      "*{animation-play-state:paused !important;}" +
+      "#haoEditBar{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);z-index:99999;display:flex;gap:12px;align-items:center;background:#17150f;color:#fff;padding:12px 14px 12px 22px;border-radius:999px;font-size:14px;font-family:system-ui,sans-serif;box-shadow:0 18px 44px -16px rgba(0,0,0,.55);white-space:nowrap;}" +
+      "#haoEditBar b{color:#ff9472;}" +
+      "#haoEditBar button{font-family:inherit;font-size:13.5px;font-weight:700;border:0;border-radius:999px;padding:9px 18px;cursor:pointer;}" +
+      "#haoEditBar .sv{background:#e83817;color:#fff;}#haoEditBar .sv:hover{background:#f25b35;}" +
+      "#haoEditBar .ex{background:rgba(255,255,255,.14);color:#fff;}";
+    document.head.appendChild(st);
+    var bar = document.createElement("div");
+    bar.id = "haoEditBar";
+    bar.innerHTML = '<span>✏️ 바로 수정 — 점선 글을 클릭해 고치세요 (<b id="haoEditCnt">0</b>곳)</span>' +
+      '<button class="sv" id="haoEditSave">저장</button><button class="ex" id="haoEditExit">나가기</button>';
+    document.body.appendChild(bar);
+    function updateBar() { var c = document.getElementById("haoEditCnt"); if (c) c.textContent = Object.keys(edited).length; }
+    function unfmt(el, tag) {
+      var html = el.innerHTML.replace(/<br\s*\/?>/gi, "\n").replace(/<div[^>]*>/gi, "\n").replace(/<\/div>/gi, "");
+      if (tag) html = html.replace(new RegExp("<" + tag + "(\\s[^>]*)?>", "gi"), "**").replace(new RegExp("</" + tag + ">", "gi"), "**");
+      var tmp = document.createElement("div"); tmp.innerHTML = html;
+      return (tmp.textContent || "").replace(/ /g, " ").trim();
+    }
+    document.getElementById("haoEditSave").addEventListener("click", function () {
+      var ov = {}; try { ov = JSON.parse(localStorage.getItem(copyKey)) || {}; } catch (e) {}
+      marked.forEach(function (el) { var k = el.dataset.haoKey; if (!edited[k]) return; ov[k] = unfmt(el, el.dataset.haoTag); });
+      var btn = this, label = btn.textContent; btn.disabled = true; btn.textContent = "저장 중…";
+      var finish = function (ok) {
+        btn.disabled = false; btn.textContent = label;
+        if (ok) { edited = {}; updateBar(); alert("저장되었습니다. 새로고침해도 유지되고 모든 방문자에게 반영됩니다."); }
+        else alert("로컬에는 저장됐지만 서버 반영에 실패했어요. 연결을 확인하고 다시 저장해주세요.");
+      };
+      try { localStorage.setItem(copyKey, JSON.stringify(ov)); } catch (e) {}
+      if (HAO.set) HAO.set(copyKey, ov).then(function () { finish(true); }).catch(function () { finish(false); });
+      else finish(true);
+    });
+    document.getElementById("haoEditExit").addEventListener("click", function () { location.href = location.pathname; });
   }
 
   if (HAO.ready && HAO.ready.then) HAO.ready.then(apply); else apply();
