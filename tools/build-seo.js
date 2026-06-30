@@ -45,6 +45,8 @@ const ORG = { "@context":"https://schema.org","@type":"Organization", name:"하�
     "https://www.threads.com/@haodesign_official",
     "https://map.naver.com/p/search/하오디자인"
   ] };
+/* 작성자(E-E-A-T) — 센터별 팀 */
+const AUTHOR = { design:"하오디자인 디자인팀", studio:"하오디자인 스튜디오팀", web:"하오디자인 웹팀", mkt:"하오디자인 마케팅팀", voucher:"하오디자인 정부사업팀" };
 
 function ld(o){ return '  <script type="application/ld+json">\n'+JSON.stringify(o)+'\n  </script>\n'; }
 function inject(fp, str){ let h=fs.readFileSync(fp,"utf8"); h=h.replace("</head>", str+"</head>"); fs.writeFileSync(fp,h,"utf8"); }
@@ -83,7 +85,7 @@ Object.keys(PUBLIC).forEach(function(center){
     if(file==="index.html" && !/"Organization"/.test(html)){ add+=ld(ORG); nOrg++; }
     if(file==="qna.html" && !/FAQPage/.test(html)){
       try{ if(!hao) hao=loadHAO(center); const q=(hao&&hao.getQna)?hao.getQna():[];
-        if(q.length){ add+=ld({"@context":"https://schema.org","@type":"FAQPage",mainEntity:q.map(function(x){return {"@type":"Question",name:x.q,acceptedAnswer:{"@type":"Answer",text:x.a}};})}); nFaq++; } }catch(e){}
+        if(q.length){ add+=ld({"@context":"https://schema.org","@type":"FAQPage",author:{"@type":"Organization",name:(AUTHOR[center]||"하오디자인")},mainEntity:q.map(function(x){return {"@type":"Question",name:x.q,acceptedAnswer:{"@type":"Answer",text:x.a}};})}); nFaq++; } }catch(e){}
     }
     if(add){ inject(fp,add); }
   });
@@ -95,6 +97,24 @@ Object.keys(PUBLIC).forEach(function(center){
   let html=read(fp);
   const orgRe=/<script type="application\/ld\+json">\s*\{"@context":"https:\/\/schema\.org","@type":"Organization"[\s\S]*?<\/script>/;
   if(orgRe.test(html)){ html=html.replace(orgRe, '<script type="application/ld+json">\n'+JSON.stringify(ORG)+'\n  </script>'); fs.writeFileSync(fp,html,"utf8"); nOrg++; }
+});
+
+/* 1c) Q&A 작성자 — FAQPage author 보강 + 가시적 byline */
+Object.keys(PUBLIC).forEach(function(center){
+  const fp=path.join(ROOT,center,"qna.html"); if(!fs.existsSync(fp)) return;
+  let html=read(fp), changed=false; const team=AUTHOR[center]||"하오디자인";
+  const faqRe=/<script type="application\/ld\+json">\s*\{"@context":"https:\/\/schema\.org","@type":"FAQPage"[\s\S]*?<\/script>/;
+  if(faqRe.test(html) && !/"@type":"FAQPage","author"/.test(html)){
+    try{ const hao=loadHAO(center); const q=(hao&&hao.getQna)?hao.getQna():[];
+      if(q.length){ const obj={"@context":"https://schema.org","@type":"FAQPage",author:{"@type":"Organization",name:team},mainEntity:q.map(function(x){return {"@type":"Question",name:x.q,acceptedAnswer:{"@type":"Answer",text:x.a}};})};
+        html=html.replace(faqRe,'<script type="application/ld+json">\n'+JSON.stringify(obj)+'\n  </script>'); changed=true; } }catch(e){}
+  }
+  if(!/hao-byline/.test(html)){
+    const before=html;
+    html=html.replace(/(<h2 class="page__title">[^<]*<\/h2>)/, '$1\n      <p class="hao-byline" style="margin-top:8px;font-size:.86rem;color:#8b8b93">작성·관리 — '+team+'</p>');
+    if(html!==before) changed=true;
+  }
+  if(changed){ fs.writeFileSync(fp,html,"utf8"); nFaq++; }
 });
 
 /* 2) Service */

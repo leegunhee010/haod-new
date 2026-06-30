@@ -31,6 +31,15 @@ const RELATED = {
   voucher: [["export.html","수출바우처"],["innovation.html","혁신바우처"],["market.html","판로개척지원사업"],["qna.html","자주 묻는 질문"]]
 };
 
+/* 작성자(E-E-A-T) — 센터별 팀 표기 */
+const AUTHOR = {
+  design:  "하오디자인 디자인팀",
+  studio:  "하오디자인 스튜디오팀",
+  web:     "하오디자인 웹팀",
+  mkt:     "하오디자인 마케팅팀",
+  voucher: "하오디자인 정부사업팀"
+};
+
 function esc(s){ return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];}); }
 
 function sandbox(){
@@ -84,6 +93,7 @@ CENTERS.forEach(function(center){
 
   posts.forEach(function(post, i){
     const prev = posts[i+1], next = posts[i-1];
+    const author = AUTHOR[center.key] || "하오디자인";
     const file = "column-" + post.id + ".html";
     const canonical = BASE + "/" + center.key + "/" + file;
     const iso = String(post.date||"").replace(/\./g,"-");
@@ -91,7 +101,7 @@ CENTERS.forEach(function(center){
     const bodyHtml = bodyArr.map(function(p){ return "<p>" + esc(p) + "</p>"; }).join("\n        ");
     const absImg = absUrl(post.img, center.key);
     const article = { "@context":"https://schema.org","@type":"BlogPosting", headline:post.title, datePublished:iso, dateModified:iso, image:absImg, inLanguage:"ko",
-      author:{ "@type":"Organization", name:"하오디자인" }, publisher:{ "@type":"Organization", name:"하오디자인", logo:{ "@type":"ImageObject", url:BASE+"/design/assets/img/logo.png" } },
+      author:{ "@type":"Organization", name:author, parentOrganization:{ "@type":"Organization", name:"하오디자인" } }, publisher:{ "@type":"Organization", name:"하오디자인", logo:{ "@type":"ImageObject", url:BASE+"/design/assets/img/logo.png" } },
       description:post.summary||"", articleBody:bodyArr.join("\n\n"), mainEntityOfPage:canonical };
     const crumb = { "@context":"https://schema.org","@type":"BreadcrumbList", itemListElement:[
       { "@type":"ListItem", position:1, name:center.label, item:BASE+"/"+center.key+"/" },
@@ -103,10 +113,10 @@ CENTERS.forEach(function(center){
 
     let main;
     if (center.mkt) {
-      main = '  <main id="top">\n    <section class="subhero"><span class="subhero__glow" aria-hidden="true"></span>\n      <p class="crumb"><a href="index.html">'+esc(center.label)+'</a> / <a href="'+center.list+'">칼럼</a></p>\n      <h1 class="subhero__title">마케팅 칼럼</h1></section>\n    <article class="post">\n      <div class="post__top"><span class="post__cat">'+esc(post.cat||"")+'</span><span class="post__date">'+esc(post.date)+'</span></div>\n      <h2 class="post__title">'+esc(post.title)+'</h2>\n      <div class="post__hero"><img src="'+esc(post.img)+'" alt="'+esc(post.title)+'" /></div>\n      <div class="post__body">\n        '+bodyHtml+'\n      </div>\n      <div class="post__cta"><a class="post__back" href="'+center.list+'">← 칼럼 목록으로</a>'+(next?'<a class="pillbtn pillbtn--dark" href="column-'+next.id+'.html">다음 글 →</a>':'')+'</div>\n'+relHtml+'    </article>\n  </main>';
+      main = '  <main id="top">\n    <section class="subhero"><span class="subhero__glow" aria-hidden="true"></span>\n      <p class="crumb"><a href="index.html">'+esc(center.label)+'</a> / <a href="'+center.list+'">칼럼</a></p>\n      <h1 class="subhero__title">마케팅 칼럼</h1></section>\n    <article class="post">\n      <div class="post__top"><span class="post__cat">'+esc(post.cat||"")+'</span><span class="post__date">'+esc(post.date)+'</span><span class="post__author">작성 · '+esc(author)+'</span></div>\n      <h2 class="post__title">'+esc(post.title)+'</h2>\n      <div class="post__hero"><img src="'+esc(post.img)+'" alt="'+esc(post.title)+'" /></div>\n      <div class="post__body">\n        '+bodyHtml+'\n      </div>\n      <div class="post__cta"><a class="post__back" href="'+center.list+'">← 칼럼 목록으로</a>'+(next?'<a class="pillbtn pillbtn--dark" href="column-'+next.id+'.html">다음 글 →</a>':'')+'</div>\n'+relHtml+'    </article>\n  </main>';
     } else {
       const navLinks = (prev?'<a href="column-'+prev.id+'.html" class="post__navlink"><span>이전 글</span><strong>'+esc(prev.title)+'</strong></a>':'<span></span>') + '<a href="'+center.list+'" class="btn-round post__list"><span>목록으로</span></a>' + (next?'<a href="column-'+next.id+'.html" class="post__navlink post__navlink--next"><span>다음 글</span><strong>'+esc(next.title)+'</strong></a>':'<span></span>');
-      main = '  <main>\n    <section class="subhero subhero--post"><div class="subhero__inner">\n      <p class="subhero__crumb"><a href="index.html">홈</a> / <a href="'+center.list+'">Column</a></p>\n      <h1 class="subhero__title post-title">'+esc(post.title)+'</h1>\n      <p class="subhero__desc">'+esc(post.date)+'</p></div></section>\n    <section class="page page--tight"><article class="post">\n      <div class="post__hero"><img src="'+esc(post.img)+'" alt="'+esc(post.title)+'" /></div>\n      <div class="post__body">\n        '+bodyHtml+'\n      </div>\n      <div class="post__nav">'+navLinks+'</div>\n'+relHtml+'    </article></section>\n  </main>';
+      main = '  <main>\n    <section class="subhero subhero--post"><div class="subhero__inner">\n      <p class="subhero__crumb"><a href="index.html">홈</a> / <a href="'+center.list+'">Column</a></p>\n      <h1 class="subhero__title post-title">'+esc(post.title)+'</h1>\n      <p class="subhero__desc">'+esc(post.date)+' · 작성 '+esc(author)+'</p></div></section>\n    <section class="page page--tight"><article class="post">\n      <div class="post__hero"><img src="'+esc(post.img)+'" alt="'+esc(post.title)+'" /></div>\n      <div class="post__body">\n        '+bodyHtml+'\n      </div>\n      <div class="post__nav">'+navLinks+'</div>\n'+relHtml+'    </article></section>\n  </main>';
     }
 
     const html = '<!DOCTYPE html>\n<html lang="ko">\n<head>\n  <meta charset="UTF-8" />\n  <meta name="viewport" content="width=device-width, initial-scale=1.0" />\n  <title>'+esc(post.title)+' | '+esc(center.label)+' — 하오디자인</title>\n  <meta name="description" content="'+esc(post.summary||post.title)+'" />\n  <link rel="canonical" href="'+canonical+'" />\n  <meta property="og:type" content="article" />\n  <meta property="og:title" content="'+esc(post.title)+'" />\n  <meta property="og:description" content="'+esc(post.summary||"")+'" />\n  <meta property="og:image" content="'+esc(absImg)+'" />\n  <meta property="og:url" content="'+canonical+'" />\n  '+css+'\n'+(extraStyle?'  '+extraStyle+'\n':'')+'  <script type="application/ld+json">\n'+JSON.stringify(article)+'\n  </script>\n  <script type="application/ld+json">\n'+JSON.stringify(crumb)+'\n  </script>\n</head>\n<body>\n  <div class="progress" id="progress" aria-hidden="true"></div>\n  '+header+'\n'+main+'\n  '+footer+'\n  '+HEADER_JS+'\n</body>\n</html>\n';
