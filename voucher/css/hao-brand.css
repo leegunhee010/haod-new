@@ -101,7 +101,8 @@ body { background: #ffffff; }
 #main .section4 .main-txt .circle-wrap .circle { background-color: var(--accent) !important; }
 
 /* 2) 시그니처 모티프 교체: 떠있는 동그란 점 → 길쭉한 라운드 바(언더라인 틱) */
-.tit-circle::after { width: 48px !important; height: 8px !important; border-radius: 5px !important; bottom: -0.28em !important; top: auto !important; right: -10px !important; background: var(--accent) !important; }
+/* 제목 밑 주황색 바 장식 제거 (사용자 요청) */
+#main .tit-circle::after { display: none !important; }
 #main .section4 .main-txt .circle-wrap .circle { background-color: #16120e !important; }  /* 중앙 원: 오렌지 → 차콜(오렌지 글씨 대비) */
 
 /* 3) fill-text 모션 트위스트 (회→흰 대신 웜그레이→잉크, 더 빠르고 다른 이징) */
@@ -337,12 +338,13 @@ input[type="text"], input[type="tel"], input[type="email"], textarea { cursor: t
 #main .fs36 { font-size: 28px !important; line-height: 1.06 !important; }  /* 섹션 라벨·타이틀 36→28 */
 #main .fs32 { font-size: 24px !important; }                                /* 본문 리드 문장 32→24 */
 /* Our Centers(section3): 큰 세로 이미지(513px) 캡 + 스태거 절반 → 카드 높이 축소 */
-#main .section3 .imgbox li .img { height: 400px; }
+/* Our Centers(section3) — 카드형(컴팩트): 이미지 300px 캡 + 은은한 스태거 */
+#main .section3 .imgbox li .img { height: 300px; }
 #main .section3 .imgbox li .img img { width: 100%; height: 100%; object-fit: cover; }
-#main .section3 .imgbox li:nth-child(1){ margin-top: 56px !important; }
+#main .section3 .imgbox li:nth-child(1){ margin-top: 24px !important; }
 #main .section3 .imgbox li:nth-child(2){ margin-top: 0 !important; }
-#main .section3 .imgbox li:nth-child(3){ margin-top: 112px !important; }
-#main .section3 .imgbox li:nth-child(4){ margin-top: 56px !important; }
+#main .section3 .imgbox li:nth-child(3){ margin-top: 48px !important; }
+#main .section3 .imgbox li:nth-child(4){ margin-top: 24px !important; }
 
 /* ============================================================
    바우처 칼럼(section8) — 칼럼 게시판 카드 그리드
