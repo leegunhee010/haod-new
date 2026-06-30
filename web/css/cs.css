@@ -772,21 +772,29 @@ html.lenis,html.lenis body{height:auto}
 .tmarquee .tcard{width:clamp(296px,27vw,352px);flex:none}
 @media(prefers-reduced-motion:reduce){.tmarquee__track{animation:none}}
 
-/* ===== 커스텀 커서 (원형 회전 텍스트 + 호버 모핑) ===== */
+/* ===== 커스텀 커서 (회전 텍스트 배지 + 화살표, 호버 모핑) ===== */
 .hcursor{position:fixed;left:0;top:0;z-index:9999;pointer-events:none;opacity:0;transition:opacity .3s;will-change:transform}
 .has-hcursor .hcursor{opacity:1}
-.hcursor__in{position:absolute;left:0;top:0;transform:translate(-50%,-50%);width:44px;height:44px;transition:width .32s var(--ease),height .32s var(--ease)}
-.hcursor__ring{position:absolute;inset:0;border-radius:50%;border:1.5px solid var(--accent);background:transparent;transition:background .3s var(--ease),border-color .3s}
-.hcursor__dot{position:absolute;left:50%;top:50%;width:6px;height:6px;border-radius:50%;background:var(--accent);transform:translate(-50%,-50%);transition:opacity .25s}
-.hcursor__text{position:absolute;inset:-11px;animation:hcSpin 7s linear infinite;transition:opacity .3s}
+.hcursor__in{position:absolute;left:0;top:0;transform:translate(-50%,-50%);width:68px;height:68px}
+/* 회전 텍스트 링 */
+.hcursor__text{position:absolute;inset:0;animation:hcSpin 9s linear infinite;transition:opacity .3s}
 .hcursor__text svg{width:100%;height:100%;display:block;overflow:visible}
-.hcursor__text text{font-family:"Fragment Mono",monospace;font-size:11px;letter-spacing:.5px;fill:var(--accent);font-weight:700}
+.hcursor__text text{font-family:"Fragment Mono","Pretendard",monospace;font-size:8px;letter-spacing:.4px;fill:var(--accent);font-weight:700}
 @keyframes hcSpin{to{transform:rotate(360deg)}}
-.hcursor__label{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) scale(.4);color:#fff;font-weight:800;font-size:.78rem;letter-spacing:.02em;opacity:0;white-space:nowrap;transition:opacity .25s,transform .3s var(--ease)}
-.hcursor.is-hover .hcursor__in{width:86px;height:86px}
-.hcursor.is-hover .hcursor__ring{background:var(--accent);border-color:var(--accent)}
-.hcursor.is-hover .hcursor__dot,.hcursor.is-hover .hcursor__text{opacity:0}
-.hcursor.is-hover .hcursor__label{opacity:1;transform:translate(-50%,-50%) scale(1)}
+/* 가운데 오렌지 그라데이션 원 + 화살표 */
+.hcursor__core{position:absolute;left:50%;top:50%;width:34px;height:34px;border-radius:50%;background:var(--grad);
+  display:grid;place-items:center;transform:translate(-50%,-50%);transition:transform .28s var(--ease),width .28s var(--ease),height .28s var(--ease);
+  box-shadow:0 8px 20px -8px rgba(232,56,23,.6)}
+.hcursor__arw{width:15px;height:15px;fill:none;stroke:#fff;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;transition:opacity .2s;grid-area:1/1}
+.hcursor__label{grid-area:1/1;color:#fff;font-weight:800;font-size:.72rem;letter-spacing:.02em;white-space:nowrap;opacity:0;transform:scale(.5);transition:opacity .2s,transform .28s var(--ease)}
+/* 링크·버튼 호버: 원이 살짝 커짐 */
+.hcursor.is-hover .hcursor__core{transform:translate(-50%,-50%) scale(1.18)}
+.hcursor.is-hover .hcursor__text{opacity:.65}
+/* 이미지·포트폴리오 링크: VIEW */
+.hcursor.is-view .hcursor__core{width:64px;height:64px}
+.hcursor.is-view .hcursor__arw{opacity:0}
+.hcursor.is-view .hcursor__label{opacity:1;transform:scale(1)}
+.hcursor.is-view .hcursor__text{opacity:0}
 @media (pointer:fine){.has-hcursor *{cursor:none!important}.has-hcursor input,.has-hcursor textarea,.has-hcursor select{cursor:auto!important}}
 @media (pointer:coarse){.hcursor{display:none}}
 @media (prefers-reduced-motion:reduce){.hcursor__text{animation:none}}

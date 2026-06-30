@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://cdn.jsdelivr.net" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Fragment+Mono&display=swap" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.css" />
-  <link rel="stylesheet" href="css/cs.css?v=59" />
+  <link rel="stylesheet" href="css/cs.css?v=62" />
   <script type="importmap">
   { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.171.0/build/three.module.js" } }
   </script>
@@ -25,12 +25,13 @@
   <!-- 커스텀 커서 (원형 회전 텍스트 + 호버 모핑) -->
   <div class="hcursor" id="hcursor" aria-hidden="true">
     <div class="hcursor__in">
-      <span class="hcursor__ring"></span>
-      <span class="hcursor__dot"></span>
       <span class="hcursor__text">
-        <svg viewBox="0 0 66 66"><defs><path id="hcPath" d="M33,33 m-26,0 a26,26 0 1,1 52,0 a26,26 0 1,1 -52,0" /></defs><text><textPath href="#hcPath">HAO · DESIGN · WEB · SEO · AEO · </textPath></text></svg>
+        <svg viewBox="0 0 68 68"><defs><path id="hcPath" d="M34,34 m-30,0 a30,30 0 1,1 60,0 a30,30 0 1,1 -60,0" /></defs><text><textPath href="#hcPath">HAO · DESIGN · SEO · AEO · WEB · </textPath></text></svg>
       </span>
-      <span class="hcursor__label" id="hcLabel">VIEW</span>
+      <span class="hcursor__core">
+        <svg class="hcursor__arw" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+        <span class="hcursor__label" id="hcLabel">VIEW</span>
+      </span>
     </div>
   </div>
 
@@ -461,20 +462,25 @@
       if(!window.matchMedia || !matchMedia('(pointer:fine)').matches) return;
       var cur=$('#hcursor'); if(!cur) return;
       var label=$('#hcLabel');
-      var SEL='a, button, [data-cursor], .vcard, .gcard, .pcard, .qa__q, summary, .show__visual, .btn';
+      var SEL='a[href], button, [data-cursor]';   /* 실제 링크·버튼만 */
       document.body.classList.add('has-hcursor');
-      var mx=innerWidth/2, my=innerHeight/2, cx=mx, cy=my, run=true;
+      var mx=innerWidth/2, my=innerHeight/2, cx=mx, cy=my;
       addEventListener('mousemove', function(e){ mx=e.clientX; my=e.clientY; }, {passive:true});
-      (function loop(){ cx+=(mx-cx)*0.2; cy+=(my-cy)*0.2; cur.style.transform='translate3d('+cx+'px,'+cy+'px,0)'; if(run) requestAnimationFrame(loop); })();
+      (function loop(){ cx+=(mx-cx)*0.2; cy+=(my-cy)*0.2; cur.style.transform='translate3d('+cx+'px,'+cy+'px,0)'; requestAnimationFrame(loop); })();
+      function clear(){ cur.classList.remove('is-hover','is-view'); }
       document.addEventListener('mouseover', function(e){
-        var t=e.target.closest(SEL); if(!t) return;
-        var lbl=t.getAttribute('data-cursor') || (t.closest('.vcard, .gcard, .show__visual') ? 'VIEW' : '→');
-        label.textContent=lbl; cur.classList.add('is-hover');
+        var t=e.target.closest(SEL); if(!t){ clear(); return; }
+        clear();
+        var dc=t.getAttribute('data-cursor');
+        var workLink=t.classList.contains('np-item');   /* 포트폴리오 작업 썸네일만 VIEW */
+        if(dc){ label.textContent=dc; cur.classList.add('is-view'); }
+        else if(workLink){ label.textContent='VIEW'; cur.classList.add('is-view'); }
+        else { cur.classList.add('is-hover'); }
       });
       document.addEventListener('mouseout', function(e){
         var t=e.target.closest(SEL); if(!t) return;
         var to=e.relatedTarget && e.relatedTarget.closest ? e.relatedTarget.closest(SEL) : null;
-        if(!to) cur.classList.remove('is-hover');
+        if(!to) clear();
       });
       document.addEventListener('mouseleave', function(){ cur.style.opacity='0'; });
       document.addEventListener('mouseenter', function(){ cur.style.opacity=''; });
