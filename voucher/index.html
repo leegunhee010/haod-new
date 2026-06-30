@@ -33,7 +33,7 @@
     <!-- HAO 표준 센터 헤더/푸터/FAB -->
     <link rel="stylesheet" href="css/hao-chrome.css?v=19">
     <!-- HAO 기본 스타일 오버라이드 (맨 마지막) -->
-    <link rel="stylesheet" href="css/hao-brand.css?v=56">
+    <link rel="stylesheet" href="css/hao-brand.css?v=62">
 
     <!-- scripts -->
     <script src="js/hq_jquery-1.12.0.min.js"></script>
@@ -340,6 +340,9 @@
                             <h3 class="d-inline fs120 fw900 p-relative tit-circle mt-16">바우처 칼럼</h3>
                         </div>
                     </div>
+                    <div class="board-slider">
+                        <button type="button" class="board-nav board-nav--prev" aria-label="이전 칼럼"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+                      <div class="board-viewport">
                     <ul class="column-board">
                         <li class="board-card" onclick="location.href='column.html'">
                             <div class="board-thumb"><img src="assets/work/w402.jpg" alt="수출바우처, 디자인 분야 100% 활용하는 법"></div>
@@ -362,6 +365,9 @@
                             <div class="board-body"><span class="board-tag">칼럼</span><h4 class="board-title">결과보고, 이것만 알면 끝납니다</h4><p class="board-desc">증빙·정산 실수 없이 마무리하기</p></div>
                         </li>
                     </ul>
+                      </div>
+                        <button type="button" class="board-nav board-nav--next" aria-label="다음 칼럼"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+                    </div>
                 </div>
             </div>
         </section>
@@ -507,6 +513,33 @@
             } else { done('상담 신청이 접수되었습니다. 빠르게 연락드리겠습니다.'); form.reset(); if(sbtn) sbtn.disabled = false; }
         });
     })();
+</script>
+<script>
+/* 바우처 칼럼(section8) 한 줄 슬라이더 — 좌우 화살표로 한 칸씩 넘김 */
+(function(){
+  var slider = document.querySelector('.section8 .board-slider');
+  if(!slider) return;
+  var track = slider.querySelector('.column-board');
+  var cards = Array.prototype.slice.call(slider.querySelectorAll('.board-card'));
+  var prev = slider.querySelector('.board-nav--prev');
+  var next = slider.querySelector('.board-nav--next');
+  if(!track || !cards.length || !prev || !next) return;
+  var idx = 0;
+  function perView(){ var w = window.innerWidth; return w <= 600 ? 1 : (w <= 960 ? 2 : 3); }
+  function maxIdx(){ return Math.max(0, cards.length - perView()); }
+  function stepPx(){ var s = getComputedStyle(track); var gap = parseFloat(s.columnGap || s.gap) || 0; return cards[0].getBoundingClientRect().width + gap; }
+  function render(){
+    if(idx > maxIdx()) idx = maxIdx();
+    if(idx < 0) idx = 0;
+    track.style.transform = 'translateX(' + (-idx * stepPx()) + 'px)';
+    prev.disabled = (idx <= 0);
+    next.disabled = (idx >= maxIdx());
+  }
+  prev.addEventListener('click', function(){ idx--; render(); });
+  next.addEventListener('click', function(){ idx++; render(); });
+  var rt; window.addEventListener('resize', function(){ clearTimeout(rt); rt = setTimeout(render, 150); });
+  render();
+})();
 </script>
 <script src="js/data.js?v=1"></script>
 <script src="js/boot.js?v=1"></script>

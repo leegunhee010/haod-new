@@ -101,7 +101,7 @@ body { background: #ffffff; }
 #main .section4 .main-txt .circle-wrap .circle { background-color: var(--accent) !important; }
 
 /* 2) 시그니처 모티프 교체: 떠있는 동그란 점 → 길쭉한 라운드 바(언더라인 틱) */
-.tit-circle::after { width: 64px !important; height: 12px !important; border-radius: 8px !important; bottom: 14px !important; right: -14px !important; background: var(--accent) !important; }
+.tit-circle::after { width: 48px !important; height: 8px !important; border-radius: 5px !important; bottom: -0.28em !important; top: auto !important; right: -10px !important; background: var(--accent) !important; }
 #main .section4 .main-txt .circle-wrap .circle { background-color: #16120e !important; }  /* 중앙 원: 오렌지 → 차콜(오렌지 글씨 대비) */
 
 /* 3) fill-text 모션 트위스트 (회→흰 대신 웜그레이→잉크, 더 빠르고 다른 이징) */
@@ -323,28 +323,56 @@ input[type="text"], input[type="tel"], input[type="email"], textarea { cursor: t
 }
 
 /* 섹션4·5·6 삭제로 Our Centers(section3) ↔ Who We Are(section7) 간격이 붙음 → 위 여백 더 확보 */
-#main .section7{ padding-top:clamp(120px,15vh,210px) !important; }
-#main .section3{ padding-bottom:clamp(48px,6vh,96px) !important; }
+#main .section7{ padding-top:clamp(96px,12vh,170px) !important; }
+#main .section3{ padding-bottom:clamp(40px,5vh,80px) !important; }
 
 /* ============================================================
    메인 스케일 다운 — 섹션 과대(200px 패딩 + 큰 타입)로 한 화면에 안 들어옴 (2026-06-30)
+   2차: 본문 타입(36/32px)·카운트·여백 추가 축소
    ============================================================ */
-#main .section { padding-top: 120px; }                /* 공통 섹션 위패딩 200→120 (section1은 .pt-0 !important로 0 유지) */
-#main .section8 .section-row { padding: 110px 0; }    /* 칼럼 행 패딩 160→110 */
-#main .section1 .count { font-size: 88px !important; line-height: 1.05 !important; }  /* Our Projects 412+ 120→88 */
+#main .section { padding-top: 96px; }                 /* 공통 섹션 위패딩 200→96 (section1은 .pt-0 !important로 0 유지) */
+#main .section8 .section-row { padding: 90px 0; }     /* 칼럼 행 패딩 160→90 */
+#main .section1 .count { font-size: 72px !important; line-height: 1.04 !important; }  /* Our Projects 412+ 120→72 */
+#main .fs120 { font-size: clamp(40px, 5vw, 64px) !important; line-height: 1.08 !important; letter-spacing: -.02em !important; }  /* 섹션 대제목(바우처 칼럼/We are HAO 등) 120→64 */
+#main .fs36 { font-size: 28px !important; line-height: 1.06 !important; }  /* 섹션 라벨·타이틀 36→28 */
+#main .fs32 { font-size: 24px !important; }                                /* 본문 리드 문장 32→24 */
+/* Our Centers(section3): 큰 세로 이미지(513px) 캡 + 스태거 절반 → 카드 높이 축소 */
+#main .section3 .imgbox li .img { height: 400px; }
+#main .section3 .imgbox li .img img { width: 100%; height: 100%; object-fit: cover; }
+#main .section3 .imgbox li:nth-child(1){ margin-top: 56px !important; }
+#main .section3 .imgbox li:nth-child(2){ margin-top: 0 !important; }
+#main .section3 .imgbox li:nth-child(3){ margin-top: 112px !important; }
+#main .section3 .imgbox li:nth-child(4){ margin-top: 56px !important; }
 
 /* ============================================================
    바우처 칼럼(section8) — 칼럼 게시판 카드 그리드
    ============================================================ */
+/* 한 줄 슬라이더: 뷰포트(클립) + 트랙(flex, translateX) + 좌우 화살표 */
+#main .section8 .board-slider{ position:relative; margin:clamp(48px,6vh,84px) 0 0; }
+#main .section8 .board-viewport{ overflow:hidden; padding:10px 2px 30px; }
 #main .section8 .column-board{
-  list-style:none; margin:clamp(56px,7vh,100px) 0 0; padding:0;
-  display:grid; grid-template-columns:repeat(3,1fr); gap:52px 36px;
+  list-style:none; margin:0; padding:0;
+  display:flex; flex-wrap:nowrap; gap:36px;
+  transition:transform .5s cubic-bezier(.4,.05,.2,1); will-change:transform;
 }
 #main .section8 .board-card{
+  flex:0 0 calc((100% - 72px)/3); box-sizing:border-box;
   cursor:pointer; background:#fff; border-radius:18px; overflow:hidden;
   box-shadow:0 16px 42px -26px rgba(36,26,20,.42);
   transition:transform .35s ease, box-shadow .35s ease;
 }
+#main .section8 .board-nav{
+  position:absolute; top:38%; transform:translateY(-50%); z-index:6;
+  width:54px; height:54px; border-radius:50%; background:#fff;
+  border:1px solid rgba(36,26,20,.10); box-shadow:0 14px 34px -14px rgba(36,26,20,.4);
+  display:flex; align-items:center; justify-content:center; color:#241a14;
+  cursor:pointer; transition:background .25s ease, color .25s ease, opacity .25s ease, box-shadow .25s ease;
+}
+#main .section8 .board-nav:hover{ background:var(--accent); color:#fff; box-shadow:0 18px 38px -14px rgba(232,56,23,.5); }
+#main .section8 .board-nav--prev{ left:-22px; }
+#main .section8 .board-nav--next{ right:-22px; }
+#main .section8 .board-nav:disabled{ opacity:.28; cursor:default; box-shadow:0 8px 20px -12px rgba(36,26,20,.3); }
+#main .section8 .board-nav:disabled:hover{ background:#fff; color:#241a14; }
 #main .section8 .board-card:hover{ transform:translateY(-6px); box-shadow:0 28px 58px -22px rgba(232,56,23,.32); }
 #main .section8 .board-thumb{ aspect-ratio:16/10; overflow:hidden; }
 #main .section8 .board-thumb img{ width:100%; height:100%; object-fit:cover; transition:transform .55s ease; }
@@ -356,8 +384,9 @@ input[type="text"], input[type="tel"], input[type="email"], textarea { cursor: t
   display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;
 }
 #main .section8 .board-desc{ font-size:15px; color:#8a7d72; margin:10px 0 0; font-weight:500; }
-@media (max-width:960px){ #main .section8 .column-board{ grid-template-columns:repeat(2,1fr); gap:36px 24px; } }
-@media (max-width:600px){ #main .section8 .column-board{ grid-template-columns:1fr; } }
+@media (max-width:1240px){ #main .section8 .board-nav--prev{ left:-8px; } #main .section8 .board-nav--next{ right:-8px; } }
+@media (max-width:960px){ #main .section8 .column-board{ gap:24px; } #main .section8 .board-card{ flex-basis:calc((100% - 24px)/2); } }
+@media (max-width:600px){ #main .section8 .column-board{ gap:18px; } #main .section8 .board-card{ flex-basis:100%; } #main .section8 .board-nav{ width:46px; height:46px; } }
 
 /* ============================================================
    포트폴리오(section9) — 기울어진 사진 카드 + 웨이브 라인
