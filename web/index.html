@@ -433,6 +433,8 @@
     <a class="fab__call" href="tel:16662027" aria-label="전화"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24c1.1.37 2.3.57 3.6.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.3.2 2.5.57 3.6a1 1 0 0 1-.25 1z"/></svg></a>
   </div>
 
+  <script src="js/data.js?v=1"></script>
+  <script src="js/boot.js?v=1"></script>
   <script>
   (function () {
     var $ = function (s, c) { return (c || document).querySelector(s); };
@@ -487,11 +489,16 @@
     })();
 
     /* trust marquee */
-    var P = [46,48,50,52,54,56,58,68,70,72,74,76,78,80,89,91,93,95,97,99].map(function(n){ return 'assets/partners/p'+n+'.png'; });
-    function row(arr){ return arr.map(function(s){ return '<span class="plogo"><img src="'+s+'" alt="파트너" decoding="async" /></span>'; }).join(''); }
-    var set = row(P), set2 = row(P.slice().reverse());
-    $('#trustTrack').innerHTML = set + set;
-    var t2 = $('#trustTrack2'); if (t2) t2.innerHTML = set2 + set2;
+    function renderTrust(){
+      var P = (window.HAO && HAO.getPartners) ? HAO.getPartners().map(function(s){ return HAO.imgSrc(s); })
+        : [46,48,50,52,54,56,58,68,70,72,74,76,78,80,89,91,93,95,97,99].map(function(n){ return 'assets/partners/p'+n+'.png'; });
+      function row(arr){ return arr.map(function(s){ return '<span class="plogo"><img src="'+s+'" alt="파트너" decoding="async" /></span>'; }).join(''); }
+      var set = row(P), set2 = row(P.slice().reverse());
+      var t1 = $('#trustTrack'); if (t1) t1.innerHTML = set + set;
+      var t2 = $('#trustTrack2'); if (t2) t2.innerHTML = set2 + set2;
+    }
+    renderTrust();
+    if (window.HAO && HAO.ready && HAO.ready.then) HAO.ready.then(renderTrust);
 
     /* 전략 카드 캐러셀 화살표 */
     var gt=$('#gcarTrack'), gp=$('#gcarPrev'), gn=$('#gcarNext');
@@ -525,7 +532,7 @@
     /* network graph(AEO fanout) → js/diff.js 에서 살아있는 모션으로 처리 */
 
     /* portfolio */
-    var works=[
+    var FALLBACK_WORKS=[
       {t:'○○병원 반응형 홈페이지',c:'홈페이지',img:'assets/img/big_slide_02.jpg'},
       {t:'브랜드 글로벌 사이트',c:'홈페이지',img:'assets/img/big_slide_03.jpg'},
       {t:'뷰티 브랜드 리뉴얼',c:'홈페이지',img:'assets/img/main_03.png'},
@@ -535,11 +542,16 @@
       {t:'멤버십·예약 앱',c:'앱',img:'assets/img/main_13.png'},
       {t:'랜딩페이지·영업DB',c:'랜딩',img:'assets/img/main_07.png'}
     ];
-    $('#workGrid').innerHTML = works.map(function(w){
-      return '<a class="np-item" href="portfolio.html">'+
-        '<img src="'+w.img+'" alt="'+w.t+'" loading="lazy" />'+
-        '<span class="np-item__cap"><span class="np-item__t">'+w.t+'</span><span class="np-item__c">'+w.c+'</span></span></a>';
-    }).join('');
+    function renderWorkGrid(){
+      var works = (window.HAO && HAO.getMainWorks) ? HAO.getMainWorks(8).map(function(w){ return {t:w.t,c:w.c,img:HAO.imgSrc(w.f)}; }) : FALLBACK_WORKS;
+      $('#workGrid').innerHTML = works.map(function(w){
+        return '<a class="np-item" href="portfolio.html">'+
+          '<img src="'+w.img+'" alt="'+w.t+'" loading="lazy" />'+
+          '<span class="np-item__cap"><span class="np-item__t">'+w.t+'</span><span class="np-item__c">'+w.c+'</span></span></a>';
+      }).join('');
+    }
+    renderWorkGrid();
+    if (window.HAO && HAO.ready && HAO.ready.then) HAO.ready.then(renderWorkGrid);
 
     /* FAQ accordion */
     $$('#faq .qa__q').forEach(function(q){
@@ -592,11 +604,20 @@
 
     /* 거대 넘버 패럴랙스는 js/show.js(GSAP)에서 처리 */
 
-    /* form */
+    /* form → Supabase 저장 */
     var form=$('#quoteForm');
-    if(form) form.addEventListener('submit', function(e){ e.preventDefault(); var note=$('#formNote');
+    if(form) form.addEventListener('submit', function(e){
+      e.preventDefault(); var note=$('#formNote');
       if(!form.name.value.trim()||!form.phone.value.trim()){ note.textContent='이름과 연락처를 입력해주세요.'; return; }
-      note.textContent='문의가 접수되었습니다. 빠르게 연락드리겠습니다. (데모)'; form.reset(); });
+      var sbtn = form.querySelector('button[type=submit]'); if (sbtn) sbtn.disabled = true; note.textContent='접수 중…';
+      var done = function(msg){ note.textContent = msg; };
+      if (window.HAO && HAO.saveInquiry) {
+        HAO.saveInquiry({ name: form.name.value, phone: form.phone.value, company: $('#company') ? $('#company').value : '', type: $('#type') ? $('#type').value : '', message: $('#message') ? $('#message').value : '' })
+          .then(function(){ done('문의가 접수되었습니다. 빠르게 연락드리겠습니다.'); form.reset(); })
+          .catch(function(){ done('접수 중 오류가 발생했습니다. 전화로 문의해 주세요.'); })
+          .then(function(){ if (sbtn) sbtn.disabled = false; });
+      } else { done('문의가 접수되었습니다. 빠르게 연락드리겠습니다.'); form.reset(); if (sbtn) sbtn.disabled = false; }
+    });
   })();
   </script>
   <script type="module" src="js/holo.js?v=6"></script>

@@ -3,7 +3,8 @@
    (스튜디오센터 portfolio.js 스타일 이식)
 =================================================== */
 (function () {
-  var WORKS = [
+  /* 작품 데이터는 js/data.js(HAO)에서 — 관리자에서 수정. data.js 미로드 시 폴백 */
+  var FALLBACK = [
     { f: 'big_slide_02.jpg', t: '○○병원 반응형 홈페이지', c: '홈페이지' },
     { f: 'big_slide_03.jpg', t: '브랜드 글로벌 사이트', c: '홈페이지' },
     { f: 'main_03.png', t: '뷰티 브랜드 리뉴얼', c: '홈페이지' },
@@ -17,8 +18,8 @@
     { f: 'blog.png', t: '콘텐츠·블로그 채널', c: 'SEO·AEO' },
     { f: 'character.png', t: '브랜드 캐릭터·아이덴티티', c: '브랜딩' }
   ];
-  window.HAO_WORKS = WORKS;
-  window.HAO_imgPath = function (f) { return 'assets/img/' + f; };
+  window.HAO_WORKS = (window.HAO && HAO.getWorks) ? HAO.getWorks() : FALLBACK;
+  window.HAO_imgPath = function (f) { return (window.HAO && HAO.imgSrc) ? HAO.imgSrc(f) : 'assets/img/' + f; };
 
   /* ---------- 라이트박스 (확대/이동 줌 + 키보드 + 긴 이미지 스크롤) ---------- */
   var ov, imgEl, capEl, scrollEl, zvalEl, curList = [], curIdx = 0;

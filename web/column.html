@@ -111,6 +111,8 @@
     </div>
   </footer>
 
+  <script src="js/data.js?v=1"></script>
+  <script src="js/boot.js?v=1"></script>
   <script>
   (function () {
     var $ = function (s, c) { return (c || document).querySelector(s); };
@@ -123,7 +125,8 @@
     burger.addEventListener('click', function () { nav.classList.toggle('is-open'); document.body.classList.toggle('menu-open'); });
     $$('#nav a').forEach(function (a) { a.addEventListener('click', function () { nav.classList.remove('is-open'); document.body.classList.remove('menu-open'); }); });
 
-    var posts = [
+    function dotDate(d) { return String(d || '').replace(/-/g, '.'); }
+    var FALLBACK_POSTS = [
       { id: 6, title: 'SEO를 넘어 GEO·AEO 시대로', summary: 'AI가 답변에서 추천하는 홈페이지란? SEO와 GEO의 차이를 정리했습니다.', date: '2026.06.20', img: 'assets/img/big_slide_02.jpg', isNew: true,
         body: ['검색 결과 상위 노출을 목표로 하던 시대에서, 이제는 생성형 AI가 답변 속에서 추천하는 홈페이지를 만드는 시대로 넘어가고 있습니다.', 'SEO가 검색엔진을 위한 최적화라면, GEO·AEO는 ChatGPT·Perplexity 같은 AI가 우리 콘텐츠를 인용·추천하도록 만드는 전략입니다.', '하오디자인은 제작 단계부터 구조화 데이터(스키마)와 신뢰 신호를 함께 설계해, 사람과 AI 모두에게 발견되는 홈페이지를 만듭니다.'] },
       { id: 5, title: '네이버 AI 탭, 검색은 어떻게 바뀌나', summary: '대화형 AI 검색으로 재편되는 검색 환경과 대응 전략.', date: '2026.06.12', img: 'assets/img/big_slide_03.jpg', isNew: true,
@@ -137,20 +140,25 @@
       { id: 1, title: 'Core Web Vitals, 성능이 곧 순위', summary: '체감 속도 지표와 최적화 포인트.', date: '2026.04.29', img: 'assets/img/main_09.png', isNew: false,
         body: ['LCP·INP·CLS로 대표되는 Core Web Vitals는 사용자 경험이자 검색 순위 요소입니다.', '이미지 최적화·코드 분할·캐싱으로 체감 속도를 끌어올리면 이탈률과 전환율이 함께 개선됩니다.'] }
     ];
+    var posts = (window.HAO && HAO.getPosts) ? HAO.getPosts() : FALLBACK_POSTS;
 
     var listView = $('#listView'), postView = $('#postView'), gallery = $('#galleryBoard');
-    gallery.innerHTML = posts.map(function (p) {
-      return '<article class="gcard" data-id="' + p.id + '"><div class="gcard__thumb"><img src="' + p.img + '" alt="" loading="lazy" />' +
-        (p.isNew ? '<span class="gcard__badge">NEW</span>' : '') + '</div>' +
-        '<div class="gcard__body"><h3>' + p.title + '</h3><p>' + p.summary + '</p><span class="gcard__date">' + p.date + '</span></div></article>';
-    }).join('');
+    function pimg(f) { return (window.HAO && HAO.imgSrc) ? HAO.imgSrc(f) : f; }
+    function buildGallery() {
+      gallery.innerHTML = posts.map(function (p) {
+        return '<article class="gcard" data-id="' + p.id + '"><div class="gcard__thumb"><img src="' + pimg(p.img) + '" alt="" loading="lazy" />' +
+          (p.isNew ? '<span class="gcard__badge">NEW</span>' : '') + '</div>' +
+          '<div class="gcard__body"><h3>' + p.title + '</h3><p>' + p.summary + '</p><span class="gcard__date">' + dotDate(p.date) + '</span></div></article>';
+      }).join('');
+    }
+    buildGallery();
     gallery.addEventListener('click', function (e) { var card = e.target.closest('.gcard'); if (!card) return; location.hash = 'post-' + card.getAttribute('data-id'); });
     function byId(id) { return posts.filter(function (p) { return p.id === id; })[0]; }
     function render() {
       var m = location.hash.match(/^#post-(\d+)$/), post = m ? byId(parseInt(m[1], 10)) : null;
       if (!post) { postView.hidden = true; listView.hidden = false; document.title = '칼럼 | 웹구축센터'; return; }
       listView.hidden = true; postView.hidden = false; document.title = post.title + ' | 웹구축센터';
-      $('#postTitle').textContent = post.title; $('#postDate').textContent = post.date; $('#postImg').src = post.img;
+      $('#postTitle').textContent = post.title; $('#postDate').textContent = dotDate(post.date); $('#postImg').src = pimg(post.img);
       $('#postBody').innerHTML = post.body.map(function (t) { return '<p>' + t + '</p>'; }).join('');
       var idx = posts.indexOf(post), prev = posts[idx + 1], next = posts[idx - 1];
       var prevEl = $('#postPrev'), nextEl = $('#postNext');
@@ -160,12 +168,22 @@
       window.scrollTo(0, 0);
     }
     addEventListener('hashchange', render); render();
+    if (window.HAO && HAO.ready && HAO.ready.then) HAO.ready.then(function () { posts = HAO.getPosts(); buildGallery(); render(); });
     var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } }); }, { threshold: .15 });
     $$('.reveal').forEach(function (el) { io.observe(el); });
     var form = $('#quoteForm');
-    if (form) form.addEventListener('submit', function (e) { e.preventDefault(); var note = $('#formNote');
+    if (form) form.addEventListener('submit', function (e) {
+      e.preventDefault(); var note = $('#formNote');
       if (!form.name.value.trim() || !form.phone.value.trim()) { note.textContent = '이름과 연락처를 입력해주세요.'; return; }
-      note.textContent = '문의가 접수되었습니다. 빠르게 연락드리겠습니다. (데모)'; form.reset(); });
+      var sbtn = form.querySelector('button[type=submit]'); if (sbtn) sbtn.disabled = true; note.textContent = '접수 중…';
+      var done = function (msg) { note.textContent = msg; };
+      if (window.HAO && HAO.saveInquiry) {
+        HAO.saveInquiry({ name: form.name.value, phone: form.phone.value, type: '칼럼 문의', message: $('#message') ? $('#message').value : '' })
+          .then(function () { done('문의가 접수되었습니다. 빠르게 연락드리겠습니다.'); form.reset(); })
+          .catch(function () { done('접수 중 오류가 발생했습니다. 전화로 문의해 주세요.'); })
+          .then(function () { if (sbtn) sbtn.disabled = false; });
+      } else { done('문의가 접수되었습니다. 빠르게 연락드리겠습니다.'); form.reset(); if (sbtn) sbtn.disabled = false; }
+    });
   })();
   </script>
 </body>

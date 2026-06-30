@@ -66,7 +66,9 @@
     </div>
   </footer>
 
-  <script src="js/folio.js?v=1"></script>
+  <script src="js/data.js?v=1"></script>
+  <script src="js/folio.js?v=2"></script>
+  <script src="js/boot.js?v=1"></script>
   <script>
   (function () {
     var $ = function (s, c) { return (c || document).querySelector(s); };
@@ -80,13 +82,17 @@
     $$('#nav a').forEach(function (a) { a.addEventListener('click', function () { nav.classList.remove('is-open'); document.body.classList.remove('menu-open'); }); });
 
     function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
-    var WORKS = window.HAO_WORKS || [];
-    var folio = $('#folio');
-    folio.innerHTML = WORKS.map(function (p, i) {
-      return '<a class="np-item" href="#" data-i="' + i + '">' +
-        '<img loading="lazy" src="' + window.HAO_imgPath(p.f) + '" alt="' + esc(p.t) + '" />' +
-        '<span class="np-item__cap"><span class="np-item__t">' + esc(p.t) + '</span><span class="np-item__c">' + esc(p.c || '') + '</span></span></a>';
-    }).join('');
+    var folio = $('#folio'), WORKS = [];
+    function renderFolio() {
+      WORKS = (window.HAO && HAO.getWorks) ? HAO.getWorks() : (window.HAO_WORKS || []);
+      folio.innerHTML = WORKS.map(function (p, i) {
+        return '<a class="np-item" href="#" data-i="' + i + '">' +
+          '<img loading="lazy" src="' + window.HAO_imgPath(p.f) + '" alt="' + esc(p.t) + '" />' +
+          '<span class="np-item__cap"><span class="np-item__t">' + esc(p.t) + '</span><span class="np-item__c">' + esc(p.c || '') + '</span></span></a>';
+      }).join('');
+    }
+    renderFolio();
+    if (window.HAO && HAO.ready && HAO.ready.then) HAO.ready.then(renderFolio);
     folio.addEventListener('click', function (e) {
       var a = e.target.closest('.np-item'); if (!a) return; e.preventDefault();
       window.HAO_openLightbox(WORKS, +a.dataset.i);
