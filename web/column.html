@@ -153,7 +153,7 @@
       }).join('');
     }
     buildGallery();
-    gallery.addEventListener('click', function (e) { var card = e.target.closest('.gcard'); if (!card) return; location.hash = 'post-' + card.getAttribute('data-id'); });
+    gallery.addEventListener('click', function (e) { var card = e.target.closest('.gcard'); if (!card) return; location.href = 'column-' + card.getAttribute('data-id') + '.html'; });
     function byId(id) { return posts.filter(function (p) { return p.id === id; })[0]; }
     function render() {
       var m = location.hash.match(/^#post-(\d+)$/), post = m ? byId(parseInt(m[1], 10)) : null;
