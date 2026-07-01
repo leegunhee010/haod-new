@@ -601,12 +601,12 @@ img { display: block; max-width: 100%; }
 .subhero__crumb a:hover { color: var(--accent); }
 .subhero__title { position: relative; display: inline-block; font-size: clamp(2.4rem,5.4vw,4rem); font-weight: 800; letter-spacing: -.035em; line-height: 1.08; }
 .subhero:not(.subhero--post) .subhero__title::after { content: ""; position: absolute; left: 0; bottom: -16px; width: 56px; height: 6px; border-radius: 4px; background: var(--accent); }
-.subhero__desc { color: #6e6258; margin-top: 30px; font-size: 1.08rem; line-height: 1.65; max-width: 680px; }
+.subhero__desc { color: #6e6258; margin-top: 22px; font-size: 1.08rem; line-height: 1.65; max-width: 680px; }
 .subnav { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 30px; }
 .subnav a { font-size: .92rem; font-weight: 600; padding: 9px 18px; border-radius: 999px; border: 1px solid var(--line); background: #fff; transition: .25s var(--ease); }
 .subnav a:hover, .subnav a.is-active { background: var(--accent); border-color: var(--accent); color: #fff; }
-.page { max-width: var(--maxw); margin: 0 auto; padding: clamp(60px,9vh,110px) clamp(20px,4vw,54px); }
-.page--tight { padding-top: 40px; }
+.page { max-width: var(--maxw); margin: 0 auto; padding: clamp(46px,6.5vh,80px) clamp(20px,4vw,54px); }
+.page--tight { padding-top: clamp(18px,2.8vh,32px); }
 .page h2.page__title { font-size: clamp(1.7rem,3.6vw,2.5rem); font-weight: 800; letter-spacing: -.03em; margin-bottom: 26px; }
 .page .section-tag { margin-bottom: 12px; }
 
@@ -1374,3 +1374,5 @@ img { display: block; max-width: 100%; }
 @media (max-width: 1100px){
   .header .brand__logo { height: 36px; }
 }
+
+
