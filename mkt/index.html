@@ -91,14 +91,24 @@
       .on__h{font-size:clamp(1.9rem,3.8vw,3.1rem);font-weight:800;letter-spacing:-.03em;line-height:1.18;color:var(--ink);margin:0;word-break:keep-all}
       .on__h b{color:var(--accent)}
       .on__sub{margin:18px 0 0;max-width:60ch;font-size:clamp(1rem,1.3vw,1.12rem);color:var(--muted);line-height:1.75;word-break:keep-all}
-      /* 문제 카드 */
-      .on-cases{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(14px,1.5vw,20px);margin-top:clamp(34px,5vh,54px)}
-      .on-case{background:var(--bg);border:1px solid var(--line);border-radius:18px;padding:clamp(22px,2.2vw,30px);
-        box-shadow:0 24px 50px -42px rgba(36,26,20,.5)}
-      .on--soft .on-case{background:#fff}
-      .on-case__no{font-family:"Poppins",sans-serif;font-weight:800;font-size:.74rem;letter-spacing:.1em;color:var(--accent);display:block;margin-bottom:14px}
-      .on-case__q{font-size:1.08rem;font-weight:800;color:var(--ink);line-height:1.4;margin:0 0 10px;word-break:keep-all}
-      .on-case__d{font-size:.94rem;color:var(--muted);line-height:1.65;margin:0;word-break:keep-all}
+      /* 문제 카드 (카드뉴스형) */
+      .on-cases{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(16px,1.6vw,22px);margin-top:clamp(34px,5vh,54px)}
+      .on-case{position:relative;overflow:hidden;display:flex;flex-direction:column;border-radius:20px;
+        padding:clamp(26px,2.4vw,34px);background:#fff;border:1px solid var(--line);
+        box-shadow:0 26px 54px -42px rgba(36,26,20,.55);min-height:clamp(228px,20vw,268px);
+        transition:transform .35s var(--ease),box-shadow .35s var(--ease),border-color .35s var(--ease)}
+      .on-case:hover{transform:translateY(-6px);border-color:rgba(232,56,23,.3);box-shadow:0 46px 80px -40px rgba(232,56,23,.34)}
+      .on-case::before{content:"";position:absolute;inset:0 0 auto 0;height:5px;background:linear-gradient(90deg,var(--accent),var(--accent-3))}
+      .on-case__ico{width:54px;height:54px;border-radius:16px;display:grid;place-items:center;font-size:1.75rem;line-height:1;
+        background:linear-gradient(150deg,#fff2ea,#ffe1d1);box-shadow:inset 0 0 0 1px rgba(232,56,23,.12);margin:4px 0 16px}
+      .on-case:nth-child(2) .on-case__ico{background:linear-gradient(150deg,#fef4e6,#ffe7c6)}
+      .on-case:nth-child(3) .on-case__ico{background:linear-gradient(150deg,#ffeee8,#ffd6cb)}
+      .on-case:nth-child(4) .on-case__ico{background:linear-gradient(150deg,#fdf0e8,#f6ddc9)}
+      .on-case__no{font-family:"Poppins",sans-serif;font-weight:800;font-size:.72rem;letter-spacing:.12em;color:var(--accent);display:block;margin-bottom:9px}
+      .on-case__q{font-size:1.1rem;font-weight:800;color:var(--ink);line-height:1.38;margin:0 0 10px;word-break:keep-all}
+      .on-case__d{font-size:.92rem;color:var(--muted);line-height:1.62;margin:0 0 auto;word-break:keep-all}
+      .on-case__ghost{position:absolute;right:12px;bottom:-20px;font-family:"Poppins",sans-serif;font-weight:800;
+        font-size:6.6rem;line-height:1;color:var(--accent);opacity:.07;pointer-events:none;letter-spacing:-.04em}
       /* 비교표 */
       .on-cmp{display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,2vw,26px);margin-top:clamp(34px,5vh,54px)}
       .on-col{border-radius:20px;padding:clamp(26px,3vw,40px)}
@@ -139,10 +149,10 @@
         <h2 class="on__h">대표님, <b>마케팅팀이 없어서</b><br />막막하신가요?</h2>
         <p class="on__sub">스타트업·중소기업·1인 브랜드까지 — 마케팅은 늘 ‘해야 하는데’ 뒷전이 됩니다. 하오디자인은 900개가 넘는 프로젝트에서 그 고민을 매일 마주해 왔습니다.</p>
         <div class="on-cases">
-          <div class="on-case reveal"><span class="on-case__no">CASE 01</span><p class="on-case__q">마케팅 전담 인력이 없어요</p><p class="on-case__d">대표가 본업만으로도 벅찬데, 마케팅까지 챙길 여력이 없습니다.</p></div>
-          <div class="on-case reveal"><span class="on-case__no">CASE 02</span><p class="on-case__q">뭘 먼저 해야 할지 몰라요</p><p class="on-case__d">콘텐츠·광고·상세페이지… 우선순위가 안 잡혀 예산만 흩어집니다.</p></div>
-          <div class="on-case reveal"><span class="on-case__no">CASE 03</span><p class="on-case__q">외주 결과가 제각각이에요</p><p class="on-case__d">맡기는 업체마다 톤이 달라, 브랜드가 하나로 보이지 않습니다.</p></div>
-          <div class="on-case reveal"><span class="on-case__no">CASE 04</span><p class="on-case__q">디자인 따로, 마케팅 따로예요</p><p class="on-case__d">만드는 곳과 알리는 곳이 달라 손발이 자꾸 어긋납니다.</p></div>
+          <div class="on-case reveal"><span class="on-case__ico">😮‍💨</span><span class="on-case__no">CASE 01</span><p class="on-case__q">마케팅 전담 인력이 없어요</p><p class="on-case__d">대표가 본업만으로도 벅찬데, 마케팅까지 챙길 여력이 없습니다.</p><span class="on-case__ghost">01</span></div>
+          <div class="on-case reveal"><span class="on-case__ico">🤔</span><span class="on-case__no">CASE 02</span><p class="on-case__q">뭘 먼저 해야 할지 몰라요</p><p class="on-case__d">콘텐츠·광고·상세페이지… 우선순위가 안 잡혀 예산만 흩어집니다.</p><span class="on-case__ghost">02</span></div>
+          <div class="on-case reveal"><span class="on-case__ico">🎲</span><span class="on-case__no">CASE 03</span><p class="on-case__q">외주 결과가 제각각이에요</p><p class="on-case__d">맡기는 업체마다 톤이 달라, 브랜드가 하나로 보이지 않습니다.</p><span class="on-case__ghost">03</span></div>
+          <div class="on-case reveal"><span class="on-case__ico">🧩</span><span class="on-case__no">CASE 04</span><p class="on-case__q">디자인 따로, 마케팅 따로예요</p><p class="on-case__d">만드는 곳과 알리는 곳이 달라 손발이 자꾸 어긋납니다.</p><span class="on-case__ghost">04</span></div>
         </div>
       </div>
     </section>
