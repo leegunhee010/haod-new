@@ -629,12 +629,7 @@ $(function(){
 	(function(){
 		var wheel = document.getElementById('pfWheel');
 		if(!wheel) return;
-		var base = Array.prototype.slice.call(wheel.querySelectorAll('.pf-card'));
-		// 카드 복제(8→16)로 원에 촘촘히 분포 → 양옆 기울기 완만
-		base.forEach(function(c){ wheel.appendChild(c.cloneNode(true)); });
-		var all = wheel.querySelectorAll('.pf-card');
-		var n = all.length, step = 360 / n;
-		all.forEach(function(c, i){ c.style.setProperty('--a', (i*step) + 'deg'); });
+		// 정렬 그리드로 변경 — 회전 휠(카드 복제·각도 설정) 비활성화
 	})();
 
 	/*
