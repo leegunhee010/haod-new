@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&display=swap" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-  <link rel="stylesheet" href="css/style.css?v=15" />
+  <link rel="stylesheet" href="css/style.css?v=16" />
   <script type="importmap">
   { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.171.0/build/three.module.js" } }
   </script>
@@ -145,17 +145,22 @@
 
     <!-- ===== CONTACT ===== -->
     <section class="contact" id="contact">
-      <h2 class="contact__big">CONTACT US</h2>
       <span class="contact__glow" aria-hidden="true"></span>
 
       <style>
-        .mc-wrap{position:relative;z-index:3;max-width:760px;margin:34px auto 0;padding:0 20px}
-        .mc-lead{text-align:center;color:#55525a;font-size:1.02rem;line-height:1.7;margin-bottom:26px;word-break:keep-all}
+        .mc-split{position:relative;z-index:3;display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(28px,5vw,72px);
+          align-items:center;max-width:1180px;margin:clamp(20px,4vh,44px) auto 0;padding:0 4px}
+        .mc-left .contact__big{margin:0 0 22px;line-height:.9;font-size:clamp(2.6rem,5.6vw,5.2rem)}
+        .mc-lead{color:#55525a;font-size:1.06rem;line-height:1.72;margin:0 0 28px;word-break:keep-all;max-width:36ch}
         .mc-lead b{color:var(--accent,#e83817)}
+        .mc-contact{display:flex;flex-direction:column;gap:11px;font-size:.96rem;color:#57544c}
+        .mc-contact span{display:flex;gap:12px;align-items:baseline}
+        .mc-contact .k{font-style:normal;font-family:"Poppins",sans-serif;font-weight:800;letter-spacing:.08em;
+          font-size:.7rem;color:#b0a898;min-width:44px}
+        .mc-contact a{color:#17150f;font-weight:700}
         .mc-card{background:#fff;border:1px solid rgba(23,21,15,.1);border-radius:22px;
-          box-shadow:0 30px 70px -44px rgba(60,30,18,.4);padding:clamp(24px,3.5vw,40px)}
+          box-shadow:0 34px 74px -44px rgba(60,30,18,.42);padding:clamp(24px,3.2vw,38px)}
         .mc-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-        @media(max-width:560px){.mc-row{grid-template-columns:1fr}}
         .mc-field{margin-bottom:14px}
         .mc-field--full{grid-column:1/-1}
         .mc-field label{display:block;font-size:.78rem;font-weight:700;color:#6e6a60;margin:0 0 6px 2px}
@@ -167,36 +172,42 @@
         .mc-submit:hover{filter:brightness(1.06)}
         .mc-submit:disabled{opacity:.6;cursor:default}
         .mc-note{text-align:center;font-size:.88rem;color:#6e6a60;min-height:1.2em;margin-top:12px}
-        .mc-contact{display:flex;gap:8px 24px;flex-wrap:wrap;justify-content:center;margin-top:18px;font-size:.9rem;color:#6e6a60}
-        .mc-contact a{color:#17150f;font-weight:700}
+        @media(max-width:900px){.mc-split{grid-template-columns:1fr;gap:32px}.mc-left{text-align:center}
+          .mc-lead{max-width:none;margin-left:auto;margin-right:auto}.mc-contact{align-items:center}}
+        @media(max-width:560px){.mc-row{grid-template-columns:1fr}}
       </style>
 
-      <div class="mc-wrap">
-        <p class="mc-lead">우리 브랜드엔 어떤 마케팅이 맞을까요?<br /><b>고민부터 같이 시작</b>하겠습니다. 간단히 남겨주시면 빠르게 연락드립니다.</p>
-        <div class="mc-card">
-          <form id="quoteForm" novalidate>
-            <div class="mc-row">
-              <div class="mc-field"><label>이름</label><input type="text" id="name" name="name" placeholder="이름 / 담당자" required /></div>
-              <div class="mc-field"><label>연락처</label><input type="tel" id="phone" name="phone" placeholder="010-0000-0000" required /></div>
-            </div>
-            <div class="mc-row">
-              <div class="mc-field"><label>회사·브랜드명</label><input type="text" id="company" name="company" placeholder="회사 또는 브랜드명" /></div>
-              <div class="mc-field"><label>문의 분야</label>
-                <select id="type" name="type">
-                  <option value="">선택해주세요</option>
-                  <option>브랜드 콘텐츠</option><option>이커머스·상세페이지</option><option>패키지 디자인</option>
-                  <option>전시·박람회 부스</option><option>편집·인쇄</option><option>통합 마케팅</option><option>기타 문의</option>
-                </select>
-              </div>
-            </div>
-            <div class="mc-field mc-field--full"><label>문의 내용</label><textarea id="message" name="message" rows="4" placeholder="브랜드 현황, 필요한 작업, 일정·예산 등을 자유롭게 적어주세요."></textarea></div>
-            <button type="submit" class="mc-submit">문의 보내기</button>
-            <p class="mc-note" id="formNote" role="status"></p>
-          </form>
+      <div class="mc-split">
+        <div class="mc-left">
+          <h2 class="contact__big">CONTACT<br />US</h2>
+          <p class="mc-lead">우리 브랜드엔 어떤 마케팅이 맞을까요?<br /><b>고민부터 같이 시작</b>하겠습니다. 간단히 남겨주시면 빠르게 연락드립니다.</p>
           <div class="mc-contact">
-            <span>TEL <a href="tel:16662027">1666-2027</a></span>
-            <span>MAIL <a href="mailto:sales@haodesign.co.kr">sales@haodesign.co.kr</a></span>
-            <span>평일 09:30 – 18:30</span>
+            <span><i class="k">TEL</i><a href="tel:16662027">1666-2027</a></span>
+            <span><i class="k">MAIL</i><a href="mailto:sales@haodesign.co.kr">sales@haodesign.co.kr</a></span>
+            <span><i class="k">TIME</i>평일 09:30 – 18:30</span>
+          </div>
+        </div>
+        <div class="mc-right">
+          <div class="mc-card">
+            <form id="quoteForm" novalidate>
+              <div class="mc-row">
+                <div class="mc-field"><label>이름</label><input type="text" id="name" name="name" placeholder="이름 / 담당자" required /></div>
+                <div class="mc-field"><label>연락처</label><input type="tel" id="phone" name="phone" placeholder="010-0000-0000" required /></div>
+              </div>
+              <div class="mc-row">
+                <div class="mc-field"><label>회사·브랜드명</label><input type="text" id="company" name="company" placeholder="회사 또는 브랜드명" /></div>
+                <div class="mc-field"><label>문의 분야</label>
+                  <select id="type" name="type">
+                    <option value="">선택해주세요</option>
+                    <option>브랜드 콘텐츠</option><option>이커머스·상세페이지</option><option>패키지 디자인</option>
+                    <option>전시·박람회 부스</option><option>편집·인쇄</option><option>통합 마케팅</option><option>기타 문의</option>
+                  </select>
+                </div>
+              </div>
+              <div class="mc-field mc-field--full"><label>문의 내용</label><textarea id="message" name="message" rows="4" placeholder="브랜드 현황, 필요한 작업, 일정·예산 등을 자유롭게 적어주세요."></textarea></div>
+              <button type="submit" class="mc-submit">문의 보내기</button>
+              <p class="mc-note" id="formNote" role="status"></p>
+            </form>
           </div>
         </div>
       </div>

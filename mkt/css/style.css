@@ -149,14 +149,12 @@ em{font-style:normal;color:var(--accent)}
 .power__head .sublede{margin-left:auto;margin-right:auto}
 .stats{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(14px,1.6vw,24px)}
 /* 통계 카드 — 하오 스타일 (큰 오렌지 숫자 + 언더라인, 코너 글로우) */
-.stat{position:relative;background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;
-  padding:clamp(42px,4.8vw,62px) clamp(18px,2vw,28px);min-height:clamp(190px,19vw,240px);text-align:center;
-  box-shadow:0 26px 56px -40px rgba(36,26,20,.32);
-  transition:transform .35s var(--ease),box-shadow .35s var(--ease),border-color .35s var(--ease)}
-.stat:hover{transform:translateY(-6px);border-color:rgba(232,56,23,.35);box-shadow:0 42px 74px -36px rgba(232,56,23,.26)}
-.stat::after{content:"";position:absolute;right:-36px;bottom:-36px;width:140px;height:140px;border-radius:50%;
-  background:radial-gradient(circle,rgba(232,56,23,.13),transparent 68%);pointer-events:none}
+.stat{position:relative;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;
+  padding:clamp(20px,2.4vw,34px) clamp(12px,1.6vw,22px);text-align:center;
+  transition:transform .35s var(--ease)}
+.stat:hover{transform:translateY(-4px)}
+.stat::after{content:none}
 .stat__wave{display:none}
 .stat strong{order:1;position:relative;font-family:"Poppins",sans-serif;font-weight:800;font-size:clamp(2.9rem,4.4vw,4rem);
   color:var(--accent);letter-spacing:-.03em;line-height:.95;padding-bottom:18px}
