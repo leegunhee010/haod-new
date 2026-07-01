@@ -109,9 +109,10 @@ Object.keys(PUBLIC).forEach(function(center){
       if(q.length){ const obj={"@context":"https://schema.org","@type":"FAQPage",author:{"@type":"Organization",name:team},mainEntity:q.map(function(x){return {"@type":"Question",name:x.q,acceptedAnswer:{"@type":"Answer",text:x.a}};})};
         html=html.replace(faqRe,'<script type="application/ld+json">\n'+JSON.stringify(obj)+'\n  </script>'); changed=true; } }catch(e){}
   }
-  if(!/hao-byline/.test(html)){
+  /* 가시적 byline(hao-byline)은 사용 안 함 — 이미 있으면 제거 (JSON-LD author만 유지) */
+  if(/hao-byline/.test(html)){
     const before=html;
-    html=html.replace(/(<h2 class="page__title">[^<]*<\/h2>)/, '$1\n      <p class="hao-byline" style="margin-top:8px;font-size:.86rem;color:#8b8b93">작성·관리 — '+team+'</p>');
+    html=html.replace(/\s*<p class="hao-byline"[^>]*>[^<]*<\/p>/g, '');
     if(html!==before) changed=true;
   }
   if(changed){ fs.writeFileSync(fp,html,"utf8"); nFaq++; }
