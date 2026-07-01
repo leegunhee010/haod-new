@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&display=swap" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-  <link rel="stylesheet" href="css/style.css?v=9" />
+  <link rel="stylesheet" href="css/style.css?v=11" />
   <script type="importmap">
   { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.171.0/build/three.module.js" } }
   </script>
@@ -88,8 +88,9 @@
         <h2 class="shead">Works</h2>
         <a href="works.html" class="pillbtn">사례 더보기</a>
       </div>
-      <div class="swiper worksSwiper">
-        <div class="swiper-wrapper" id="worksTrack"></div>
+      <div class="works__rows">
+        <div class="wmarquee wmarquee--right"><div class="wmarquee__track" id="worksTrackA"></div></div>
+        <div class="wmarquee wmarquee--left"><div class="wmarquee__track" id="worksTrackB"></div></div>
       </div>
     </section>
 
@@ -232,7 +233,7 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <script src="js/data.js?v=1"></script>
-  <script src="js/main.js?v=6"></script>
+  <script src="js/main.js?v=7"></script>
   <script src="js/boot.js?v=1"></script>
   <script>
   (function () {

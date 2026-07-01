@@ -32,13 +32,15 @@
   ];
   function imgPath(f) { return (window.HAO && HAO.imgSrc) ? HAO.imgSrc(f) : f; }
   var WORKS = (window.HAO && HAO.getWorks) ? HAO.getWorks().slice(0, 8) : FALLBACK_WORKS;
-  var track = $('#worksTrack');
-  if (track) {
-    track.innerHTML = WORKS.map(function (w) {
-      return '<div class="swiper-slide"><div class="wcard">' +
-        '<div class="wcard__media" style="background-image:url(' + imgPath(w.img) + ');background-size:cover;background-position:center;background-repeat:no-repeat"></div>' +
-        '<h3 class="wcard__t">' + w.t + '</h3><p class="wcard__c">' + w.c + '</p></div></div>';
-    }).join('');
+  var trackA = $('#worksTrackA'), trackB = $('#worksTrackB');
+  function wcardHtml(w) {
+    return '<div class="wcard" title="' + (w.t || '') + '"><div class="wcard__media" style="background-image:url(' + imgPath(w.img) + ')"></div></div>';
+  }
+  if (trackA && trackB) {
+    var rowA = WORKS.map(wcardHtml).join('');
+    var rowB = WORKS.slice().reverse().map(wcardHtml).join('');
+    trackA.innerHTML = rowA + rowA;   // 2배 복제 → 무한 루프 이음새 없음
+    trackB.innerHTML = rowB + rowB;
   }
 
   /* ---- Partners (Power 섹션 텍스트 카드) — 관리자에서 수정 ---- */
@@ -54,13 +56,7 @@
     }).join('');
   }
 
-  /* ---- Swiper (Works 가로 슬라이더) ---- */
-  if (window.Swiper && track) {
-    new Swiper('.worksSwiper', {
-      slidesPerView: 'auto', spaceBetween: 24, grabCursor: true, freeMode: true,
-      mousewheel: { forceToAxis: true }
-    });
-  }
+  /* Works는 CSS 두 줄 마퀴로 자동 롤링 (Swiper 미사용) */
 
   /* ---- reveal ---- */
   var io = new IntersectionObserver(function (es) {

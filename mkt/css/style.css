@@ -70,7 +70,7 @@ em{font-style:normal;color:var(--accent)}
 @keyframes scrollDot{0%{transform:translateY(-100%)}100%{transform:translateY(250%)}}
 
 /* ---------------- Pinned scroll ---------------- */
-.pin{position:relative;height:300vh;background:var(--bg)}
+.pin{position:relative;height:200vh;background:var(--bg)}
 .pin__sticky{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
   text-align:center;padding:0 24px;gap:24px;overflow:hidden;isolation:isolate}
 .pin__small{font-family:"Poppins",sans-serif;font-size:.8rem;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);font-weight:600}
@@ -110,14 +110,18 @@ em{font-style:normal;color:var(--accent)}
 /* ---------------- Works ---------------- */
 .works{background:var(--bg);padding:clamp(90px,12vh,150px) 0;overflow:hidden}
 .works__head{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:0 clamp(20px,4vw,60px);margin-bottom:46px}
-.worksSwiper{padding:0 clamp(20px,4vw,60px) 10px;overflow:visible}
-.worksSwiper .swiper-slide{width:clamp(240px,24vw,340px)}
-.wcard__media{position:relative;aspect-ratio:3/4;border-radius:16px;overflow:hidden;background:var(--bg-soft)}
-.wcard__media>span{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:"Poppins",sans-serif;
-  font-weight:800;font-size:1.5rem;color:#fff;letter-spacing:.04em;text-shadow:0 2px 16px rgba(0,0,0,.3)}
-.wcard__media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,.28))}
-.wcard__t{margin-top:16px;font-size:1.1rem;font-weight:800;letter-spacing:-.02em}
-.wcard__c{margin-top:5px;font-family:"Poppins",sans-serif;font-size:.84rem;color:var(--accent);font-weight:600}
+/* Works — 두 줄 마퀴 (위 왼→우 / 아래 우→왼), 각진 모서리, 작은 카드 */
+.works__rows{display:flex;flex-direction:column;gap:clamp(12px,1.4vw,18px)}
+.wmarquee{overflow:hidden}
+.wmarquee__track{display:flex;gap:clamp(12px,1.4vw,18px);width:max-content;will-change:transform}
+.wmarquee--right .wmarquee__track{animation:wRoll 50s linear infinite}
+.wmarquee--left .wmarquee__track{animation:wRoll 50s linear infinite reverse}
+.wmarquee:hover .wmarquee__track{animation-play-state:paused}
+@keyframes wRoll{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+.wcard{flex:0 0 auto;width:clamp(150px,13.5vw,205px);cursor:pointer}
+.wcard__media{aspect-ratio:3/4;border-radius:0;overflow:hidden;background:var(--bg-soft);background-size:cover;background-position:center;transition:opacity .3s ease}
+.wcard:hover .wcard__media{opacity:.88}
+@media (max-width:760px){.wcard{width:40vw}}
 
 /* ---------------- Services (dark 3-col) ---------------- */
 .svc{background:var(--dark);color:#fff;padding:clamp(90px,13vh,160px) 0 0}
