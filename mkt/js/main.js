@@ -98,6 +98,15 @@
       .to({}, { duration: 1.2 })
       .to([small, big, cap], { opacity: 0, y: -40, duration: .8 });
 
+    /* 핀 배경 사진: 스크롤 따라 위로 지나가게 (패럴랙스) */
+    var pinBgTrack = document.getElementById('pinBgTrack');
+    if (pinBgTrack) {
+      gsap.fromTo(pinBgTrack, { yPercent: 24 }, {
+        yPercent: -62, ease: 'none',
+        scrollTrigger: { trigger: '#pin', start: 'top top', end: 'bottom bottom', scrub: 1 }
+      });
+    }
+
     /* 히어로 워드마크 패럴랙스 */
     gsap.to('.hero__word', {
       yPercent: 18, ease: 'none',

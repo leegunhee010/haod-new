@@ -72,10 +72,28 @@ em{font-style:normal;color:var(--accent)}
 /* ---------------- Pinned scroll ---------------- */
 .pin{position:relative;height:300vh;background:var(--bg)}
 .pin__sticky{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
-  text-align:center;padding:0 24px;gap:24px}
+  text-align:center;padding:0 24px;gap:24px;overflow:hidden;isolation:isolate}
 .pin__small{font-family:"Poppins",sans-serif;font-size:.8rem;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);font-weight:600}
 .pin__big{font-size:clamp(1.9rem,5vw,4rem);font-weight:800;letter-spacing:-.03em;line-height:1.18;color:var(--ink)}
 .pin__cap{font-family:"Poppins",sans-serif;font-size:clamp(.9rem,1.4vw,1.1rem);letter-spacing:.06em;color:var(--muted);font-weight:500}
+/* 핀 배경: 하오 작업물 사진이 스크롤 따라 위로 지나감 (바우처 Who We Are식) */
+.pin__bg{position:absolute;inset:0;z-index:0;pointer-events:none}
+.pin__bg::after{content:"";position:absolute;inset:0;z-index:1;background:rgba(250,247,244,.62)}
+.pin__bg-track{position:absolute;left:0;right:0;top:-60%;height:220%;will-change:transform}
+.pin__ph{position:absolute;border-radius:16px;overflow:hidden;box-shadow:0 40px 80px -46px rgba(30,20,12,.5)}
+.pin__ph img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
+.pin__ph--1{left:4%;top:2%;width:17vw;aspect-ratio:4/5}
+.pin__ph--2{right:5%;top:8%;width:14vw;aspect-ratio:3/4}
+.pin__ph--3{left:34%;top:16%;width:15vw;aspect-ratio:16/11}
+.pin__ph--4{right:26%;top:25%;width:16vw;aspect-ratio:4/5}
+.pin__ph--5{left:7%;top:34%;width:15vw;aspect-ratio:3/4}
+.pin__ph--6{right:6%;top:44%;width:16vw;aspect-ratio:16/11}
+.pin__ph--7{left:35%;top:54%;width:14vw;aspect-ratio:4/5}
+.pin__ph--8{right:23%;top:64%;width:15vw;aspect-ratio:3/4}
+.pin__ph--9{left:6%;top:74%;width:16vw;aspect-ratio:4/5}
+.pin__ph--10{right:9%;top:84%;width:15vw;aspect-ratio:16/11}
+.pin__sticky>.pin__small,.pin__sticky>.pin__big,.pin__sticky>.pin__cap{position:relative;z-index:2}
+@media (max-width:760px){.pin__ph--3,.pin__ph--4,.pin__ph--7,.pin__ph--8{display:none}.pin__ph{width:34vw!important}}
 
 /* ---------------- Section shared ---------------- */
 .shead{font-size:clamp(2.4rem,6vw,5rem);font-weight:800;letter-spacing:-.03em;line-height:1;color:var(--ink)}
