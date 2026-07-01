@@ -43,18 +43,7 @@
     trackB.innerHTML = rowB + rowB;
   }
 
-  /* ---- Partners (Power 섹션 텍스트 카드) — 관리자에서 수정 ---- */
-  var FALLBACK_PARTNERS = [
-    { b: 'Google', s: '공식 파트너' }, { b: 'NAVER', s: 'GFA 공식 대행사' }, { b: 'Meta', s: '비즈니스 파트너' },
-    { b: 'Kakao', s: '프리미어 파트너' }, { b: 'TikTok', s: '공식 파트너' }, { b: 'YouTube', s: '인증 대행사' }
-  ];
-  var PARTNERS = (window.HAO && HAO.getPartners) ? HAO.getPartners() : FALLBACK_PARTNERS;
-  var pwrap = $('#partners');
-  if (pwrap) {
-    pwrap.innerHTML = PARTNERS.map(function (p) {
-      return '<div class="pcard"><b>' + p.b + '</b><span>' + p.s + '</span></div>';
-    }).join('');
-  }
+  /* Partners 그리드 삭제됨 (사용자 요청) */
 
   /* Works는 CSS 두 줄 마퀴로 자동 롤링 (Swiper 미사용) */
 

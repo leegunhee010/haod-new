@@ -134,10 +134,10 @@ em{font-style:normal;color:var(--accent)}
 .svc__col:first-child{border-left:0}
 .svc__bg{position:absolute;inset:0;z-index:0;transition:transform 1.2s var(--ease)}
 .svc__col:hover .svc__bg{transform:scale(1.06)}
-.svc__bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,7,6,.45),rgba(8,7,6,.72))}
-.svc__bg--1{background:radial-gradient(120% 90% at 30% 20%,#2a1c14,#0c0a09 70%),conic-gradient(from 200deg at 70% 80%,rgba(232,56,23,.5),transparent 40%)}
-.svc__bg--2{background:radial-gradient(120% 90% at 70% 30%,#241a16,#0c0a09 70%),conic-gradient(from 40deg at 30% 70%,rgba(255,138,61,.4),transparent 45%)}
-.svc__bg--3{background:radial-gradient(120% 90% at 50% 80%,#2c1d13,#0c0a09 72%),conic-gradient(from 120deg at 60% 30%,rgba(242,91,53,.45),transparent 42%)}
+.svc__bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,7,6,.62),rgba(8,7,6,.82))}
+.svc__bg--1{background:url(../assets/work/w362.jpg) center/cover no-repeat}
+.svc__bg--2{background:url(../assets/work/w379.jpg) center/cover no-repeat}
+.svc__bg--3{background:url(../assets/work/w390.jpg) center/cover no-repeat}
 .svc__body{position:relative;z-index:1;max-width:360px}
 .svc__body h3{font-family:"Poppins",sans-serif;font-size:clamp(1.9rem,3vw,2.7rem);font-weight:700;line-height:1.1;letter-spacing:-.01em}
 .svc__body p{margin-top:16px;font-size:.96rem;line-height:1.8;color:rgba(255,255,255,.78)}
@@ -148,22 +148,16 @@ em{font-style:normal;color:var(--accent)}
 .power__head{max-width:900px;margin:0 auto clamp(46px,7vh,80px);text-align:center}
 .power__head .sublede{margin-left:auto;margin-right:auto}
 .stats{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(14px,1.6vw,24px)}
-.stat{position:relative;background:#fff;border:1px solid var(--line);border-radius:22px;overflow:hidden;
-  padding:clamp(150px,17vw,210px) 24px 36px;text-align:center;box-shadow:0 30px 60px -40px rgba(0,0,0,.3)}
-.stat__wave{position:absolute;top:0;left:0;width:100%;height:46%;clip-path:path("M0,70 C120,30 240,90 360,55 L360,0 L0,0 Z")}
-.stat__wave--1{background:linear-gradient(160deg,#c084fc,#a855f7)}
-.stat__wave--2{background:linear-gradient(160deg,#93c5fd,#3b82f6)}
-.stat__wave--3{background:linear-gradient(160deg,#5eead4,#14b8a6)}
-.stat__wave--4{background:var(--grad)}
-.stat b{display:block;font-weight:600;font-size:.98rem;color:var(--ink-2)}
-.stat strong{display:block;margin-top:10px;font-family:"Poppins",sans-serif;font-weight:800;font-size:clamp(2rem,3vw,2.8rem);
-  background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-.02em}
-.partners{max-width:1280px;margin:clamp(34px,5vh,56px) auto 0;display:grid;grid-template-columns:repeat(6,1fr);gap:clamp(12px,1.4vw,20px)}
-.pcard{aspect-ratio:16/10;border:1px solid var(--line);border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;
-  gap:8px;color:var(--faint);transition:.28s var(--ease)}
-.pcard:hover{border-color:var(--accent);color:var(--ink);transform:translateY(-3px)}
-.pcard b{font-family:"Poppins",sans-serif;font-weight:700;font-size:1.05rem;color:var(--ink-2)}
-.pcard span{font-size:.74rem;color:var(--faint)}
+/* 통계 카드 — 하오 스타일(화이트 + 오렌지 상단 액센트 + 큰 오렌지 숫자) */
+.stat{position:relative;background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;
+  padding:clamp(38px,4.2vw,56px) clamp(20px,2vw,30px);text-align:center;box-shadow:0 24px 54px -38px rgba(36,26,20,.3);
+  transition:transform .35s var(--ease),box-shadow .35s var(--ease),border-color .35s var(--ease)}
+.stat:hover{transform:translateY(-6px);border-color:rgba(232,56,23,.38);box-shadow:0 36px 66px -34px rgba(232,56,23,.24)}
+.stat::before{content:"";position:absolute;top:0;left:0;width:100%;height:5px;background:var(--grad)}
+.stat__wave{display:none}
+.stat b{display:block;font-weight:600;font-size:1rem;color:var(--ink-2)}
+.stat strong{display:block;margin-top:14px;font-family:"Poppins",sans-serif;font-weight:800;font-size:clamp(2.6rem,3.8vw,3.6rem);
+  background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-.02em;line-height:1}
 
 /* ---------------- Contact ---------------- */
 .contact{position:relative;background:var(--bg);padding:clamp(110px,16vh,200px) clamp(20px,4vw,60px);overflow:hidden;min-height:46vh}
