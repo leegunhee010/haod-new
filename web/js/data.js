@@ -197,6 +197,11 @@
 
     /* ───── 메인 · 설명/기타 ───── */
     { key: "strat_sub", page: "index", sel: ".gcar__sub", tag: "b", label: "전략 섹션 — 설명", value: "변화하는 검색 환경에 대응하는 통합 최적화 전략. 검색 환경부터 사용자 경험까지, 결과를 만드는 모든 조건을 설계합니다." },
+    { key: "strat_chip1", page: "index", sel: ".gcar__chips .gchip:nth-of-type(1)", tag: "b", label: "전략 섹션 — 태그①", value: "키워드·메타 최적화" },
+    { key: "strat_chip2", page: "index", sel: ".gcar__chips .gchip:nth-of-type(2)", tag: "b", label: "전략 섹션 — 태그②", value: "구조화 데이터" },
+    { key: "strat_chip3", page: "index", sel: ".gcar__chips .gchip:nth-of-type(3)", tag: "b", label: "전략 섹션 — 태그③", value: "AI 인용 설계" },
+    { key: "strat_chip4", page: "index", sel: ".gcar__chips .gchip:nth-of-type(4)", tag: "b", label: "전략 섹션 — 태그④", value: "Core Web Vitals" },
+    { key: "strat_chip5", page: "index", sel: ".gcar__chips .gchip:nth-of-type(5)", tag: "b", label: "전략 섹션 — 태그⑤", value: "반응형 제작" },
     { key: "svc_lead", page: "index", sel: ".show__lead", tag: "b", label: "서비스 섹션 — 설명", value: "홈페이지·앱을 만들고, 사람의 검색과 AI의 답변 양쪽에서 발견되도록 설계합니다. 네 가지를 따로가 아니라 한 번에." },
     { key: "svc1_d", page: "index", sel: ".show .show__item:nth-of-type(2) .show__d", tag: "b", label: "서비스① SEO — 설명", value: "키워드·메타·속도·구조화 데이터까지 — 네이버·구글이 좋아하는 기술 구조를 만들 때부터 심습니다." },
     { key: "svc2_d", page: "index", sel: ".show .show__item:nth-of-type(3) .show__d", tag: "b", label: "서비스② AEO — 설명", value: "검색의 무게추가 'AI 답변'으로 옮겨갑니다. 생성형 AI가 답변에 우리 브랜드를 인용하도록 설계합니다." },
