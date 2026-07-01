@@ -183,7 +183,19 @@
   /* ===== 사이트 카피 (관리자 '카피 수정' 탭) =====
      page: 적용 페이지 / sel: 대상 선택자 / tag: **강조** 변환 태그(em·b) / attr: 속성 적용 */
   var DEFAULT_COPY = [
-    /* ───── 메인 ───── */
+    /* ───── 메인 · 히어로/제목 (~~단어~~ = 오렌지 그라데이션 강조) ───── */
+    { key: "hero_eg", page: "index", sel: ".hero2__eg", tag: "b", label: "히어로 — 상단 라벨", value: "WE BUILD" },
+    { key: "hero_t", page: "index", sel: ".hero2__t", tag: "b", label: "히어로 — 큰 제목", value: "Digital\nExperience" },
+    { key: "hero_d", page: "index", sel: ".hero2__d", tag: "b", label: "히어로 — 설명", value: "검색되는 홈페이지, AI가 답하는 브랜드 — 발견되는 웹 경험을 설계합니다." },
+    { key: "strat_title", page: "index", sel: ".gcar__title", tag: "b", label: "전략 섹션 — 제목", value: "검색의 시대에서, AI의 시대로\n~~SEO를 넘어 GEO·AEO~~까지" },
+    { key: "svc_title", page: "index", sel: ".show__title", tag: "b", label: "서비스 섹션 — 제목", value: "하나의 팀이 ~~제작부터 검색 노출까지~~\n책임집니다" },
+    { key: "svc1_t", page: "index", sel: ".show .show__item:nth-of-type(2) .show__t", tag: "b", label: "서비스① SEO — 제목", value: "검색엔진 상위노출,\n구조부터 다르게" },
+    { key: "svc2_t", page: "index", sel: ".show .show__item:nth-of-type(3) .show__t", tag: "b", label: "서비스② AEO — 제목", value: "ChatGPT·Gemini가\n~~인용하는~~ 콘텐츠" },
+    { key: "svc3_t", page: "index", sel: ".show .show__item:nth-of-type(4) .show__t", tag: "b", label: "서비스③ WEBSITE — 제목", value: "반응형 홈페이지·\n랜딩·쇼핑몰 제작" },
+    { key: "svc4_t", page: "index", sel: ".show .show__item:nth-of-type(5) .show__t", tag: "b", label: "서비스④ APP — 제목", value: "모바일 앱·\n시스템 개발" },
+    { key: "work_title", page: "index", sel: "#work .sec__title", tag: "b", label: "포트폴리오 섹션 — 제목", value: "최근 제작 사례" },
+
+    /* ───── 메인 · 설명/기타 ───── */
     { key: "strat_sub", page: "index", sel: ".gcar__sub", tag: "b", label: "전략 섹션 — 설명", value: "변화하는 검색 환경에 대응하는 통합 최적화 전략. 검색 환경부터 사용자 경험까지, 결과를 만드는 모든 조건을 설계합니다." },
     { key: "svc_lead", page: "index", sel: ".show__lead", tag: "b", label: "서비스 섹션 — 설명", value: "홈페이지·앱을 만들고, 사람의 검색과 AI의 답변 양쪽에서 발견되도록 설계합니다. 네 가지를 따로가 아니라 한 번에." },
     { key: "svc1_d", page: "index", sel: ".show .show__item:nth-of-type(2) .show__d", tag: "b", label: "서비스① SEO — 설명", value: "키워드·메타·속도·구조화 데이터까지 — 네이버·구글이 좋아하는 기술 구조를 만들 때부터 심습니다." },
@@ -333,7 +345,7 @@
       var esc = String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
         return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
       });
-      return esc.replace(/\*\*(.+?)\*\*/g, "<" + tag + ">$1</" + tag + ">").replace(/\n/g, "<br />");
+      return esc.replace(/~~(.+?)~~/g, '<span class="g">$1</span>').replace(/\*\*(.+?)\*\*/g, "<" + tag + ">$1</" + tag + ">").replace(/\n/g, "<br />");
     }
   };
 })();
