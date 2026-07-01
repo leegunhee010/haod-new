@@ -217,7 +217,13 @@
 
     /* ───── Q&A ───── */
     { key: "qna_title", page: "qna", sel: ".subhero__title", tag: "b", label: "상단 제목", value: "자주 하는 질문" },
+    { key: "qna_desc", page: "qna", sel: ".subhero__desc", tag: "b", label: "상단 설명", value: "홈페이지·앱 제작과 검색 최적화에 대한 질문을 모았습니다. 찾는 답이 없으면 [문의하기](index.html#contact)를 이용해 주세요." },
     { key: "qna_ptitle", page: "qna", sel: ".page__title", tag: "b", label: "섹션 제목", value: "무엇이 궁금하신가요" },
+
+    /* ───── 무료 SEO 진단 ───── */
+    { key: "sc_eg", page: "seo-check", sel: ".eyebrow", tag: "b", label: "상단 라벨", value: "FREE SEO CHECKER" },
+    { key: "sc_title", page: "seo-check", sel: ".sct__head .sct__title", tag: "b", label: "상단 제목", value: "우리 홈페이지 SEO,\n~~지금 몇 점일까요?~~" },
+    { key: "sc_lead", page: "seo-check", sel: ".sct__head .sct__lead", tag: "b", label: "상단 설명", value: "URL만 넣으면 SEO 상태를 **100점 만점**으로 진단해 드립니다.\n타이틀·메타·H1~H3·구조화 데이터·sitemap·Open Graph 등 22개 항목을 실제 코드로 분석합니다." },
 
     /* ───── 공통(푸터 소개 — 서브페이지) ───── */
     { key: "footer_tag_sub", page: "all", sel: ".footer__top p", tag: "b", label: "푸터 소개 문구(서브)", value: "홈페이지·앱 제작 / AEO·SEO·GEO\n찾게 만드는 홈페이지를 만듭니다" }
@@ -340,12 +346,16 @@
       return fetch(SB_URL + "/rest/v1/inquiries?id=eq." + id, { method: "DELETE", headers: SB_H });
     },
 
-    /* **텍스트** → <tag>텍스트</tag> (HTML escape 포함, 줄바꿈 → <br/>) */
+    /* 편집 문법: ~~오렌지~~  **굵게**  [링크문구](주소)  줄바꿈=엔터 (HTML escape 포함) */
     fmt: function (s, tag) {
       var esc = String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
         return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
       });
-      return esc.replace(/~~(.+?)~~/g, '<span class="g">$1</span>').replace(/\*\*(.+?)\*\*/g, "<" + tag + ">$1</" + tag + ">").replace(/\n/g, "<br />");
+      return esc
+        .replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2" style="color:var(--accent);font-weight:700">$1</a>')
+        .replace(/~~(.+?)~~/g, '<span class="g">$1</span>')
+        .replace(/\*\*(.+?)\*\*/g, "<" + tag + ">$1</" + tag + ">")
+        .replace(/\n/g, "<br />");
     }
   };
 })();
