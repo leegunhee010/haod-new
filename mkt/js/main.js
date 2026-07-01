@@ -97,8 +97,8 @@
     /* 핀 배경 사진: 스크롤 따라 위로 지나가게 (패럴랙스) */
     var pinBgTrack = document.getElementById('pinBgTrack');
     if (pinBgTrack) {
-      gsap.fromTo(pinBgTrack, { yPercent: 24 }, {
-        yPercent: -62, ease: 'none',
+      gsap.fromTo(pinBgTrack, { yPercent: 26 }, {
+        yPercent: -26, ease: 'none',
         scrollTrigger: { trigger: '#pin', start: 'top top', end: 'bottom bottom', scrub: 1 }
       });
     }

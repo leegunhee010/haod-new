@@ -70,7 +70,7 @@ em{font-style:normal;color:var(--accent)}
 @keyframes scrollDot{0%{transform:translateY(-100%)}100%{transform:translateY(250%)}}
 
 /* ---------------- Pinned scroll ---------------- */
-.pin{position:relative;height:200vh;background:var(--bg)}
+.pin{position:relative;height:160vh;background:var(--bg)}
 .pin__sticky{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
   text-align:center;padding:0 24px;gap:24px;overflow:hidden;isolation:isolate}
 .pin__small{font-family:"Poppins",sans-serif;font-size:.8rem;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);font-weight:600}
