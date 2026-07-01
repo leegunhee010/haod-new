@@ -618,7 +618,24 @@
     });
   })();
   </script>
-  <script type="module" src="js/holo.js?v=6"></script>
+  <script>
+    /* holo3d(three.js) 조건부·지연 로드 — 데스크톱만, reduced-motion/save-data 제외, 유휴 시점에.
+       모바일·저사양은 three.js(1MB+)를 아예 받지 않음(장식 캔버스라 콘텐츠 지장 없음) */
+    (function () {
+      var canvas = document.getElementById('holo3d');
+      var conn = navigator.connection || {};
+      var ok = matchMedia('(min-width:900px) and (pointer:fine)').matches
+        && !matchMedia('(prefers-reduced-motion:reduce)').matches
+        && !conn.saveData;
+      if (ok) {
+        (window.requestIdleCallback || function (f) { setTimeout(f, 1200); })(function () {
+          import('./js/holo.js?v=6');
+        });
+      } else if (canvas) {
+        canvas.style.display = 'none';
+      }
+    })();
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
