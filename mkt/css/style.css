@@ -52,12 +52,12 @@ em{font-style:normal;color:var(--accent)}
   animation:heroBgDrift 20s ease-in-out infinite alternate}
 @keyframes heroBgDrift{0%{transform:translate3d(0,0,0) scale(1) rotate(0deg)}100%{transform:translate3d(-3%,2%,0) scale(1.1) rotate(2deg)}}
 .hero__inner{position:relative;z-index:3;width:100%;max-width:1600px;margin:0 auto;pointer-events:none}
-.hero__lead{display:flex;flex-direction:column;font-weight:500;font-size:clamp(2.2rem,5vw,4.4rem);line-height:1.06;letter-spacing:-.02em;color:var(--ink)}
+.hero__lead{display:flex;flex-direction:column;font-weight:500;font-size:clamp(2rem,4.3vw,3.7rem);line-height:1.07;letter-spacing:-.02em;color:var(--ink)}
 .hero__lead span{display:block;overflow:hidden}
 .hero__lead span+span{font-weight:600}
 .hero__sub{margin-top:18px;font-weight:700;font-size:clamp(1.5rem,3.6vw,3rem);letter-spacing:-.02em;
   background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.hero__word{margin-top:-.08em;font-weight:800;font-size:clamp(7rem,27vw,24rem);line-height:.82;letter-spacing:-.04em;color:var(--ink);
+.hero__word{margin-top:-.04em;font-weight:800;font-size:clamp(4.5rem,18vw,15rem);line-height:.82;letter-spacing:-.04em;color:var(--ink);
   position:relative;z-index:1}
 
 /* Three.js 홀로그래픽 글래스 캔버스 (HAO 워드마크 위 오버레이) */
