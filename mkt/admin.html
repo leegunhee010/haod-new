@@ -618,7 +618,7 @@
 
     /* SEO */
     var seo = HAO.getSeo();
-    var SEO_PAGES = { index:"메인", works:"Works", services:"Services", column:"칼럼", qna:"Q&A", detail:"칼럼 상세" };
+    var SEO_PAGES = { index:"메인", works:"포트폴리오", services:"Services", column:"칼럼", qna:"Q&A", detail:"칼럼 상세" };
     function seoCheckHtml(p) {
       var t = (p.title || "").length, d = (p.desc || "").length;
       return "제목 길이: <b class='" + (t > 0 && t <= 40 ? "ok" : "warn") + "'>" + t + "자</b> (권장 ~35) &nbsp;·&nbsp; 설명 길이: <b class='" + (d > 0 && d <= 90 ? "ok" : "warn") + "'>" + d + "자</b> (권장 ~80)";
