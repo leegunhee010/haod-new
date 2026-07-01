@@ -10,31 +10,37 @@
   <link rel="preconnect" href="https://cdn.jsdelivr.net" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&display=swap" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.css" />
-  <link rel="stylesheet" href="css/style.css?v=6" />
+  <link rel="stylesheet" href="css/style.css?v=15" />
   <style>
     /* Services 전용 */
-    .svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:30px}
+    .svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:34px}
     @media(max-width:1100px){.svc-grid{grid-template-columns:repeat(2,1fr)}}
     @media(max-width:560px){.svc-grid{grid-template-columns:1fr}}
-    .svc-card{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:3/4;display:block;
-      box-shadow:0 18px 40px -28px rgba(60,30,18,.45);background:#1a1712}
-    .svc-card__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
-      transition:transform .6s cubic-bezier(.16,1,.3,1);opacity:.92}
-    .svc-card:hover .svc-card__img{transform:scale(1.07)}
-    .svc-card__veil{position:absolute;inset:0;background:linear-gradient(to top,rgba(20,14,10,.92) 0%,rgba(20,14,10,.5) 42%,rgba(20,14,10,.05) 75%)}
-    .svc-card__body{position:absolute;left:0;right:0;bottom:0;padding:20px 18px;color:#fff}
-    .svc-card__no{font-family:"Poppins",monospace;font-size:.78rem;letter-spacing:.1em;color:var(--accent,#ff7a4d);font-weight:700;display:block;margin-bottom:8px}
-    .svc-card__t{font-size:1.12rem;font-weight:800;letter-spacing:-.01em;margin-bottom:8px}
-    .svc-card__d{font-size:.86rem;line-height:1.6;color:rgba(255,255,255,.82);word-break:keep-all}
+    .svc-card{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:3/4;display:block;cursor:pointer;
+      box-shadow:0 18px 40px -28px rgba(60,30,18,.45);background:#1a1712;
+      transition:transform .4s cubic-bezier(.16,1,.3,1),box-shadow .4s cubic-bezier(.16,1,.3,1)}
+    .svc-card:hover{transform:translateY(-7px);box-shadow:0 34px 62px -30px rgba(232,56,23,.4)}
+    .svc-card__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;
+      transition:transform .7s cubic-bezier(.16,1,.3,1);opacity:.92}
+    .svc-card:hover .svc-card__img{transform:scale(1.08);opacity:1}
+    .svc-card__veil{position:absolute;inset:0;background:linear-gradient(to top,rgba(18,12,8,.94) 2%,rgba(18,12,8,.55) 40%,rgba(18,12,8,.05) 74%)}
+    .svc-card__body{position:absolute;left:0;right:0;bottom:0;padding:22px 20px;color:#fff}
+    .svc-card__no{font-family:"Poppins",sans-serif;font-size:.78rem;letter-spacing:.12em;color:var(--accent,#ff7a4d);font-weight:700;display:block;margin-bottom:9px}
+    .svc-card__t{font-size:1.14rem;font-weight:800;letter-spacing:-.01em;margin-bottom:9px}
+    .svc-card__d{font-size:.86rem;line-height:1.62;color:rgba(255,255,255,.82);word-break:keep-all}
+    .svc-card::after{content:"↗";position:absolute;top:15px;right:18px;font-size:1.3rem;font-weight:700;color:#fff;
+      opacity:0;transform:translateY(6px);transition:opacity .4s ease,transform .4s ease}
+    .svc-card:hover::after{opacity:1;transform:translateY(0)}
     /* Process */
     .proc{max-width:980px;margin:0 auto}
-    .proc__row{display:grid;grid-template-columns:90px 1fr;gap:8px 26px;align-items:start;
-      padding:26px 4px;border-top:1px solid #ececed}
+    .proc__row{display:grid;grid-template-columns:96px 1fr;gap:8px 28px;align-items:start;
+      padding:28px 14px;border-top:1px solid #ececed;border-radius:14px;transition:background .3s ease}
     .proc__row:last-child{border-bottom:1px solid #ececed}
-    .proc__no{font-family:"Poppins",monospace;font-size:2.1rem;font-weight:800;color:var(--accent,#e83817);line-height:1}
-    .proc__t{font-size:1.18rem;font-weight:800;margin-bottom:6px}
+    .proc__row:hover{background:rgba(232,56,23,.045)}
+    .proc__no{font-family:"Poppins",sans-serif;font-size:2.3rem;font-weight:800;color:var(--accent,#e83817);line-height:1;letter-spacing:-.02em}
+    .proc__t{font-size:1.2rem;font-weight:800;margin-bottom:7px}
     .proc__d{color:#6b6b73;line-height:1.7;word-break:keep-all}
-    @media(max-width:560px){.proc__row{grid-template-columns:60px 1fr;gap:6px 16px}.proc__no{font-size:1.6rem}}
+    @media(max-width:560px){.proc__row{grid-template-columns:56px 1fr;gap:6px 16px;padding:22px 8px}.proc__no{font-size:1.7rem}}
     .svc-cta{margin:54px auto 0;max-width:980px;background:linear-gradient(120deg,#ff8a3d,#e83817);color:#fff;
       border-radius:22px;padding:38px clamp(22px,4vw,46px);display:flex;gap:18px;flex-wrap:wrap;align-items:center;justify-content:space-between}
     .svc-cta h3{font-size:clamp(1.3rem,2.4vw,1.8rem);font-weight:800;line-height:1.4}
@@ -104,7 +110,6 @@
         <a href="tel:16662027" class="footer__tel">1666-2027</a>
         <p class="footer__hours">09:30 ~ 18:30 (점심 13:00~14:00)</p>
         <div class="footer__btns">
-          <a href="index.html#contact" class="pillbtn pillbtn--dark">회사소개서 받기</a>
           <a href="index.html#contact" class="pillbtn pillbtn--dark">문의하기</a>
         </div>
       </div>
