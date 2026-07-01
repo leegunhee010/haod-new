@@ -35,26 +35,26 @@
     <link rel="stylesheet" href="css/hao-brand.css?v=73">
 
     <!-- scripts -->
-    <script src="js/hq_jquery-1.12.0.min.js"></script>
-    <script src="js/hq_easing.js"></script>
-    <script src="js/hq_component.js"></script>
-    <script src="js/hq_jquery.nice-select.js"></script>
-    <script src="js/hq_function_jquery.js"></script>
-    <script src="js/hq_function.js"></script>
-    <script src="js/hq_swiper.min.js"></script>
-    <script src="js/hq_swiper11.js"></script>
+    <script defer src="js/hq_jquery-1.12.0.min.js"></script>
+    <script defer src="js/hq_easing.js"></script>
+    <script defer src="js/hq_component.js"></script>
+    <script defer src="js/hq_jquery.nice-select.js"></script>
+    <script defer src="js/hq_function_jquery.js"></script>
+    <script defer src="js/hq_function.js"></script>
+    <script defer src="js/hq_swiper.min.js"></script>
+    <script defer src="js/hq_swiper11.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery.Marquee/1.6.0/jquery.marquee.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.41/dist/lenis.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jQuery.Marquee/1.6.0/jquery.marquee.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.41/dist/lenis.min.js"></script>
 
     <!-- 페럴렉스 / aos -->
     <link href="https://cdn.jsdelivr.net/npm/jarallax@2/dist/jarallax.css" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/jarallax@2/dist/jarallax.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jarallax@2/dist/jarallax-video.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/jarallax@2/dist/jarallax.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/jarallax@2/dist/jarallax-video.min.js"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <link rel="canonical" href="https://haodesign.co.kr/voucher/" />
   <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Organization","name":"하오디자인","alternateName":"HAO DESIGN","url":"https://haodesign.co.kr/","logo":"https://haodesign.co.kr/design/assets/img/logo.png","telephone":"+82-1666-2027","email":"sales@haodesign.co.kr","address":{"@type":"PostalAddress","streetAddress":"광진구 능동로49길 9, 2F","addressLocality":"서울특별시","addressCountry":"KR"},"sameAs":["https://portfolio.haodesign.co.kr/","https://www.instagram.com/haodesign_official/","https://blog.naver.com/xmfostlsh2","https://pf.kakao.com/_exlVrxd","https://haodesign05.tistory.com/","https://www.threads.com/@haodesign_official","https://map.naver.com/p/search/하오디자인"]}
@@ -457,7 +457,7 @@
             </div>
         </section>
     </main>
-    <script src="js/hq_main.js?v=14"></script>
+    <script defer src="js/hq_main.js?v=14"></script>
 
     <footer class="footer">
         <div class="footer__top">
@@ -485,6 +485,7 @@
 </div>
 
 <script>
+  document.addEventListener('DOMContentLoaded', function(){
     // HAO 헤더/버거/프로그레스
     (function(){
         var header=document.getElementById('haoHeader'),prog=document.getElementById('progress'),burger=document.getElementById('haoBurger'),nav=document.getElementById('haoNav'),yEl=document.getElementById('year');
@@ -517,6 +518,7 @@
             } else { done('상담 신청이 접수되었습니다. 빠르게 연락드리겠습니다.'); form.reset(); if(sbtn) sbtn.disabled = false; }
         });
     })();
+  });
 </script>
 <script>
 /* 바우처 칼럼(section8) 한 줄 슬라이더 — 좌우 화살표로 한 칸씩 넘김 */
@@ -545,7 +547,7 @@
   render();
 })();
 </script>
-<script src="js/data.js?v=1"></script>
-<script src="js/boot.js?v=1"></script>
+<script defer src="js/data.js?v=1"></script>
+<script defer src="js/boot.js?v=1"></script>
 </body>
 </html>
