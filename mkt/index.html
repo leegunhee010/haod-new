@@ -208,6 +208,22 @@
       .on-chat__bub{min-height:calc(3.28em + 24px)}
       .on-chat__hao{margin-top:auto;padding-top:14px}
       .on-chat__ans{min-height:calc(4.9em + 26px);width:calc(100% - 14px)}
+      /* 심플 정리 — 여백 타이트·플랫 톤 */
+      .on-chats .on-chat{flex-basis:clamp(330px,26vw,400px);padding:clamp(22px,2vw,27px);border-radius:20px;
+        box-shadow:0 18px 38px -32px rgba(36,26,20,.45)}
+      .on-chat__no{font-size:.68rem}
+      .on-chat__q{font-size:1.05rem;line-height:1.45;min-height:4.35em;margin:9px 0 13px}
+      .on-chat__who{gap:9px;margin-bottom:12px}
+      .on-chat__avatar{width:36px;height:36px;box-shadow:none}
+      .on-chat__meta small{font-size:.66rem}
+      .on-chat__meta b{font-size:.9rem}
+      .on-chat__bub{background:#f4f1ec;border-radius:12px;border-top-left-radius:4px;padding:11px 13px;
+        font-size:.86rem;min-height:calc(3.24em + 22px);margin-bottom:8px}
+      .on-chat__hao{font-size:.88rem;gap:7px;padding-top:11px}
+      .on-chat__hao i{width:27px;height:27px}
+      .on-chat__hao i img{width:17px}
+      .on-chat__ans{background:#fdeee4;border-radius:12px;border-top-right-radius:4px;padding:12px 14px;
+        font-size:.86rem;color:#4a3226;min-height:calc(4.86em + 24px);margin-left:12px;width:calc(100% - 12px)}
       @media(max-width:1100px){.on-chats{grid-template-columns:repeat(2,1fr)}.on-chat:nth-child(even){margin-top:0}.on-chat:nth-child(2),.on-chat:nth-child(4){margin-top:26px}}
       @media(max-width:640px){.on-chats{grid-template-columns:1fr}.on-chat:nth-child(even),.on-chat:nth-child(2),.on-chat:nth-child(4){margin-top:0}}
       /* 채팅 카드 — 가로 오토 롤링 */
