@@ -36,10 +36,21 @@
   <style>
     /* 상담 폼 라벨 (다른 센터와 통일) */
     #main #contact .cfield{display:flex;flex-direction:column}
-    #main #contact .cfield label{font-size:.78rem;font-weight:700;color:#6e6a60;margin:0 0 7px 2px}
+    #main #contact .cfield label{font-size:12.5px;font-weight:700;color:#6e6a60;margin:0 0 7px 2px}
     #main #contact .cform select{appearance:auto;color:#17150f !important;-webkit-text-fill-color:#17150f !important}
     #main #contact .cform select:invalid,#main #contact .cform select option[value=""]{color:#8a7d72 !important;-webkit-text-fill-color:#8a7d72 !important}
     #main #contact .cform textarea{min-height:120px}
+    /* CTA 타이포 — 옛 테마 html{font-size:62.5%}로 rem이 줄어듦 → px 고정(웹센터와 동일 크기) */
+    #main #contact .contact__tag{font-size:12.5px;letter-spacing:.25em}
+    #main #contact .contact__title{font-size:clamp(34px,4.2vw,54px);line-height:1.14;letter-spacing:-.035em}
+    #main #contact .contact__desc{font-size:17px;line-height:1.75;margin-top:20px}
+    #main #contact .contact__rows{margin-top:34px;gap:13px}
+    #main #contact .contact__rows span{font-size:11px;min-width:46px}
+    #main #contact .contact__rows li{font-size:18px}
+    #main #contact .contact__rows a{font-size:18px}
+    #main #contact .cform input,#main #contact .cform select,#main #contact .cform textarea{font-size:15.5px}
+    #main #contact .btn-round{font-size:16px}
+    #main #contact .cnote{font-size:14.5px}
   </style>
 
     <!-- scripts -->
