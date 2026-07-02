@@ -283,11 +283,87 @@
         <h2 class="shead">Power</h2>
         <p class="sublede">디자인부터 콘텐츠·이커머스·전시까지, 중소기업이 필요로 하는 마케팅을 한곳에서. 작은 브랜드의 성장을 곁에서 함께해온 결과입니다.</p>
       </div>
-      <div class="stats" id="stats">
-        <div class="stat reveal"><span class="stat__wave stat__wave--1"></span><b>함께한 브랜드</b><strong data-to="134" data-suf="+">0</strong></div>
-        <div class="stat reveal"><span class="stat__wave stat__wave--2"></span><b>마케팅 분야</b><strong data-to="12" data-suf="+">0</strong></div>
-        <div class="stat reveal"><span class="stat__wave stat__wave--3"></span><b>디자이너·기획자</b><strong data-to="40" data-suf="+">0</strong></div>
-        <div class="stat reveal"><span class="stat__wave stat__wave--4"></span><b>누적 프로젝트</b><strong data-to="900" data-suf="+">0</strong></div>
+      <style>
+        .power{background:var(--dark)}
+        .power .shead{color:#fff}
+        .power .sublede{color:rgba(255,255,255,.6)}
+        .pw-bento{max-width:1180px;margin:0 auto;display:grid;gap:clamp(14px,1.6vw,20px);
+          grid-template-columns:1fr 1fr;grid-template-areas:"a b" "c d"}
+        .pw-card{position:relative;overflow:hidden;border-radius:24px;padding:clamp(26px,2.8vw,40px);
+          min-height:clamp(230px,22vw,290px);display:flex;flex-direction:column}
+        .pw-a{grid-area:a;background:linear-gradient(160deg,#26170f,#160e08);border:1px solid rgba(255,255,255,.08)}
+        .pw-b{grid-area:b;background:linear-gradient(135deg,#ff8a3d,#e83817);color:#fff}
+        .pw-c{grid-area:c;background:#fff}
+        .pw-d{grid-area:d;color:#fff;padding:0;border:1px solid rgba(255,255,255,.08)}
+        .pw-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:14px}
+        .pw-t{font-size:clamp(1.1rem,1.5vw,1.3rem);font-weight:800;letter-spacing:-.01em;margin:0;line-height:1.3;word-break:keep-all}
+        .pw-a .pw-t,.pw-b .pw-t,.pw-d .pw-t{color:#fff}
+        .pw-c .pw-t{color:var(--ink)}
+        .pw-note{font-size:.72rem;white-space:nowrap;padding-top:4px}
+        .pw-a .pw-note{color:rgba(255,255,255,.42)}
+        .pw-b .pw-note{color:rgba(255,255,255,.78)}
+        .pw-c .pw-note{color:var(--faint)}
+        .pw-hero{display:flex;align-items:baseline;gap:12px;margin:4px 0 16px}
+        .pw-num{font-family:"Poppins",sans-serif;font-weight:800;font-size:clamp(2.8rem,4.6vw,4rem);line-height:1;letter-spacing:-.03em}
+        .pw-a .pw-num{color:var(--accent-3)}
+        .pw-c .pw-num{color:var(--accent)}
+        .pw-unit{font-size:.95rem;font-weight:600}
+        .pw-a .pw-unit{color:rgba(255,255,255,.72)}
+        .pw-c .pw-unit{color:var(--muted)}
+        .pw-rows{margin-top:auto;display:flex;flex-direction:column}
+        .pw-row{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:13px 2px;font-size:.96rem;font-weight:600}
+        .pw-a .pw-row{border-top:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.85)}
+        .pw-a .pw-row i{font-style:normal;color:var(--accent-3);font-weight:800}
+        .pw-b .pw-row{border-top:1.5px solid rgba(255,255,255,.32);font-weight:700}
+        .pw-val{display:flex;align-items:baseline;white-space:nowrap}
+        .pw-val b{font-family:"Poppins",sans-serif;font-weight:800;font-size:clamp(2rem,3.4vw,3rem);line-height:1;letter-spacing:-.02em}
+        .pw-val i{font-style:normal;font-size:.88rem;margin-left:7px;opacity:.9}
+        .pw-desc{font-size:.95rem;line-height:1.68;margin:0;word-break:keep-all}
+        .pw-c .pw-desc{color:var(--muted);margin-top:auto}
+        .pw-arrow{position:absolute;right:6%;top:12%;width:clamp(120px,15vw,190px);pointer-events:none}
+        .pw-d__bg{position:absolute;inset:0}
+        .pw-d__bg img{width:100%;height:100%;object-fit:cover}
+        .pw-d__bg::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(14,8,4,.92) 8%,rgba(14,8,4,.45) 55%,rgba(14,8,4,.18))}
+        .pw-d__body{position:relative;z-index:1;margin-top:auto;padding:clamp(26px,2.8vw,40px)}
+        .pw-d .pw-desc{color:rgba(255,255,255,.82);margin-top:10px}
+        .pw-link{display:inline-flex;align-items:center;gap:6px;margin-top:18px;color:#fff;font-weight:800;font-size:.94rem;
+          border-bottom:2px solid var(--accent-3);padding-bottom:3px}
+        @media(max-width:900px){.pw-bento{grid-template-columns:1fr;grid-template-areas:"b" "a" "c" "d"}}
+      </style>
+      <div class="pw-bento">
+        <div class="pw-card pw-a reveal">
+          <div class="pw-head"><h3 class="pw-t">마케팅 분야</h3><span class="pw-note">*브랜드 콘텐츠부터 전시까지</span></div>
+          <p class="pw-hero"><strong class="pw-num" data-to="12" data-suf="+">0</strong><span class="pw-unit">개 분야</span></p>
+          <div class="pw-rows">
+            <div class="pw-row"><span>브랜드 콘텐츠 · SNS</span><i>↗</i></div>
+            <div class="pw-row"><span>이커머스 · 상세페이지</span><i>↗</i></div>
+            <div class="pw-row"><span>전시 · 박람회 부스</span><i>↗</i></div>
+          </div>
+        </div>
+        <div class="pw-card pw-b reveal">
+          <svg class="pw-arrow" viewBox="0 0 140 90" aria-hidden="true">
+            <path d="M8 78 L48 46 L74 60 L128 14" fill="none" stroke="rgba(255,255,255,.34)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M104 12 h26 v26" fill="none" stroke="rgba(255,255,255,.34)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <div class="pw-head"><h3 class="pw-t">누적 실적</h3><span class="pw-note">*마케팅센터 통산</span></div>
+          <div class="pw-rows">
+            <div class="pw-row"><span>누적 프로젝트</span><span class="pw-val"><b data-to="900" data-suf="+">0</b><i>건</i></span></div>
+            <div class="pw-row"><span>함께한 브랜드</span><span class="pw-val"><b data-to="134" data-suf="+">0</b><i>곳</i></span></div>
+          </div>
+        </div>
+        <div class="pw-card pw-c reveal">
+          <div class="pw-head"><h3 class="pw-t">전담 인력</h3><span class="pw-note">*기획 · 디자인 · 운영</span></div>
+          <p class="pw-hero"><strong class="pw-num" data-to="40" data-suf="+">0</strong><span class="pw-unit">명의 디자이너 · 기획자</span></p>
+          <p class="pw-desc">건별 외주 딜리버리가 아니라, 브랜드를 전담하는 한 팀으로 움직입니다. 기획부터 운영까지 손발이 맞습니다.</p>
+        </div>
+        <div class="pw-card pw-d reveal">
+          <div class="pw-d__bg"><img src="assets/work/w390.jpg" alt="" loading="lazy"></div>
+          <div class="pw-d__body">
+            <h3 class="pw-t">보이지 않던 브랜드를,<br />보이게</h3>
+            <p class="pw-desc">브랜드 콘텐츠부터 전시·박람회 현장까지 — 화면 안팎에서 브랜드가 기억되게 만듭니다.</p>
+            <a href="works.html" class="pw-link">포트폴리오 보기 →</a>
+          </div>
+        </div>
       </div>
     </section>
 
