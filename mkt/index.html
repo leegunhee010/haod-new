@@ -217,6 +217,33 @@
       @keyframes chatRoll{to{transform:translateX(-50%)}}
       @media(prefers-reduced-motion:reduce){.on-chats{animation:none}}
       @media(max-width:640px){.on-chats .on-chat{flex-basis:82vw}}
+      /* onellab식 비교 카드 */
+      .on--center .on__in{text-align:center}
+      .on--center .on__sub{margin-left:auto;margin-right:auto}
+      .dif-wrap{display:grid;grid-template-columns:1fr 1.16fr;gap:clamp(18px,2.4vw,34px);
+        max-width:1020px;margin:clamp(40px,6vh,60px) auto 0;align-items:start;text-align:center}
+      .dif-card{border-radius:26px;padding:clamp(30px,3.4vw,46px) clamp(24px,2.8vw,40px)}
+      .dif-card--a{background:#fff;border:1px solid var(--line);margin-top:clamp(30px,4.5vw,60px);
+        box-shadow:0 26px 54px -46px rgba(36,26,20,.4)}
+      .dif-card--b{background:linear-gradient(165deg,#ff8a3d,#e83817 52%,#cc2f0d);color:#fff;
+        box-shadow:0 54px 104px -52px rgba(232,56,23,.62)}
+      .dif-head{display:flex;align-items:center;justify-content:center;gap:11px;
+        font-size:clamp(1.12rem,1.6vw,1.32rem);font-weight:800;letter-spacing:-.01em;margin-bottom:clamp(14px,1.8vw,22px)}
+      .dif-head i{flex:0 0 auto;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;
+        font-style:normal;font-size:1.15rem;font-weight:800}
+      .dif-card--a .dif-head{color:var(--ink-2)}
+      .dif-card--a .dif-head i{background:#f1ede8;color:#b3aa9e}
+      .dif-card--b .dif-head i{background:#fff;box-shadow:0 8px 18px -8px rgba(0,0,0,.35)}
+      .dif-row{padding:clamp(16px,1.9vw,24px) 0}
+      .dif-row+.dif-row{border-top:1px dashed rgba(14,14,16,.14)}
+      .dif-card--b .dif-row+.dif-row{border-top:1px dashed rgba(255,255,255,.34)}
+      .dif-row small{display:block;font-size:.78rem;font-weight:700;margin-bottom:9px;letter-spacing:.02em}
+      .dif-card--a .dif-row small{color:var(--faint)}
+      .dif-card--b .dif-row small{color:rgba(255,255,255,.78)}
+      .dif-row p{margin:0;font-size:clamp(.94rem,1.2vw,1.04rem);line-height:1.62;word-break:keep-all}
+      .dif-card--a .dif-row p{color:var(--muted);font-weight:600}
+      .dif-card--b .dif-row p{color:#fff;font-weight:800}
+      @media(max-width:880px){.dif-wrap{grid-template-columns:1fr}.dif-card--a{margin-top:0;order:2}.dif-card--b{order:1}}
     </style>
 
     <!-- 문제 진단 -->
@@ -333,31 +360,25 @@
     </section>
 
     <!-- 차별화 비교 -->
-    <section class="on" id="difference">
+    <section class="on on--center" id="difference">
       <div class="on__in">
         <p class="on__eg">DIFFERENCE</p>
-        <h2 class="on__h">일반 외주 대행과 <b>무엇이 다를까요?</b></h2>
-        <p class="on__sub">하오디자인 마케팅센터는 건별 외주가 아니라, 브랜드를 계속 맡는 <b style="color:var(--accent)">전담 마케팅팀</b>입니다. 기획·디자인·운영을 한 팀이 통합해 하나의 브랜드로 이어갑니다.</p>
-        <div class="on-cmp">
-          <div class="on-col on-col--a">
-            <span class="on-col__tag">GENERAL</span>
-            <h3 class="on-col__ttl">일반 외주 대행</h3>
-            <ul class="on-list">
-              <li><i>—</i>건별 발주, 매번 담당자가 바뀝니다</li>
-              <li><i>—</i>디자인·마케팅이 따로 진행됩니다</li>
-              <li><i>—</i>업체마다 톤이 달라 브랜드가 흩어집니다</li>
-              <li><i>—</i>납품하면 관계가 끝납니다</li>
-            </ul>
+        <h2 class="on__h">하오디자인 마케팅센터,<br /><b>일반 외주 대행과는 어떻게 다를까요?</b></h2>
+        <p class="on__sub">하오디자인 마케팅센터는 스몰 브랜드와 중소기업의 성장을 위해<br /><b style="color:var(--accent)">브랜드를 계속 맡는 전담팀</b>이라는 차별화된 방식으로 일합니다.</p>
+        <div class="dif-wrap">
+          <div class="dif-card dif-card--a reveal">
+            <div class="dif-head"><i>?</i>일반 외주 대행</div>
+            <div class="dif-row"><small>주요 활동</small><p>요청받은 작업물 납품<br />(건별 디자인 외주)</p></div>
+            <div class="dif-row"><small>브랜드 이해도</small><p>전달받은 자료 기반<br />단건 작업</p></div>
+            <div class="dif-row"><small>실행 영역</small><p>디자인 결과물 위주</p></div>
+            <div class="dif-row"><small>협업 방식</small><p>요청 기반 단발 협업,<br />납품하면 관계 종료</p></div>
           </div>
-          <div class="on-col on-col--b">
-            <span class="on-col__tag">HAO DESIGN</span>
-            <h3 class="on-col__ttl">하오디자인 마케팅센터</h3>
-            <ul class="on-list">
-              <li><i>✓</i>전담팀이 브랜드를 꾸준히 맡습니다</li>
-              <li><i>✓</i>기획·디자인·운영을 한 팀이 통합합니다</li>
-              <li><i>✓</i>134+ 브랜드·900+ 프로젝트의 노하우로 일관된 톤을 유지합니다</li>
-              <li><i>✓</i>리포트·최적화로 계속 성장을 돕습니다</li>
-            </ul>
+          <div class="dif-card dif-card--b reveal">
+            <div class="dif-head"><i>💡</i>하오디자인 마케팅센터</div>
+            <div class="dif-row"><small>주요 활동</small><p>진단·전략 수립 후 맞춤 마케팅 실행<br />(브랜드 콘텐츠, 이커머스, 전시 등)</p></div>
+            <div class="dif-row"><small>브랜드 이해도</small><p>전담팀이 브랜드 톤·가이드를<br />함께 정리하고 계속 축적</p></div>
+            <div class="dif-row"><small>실행 영역</small><p>브랜드 콘텐츠 + 상세페이지·스토어<br />+ 전시·박람회까지 일괄 실행</p></div>
+            <div class="dif-row"><small>협업 방식</small><p>내부 팀처럼 밀착 소통,<br />리포트·최적화로 지속 개선</p></div>
           </div>
         </div>
       </div>
