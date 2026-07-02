@@ -10,7 +10,7 @@
   <meta property="og:type" content="website" />
   <link rel="preconnect" href="https://cdn.jsdelivr.net" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.css" />
-  <link rel="stylesheet" href="css/style.css?v=11" />
+  <link rel="stylesheet" href="css/style.css?v=12" />
   <link rel="canonical" href="https://haodesign.co.kr/web/portfolio.html" />
   <meta property="og:image" content="https://haodesign.co.kr/web/assets/img/hero.jpg" />
   <script type="application/ld+json">
@@ -82,11 +82,19 @@
             <li><span>TIME</span>평일 09:00 – 18:00</li>
           </ul>
         </div>
-        <form class="cform cform--card" id="quoteForm" novalidate>
-          <div class="cfield"><input type="text" id="name" name="name" placeholder="이름 / 회사명" required /></div>
-          <div class="cfield"><input type="tel" id="phone" name="phone" placeholder="연락처" required /></div>
-          <div class="cfield cfield--full"><textarea id="message" name="message" rows="4" placeholder="제작하려는 서비스, 참고 사이트 등을 자유롭게 적어주세요."></textarea></div>
-          <button type="submit" class="btn-round btn-round--solid"><span>문의 보내기</span><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        <form class="cform cform--main" id="quoteForm" novalidate>
+          <div class="cfield"><label>이름</label><input type="text" id="name" name="name" placeholder="이름" required /></div>
+          <div class="cfield"><label>연락처</label><input type="tel" id="phone" name="phone" placeholder="010-0000-0000" required /></div>
+          <div class="cfield cfield--full"><label>회사·브랜드명</label><input type="text" id="company" name="company" placeholder="회사 또는 브랜드명" /></div>
+          <div class="cfield cfield--full"><label>제작 종류</label>
+            <select id="type" name="type">
+              <option value="">선택해주세요</option>
+              <option>홈페이지 제작</option><option>홈페이지 리뉴얼</option><option>모바일 앱·시스템</option>
+              <option>SEO·AEO 검색 최적화</option><option>쇼핑몰·CMS</option><option>기타 문의</option>
+            </select>
+          </div>
+          <div class="cfield cfield--full"><label>문의 내용</label><textarea id="message" name="message" rows="4" placeholder="제작하려는 서비스, 참고 사이트, 일정·예산 등을 자유롭게 적어주세요."></textarea></div>
+          <button type="submit" class="btn btn--grad"><span>문의 보내기</span><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
           <p class="cnote" id="formNote" role="status"></p>
         </form>
       </div>
@@ -158,7 +166,7 @@
       var done = function (msg) { note.textContent = msg; };
       var msgEl = document.getElementById('message');
       if (window.HAO && HAO.saveInquiry) {
-        HAO.saveInquiry({ name: form.name.value, phone: form.phone.value, type: '포트폴리오 문의', message: msgEl ? msgEl.value : '' })
+        HAO.saveInquiry({ name: form.name.value, phone: form.phone.value, company: document.getElementById('company') ? document.getElementById('company').value : '', type: document.getElementById('type') ? document.getElementById('type').value : '', message: msgEl ? msgEl.value : '' })
           .then(function () { done('문의가 접수되었습니다. 빠르게 연락드리겠습니다.'); form.reset(); })
           .catch(function () { done('접수 중 오류가 발생했습니다. 전화로 문의해 주세요.'); })
           .then(function () { if (sbtn) sbtn.disabled = false; });
