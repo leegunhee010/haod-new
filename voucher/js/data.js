@@ -168,6 +168,87 @@
   };
 
   var DEFAULT_COPY = [
+    /* ───── 메인 · 히어로 ───── */
+    { key: "vc_hero_eyebrow", page: "index", sel: ".ghero__eyebrow", tag: "b", label: "히어로 — 상단 라벨", value: "**6년 연속** 정부지원사업 공식 수행기관" },
+    { key: "vc_hero_line2", page: "index", sel: ".ghero__title .hero-line:nth-of-type(2)", tag: "b", label: "히어로 — 제목 둘째 줄", value: "정부지원 디자인의 기준." },
+    { key: "vc_hero_sub", page: "index", sel: ".ghero__sub", tag: "b", label: "히어로 — 설명", value: "수출바우처·혁신바우처·판로개척지원사업 — 신청 가능 여부 확인부터\n카탈로그·브로슈어·다국어 홍보물 제작, 결과보고까지 하오디자인이 함께합니다." },
+    { key: "vc_hero_cta", page: "index", sel: ".ghero__cta span", tag: "b", label: "히어로 — 버튼 문구", value: "무료 가능여부 상담하기" },
+
+    /* ───── 메인 · Our Projects ───── */
+    { key: "vc_s1_eg", page: "index", sel: ".section1 .tit-box > b", tag: "b", label: "프로젝트 — 라벨", value: "Our Projects" },
+    { key: "vc_s1_num", page: "index", sel: ".section1 .tit-box h3", tag: "b", label: "프로젝트 — 건수(숫자+)", value: "412+" },
+    { key: "vc_s1_line1", page: "index", sel: ".section1 .fill-text.line1", tag: "b", label: "프로젝트 — 문장①", value: "하오디자인은 정부지원사업을 통해" },
+    { key: "vc_s1_line2", page: "index", sel: ".section1 .fill-text.line2", tag: "b", label: "프로젝트 — 문장②", value: "중소기업의 브랜드 가치를 디자인합니다." },
+
+    /* ───── 메인 · What We Do ───── */
+    { key: "vc_s2_eg", page: "index", sel: ".section2 .tit-box > b", tag: "b", label: "미션 — 라벨", value: "What We Do" },
+    { key: "vc_s2_t1", page: "index", sel: ".section2 .tit-box h3:nth-of-type(1)", tag: "b", label: "미션 — 제목①", value: "Your grow" },
+    { key: "vc_s2_t2", page: "index", sel: ".section2 .tit-box h3:nth-of-type(2)", tag: "b", label: "미션 — 제목②", value: "our Mission" },
+    { key: "vc_s2_line1", page: "index", sel: ".section2 .fill-text.line1", tag: "b", label: "미션 — 문장①", value: "하오디자인은 정부지원사업의 복잡한 절차를 대신하고," },
+    { key: "vc_s2_line2", page: "index", sel: ".section2 .fill-text.line2", tag: "b", label: "미션 — 문장②", value: "신청 가능 여부 확인부터 사용계획서·제작·결과보고까지 한 번에 수행합니다." },
+    { key: "vc_s2_line3", page: "index", sel: ".section2 .fill-text.line3", tag: "b", label: "미션 — 문장③", value: "기업은 본업에 집중하고, 완성도 높은 디자인은 그대로 남습니다." },
+
+    /* ───── 메인 · Our Centers ───── */
+    { key: "vc_s3_eg", page: "index", sel: ".section3 .tit-box > b", tag: "b", label: "센터 — 라벨", value: "Our Centers" },
+    { key: "vc_s3_t", page: "index", sel: ".section3 .tit-box h3", tag: "b", label: "센터 — 제목", value: "We Pursue\nProfessionalism" },
+    { key: "vc_center1_t", page: "index", sel: ".section3 .imgbox li:nth-child(1) .txt b", tag: "b", label: "센터① — 이름", value: "디자인센터" },
+    { key: "vc_center1_d", page: "index", sel: ".section3 .imgbox li:nth-child(1) .txt em", tag: "b", label: "센터① — 설명", value: "브랜드·인쇄·편집 디자인 전문 센터" },
+    { key: "vc_center2_t", page: "index", sel: ".section3 .imgbox li:nth-child(2) .txt b", tag: "b", label: "센터② — 이름", value: "웹구축센터" },
+    { key: "vc_center2_d", page: "index", sel: ".section3 .imgbox li:nth-child(2) .txt em", tag: "b", label: "센터② — 설명", value: "홈페이지·쇼핑몰 구축 전문 센터" },
+    { key: "vc_center3_t", page: "index", sel: ".section3 .imgbox li:nth-child(3) .txt b", tag: "b", label: "센터③ — 이름", value: "스튜디오센터" },
+    { key: "vc_center3_d", page: "index", sel: ".section3 .imgbox li:nth-child(3) .txt em", tag: "b", label: "센터③ — 설명", value: "제품·푸드·뷰티 촬영 전문 스튜디오" },
+    { key: "vc_center4_t", page: "index", sel: ".section3 .imgbox li:nth-child(4) .txt b", tag: "b", label: "센터④ — 이름", value: "마케팅센터" },
+    { key: "vc_center4_d", page: "index", sel: ".section3 .imgbox li:nth-child(4) .txt em", tag: "b", label: "센터④ — 설명", value: "온라인 통합 마케팅 솔루션" },
+
+    /* ───── 메인 · Who We Are ───── */
+    { key: "vc_s7_eg", page: "index", sel: "#s-about .tit-box > b", tag: "b", label: "소개 — 라벨", value: "Who We Are" },
+    { key: "vc_s7_line1", page: "index", sel: "#s-about .fill-text.line1", tag: "b", label: "소개 — 문장①", value: "하오디자인은 5년 연속 정부 핵심사업 공식 디자인 수행기관으로, 412건 이상의 바우처 디자인을 수행했습니다." },
+    { key: "vc_s7_line2", page: "index", sel: "#s-about .fill-text.line2", tag: "b", label: "소개 — 문장②", value: "복잡한 신청 절차는 우리가, 좋은 디자인은 기업에게. 결과보고까지 책임지는 파트너가 되겠습니다." },
+
+    /* ───── 메인 · 바우처 칼럼(Story) ───── */
+    { key: "vc_s8_eg", page: "index", sel: ".section8 .tit-box > b", tag: "b", label: "칼럼 — 라벨", value: "Story From HAO" },
+    { key: "vc_s8_t", page: "index", sel: ".section8 .tit-box h3", tag: "b", label: "칼럼 — 제목", value: "바우처 칼럼" },
+    { key: "vc_board1_t", page: "index", sel: ".section8 .board-card:nth-child(1) .board-title", tag: "b", label: "칼럼카드① — 제목", value: "수출바우처, 디자인 분야 100% 활용하는 법" },
+    { key: "vc_board1_d", page: "index", sel: ".section8 .board-card:nth-child(1) .board-desc", tag: "b", label: "칼럼카드① — 설명", value: "정부지원 디자인을 200% 활용하는 노하우" },
+    { key: "vc_board2_t", page: "index", sel: ".section8 .board-card:nth-child(2) .board-title", tag: "b", label: "칼럼카드② — 제목", value: "2026 제조혁신바우처 신청 가이드" },
+    { key: "vc_board2_d", page: "index", sel: ".section8 .board-card:nth-child(2) .board-desc", tag: "b", label: "칼럼카드② — 설명", value: "신청 자격부터 일정까지 한눈에" },
+    { key: "vc_board3_t", page: "index", sel: ".section8 .board-card:nth-child(3) .board-title", tag: "b", label: "칼럼카드③ — 제목", value: "판로개척지원사업으로 상세페이지 만들기" },
+    { key: "vc_board3_d", page: "index", sel: ".section8 .board-card:nth-child(3) .board-desc", tag: "b", label: "칼럼카드③ — 설명", value: "전환율 높이는 상세페이지 기획" },
+    { key: "vc_board4_t", page: "index", sel: ".section8 .board-card:nth-child(4) .board-title", tag: "b", label: "칼럼카드④ — 제목", value: "바우처 사용계획서 작성 핵심 포인트" },
+    { key: "vc_board4_d", page: "index", sel: ".section8 .board-card:nth-child(4) .board-desc", tag: "b", label: "칼럼카드④ — 설명", value: "선정 확률 높이는 작성 팁" },
+    { key: "vc_board5_t", page: "index", sel: ".section8 .board-card:nth-child(5) .board-title", tag: "b", label: "칼럼카드⑤ — 제목", value: "결과보고, 이것만 알면 끝납니다" },
+    { key: "vc_board5_d", page: "index", sel: ".section8 .board-card:nth-child(5) .board-desc", tag: "b", label: "칼럼카드⑤ — 설명", value: "증빙·정산 실수 없이 마무리하기" },
+
+    /* ───── 메인 · 포트폴리오 ───── */
+    { key: "vc_s9_eg", page: "index", sel: "#s-portfolio .tit-box > b", tag: "b", label: "포트폴리오 — 라벨", value: "Our Portfolios" },
+    { key: "vc_s9_t1", page: "index", sel: "#s-portfolio .tit-box h3:nth-of-type(1)", tag: "b", label: "포트폴리오 — 제목①", value: "We are HAO" },
+    { key: "vc_s9_t2", page: "index", sel: "#s-portfolio .tit-box h3:nth-of-type(2)", tag: "b", label: "포트폴리오 — 제목②", value: "Design" },
+    { key: "vc_s9_line1", page: "index", sel: "#s-portfolio .fill-text.line1", tag: "b", label: "포트폴리오 — 설명", value: "정부지원사업으로 완성한 하오디자인의 결과물을 만나보세요." },
+    { key: "vc_pf1_c", page: "index", sel: "#s-portfolio .pf-card:nth-child(1) .pf-cat", tag: "b", label: "PF카드① — 분류", value: "카탈로그 디자인" },
+    { key: "vc_pf1_t", page: "index", sel: "#s-portfolio .pf-card:nth-child(1) .pf-title", tag: "b", label: "PF카드① — 제목", value: "영문 카탈로그" },
+    { key: "vc_pf2_c", page: "index", sel: "#s-portfolio .pf-card:nth-child(2) .pf-cat", tag: "b", label: "PF카드② — 분류", value: "홍보 디자인" },
+    { key: "vc_pf2_t", page: "index", sel: "#s-portfolio .pf-card:nth-child(2) .pf-title", tag: "b", label: "PF카드② — 제목", value: "도시정비사업 안내서" },
+    { key: "vc_pf3_c", page: "index", sel: "#s-portfolio .pf-card:nth-child(3) .pf-cat", tag: "b", label: "PF카드③ — 분류", value: "카탈로그 디자인" },
+    { key: "vc_pf3_t", page: "index", sel: "#s-portfolio .pf-card:nth-child(3) .pf-title", tag: "b", label: "PF카드③ — 제목", value: "전력설비 기술 카탈로그" },
+    { key: "vc_pf4_c", page: "index", sel: "#s-portfolio .pf-card:nth-child(4) .pf-cat", tag: "b", label: "PF카드④ — 분류", value: "브로슈어 디자인" },
+    { key: "vc_pf4_t", page: "index", sel: "#s-portfolio .pf-card:nth-child(4) .pf-title", tag: "b", label: "PF카드④ — 제목", value: "식품 다국어 브로슈어" },
+    { key: "vc_pf5_c", page: "index", sel: "#s-portfolio .pf-card:nth-child(5) .pf-cat", tag: "b", label: "PF카드⑤ — 분류", value: "상세페이지 디자인" },
+    { key: "vc_pf5_t", page: "index", sel: "#s-portfolio .pf-card:nth-child(5) .pf-title", tag: "b", label: "PF카드⑤ — 제목", value: "뷰티 디바이스 상세페이지" },
+    { key: "vc_pf6_c", page: "index", sel: "#s-portfolio .pf-card:nth-child(6) .pf-cat", tag: "b", label: "PF카드⑥ — 분류", value: "패키지 디자인" },
+    { key: "vc_pf6_t", page: "index", sel: "#s-portfolio .pf-card:nth-child(6) .pf-title", tag: "b", label: "PF카드⑥ — 제목", value: "건강식품 패키지" },
+    { key: "vc_pf7_c", page: "index", sel: "#s-portfolio .pf-card:nth-child(7) .pf-cat", tag: "b", label: "PF카드⑦ — 분류", value: "제품 촬영" },
+    { key: "vc_pf7_t", page: "index", sel: "#s-portfolio .pf-card:nth-child(7) .pf-title", tag: "b", label: "PF카드⑦ — 제목", value: "생활용품 제품 촬영" },
+    { key: "vc_pf8_c", page: "index", sel: "#s-portfolio .pf-card:nth-child(8) .pf-cat", tag: "b", label: "PF카드⑧ — 분류", value: "회사소개서" },
+    { key: "vc_pf8_t", page: "index", sel: "#s-portfolio .pf-card:nth-child(8) .pf-title", tag: "b", label: "PF카드⑧ — 제목", value: "산업기자재 회사소개서" },
+
+    /* ───── 메인 · 문의(CTA) ───── */
+    { key: "vc_ct_tag", page: "index", sel: "#contact .contact__tag", tag: "b", label: "문의 — 라벨", value: "START A PROJECT" },
+    { key: "vc_ct_title", page: "index", sel: "#contact .contact__title", tag: "b", label: "문의 — 큰 제목", value: "정부지원 디자인,\n무료로 시작해볼까요?" },
+    { key: "vc_ct_desc", page: "index", sel: "#contact .contact__desc", tag: "b", label: "문의 — 설명", value: "신청 가능 여부부터 무료로 확인해 드립니다.\n담당자가 확인 후 빠르게 연락드립니다." },
+
+    /* ───── 공통 · 푸터 ───── */
+    { key: "vc_footer_tag", page: "all", sel: ".footer__top p", tag: "b", label: "푸터 소개 문구", value: "정부지원사업 공식 디자인 수행기관\n수출바우처 · 혁신바우처 · 판로개척지원사업" },
+
     { key: "col_title", page: "column", sel: "#listView .subhero__title", tag: "b", label: "상단 제목", value: "Column" },
     { key: "col_desc", page: "column", sel: "#listView .subhero__desc", tag: "b", label: "상단 설명", value: "바우처 신청부터 결과보고까지, 실무에 바로 쓰는 정부지원사업 이야기를 전합니다." },
     { key: "qna_title", page: "qna", sel: ".subhero__title", tag: "b", label: "상단 제목", value: "자주 하는 질문" },
@@ -222,7 +303,7 @@
     getSocial: function () { return loadObj("hv_social", DEFAULT_SOCIAL); },
     getCopy: function () {
       var ov = loadObj("hv_copy", {});
-      return DEFAULT_COPY.map(function (c) { var out = JSON.parse(JSON.stringify(c)); if (typeof ov[c.key] === "string") out.value = ov[c.key]; return out; });
+      return DEFAULT_COPY.map(function (c) { var out = JSON.parse(JSON.stringify(c)); if (typeof ov[c.key] === "string") { out.value = ov[c.key]; out.ov = true; } return out; });
     },
     getSeo: function () {
       var ov = loadObj("hv_seo", {});

@@ -138,7 +138,7 @@
             <p class="note">
               저장하면 <b>Supabase 서버에 기록되어 모든 방문자</b>에게 반영됩니다(이 브라우저에도 캐시).
               다른 센터와 같은 서버를 쓰지만 정부사업지원센터 데이터는 <b>hv_ 키</b>로 분리되어 섞이지 않습니다.<br />
-              메인·서비스 페이지(수출/혁신/판로) 본문은 기존 템플릿 그대로이며, 여기서는 <b>칼럼·Q&amp;A·문의·설정·SEO·로고</b>를 관리합니다.<br /><br />
+              <b>카피 수정</b>에서 메인페이지·서비스 페이지(수출/혁신/판로)·칼럼·Q&amp;A 문구를 고칠 수 있고, 그 외 <b>칼럼·Q&amp;A·문의·설정·SEO·로고</b>도 관리합니다.<br /><br />
               <button class="btn btn--danger" id="resetBtn">모든 수정 내용 초기화</button>
             </p>
           </div>
@@ -150,6 +150,7 @@
           <div class="panel">
             <p class="note" style="margin-bottom:12px"><b>✏️ 사이트에서 바로 수정</b> — 아래 버튼으로 페이지를 열면 점선 표시된 글을 화면에서 직접 클릭해 고칠 수 있습니다.</p>
             <div style="display:flex;flex-wrap:wrap;gap:8px">
+              <a class="btn" href="index.html?edit=1" target="_blank">메인페이지 ↗</a>
               <a class="btn" href="column.html?edit=1" target="_blank">칼럼 ↗</a>
               <a class="btn" href="qna.html?edit=1" target="_blank">Q&amp;A ↗</a>
             </div>
@@ -308,7 +309,7 @@
 
   <div class="toast" id="toast">저장되었습니다</div>
 
-  <script src="js/data.js?v=1"></script>
+  <script src="js/data.js?v=2"></script>
   <script>
   HAO.ready.then(function () {
     "use strict";

@@ -83,6 +83,7 @@
     try {
       HAO.getCopy().forEach(function (c) {
         if (c.page !== "all" && c.page !== page) return;
+        if (!c.ov) return; /* 관리자가 수정한 항목만 적용 — 원본 마크업(반응형 줄바꿈 등) 보존 */
         document.querySelectorAll(c.sel).forEach(function (el) {
           if (c.attr) { el.setAttribute(c.attr, c.value); return; }
           el.innerHTML = HAO.fmt(c.value, c.tag || "b");
