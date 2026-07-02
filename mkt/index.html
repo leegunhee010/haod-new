@@ -177,6 +177,35 @@
         font-weight:800;font-size:.96rem;border-radius:999px;padding:14px 26px;transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
       .on-cta__btn:hover{transform:translateY(-3px);box-shadow:0 18px 36px -14px rgba(0,0,0,.35)}
       @media(max-width:900px){.on-sc{grid-template-columns:1fr}.on-cta__in{justify-content:center;text-align:center}}
+      /* 채팅형 CASE 카드 (onellab 스타일) */
+      .on-chats{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(16px,1.7vw,24px);margin-top:clamp(40px,6vh,64px);align-items:start}
+      .on-chat{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:24px;
+        padding:clamp(24px,2.2vw,30px);box-shadow:0 30px 60px -50px rgba(36,26,20,.45);
+        transition:transform .35s var(--ease),box-shadow .35s var(--ease)}
+      .on-chat:nth-child(even){margin-top:34px}
+      .on-chat:hover{transform:translateY(-8px);box-shadow:0 46px 80px -44px rgba(232,56,23,.28)}
+      .on-chat__no{font-family:"Poppins",sans-serif;font-weight:800;font-size:.74rem;letter-spacing:.1em;color:var(--accent)}
+      .on-chat__q{font-size:1.13rem;font-weight:800;color:var(--ink);line-height:1.44;margin:12px 0 18px;word-break:keep-all}
+      .on-chat__who{display:flex;align-items:center;gap:11px;margin-bottom:14px}
+      .on-chat__avatar{flex:0 0 auto;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;color:#fff;
+        font-family:"Poppins",sans-serif;font-weight:800;font-size:1.05rem;background:linear-gradient(135deg,var(--accent-3),var(--accent));
+        box-shadow:0 10px 20px -10px rgba(232,56,23,.55)}
+      .on-chat:nth-child(2) .on-chat__avatar{background:linear-gradient(135deg,#ffb14d,#f25b35)}
+      .on-chat:nth-child(3) .on-chat__avatar{background:linear-gradient(135deg,#f2743b,#d92e0f)}
+      .on-chat:nth-child(4) .on-chat__avatar{background:linear-gradient(135deg,#e8934d,#c93a12)}
+      .on-chat__meta small{display:block;font-size:.7rem;font-weight:700;color:var(--accent);letter-spacing:.02em}
+      .on-chat__meta b{font-size:.96rem;font-weight:800;color:var(--ink)}
+      .on-chat__bub{align-self:flex-start;max-width:100%;background:var(--bg-soft);border-radius:14px;border-top-left-radius:4px;
+        padding:12px 15px;font-size:.88rem;color:#5c564f;line-height:1.62;margin-bottom:9px;word-break:keep-all}
+      .on-chat__hao{display:flex;align-items:center;justify-content:flex-end;gap:9px;margin:16px 0 9px;
+        font-size:.98rem;font-weight:800;color:var(--ink);letter-spacing:-.01em}
+      .on-chat__hao i{flex:0 0 auto;width:34px;height:34px;border-radius:50%;background:#fff;border:1px solid var(--line);
+        display:grid;place-items:center;overflow:hidden}
+      .on-chat__hao i img{width:22px;height:auto;display:block}
+      .on-chat__ans{align-self:flex-end;background:linear-gradient(135deg,#fff0e8,#ffe2d0);border-radius:14px;border-top-right-radius:4px;
+        padding:13px 15px;font-size:.88rem;font-weight:600;color:#3d2a20;line-height:1.62;word-break:keep-all;margin-left:14px}
+      @media(max-width:1100px){.on-chats{grid-template-columns:repeat(2,1fr)}.on-chat:nth-child(even){margin-top:0}.on-chat:nth-child(2),.on-chat:nth-child(4){margin-top:26px}}
+      @media(max-width:640px){.on-chats{grid-template-columns:1fr}.on-chat:nth-child(even),.on-chat:nth-child(2),.on-chat:nth-child(4){margin-top:0}}
     </style>
 
     <!-- 문제 진단 -->
@@ -185,30 +214,54 @@
         <p class="on__eg">WHY HAO</p>
         <h2 class="on__h">대표님, <b>마케팅팀이 없어서</b><br />막막하신가요?</h2>
         <p class="on__sub">스타트업·중소기업·1인 브랜드까지 — 마케팅은 늘 ‘해야 하는데’ 뒷전이 됩니다. 하오디자인은 900개가 넘는 프로젝트에서 그 고민을 매일 마주해 왔습니다.</p>
-        <div class="on-cases">
-          <div class="on-case reveal">
-            <span class="on-case__mark" aria-hidden="true">&ldquo;</span>
-            <p class="on-case__q">마케팅 전담 인력이 없어요</p>
-            <p class="on-case__d">대표가 본업만으로도 벅찬데, 마케팅까지 챙길 여력이 없습니다.</p>
-            <span class="on-case__foot"><b>01</b><em>인력 부재</em></span>
+        <div class="on-chats">
+          <div class="on-chat reveal">
+            <span class="on-chat__no">CASE 1</span>
+            <p class="on-chat__q">마케팅팀이 없어서,<br />어디서부터 시작해야<br />할지 모르겠어요.</p>
+            <div class="on-chat__who">
+              <span class="on-chat__avatar">A</span>
+              <span class="on-chat__meta"><small>스타트업</small><b>A 브랜드</b></span>
+            </div>
+            <p class="on-chat__bub">대표가 본업만으로도 벅찬데, 마케팅까지 챙길 여력이 없습니다.</p>
+            <p class="on-chat__bub">투자자나 고객에게 보여줄 채널도, 콘텐츠도 정리가 안 돼 있어요.</p>
+            <div class="on-chat__hao">하오디자인 <i><img src="assets/img/logo.png" alt="HAO" /></i></div>
+            <p class="on-chat__ans">하오가 전담팀이 되어 고민 정리부터 시작합니다. 무엇을 먼저 풀지 우선순위부터 함께 잡아드립니다.</p>
           </div>
-          <div class="on-case reveal">
-            <span class="on-case__mark" aria-hidden="true">&ldquo;</span>
-            <p class="on-case__q">뭘 먼저 해야 할지 몰라요</p>
-            <p class="on-case__d">콘텐츠·광고·상세페이지… 우선순위가 안 잡혀 예산만 흩어집니다.</p>
-            <span class="on-case__foot"><b>02</b><em>우선순위 부재</em></span>
+          <div class="on-chat reveal">
+            <span class="on-chat__no">CASE 2</span>
+            <p class="on-chat__q">경쟁사는 온라인에서<br />자주 보이는데, 우리는<br />아무것도 안 나와요.</p>
+            <div class="on-chat__who">
+              <span class="on-chat__avatar">B</span>
+              <span class="on-chat__meta"><small>스몰브랜드</small><b>B 브랜드</b></span>
+            </div>
+            <p class="on-chat__bub">검색해도 우리 브랜드 콘텐츠가 거의 없어 신뢰를 얻기 어렵습니다.</p>
+            <p class="on-chat__bub">채널을 만들어도 뭘 올려야 할지 막막합니다.</p>
+            <div class="on-chat__hao">하오디자인 <i><img src="assets/img/logo.png" alt="HAO" /></i></div>
+            <p class="on-chat__ans">브랜드 톤을 정리하고 콘텐츠 운영 체계를 만들어, 채널이 꾸준히 브랜드의 얼굴이 되게 합니다.</p>
           </div>
-          <div class="on-case reveal">
-            <span class="on-case__mark" aria-hidden="true">&ldquo;</span>
-            <p class="on-case__q">외주 결과가 제각각이에요</p>
-            <p class="on-case__d">맡기는 업체마다 톤이 달라, 브랜드가 하나로 보이지 않습니다.</p>
-            <span class="on-case__foot"><b>03</b><em>톤 불일치</em></span>
+          <div class="on-chat reveal">
+            <span class="on-chat__no">CASE 3</span>
+            <p class="on-chat__q">외주를 맡길 때마다<br />결과물이 제각각이에요.</p>
+            <div class="on-chat__who">
+              <span class="on-chat__avatar">C</span>
+              <span class="on-chat__meta"><small>강소기업</small><b>C 브랜드</b></span>
+            </div>
+            <p class="on-chat__bub">업체마다 톤이 달라 브랜드가 하나로 보이지 않습니다.</p>
+            <p class="on-chat__bub">매번 처음부터 다시 설명하는 것도 지칩니다.</p>
+            <div class="on-chat__hao">하오디자인 <i><img src="assets/img/logo.png" alt="HAO" /></i></div>
+            <p class="on-chat__ans">브랜드 가이드를 세우고, 한 팀이 모든 채널을 같은 톤으로 만들어 흩어진 브랜드를 하나로 모읍니다.</p>
           </div>
-          <div class="on-case reveal">
-            <span class="on-case__mark" aria-hidden="true">&ldquo;</span>
-            <p class="on-case__q">디자인 따로, 마케팅 따로예요</p>
-            <p class="on-case__d">만드는 곳과 알리는 곳이 달라 손발이 자꾸 어긋납니다.</p>
-            <span class="on-case__foot"><b>04</b><em>협업 단절</em></span>
+          <div class="on-chat reveal">
+            <span class="on-chat__no">CASE 4</span>
+            <p class="on-chat__q">회사가 커지는데 디자인 따로,<br />마케팅 따로 움직여요.</p>
+            <div class="on-chat__who">
+              <span class="on-chat__avatar">D</span>
+              <span class="on-chat__meta"><small>제조기업</small><b>D 브랜드</b></span>
+            </div>
+            <p class="on-chat__bub">만드는 곳과 알리는 곳이 달라 손발이 자꾸 어긋납니다.</p>
+            <p class="on-chat__bub">전시·카탈로그·온라인이 다 따로 놉니다.</p>
+            <div class="on-chat__hao">하오디자인 <i><img src="assets/img/logo.png" alt="HAO" /></i></div>
+            <p class="on-chat__ans">기획·디자인·운영을 한 팀이 맡아, 온라인부터 전시 현장까지 하나의 브랜드로 이어지게 합니다.</p>
           </div>
         </div>
       </div>
