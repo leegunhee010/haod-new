@@ -272,8 +272,14 @@
     { key: "col_title", page: "column", sel: "#listView .subhero__title", tag: "b", label: "상단 제목", value: "Column" },
     { key: "col_desc", page: "column", sel: "#listView .subhero__desc", tag: "b", label: "상단 설명", value: "홈페이지 제작부터 AI 검색 환경까지, 브랜드의 온라인 성장을 위한 인사이트를 전합니다." },
     { key: "col_ct_tag", page: "column", sel: "#contact .contact__tag", tag: "b", label: "하단 문의 — 라벨", value: "START A PROJECT" },
-    { key: "col_ct_title", page: "column", sel: "#contact .contact__title", tag: "b", label: "하단 문의 — 제목", value: "홈페이지가\n필요하신가요?" },
-    { key: "col_ct_desc", page: "column", sel: "#contact .contact__desc", tag: "b", label: "하단 문의 — 설명", value: "간단한 내용만 남겨주세요.\n담당자가 확인 후 빠르게 연락드립니다." },
+    { key: "col_ct_title", page: "column", sel: "#contact .contact__title", tag: "b", label: "하단 문의 — 제목", value: "검색 노출 진단\n무료로 받아보세요" },
+    { key: "col_ct_desc", page: "column", sel: "#contact .contact__desc", tag: "b", label: "하단 문의 — 설명", value: "간단한 내용을 남겨주시면\n담당자가 확인 후 빠르게 연락드립니다." },
+    { key: "po_ct_tag", page: "portfolio", sel: "#contact .contact__tag", tag: "b", label: "하단 문의 — 라벨", value: "START A PROJECT" },
+    { key: "po_ct_title", page: "portfolio", sel: "#contact .contact__title", tag: "b", label: "하단 문의 — 제목", value: "검색 노출 진단\n무료로 받아보세요" },
+    { key: "po_ct_desc", page: "portfolio", sel: "#contact .contact__desc", tag: "b", label: "하단 문의 — 설명", value: "간단한 내용을 남겨주시면\n담당자가 확인 후 빠르게 연락드립니다." },
+    { key: "qna_ct_tag", page: "qna", sel: "#contact .contact__tag", tag: "b", label: "하단 문의 — 라벨", value: "START A PROJECT" },
+    { key: "qna_ct_title", page: "qna", sel: "#contact .contact__title", tag: "b", label: "하단 문의 — 제목", value: "검색 노출 진단\n무료로 받아보세요" },
+    { key: "qna_ct_desc", page: "qna", sel: "#contact .contact__desc", tag: "b", label: "하단 문의 — 설명", value: "간단한 내용을 남겨주시면\n담당자가 확인 후 빠르게 연락드립니다." },
 
     /* ───── Q&A ───── */
     { key: "qna_tag", page: "qna", sel: ".section-tag", tag: "b", label: "섹션 라벨", value: "FAQ" },
