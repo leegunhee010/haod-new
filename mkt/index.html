@@ -244,6 +244,22 @@
       .dif-card--a .dif-row p{color:var(--muted);font-weight:600}
       .dif-card--b .dif-row p{color:#fff;font-weight:800}
       @media(max-width:880px){.dif-wrap{grid-template-columns:1fr}.dif-card--a{margin-top:0;order:2}.dif-card--b{order:1}}
+      /* 하오 시그니처 프로세스 타임라인 (웹센터 이식) */
+      .timeline{position:relative;display:grid;grid-template-columns:repeat(5,1fr);gap:24px;padding-top:56px;margin-top:clamp(38px,5.5vh,58px)}
+      .timeline__line{position:absolute;top:0;left:0;right:0;height:2px;background:var(--line)}
+      .timeline__line i{position:relative;display:block;height:100%;width:0%;background:linear-gradient(90deg,var(--accent-2),var(--accent));transition:width .25s linear;box-shadow:0 0 12px rgba(232,56,23,.5)}
+      .timeline__line i::after{content:"";position:absolute;right:-7px;top:50%;transform:translateY(-50%);width:14px;height:14px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 5px rgba(232,56,23,.18),0 0 18px rgba(232,56,23,.8);animation:tlPulse 1.4s ease-in-out infinite}
+      @keyframes tlPulse{0%,100%{box-shadow:0 0 0 5px rgba(232,56,23,.18),0 0 18px rgba(232,56,23,.8)}50%{box-shadow:0 0 0 11px rgba(232,56,23,.06),0 0 26px rgba(232,56,23,.9)}}
+      .tstep{position:relative;opacity:.28;transform:translateY(16px);transition:opacity .5s var(--ease),transform .5s var(--ease)}
+      .tstep::before{content:"";position:absolute;top:-61px;left:2px;width:12px;height:12px;border-radius:50%;background:#fff;border:2px solid var(--line);transition:background .3s,border-color .3s,transform .3s var(--ease)}
+      .tstep.is-on{opacity:1;transform:none}
+      .tstep.is-on::before{background:var(--accent);border-color:var(--accent);transform:scale(1.25);box-shadow:0 0 0 6px rgba(232,56,23,.15)}
+      .tstep__no{display:inline-flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:50%;margin-bottom:16px;font-family:"Poppins",sans-serif;font-size:1.15rem;font-weight:800;color:var(--muted);border:2px solid var(--line);background:#fff;transition:color .3s,border-color .3s,background .3s}
+      .tstep.is-on .tstep__no{color:#fff;background:var(--accent);border-color:var(--accent);animation:tlPop .55s var(--ease)}
+      @keyframes tlPop{0%{transform:scale(.6)}55%{transform:scale(1.18)}100%{transform:scale(1)}}
+      .tstep h3{font-size:1.14rem;font-weight:800;color:var(--ink);margin:0 0 8px;word-break:keep-all}
+      .tstep p{color:var(--muted);font-size:.92rem;line-height:1.6;margin:0;word-break:keep-all}
+      @media(max-width:1000px){.timeline{grid-template-columns:repeat(2,1fr);gap:36px 24px;padding-top:10px}.timeline__line{display:none}.tstep::before{display:none}.tstep{opacity:1;transform:none}}
     </style>
 
     <!-- 문제 진단 -->
@@ -390,12 +406,13 @@
         <p class="on__eg">HOW WE SOLVE</p>
         <h2 class="on__h">막막한 마케팅, <b>5단계로 정리</b>해 드립니다</h2>
         <p class="on__sub">어디서부터 시작할지 모를 마케팅을, 진단부터 실행·최적화까지 하나의 흐름으로 이어드립니다.</p>
-        <div class="on-steps">
-          <div class="on-step reveal"><div class="on-step__bar"></div><p class="on-step__t">진단 · 목표 설정</p><p class="on-step__d">브랜드 현황과 목표를 함께 정리하고, 무엇을 먼저 풀지 우선순위를 잡습니다.</p></div>
-          <div class="on-step reveal"><div class="on-step__bar"></div><p class="on-step__t">전략 · 채널 설계</p><p class="on-step__d">브랜드에 맞는 방향과 채널을 설계해, 흩어진 마케팅을 하나로 묶습니다.</p></div>
-          <div class="on-step reveal"><div class="on-step__bar"></div><p class="on-step__t">콘텐츠 · 디자인 제작</p><p class="on-step__d">브랜드의 결을 담은 콘텐츠와 디자인으로 메시지를 정확히 전합니다.</p></div>
-          <div class="on-step reveal"><div class="on-step__bar"></div><p class="on-step__t">운영 · 실행</p><p class="on-step__d">온라인 채널부터 오프라인 현장까지, 기획이 실제로 작동하게 실행합니다.</p></div>
-          <div class="on-step reveal"><div class="on-step__bar"></div><p class="on-step__t">리포트 · 최적화</p><p class="on-step__d">결과를 함께 보고 다음을 개선하며, 브랜드가 꾸준히 성장하도록 돕습니다.</p></div>
+        <div class="timeline" id="timeline">
+          <div class="timeline__line"><i id="timelineFill"></i></div>
+          <div class="tstep"><span class="tstep__no">01</span><h3>진단 · 목표 설정</h3><p>브랜드 현황과 목표를 함께 정리하고, 무엇을 먼저 풀지 우선순위를 잡습니다.</p></div>
+          <div class="tstep"><span class="tstep__no">02</span><h3>전략 · 채널 설계</h3><p>브랜드에 맞는 방향과 채널을 설계해, 흩어진 마케팅을 하나로 묶습니다.</p></div>
+          <div class="tstep"><span class="tstep__no">03</span><h3>콘텐츠 · 디자인 제작</h3><p>브랜드의 결을 담은 콘텐츠와 디자인으로 메시지를 정확히 전합니다.</p></div>
+          <div class="tstep"><span class="tstep__no">04</span><h3>운영 · 실행</h3><p>온라인 채널부터 오프라인 현장까지, 기획이 실제로 작동하게 실행합니다.</p></div>
+          <div class="tstep"><span class="tstep__no">05</span><h3>리포트 · 최적화</h3><p>결과를 함께 보고 다음을 개선하며, 브랜드가 꾸준히 성장하도록 돕습니다.</p></div>
         </div>
       </div>
     </section>
@@ -716,5 +733,23 @@
   })();
   </script>
   <script type="module" src="js/holo.js?v=8"></script>
+  <script>
+  /* 하오 프로세스 타임라인 — 스크롤 따라 라인 채움 + 스텝 점등 */
+  (function () {
+    var fill = document.getElementById('timelineFill'), tline = document.getElementById('timeline');
+    if (!fill || !tline) return;
+    var steps = tline.querySelectorAll('.tstep');
+    function clampN(v, a, b) { return Math.max(a, Math.min(b, v)); }
+    function onScroll() {
+      var vh = innerHeight, tr = tline.getBoundingClientRect();
+      var tp = clampN((vh * 0.82 - tr.top) / (tr.height + vh * 0.35), 0, 1);
+      fill.style.width = (tp * 100) + '%';
+      for (var i = 0; i < steps.length; i++) steps[i].classList.toggle('is-on', tp >= (i + 0.35) / steps.length);
+    }
+    addEventListener('scroll', onScroll, { passive: true });
+    addEventListener('resize', onScroll);
+    onScroll();
+  })();
+  </script>
 </body>
 </html>
