@@ -203,6 +203,11 @@
       .on-chat__hao i img{width:22px;height:auto;display:block}
       .on-chat__ans{align-self:flex-end;background:linear-gradient(135deg,#fff0e8,#ffe2d0);border-radius:14px;border-top-right-radius:4px;
         padding:13px 15px;font-size:.88rem;font-weight:600;color:#3d2a20;line-height:1.62;word-break:keep-all;margin-left:14px}
+      /* 카드 내부 존 정렬 — 질문 3줄·말풍선 2줄 기준 고정, 답변은 하단 앵커 */
+      .on-chat__q{min-height:4.4em}
+      .on-chat__bub{min-height:calc(3.28em + 24px)}
+      .on-chat__hao{margin-top:auto;padding-top:14px}
+      .on-chat__ans{min-height:calc(4.9em + 26px);width:calc(100% - 14px)}
       @media(max-width:1100px){.on-chats{grid-template-columns:repeat(2,1fr)}.on-chat:nth-child(even){margin-top:0}.on-chat:nth-child(2),.on-chat:nth-child(4){margin-top:26px}}
       @media(max-width:640px){.on-chats{grid-template-columns:1fr}.on-chat:nth-child(even),.on-chat:nth-child(2),.on-chat:nth-child(4){margin-top:0}}
       /* 채팅 카드 — 가로 오토 롤링 */
