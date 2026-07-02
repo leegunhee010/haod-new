@@ -261,6 +261,30 @@
       .tstep h3{font-size:1.14rem;font-weight:800;color:var(--ink);margin:0 0 8px;word-break:keep-all}
       .tstep p{color:var(--muted);font-size:.92rem;line-height:1.6;margin:0;word-break:keep-all}
       @media(max-width:1000px){.timeline{grid-template-columns:repeat(2,1fr);gap:36px 24px;padding-top:10px}.timeline__line{display:none}.tstep::before{display:none}.tstep{opacity:1;transform:none}}
+      .on-chat__avatar svg{width:100%;height:100%;display:block}
+      /* Services — onellab식 STEP 카드 */
+      .svq-wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,2.2vw,30px);
+        max-width:1080px;margin:clamp(40px,6vh,60px) auto 0;text-align:left}
+      .svq{display:flex;flex-direction:column;border-radius:28px;color:#fff;
+        background:linear-gradient(172deg,#ff8a3d,#e83817 58%,#cc2f0d);
+        padding:clamp(26px,2.8vw,38px);box-shadow:0 44px 88px -48px rgba(232,56,23,.58);
+        transition:transform .35s var(--ease),box-shadow .35s var(--ease)}
+      .svq:hover{transform:translateY(-8px);box-shadow:0 60px 110px -50px rgba(232,56,23,.66)}
+      .svq:nth-child(2){margin-top:26px}
+      .svq__top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px}
+      .svq__ico{flex:0 0 auto;width:58px;height:58px;border-radius:17px;background:#fff;display:grid;place-items:center;
+        font-style:normal;font-size:1.8rem;box-shadow:0 12px 24px -12px rgba(0,0,0,.4)}
+      .svq__no{font-family:"Poppins",sans-serif;font-weight:800;font-size:2.1rem;line-height:.9;text-align:right;color:#fff}
+      .svq__no small{display:block;font-size:.6rem;letter-spacing:.2em;font-weight:700;color:rgba(255,255,255,.8);margin-top:5px}
+      .svq__t{font-size:clamp(1.2rem,1.7vw,1.4rem);font-weight:800;letter-spacing:-.01em;margin:0;word-break:keep-all}
+      .svq__t small{display:block;font-family:"Poppins",sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.08em;
+        color:rgba(255,255,255,.78);margin-top:6px}
+      .svq__div{border:0;border-top:1px dashed rgba(255,255,255,.42);margin:18px 0}
+      .svq__sub{background:#fff;border-radius:13px;padding:13px 15px;color:#3d2a20;
+        font-size:.9rem;font-weight:600;line-height:1.62;margin:0 0 10px;word-break:keep-all}
+      .svq__sub b{color:var(--accent)}
+      .svq__sub:last-child{margin-bottom:0}
+      @media(max-width:900px){.svq-wrap{grid-template-columns:1fr}.svq:nth-child(2){margin-top:0}}
     </style>
 
     <!-- 문제 진단 -->
@@ -276,7 +300,7 @@
             <span class="on-chat__no">CASE 1</span>
             <p class="on-chat__q">마케팅팀이 없어서,<br />어디서부터 시작해야<br />할지 모르겠어요.</p>
             <div class="on-chat__who">
-              <span class="on-chat__avatar">A</span>
+              <span class="on-chat__avatar"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M8 64 Q32 42 56 64 Z" fill="#fff3ec"/><circle cx="32" cy="25" r="12.5" fill="#ffd9bd"/><path d="M19.5 27 v-4 a12.5 12.5 0 0 1 25 0 v4 q1.8-10 -3.2-15 q-4.5-4.6 -9.3-4.6 q-4.8 0 -9.3 4.6 q-5 5 -3.2 15 Z" fill="#4a2c20"/><rect x="18.6" y="22" width="4" height="12" rx="2" fill="#4a2c20"/><rect x="41.4" y="22" width="4" height="12" rx="2" fill="#4a2c20"/><circle cx="27.5" cy="26" r="1.6" fill="#3a2a22"/><circle cx="36.5" cy="26" r="1.6" fill="#3a2a22"/><path d="M28.5 31 q3.5 2.6 7 0" stroke="#3a2a22" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span>
               <span class="on-chat__meta"><small>스타트업</small><b>A 브랜드</b></span>
             </div>
             <p class="on-chat__bub">대표가 본업만으로도 벅찬데, 마케팅까지 챙길 여력이 없습니다.</p>
@@ -288,7 +312,7 @@
             <span class="on-chat__no">CASE 2</span>
             <p class="on-chat__q">경쟁사는 온라인에서<br />자주 보이는데, 우리는<br />아무것도 안 나와요.</p>
             <div class="on-chat__who">
-              <span class="on-chat__avatar">B</span>
+              <span class="on-chat__avatar"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M8 64 Q32 42 56 64 Z" fill="#ffe3d0"/><circle cx="32" cy="25" r="12.5" fill="#f4c9a5"/><path d="M20 24 a12.5 12.5 0 0 1 24 0 q1-9 -5-13 q-3.4-2.4 -7-2.4 q-3.6 0 -7 2.4 q-6 4 -5 13 Z" fill="#2e2622"/><circle cx="32" cy="8.5" r="5" fill="#2e2622"/><circle cx="27.5" cy="26" r="1.6" fill="#3a2a22"/><circle cx="36.5" cy="26" r="1.6" fill="#3a2a22"/><path d="M28.5 31 q3.5 2.6 7 0" stroke="#3a2a22" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span>
               <span class="on-chat__meta"><small>스몰브랜드</small><b>B 브랜드</b></span>
             </div>
             <p class="on-chat__bub">검색해도 우리 브랜드 콘텐츠가 거의 없어 신뢰를 얻기 어렵습니다.</p>
@@ -300,7 +324,7 @@
             <span class="on-chat__no">CASE 3</span>
             <p class="on-chat__q">외주를 맡길 때마다<br />결과물이 제각각이에요.</p>
             <div class="on-chat__who">
-              <span class="on-chat__avatar">C</span>
+              <span class="on-chat__avatar"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M8 64 Q32 42 56 64 Z" fill="#ffffff"/><circle cx="32" cy="25" r="12.5" fill="#e9b98c"/><path d="M19.8 24.5 a12.5 12.5 0 0 1 24.4 0 q.8-8 -4.4-11.6 q-3.8-2.6 -7.8-2.6 q-4 0 -7.8 2.6 q-5.2 3.6 -4.4 11.6 Z" fill="#241d19"/><circle cx="27.5" cy="26" r="1.6" fill="#3a2a22"/><circle cx="36.5" cy="26" r="1.6" fill="#3a2a22"/><path d="M28.5 31 q3.5 2.6 7 0" stroke="#3a2a22" stroke-width="1.5" fill="none" stroke-linecap="round"/><circle cx="27.5" cy="26" r="4" stroke="#2e241e" stroke-width="1.4" fill="none"/><circle cx="36.5" cy="26" r="4" stroke="#2e241e" stroke-width="1.4" fill="none"/><path d="M31.5 26 h1" stroke="#2e241e" stroke-width="1.4"/></svg></span>
               <span class="on-chat__meta"><small>강소기업</small><b>C 브랜드</b></span>
             </div>
             <p class="on-chat__bub">업체마다 톤이 달라 브랜드가 하나로 보이지 않습니다.</p>
@@ -312,7 +336,7 @@
             <span class="on-chat__no">CASE 4</span>
             <p class="on-chat__q">회사가 커지는데 디자인 따로,<br />마케팅 따로 움직여요.</p>
             <div class="on-chat__who">
-              <span class="on-chat__avatar">D</span>
+              <span class="on-chat__avatar"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M8 64 Q32 42 56 64 Z" fill="#ffe9d8"/><circle cx="32" cy="25" r="12.5" fill="#f1c39b"/><path d="M20 23.5 a12.5 12.5 0 0 1 24 .5 q1.4-8.5 -4.6-12 q-3.6-2.2 -7.4-2.2 q-3.8 0 -7.4 2.2 q-6 3.5 -4.6 11.5 Z" fill="#3a2b20"/><circle cx="27.5" cy="26" r="1.6" fill="#3a2a22"/><circle cx="36.5" cy="26" r="1.6" fill="#3a2a22"/><path d="M28.5 31 q3.5 2.6 7 0" stroke="#3a2a22" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M25 32.5 q7 5.5 14 0 q-1.2 6 -7 6 q-5.8 0 -7-6 Z" fill="#3a2b20" opacity=".85"/></svg></span>
               <span class="on-chat__meta"><small>제조기업</small><b>D 브랜드</b></span>
             </div>
             <p class="on-chat__bub">만드는 곳과 알리는 곳이 달라 손발이 자꾸 어긋납니다.</p>
@@ -326,7 +350,7 @@
             <span class="on-chat__no">CASE 1</span>
             <p class="on-chat__q">마케팅팀이 없어서,<br />어디서부터 시작해야<br />할지 모르겠어요.</p>
             <div class="on-chat__who">
-              <span class="on-chat__avatar">A</span>
+              <span class="on-chat__avatar"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M8 64 Q32 42 56 64 Z" fill="#fff3ec"/><circle cx="32" cy="25" r="12.5" fill="#ffd9bd"/><path d="M19.5 27 v-4 a12.5 12.5 0 0 1 25 0 v4 q1.8-10 -3.2-15 q-4.5-4.6 -9.3-4.6 q-4.8 0 -9.3 4.6 q-5 5 -3.2 15 Z" fill="#4a2c20"/><rect x="18.6" y="22" width="4" height="12" rx="2" fill="#4a2c20"/><rect x="41.4" y="22" width="4" height="12" rx="2" fill="#4a2c20"/><circle cx="27.5" cy="26" r="1.6" fill="#3a2a22"/><circle cx="36.5" cy="26" r="1.6" fill="#3a2a22"/><path d="M28.5 31 q3.5 2.6 7 0" stroke="#3a2a22" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span>
               <span class="on-chat__meta"><small>스타트업</small><b>A 브랜드</b></span>
             </div>
             <p class="on-chat__bub">대표가 본업만으로도 벅찬데, 마케팅까지 챙길 여력이 없습니다.</p>
@@ -338,7 +362,7 @@
             <span class="on-chat__no">CASE 2</span>
             <p class="on-chat__q">경쟁사는 온라인에서<br />자주 보이는데, 우리는<br />아무것도 안 나와요.</p>
             <div class="on-chat__who">
-              <span class="on-chat__avatar">B</span>
+              <span class="on-chat__avatar"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M8 64 Q32 42 56 64 Z" fill="#ffe3d0"/><circle cx="32" cy="25" r="12.5" fill="#f4c9a5"/><path d="M20 24 a12.5 12.5 0 0 1 24 0 q1-9 -5-13 q-3.4-2.4 -7-2.4 q-3.6 0 -7 2.4 q-6 4 -5 13 Z" fill="#2e2622"/><circle cx="32" cy="8.5" r="5" fill="#2e2622"/><circle cx="27.5" cy="26" r="1.6" fill="#3a2a22"/><circle cx="36.5" cy="26" r="1.6" fill="#3a2a22"/><path d="M28.5 31 q3.5 2.6 7 0" stroke="#3a2a22" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span>
               <span class="on-chat__meta"><small>스몰브랜드</small><b>B 브랜드</b></span>
             </div>
             <p class="on-chat__bub">검색해도 우리 브랜드 콘텐츠가 거의 없어 신뢰를 얻기 어렵습니다.</p>
@@ -350,7 +374,7 @@
             <span class="on-chat__no">CASE 3</span>
             <p class="on-chat__q">외주를 맡길 때마다<br />결과물이 제각각이에요.</p>
             <div class="on-chat__who">
-              <span class="on-chat__avatar">C</span>
+              <span class="on-chat__avatar"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M8 64 Q32 42 56 64 Z" fill="#ffffff"/><circle cx="32" cy="25" r="12.5" fill="#e9b98c"/><path d="M19.8 24.5 a12.5 12.5 0 0 1 24.4 0 q.8-8 -4.4-11.6 q-3.8-2.6 -7.8-2.6 q-4 0 -7.8 2.6 q-5.2 3.6 -4.4 11.6 Z" fill="#241d19"/><circle cx="27.5" cy="26" r="1.6" fill="#3a2a22"/><circle cx="36.5" cy="26" r="1.6" fill="#3a2a22"/><path d="M28.5 31 q3.5 2.6 7 0" stroke="#3a2a22" stroke-width="1.5" fill="none" stroke-linecap="round"/><circle cx="27.5" cy="26" r="4" stroke="#2e241e" stroke-width="1.4" fill="none"/><circle cx="36.5" cy="26" r="4" stroke="#2e241e" stroke-width="1.4" fill="none"/><path d="M31.5 26 h1" stroke="#2e241e" stroke-width="1.4"/></svg></span>
               <span class="on-chat__meta"><small>강소기업</small><b>C 브랜드</b></span>
             </div>
             <p class="on-chat__bub">업체마다 톤이 달라 브랜드가 하나로 보이지 않습니다.</p>
@@ -362,7 +386,7 @@
             <span class="on-chat__no">CASE 4</span>
             <p class="on-chat__q">회사가 커지는데 디자인 따로,<br />마케팅 따로 움직여요.</p>
             <div class="on-chat__who">
-              <span class="on-chat__avatar">D</span>
+              <span class="on-chat__avatar"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M8 64 Q32 42 56 64 Z" fill="#ffe9d8"/><circle cx="32" cy="25" r="12.5" fill="#f1c39b"/><path d="M20 23.5 a12.5 12.5 0 0 1 24 .5 q1.4-8.5 -4.6-12 q-3.6-2.2 -7.4-2.2 q-3.8 0 -7.4 2.2 q-6 3.5 -4.6 11.5 Z" fill="#3a2b20"/><circle cx="27.5" cy="26" r="1.6" fill="#3a2a22"/><circle cx="36.5" cy="26" r="1.6" fill="#3a2a22"/><path d="M28.5 31 q3.5 2.6 7 0" stroke="#3a2a22" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M25 32.5 q7 5.5 14 0 q-1.2 6 -7 6 q-5.8 0 -7-6 Z" fill="#3a2b20" opacity=".85"/></svg></span>
               <span class="on-chat__meta"><small>제조기업</small><b>D 브랜드</b></span>
             </div>
             <p class="on-chat__bub">만드는 곳과 알리는 곳이 달라 손발이 자꾸 어긋납니다.</p>
@@ -418,46 +442,6 @@
       </div>
     </section>
 
-    <!-- 시나리오 사례 -->
-    <section class="on" id="cases">
-      <div class="on__in">
-        <p class="on__eg">HOW IT WORKS</p>
-        <h2 class="on__h">이런 고민, <b>이렇게 풀어갑니다</b></h2>
-        <p class="on__sub">상황은 달라도 흐름은 같습니다 — 진단에서 시작해, 결과물이 남는 마케팅으로.</p>
-        <div class="on-sc">
-          <div class="on-sc__card reveal">
-            <span class="on-sc__chip">ONLINE BRAND</span>
-            <p class="on-sc__q">"제품력은 있는데,<br />온라인에서 안 보여요"</p>
-            <ul class="on-sc__flow">
-              <li>브랜드 톤·메시지부터 정리</li>
-              <li>상세페이지·스마트스토어 리뉴얼</li>
-              <li>채널에 맞는 콘텐츠 운영</li>
-            </ul>
-            <p class="on-sc__out">남는 것 — <b>상세페이지 · 콘텐츠 · 운영 체계</b></p>
-          </div>
-          <div class="on-sc__card reveal">
-            <span class="on-sc__chip">EXHIBITION</span>
-            <p class="on-sc__q">"전시회가 코앞인데<br />준비할 게 산더미예요"</p>
-            <ul class="on-sc__flow">
-              <li>부스 디자인·제작 일정 역산</li>
-              <li>카탈로그·배너 등 홍보물 일괄 제작</li>
-              <li>현장에서 브랜드가 기억되게</li>
-            </ul>
-            <p class="on-sc__out">남는 것 — <b>부스 · 카탈로그 · 리플릿</b></p>
-          </div>
-          <div class="on-sc__card reveal">
-            <span class="on-sc__chip">REBRANDING</span>
-            <p class="on-sc__q">"채널마다 톤이 달라서<br />브랜드가 흩어져 보여요"</p>
-            <ul class="on-sc__flow">
-              <li>키비주얼·가이드로 기준 정리</li>
-              <li>채널별 콘텐츠를 한 톤으로 통일</li>
-              <li>리포트로 성과를 보며 개선</li>
-            </ul>
-            <p class="on-sc__out">남는 것 — <b>브랜드 가이드 · 통합 콘텐츠</b></p>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <!-- 중간 CTA ① -->
     <div class="on-cta">
@@ -479,38 +463,36 @@
       </div>
     </section>
 
-    <!-- ===== SERVICES ===== -->
-    <section class="svc" id="services">
-      <div class="svc__intro">
-        <h2 class="shead">Services</h2>
-        <p class="sublede">작은 브랜드일수록 ‘어떻게 보이느냐’가 전부입니다. 하오디자인 마케팅센터는 중소기업의 이야기를 디자인으로 풀어, 사람의 마음을 움직이는 마케팅을 만듭니다.</p>
-        <a href="services.html" class="pillbtn" style="margin-top:18px">서비스 자세히 보기 →</a>
-      </div>
-      <div class="svc__cols">
-        <article class="svc__col reveal">
-          <div class="svc__bg svc__bg--1"></div>
-          <div class="svc__body">
-            <h3>Brand<br />Content</h3>
-            <p>브랜드에는 저마다의 결과 이야기가 있습니다.</p>
-            <p>로고·키비주얼부터 SNS·상세 이미지·홍보영상까지, 브랜드의 분위기를 담은 콘텐츠로 고객과 감성적으로 연결합니다.</p>
+    <!-- ===== SERVICES (onellab식 STEP 카드) ===== -->
+    <section class="on on--center on--soft" id="services">
+      <div class="on__in">
+        <p class="on__eg">SERVICES</p>
+        <h2 class="on__h">작은 브랜드일수록,<br /><b>&lsquo;어떻게 보이느냐&rsquo;가 전부입니다</b></h2>
+        <p class="on__sub">하오디자인 마케팅센터는 중소기업의 이야기를 디자인으로 풀어,<br />사람의 마음을 움직이는 마케팅을 만듭니다.</p>
+        <div class="svq-wrap">
+          <div class="svq reveal">
+            <div class="svq__top"><i class="svq__ico">🎨</i><span class="svq__no">01<small>SERVICE</small></span></div>
+            <h3 class="svq__t">브랜드 콘텐츠<small>BRAND CONTENT</small></h3>
+            <hr class="svq__div" />
+            <p class="svq__sub">로고·키비주얼부터 SNS·상세 이미지·홍보영상까지, <b>브랜드의 결</b>을 담아 제작합니다.</p>
+            <p class="svq__sub">브랜드의 분위기를 담은 콘텐츠로 고객과 감성적으로 연결합니다.</p>
           </div>
-        </article>
-        <article class="svc__col reveal">
-          <div class="svc__bg svc__bg--2"></div>
-          <div class="svc__body">
-            <h3>Commerce<br />Design</h3>
-            <p>잘 만든 제품도, 보이지 않으면 팔리지 않습니다.</p>
-            <p>스마트스토어·자사몰 상세페이지부터 패키지·배너까지, 사는 순간까지의 경험을 디자인해 매출로 이어지게 합니다.</p>
+          <div class="svq reveal">
+            <div class="svq__top"><i class="svq__ico">🛍️</i><span class="svq__no">02<small>SERVICE</small></span></div>
+            <h3 class="svq__t">커머스 디자인<small>COMMERCE DESIGN</small></h3>
+            <hr class="svq__div" />
+            <p class="svq__sub">스마트스토어·자사몰 상세페이지부터 패키지·배너까지 <b>일괄 제작</b>합니다.</p>
+            <p class="svq__sub">사는 순간까지의 경험을 디자인해 매출로 이어지게 합니다.</p>
           </div>
-        </article>
-        <article class="svc__col reveal">
-          <div class="svc__bg svc__bg--3"></div>
-          <div class="svc__body">
-            <h3>Exhibition<br />&amp; Booth</h3>
-            <p>화면 밖에서 브랜드를 만나는 순간도 중요합니다.</p>
-            <p>전시회·박람회 부스 디자인과 카탈로그·배너 등 오프라인 홍보물로, 현장에서 브랜드를 기억에 남깁니다.</p>
+          <div class="svq reveal">
+            <div class="svq__top"><i class="svq__ico">🎪</i><span class="svq__no">03<small>SERVICE</small></span></div>
+            <h3 class="svq__t">전시 · 박람회 부스<small>EXHIBITION &amp; BOOTH</small></h3>
+            <hr class="svq__div" />
+            <p class="svq__sub">전시회·박람회 <b>부스 디자인</b>과 카탈로그·배너 등 오프라인 홍보물을 만듭니다.</p>
+            <p class="svq__sub">화면 밖 현장에서도 브랜드가 기억에 남게 합니다.</p>
           </div>
-        </article>
+        </div>
+        <a href="services.html" class="pillbtn" style="margin-top:clamp(36px,5vh,52px)">서비스 자세히 보기 →</a>
       </div>
     </section>
 
