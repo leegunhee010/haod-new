@@ -204,6 +204,8 @@
 
     /* ───── 메인 · Who We Are ───── */
     { key: "vc_s7_eg", page: "index", sel: "#s-about .tit-box > b", tag: "b", label: "소개 — 라벨", value: "Who We Are" },
+    { key: "vc_s7_t1", page: "index", sel: "#s-about .tit-box > h3:nth-of-type(1), #s-about .tit-box > h3:nth-of-type(3)", tag: "b", label: "소개 — 제목 1줄", value: "Government design with" },
+    { key: "vc_s7_t2", page: "index", sel: "#s-about .tit-box > h3:nth-of-type(2), #s-about .tit-box > h3:nth-of-type(4)", tag: "b", label: "소개 — 제목 2줄", value: "HAO DESIGN" },
     { key: "vc_s7_line1", page: "index", sel: "#s-about .fill-text.line1", tag: "b", label: "소개 — 문장①", value: "하오디자인은 5년 연속 정부 핵심사업 공식 디자인 수행기관으로, 412건 이상의 바우처 디자인을 수행했습니다." },
     { key: "vc_s7_line2", page: "index", sel: "#s-about .fill-text.line2", tag: "b", label: "소개 — 문장②", value: "복잡한 신청 절차는 우리가, 좋은 디자인은 기업에게. 결과보고까지 책임지는 파트너가 되겠습니다." },
 
