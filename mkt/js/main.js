@@ -52,6 +52,8 @@
     es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } });
   }, { threshold: .14 });
   $$('.reveal').forEach(function (el) { io.observe(el); });
+  /* IO 미발화 환경(일부 헤드리스·봇) 폴백 — 3초 내 하나도 안 켜지면 전부 표시 */
+  setTimeout(function () { if (!document.querySelector('.reveal.is-in')) $$('.reveal').forEach(function (el) { el.classList.add('is-in'); }); }, 3000);
 
   /* ---- 카운터 ---- */
   function runCount(el) {
