@@ -84,6 +84,19 @@
       HAO.getCopy().forEach(function (c) {
         if (c.page !== "all" && c.page !== page) return;
         if (!c.ov) return; /* 관리자가 수정한 항목만 적용 — 원본 마크업(반응형 줄바꿈 등) 보존 */
+        /* 히어로 롤링 단어 — 위젯 재구성 (한 줄=단어 하나) */
+        if (c.key === "vc_hero_roll") {
+          var list = String(c.value || "").split(/\n+/).map(function (s) { return s.trim(); }).filter(Boolean);
+          if (!list.length) return;
+          if (window.ghRollSet) { window.ghRollSet(list); }
+          else { /* 롤링 스크립트보다 먼저 실행된 경우 — 스팬만 교체(스크립트가 뜨면서 수거) */
+            var box = document.getElementById("ghRoll");
+            if (box) box.innerHTML = list.map(function (w, i) {
+              return '<span class="word' + (i === 0 ? " active" : "") + '">' + String(w).replace(/&/g, "&amp;").replace(/</g, "&lt;") + "</span>";
+            }).join("");
+          }
+          return;
+        }
         document.querySelectorAll(c.sel).forEach(function (el) {
           if (c.attr) { el.setAttribute(c.attr, c.value); return; }
           el.innerHTML = HAO.fmt(c.value, c.tag || "b");
@@ -103,6 +116,7 @@
     HAO.getCopy().forEach(function (c) {
       if (c.page !== "all" && c.page !== page) return;
       if (c.attr) return;
+      if (c.key === "vc_hero_roll") return; /* 롤링 단어는 관리자 폼에서 수정 (화면 클릭 편집 제외) */
       var el = document.querySelector(c.sel);
       if (!el) return;
       el.dataset.haoKey = c.key;

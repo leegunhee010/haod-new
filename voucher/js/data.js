@@ -170,6 +170,8 @@
   var DEFAULT_COPY = [
     /* ───── 메인 · 히어로 ───── */
     { key: "vc_hero_eyebrow", page: "index", sel: ".ghero__eyebrow", tag: "b", label: "히어로 — 상단 라벨", value: "**6년 연속** 정부지원사업 공식 수행기관" },
+    { key: "vc_hero_prefix", page: "index", sel: "#ghPrefix", tag: "b", label: "히어로 — 제목 첫 줄(고정 문구)", value: "하오가 디자인하는" },
+    { key: "vc_hero_roll", page: "index", sel: "#ghRoll", tag: "b", label: "히어로 — 롤링 단어들 (한 줄에 하나씩)", value: "수출바우처\n혁신바우처\n판로개척지원사업\n다국어 카탈로그\n브랜드 디자인" },
     { key: "vc_hero_line2", page: "index", sel: ".ghero__title .hero-line:nth-of-type(2)", tag: "b", label: "히어로 — 제목 둘째 줄", value: "정부지원 디자인의 기준." },
     { key: "vc_hero_sub", page: "index", sel: ".ghero__sub", tag: "b", label: "히어로 — 설명", value: "수출바우처·혁신바우처·판로개척지원사업 — 신청 가능 여부 확인부터\n카탈로그·브로슈어·다국어 홍보물 제작, 결과보고까지 하오디자인이 함께합니다." },
     { key: "vc_hero_cta", page: "index", sel: ".ghero__cta span", tag: "b", label: "히어로 — 버튼 문구", value: "무료 가능여부 상담하기" },

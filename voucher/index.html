@@ -104,7 +104,7 @@
             <div class="ghero__inner">
                 <span class="ghero__eyebrow"><b>6년 연속</b> 정부지원사업 공식 수행기관</span>
                 <h1 class="ghero__title gw-hero">
-                  <span class="hero-line">하오가 디자인하는&nbsp;<span class="rolling-words" id="ghRoll"><span class="word active">수출바우처</span><span class="word">혁신바우처</span><span class="word">판로개척지원사업</span><span class="word">다국어 카탈로그</span><span class="word">브랜드 디자인</span></span></span>
+                  <span class="hero-line"><span id="ghPrefix">하오가 디자인하는</span>&nbsp;<span class="rolling-words" id="ghRoll"><span class="word active">수출바우처</span><span class="word">혁신바우처</span><span class="word">판로개척지원사업</span><span class="word">다국어 카탈로그</span><span class="word">브랜드 디자인</span></span></span>
                   <span class="hero-line">정부지원 디자인의 기준.</span>
                 </h1>
                 <p class="ghero__sub">수출바우처·혁신바우처·판로개척지원사업 — 신청 가능 여부 확인부터<br>카탈로그·브로슈어·다국어 홍보물 제작, 결과보고까지 하오디자인이 함께합니다.</p>
@@ -114,19 +114,30 @@
         <script>
         document.addEventListener('DOMContentLoaded', function(){
           var box = document.querySelector('.gw-hero .rolling-words');
-          var words = document.querySelectorAll('.gw-hero .rolling-words .word');
-          if(!box || !words.length) return;
-          var cur = 0, total = words.length;
-          function fit(){ box.style.width = words[cur].offsetWidth + 'px'; }  // 박스 폭=단어 폭(빈칸 없음), 즉시 → 앞부분 플립/슬라이드 없음
+          if(!box) return;
+          var words = [], cur = 0, total = 0;
+          function collect(){ words = Array.prototype.slice.call(box.querySelectorAll('.word')); total = words.length; cur = 0; }
+          collect();
+          if(!total) return;
+          function fit(){ if(words[cur]) box.style.width = words[cur].offsetWidth + 'px'; }  // 박스 폭=단어 폭(빈칸 없음), 즉시 → 앞부분 플립/슬라이드 없음
           function rotate(){
+            if(total < 2){ fit(); return; }
             words[cur].classList.remove('active');
             words[cur].classList.add('exit');
-            var exitIdx = cur;
-            setTimeout(function(){ words[exitIdx].classList.remove('exit'); }, 500);
+            var exitEl = words[cur];
+            setTimeout(function(){ exitEl.classList.remove('exit'); }, 500);
             cur = (cur + 1) % total;
             words[cur].classList.add('active');
             fit();
           }
+          /* 관리자 카피 수정용 — 단어 목록을 통째로 교체(boot.js에서 호출) */
+          window.ghRollSet = function(list){
+            if(!list || !list.length) return;
+            box.innerHTML = list.map(function(w, i){
+              return '<span class="word' + (i === 0 ? ' active' : '') + '">' + String(w).replace(/&/g,'&amp;').replace(/</g,'&lt;') + '</span>';
+            }).join('');
+            collect(); fit();
+          };
           fit();
           if(document.fonts&&document.fonts.ready){ document.fonts.ready.then(fit); }  // 폰트 로드 후 재정렬(레이스 방지)
           window.addEventListener('load', fit);
@@ -547,7 +558,7 @@
   render();
 })();
 </script>
-<script defer src="js/data.js?v=2"></script>
-<script defer src="js/boot.js?v=2"></script>
+<script defer src="js/data.js?v=3"></script>
+<script defer src="js/boot.js?v=3"></script>
 </body>
 </html>
