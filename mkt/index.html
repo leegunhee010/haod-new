@@ -208,8 +208,9 @@
       @media(max-width:640px){.on-chats{grid-template-columns:1fr}.on-chat:nth-child(even),.on-chat:nth-child(2),.on-chat:nth-child(4){margin-top:0}}
       /* 채팅 카드 — 가로 오토 롤링 */
       .on-chatswrap{overflow:hidden;margin-top:clamp(40px,6vh,64px);
-        -webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);
-        mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
+        width:100vw;margin-left:calc(50% - 50vw);padding:14px 0 20px; /* 풀블리드 — 화면 전체 폭으로 흐름 */
+        -webkit-mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent);
+        mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent)}
       .on-chats{display:flex;gap:0;width:max-content;margin-top:0;animation:chatRoll 44s linear infinite}
       .on-chatswrap:hover .on-chats{animation-play-state:paused}
       .on-chatgrp{display:flex;gap:clamp(18px,1.9vw,26px);padding-right:clamp(18px,1.9vw,26px)}
