@@ -7,7 +7,7 @@
   <meta name="description" content="수출바우처(수출지원기반활용사업) 안내 — 지원대상·14개 서비스 분야·지원규모·신청절차. 하오디자인은 디자인 분야 공식 수행기관입니다." />
   <link rel="preconnect" href="https://cdn.jsdelivr.net" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.css" />
-  <link rel="stylesheet" href="css/style.css?v=12" />
+  <link rel="stylesheet" href="css/style.css?v=13" />
   <link rel="canonical" href="https://haodesign.co.kr/voucher/export.html" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://haodesign.co.kr/voucher/export.html" />
@@ -119,16 +119,17 @@
           </ul>
         </div>
         <form class="cform cform--card" id="quoteForm" novalidate>
-          <div class="cfield"><input type="text" id="name" name="name" placeholder="이름 / 회사명" required /></div>
-          <div class="cfield"><input type="tel" id="phone" name="phone" placeholder="연락처" required /></div>
-          <div class="cfield cfield--full">
-            <select id="type" name="type">
+          <div class="cfield"><label>이름</label><input type="text" id="name" name="name" placeholder="이름 / 담당자" required /></div>
+          <div class="cfield"><label>연락처</label><input type="tel" id="phone" name="phone" placeholder="010-0000-0000" required /></div>
+          <div class="cfield cfield--full"><label>회사·브랜드명</label><input type="text" id="company" name="company" placeholder="회사 또는 브랜드명" /></div>
+          <div class="cfield cfield--full"><label>관심 사업</label>
+            <select id="type" name="type" class="ignore">
               <option value="">관심 사업 선택</option>
               <option>수출바우처</option><option>혁신바우처</option><option>판로개척지원사업</option>
               <option>신청 가능 여부 문의</option><option>기타</option>
             </select>
           </div>
-          <div class="cfield cfield--full"><textarea id="message" name="message" rows="4" placeholder="기업 현황, 관심 사업, 제작하고 싶은 결과물 등을 자유롭게 적어주세요."></textarea></div>
+          <div class="cfield cfield--full"><label>문의 내용</label><textarea id="message" name="message" rows="4" placeholder="기업 현황, 관심 사업, 제작하고 싶은 결과물 등을 자유롭게 적어주세요."></textarea></div>
           <button type="submit" class="btn-round btn-round--solid"><span>상담 신청</span><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
           <p class="cnote" id="formNote" role="status"></p>
         </form>
@@ -195,7 +196,7 @@
         var sbtn = form.querySelector('button[type=submit]'); if(sbtn) sbtn.disabled = true; note.textContent='접수 중…';
         var typeEl = document.getElementById('type'), msgEl = document.getElementById('message');
         if(window.HAO && HAO.saveInquiry){
-          HAO.saveInquiry({ name: form.name.value, phone: form.phone.value, type: typeEl?typeEl.value:'', message: msgEl?msgEl.value:'' })
+          HAO.saveInquiry({ name: form.name.value, phone: form.phone.value, company: document.getElementById('company') ? document.getElementById('company').value : '', type: typeEl?typeEl.value:'', message: msgEl?msgEl.value:'' })
             .then(function(){ note.textContent='상담 신청이 접수되었습니다. 빠르게 연락드리겠습니다.'; form.reset(); })
             .catch(function(){ note.textContent='접수 중 오류가 발생했습니다. 전화로 문의해 주세요.'; })
             .then(function(){ if(sbtn) sbtn.disabled = false; });
