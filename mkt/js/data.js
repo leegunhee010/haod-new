@@ -178,6 +178,7 @@
   var DEFAULT_COPY = [
     /* ── 메인 ── */
     { key: "pin_big", page: "index", sel: ".pin__big", tag: "em", label: "핀 스크롤 — 큰 문장", value: "보이지 않던 브랜드를\n**보이게** 만듭니다" },
+    { key: "mk_df_sub", page: "index", sel: "#difference .on__sub", tag: "b", label: "비교 — 부제", value: "하오디자인 마케팅센터는 스몰 브랜드와 중소기업의 성장을 위해\n**브랜드를 계속 맡는 전담팀**이라는 차별화된 방식으로 일합니다." },
     { key: "mk_sv_eg", page: "index", sel: "#services .on__eg", tag: "b", label: "서비스 — 라벨", value: "SERVICES" },
     { key: "mk_sv_h", page: "index", sel: "#services .on__h", tag: "b", label: "서비스 — 제목", value: "하오는 이렇게\n**브랜드의 마케팅팀**이 됩니다" },
     { key: "mk_sv_sub", page: "index", sel: "#services .on__sub", tag: "b", label: "서비스 — 부제", value: "진단부터 전략, 실행까지 —\n마케팅팀이 하는 일을 하오가 그대로 해드립니다." },
