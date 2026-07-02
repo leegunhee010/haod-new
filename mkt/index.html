@@ -91,26 +91,29 @@
       .on__h{font-size:clamp(1.9rem,3.8vw,3.1rem);font-weight:800;letter-spacing:-.03em;line-height:1.18;color:var(--ink);margin:0;word-break:keep-all}
       .on__h b{color:var(--accent)}
       .on__sub{margin:18px 0 0;max-width:60ch;font-size:clamp(1rem,1.3vw,1.12rem);color:var(--muted);line-height:1.75;word-break:keep-all}
-      /* 문제 카드 (카드뉴스형) */
-      .on-cases{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(16px,1.6vw,22px);margin-top:clamp(34px,5vh,54px)}
-      .on-case{position:relative;overflow:hidden;display:flex;flex-direction:column;border-radius:22px;
-        padding:clamp(26px,2.4vw,34px);background:#fff;border:1px solid var(--line);
-        box-shadow:0 26px 54px -44px rgba(36,26,20,.5);min-height:clamp(230px,20vw,270px);
+      /* 문제 카드 — 대표님 고민 말풍선 */
+      .on-cases{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(18px,1.8vw,26px);margin-top:clamp(40px,6vh,64px);align-items:start}
+      .on-case{position:relative;display:flex;flex-direction:column;border-radius:22px;
+        padding:clamp(26px,2.4vw,34px) clamp(24px,2.2vw,30px) clamp(20px,1.9vw,26px);
+        background:#fff;border:1px solid var(--line);
+        box-shadow:0 30px 60px -50px rgba(36,26,20,.45);
         transition:transform .35s var(--ease),box-shadow .35s var(--ease),border-color .35s var(--ease)}
-      .on-case:hover{transform:translateY(-8px);border-color:rgba(232,56,23,.28);box-shadow:0 48px 84px -42px rgba(232,56,23,.35)}
-      .on-case::after{content:"";position:absolute;right:-46px;top:-46px;width:150px;height:150px;border-radius:50%;
-        background:radial-gradient(circle,rgba(255,138,61,.14),transparent 68%);pointer-events:none;transition:transform .45s var(--ease)}
-      .on-case:hover::after{transform:scale(1.35)}
-      .on-case__ico{position:relative;z-index:1;width:56px;height:56px;border-radius:18px;display:grid;place-items:center;color:#fff;
-        background:linear-gradient(135deg,var(--accent-3),var(--accent));box-shadow:0 14px 26px -12px rgba(232,56,23,.6);
-        margin:2px 0 18px;transition:transform .35s var(--ease)}
-      .on-case:hover .on-case__ico{transform:rotate(-6deg) scale(1.06)}
-      .on-case__ico svg{width:26px;height:26px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-      .on-case__no{position:relative;z-index:1;font-family:"Poppins",sans-serif;font-weight:800;font-size:.72rem;letter-spacing:.12em;color:var(--accent);display:block;margin-bottom:9px}
-      .on-case__q{position:relative;z-index:1;font-size:1.1rem;font-weight:800;color:var(--ink);line-height:1.38;margin:0 0 10px;word-break:keep-all}
-      .on-case__d{position:relative;z-index:1;font-size:.92rem;color:var(--muted);line-height:1.62;margin:0 0 auto;word-break:keep-all}
-      .on-case__ghost{position:absolute;right:18px;top:16px;font-family:"Poppins",sans-serif;font-weight:800;
-        font-size:3.4rem;line-height:1;color:var(--ink);opacity:.055;pointer-events:none;letter-spacing:-.04em}
+      .on-case:nth-child(even){margin-top:34px} /* 지그재그 리듬 */
+      .on-case::after{content:"";position:absolute;left:36px;bottom:-9px;width:17px;height:17px; /* 말풍선 꼬리 */
+        background:#fff;border-right:1px solid var(--line);border-bottom:1px solid var(--line);
+        border-bottom-right-radius:4px;transform:rotate(45deg);transition:border-color .35s var(--ease)}
+      .on-case:hover{transform:translateY(-8px);border-color:rgba(232,56,23,.3);box-shadow:0 46px 80px -44px rgba(232,56,23,.3)}
+      .on-case:hover::after{border-color:rgba(232,56,23,.3)}
+      .on-case__mark{display:block;font-family:Georgia,"Times New Roman",serif;font-size:3.2rem;line-height:.9;height:.62em;
+        background:linear-gradient(135deg,var(--accent-3),var(--accent));-webkit-background-clip:text;background-clip:text;
+        -webkit-text-fill-color:transparent;color:transparent;margin-bottom:16px}
+      .on-case__q{font-size:1.13rem;font-weight:800;color:var(--ink);line-height:1.42;margin:0 0 10px;word-break:keep-all}
+      .on-case__d{font-size:.92rem;color:var(--muted);line-height:1.65;margin:0 0 22px;word-break:keep-all}
+      .on-case__foot{margin-top:auto;display:flex;align-items:center;gap:9px;padding-top:15px;border-top:1px solid var(--line)}
+      .on-case__foot b{flex:0 0 auto;width:25px;height:25px;border-radius:50%;display:grid;place-items:center;
+        background:linear-gradient(135deg,var(--accent-3),var(--accent));color:#fff;
+        font-family:"Poppins",sans-serif;font-weight:700;font-size:.64rem;letter-spacing:.02em}
+      .on-case__foot em{font-style:normal;font-size:.8rem;font-weight:700;color:var(--ink-2);letter-spacing:.01em}
       /* 비교표 */
       .on-cmp{display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,2vw,26px);margin-top:clamp(34px,5vh,54px)}
       .on-col{border-radius:20px;padding:clamp(26px,3vw,40px)}
@@ -138,10 +141,42 @@
       .on-step__d{font-size:.9rem;color:var(--muted);line-height:1.6;margin:0;word-break:keep-all}
       @media(max-width:900px){
         .on-cases{grid-template-columns:repeat(2,1fr)}
+        .on-case:nth-child(even){margin-top:0}
+        .on-case:nth-child(2),.on-case:nth-child(4){margin-top:24px} /* 2열에서도 살짝 지그재그 */
         .on-cmp{grid-template-columns:1fr}
         .on-steps{grid-template-columns:1fr 1fr}
       }
-      @media(max-width:520px){.on-cases,.on-steps{grid-template-columns:1fr}}
+      @media(max-width:520px){
+        .on-cases,.on-steps{grid-template-columns:1fr}
+        .on-case:nth-child(even),.on-case:nth-child(2),.on-case:nth-child(4){margin-top:0}
+      }
+      /* 시나리오 사례 카드 */
+      .on-sc{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,1.8vw,24px);margin-top:clamp(36px,5vh,56px)}
+      .on-sc__card{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:22px;
+        padding:clamp(26px,2.4vw,34px);box-shadow:0 28px 56px -46px rgba(36,26,20,.5);
+        transition:transform .35s var(--ease),box-shadow .35s var(--ease)}
+      .on-sc__card:hover{transform:translateY(-6px);box-shadow:0 44px 78px -44px rgba(232,56,23,.3)}
+      .on-sc__chip{align-self:flex-start;font-family:"Poppins",sans-serif;font-weight:700;font-size:.7rem;letter-spacing:.1em;
+        color:var(--accent);background:rgba(232,56,23,.08);border-radius:999px;padding:7px 13px;margin-bottom:18px}
+      .on-sc__q{font-size:1.12rem;font-weight:800;color:var(--ink);line-height:1.42;margin:0 0 16px;word-break:keep-all}
+      .on-sc__flow{list-style:none;margin:0 0 20px;padding:0;display:flex;flex-direction:column;gap:10px}
+      .on-sc__flow li{position:relative;padding-left:22px;font-size:.93rem;color:var(--muted);line-height:1.55;word-break:keep-all}
+      .on-sc__flow li::before{content:"";position:absolute;left:4px;top:8px;width:7px;height:7px;border-radius:50%;
+        background:linear-gradient(135deg,var(--accent-3),var(--accent))}
+      .on-sc__out{margin-top:auto;padding-top:16px;border-top:1px dashed var(--line);font-size:.86rem;color:var(--faint);word-break:keep-all}
+      .on-sc__out b{color:var(--ink-2);font-weight:700}
+      /* 중간 CTA 스트립 */
+      .on-cta{padding:0 clamp(20px,4vw,60px) clamp(72px,11vh,140px);background:var(--bg)}
+      .on-cta--soft{background:var(--bg-soft)}
+      .on-cta__in{max-width:1180px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:22px;
+        background:linear-gradient(120deg,#ff8a3d,#e83817);border-radius:22px;padding:clamp(26px,3.4vw,44px) clamp(26px,3.6vw,52px);
+        box-shadow:0 40px 80px -46px rgba(232,56,23,.55);flex-wrap:wrap}
+      .on-cta__t{margin:0;color:#fff;font-size:clamp(1.15rem,2vw,1.55rem);font-weight:800;letter-spacing:-.02em;line-height:1.4;word-break:keep-all}
+      .on-cta__t small{display:block;font-size:.86rem;font-weight:600;color:rgba(255,255,255,.85);margin-top:7px;letter-spacing:0}
+      .on-cta__btn{flex:0 0 auto;display:inline-flex;align-items:center;gap:9px;background:#fff;color:var(--accent);
+        font-weight:800;font-size:.96rem;border-radius:999px;padding:14px 26px;transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+      .on-cta__btn:hover{transform:translateY(-3px);box-shadow:0 18px 36px -14px rgba(0,0,0,.35)}
+      @media(max-width:900px){.on-sc{grid-template-columns:1fr}.on-cta__in{justify-content:center;text-align:center}}
     </style>
 
     <!-- 문제 진단 -->
@@ -152,32 +187,28 @@
         <p class="on__sub">스타트업·중소기업·1인 브랜드까지 — 마케팅은 늘 ‘해야 하는데’ 뒷전이 됩니다. 하오디자인은 900개가 넘는 프로젝트에서 그 고민을 매일 마주해 왔습니다.</p>
         <div class="on-cases">
           <div class="on-case reveal">
-            <span class="on-case__ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4.5 21c.6-4 3.7-6 7.5-6s6.9 2 7.5 6"/></svg></span>
-            <span class="on-case__no">CASE 01</span>
+            <span class="on-case__mark" aria-hidden="true">&ldquo;</span>
             <p class="on-case__q">마케팅 전담 인력이 없어요</p>
             <p class="on-case__d">대표가 본업만으로도 벅찬데, 마케팅까지 챙길 여력이 없습니다.</p>
-            <span class="on-case__ghost">01</span>
+            <span class="on-case__foot"><b>01</b><em>인력 부재</em></span>
           </div>
           <div class="on-case reveal">
-            <span class="on-case__ico"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h11M4 18h6"/></svg></span>
-            <span class="on-case__no">CASE 02</span>
+            <span class="on-case__mark" aria-hidden="true">&ldquo;</span>
             <p class="on-case__q">뭘 먼저 해야 할지 몰라요</p>
             <p class="on-case__d">콘텐츠·광고·상세페이지… 우선순위가 안 잡혀 예산만 흩어집니다.</p>
-            <span class="on-case__ghost">02</span>
+            <span class="on-case__foot"><b>02</b><em>우선순위 부재</em></span>
           </div>
           <div class="on-case reveal">
-            <span class="on-case__ico"><svg viewBox="0 0 24 24"><path d="M16 3h5v5"/><path d="M4 20L21 3"/><path d="M21 16v5h-5"/><path d="M15 15l6 6"/><path d="M4 4l5 5"/></svg></span>
-            <span class="on-case__no">CASE 03</span>
+            <span class="on-case__mark" aria-hidden="true">&ldquo;</span>
             <p class="on-case__q">외주 결과가 제각각이에요</p>
             <p class="on-case__d">맡기는 업체마다 톤이 달라, 브랜드가 하나로 보이지 않습니다.</p>
-            <span class="on-case__ghost">03</span>
+            <span class="on-case__foot"><b>03</b><em>톤 불일치</em></span>
           </div>
           <div class="on-case reveal">
-            <span class="on-case__ico"><svg viewBox="0 0 24 24"><path d="M9 17H7A5 5 0 0 1 7 7h2"/><path d="M15 7h2a5 5 0 0 1 3.5 8.6"/><path d="M8 12h4"/><path d="M3 3l18 18"/></svg></span>
-            <span class="on-case__no">CASE 04</span>
+            <span class="on-case__mark" aria-hidden="true">&ldquo;</span>
             <p class="on-case__q">디자인 따로, 마케팅 따로예요</p>
             <p class="on-case__d">만드는 곳과 알리는 곳이 달라 손발이 자꾸 어긋납니다.</p>
-            <span class="on-case__ghost">04</span>
+            <span class="on-case__foot"><b>04</b><em>협업 단절</em></span>
           </div>
         </div>
       </div>
@@ -229,6 +260,55 @@
         </div>
       </div>
     </section>
+
+    <!-- 시나리오 사례 -->
+    <section class="on" id="cases">
+      <div class="on__in">
+        <p class="on__eg">HOW IT WORKS</p>
+        <h2 class="on__h">이런 고민, <b>이렇게 풀어갑니다</b></h2>
+        <p class="on__sub">상황은 달라도 흐름은 같습니다 — 진단에서 시작해, 결과물이 남는 마케팅으로.</p>
+        <div class="on-sc">
+          <div class="on-sc__card reveal">
+            <span class="on-sc__chip">ONLINE BRAND</span>
+            <p class="on-sc__q">"제품력은 있는데,<br />온라인에서 안 보여요"</p>
+            <ul class="on-sc__flow">
+              <li>브랜드 톤·메시지부터 정리</li>
+              <li>상세페이지·스마트스토어 리뉴얼</li>
+              <li>채널에 맞는 콘텐츠 운영</li>
+            </ul>
+            <p class="on-sc__out">남는 것 — <b>상세페이지 · 콘텐츠 · 운영 체계</b></p>
+          </div>
+          <div class="on-sc__card reveal">
+            <span class="on-sc__chip">EXHIBITION</span>
+            <p class="on-sc__q">"전시회가 코앞인데<br />준비할 게 산더미예요"</p>
+            <ul class="on-sc__flow">
+              <li>부스 디자인·제작 일정 역산</li>
+              <li>카탈로그·배너 등 홍보물 일괄 제작</li>
+              <li>현장에서 브랜드가 기억되게</li>
+            </ul>
+            <p class="on-sc__out">남는 것 — <b>부스 · 카탈로그 · 리플릿</b></p>
+          </div>
+          <div class="on-sc__card reveal">
+            <span class="on-sc__chip">REBRANDING</span>
+            <p class="on-sc__q">"채널마다 톤이 달라서<br />브랜드가 흩어져 보여요"</p>
+            <ul class="on-sc__flow">
+              <li>키비주얼·가이드로 기준 정리</li>
+              <li>채널별 콘텐츠를 한 톤으로 통일</li>
+              <li>리포트로 성과를 보며 개선</li>
+            </ul>
+            <p class="on-sc__out">남는 것 — <b>브랜드 가이드 · 통합 콘텐츠</b></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 중간 CTA ① -->
+    <div class="on-cta">
+      <div class="on-cta__in reveal">
+        <p class="on-cta__t">우리 브랜드는 어디서 시작해야 할까요?<small>고민 단계부터 함께 정리해 드립니다. 상담은 무료입니다.</small></p>
+        <a href="#contact" class="on-cta__btn">1:1 무료 상담 <span>→</span></a>
+      </div>
+    </div>
 
     <!-- ===== WORKS ===== -->
     <section class="works" id="works">
@@ -366,6 +446,14 @@
         </div>
       </div>
     </section>
+
+    <!-- 중간 CTA ② -->
+    <div class="on-cta" style="padding-top:clamp(56px,8vh,100px)">
+      <div class="on-cta__in reveal">
+        <p class="on-cta__t">134개 브랜드가 하오와 함께 성장했습니다<small>다음 차례는 대표님 브랜드입니다. 부담 없이 물어보세요.</small></p>
+        <a href="#contact" class="on-cta__btn">마케팅 문의 <span>→</span></a>
+      </div>
+    </div>
 
     <!-- ===== CONTACT ===== -->
     <section class="contact" id="contact">
