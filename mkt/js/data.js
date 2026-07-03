@@ -91,7 +91,7 @@
 
   /* ===== 메인 히어로 (단일) — lead1/lead2 = 영문 2줄, sub = 한글 슬로건 ===== */
   var DEFAULT_HERO = [
-    { lead1: "We grow", lead2: "Brands & Stories", sub: "중소기업의 마케팅, 디자인으로 풀다" }
+    { lead1: "Your Outside", lead2: "Marketing Team", sub: "마케팅팀이 없는 중소기업도,\n선택받는 브랜드 전략은 필요하니까" }
   ];
 
   /* ===== 칼럼 글 — {id, cat, date, t, d, img, body[]} ===== */
@@ -177,7 +177,7 @@
   /* ===== 사이트 카피 (관리자 '카피 수정' 탭) ===== */
   var DEFAULT_COPY = [
     /* ── 메인 ── */
-    { key: "pin_big", page: "index", sel: ".pin__big", tag: "em", label: "핀 스크롤 — 큰 문장", value: "보이지 않던 브랜드를\n**보이게** 만듭니다" },
+    { key: "pin_big", page: "index", sel: ".pin__big", tag: "em", label: "핀 스크롤 — 큰 문장", value: "선택받는 브랜드는\n보여주는 방식부터 다릅니다" },
     { key: "mk_sv_c1_t", page: "index", sel: "#services .svq:nth-of-type(1) .svq__tt", tag: "b", label: "서비스 STEP1 — 제목", value: "브랜드 마케팅\n현황 분석" },
     { key: "mk_sv_c2_t", page: "index", sel: "#services .svq:nth-of-type(2) .svq__tt", tag: "b", label: "서비스 STEP2 — 제목", value: "핵심 메시지 발굴 및\n마케팅 전략 수립" },
     { key: "mk_sv_c3_t", page: "index", sel: "#services .svq:nth-of-type(3) .svq__tt", tag: "b", label: "서비스 STEP3 — 제목", value: "마케팅 실행 (콘텐츠 제작\n+ 채널 운영 + 오프라인)" },
@@ -246,11 +246,10 @@
     { key: "mk_sv_c3_s1", page: "index", sel: "#services .svq:nth-of-type(3) .svq__sub:nth-of-type(1)", tag: "b", label: "서비스 STEP3 — 문구1", value: "SNS·상세페이지·홍보물 등 **핵심 콘텐츠를 기획·제작**합니다." },
     { key: "mk_sv_c3_s2", page: "index", sel: "#services .svq:nth-of-type(3) .svq__sub:nth-of-type(2)", tag: "b", label: "서비스 STEP3 — 문구2", value: "채널을 **한 톤으로 꾸준히 운영**하며 브랜드를 알립니다." },
     { key: "mk_sv_c3_s3", page: "index", sel: "#services .svq:nth-of-type(3) .svq__sub:nth-of-type(3)", tag: "b", label: "서비스 STEP3 — 문구3", value: "전시·박람회 등 **오프라인 현장**까지 브랜드 경험을 이어갑니다." },
-    { key: "mk_ix_01", page: "index", sel: "#pin > div > p:nth-of-type(1)", tag: "b", label: "핀 · Scroll for more", value: "Scroll for more" },
-    { key: "mk_ix_02", page: "index", sel: "#pin > div > h2", tag: "em", label: "핀 · 보이지 않던 브랜드를보이게 만듭니다", value: "보이지 않던 브랜드를\n**보이게** 만듭니다" },
+    { key: "mk_ix_01", page: "index", sel: "#pin > div > p:nth-of-type(1)", tag: "b", label: "핀 · Scroll for more", value: "A brand that isn’t seen might as well not exist." },
     { key: "mk_ix_03", page: "index", sel: "#why > div > p:nth-of-type(1)", tag: "b", label: "문제 · WHY HAO", value: "WHY HAO" },
-    { key: "mk_ix_04", page: "index", sel: "#why > div > h2", tag: "b", label: "문제 · 대표님, 마케팅팀이 없어서막막하신가요?", value: "대표님, **마케팅팀이 없어서**\n막막하신가요?" },
-    { key: "mk_ix_05", page: "index", sel: "#why > div > p:nth-of-type(2)", tag: "b", label: "문제 · 스타트업·중소기업·1인 브랜드까지 — 마케팅", value: "스타트업·중소기업·1인 브랜드까지 — 마케팅은 늘 ‘해야 하는데’ 뒷전이 됩니다. 하오디자인은 900개가 넘는 프로젝트에서 그 고민을 매일 마주해 왔습니다." },
+    { key: "mk_ix_04", page: "index", sel: "#why > div > h2", tag: "b", label: "문제 · 대표님, 마케팅팀이 없어서막막하신가요?", value: "마케팅팀이 없다는 이유로\n브랜드 성장이 멈춰있지 않나요?" },
+    { key: "mk_ix_05", page: "index", sel: "#why > div > p:nth-of-type(2)", tag: "b", label: "문제 · 스타트업·중소기업·1인 브랜드까지 — 마케팅", value: "스타트업부터 중소기업, 1인 브랜드까지 마케팅은 선택이 아니라 생존 조건이 되었습니다.\n하오디자인은 900개가 넘는 프로젝트에서 그 고민을 매일 마주해 왔습니다." },
     { key: "mk_ix_06", page: "index", sel: "#difference > div > p:nth-of-type(1)", tag: "b", label: "비교 · DIFFERENCE", value: "DIFFERENCE" },
     { key: "mk_ix_07", page: "index", sel: "#difference > div > h2", tag: "b", label: "비교 · 하오디자인 마케팅센터,일반 외주 대행과는 어", value: "하오디자인 마케팅센터,\n**일반 외주 대행과는 어떻게 다를까요?**" },
     { key: "mk_ix_08", page: "index", sel: "#difference > div > div > div:nth-of-type(1) > div:nth-of-type(2) > small", tag: "b", label: "비교 · 주요 활동", value: "주요 활동" },
@@ -290,28 +289,28 @@
     { key: "mk_ix_56", page: "index", sel: "footer > div > div:nth-of-type(1) > p:nth-of-type(1)", tag: "b", label: "푸터 · 주식회사 하오커뮤니케이션 · 대표 박창민 ·", value: "주식회사 하오커뮤니케이션 · 대표 박창민 · 528-87-01037\n서울특별시 광진구 · sales@haodesign.co.kr" },
     { key: "mk_ix_57", page: "index", sel: "footer > div > div:nth-of-type(1) > p:nth-of-type(2)", tag: "b", label: "푸터 · © 2026 HAO DESIGN Market", value: "© 2026 HAO DESIGN Marketing. All rights reserved." },
     { key: "mk_ix_58", page: "index", sel: "footer > div > div:nth-of-type(2) > p", tag: "b", label: "푸터 · 09:30 ~ 18:30 (점심 13:00~", value: "09:30 ~ 18:30 (점심 13:00~14:00)" },
-    { key: "mk_ch_01", page: "index", sel: ".on-chatgrp .on-chat:nth-child(1) p:nth-of-type(1)", tag: "b", label: "CASE1 — 질문", value: "마케팅팀이 없어서,\n어디서부터 시작해야\n할지 모르겠어요." },
+    { key: "mk_ch_01", page: "index", sel: ".on-chatgrp .on-chat:nth-child(1) p:nth-of-type(1)", tag: "b", label: "CASE1 — 질문", value: "마케팅팀이 없어서,\n어디서부터 시작해야 할지 모르겠어요." },
     { key: "mk_ch_02", page: "index", sel: ".on-chatgrp .on-chat:nth-child(1) p:nth-of-type(2)", tag: "b", label: "CASE1 — 말풍선①", value: "대표가 본업만으로도 벅찬데, 마케팅까지 챙길 여력이 없습니다." },
     { key: "mk_ch_03", page: "index", sel: ".on-chatgrp .on-chat:nth-child(1) p:nth-of-type(3)", tag: "b", label: "CASE1 — 말풍선②", value: "투자자나 고객에게 보여줄 채널도, 콘텐츠도 정리가 안 돼 있어요." },
-    { key: "mk_ch_04", page: "index", sel: ".on-chatgrp .on-chat:nth-child(1) p:nth-of-type(4)", tag: "b", label: "CASE1 — 하오 답변", value: "하오가 전담팀이 되어 고민 정리부터 시작합니다. 무엇을 먼저 풀지 우선순위부터 함께 잡아드립니다." },
+    { key: "mk_ch_04", page: "index", sel: ".on-chatgrp .on-chat:nth-child(1) p:nth-of-type(4)", tag: "b", label: "CASE1 — 하오 답변", value: "하오가 전담팀이 되어 고민 정리부터 시작합니다.\n무엇을 먼저 풀지 우선순위부터 함께 잡아드립니다." },
     { key: "mk_ch_05", page: "index", sel: ".on-chatgrp .on-chat:nth-child(1) .on-chat__meta small", tag: "b", label: "CASE1 — 고객 유형", value: "스타트업" },
     { key: "mk_ch_06", page: "index", sel: ".on-chatgrp .on-chat:nth-child(1) .on-chat__meta b", tag: "b", label: "CASE1 — 브랜드명", value: "A 브랜드" },
-    { key: "mk_ch_07", page: "index", sel: ".on-chatgrp .on-chat:nth-child(2) p:nth-of-type(1)", tag: "b", label: "CASE2 — 질문", value: "경쟁사는 온라인에서\n자주 보이는데, 우리는\n아무것도 안 나와요." },
+    { key: "mk_ch_07", page: "index", sel: ".on-chatgrp .on-chat:nth-child(2) p:nth-of-type(1)", tag: "b", label: "CASE2 — 질문", value: "경쟁사는 온라인에서 자주 보이는데,\n우리는 아무것도 안 나와요." },
     { key: "mk_ch_08", page: "index", sel: ".on-chatgrp .on-chat:nth-child(2) p:nth-of-type(2)", tag: "b", label: "CASE2 — 말풍선①", value: "검색해도 우리 브랜드 콘텐츠가 거의 없어 신뢰를 얻기 어렵습니다." },
     { key: "mk_ch_09", page: "index", sel: ".on-chatgrp .on-chat:nth-child(2) p:nth-of-type(3)", tag: "b", label: "CASE2 — 말풍선②", value: "채널을 만들어도 뭘 올려야 할지 막막합니다." },
-    { key: "mk_ch_10", page: "index", sel: ".on-chatgrp .on-chat:nth-child(2) p:nth-of-type(4)", tag: "b", label: "CASE2 — 하오 답변", value: "브랜드 톤을 정리하고 콘텐츠 운영 체계를 만들어, 채널이 꾸준히 브랜드의 얼굴이 되게 합니다." },
+    { key: "mk_ch_10", page: "index", sel: ".on-chatgrp .on-chat:nth-child(2) p:nth-of-type(4)", tag: "b", label: "CASE2 — 하오 답변", value: "브랜드 톤을 정리하고 콘텐츠 운영 체계를 만들어,\n채널이 꾸준히 브랜드의 얼굴이 되게 합니다." },
     { key: "mk_ch_11", page: "index", sel: ".on-chatgrp .on-chat:nth-child(2) .on-chat__meta small", tag: "b", label: "CASE2 — 고객 유형", value: "스몰브랜드" },
     { key: "mk_ch_12", page: "index", sel: ".on-chatgrp .on-chat:nth-child(2) .on-chat__meta b", tag: "b", label: "CASE2 — 브랜드명", value: "B 브랜드" },
     { key: "mk_ch_13", page: "index", sel: ".on-chatgrp .on-chat:nth-child(3) p:nth-of-type(1)", tag: "b", label: "CASE3 — 질문", value: "외주를 맡길 때마다\n결과물이 제각각이에요." },
     { key: "mk_ch_14", page: "index", sel: ".on-chatgrp .on-chat:nth-child(3) p:nth-of-type(2)", tag: "b", label: "CASE3 — 말풍선①", value: "업체마다 톤이 달라 브랜드가 하나로 보이지 않습니다." },
     { key: "mk_ch_15", page: "index", sel: ".on-chatgrp .on-chat:nth-child(3) p:nth-of-type(3)", tag: "b", label: "CASE3 — 말풍선②", value: "매번 처음부터 다시 설명하는 것도 지칩니다." },
-    { key: "mk_ch_16", page: "index", sel: ".on-chatgrp .on-chat:nth-child(3) p:nth-of-type(4)", tag: "b", label: "CASE3 — 하오 답변", value: "브랜드 가이드를 세우고, 한 팀이 모든 채널을 같은 톤으로 만들어 흩어진 브랜드를 하나로 모읍니다." },
+    { key: "mk_ch_16", page: "index", sel: ".on-chatgrp .on-chat:nth-child(3) p:nth-of-type(4)", tag: "b", label: "CASE3 — 하오 답변", value: "브랜드 가이드를 세우고, 모든 채널을같은 톤으로 만들어\n흩어진 브랜드를 하나로 모읍니다." },
     { key: "mk_ch_17", page: "index", sel: ".on-chatgrp .on-chat:nth-child(3) .on-chat__meta small", tag: "b", label: "CASE3 — 고객 유형", value: "강소기업" },
     { key: "mk_ch_18", page: "index", sel: ".on-chatgrp .on-chat:nth-child(3) .on-chat__meta b", tag: "b", label: "CASE3 — 브랜드명", value: "C 브랜드" },
     { key: "mk_ch_19", page: "index", sel: ".on-chatgrp .on-chat:nth-child(4) p:nth-of-type(1)", tag: "b", label: "CASE4 — 질문", value: "회사가 커지는데 디자인 따로,\n마케팅 따로 움직여요." },
     { key: "mk_ch_20", page: "index", sel: ".on-chatgrp .on-chat:nth-child(4) p:nth-of-type(2)", tag: "b", label: "CASE4 — 말풍선①", value: "만드는 곳과 알리는 곳이 달라 손발이 자꾸 어긋납니다." },
     { key: "mk_ch_21", page: "index", sel: ".on-chatgrp .on-chat:nth-child(4) p:nth-of-type(3)", tag: "b", label: "CASE4 — 말풍선②", value: "전시·카탈로그·온라인이 다 따로 놉니다." },
-    { key: "mk_ch_22", page: "index", sel: ".on-chatgrp .on-chat:nth-child(4) p:nth-of-type(4)", tag: "b", label: "CASE4 — 하오 답변", value: "기획·디자인·운영을 한 팀이 맡아, 온라인부터 전시 현장까지 하나의 브랜드로 이어지게 합니다." },
+    { key: "mk_ch_22", page: "index", sel: ".on-chatgrp .on-chat:nth-child(4) p:nth-of-type(4)", tag: "b", label: "CASE4 — 하오 답변", value: "기획·디자인·운영을 한 팀이 맡아,온라인부터 전시 현장까지 하나의 브랜드로 이어지게 합니다." },
     { key: "mk_ch_23", page: "index", sel: ".on-chatgrp .on-chat:nth-child(4) .on-chat__meta small", tag: "b", label: "CASE4 — 고객 유형", value: "제조기업" },
     { key: "mk_ch_24", page: "index", sel: ".on-chatgrp .on-chat:nth-child(4) .on-chat__meta b", tag: "b", label: "CASE4 — 브랜드명", value: "D 브랜드" },
     { key: "mk_cta_t", page: "index", sel: ".on-cta__t .on-cta__main", tag: "b", label: "CTA 배너 — 제목", value: "134개 브랜드가 하오와 함께 성장했습니다" },
