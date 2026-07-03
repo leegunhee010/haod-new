@@ -326,6 +326,7 @@
 
     /* ── Q&A ── */
     { key: "qna_title", page: "qna", sel: ".subhero__title", tag: "b", label: "상단 제목", value: "자주 하는 질문" },
+    { key: "mk_qna_desc", page: "qna", sel: ".subhero__desc", tag: "b", label: "상단 설명 ([문구](주소)=링크)", value: "퍼포먼스·IMC·콘텐츠 마케팅과 광고 운영에 대한 질문을 모았습니다. 찾는 답이 없으면 [문의하기](index.html#contact)를 이용해 주세요." },
     { key: "qna_ptitle", page: "qna", sel: ".page__title", tag: "b", label: "섹션 제목", value: "무엇이 궁금하신가요" }
   ];
 
@@ -434,7 +435,7 @@
       var esc = String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
         return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
       });
-      return esc.replace(/\*\*(.+?)\*\*/g, "<" + tag + ">$1</" + tag + ">").replace(/\n/g, "<br />");
+      return esc.replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2">$1</a>').replace(/\*\*(.+?)\*\*/g, "<" + tag + ">$1</" + tag + ">").replace(/\n/g, "<br />");
     }
   };
 })();
