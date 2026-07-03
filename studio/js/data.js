@@ -350,8 +350,8 @@
     { key: "ph_li2", page: "photo", sel: ".ssplit__list li:nth-child(2)", tag: "b", label: "포인트②", value: "웹·인쇄·SNS 규격을 고려한 컷 구성" },
     { key: "ph_li3", page: "photo", sel: ".ssplit__list li:nth-child(3)", tag: "b", label: "포인트③", value: "촬영 당일 컨펌으로 재촬영 리스크 최소화" },
     { key: "ph_li4", page: "photo", sel: ".ssplit__list li:nth-child(4)", tag: "b", label: "포인트④", value: "누끼·색보정·디테일컷 보정 일괄 진행" },
-    { key: "ph_contact_t", page: "photo", sel: ".contact__title", tag: "b", label: "문의 — 제목", value: "촬영, 지금\n문의해 보세요" },
-    { key: "ph_contact_d", page: "photo", sel: ".contact__desc", tag: "b", label: "문의 — 설명", value: "제품과 일정만 알려주시면\n가능 범위와 견적을 빠르게 안내드립니다." },
+    { key: "ph_contact_t", page: "photo", sel: ".contact__title", tag: "b", label: "문의 — 제목", value: "촬영, 어떤 결과물이\n필요하신가요?" },
+    { key: "ph_contact_d", page: "photo", sel: ".contact__desc", tag: "b", label: "문의 — 설명", value: "제품·예산·일정만 알려주시면\n가능 범위와 견적을 빠르게 안내드립니다." },
 
     /* ───── 상세페이지 (detailpage) ───── */
     { key: "dp_title", page: "detailpage", sel: ".subhero__title", tag: "b", label: "상단 제목", value: "상세페이지 제작" },
@@ -362,8 +362,8 @@
     { key: "dp_li2", page: "detailpage", sel: ".ssplit__list li:nth-child(2)", tag: "b", label: "포인트②", value: "촬영·누끼·도식·아이콘까지 한 번에 제작" },
     { key: "dp_li3", page: "detailpage", sel: ".ssplit__list li:nth-child(3)", tag: "b", label: "포인트③", value: "모바일 우선 레이아웃과 가독성 최적화" },
     { key: "dp_li4", page: "detailpage", sel: ".ssplit__list li:nth-child(4)", tag: "b", label: "포인트④", value: "스마트스토어·자사몰·오픈마켓 규격 대응" },
-    { key: "dp_contact_t", page: "detailpage", sel: ".contact__title", tag: "b", label: "문의 — 제목", value: "상세페이지,\n같이 만들어요" },
-    { key: "dp_contact_d", page: "detailpage", sel: ".contact__desc", tag: "b", label: "문의 — 설명", value: "제품과 판매 채널을 알려주시면\n구성 방향과 견적을 제안드립니다." },
+    { key: "dp_contact_t", page: "detailpage", sel: ".contact__title", tag: "b", label: "문의 — 제목", value: "촬영, 어떤 결과물이\n필요하신가요?" },
+    { key: "dp_contact_d", page: "detailpage", sel: ".contact__desc", tag: "b", label: "문의 — 설명", value: "제품·예산·일정만 알려주시면\n가능 범위와 견적을 빠르게 안내드립니다." },
 
     /* ───── 영상 (video) ───── */
     { key: "vd_title", page: "video", sel: ".subhero__title", tag: "b", label: "상단 제목", value: "영상·릴스 콘텐츠" },
@@ -374,8 +374,8 @@
     { key: "vd_li2", page: "video", sel: ".ssplit__list li:nth-child(2)", tag: "b", label: "포인트②", value: "제품 사용·언박싱·비교 영상 기획·촬영" },
     { key: "vd_li3", page: "video", sel: ".ssplit__list li:nth-child(3)", tag: "b", label: "포인트③", value: "자막·모션그래픽·BGM까지 편집 일괄" },
     { key: "vd_li4", page: "video", sel: ".ssplit__list li:nth-child(4)", tag: "b", label: "포인트④", value: "채널별 규격(9:16 / 1:1 / 16:9) 동시 납품" },
-    { key: "vd_contact_t", page: "video", sel: ".contact__title", tag: "b", label: "문의 — 제목", value: "영상,\n가볍게 시작해요" },
-    { key: "vd_contact_d", page: "video", sel: ".contact__desc", tag: "b", label: "문의 — 설명", value: "채널과 목적만 알려주시면\n콘텐츠 방향과 견적을 제안드립니다." },
+    { key: "vd_contact_t", page: "video", sel: ".contact__title", tag: "b", label: "문의 — 제목", value: "촬영, 어떤 결과물이\n필요하신가요?" },
+    { key: "vd_contact_d", page: "video", sel: ".contact__desc", tag: "b", label: "문의 — 설명", value: "제품·예산·일정만 알려주시면\n가능 범위와 견적을 빠르게 안내드립니다." },
 
     /* ───── 포트폴리오 ───── */
     { key: "po_title", page: "portfolio", sel: ".subhero__title", tag: "b", label: "상단 제목", value: "포트폴리오" },
@@ -467,7 +467,7 @@
     { key: "st_portfolio_04", page: "portfolio", sel: "footer > div:nth-of-type(2) > div:nth-of-type(3) > h3", tag: "b", label: "스튜디오센터", value: "스튜디오센터" },
     { key: "st_column_01", page: "column", sel: "#contact > div > div > p:nth-of-type(1)", tag: "b", label: "STUDIO INQUIRY", value: "STUDIO INQUIRY" },
     { key: "st_column_02", page: "column", sel: "#contact > div > div > h2", tag: "b", label: "문의 — 제목", value: "촬영이\n필요하신가요?" },
-    { key: "st_column_03", page: "column", sel: "#contact > div > div > p:nth-of-type(2)", tag: "b", label: "문의 — 설명", value: "제품과 일정만 알려주시면\n가능 범위와 견적을 빠르게 안내드립니다." },
+    { key: "st_column_03", page: "column", sel: "#contact > div > div > p:nth-of-type(2)", tag: "b", label: "문의 — 설명", value: "제품·예산·일정만 알려주시면\n가능 범위와 견적을 빠르게 안내드립니다." },
     { key: "st_column_04", page: "column", sel: "footer > div:nth-of-type(2) > div:nth-of-type(1) > h3", tag: "b", label: "Contact", value: "Contact" },
     { key: "st_column_05", page: "column", sel: "footer > div:nth-of-type(2) > div:nth-of-type(2) > h3", tag: "b", label: "센터", value: "센터" },
     { key: "st_column_06", page: "column", sel: "footer > div:nth-of-type(2) > div:nth-of-type(3) > h3", tag: "b", label: "스튜디오센터", value: "스튜디오센터" },
@@ -538,6 +538,10 @@
     { key: "st_ix_ct_d", page: "index", sel: ".contact__desc", tag: "b", label: "문의 — 설명", value: "제품·예산·일정만 알려주시면\n가능 범위와 견적을 빠르게 안내드립니다." },
     { key: "st_st_ct_t", page: "studio", sel: ".contact__title", tag: "b", label: "문의 — 제목", value: "촬영, 어떤 결과물이\n필요하신가요?" },
     { key: "st_st_ct_d", page: "studio", sel: ".contact__desc", tag: "b", label: "문의 — 설명", value: "제품·예산·일정만 알려주시면\n가능 범위와 견적을 빠르게 안내드립니다." },
+    { key: "st_qn_ct_t", page: "qna", sel: ".contact__title", tag: "b", label: "문의 — 제목", value: "촬영, 어떤 결과물이\n필요하신가요?" },
+    { key: "st_qn_ct_d", page: "qna", sel: ".contact__desc", tag: "b", label: "문의 — 설명", value: "제품·예산·일정만 알려주시면\n가능 범위와 견적을 빠르게 안내드립니다." },
+    { key: "st_pf_ct_t", page: "portfolio", sel: ".contact__title", tag: "b", label: "문의 — 제목", value: "촬영, 어떤 결과물이\n필요하신가요?" },
+    { key: "st_pf_ct_d", page: "portfolio", sel: ".contact__desc", tag: "b", label: "문의 — 설명", value: "제품·예산·일정만 알려주시면\n가능 범위와 견적을 빠르게 안내드립니다." },
   ];
 
   /* ===== 저장 로드 헬퍼 ===== */
