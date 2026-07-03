@@ -455,8 +455,8 @@
     { key: "st_portfolio_03", page: "portfolio", sel: "footer > div:nth-of-type(2) > div:nth-of-type(2) > h3", tag: "b", label: "센터", value: "센터" },
     { key: "st_portfolio_04", page: "portfolio", sel: "footer > div:nth-of-type(2) > div:nth-of-type(3) > h3", tag: "b", label: "스튜디오센터", value: "스튜디오센터" },
     { key: "st_column_01", page: "column", sel: "#contact > div > div > p:nth-of-type(1)", tag: "b", label: "STUDIO INQUIRY", value: "STUDIO INQUIRY" },
-    { key: "st_column_02", page: "column", sel: "#contact > div > div > h2", tag: "b", label: "촬영이필요하신가요?", value: "촬영이\n필요하신가요?" },
-    { key: "st_column_03", page: "column", sel: "#contact > div > div > p:nth-of-type(2)", tag: "b", label: "제품과 일정만 알려주시면가능 범위와 견적을 ", value: "제품과 일정만 알려주시면\n가능 범위와 견적을 빠르게 안내드립니다." },
+    { key: "st_column_02", page: "column", sel: "#contact > div > div > h2", tag: "b", label: "문의 — 제목", value: "촬영이\n필요하신가요?" },
+    { key: "st_column_03", page: "column", sel: "#contact > div > div > p:nth-of-type(2)", tag: "b", label: "문의 — 설명", value: "제품과 일정만 알려주시면\n가능 범위와 견적을 빠르게 안내드립니다." },
     { key: "st_column_04", page: "column", sel: "footer > div:nth-of-type(2) > div:nth-of-type(1) > h3", tag: "b", label: "Contact", value: "Contact" },
     { key: "st_column_05", page: "column", sel: "footer > div:nth-of-type(2) > div:nth-of-type(2) > h3", tag: "b", label: "센터", value: "센터" },
     { key: "st_column_06", page: "column", sel: "footer > div:nth-of-type(2) > div:nth-of-type(3) > h3", tag: "b", label: "스튜디오센터", value: "스튜디오센터" },
@@ -525,6 +525,8 @@
     { key: "st_column6_05", page: "column-6", sel: "footer > div:nth-of-type(2) > div:nth-of-type(3) > h3", tag: "b", label: "스튜디오센터", value: "스튜디오센터" },
     { key: "st_ix_ct_t", page: "index", sel: ".contact__title", tag: "b", label: "문의 — 제목", value: "촬영, 어떤 결과물이\n필요하신가요?" },
     { key: "st_ix_ct_d", page: "index", sel: ".contact__desc", tag: "b", label: "문의 — 설명", value: "제품·예산·일정만 알려주시면\n가능 범위와 견적을 빠르게 안내드립니다." },
+    { key: "st_st_ct_t", page: "studio", sel: ".contact__title", tag: "b", label: "문의 — 제목", value: "촬영, 어떤 결과물이\n필요하신가요?" },
+    { key: "st_st_ct_d", page: "studio", sel: ".contact__desc", tag: "b", label: "문의 — 설명", value: "제품·예산·일정만 알려주시면\n가능 범위와 견적을 빠르게 안내드립니다." },
   ];
 
   /* ===== 저장 로드 헬퍼 ===== */
