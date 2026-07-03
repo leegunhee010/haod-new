@@ -1221,3 +1221,16 @@ img { display: block; max-width: 100%; }
   .clipreveal, .clipreveal--right { clip-path: none !important; }
   .vtl__card, .tstep, .dcard { opacity: 1 !important; transform: none !important; }
 }
+
+/* 모바일: 후기 카드 정돈 — 기울기·지그재그 제거, 카드 축소, 페이드 강화 */
+@media (max-width: 760px) {
+  .rev { width: 76vw; padding: 22px 20px 18px; --tilt: 0deg !important; }
+  .rev:nth-child(even) { margin-top: 0; }
+  .rev-track { gap: 14px; animation-duration: 62s; }
+  .rev-marquee--rev .rev-track { animation-duration: 74s; }
+  .rev-marquee { padding: 12px 0;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 9%, #000 91%, transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0, #000 9%, #000 91%, transparent 100%); }
+  .rev p { font-size: .94rem; line-height: 1.7; margin-right: 18px; }
+  .rev cite { font-size: .8rem; }
+}
