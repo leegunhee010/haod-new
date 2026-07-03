@@ -41,7 +41,6 @@
           <a href="service.html?cat=poster">포스터 · 전단지</a>
           <a href="service.html?cat=ci">CI · 로고디자인</a>
           <a href="service.html?cat=package">패키지 · 라벨</a>
-          <a href="service.html?cat=photo">촬영서비스</a>
           <a href="service.html?cat=global">다국어디자인</a>
         </div>
       </div>
@@ -142,7 +141,6 @@
               <option>포스터 · 전단지</option>
               <option>CI · 로고디자인</option>
               <option>패키지 · 라벨</option>
-              <option>촬영서비스</option>
               <option>다국어디자인</option>
               <option>기타</option>
             </select>
@@ -174,7 +172,7 @@
     </div>
   </footer>
 
-  <script src="js/data.js?v=33"></script>
+  <script src="js/data.js?v=34"></script>
   <script src="js/main.js?v=62"></script>
   <script>
   HAO.ready.then(function () {
@@ -239,7 +237,7 @@
        → ③ 그 외(인쇄형)는 메인 페이지(pst*) 미러링 */
     var mainProc = [1, 2, 3, 4, 5].map(function (i) { return { h: copyMap["pst" + i + "_h"] || "", p: copyMap["pst" + i + "_p"] || "" }; });
     var procSteps = (cat.process && cat.process.length) ? cat.process
-      : (key === "photo" || key === "global") ? SVC_GENERIC
+      : (key === "global") ? SVC_GENERIC
       : mainProc;
     var tsteps = document.querySelectorAll("#timeline .tstep");
     procSteps.forEach(function (s, i) {

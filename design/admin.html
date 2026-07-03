@@ -236,7 +236,6 @@
               <a class="btn" href="service.html?cat=poster&edit=1" target="_blank">포스터·전단지 ↗</a>
               <a class="btn" href="service.html?cat=ci&edit=1" target="_blank">CI·로고디자인 ↗</a>
               <a class="btn" href="service.html?cat=package&edit=1" target="_blank">패키지·라벨 ↗</a>
-              <a class="btn" href="service.html?cat=photo&edit=1" target="_blank">촬영서비스 ↗</a>
               <a class="btn" href="service.html?cat=global&edit=1" target="_blank">다국어디자인 ↗</a>
             </div>
           </div>
@@ -514,7 +513,7 @@
     </div>
   </div>
 
-  <script src="js/data.js?v=33"></script>
+  <script src="js/data.js?v=34"></script>
   <script>
   HAO.ready.then(function () {
     "use strict";
@@ -738,7 +737,7 @@
       var FAC = ["카탈로그·브로슈어", "촬영서비스", "포스터·전단지"];
       var FAC_LABEL = ["인쇄 · 후가공", "사진촬영 스튜디오", "디자인 스튜디오"];
       $("pi-aboutfac").innerHTML = FAC.map(function (c, i) { return slotTile("about_fac_" + i, c, (i + 1) + ". " + FAC_LABEL[i]); }).join("");
-      var SVC_MAP = { catalog: "카탈로그·브로슈어", leaflet: "리플렛", poster: "포스터·전단지", ci: "CI·로고디자인", package: "패키지·라벨", photo: "촬영서비스", global: "다국어디자인" };
+      var SVC_MAP = { catalog: "카탈로그·브로슈어", leaflet: "리플렛", poster: "포스터·전단지", ci: "CI·로고디자인", package: "패키지·라벨", global: "다국어디자인" };
       if (!$("pi-svccat").options.length) {
         $("pi-svccat").innerHTML = Object.keys(SVC_MAP).map(function (k) { return '<option value="' + k + '">' + SVC_MAP[k] + "</option>"; }).join("");
       }
