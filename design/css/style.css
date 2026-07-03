@@ -1234,3 +1234,12 @@ img { display: block; max-width: 100%; }
   .rev p { font-size: .94rem; line-height: 1.7; margin-right: 18px; }
   .rev cite { font-size: .8rem; }
 }
+
+/* 모바일: 파트너 로고 두 줄 촘촘하게 */
+@media (max-width: 760px) {
+  .plogo { width: 148px; height: 62px; border-radius: 12px; }
+  .plogo img { max-width: 78%; max-height: 66%; }
+  .partners__track { gap: 12px; animation-duration: 30s; }
+  .partners__marquee--rev .partners__track { animation-duration: 36s; }
+  .partners__marquee { padding: 8px 0; }
+}
