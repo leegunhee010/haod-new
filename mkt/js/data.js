@@ -183,7 +183,6 @@
     { key: "mk_sv_c3_t", page: "index", sel: "#services .svq:nth-of-type(3) .svq__tt", tag: "b", label: "서비스 STEP3 — 제목", value: "마케팅 실행 (콘텐츠 제작\n+ 채널 운영 + 오프라인)" },
     { key: "mk_df_a_t", page: "index", sel: "#difference .dif-card--a .dif-head__t", tag: "b", label: "비교 — 왼쪽 카드 제목", value: "일반 외주 대행" },
     { key: "mk_df_b_t", page: "index", sel: "#difference .dif-card--b .dif-head__t", tag: "b", label: "비교 — 하오 카드 제목", value: "하오디자인 마케팅센터" },
-    { key: "mk_cta_btn", page: "index", sel: ".on-cta__btn .t", tag: "b", label: "CTA 배너 — 버튼", value: "마케팅 문의" },
     { key: "mk_wk_more", page: "index", sel: "#works .pillbtn", tag: "b", label: "포트폴리오 — 더보기 버튼", value: "사례 더보기" },
     { key: "mk_sv_more", page: "index", sel: "#services .pillbtn", tag: "b", label: "서비스 — 자세히 버튼", value: "서비스 자세히 보기 →" },
     { key: "mk_ct_tel", page: "index", sel: ".mc-contact a[href^='tel']", tag: "b", label: "문의 — 전화번호", value: "1666-2027" },
@@ -282,7 +281,6 @@
     { key: "mk_ix_35", page: "index", sel: "#timeline > div:nth-of-type(6) > h3", tag: "b", label: "5단계 · 리포트 · 최적화", value: "리포트 · 최적화" },
     { key: "mk_ix_36", page: "index", sel: "#timeline > div:nth-of-type(6) > p", tag: "b", label: "5단계 · 결과를 함께 보고 다음을 개선하며, 브랜드가", value: "결과를 함께 보고 다음을 개선하며, 브랜드가 꾸준히 성장하도록 돕습니다." },
     { key: "mk_ix_51", page: "index", sel: "#works > div:nth-of-type(1) > h2", tag: "b", label: "포트폴리오 · 포트폴리오", value: "포트폴리오" },
-    { key: "mk_ix_52", page: "index", sel: "#top > div > div > p > small", tag: "b", label: "다음 차례는 대표님 브랜드입니다. 부담 없이", value: "다음 차례는 대표님 브랜드입니다. 부담 없이 물어보세요." },
     { key: "mk_ix_53", page: "index", sel: "#contact > div > div:nth-of-type(1) > h2", tag: "b", label: "문의 · CONTACTUS", value: "CONTACT\nUS" },
     { key: "mk_ix_54", page: "index", sel: "#contact > div > div:nth-of-type(1) > p", tag: "b", label: "문의 · 마케팅팀이 없어도 괜찮습니다.하오가 우리 브", value: "마케팅팀이 없어도 괜찮습니다.\n**하오가 우리 브랜드의 마케팅팀**이 되어드릴게요.\n간단히 남겨주시면 빠르게 연락드립니다." },
     { key: "mk_ix_55", page: "index", sel: "#quoteForm > button", tag: "b", label: "문의 · 문의 보내기", value: "문의 보내기" },
@@ -313,8 +311,6 @@
     { key: "mk_ch_22", page: "index", sel: ".on-chatgrp .on-chat:nth-child(4) p:nth-of-type(4)", tag: "b", label: "CASE4 — 하오 답변", value: "기획·디자인·운영을 한 팀이 맡아,온라인부터 전시 현장까지 하나의 브랜드로 이어지게 합니다." },
     { key: "mk_ch_23", page: "index", sel: ".on-chatgrp .on-chat:nth-child(4) .on-chat__meta small", tag: "b", label: "CASE4 — 고객 유형", value: "제조기업" },
     { key: "mk_ch_24", page: "index", sel: ".on-chatgrp .on-chat:nth-child(4) .on-chat__meta b", tag: "b", label: "CASE4 — 브랜드명", value: "D 브랜드" },
-    { key: "mk_cta_t", page: "index", sel: ".on-cta__t .on-cta__main", tag: "b", label: "CTA 배너 — 제목", value: "134개 브랜드가 하오와 함께 성장했습니다" },
-    { key: "mk_cta_s", page: "index", sel: ".on-cta__t small", tag: "b", label: "CTA 배너 — 부제", value: "다음 차례는 대표님 브랜드입니다. 부담 없이 물어보세요." },
 
     /* ── Works ── */
     { key: "works_title", page: "works", sel: ".subhero__title", tag: "b", label: "상단 제목", value: "포트폴리오" },
