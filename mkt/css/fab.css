@@ -1,15 +1,23 @@
-/* HAO 공통 플로팅 빠른버튼 (디자인센터 스타일 — 카카오·전화) */
-.fab { position: fixed; right: clamp(14px, 2vw, 26px); bottom: clamp(16px, 3vh, 30px); z-index: 90; display: flex; flex-direction: column; align-items: flex-end; gap: 14px; }
-.fab__btn { display: inline-flex; align-items: center; height: 58px; border-radius: 999px; color: #fff; overflow: hidden; text-decoration: none; transition: box-shadow .3s, transform .3s cubic-bezier(.2,.7,.2,1); animation: fabBob 3s ease-in-out infinite; }
-.fab__btn:nth-child(2) { animation-delay: .25s; }
-.fab__ico { flex: 0 0 58px; width: 58px; height: 58px; display: grid; place-items: center; }
-.fab__ico svg { width: 29px; height: 29px; display: block; }
-.fab .fab__ico svg, .fab .fab__ico svg path { fill: currentColor !important; stroke: none !important; }
-.fab__label { max-width: 0; opacity: 0; white-space: nowrap; font-weight: 800; font-size: .95rem; letter-spacing: -.02em; transition: max-width .4s cubic-bezier(.2,.7,.2,1), opacity .3s, padding .4s cubic-bezier(.2,.7,.2,1); }
-.fab__btn:hover { animation: none; transform: translateY(-3px) scale(1.04); box-shadow: 0 20px 38px -10px rgba(23,21,15,.45); }
-.fab__btn:hover .fab__label { max-width: 240px; opacity: 1; padding-left: 24px; }
-.fab a.fab__btn.fab--kakao { background: #FAE100; color: #3A1D1D !important; box-shadow: 0 12px 28px -8px rgba(250,210,0,.75); }
-.fab a.fab__btn.fab--phone { background: #21b56a; color: #fff !important; box-shadow: 0 12px 28px -8px rgba(33,181,106,.6); }
+/* HAO 공통 플로팅 빠른버튼 (디자인센터 스타일 — 카카오·전화) v4
+   각 센터의 옛 .fab 잔재 규칙을 이기도록 강한 셀렉터 + !important */
+.fab { position: fixed !important; right: clamp(14px, 2vw, 26px) !important; bottom: clamp(16px, 3vh, 30px) !important; z-index: 90; display: flex !important; flex-direction: column !important; align-items: flex-end !important; gap: 14px !important; }
+.fab a.fab__btn { width: auto !important; height: 58px !important; border-radius: 999px !important;
+  display: inline-flex !important; flex-direction: row !important; align-items: center !important; justify-content: flex-start !important;
+  color: #fff; overflow: hidden; text-decoration: none; padding: 0 !important; line-height: 1 !important;
+  transition: box-shadow .3s, transform .3s cubic-bezier(.2,.7,.2,1); animation: fabBob 3s ease-in-out infinite; }
+.fab a.fab__btn:nth-child(2) { animation-delay: .25s; }
+.fab a.fab__btn .fab__ico { flex: 0 0 58px !important; width: 58px !important; height: 58px !important; display: grid !important; place-items: center !important; padding: 0 !important; margin: 0 !important; }
+.fab a.fab__btn .fab__ico svg { width: 29px !important; height: 29px !important; display: block !important; margin: 0 !important; position: static !important; }
+.fab a.fab__btn .fab__ico svg, .fab a.fab__btn .fab__ico svg path { fill: currentColor !important; stroke: none !important; }
+.fab a.fab__btn .fab__label { max-width: 0; opacity: 0; white-space: nowrap; font-weight: 800; font-size: .95rem; letter-spacing: -.02em; transition: max-width .4s cubic-bezier(.2,.7,.2,1), opacity .3s, padding .4s cubic-bezier(.2,.7,.2,1); }
+.fab a.fab__btn:hover { animation: none; transform: translateY(-3px) scale(1.04) !important; box-shadow: 0 20px 38px -10px rgba(23,21,15,.45); }
+.fab a.fab__btn:hover .fab__label { max-width: 240px; opacity: 1; padding-left: 24px; }
+.fab a.fab__btn.fab--kakao { background: #FAE100 !important; color: #3A1D1D !important; box-shadow: 0 12px 28px -8px rgba(250,210,0,.75); }
+.fab a.fab__btn.fab--phone { background: #21b56a !important; color: #fff !important; box-shadow: 0 12px 28px -8px rgba(33,181,106,.6); }
 @keyframes fabBob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
-@media (max-width: 600px) { .fab__btn { height: 52px; } .fab__ico { flex-basis: 52px; width: 52px; height: 52px; } .fab__ico svg { width: 25px; height: 25px; } }
-@media (prefers-reduced-motion: reduce) { .fab__btn { animation: none; } }
+@media (max-width: 600px) {
+  .fab a.fab__btn { height: 52px !important; }
+  .fab a.fab__btn .fab__ico { flex-basis: 52px !important; width: 52px !important; height: 52px !important; }
+  .fab a.fab__btn .fab__ico svg { width: 25px !important; height: 25px !important; }
+}
+@media (prefers-reduced-motion: reduce) { .fab a.fab__btn { animation: none; } }
