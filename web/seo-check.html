@@ -22,7 +22,7 @@
     .sct__lead{margin-top:14px;color:var(--muted);font-size:1.02rem;line-height:1.72}
     /* 입력 */
     .sform{display:flex;gap:8px;max-width:600px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:14px;padding:7px;box-shadow:0 14px 36px -26px rgba(60,30,18,.3)}
-    .sform__url{flex:1;border:0;background:none;font:inherit;font-size:1.02rem;padding:13px 15px;color:var(--ink);outline:none}
+    .sform__url{flex:1;min-width:0;border:0;background:none;font:inherit;font-size:1.02rem;padding:13px 15px;color:var(--ink);outline:none}
     .sform__url::placeholder{color:var(--faint)}
     .sform__btn{flex:none;border:0;border-radius:10px;background:var(--grad);color:#fff;font-weight:700;font-size:.98rem;padding:0 24px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:box-shadow .3s,transform .3s}
     .sform__btn:hover{transform:translateY(-1px);box-shadow:0 14px 30px -16px rgba(232,56,23,.55)}
@@ -103,6 +103,11 @@
     .scta a:hover{transform:translateY(-2px)}
     @media(max-width:760px){.scats{grid-template-columns:repeat(2,1fr)}}
     @media(max-width:680px){.sscore{grid-template-columns:1fr;text-align:center}.sdonut{margin:0 auto}.spv__grid{grid-template-columns:1fr}.sgrade__tag,.sgrade__url{justify-content:center}}
+    @media(max-width:480px){
+      .sform{flex-direction:column;gap:8px;border-radius:18px}
+      .sform__url{width:100%;padding:12px 13px}
+      .sform__btn{width:100%;justify-content:center;padding:13px 0}
+    }
   </style>
   <script type="application/ld+json">
 {"@context": "https://schema.org", "@type": "WebApplication", "name": "무료 SEO 진단", "url": "https://haodesign.co.kr/web/seo-check.html", "applicationCategory": "BusinessApplication", "operatingSystem": "Web", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "KRW"}, "description": "URL만 입력하면 웹사이트 SEO를 22개 항목으로 무료 진단하는 도구. 하오디자인 웹구축센터.", "provider": {"@type": "Organization", "name": "하오디자인", "url": "https://haodesign.co.kr/"}}
