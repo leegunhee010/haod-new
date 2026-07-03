@@ -120,6 +120,7 @@
           <button data-tab="hero">히어로 배너</button>
           <button data-tab="copy">카피 수정</button>
           <button data-tab="works">포트폴리오 <span class="cnt" id="cntWorks">0</span></button>
+          <button data-tab="rev">후기 <span class="cnt" id="cntRev">0</span></button>
           <button data-tab="posts">칼럼 <span class="cnt" id="cntPosts">0</span></button>
           <button data-tab="qna">Q&amp;A <span class="cnt" id="cntQna">0</span></button>
           <button data-tab="partners">파트너 로고 <span class="cnt" id="cntPtn">0</span></button>
@@ -206,6 +207,26 @@
               <input type="hidden" id="wImgData" />
               <div class="full"><img id="wPrev" alt="" style="max-width:200px;border-radius:8px;display:none" /></div>
               <div class="full actions"><button type="button" class="btn" id="wCancel">취소</button><button type="submit" class="btn btn--primary">저장</button></div>
+            </form>
+          </div>
+        </section>
+
+        <!-- 후기 -->
+        <section id="tab-rev" hidden>
+          <div class="main__head"><h1>고객 후기</h1><button class="btn btn--primary" id="rvAddBtn">+ 새 후기</button></div>
+          <div class="panel">
+            <div id="rvList"></div>
+            <form class="frm" id="rvForm" hidden style="margin-top:18px;padding-top:18px;border-top:2px solid var(--ink)">
+              <input type="hidden" id="rvIdx" />
+              <div><label>브랜드명 (From.)</label><input type="text" id="rvB" required /></div>
+              <div><label>분류 (예: 전통음료)</label><input type="text" id="rvFrom" /></div>
+              <div class="full"><label>인용 제목 — **단어** 는 오렌지 강조</label><input type="text" id="rvQ" required /></div>
+              <div class="full"><label>본문</label><textarea id="rvBody" rows="3"></textarea></div>
+              <div><label>사진 — 내 컴퓨터에서 업로드</label><input type="file" id="rvFile" accept="image/*" /></div>
+              <div><label>또는 이미지 경로/URL</label><input type="text" id="rvImgUrl" placeholder="hs13.jpg 또는 https://…" /></div>
+              <input type="hidden" id="rvImgData" />
+              <div class="full"><img id="rvPrev" alt="" style="max-width:200px;border-radius:8px;display:none" /></div>
+              <div class="full actions"><button type="button" class="btn" id="rvCancel">취소</button><button type="submit" class="btn btn--primary">저장</button></div>
             </form>
           </div>
         </section>
@@ -357,7 +378,7 @@
 
   <div class="toast" id="toast">저장되었습니다</div>
 
-  <script src="js/data.js?v=4"></script>
+  <script src="js/data.js?v=5"></script>
   <script>
   HAO.ready.then(function () {
     "use strict";
@@ -405,7 +426,7 @@
     $("logoutBtn").addEventListener("click", function () { sessionStorage.removeItem("hs_admin"); localStorage.removeItem("hs_edit"); localStorage.removeItem("hub_session"); location.reload(); });
 
     /* 탭 */
-    var TABS = ["dash","hero","copy","works","posts","qna","partners","inq","media","seo","set","acc"];
+    var TABS = ["dash","hero","copy","works","rev","posts","qna","partners","inq","media","seo","set","acc"];
     document.querySelectorAll("#sideMenu button").forEach(function (b) {
       b.addEventListener("click", function () {
         document.querySelectorAll("#sideMenu button").forEach(function (x) { x.classList.remove("is-active"); });
@@ -706,12 +727,58 @@
     /* 초기화 */
     $("resetBtn").addEventListener("click", function () {
       if (!confirm("스튜디오 관리자 수정 내용을 모두 초기화할까요? (서버·캐시의 hs_ 데이터 삭제)")) return;
-      ["hs_works","hs_posts","hs_qna","hs_hero","hs_partners","hs_copy","hs_seo","hs_settings","hs_social","hs_mail","hs_logo","hs_headcode"].forEach(function (k) { HAO.remove(k); localStorage.removeItem(k); });
+      ["hs_works","hs_reviews","hs_posts","hs_qna","hs_hero","hs_partners","hs_copy","hs_seo","hs_settings","hs_social","hs_mail","hs_logo","hs_headcode"].forEach(function (k) { HAO.remove(k); localStorage.removeItem(k); });
       toast("초기화됨 — 새로고침합니다"); setTimeout(function () { location.reload(); }, 1200);
     });
 
     /* 세션 유지 */
     var _hubT = +localStorage.getItem("hub_session");
+    /* ---- 후기 관리 ---- */
+    var reviews = (window.HAO && HAO.getReviews) ? HAO.getReviews() : [];
+    function renderRevList() {
+      var el = $("rvList"); if (!el) return;
+      el.innerHTML = reviews.map(function (r, i) {
+        return '<div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid rgba(0,0,0,.08)">' +
+          '<img src="' + HAO.imgSrc(r.img) + '" style="width:58px;height:44px;object-fit:cover;border-radius:8px;flex:0 0 auto" />' +
+          '<div style="flex:1;min-width:0"><b>' + esc(r.b) + '</b> <span style="color:#999;font-size:.84em">' + esc(r.from || "") + '</span><br /><span style="font-size:.85em;color:#666">' + esc(r.q) + '</span></div>' +
+          '<button type="button" class="btn" data-rvup="' + i + '">↑</button><button type="button" class="btn" data-rvdn="' + i + '">↓</button>' +
+          '<button type="button" class="btn" data-rvedit="' + i + '">수정</button><button type="button" class="btn" data-rvdel="' + i + '">삭제</button></div>';
+      }).join("") || '<p style="color:#888;padding:8px 0">등록된 후기가 없습니다.</p>';
+      var c = $("cntRev"); if (c) c.textContent = reviews.length;
+    }
+    function saveReviews() { store("hs_reviews", reviews); renderRevList(); toast(); }
+    function rvOpen(i) {
+      $("rvForm").hidden = false; $("rvIdx").value = i;
+      var r = i >= 0 ? reviews[i] : { b: "", from: "", q: "", body: "", img: "" };
+      $("rvB").value = r.b || ""; $("rvFrom").value = r.from || ""; $("rvQ").value = r.q || ""; $("rvBody").value = r.body || "";
+      $("rvImgUrl").value = (r.img && !/^data:/.test(r.img)) ? r.img : ""; $("rvImgData").value = r.img || "";
+      var p = $("rvPrev"); if (r.img) { p.src = HAO.imgSrc(r.img); p.style.display = "block"; } else { p.style.display = "none"; }
+      $("rvForm").scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+    if ($("rvAddBtn")) {
+      $("rvAddBtn").addEventListener("click", function () { rvOpen(-1); });
+      $("rvCancel").addEventListener("click", function () { $("rvForm").hidden = true; });
+      $("rvList").addEventListener("click", function (e) {
+        var b = e.target.closest("button"); if (!b) return;
+        if (b.dataset.rvedit != null) rvOpen(+b.dataset.rvedit);
+        if (b.dataset.rvdel != null && confirm("이 후기를 삭제할까요?")) { reviews.splice(+b.dataset.rvdel, 1); saveReviews(); }
+        if (b.dataset.rvup != null) { var i = +b.dataset.rvup; if (i > 0) { var t = reviews[i - 1]; reviews[i - 1] = reviews[i]; reviews[i] = t; saveReviews(); } }
+        if (b.dataset.rvdn != null) { var j = +b.dataset.rvdn; if (j < reviews.length - 1) { var u = reviews[j + 1]; reviews[j + 1] = reviews[j]; reviews[j] = u; saveReviews(); } }
+      });
+      $("rvFile").addEventListener("change", function () { fileToDataURL(this.files[0], function (url) { $("rvImgData").value = url; var p = $("rvPrev"); p.src = url; p.style.display = "block"; }); });
+      $("rvImgUrl").addEventListener("input", function () { var p = $("rvPrev"); var s = HAO.imgSrc(this.value); $("rvImgData").value = this.value; if (s) { p.src = s; p.style.display = "block"; } });
+      $("rvForm").addEventListener("submit", function (e) {
+        e.preventDefault();
+        var i = +$("rvIdx").value;
+        var img = $("rvImgData").value || $("rvImgUrl").value.trim();
+        var obj = { b: $("rvB").value.trim(), from: $("rvFrom").value.trim(), q: $("rvQ").value.trim(), body: $("rvBody").value.trim(), img: img };
+        if (!obj.b || !obj.q) { alert("브랜드명과 인용 제목은 필수입니다."); return; }
+        if (i >= 0) reviews[i] = obj; else reviews.push(obj);
+        saveReviews(); $("rvForm").hidden = true;
+      });
+      renderRevList();
+    }
+
     if (sessionStorage.getItem("hs_admin") === "1" || (_hubT && Date.now() < _hubT)) { sessionStorage.setItem("hs_admin", "1"); showAdmin(); }
   });
   </script>

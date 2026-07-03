@@ -274,6 +274,17 @@
 
   /* ===== 사이트 카피 (관리자 '카피 수정' 탭) =====
      page: 적용 페이지 / sel: 대상 선택자 / tag: **강조** 변환 태그(em·b) / attr: 속성 적용 / list+item: 목록 */
+
+  /* ===== 고객 후기 (메인 Experience a change 슬라이더) — 관리자에서 수정 ===== */
+  var DEFAULT_REVIEWS = [
+    { b: '풍경식혜', from: '전통음료', img: 'hs13.jpg', q: '제품의 **건강한 이미지**를 그대로 담아주셨어요.', body: '식혜 본연의 정갈한 느낌을 살리면서도 식욕을 자극하는 연출이 인상적이었습니다. 원물 소품까지 세심하게 신경 써주셔서 결과물 만족도가 높았어요.' },
+    { b: '인천디자인고등학교', from: '전시·공간', img: 'hs14.jpg', q: '작품 하나하나를 **돋보이게** 기록해 주셨습니다.', body: '전시 공간과 작품의 분위기를 그대로 담아주셔서 도록과 홍보물에 두루 활용하고 있습니다. 조명과 구도까지 전문가의 손길이 느껴졌어요.' },
+    { b: '이루웰', from: '건강식품', img: 'hs15.jpg', q: '판매율로 이어지는 **콘텐츠 아이디어**를 많이 얻어갑니다.', body: '화려하기만 한 게 아니라 셀링 포인트에 맞춰 콘텐츠를 제안해 주셔서 좋았습니다. 시장 조사와 제품 연구로 기획을 새롭게 해주십니다.' },
+    { b: '제이케이앤컴퍼니', from: '간편식', img: 'hs16.jpg', q: '최종 연출컷 퀄리티가 **만족스럽습니다!**', body: '촬영 전 컨셉에 맞춰 레퍼런스·소품도 제안해주고 의견도 잘 반영해주셨어요. 빠듯한 일정에도 따뜻한 음식 비주얼을 끝까지 책임져 주셨습니다.' },
+    { b: '원에이', from: '뷰티·생활', img: 'hs17.jpg', q: '디자인 이상의 **기획과 촬영**을 만들어 줍니다.', body: '기획 단계부터 브랜드의 많은 부분을 함께 정리해 주십니다. 일상 속 제품이 감각적으로 보이도록 연출해 주셔서 만족스러웠습니다.' },
+    { b: '광동생활건강', from: '건강식품', img: 'hs18.jpg', q: '판매될 수밖에 없는 **상세페이지**, 여기로 정착합니다!', body: '대형 브랜드 기준에 맞춰 완성도 높은 결과물을 제안해 주셨습니다. 고객 시선을 잡는 셀링 포인트 디자인은 정말 감탄이 나옵니다.' }
+  ];
+
   var DEFAULT_COPY = [
     /* ───── 메인 ───── */
     { key: "sys_title", page: "index", sel: ".ef-sys__title", tag: "b", label: "서비스시스템 — 영문 제목", value: "A complete commerce\nvisual system" },
@@ -557,6 +568,7 @@
   /* ===== 공개 API ===== */
   window.HAO = {
     imgSrc: imgSrc,
+    getReviews: function () { return load("hs_reviews", DEFAULT_REVIEWS); },
     ready: Promise.all([sbLoad(), loadHubAccounts()]),
     set: function (k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} return sbSave(k, v); },
     remove: function (k) { localStorage.removeItem(k); return sbDelete(k); },
