@@ -322,7 +322,7 @@
 
     /* ── 칼럼 ── */
     { key: "col_title", page: "column", sel: ".subhero__title", tag: "b", label: "상단 제목", value: "마케팅 칼럼" },
-    { key: "col_desc", page: "column", sel: ".subhero__desc", tag: "b", label: "상단 설명", value: "브랜딩·이커머스·패키지·전시 현장에서 쌓은 이야기를 나눕니다. 작은 브랜드를 디자인으로 키우는 관점을 전합니다." },
+    { key: "col_desc", page: "column", sel: ".subhero__desc", tag: "b", label: "상단 설명", value: "마케팅팀이 없어도 방향은 잡을 수 있습니다.\n진단부터 콘텐츠·전시까지, 현장에서 쌓은 실전 노하우를 쉽게 풀어드립니다." },
 
     /* ── Q&A ── */
     { key: "qna_title", page: "qna", sel: ".subhero__title", tag: "b", label: "상단 제목", value: "자주 하는 질문" },
