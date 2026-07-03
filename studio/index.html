@@ -11,7 +11,7 @@
   <meta property="og:type" content="website" />
   <link rel="preconnect" href="https://cdn.jsdelivr.net" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.css" />
-  <link rel="stylesheet" href="css/style.css?v=6" />
+  <link rel="stylesheet" href="css/style.css?v=7" />
   <link rel="stylesheet" href="css/effector.css?v=17" />
   <link rel="canonical" href="https://haodesign.co.kr/studio/" />
   <script type="application/ld+json">
@@ -184,16 +184,17 @@
           </ul>
         </div>
         <form class="cform cform--card" id="quoteForm" novalidate>
-          <div class="cfield"><input type="text" id="name" name="name" placeholder="이름 / 브랜드명" required /></div>
-          <div class="cfield"><input type="tel" id="phone" name="phone" placeholder="연락처" required /></div>
-          <div class="cfield cfield--full">
+          <div class="cfield"><label>이름</label><input type="text" id="name" name="name" placeholder="이름 / 담당자" required /></div>
+          <div class="cfield"><label>연락처</label><input type="tel" id="phone" name="phone" placeholder="010-0000-0000" required /></div>
+          <div class="cfield cfield--full"><label>회사·브랜드명</label><input type="text" id="company" name="company" placeholder="회사 또는 브랜드명" /></div>
+          <div class="cfield cfield--full"><label>관심 서비스</label>
             <select id="type" name="type">
               <option value="">관심 서비스 선택</option>
               <option>제품·브랜드 촬영</option><option>상세페이지 디자인</option><option>영상·릴스 콘텐츠</option>
               <option>보정·리터칭</option><option>기타 문의</option>
             </select>
           </div>
-          <div class="cfield cfield--full"><textarea id="message" name="message" rows="4" placeholder="제품 종류, 컷 수, 원하는 결과물과 일정 등을 자유롭게 적어주세요."></textarea></div>
+          <div class="cfield cfield--full"><label>문의 내용</label><textarea id="message" name="message" rows="4" placeholder="제품 종류, 컷 수, 원하는 결과물과 일정 등을 자유롭게 적어주세요."></textarea></div>
           <button type="submit" class="btn-round btn-round--solid"><span>문의하기</span><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
           <p class="cnote" id="formNote" role="status"></p>
         </form>
@@ -369,7 +370,7 @@
       e.preventDefault(); var note = $('#formNote');
       if (!$('#name').value.trim() || !$('#phone').value.trim()) { note.textContent = '이름과 연락처를 입력해주세요.'; return; }
       var sbtn = form.querySelector('button[type=submit]'); if (sbtn) sbtn.disabled = true; note.textContent = '접수 중…';
-      HAO.saveInquiry({ name: $('#name').value, phone: $('#phone').value, type: $('#type') ? $('#type').value : '', message: $('#message') ? $('#message').value : '' })
+      HAO.saveInquiry({ name: $('#name').value, phone: $('#phone').value, company: $('#company') ? $('#company').value : '', type: $('#type') ? $('#type').value : '', message: $('#message') ? $('#message').value : '' })
         .then(function () { note.textContent = '문의가 접수되었습니다. 빠르게 연락드리겠습니다.'; form.reset(); })
         .catch(function () { note.textContent = '접수 중 오류가 발생했습니다. 전화로 문의해 주세요.'; })
         .then(function () { if (sbtn) sbtn.disabled = false; });

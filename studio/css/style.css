@@ -1299,3 +1299,9 @@ img { display: block; max-width: 100%; }
 .vtable td.em { color: var(--accent); font-weight: 800; }
 .vnote { margin-top: 14px; font-size: .86rem; color: var(--muted); }
 @media (max-width: 760px) { .specgrid { grid-template-columns: 1fr; } .vtable { font-size: .82rem; } .vtable th, .vtable td { padding: 9px 8px; } }
+
+/* ===== 문의 폼 라벨 (센터 공통 스타일) ===== */
+.cform .cfield{display:flex;flex-direction:column}
+.cform .cfield label{font-size:.78rem;font-weight:700;color:#6e6a60;margin:0 0 7px 2px}
+.cform select{appearance:auto;color:var(--ink,#17150f)}
+.cform textarea{min-height:110px}

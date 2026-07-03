@@ -628,13 +628,14 @@
     saveInquiry: function (q) {
       var m = this.getMail();
       var typed = INQ_TAG + " " + (q.type || "촬영 문의");
-      var payload = { name: q.name, phone: q.phone, type: typed, message: q.message || "", to: m.to || "", date: new Date().toLocaleString("ko-KR") };
+      var msg = (q.company ? "[" + q.company + "] " : "") + (q.message || "");
+      var payload = { name: q.name, phone: q.phone, type: typed, message: msg, to: m.to || "", date: new Date().toLocaleString("ko-KR") };
       if (m && m.on && m.url) {
         fetch(m.url, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) }).catch(function () {});
       }
       return fetch(SB_URL + "/rest/v1/inquiries", {
         method: "POST", headers: SB_H,
-        body: JSON.stringify([{ name: q.name, phone: q.phone, type: typed, message: q.message || "" }])
+        body: JSON.stringify([{ name: q.name, phone: q.phone, type: typed, message: msg }])
       });
     },
     fetchInquiries: function () {
