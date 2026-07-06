@@ -169,7 +169,7 @@
 
   var DEFAULT_COPY = [
     /* ───── 메인 · 히어로 ───── */
-    { key: "vc_hero_eyebrow", page: "index", sel: ".ghero__eyebrow", tag: "b", label: "히어로 — 상단 라벨", value: "**6년 연속** 정부지원사업 공식 수행기관" },
+    { key: "vc_hero_eyebrow", page: "index", sel: ".ghero__eyebrow", tag: "b", label: "히어로 — 상단 라벨", value: "**6년 연속** 정부지원사업 공식 디자인 수행기관" },
     { key: "vc_hero_prefix", page: "index", sel: "#ghPrefix", tag: "b", label: "히어로 — 제목 첫 줄(고정 문구)", value: "하오가 디자인하는" },
     { key: "vc_hero_roll", page: "index", sel: "#ghRoll", tag: "b", label: "히어로 — 롤링 단어들 (한 줄에 하나씩)", value: "수출바우처\n혁신바우처\n판로개척지원사업\n다국어 카탈로그\n브랜드 디자인" },
     { key: "vc_hero_line2", page: "index", sel: ".ghero__title .hero-line:nth-of-type(2)", tag: "b", label: "히어로 — 제목 둘째 줄", value: "정부지원 디자인의 기준." },
@@ -206,7 +206,7 @@
     { key: "vc_s7_eg", page: "index", sel: "#s-about .tit-box > b", tag: "b", label: "소개 — 라벨", value: "Who We Are" },
     { key: "vc_s7_t1", page: "index", sel: "#s-about .tit-box > h3:nth-of-type(1), #s-about .tit-box > h3:nth-of-type(3)", tag: "b", label: "소개 — 제목 1줄", value: "Government design with" },
     { key: "vc_s7_t2", page: "index", sel: "#s-about .tit-box > h3:nth-of-type(2), #s-about .tit-box > h3:nth-of-type(4)", tag: "b", label: "소개 — 제목 2줄", value: "HAO DESIGN" },
-    { key: "vc_s7_line1", page: "index", sel: "#s-about .fill-text.line1", tag: "b", label: "소개 — 문장①", value: "하오디자인은 5년 연속 정부 핵심사업 공식 디자인 수행기관으로, 412건 이상의 바우처 디자인을 수행했습니다." },
+    { key: "vc_s7_line1", page: "index", sel: "#s-about .fill-text.line1", tag: "b", label: "소개 — 문장①", value: "하오디자인은 6년 연속 정부지원사업 공식 디자인 수행기관으로, 412건 이상의 바우처 디자인을 수행했습니다." },
     { key: "vc_s7_line2", page: "index", sel: "#s-about .fill-text.line2", tag: "b", label: "소개 — 문장②", value: "복잡한 신청 절차는 우리가, 좋은 디자인은 기업에게. 결과보고까지 책임지는 파트너가 되겠습니다." },
 
     /* ───── 메인 · 바우처 칼럼(Story) ───── */
