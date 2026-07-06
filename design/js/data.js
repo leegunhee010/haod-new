@@ -196,7 +196,7 @@
 
   /* SEO (관리자 'SEO 관리' 탭) — siteUrl + 페이지별 title/desc/keywords */
   var DEFAULT_SEO = {
-    siteUrl: "https://haodesign.co.kr",
+    siteUrl: "https://leegunhee010.github.io/haod-new/design", /* TEMP: 도메인 연결 시 https://haodesign.co.kr 로 원복 */
     ogImage: "assets/work-hd/large/w402.jpg",
     pages: {
       index: {
