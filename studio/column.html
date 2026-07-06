@@ -51,28 +51,7 @@
         </div>
       </section>
       <section class="page page--tight">
-        <div class="gallery-board" id="galleryBoard"></div>
-      </section>
-    </div>
-
-    <div id="postView" hidden>
-      <section class="subhero subhero--post">
-        <div class="subhero__inner">
-          <p class="subhero__crumb"><a href="index.html">스튜디오센터</a> / <a href="column.html">Column</a></p>
-          <h2 class="subhero__title post-title" id="postTitle"></h2>
-          <p class="subhero__desc" id="postDate"></p>
-        </div>
-      </section>
-      <section class="page page--tight">
-        <article class="post">
-          <div class="post__hero"><img src="" alt="" id="postImg" /></div>
-          <div class="post__body" id="postBody"></div>
-          <div class="post__nav">
-            <a href="#" id="postPrev" class="post__navlink"><span>이전 글</span><strong></strong></a>
-            <a href="column.html" class="btn-round post__list"><span>목록으로</span></a>
-            <a href="#" id="postNext" class="post__navlink post__navlink--next"><span>다음 글</span><strong></strong></a>
-          </div>
-        </article>
+        <div class="gallery-board" id="galleryBoard"><article class="gcard" data-id="6"><div class="gcard__thumb"><img src="assets/work-hd/thumb/w380.jpg" alt="" loading="lazy"><span class="gcard__badge">NEW</span></div><div class="gcard__body"><h3><a href="column-6.html">제품 사진 하나가 전환율을 바꾼다</a></h3><p>같은 제품도 첫 컷에 따라 클릭과 구매가 달라지는 이유.</p><span class="gcard__date">2026-06-18</span></div></article><article class="gcard" data-id="5"><div class="gcard__thumb"><img src="assets/work-hd/thumb/w379.jpg" alt="" loading="lazy"><span class="gcard__badge">NEW</span></div><div class="gcard__body"><h3><a href="column-5.html">누끼컷 vs 연출컷, 언제 무엇을 쓸까</a></h3><p>커머스 상세에서 두 컷의 역할과 배치 순서.</p><span class="gcard__date">2026-06-09</span></div></article><article class="gcard" data-id="4"><div class="gcard__thumb"><img src="assets/work-hd/thumb/w402.jpg" alt="" loading="lazy"></div><div class="gcard__body"><h3><a href="column-4.html">팔리는 상세페이지의 5단 구성</a></h3><p>후킹부터 구매유도까지, 설득의 순서 설계법.</p><span class="gcard__date">2026-05-28</span></div></article><article class="gcard" data-id="3"><div class="gcard__thumb"><img src="assets/work-hd/thumb/w377.jpg" alt="" loading="lazy"></div><div class="gcard__body"><h3><a href="column-3.html">릴스 3초, 스크롤을 멈추게 하는 법</a></h3><p>숏폼의 첫 장면과 편집 리듬이 전부인 이유.</p><span class="gcard__date">2026-05-19</span></div></article><article class="gcard" data-id="2"><div class="gcard__thumb"><img src="assets/work-hd/thumb/w378.jpg" alt="" loading="lazy"></div><div class="gcard__body"><h3><a href="column-2.html">촬영 의뢰 전 준비하면 좋은 3가지</a></h3><p>레퍼런스·컷 리스트·일정을 미리 정하면 결과가 달라진다.</p><span class="gcard__date">2026-05-10</span></div></article><article class="gcard" data-id="1"><div class="gcard__thumb"><img src="assets/work-hd/thumb/w375.jpg" alt="" loading="lazy"></div><div class="gcard__body"><h3><a href="column-1.html">브랜드 톤을 사진으로 지키는 법</a></h3><p>시즌마다 흔들리지 않는 비주얼 일관성 만들기.</p><span class="gcard__date">2026-04-29</span></div></article></div>
       </section>
     </div>
 
@@ -160,48 +139,36 @@
     ];
     if (window.HAO && HAO.getPosts) posts = HAO.getPosts();
 
-    var listView = $('#listView'), postView = $('#postView'), gallery = $('#galleryBoard');
+    var listView = $('#listView'), gallery = $('#galleryBoard');
     gallery.innerHTML = posts.map(function (p) {
       return '<article class="gcard" data-id="' + p.id + '">' +
         '<div class="gcard__thumb"><img src="' + p.img + '" alt="" loading="lazy" />' +
         (p.isNew ? '<span class="gcard__badge">NEW</span>' : '') + '</div>' +
-        '<div class="gcard__body"><h3>' + p.title + '</h3><p>' + p.summary + '</p>' +
+        '<div class="gcard__body"><h3><a href="column-' + p.id + '.html">' + p.title + '</a></h3><p>' + p.summary + '</p>' +
         '<span class="gcard__date">' + p.date + '</span></div></article>';
     }).join('');
     gallery.addEventListener('click', function (e) {
       var card = e.target.closest('.gcard'); if (!card) return;
       location.href = 'column-' + card.getAttribute('data-id') + '.html';
     });
-    function byId(id) { return posts.filter(function (p) { return p.id === id; })[0]; }
-    function render() {
-      var m = location.hash.match(/^#post-(\d+)$/);
-      var post = m ? byId(parseInt(m[1], 10)) : null;
-      if (!post) { postView.hidden = true; listView.hidden = false; document.title = '칼럼 | 스튜디오센터'; return; }
-      listView.hidden = true; postView.hidden = false;
-      document.title = post.title + ' | 스튜디오센터';
-      $('#postTitle').textContent = post.title;
-      $('#postDate').textContent = post.date;
-      $('#postImg').src = post.img;
-      $('#postBody').innerHTML = post.body.map(function (t) { return '<p>' + t + '</p>'; }).join('');
-      var idx = posts.indexOf(post), prev = posts[idx + 1], next = posts[idx - 1];
-      var prevEl = $('#postPrev'), nextEl = $('#postNext');
-      prevEl.style.visibility = prev ? 'visible' : 'hidden';
-      nextEl.style.visibility = next ? 'visible' : 'hidden';
-      if (prev) { prevEl.href = '#post-' + prev.id; prevEl.querySelector('strong').textContent = prev.title; }
-      if (next) { nextEl.href = '#post-' + next.id; nextEl.querySelector('strong').textContent = next.title; }
-      window.scrollTo(0, 0);
-    }
-    addEventListener('hashchange', render); render();
+    /* 구 해시 링크(#post-N)는 정적 글 페이지로 */
+    (function () {
+      var hm = location.hash.match(/^#post-(\d+)$/);
+      if (hm) location.replace('column-' + hm[1] + '.html');
+    })();
+    addEventListener('hashchange', function () {
+      var hm = location.hash.match(/^#post-(\d+)$/);
+      if (hm) location.replace('column-' + hm[1] + '.html');
+    });
     if (window.HAO && HAO.ready) HAO.ready.then(function () {
       posts = HAO.getPosts();
       gallery.innerHTML = posts.map(function (p) {
         return '<article class="gcard" data-id="' + p.id + '">' +
           '<div class="gcard__thumb"><img src="' + HAO.imgSrc(p.img) + '" alt="" loading="lazy" />' +
           (p.isNew ? '<span class="gcard__badge">NEW</span>' : '') + '</div>' +
-          '<div class="gcard__body"><h3>' + p.title + '</h3><p>' + p.summary + '</p>' +
+          '<div class="gcard__body"><h3><a href="column-' + p.id + '.html">' + p.title + '</a></h3><p>' + p.summary + '</p>' +
           '<span class="gcard__date">' + p.date + '</span></div></article>';
       }).join('');
-      render();
     });
 
     var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } }); }, { threshold: .15 });
