@@ -513,7 +513,7 @@
     </div>
   </div>
 
-  <script src="js/data.js?v=35"></script>
+  <script src="js/data.js?v=36"></script>
   <script>
   HAO.ready.then(function () {
     "use strict";
@@ -1002,7 +1002,9 @@
       ["seo.t1", "소개 글 ① 제목", 1],
       ["seo.p1", "소개 글 ① 본문", 5],
       ["seo.t2", "소개 글 ② 제목", 1],
-      ["seo.p2", "소개 글 ② 본문", 5]
+      ["seo.p2", "소개 글 ② 본문", 5],
+      ["seo.alt", "소개 글 하단 — 검색 변형 문구 (카다로그·브로셔 등 다른 표기)", 3],
+      ["seo.kw", "🔍 메타 키워드 (쉼표로 구분)", 2]
     ];
     function svcGet(d, path) { return path.split(".").reduce(function (o, k) { return o[k]; }, d); }
     function svcSet(d, path, v) { var p = path.split("."), o = d; for (var i = 0; i < p.length - 1; i++) o = o[p[i]]; o[p[p.length - 1]] = v; }
