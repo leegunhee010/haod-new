@@ -194,6 +194,10 @@
                 <select id="wCat"><option>홈페이지</option><option>쇼핑몰</option><option>앱</option><option>랜딩</option><option>SEO·AEO</option><option>브랜딩</option></select>
               </div>
               <div class="full"><label style="display:inline-flex;align-items:center;gap:7px;font-weight:600;cursor:pointer"><input type="checkbox" id="wMain" style="width:auto" /> 메인페이지 포트폴리오에 노출</label></div>
+              <div class="full"><label>상세 소개 (팝업 설명문 — 비우면 카테고리 기본 문구)</label><textarea id="wDesc" rows="2"></textarea></div>
+              <div><label>업종 (비우면 표시 안 함)</label><input type="text" id="wInd" placeholder="예: 식품 / 유통" /></div>
+              <div><label>제작물 (비우면 기본값)</label><input type="text" id="wDel" /></div>
+              <div class="full"><label>작업 범위 (비우면 기본값)</label><input type="text" id="wScope" /></div>
               <div><label>이미지 — 내 컴퓨터에서 업로드</label><input type="file" id="wFile" accept="image/*" /></div>
               <div><label>또는 이미지 경로/URL</label><input type="text" id="wImgUrl" placeholder="hero.jpg 또는 https://…" /></div>
               <input type="hidden" id="wImgData" />
@@ -522,6 +526,7 @@
       wForm.hidden = false;
       $("wIdx").value = i; var w = i >= 0 ? works[i] : { t: "", c: "홈페이지", main: false, f: "" };
       $("wTitle").value = w.t || ""; $("wCat").value = CATS_W.indexOf(w.c) >= 0 ? w.c : "홈페이지"; $("wMain").checked = !!w.main;
+      $("wDesc").value = w.d || ""; $("wInd").value = w.ind || ""; $("wDel").value = w.del || ""; $("wScope").value = w.sc || "";
       $("wImgUrl").value = (w.f && !/^data:/.test(w.f)) ? w.f : ""; $("wImgData").value = /^(data:|https?:)/.test(w.f || "") ? w.f : "";
       var prev = $("wPrev"), src = HAO.imgSrc(w.f); if (src) { prev.src = src; prev.style.display = "block"; } else prev.style.display = "none";
     }
@@ -534,6 +539,7 @@
       var i = +$("wIdx").value;
       var f = $("wImgData").value || $("wImgUrl").value.trim();
       var obj = { t: $("wTitle").value.trim(), c: $("wCat").value, main: $("wMain").checked, f: f };
+      obj.d = $("wDesc").value.trim(); obj.ind = $("wInd").value.trim(); obj.del = $("wDel").value.trim(); obj.sc = $("wScope").value.trim();
       if (i >= 0) works[i] = Object.assign(works[i], obj); else works.unshift(obj);
       wForm.hidden = true; saveWorks();
     });

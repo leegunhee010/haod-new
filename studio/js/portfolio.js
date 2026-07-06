@@ -110,6 +110,13 @@
       '<button class="lb__close" aria-label="닫기">✕</button>' +
       '<button class="lb__nav lb__prev" aria-label="이전">‹</button>' +
       '<figure class="lb__stage"><div class="lb__scroll"><img alt="" /></div><figcaption></figcaption><span class="lb__hint">↕ 스크롤하여 전체 보기</span></figure>' +
+      '<aside class="lb__info">' +
+        '<span class="lbi__cat"></span>' +
+        '<h3 class="lbi__title"></h3>' +
+        '<p class="lbi__desc"></p>' +
+        '<p class="lbi__label">Project Info</p>' +
+        '<div class="lbi__rows"></div>' +
+      '</aside>' +
       '<button class="lb__nav lb__next" aria-label="다음">›</button>' +
       '<div class="lb__zoom"><button data-z="out" aria-label="축소">&minus;</button><span class="lb__zval">100%</span><button data-z="in" aria-label="확대">+</button><button data-z="reset" aria-label="원래대로">⟲</button></div>';
     document.body.appendChild(ov);
@@ -178,6 +185,32 @@
     imgEl.src = window.HAO_imgPath(w.f);
     imgEl.alt = w.t;
     capEl.innerHTML = '<b>' + w.t + '</b><span>' + (w.c || '') + ' · ' + (curIdx + 1) + ' / ' + curList.length + '</span>';
+    fillInfo(w);
+  }
+  /* 작품 정보 패널: 작품별 값(admin) > 카테고리 기본 문구 */
+  var LBI_DEF = {
+    '제품': { d: '제품의 질감과 형태가 살아나도록 촬영한 제품 촬영 사례입니다. 기획부터 촬영, 보정까지 함께 진행했습니다.', del: '제품 촬영', sc: '기획 · 촬영 · 보정' },
+    '음식': { d: '가장 먹음직스러운 순간을 담아낸 음식 촬영 사례입니다.', del: '음식 촬영', sc: '스타일링 · 촬영 · 보정' },
+    '건강식품': { d: '신뢰감이 전해지도록 톤을 잡아 촬영한 건강식품 촬영 사례입니다.', del: '건강식품 촬영', sc: '기획 · 촬영 · 보정' },
+    '뷰티': { d: '제품의 결과 분위기가 살아나도록 연출한 뷰티 촬영 사례입니다.', del: '뷰티 제품 촬영', sc: '연출 · 촬영 · 보정' },
+    '상세페이지': { d: '촬영부터 디자인까지 한 팀이 진행해 톤이 일관된 상세페이지 제작 사례입니다.', del: '상세페이지 촬영 · 디자인', sc: '촬영 · 보정 · 디자인' },
+    '기업': { d: '기업의 현장과 사람을 담아낸 기업 · 브랜드 촬영 사례입니다.', del: '기업 · 브랜드 촬영', sc: '기획 · 촬영 · 보정' }
+  };
+  function lbiEsc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
+  function fillInfo(w) {
+    if (!ov) return;
+    var def = LBI_DEF[w.c] || {};
+    ov.querySelector('.lbi__cat').textContent = w.c || '';
+    ov.querySelector('.lbi__title').textContent = w.t || '';
+    ov.querySelector('.lbi__desc').textContent = w.d || def.d || '';
+    var rows = '';
+    if (w.ind) rows += '<div><b>업종</b><span>' + lbiEsc(w.ind) + '</span></div>';
+    var del = w.del || def.del;
+    if (del) rows += '<div><b>제작물</b><span>' + lbiEsc(del) + '</span></div>';
+    var sc = w.sc || def.sc;
+    if (sc) rows += '<div><b>작업 범위</b><span>' + lbiEsc(sc) + '</span></div>';
+    rows += '<div><b>문의</b><span><a href="index.html#contact">촬영 문의하기 &rarr;</a></span></div>';
+    ov.querySelector('.lbi__rows').innerHTML = rows;
   }
   function go(d) { curIdx = (curIdx + d + curList.length) % curList.length; render(); }
   function close() { ov.classList.remove('is-open'); document.body.classList.remove('lb-open'); }

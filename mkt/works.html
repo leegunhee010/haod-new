@@ -26,6 +26,30 @@
   <meta property="og:locale" content="ko_KR" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="stylesheet" href="css/fab.css?v=4" />
+  <style>
+  /* 작품 상세 모달 */
+  .wlb { position: fixed; inset: 0; z-index: 300; display: none; align-items: center; justify-content: center; padding: clamp(16px,4vw,48px); }
+  .wlb.is-open { display: flex; }
+  .wlb__bg { position: absolute; inset: 0; background: rgba(20,17,13,.88); backdrop-filter: blur(6px); }
+  .wlb__wrap { position: relative; z-index: 1; display: flex; gap: 14px; max-width: min(1180px, 94vw); max-height: 86vh; }
+  .wlb__fig { margin: 0; min-width: 0; display: flex; align-items: center; }
+  .wlb__fig img { max-width: 100%; max-height: 82vh; object-fit: contain; border-radius: 12px; background: #fff; }
+  .wlb__info { flex: 0 0 300px; width: 300px; max-height: 82vh; overflow-y: auto; background: #fff; border-radius: 14px; padding: 28px 24px; align-self: center; }
+  .wlbi__cat { font-size: .72rem; font-weight: 800; letter-spacing: .08em; color: #e83817; }
+  .wlbi__title { margin-top: 9px; font-size: 1.12rem; font-weight: 800; line-height: 1.4; word-break: keep-all; }
+  .wlbi__desc { margin-top: 11px; font-size: .85rem; line-height: 1.8; color: #6f6a61; word-break: keep-all; }
+  .wlbi__label { margin-top: 20px; font-size: .68rem; font-weight: 800; letter-spacing: .12em; color: #b7b1a8; }
+  .wlbi__rows > div { display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid rgba(0,0,0,.07); }
+  .wlbi__rows b { flex: 0 0 66px; font-size: .76rem; color: #a29c92; }
+  .wlbi__rows span { font-size: .83rem; line-height: 1.6; word-break: keep-all; }
+  .wlbi__rows a { color: #e83817; font-weight: 700; }
+  .wlb__close { position: absolute; top: 16px; right: 20px; z-index: 2; width: 46px; height: 46px; border-radius: 50%; border: 0; background: rgba(255,255,255,.14); color: #fff; font-size: 1.6rem; cursor: pointer; }
+  .wlb__nav { position: absolute; top: 50%; transform: translateY(-50%); z-index: 2; width: 48px; height: 48px; border-radius: 50%; border: 0; background: rgba(255,255,255,.14); color: #fff; font-size: 1.7rem; cursor: pointer; }
+  .wlb__prev { left: clamp(8px,2vw,22px); }
+  .wlb__next { right: clamp(8px,2vw,22px); }
+  .wlb__close:hover, .wlb__nav:hover { background: #e83817; }
+  @media (max-width: 900px) { .wlb__wrap { flex-direction: column; overflow-y: auto; } .wlb__fig img { max-height: 46vh; } .wlb__info { flex: none; width: auto; align-self: stretch; } }
+  </style>
 </head>
 <body>
   <div class="progress" id="progress" aria-hidden="true"></div>
@@ -133,7 +157,7 @@
     function imgP(f) { return (window.HAO && HAO.imgSrc) ? HAO.imgSrc(f) : f; }
     var WORKS = (window.HAO && HAO.getWorks) ? HAO.getWorks() : FALLBACK_WORKS;
     var CATS = ['전체', '비주얼 리뉴얼', '브랜드 콘텐츠', '이커머스 디자인', '패키지 디자인', '편집 디자인', '전시·부스'];
-    var cur = '전체';
+    var cur = '전체', curRows = [];
     var catsEl = $('#wCats'), grid = $('#workGrid');
     function esc(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
     catsEl.innerHTML = CATS.map(function (c, i) {
@@ -141,13 +165,69 @@
     }).join('');
     function render() {
       var rows = WORKS.filter(function (w) { return cur === '전체' || w.c === cur; });
-      grid.innerHTML = rows.map(function (w) {
-        return '<a class="colcard" href="javascript:void(0)">' +
+      curRows = rows;
+      grid.innerHTML = rows.map(function (w, i) {
+        return '<a class="colcard" href="javascript:void(0)" data-i="' + i + '">' +
           '<div class="colcard__media" style="background-image:url(' + imgP(w.img) + ');background-size:cover;background-position:center;background-repeat:no-repeat"></div>' +
           '<div class="colcard__body"><span class="colcard__cat">' + esc(w.c) + '</span>' +
           '<h3 class="colcard__t">' + esc(w.t) + '</h3></div></a>';
       }).join('');
     }
+    /* ---- 작품 상세 모달 (카테고리 기본 문구 + 작품별 값) ---- */
+    var LBI_DEF = {
+      '비주얼 리뉴얼': { d: '브랜드의 인상이 달라지도록 비주얼을 다시 설계한 프로젝트입니다.', del: '비주얼 리뉴얼', sc: '진단 · 디자인 · 적용' },
+      '브랜드 콘텐츠': { d: '브랜드의 메시지가 꾸준히 쌓이도록 만든 콘텐츠 제작 프로젝트입니다.', del: '브랜드 콘텐츠', sc: '기획 · 제작 · 운영' },
+      '이커머스 디자인': { d: '구매 전환을 목표로 설계한 상세페이지 · 이커머스 디자인 프로젝트입니다.', del: '상세페이지 · 이커머스 디자인', sc: '기획 · 카피 · 디자인' },
+      '패키지 디자인': { d: '매대와 배송 경험까지 고려한 패키지 디자인 프로젝트입니다.', del: '패키지 디자인', sc: '구조 · 디자인 · 인쇄' },
+      '편집 디자인': { d: '브랜드의 이야기를 지면에 정리한 편집 디자인 프로젝트입니다.', del: '카탈로그 · 편집물', sc: '기획 · 디자인 · 인쇄' },
+      '전시·부스': { d: '현장에서 브랜드가 또렷하게 보이도록 만든 전시 · 부스 그래픽 프로젝트입니다.', del: '전시 · 부스 그래픽', sc: '기획 · 디자인 · 시공 협업' }
+    };
+    var wlb = null, wIdx = 0;
+    function wlbBuild() {
+      wlb = document.createElement('div');
+      wlb.className = 'wlb';
+      wlb.innerHTML = '<div class="wlb__bg"></div>' +
+        '<div class="wlb__wrap"><figure class="wlb__fig"><img alt="" /></figure>' +
+        '<aside class="wlb__info"><span class="wlbi__cat"></span><h3 class="wlbi__title"></h3><p class="wlbi__desc"></p>' +
+        '<p class="wlbi__label">Project Info</p><div class="wlbi__rows"></div></aside></div>' +
+        '<button class="wlb__close" aria-label="닫기">&times;</button>' +
+        '<button class="wlb__nav wlb__prev" aria-label="이전">&#8249;</button>' +
+        '<button class="wlb__nav wlb__next" aria-label="다음">&#8250;</button>';
+      document.body.appendChild(wlb);
+      wlb.querySelector('.wlb__bg').addEventListener('click', wlbClose);
+      wlb.querySelector('.wlb__close').addEventListener('click', wlbClose);
+      wlb.querySelector('.wlb__prev').addEventListener('click', function () { wlbShow(wIdx - 1); });
+      wlb.querySelector('.wlb__next').addEventListener('click', function () { wlbShow(wIdx + 1); });
+      document.addEventListener('keydown', function (e) {
+        if (!wlb.classList.contains('is-open')) return;
+        if (e.key === 'Escape') wlbClose();
+        else if (e.key === 'ArrowLeft') wlbShow(wIdx - 1);
+        else if (e.key === 'ArrowRight') wlbShow(wIdx + 1);
+      });
+    }
+    function wlbShow(i) {
+      if (!curRows.length) return;
+      if (!wlb) wlbBuild();
+      wIdx = (i % curRows.length + curRows.length) % curRows.length;
+      var w = curRows[wIdx], def = LBI_DEF[w.c] || {};
+      wlb.querySelector('.wlb__fig img').src = imgP(w.img);
+      wlb.querySelector('.wlbi__cat').textContent = w.c || '';
+      wlb.querySelector('.wlbi__title').textContent = w.t || '';
+      wlb.querySelector('.wlbi__desc').textContent = w.d || def.d || '';
+      var rows = '';
+      if (w.ind) rows += '<div><b>업종</b><span>' + esc(w.ind) + '</span></div>';
+      var del = w.del || def.del; if (del) rows += '<div><b>제작물</b><span>' + esc(del) + '</span></div>';
+      var sc = w.sc || def.sc; if (sc) rows += '<div><b>작업 범위</b><span>' + esc(sc) + '</span></div>';
+      rows += '<div><b>문의</b><span><a href="index.html#contact">프로젝트 문의하기 &rarr;</a></span></div>';
+      wlb.querySelector('.wlbi__rows').innerHTML = rows;
+      wlb.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+    }
+    function wlbClose() { wlb.classList.remove('is-open'); document.body.style.overflow = ''; }
+    grid.addEventListener('click', function (e) {
+      var a = e.target.closest('.colcard'); if (!a) return;
+      wlbShow(+a.getAttribute('data-i'));
+    });
     catsEl.addEventListener('click', function (e) { var b = e.target.closest('.chip'); if (!b) return;
       $$('.chip', catsEl).forEach(function (x) { x.classList.remove('is-active'); }); b.classList.add('is-active'); cur = b.dataset.c; render(); });
     render();

@@ -40,6 +40,13 @@
       '<button class="lb__close" aria-label="닫기">✕</button>' +
       '<button class="lb__nav lb__prev" aria-label="이전">‹</button>' +
       '<figure class="lb__stage"><div class="lb__scroll"><img alt="" /></div><figcaption></figcaption><span class="lb__hint">↕ 스크롤하여 전체 보기</span></figure>' +
+      '<aside class="lb__info">' +
+        '<span class="lbi__cat"></span>' +
+        '<h3 class="lbi__title"></h3>' +
+        '<p class="lbi__desc"></p>' +
+        '<p class="lbi__label">Project Info</p>' +
+        '<div class="lbi__rows"></div>' +
+      '</aside>' +
       '<button class="lb__nav lb__next" aria-label="다음">›</button>' +
       '<div class="lb__zoom"><button data-z="out" aria-label="축소">&minus;</button><span class="lb__zval">100%</span><button data-z="in" aria-label="확대">+</button><button data-z="reset" aria-label="원래대로">⟲</button></div>';
     document.body.appendChild(ov);
@@ -103,6 +110,32 @@
     imgEl.src = window.HAO_imgPath(w.f);
     imgEl.alt = w.t;
     capEl.innerHTML = '<b>' + w.t + '</b><span>' + (w.c || '') + ' · ' + (curIdx + 1) + ' / ' + curList.length + '</span>';
+    fillInfo(w);
+  }
+  /* 작품 정보 패널: 작품별 값(admin) > 카테고리 기본 문구 */
+  var LBI_DEF = {
+    '홈페이지': { d: '기업의 서비스와 강점이 잘 전달되도록 구축한 홈페이지 제작 사례입니다. 기획부터 디자인, 퍼블리싱, 오픈까지 함께 진행했습니다.', del: '반응형 홈페이지', sc: '기획 · 디자인 · 퍼블리싱 · 오픈' },
+    '쇼핑몰': { d: '구매 흐름을 고려해 설계한 쇼핑몰 구축 사례입니다. 상품 구성부터 결제 세팅까지 함께 진행했습니다.', del: '쇼핑몰 구축', sc: '기획 · 디자인 · 상품/결제 세팅' },
+    '앱': { d: '사용 흐름에 맞춰 설계한 모바일 앱 구축 사례입니다.', del: '모바일 앱', sc: '기획 · UI 디자인 · 개발' },
+    '랜딩': { d: '광고 유입을 전환으로 이어지게 설계한 랜딩페이지 제작 사례입니다.', del: '랜딩페이지', sc: '기획 · 카피 · 디자인' },
+    'SEO·AEO': { d: '검색과 AI 검색에 잘 잡히도록 구조와 콘텐츠를 개선한 사례입니다.', del: 'SEO · AEO 개선', sc: '진단 · 구조 개선 · 콘텐츠' },
+    '브랜딩': { d: '브랜드의 인상이 어디서나 일관되게 전해지도록 정리한 브랜딩 사례입니다.', del: '브랜드 아이덴티티', sc: '기획 · 디자인' }
+  };
+  function lbiEsc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
+  function fillInfo(w) {
+    if (!ov) return;
+    var def = LBI_DEF[w.c] || {};
+    ov.querySelector('.lbi__cat').textContent = w.c || '';
+    ov.querySelector('.lbi__title').textContent = w.t || '';
+    ov.querySelector('.lbi__desc').textContent = w.d || def.d || '';
+    var rows = '';
+    if (w.ind) rows += '<div><b>업종</b><span>' + lbiEsc(w.ind) + '</span></div>';
+    var del = w.del || def.del;
+    if (del) rows += '<div><b>제작물</b><span>' + lbiEsc(del) + '</span></div>';
+    var sc = w.sc || def.sc;
+    if (sc) rows += '<div><b>작업 범위</b><span>' + lbiEsc(sc) + '</span></div>';
+    rows += '<div><b>문의</b><span><a href="index.html#contact">웹구축 상담하기 &rarr;</a></span></div>';
+    ov.querySelector('.lbi__rows').innerHTML = rows;
   }
   function go(d) { curIdx = (curIdx + d + curList.length) % curList.length; render(); }
   function close() { ov.classList.remove('is-open'); document.body.classList.remove('lb-open'); }
