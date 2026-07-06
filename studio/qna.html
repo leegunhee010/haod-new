@@ -57,7 +57,6 @@
       <div class="qcats" id="qCats"></div>
 
       <div class="faq" id="qList"></div>
-      <p class="qempty" id="qEmpty" style="display:none">검색 결과가 없습니다. 다른 키워드로 검색하시거나 <a href="index.html#contact" style="color:var(--accent);font-weight:700">문의하기</a>를 이용해 주세요.</p>
     </section>
     <section class="contact" id="contact">
       <div class="contact__panel">
@@ -180,7 +179,11 @@
     var CATS = ['전체', '용어 설명', '촬영', '상세페이지', '영상', '진행·결제'];
     var curCat = '전체', curQ = '';
 
-    var catsEl = $('#qCats'), listEl = $('#qList'), emptyEl = $('#qEmpty');
+    var catsEl = $('#qCats'), listEl = $('#qList');
+    var emptyEl = document.createElement('p'); /* 노JS 소스에 안 남게 JS로만 생성 */
+    emptyEl.className = 'qempty'; emptyEl.id = 'qEmpty'; emptyEl.style.display = 'none';
+    emptyEl.innerHTML = '검색 결과가 없습니다. 다른 키워드로 검색하시거나 <a href="index.html#contact" style="color:var(--accent);font-weight:700">문의하기</a>를 이용해 주세요.';
+    listEl.parentNode.insertBefore(emptyEl, listEl.nextSibling);
     catsEl.innerHTML = CATS.map(function (c, i) {
       var n = c === '전체' ? QNA.length : QNA.filter(function (x) { return x.c === c; }).length;
       return '<button class="chip' + (i === 0 ? ' is-active' : '') + '" data-c="' + c + '">' + c + ' <b>' + n + '</b></button>';
