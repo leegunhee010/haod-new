@@ -144,7 +144,7 @@
 
   /* ===== SEO ===== */
   var DEFAULT_SEO = {
-    siteUrl: "https://haodesign.co.kr",
+    siteUrl: "https://leegunhee010.github.io/haod-new", /* TEMP: 도메인 연결 시 https://haodesign.co.kr 로 원복 */
     ogImage: "../design/assets/work/work01.jpeg",
     pages: {
       index: {
