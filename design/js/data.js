@@ -620,6 +620,16 @@
       kw: "다국어 카탈로그, 영문 카탈로그 제작, 영문 브로셔, 영문 카다로그, 중문 카탈로그, 일문 카탈로그, 수출 인쇄물, 번역 디자인" },
   };
   Object.keys(DEFAULT_SEOALT).forEach(function (k) { if (DEFAULT_SERVICE[k]) { DEFAULT_SERVICE[k].seo.alt = DEFAULT_SEOALT[k].alt; DEFAULT_SERVICE[k].seo.kw = DEFAULT_SEOALT[k].kw; } });
+  /* 카테고리별 H1 (검색용 제목 — 고유 URL 페이지의 h1) */
+  var DEFAULT_H1 = {
+    catalog: "카탈로그 · 브로슈어 디자인 제작",
+    leaflet: "팜플렛 · 리플렛 디자인 제작",
+    poster: "포스터 · 전단지 디자인 제작",
+    ci: "CI · 로고 디자인 제작",
+    package: "패키지 · 라벨 디자인 제작",
+    "global": "다국어 카탈로그 · 브로슈어 디자인",
+  };
+  Object.keys(DEFAULT_H1).forEach(function (k) { if (DEFAULT_SERVICE[k] && !DEFAULT_SERVICE[k].h1) DEFAULT_SERVICE[k].h1 = DEFAULT_H1[k]; });
 
   /* 서비스 '진행 과정'은 service.html에서 결정:
      카테고리별 수정분(cat.process) > 다국어 일반 단계 > 그 외는 메인 페이지(pst*) 미러링. */

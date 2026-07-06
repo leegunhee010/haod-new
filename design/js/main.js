@@ -130,7 +130,8 @@
       var cats = HAO.getService(), key = (location.search.match(/[?&]cat=([a-z]+)/) || [])[1]; if (!cats[key]) key = "catalog";
       var cat = cats[key];
       graph.push({ "@type": "Service", name: cat.label, serviceType: cat.label, description: (cat.desc || "").replace(/\n/g, " "), provider: { "@id": base + "/#org" }, areaServed: "KR" });
-      graph.push(crumb([{ n: "홈", u: "/" }, { n: "서비스", u: "/service.html?cat=catalog" }, { n: cat.label, u: "/service.html?cat=" + key }]));
+      var svSlugs = { catalog: "catalog-brochure.html", leaflet: "leaflet-pamphlet.html", poster: "poster-flyer.html", ci: "ci-logo.html", package: "package-label.html", "global": "global-design.html" };
+      graph.push(crumb([{ n: "홈", u: "/" }, { n: "서비스", u: "/" + (svSlugs.catalog) }, { n: cat.label, u: "/" + (svSlugs[key] || ("service.html?cat=" + key)) }]));
     } else if (pageName === "about") {
       graph.push(crumb([{ n: "홈", u: "/" }, { n: "회사소개", u: "/about.html" }]));
     } else if (pageName === "work") {
