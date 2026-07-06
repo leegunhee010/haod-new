@@ -292,3 +292,6 @@ body.lb-open { overflow: hidden; }
   .lb { flex-wrap: wrap; overflow-y: auto; align-content: center; padding: 56px 16px; }
   .lb__info { flex: 1 1 100%; width: auto; max-height: none; }
 }
+
+/* 메인 소개 한 줄 (AEO 직접 문장) */
+.ef-sys__aeo { margin: 14px auto 0; max-width: 720px; color: var(--muted); opacity: .8; font-size: .92rem; line-height: 1.8; word-break: keep-all; }

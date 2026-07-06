@@ -388,7 +388,7 @@
     /* ───── Q&A ───── */
     { key: "qna_title", page: "qna", sel: ".subhero__title", tag: "b", label: "상단 제목", value: "자주 하는 질문" },
     { key: "qna_ptitle", page: "qna", sel: ".page__title", tag: "b", label: "섹션 제목", value: "무엇이 궁금하신가요" },
-    { key: "st_index_01", page: "index", sel: "#hero > div:nth-of-type(3) > div:nth-of-type(1) > h2", tag: "em", label: "브랜드를 더 브랜드답게,다양한 컨셉의 촬영", value: "브랜드를 더 브랜드답게,\n다양한 컨셉의 **촬영**" },
+    { key: "st_index_01", page: "index", sel: "#hero > div:nth-of-type(3) > div:nth-of-type(1) > .ef-hero__title", tag: "em", label: "브랜드를 더 브랜드답게,다양한 컨셉의 촬영", value: "브랜드를 더 브랜드답게,\n다양한 컨셉의 **촬영**" },
     { key: "st_index_02", page: "index", sel: "#hero > div:nth-of-type(3) > div:nth-of-type(2) > p", tag: "b", label: "Capturing Mood, Creating", value: "Capturing Mood, Creating Distinctive Visuals" },
     { key: "st_index_03", page: "index", sel: "#hero > div:nth-of-type(3) > div:nth-of-type(2) > h2", tag: "em", label: "브랜드 무드를 깊이 담아차별화된 비주얼 촬영", value: "브랜드 무드를 깊이 담아\n**차별화된** 비주얼 촬영" },
     { key: "st_index_04", page: "index", sel: "#hero > div:nth-of-type(3) > div:nth-of-type(3) > p", tag: "b", label: "Building Brands Into Mar", value: "Building Brands Into Market Leaders" },
