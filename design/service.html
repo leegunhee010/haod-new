@@ -2,15 +2,23 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
+  <script id="svcRedirect">
+  (function () { /* 구 URL(?cat=) 진입 즉시 고유 URL로 — JS 로드 대기 없음 */
+    var m = location.search.match(/[?&]cat=([a-z]+)/);
+    if (!m || /[?&](edit|stay)=1/.test(location.search)) return;
+    var S = { catalog: "catalog-brochure.html", leaflet: "leaflet-pamphlet.html", poster: "poster-flyer.html", ci: "ci-logo.html", package: "package-label.html", "global": "global-design.html" };
+    if (S[m[1]]) location.replace(S[m[1]] + location.hash);
+  })();
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>서비스 | 카탈로그·브로슈어·포스터·CI·패키지·촬영 | 하오디자인</title>
   <meta name="description" content="카탈로그·브로슈어, 팜플렛·리플렛, 포스터·전단지, CI·로고, 패키지·라벨, 제품촬영, 다국어디자인 — 분야별 제작 서비스를 안내합니다." />
   <meta name="keywords" content="카탈로그디자인, 브로슈어디자인, 리플렛제작, 포스터디자인, 로고제작, 패키지디자인, 제품촬영, 다국어카탈로그" />
-  <link rel="canonical" href="https://haodesign.co.kr/service.html" />
+  <link rel="canonical" href="https://haodesign.co.kr/catalog-brochure.html" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="서비스 | 카탈로그·브로슈어·포스터·CI·패키지·촬영 | 하오디자인" />
   <meta property="og:description" content="카탈로그·브로슈어, 팜플렛·리플렛, 포스터·전단지, CI·로고, 패키지·라벨, 제품촬영, 다국어디자인 — 분야별 제작 서비스를 안내합니다." />
-  <meta property="og:url" content="https://haodesign.co.kr/service.html" />
+  <meta property="og:url" content="https://haodesign.co.kr/catalog-brochure.html" />
   <meta property="og:image" content="https://haodesign.co.kr/assets/work-hd/large/w402.jpg" />
   <meta property="og:site_name" content="HAO DESIGN 하오디자인" />
   <meta name="twitter:card" content="summary_large_image" />
