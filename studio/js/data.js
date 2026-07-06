@@ -288,7 +288,7 @@
   var DEFAULT_COPY = [
     /* ───── 메인 ───── */
     { key: "sys_title", page: "index", sel: ".ef-sys__title", tag: "b", label: "서비스시스템 — 영문 제목", value: "A complete commerce\nvisual system" },
-    { key: "sys_sub", page: "index", sel: ".ef-sys__sub", tag: "b", label: "서비스시스템 — 설명", value: "브랜드에 필요한 모든 비주얼을 촬영, 영상, 디자인, 보정까지\n하나의 크리에이티브 시스템으로 설계합니다." },
+    { key: "sys_sub", page: "index", sel: ".ef-sys__sub", tag: "b", label: "서비스시스템 — 설명", value: "하오디자인 스튜디오센터는 제품촬영, 푸드촬영, 브랜드촬영부터\n상세페이지 제작, 영상·릴스 콘텐츠까지 함께 진행하는 커머스 콘텐츠 스튜디오입니다." },
     { key: "card1_t", page: "index", sel: ".ef-card:nth-child(1) .ef-card__t", tag: "b", label: "서비스카드① 제목", value: "제품·브랜드 촬영" },
     { key: "card1_d", page: "index", sel: ".ef-card:nth-child(1) .ef-card__d", tag: "b", label: "서비스카드① 설명", value: "브랜드의 무드와 가치를 담아 차별화된 비주얼로 표현" },
     { key: "card2_t", page: "index", sel: ".ef-card:nth-child(2) .ef-card__t", tag: "b", label: "서비스카드② 제목", value: "상세페이지 디자인" },
