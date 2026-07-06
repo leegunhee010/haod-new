@@ -513,7 +513,7 @@
     </div>
   </div>
 
-  <script src="js/data.js?v=34"></script>
+  <script src="js/data.js?v=35"></script>
   <script>
   HAO.ready.then(function () {
     "use strict";
@@ -1004,11 +1004,16 @@
       ["seo.t2", "소개 글 ② 제목", 1],
       ["seo.p2", "소개 글 ② 본문", 5]
     ];
-    function svcGet(d, path) { var p = path.split("."); return p.length > 1 ? d[p[0]][p[1]] : d[p[0]]; }
-    function svcSet(d, path, v) { var p = path.split("."); if (p.length > 1) d[p[0]][p[1]] = v; else d[p[0]] = v; }
+    function svcGet(d, path) { return path.split(".").reduce(function (o, k) { return o[k]; }, d); }
+    function svcSet(d, path, v) { var p = path.split("."), o = d; for (var i = 0; i < p.length - 1; i++) o = o[p[i]]; o[p[p.length - 1]] = v; }
     function renderSvc() {
       var k = $("svcCat").value;
-      $("svcFields").innerHTML = SVC_FIELDS.map(function (f) {
+      var fields = SVC_FIELDS.slice();
+      (svcData[k].faq || []).forEach(function (f, i) {
+        fields.push(["faq." + i + ".q", "FAQ " + (i + 1) + " — 질문", 1]);
+        fields.push(["faq." + i + ".a", "FAQ " + (i + 1) + " — 답변", 3]);
+      });
+      $("svcFields").innerHTML = fields.map(function (f) {
         return '<div class="full"><label>' + f[1] + '</label>' +
           '<textarea rows="' + f[2] + '" data-sv="' + f[0] + '">' + esc(svcGet(svcData[k], f[0])) + "</textarea></div>";
       }).join("");
