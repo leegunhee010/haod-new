@@ -24,4 +24,4 @@ Disallow: /admin/
 Disallow: /*/admin.html
 Disallow: /*/admin/
 
-Sitemap: https://haodesign.co.kr/sitemap.xml
+Sitemap: https://leegunhee010.github.io/haod-new/sitemap.xml
