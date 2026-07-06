@@ -69,27 +69,6 @@
       </section>
     </div>
 
-    <!-- 상세 뷰 -->
-    <div id="postView" hidden>
-      <section class="subhero subhero--post">
-        <div class="subhero__inner">
-          <p class="subhero__crumb"><a href="index.html">정부사업지원센터</a> / <a href="column.html">Column</a></p>
-          <h2 class="subhero__title post-title" id="postTitle"></h2>
-          <p class="subhero__desc" id="postDate"></p>
-        </div>
-      </section>
-      <section class="page page--tight">
-        <article class="post">
-          <div class="post__hero"><img src="" alt="" id="postImg" /></div>
-          <div class="post__body" id="postBody"></div>
-          <div class="post__nav">
-            <a href="#" id="postPrev" class="post__navlink"><span>이전 글</span><strong></strong></a>
-            <a href="column.html" class="btn-round post__list"><span>목록으로</span></a>
-            <a href="#" id="postNext" class="post__navlink post__navlink--next"><span>다음 글</span><strong></strong></a>
-          </div>
-        </article>
-      </section>
-    </div>
 
     <!-- CTA -->
     <section class="contact" id="contact">
@@ -178,7 +157,7 @@
 
     if (window.HAO && HAO.getPosts) posts = HAO.getPosts();
 
-    var listView = $('#listView'), postView = $('#postView'), gallery = $('#galleryBoard');
+    var listView = $('#listView'), gallery = $('#galleryBoard');
     function pimg(f) { return (window.HAO && HAO.imgSrc) ? HAO.imgSrc(f) : f; }
     function buildGallery() {
       gallery.innerHTML = posts.map(function (p) {
@@ -194,27 +173,16 @@
       var card = e.target.closest('.gcard'); if (!card) return;
       location.href = 'column-' + card.getAttribute('data-id') + '.html';
     });
-    function byId(id) { return posts.filter(function (p) { return p.id === id; })[0]; }
-    function render() {
+    /* 구 해시 링크(#post-N)는 정적 글 페이지로 */
+    (function () {
       var m = location.hash.match(/^#post-(\d+)$/);
-      var post = m ? byId(parseInt(m[1], 10)) : null;
-      if (!post) { postView.hidden = true; listView.hidden = false; document.title = '칼럼 | 정부사업지원센터'; return; }
-      listView.hidden = true; postView.hidden = false;
-      document.title = post.title + ' | 정부사업지원센터';
-      $('#postTitle').textContent = post.title;
-      $('#postDate').textContent = post.date;
-      $('#postImg').src = pimg(post.img);
-      $('#postBody').innerHTML = post.body.map(function (t) { return '<p>' + t + '</p>'; }).join('');
-      var idx = posts.indexOf(post), prev = posts[idx + 1], next = posts[idx - 1];
-      var prevEl = $('#postPrev'), nextEl = $('#postNext');
-      prevEl.style.visibility = prev ? 'visible' : 'hidden';
-      nextEl.style.visibility = next ? 'visible' : 'hidden';
-      if (prev) { prevEl.href = '#post-' + prev.id; prevEl.querySelector('strong').textContent = prev.title; }
-      if (next) { nextEl.href = '#post-' + next.id; nextEl.querySelector('strong').textContent = next.title; }
-      window.scrollTo(0, 0);
-    }
-    addEventListener('hashchange', render); render();
-    if (window.HAO && HAO.ready && HAO.ready.then) HAO.ready.then(function () { posts = HAO.getPosts(); buildGallery(); render(); });
+      if (m) location.replace('column-' + m[1] + '.html');
+    })();
+    addEventListener('hashchange', function () {
+      var m = location.hash.match(/^#post-(\d+)$/);
+      if (m) location.replace('column-' + m[1] + '.html');
+    });
+    if (window.HAO && HAO.ready && HAO.ready.then) HAO.ready.then(function () { posts = HAO.getPosts(); buildGallery(); });
 
     var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } }); }, { threshold: .15 });
     $$('.reveal').forEach(function (el) { io.observe(el); });
