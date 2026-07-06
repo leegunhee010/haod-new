@@ -794,10 +794,19 @@
     lb.className = "lightbox";
     lb.innerHTML =
       '<div class="lightbox__backdrop"></div>' +
+      '<div class="lightbox__wrap">' +
       '<figure class="lightbox__box">' +
         '<img class="lightbox__img" src="" alt="" />' +
         '<figcaption class="lightbox__cap"><strong></strong><span></span></figcaption>' +
       '</figure>' +
+      '<aside class="lightbox__info">' +
+        '<span class="lbi__cat"></span>' +
+        '<h3 class="lbi__title"></h3>' +
+        '<p class="lbi__desc"></p>' +
+        '<p class="lbi__label">Project Info</p>' +
+        '<div class="lbi__rows"></div>' +
+      '</aside>' +
+      '</div>' +
       '<button class="lightbox__close" aria-label="닫기">&times;</button>' +
       '<button class="lightbox__btn lightbox__btn--prev" aria-label="이전">&#8249;</button>' +
       '<button class="lightbox__btn lightbox__btn--next" aria-label="다음">&#8250;</button>' +
@@ -819,6 +828,34 @@
         return c.style.display !== "none";
       });
     }
+    /* 작품 상세 정보: 작품별 값(admin) > 카테고리 기본 문구 */
+    var LBI_DEF = {
+      "카탈로그·브로슈어": { d: "제품 특징과 브랜드 강점이 한눈에 보이도록 구성한 카탈로그 · 브로슈어 제작 사례입니다. 하오디자인이 기획부터 디자인, 인쇄까지 함께 진행했습니다.", del: "카탈로그 · 브로슈어", sc: "기획 · 디자인 · 인쇄", svc: ["catalog-brochure.html", "카탈로그 · 브로슈어 디자인"] },
+      "리플렛": { d: "펼치고 접는 동선에 맞춰 핵심 정보를 담아낸 팜플렛 · 리플렛 제작 사례입니다. 하오디자인이 구성 기획부터 디자인, 인쇄까지 함께 진행했습니다.", del: "팜플렛 · 리플렛", sc: "기획 · 디자인 · 인쇄", svc: ["leaflet-pamphlet.html", "팜플렛 · 리플렛 디자인"] },
+      "포스터·전단지": { d: "멀리서도 읽히는 위계와 임팩트를 담은 포스터 · 전단지 제작 사례입니다. 하오디자인이 디자인부터 인쇄 · 납품까지 함께 진행했습니다.", del: "포스터 · 전단지", sc: "디자인 · 인쇄 · 납품", svc: ["poster-flyer.html", "포스터 · 전단지 디자인"] },
+      "CI·로고디자인": { d: "브랜드의 방향을 담아 다양한 매체에 일관되게 확장되는 CI · 로고 제작 사례입니다.", del: "CI · 로고", sc: "기획 · 디자인 · 응용 시스템", svc: ["ci-logo.html", "CI · 로고 디자인"] },
+      "패키지·라벨": { d: "제품의 가치가 매대에서 그대로 전해지도록 만든 패키지 · 라벨 제작 사례입니다. 구조 설계부터 인쇄까지 함께 진행했습니다.", del: "패키지 · 라벨", sc: "구조 설계 · 디자인 · 인쇄", svc: ["package-label.html", "패키지 · 라벨 디자인"] },
+      "촬영서비스": { d: "제품의 질감과 형태가 살아나도록 촬영해 바로 디자인에 반영한 제품 촬영 사례입니다.", del: "제품 촬영", sc: "촬영 · 보정", svc: null },
+      "다국어디자인": { d: "원본의 레이아웃과 브랜드 톤을 유지하며 언어별로 재조판한 다국어 인쇄물 제작 사례입니다.", del: "다국어 카탈로그 · 브로슈어", sc: "번역 협업 · 다국어 편집 · 인쇄", svc: ["global-design.html", "다국어 카탈로그 · 브로슈어 디자인"] }
+    };
+    function lbiEsc(s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;"); }
+    function fillInfo(title, cat) {
+      var W = (window.HAO && HAO.getWorks) ? HAO.getWorks() : [];
+      var w = null;
+      for (var k = 0; k < W.length; k++) { if (W[k].t === title) { w = W[k]; break; } }
+      var def = LBI_DEF[cat] || LBI_DEF[(w && w.c)] || {};
+      lb.querySelector(".lbi__cat").textContent = cat;
+      lb.querySelector(".lbi__title").textContent = title;
+      lb.querySelector(".lbi__desc").textContent = (w && w.d) || def.d || "";
+      var rows = "";
+      if (w && w.ind) rows += '<div><b>업종</b><span>' + lbiEsc(w.ind) + "</span></div>";
+      var del = (w && w.del) || def.del;
+      if (del) rows += '<div><b>제작물</b><span>' + lbiEsc(del) + "</span></div>";
+      var sc = (w && w.sc) || def.sc;
+      if (sc) rows += '<div><b>작업 범위</b><span>' + lbiEsc(sc) + "</span></div>";
+      if (def.svc) rows += '<div><b>관련 서비스</b><span><a href="' + def.svc[0] + '">' + lbiEsc(def.svc[1]) + ' &rarr;</a></span></div>';
+      lb.querySelector(".lbi__rows").innerHTML = rows;
+    }
     function show(i) {
       if (!cards.length) return;
       cur = (i % cards.length + cards.length) % cards.length;
@@ -831,6 +868,7 @@
       var g = c.querySelector(".wcard__cat");
       capTitle.textContent = t ? t.textContent : "";
       capCat.textContent = g ? g.textContent : "";
+      fillInfo(t ? t.textContent : "", g ? g.textContent : "");
       resetZoom();
       lb.classList.add("is-open");
       document.body.style.overflow = "hidden";
