@@ -58,7 +58,14 @@
         </div>
       </section>
       <section class="page page--tight">
-        <div class="gallery-board" id="galleryBoard"><!-- cards injected --></div>
+        <div class="gallery-board" id="galleryBoard">
+          <article class="gcard" data-id="6"><div class="gcard__thumb"><img src="assets/img/big_slide_02.jpg" alt="2026 수출바우처 신청 일정 한눈에 정리" loading="lazy" /><span class="gcard__badge">NEW</span></div><div class="gcard__body"><h3><a href="column-6.html">2026 수출바우처 신청 일정 한눈에 정리</a></h3><p>차수별 모집 일정과 우선순위, 준비 서류를 시기별로 정리했습니다.</p><span class="gcard__date">2026.06.18</span></div></article>
+          <article class="gcard" data-id="5"><div class="gcard__thumb"><img src="assets/img/big_slide_03.jpg" alt="우리 회사도 제조혁신바우처 대상일까?" loading="lazy" /><span class="gcard__badge">NEW</span></div><div class="gcard__body"><h3><a href="column-5.html">우리 회사도 제조혁신바우처 대상일까?</a></h3><p>대상 기업 요건과 진단 절차를 사례로 설명합니다.</p><span class="gcard__date">2026.06.10</span></div></article>
+          <article class="gcard" data-id="4"><div class="gcard__thumb"><img src="assets/img/big_slide_04.jpg" alt="바우처로 카탈로그·브로슈어 제작하는 법" loading="lazy" /></div><div class="gcard__body"><h3><a href="column-4.html">바우처로 카탈로그·브로슈어 제작하는 법</a></h3><p>메뉴판에서 디자인 서비스를 고르는 기준과 효과를 높이는 팁.</p><span class="gcard__date">2026.05.29</span></div></article>
+          <article class="gcard" data-id="3"><div class="gcard__thumb"><img src="assets/img/big_slide_06.jpg" alt="소상공인 지원사업, 작은 가게도 가능한가요?" loading="lazy" /></div><div class="gcard__body"><h3><a href="column-3.html">소상공인 지원사업, 작은 가게도 가능한가요?</a></h3><p>리플렛·메뉴판·매장 홍보물에 활용 가능한 지원사업 안내.</p><span class="gcard__date">2026.05.20</span></div></article>
+          <article class="gcard" data-id="2"><div class="gcard__thumb"><img src="assets/img/main_07.png" alt="결과보고서 작성 체크리스트 7가지" loading="lazy" /></div><div class="gcard__body"><h3><a href="column-2.html">결과보고서 작성 체크리스트 7가지</a></h3><p>평가를 통과하는 결과보고서의 필수 항목을 정리했습니다.</p><span class="gcard__date">2026.05.12</span></div></article>
+          <article class="gcard" data-id="1"><div class="gcard__thumb"><img src="assets/img/main_09.png" alt="바우처로 다국어 카탈로그 만든 수출기업 이야기" loading="lazy" /></div><div class="gcard__body"><h3><a href="column-1.html">바우처로 다국어 카탈로그 만든 수출기업 이야기</a></h3><p>신청부터 납품까지의 흐름과 결과물이 만든 변화.</p><span class="gcard__date">2026.04.30</span></div></article>
+        </div>
       </section>
     </div>
 
@@ -178,7 +185,7 @@
         return '<article class="gcard" data-id="' + p.id + '">' +
           '<div class="gcard__thumb"><img src="' + pimg(p.img) + '" alt="" loading="lazy" />' +
           (p.isNew ? '<span class="gcard__badge">NEW</span>' : '') + '</div>' +
-          '<div class="gcard__body"><h3>' + p.title + '</h3><p>' + p.summary + '</p>' +
+          '<div class="gcard__body"><h3><a href="column-' + p.id + '.html">' + p.title + '</a></h3><p>' + p.summary + '</p>' +
           '<span class="gcard__date">' + p.date + '</span></div></article>';
       }).join('');
     }

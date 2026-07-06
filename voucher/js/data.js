@@ -177,8 +177,8 @@
     { key: "vc_hero_cta", page: "index", sel: ".ghero__cta span", tag: "b", label: "히어로 — 버튼 문구", value: "무료 가능여부 상담하기" },
 
     /* ───── 메인 · Our Projects ───── */
-    { key: "vc_s1_eg", page: "index", sel: ".section1 .tit-box > b", tag: "b", label: "프로젝트 — 라벨", value: "Our Projects" },
-    { key: "vc_s1_num", page: "index", sel: ".section1 .tit-box h3", tag: "b", label: "프로젝트 — 건수(숫자+)", value: "412+" },
+    { key: "vc_s1_eg", page: "index", sel: ".section1 .tit-box > b", tag: "b", label: "프로젝트 — 라벨", value: "정부지원사업 디자인 수행 실적" },
+    { key: "vc_s1_num", page: "index", sel: ".section1 .tit-box h3", tag: "b", label: "프로젝트 — 건수(숫자+)", value: "412건+" },
     { key: "vc_s1_line1", page: "index", sel: ".section1 .fill-text.line1", tag: "b", label: "프로젝트 — 문장①", value: "하오디자인은 정부지원사업을 통해" },
     { key: "vc_s1_line2", page: "index", sel: ".section1 .fill-text.line2", tag: "b", label: "프로젝트 — 문장②", value: "중소기업의 브랜드 가치를 디자인합니다." },
 

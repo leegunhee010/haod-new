@@ -464,7 +464,7 @@ $(function(){
 		snap: { textContent: 1 },
 		onUpdate: function() {
 			const value = Math.floor(this.targets()[0].textContent);
-			this.targets()[0].innerHTML = value.toLocaleString() + '+';
+			this.targets()[0].innerHTML = value.toLocaleString() + '건+';
 		}
 	}, "+=0.1")  // p 애니메이션 완료 후 0.1초 뒤
 	.set('.section1 .projects-img-wrap', {
