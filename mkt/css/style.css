@@ -109,7 +109,7 @@ em{font-style:normal;color:var(--accent)}
 
 /* ---------------- Works ---------------- */
 .works{background:var(--bg);padding:clamp(90px,12vh,150px) 0;overflow:hidden}
-.works__head{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:0 clamp(20px,4vw,60px);margin-bottom:46px}
+.works__head{display:flex;align-items:center;justify-content:space-between;gap:20px;max-width:1280px;margin:0 auto 46px;padding:0 clamp(20px,4vw,60px)}
 /* Works — 두 줄 마퀴 (위 왼→우 / 아래 우→왼), 각진 모서리, 작은 카드 */
 .works__rows{display:flex;flex-direction:column;gap:clamp(12px,1.4vw,18px)}
 .wmarquee{overflow:hidden}
