@@ -472,6 +472,22 @@
     });
   });
 
+  /* ---- 푸터 블로그 링크 (SEO — 관리자 '사이트 설정'에서 수정, 정적 HTML을 덮어씀) ---- */
+  if (window.HAO && HAO.getBlogs) {
+    var _bl = HAO.getBlogs().filter(function (b) { return b && b.url; });
+    var _bnav = document.querySelector(".footer__blogs");
+    if (_bl.length) {
+      if (!_bnav) {
+        var _ft = document.querySelector(".footer");
+        if (_ft) { _bnav = document.createElement("nav"); _bnav.className = "footer__blogs"; _bnav.setAttribute("aria-label", "하오디자인 블로그"); _ft.appendChild(_bnav); }
+      }
+      if (_bnav) _bnav.innerHTML = _bl.map(function (b) {
+        var nm = String(b.name || b.url).replace(/[<>]/g, "");
+        return '<a href="' + String(b.url).replace(/"/g, "&quot;") + '" target="_blank" rel="noopener">' + nm + "</a>";
+      }).join("");
+    } else if (_bnav) { _bnav.parentNode.removeChild(_bnav); }
+  }
+
   /* ---- 우측 하단 플로팅 빠른버튼 (카카오·인스타·블로그·전화) ---- */
   if (window.HAO && HAO.getSocial && !document.getElementById("fab")) {
     var s = HAO.getSocial();

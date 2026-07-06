@@ -500,6 +500,15 @@
             </form>
             <p class="note" style="margin-top:14px">전 페이지 우측 하단에 뜨는 빠른버튼입니다. 링크를 비우면 그 버튼은 안 보입니다. 전화 버튼은 위 <b>대표 전화</b>를 사용합니다.</p>
           </div>
+          <div class="panel">
+            <h2>푸터 블로그 링크 (SEO)</h2>
+            <p class="note" style="margin-bottom:12px">전 페이지 푸터 맨 아래에 옅게 표시되는 블로그 링크입니다. <b>이름은 블로그 실제 제목</b>으로 넣는 게 검색·AI 노출에 좋습니다. 링크를 비우면 그 줄은 표시되지 않습니다.</p>
+            <div id="blogRows"></div>
+            <div class="actions" style="margin-top:10px;display:flex;gap:8px">
+              <button type="button" class="btn" id="blogAdd">+ 링크 추가</button>
+              <button type="button" class="btn btn--primary" id="blogSave">저장</button>
+            </div>
+          </div>
         </section>
 
         <!-- 계정 -->
@@ -517,7 +526,7 @@
     </div>
   </div>
 
-  <script src="js/data.js?v=35"></script>
+  <script src="js/data.js?v=36"></script>
   <script>
   HAO.ready.then(function () {
     "use strict";
@@ -1137,6 +1146,36 @@
       var tel = ($("setTel").value || "").trim() || "1666-2027";
       store("hao_social", { kakao: $("soKakao").value.trim(), instagram: $("soInsta").value.trim(), blog: $("soBlog").value.trim(), phone: tel });
       alert("빠른버튼이 저장되었습니다. 사이트를 새로고침하면 반영됩니다.");
+    });
+
+    /* ---- 푸터 블로그 링크(SEO) ---- */
+    var blogs = (HAO.getBlogs ? HAO.getBlogs() : []).slice();
+    function blogRowHtml(i, b) {
+      return '<div style="display:grid;grid-template-columns:1fr 1.3fr auto;gap:8px;margin-bottom:8px" data-brow="' + i + '">' +
+        '<input type="text" data-bi="' + i + '" data-bk="name" value="' + esc(b.name || "") + '" placeholder="블로그 이름 (실제 제목 권장)" />' +
+        '<input type="text" data-bi="' + i + '" data-bk="url" value="' + esc(b.url || "") + '" placeholder="https://..." />' +
+        '<button type="button" class="btn btn--danger" data-bdel="' + i + '">삭제</button></div>';
+    }
+    function renderBlogRows() {
+      $("blogRows").innerHTML = blogs.map(function (b, i) { return blogRowHtml(i, b); }).join("") ||
+        '<p class="empty">링크가 없습니다. "+ 링크 추가"로 등록하세요.</p>';
+    }
+    renderBlogRows();
+    $("blogRows").addEventListener("input", function (e) {
+      var i = e.target.getAttribute("data-bi"), k = e.target.getAttribute("data-bk");
+      if (i !== null && k) blogs[+i][k] = e.target.value;
+    });
+    $("blogRows").addEventListener("click", function (e) {
+      var d = e.target.getAttribute("data-bdel");
+      if (d !== null) { blogs.splice(+d, 1); renderBlogRows(); }
+    });
+    $("blogAdd").addEventListener("click", function () { blogs.push({ name: "", url: "" }); renderBlogRows(); });
+    $("blogSave").addEventListener("click", function () {
+      var clean = blogs.map(function (b) { return { name: (b.name || "").trim(), url: (b.url || "").trim() }; })
+        .filter(function (b) { return b.url; });
+      store("hao_blogs", clean);
+      blogs = clean.slice(); renderBlogRows();
+      alert("푸터 블로그 링크가 저장되었습니다. 사이트를 새로고침하면 반영됩니다.");
     });
 
     /* ---- 계정 변경 ---- */

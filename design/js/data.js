@@ -194,6 +194,15 @@
   /* 우측 하단 플로팅 빠른버튼 (관리자에서 링크 설정) — 비어있으면 그 버튼은 숨김 */
   var DEFAULT_SOCIAL = {"blog":"https://blog.naver.com/xmfostlsh2","kakao":"https://pf.kakao.com/_exlVrxd","phone":"1666-2027","instagram":"https://www.instagram.com/haodesign_official/"};
 
+  /* 푸터 하단 블로그 링크 (SEO·AEO — 관리자 '사이트 설정' 탭에서 수정) — {name, url} */
+  var DEFAULT_BLOGS = [
+    { name: "디자인 및 인쇄 전문 기업 하오디자인", url: "https://haodesign.tistory.com/" },
+    { name: "카탈로그 브로슈어 리플렛 전문디자인 하오디자인", url: "https://haodesign02.tistory.com/" },
+    { name: "홍보물 디자인 대행 하오디자인", url: "https://haodesign03.tistory.com/" },
+    { name: "전문디자인 하오디자인", url: "https://haodesign04.tistory.com/" },
+    { name: "홍보물 디자인 및 인쇄 하오디자인", url: "https://haodesign05.tistory.com/" }
+  ];
+
   /* SEO (관리자 'SEO 관리' 탭) — siteUrl + 페이지별 title/desc/keywords */
   var DEFAULT_SEO = {
     siteUrl: "https://leegunhee010.github.io/haod-new/design", /* TEMP: 도메인 연결 시 https://haodesign.co.kr 로 원복 */
@@ -724,6 +733,7 @@
     },
     getSettings: function () { return loadObj("hao_settings", DEFAULT_SETTINGS); },
     getSocial: function () { return loadObj("hao_social", DEFAULT_SOCIAL); },
+    getBlogs: function () { return load("hao_blogs", DEFAULT_BLOGS); },
     /* SEO: 기본값에 저장된 수정값(hao_seo)을 깊은 병합 */
     getSeo: function () {
       var ov = loadObj("hao_seo", {});
