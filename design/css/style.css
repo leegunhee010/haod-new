@@ -1245,7 +1245,8 @@ img { display: block; max-width: 100%; }
   .partners__marquee { padding: 8px 0; }
 }
 
-/* 서비스 소개 글 하단 — 검색 변형 키워드 문단 */
-.svc-seo__alt { grid-column: 2 / -1; margin-top: 4px; padding-top: 18px; border-top: 1px dashed rgba(0,0,0,.14); color: var(--muted); font-size: .84rem; line-height: 1.9; word-break: keep-all; opacity: .85; }
+/* 서비스 소개 글 하단 — 관련 키워드 태그 칩 */
+.svc-seo__alt { grid-column: 2 / -1; margin-top: 4px; padding-top: 20px; border-top: 1px dashed rgba(0,0,0,.14); display: flex; flex-wrap: wrap; gap: 8px; }
 .svc-seo__alt:empty { display: none; }
+.svc-seo__alt span { display: inline-block; padding: 6px 13px; border: 1px solid rgba(0,0,0,.1); border-radius: 999px; color: var(--muted); font-size: .78rem; letter-spacing: -.01em; white-space: nowrap; }
 @media (max-width: 860px) { .svc-seo__alt { grid-column: 1 / -1; } }

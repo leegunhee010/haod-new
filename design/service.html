@@ -19,7 +19,7 @@
   <meta name="twitter:image" content="https://haodesign.co.kr/assets/work-hd/large/w402.jpg" />
   <link rel="preconnect" href="https://cdn.jsdelivr.net" /><link rel="preconnect" href="https://oaqrjrrgntlqmyxxovfn.supabase.co" crossorigin />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.css" />
-  <link rel="stylesheet" href="css/style.css?v=108" />
+  <link rel="stylesheet" href="css/style.css?v=109" />
   <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Service","name":"서비스","serviceType":"그래픽 디자인","description":"카탈로그·브로슈어, 팜플렛·리플렛, 포스터·전단지, CI·로고, 패키지·라벨, 제품촬영, 다국어디자인 — 분야별 제작 서비스를 안내합니다.","url":"https://haodesign.co.kr/design/service.html","areaServed":{"@type":"Country","name":"대한민국"},"provider":{"@type":"Organization","name":"하오디자인","url":"https://haodesign.co.kr/"}}
   </script>
@@ -183,7 +183,7 @@
     </div>
   </footer>
 
-  <script src="js/data.js?v=37"></script>
+  <script src="js/data.js?v=38"></script>
   <script src="js/main.js?v=62"></script>
   <script>
   HAO.ready.then(function () {
@@ -233,7 +233,7 @@
     document.getElementById("svSeoP1").textContent = seo.p1;
     document.getElementById("svSeoT2").textContent = seo.t2;
     document.getElementById("svSeoP2").textContent = seo.p2;
-    document.getElementById("svSeoAlt").textContent = seo.alt || "";
+    document.getElementById("svSeoAlt").innerHTML = (seo.alt || "").split(/\s*\u00B7\s*|\s*,\s*/).filter(Boolean).map(function (t) { return "<span>" + t.replace(/&/g, "&amp;").replace(/</g, "&lt;") + "</span>"; }).join("");
 
     /* 진행 과정: 인쇄형 카테고리는 '메인 페이지'의 진행 과정(pst* 카피)을 그대로 미러링,
        촬영·다국어는 인쇄가 안 맞으니 일반 단계 사용. (메인에서 고치면 인쇄형 서비스도 자동 반영) */
