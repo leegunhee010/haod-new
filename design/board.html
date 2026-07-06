@@ -69,31 +69,11 @@
         </div>
       </section>
       <section class="page page--tight">
-        <div class="gallery-board" id="galleryBoard"><!-- cards injected --></div>
+        <div class="gallery-board" id="galleryBoard"><article class="gcard" data-id="6"><div class="gcard__thumb"><img src="assets/work/work16.jpeg" alt="" loading="lazy"><span class="gcard__badge">NEW</span></div><div class="gcard__body"><h3><a href="column-6.html">회사소개서, 첫 페이지에서 결정됩니다</a></h3><p>바이어가 회사소개서를 보는 시간은 평균 30초. 첫 페이지에 무엇을 담아야 할까요?</p><span class="gcard__date">2026-05-22</span></div></article><article class="gcard" data-id="5"><div class="gcard__thumb"><img src="assets/work/work05.jpeg" alt="" loading="lazy"></div><div class="gcard__body"><h3><a href="column-5.html">카탈로그 제작 전 꼭 정해야 할 5가지</a></h3><p>판형, 페이지 수, 종이, 후가공, 수량 — 견적이 달라지는 다섯 가지 기준을 정리했습니다.</p><span class="gcard__date">2026-03-14</span></div></article><article class="gcard" data-id="4"><div class="gcard__thumb"><img src="assets/work/work01.jpeg" alt="" loading="lazy"></div><div class="gcard__body"><h3><a href="column-4.html">수출용 브로슈어, 번역만 하면 끝일까?</a></h3><p>언어가 바뀌면 글줄 길이도, 서체도, 레이아웃도 달라집니다. 다국어 편집의 핵심.</p><span class="gcard__date">2026-01-20</span></div></article><article class="gcard" data-id="3"><div class="gcard__thumb"><img src="assets/work/work13.jpeg" alt="" loading="lazy"></div><div class="gcard__body"><h3><a href="column-3.html">인쇄 사고를 줄이는 데이터 체크리스트</a></h3><p>재단선, 색상 모드, 서체 아웃라인 — 인쇄 넘기기 전 마지막 점검 목록입니다.</p><span class="gcard__date">2025-12-02</span></div></article><article class="gcard" data-id="2"><div class="gcard__thumb"><img src="assets/work/work15.jpeg" alt="" loading="lazy"></div><div class="gcard__body"><h3><a href="column-2.html">리플렛과 브로슈어, 무엇이 다른가요?</a></h3><p>접지 방식부터 쓰임새까지 — 우리 회사에 맞는 인쇄물 고르는 법.</p><span class="gcard__date">2025-10-11</span></div></article><article class="gcard" data-id="1"><div class="gcard__thumb"><img src="assets/work-hd/thumb/w380.jpg" alt="" loading="lazy"></div><div class="gcard__body"><h3><a href="column-1.html">포스터가 시선을 잡는 3초의 법칙</a></h3><p>멀리서도 읽히는 포스터의 위계 설계 — 타이포와 컬러로 만드는 임팩트.</p><span class="gcard__date">2025-08-27</span></div></article></div>
       </section>
     </div>
 
     <!-- ===== 상세 뷰 ===== -->
-    <div id="postView" hidden>
-      <section class="subhero subhero--post">
-        <div class="subhero__inner">
-          <p class="subhero__crumb"><a href="index.html">HOME</a> / <a href="board.html">Column</a></p>
-          <h2 class="subhero__title post-title" id="postTitle"></h2>
-          <p class="subhero__desc" id="postDate"></p>
-        </div>
-      </section>
-      <section class="page page--tight">
-        <article class="post">
-          <div class="post__hero"><img src="" alt="" id="postImg" /></div>
-          <div class="post__body" id="postBody"></div>
-          <div class="post__nav">
-            <a href="#" id="postPrev" class="post__navlink"><span>이전 글</span><strong></strong></a>
-            <a href="board.html" class="btn-round post__list"><span>목록으로</span></a>
-            <a href="#" id="postNext" class="post__navlink post__navlink--next"><span>다음 글</span><strong></strong></a>
-          </div>
-        </article>
-      </section>
-    </div>
 
     <!-- ===== CTA ===== -->
     <section class="contact" id="contact">
@@ -163,7 +143,6 @@
     var posts = HAO.getPosts();
 
     var listView = document.getElementById("listView");
-    var postView = document.getElementById("postView");
     var gallery = document.getElementById("galleryBoard");
 
     /* 목록 렌더 */
@@ -171,7 +150,7 @@
       return '<article class="gcard" data-id="' + p.id + '">' +
         '<div class="gcard__thumb"><img src="' + HAO.imgSrc(p.img) + '" alt="" loading="lazy" />' +
         (p.isNew ? '<span class="gcard__badge">NEW</span>' : '') + '</div>' +
-        '<div class="gcard__body"><h3>' + p.title + '</h3><p>' + p.summary + '</p>' +
+        '<div class="gcard__body"><h3><a href="column-' + p.id + '.html">' + p.title + '</a></h3><p>' + p.summary + '</p>' +
         '<span class="gcard__date">' + p.date + '</span></div></article>';
     }).join("");
 
@@ -180,37 +159,15 @@
       location.href = "column-" + card.getAttribute("data-id") + ".html";
     });
 
-    function byId(id) { return posts.filter(function (p) { return p.id === id; })[0]; }
-
-    /* 상세 렌더 */
-    function render() {
-      var m = location.hash.match(/^#post-(\d+)$/);
-      var post = m ? byId(parseInt(m[1], 10)) : null;
-      if (!post) {
-        postView.hidden = true; listView.hidden = false;
-        document.title = "Column | HAO DESIGN";
-        return;
-      }
-      listView.hidden = true; postView.hidden = false;
-      document.title = post.title + " | HAO DESIGN";
-      document.getElementById("postTitle").textContent = post.title;
-      document.getElementById("postDate").textContent = post.date;
-      document.getElementById("postImg").src = HAO.imgSrc(post.img);
-      document.getElementById("postBody").innerHTML = post.bodyHtml ||
-        (post.body || []).map(function (t) { return "<p>" + t + "</p>"; }).join("");
-
-      var idx = posts.indexOf(post);
-      var prev = posts[idx + 1], next = posts[idx - 1]; // 목록은 최신순
-      var prevEl = document.getElementById("postPrev");
-      var nextEl = document.getElementById("postNext");
-      prevEl.style.visibility = prev ? "visible" : "hidden";
-      nextEl.style.visibility = next ? "visible" : "hidden";
-      if (prev) { prevEl.href = "#post-" + prev.id; prevEl.querySelector("strong").textContent = prev.title; }
-      if (next) { nextEl.href = "#post-" + next.id; nextEl.querySelector("strong").textContent = next.title; }
-      window.scrollTo(0, 0);
-    }
-    window.addEventListener("hashchange", render);
-    render();
+    /* 구 해시 링크(#post-N)는 정적 글 페이지로 */
+    (function () {
+      var hm = location.hash.match(/^#post-(\d+)$/);
+      if (hm) location.replace("column-" + hm[1] + ".html");
+    })();
+    window.addEventListener("hashchange", function () {
+      var hm = location.hash.match(/^#post-(\d+)$/);
+      if (hm) location.replace("column-" + hm[1] + ".html");
+    });
   });
   </script>
 </body>
