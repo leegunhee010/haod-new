@@ -1252,4 +1252,4 @@ img { display: block; max-width: 100%; }
 @media (max-width: 860px) { .svc-seo__alt { grid-column: 1 / -1; } }
 
 /* 서비스 검색용 H1 (히어로 헤드카피 아래 카테고리 제목) */
-.svc-cover__kw { margin-top: 18px; font-size: .98rem; font-weight: 800; letter-spacing: -.01em; color: var(--ink); opacity: .8; }
+.svc-cover__kw { margin: -12px 0 16px; font-size: .98rem; font-weight: 800; letter-spacing: -.01em; color: var(--ink); opacity: .8; }
