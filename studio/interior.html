@@ -29,9 +29,17 @@
   <header class="header" id="header">
     <a href="index.html" class="brand"><img src="assets/img/logo.png" alt="하오디자인" class="brand__logo" /></a>
     <nav class="nav" id="nav">
-      <a href="photo.html">제품촬영</a>
-      <a href="detailpage.html">상세페이지</a>
-      <a href="video.html">영상콘텐츠</a>
+      <a href="studio.html">스튜디오</a>
+      <div class="nav__drop">
+        <a href="photo.html" class="nav__drop-toggle" style="color:var(--accent)">서비스</a>
+        <div class="nav__drop-menu">
+          <a href="photo.html">제품·브랜드 촬영</a>
+          <a href="detailpage.html">상세페이지 디자인</a>
+          <a href="video.html">영상·릴스 콘텐츠</a>
+          <a href="interior.html">인·익스테리어 촬영</a>
+        </div>
+      </div>
+      <a href="portfolio.html">포트폴리오</a>
       <a href="column.html">칼럼</a>
       <a href="qna.html">Q&amp;A</a>
       <span class="nav__div" aria-hidden="true"></span>
@@ -192,7 +200,7 @@
     hdr.classList.toggle('is-stuck', window.scrollY > 24);
     var burger = $('#burger'), nav = $('#nav');
     burger.addEventListener('click', function () { burger.classList.toggle('is-open'); nav.classList.toggle('is-open'); document.body.classList.toggle('menu-open'); });
-    $$('#nav a').forEach(function (a) { a.addEventListener('click', function () { burger.classList.remove('is-open'); nav.classList.remove('is-open'); document.body.classList.remove('menu-open'); }); });
+    $$('#nav a').forEach(function (a) { a.addEventListener('click', function (e) { if (a.classList.contains('nav__drop-toggle') && window.matchMedia('(max-width: 760px)').matches) { e.preventDefault(); a.closest('.nav__drop').classList.toggle('is-open'); return; } burger.classList.remove('is-open'); nav.classList.remove('is-open'); document.body.classList.remove('menu-open'); }); });
     /* FAQ는 크롤러용으로 open 상태로 배포 — 화면에서는 접힌 상태로 시작 */
     $$('.faq__item[open]').forEach(function (d) { d.removeAttribute('open'); });
     var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } }); }, { threshold: .15 });

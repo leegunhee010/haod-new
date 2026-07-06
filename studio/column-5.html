@@ -28,6 +28,15 @@
     <a href="index.html" class="brand"><img src="assets/img/logo.png" alt="하오디자인" class="brand__logo" /></a>
     <nav class="nav" id="nav">
       <a href="studio.html">스튜디오</a>
+      <div class="nav__drop">
+        <a href="photo.html" class="nav__drop-toggle">서비스</a>
+        <div class="nav__drop-menu">
+          <a href="photo.html">제품·브랜드 촬영</a>
+          <a href="detailpage.html">상세페이지 디자인</a>
+          <a href="video.html">영상·릴스 콘텐츠</a>
+          <a href="interior.html">인·익스테리어 촬영</a>
+        </div>
+      </div>
       <a href="portfolio.html">포트폴리오</a>
       <a href="column.html" style="color:var(--accent)">칼럼</a>
       <a href="qna.html">Q&amp;A</a>
@@ -107,7 +116,7 @@
       <span class="footer__copy">© <i id="year"></i> HAO DESIGN. 스튜디오센터.</span>
     </div>
   </footer>
-  <script>(function(){var h=document.getElementById("header");function s(){if(h)h.classList.toggle("is-stuck",(window.scrollY||0)>24);}addEventListener("scroll",s,{passive:true});s();var b=document.getElementById("burger"),n=document.getElementById("nav");if(b&&n)b.addEventListener("click",function(){n.classList.toggle("is-open");document.body.classList.toggle("menu-open");});var y=document.getElementById("year");if(y)y.textContent=new Date().getFullYear();})();</script>
+  <script>(function(){var h=document.getElementById("header");function s(){if(h)h.classList.toggle("is-stuck",(window.scrollY||0)>24);}addEventListener("scroll",s,{passive:true});s();var b=document.getElementById("burger"),n=document.getElementById("nav");if(b&&n)b.addEventListener("click",function(){n.classList.toggle("is-open");document.body.classList.toggle("menu-open");});if(n)n.addEventListener("click",function(e){var t=e.target.closest(".nav__drop-toggle");if(t&&matchMedia("(max-width:760px)").matches){e.preventDefault();t.closest(".nav__drop").classList.toggle("is-open");}});var y=document.getElementById("year");if(y)y.textContent=new Date().getFullYear();})();</script>
   <script src="js/data.js?v=9"></script>
   <script>
   (function () {

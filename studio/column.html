@@ -19,6 +19,15 @@
     <a href="index.html" class="brand"><img src="assets/img/logo.png" alt="하오디자인" class="brand__logo" /></a>
     <nav class="nav" id="nav">
       <a href="studio.html">스튜디오</a>
+      <div class="nav__drop">
+        <a href="photo.html" class="nav__drop-toggle">서비스</a>
+        <div class="nav__drop-menu">
+          <a href="photo.html">제품·브랜드 촬영</a>
+          <a href="detailpage.html">상세페이지 디자인</a>
+          <a href="video.html">영상·릴스 콘텐츠</a>
+          <a href="interior.html">인·익스테리어 촬영</a>
+        </div>
+      </div>
       <a href="portfolio.html">포트폴리오</a>
       <a href="column.html" style="color:var(--accent)">칼럼</a>
       <a href="qna.html">Q&amp;A</a>
@@ -133,7 +142,7 @@
     hdr.classList.toggle('is-stuck', window.scrollY > 24);
     var burger = $('#burger'), nav = $('#nav');
     burger.addEventListener('click', function () { burger.classList.toggle('is-open'); nav.classList.toggle('is-open'); document.body.classList.toggle('menu-open'); });
-    $$('#nav a').forEach(function (a) { a.addEventListener('click', function () { burger.classList.remove('is-open'); nav.classList.remove('is-open'); document.body.classList.remove('menu-open'); }); });
+    $$('#nav a').forEach(function (a) { a.addEventListener('click', function (e) { if (a.classList.contains('nav__drop-toggle') && window.matchMedia('(max-width: 760px)').matches) { e.preventDefault(); a.closest('.nav__drop').classList.toggle('is-open'); return; } burger.classList.remove('is-open'); nav.classList.remove('is-open'); document.body.classList.remove('menu-open'); }); });
 
     var posts = [
       { id: 6, title: '제품 사진 하나가 전환율을 바꾼다', summary: '같은 제품도 첫 컷에 따라 클릭과 구매가 달라지는 이유.', date: '2026.06.18', img: 'assets/work-hd/thumb/w380.jpg', isNew: true,

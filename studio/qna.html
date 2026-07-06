@@ -22,6 +22,15 @@
     <a href="index.html" class="brand"><img src="assets/img/logo.png" alt="하오디자인" class="brand__logo" /></a>
     <nav class="nav" id="nav">
       <a href="studio.html">스튜디오</a>
+      <div class="nav__drop">
+        <a href="photo.html" class="nav__drop-toggle">서비스</a>
+        <div class="nav__drop-menu">
+          <a href="photo.html">제품·브랜드 촬영</a>
+          <a href="detailpage.html">상세페이지 디자인</a>
+          <a href="video.html">영상·릴스 콘텐츠</a>
+          <a href="interior.html">인·익스테리어 촬영</a>
+        </div>
+      </div>
       <a href="portfolio.html">포트폴리오</a>
       <a href="column.html">칼럼</a>
       <a href="qna.html" style="color:var(--accent)">Q&amp;A</a>
@@ -124,7 +133,7 @@
     hdr.classList.toggle('is-stuck', window.scrollY > 24);
     var burger = $('#burger'), nav = $('#nav');
     burger.addEventListener('click', function () { burger.classList.toggle('is-open'); nav.classList.toggle('is-open'); document.body.classList.toggle('menu-open'); });
-    $$('#nav a').forEach(function (a) { a.addEventListener('click', function () { burger.classList.remove('is-open'); nav.classList.remove('is-open'); document.body.classList.remove('menu-open'); }); });
+    $$('#nav a').forEach(function (a) { a.addEventListener('click', function (e) { if (a.classList.contains('nav__drop-toggle') && window.matchMedia('(max-width: 760px)').matches) { e.preventDefault(); a.closest('.nav__drop').classList.toggle('is-open'); return; } burger.classList.remove('is-open'); nav.classList.remove('is-open'); document.body.classList.remove('menu-open'); }); });
 
     var QNA = [
       { c: '촬영', q: '촬영은 어디서 진행하나요?', a: '광진구 자체 스튜디오에서 진행하는 것이 기본이며, 제품·상황에 따라 현장·매장 출장 촬영도 가능합니다. 공간 조건을 알려주시면 사전에 안내드립니다.' },
