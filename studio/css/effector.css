@@ -117,6 +117,9 @@
 .header.on-dark:not(.is-stuck) .nav a, .header.on-dark:not(.is-stuck) .brand__sub { color: rgba(255,255,255,.85); }
 .header.on-dark:not(.is-stuck) .nav a:hover { color: #fff; }
 .header.on-dark:not(.is-stuck) .nav__center { color: #ffb9a6; }
+/* 드롭다운 메뉴(흰 패널) 안 링크는 다크 헤더여도 잉크색 유지 */
+.header.on-dark:not(.is-stuck) .nav .nav__drop-menu a { color: var(--ink); }
+.header.on-dark:not(.is-stuck) .nav .nav__drop-menu a:hover { color: var(--accent); }
 .header.on-dark:not(.is-stuck) .burger span { background: #fff; }
 .header.on-dark:not(.is-stuck) .nav__div { background: rgba(255,255,255,.25); }
 
