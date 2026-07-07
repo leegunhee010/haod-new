@@ -101,7 +101,7 @@
   /* ===== 칼럼 글 ===== */
   var DEFAULT_POSTS = [
     { id: 6, title: 'SEO를 넘어 GEO·AEO 시대로', summary: 'AI가 답변에서 추천하는 홈페이지란? SEO와 GEO의 차이를 정리했습니다.', date: '2026-06-20', img: 'assets/img/big_slide_02.jpg', isNew: true,
-      body: ['검색 결과 상위 노출을 목표로 하던 시대에서, 이제는 생성형 AI가 답변 속에서 추천하는 홈페이지를 만드는 시대로 넘어가고 있습니다.', 'SEO가 검색엔진을 위한 최적화라면, GEO·AEO는 ChatGPT·Perplexity 같은 AI가 우리 콘텐츠를 인용·추천하도록 만드는 전략입니다.', '하오디자인은 제작 단계부터 구조화 데이터(스키마)와 신뢰 신호를 함께 설계해, 사람과 AI 모두에게 발견되는 홈페이지를 만듭니다.'] },
+      body: ['검색 결과 상위 노출을 목표로 하던 시대에서, 이제는 생성형 AI가 답변 속에서 추천하는 홈페이지를 만드는 시대로 넘어가고 있습니다.', 'SEO가 검색엔진을 위한 최적화라면, GEO·AEO는 ChatGPT·Perplexity 같은 AI가 우리 콘텐츠를 인용·추천하도록 만드는 전략입니다.', '하오커뮤니케이션은 제작 단계부터 구조화 데이터(스키마)와 신뢰 신호를 함께 설계해, 사람과 AI 모두에게 발견되는 홈페이지를 만듭니다.'] },
     { id: 5, title: '네이버 AI 탭, 검색은 어떻게 바뀌나', summary: '대화형 AI 검색으로 재편되는 검색 환경과 대응 전략.', date: '2026-06-12', img: 'assets/img/big_slide_03.jpg', isNew: true,
       body: ['네이버가 대화형 AI 검색 ‘AI 탭’을 선보이며 검색 행위 자체가 재구성되고 있습니다.', '키워드 중심에서 의도·맥락 중심으로 이동하는 만큼, 콘텐츠 구조와 데이터 정합성이 더 중요해집니다.'] },
     { id: 4, title: '반응형 vs 적응형, 무엇을 택할까', summary: '디바이스 대응 방식의 차이와 선택 기준.', date: '2026-05-30', img: 'assets/img/big_slide_04.jpg', isNew: false,
@@ -122,9 +122,9 @@
     { c: '홈페이지 제작', q: '기존 홈페이지 리뉴얼도 가능한가요?', a: '네. 기존 구조·유입 키워드·콘텐츠를 분석해 SEO 자산을 유지하면서 디자인·성능·검색을 함께 개선합니다. 기존 검색 순위가 떨어지지 않도록 URL·리다이렉트 설계까지 포함합니다.' },
     { c: '홈페이지 제작', q: '반응형으로 제작되나요?', a: '기본적으로 모든 사이트는 PC·태블릿·모바일에 대응하는 반응형으로 제작합니다.' },
     { c: '홈페이지 제작', q: '병원, 제조업, 식품 브랜드 홈페이지도 제작 가능한가요?', a: '네. 병원·의원, 제조업·산업재, 식품·프랜차이즈 등 업종별 특성에 맞춰 구성과 콘텐츠를 설계합니다. 업종 규제(의료광고 등)가 있는 경우 표현 범위를 함께 검토해 진행합니다.' },
-    { c: '홈페이지 제작', q: '영문·중문 등 다국어 홈페이지도 제작되나요?', a: '네. 다국어 구조(hreflang·언어별 URL)를 반영해 제작하며, 수출기업은 영문 카탈로그 등 하오디자인의 다국어 인쇄물 제작과 연계할 수도 있습니다.' },
+    { c: '홈페이지 제작', q: '영문·중문 등 다국어 홈페이지도 제작되나요?', a: '네. 다국어 구조(hreflang·언어별 URL)를 반영해 제작하며, 수출기업은 영문 카탈로그 등 하오커뮤니케이션의 다국어 인쇄물 제작과 연계할 수도 있습니다.' },
     { c: '홈페이지 제작', q: '쇼핑몰 구축도 가능한가요?', a: '네. 상품 구성·결제·배송 세팅까지 포함한 쇼핑몰을 구축합니다. 판매 채널과 운영 인력을 고려해 자체 구축과 임대형 중 알맞은 방식을 제안드립니다.' },
-    { c: '홈페이지 제작', q: '원고나 사진이 준비되지 않았는데 시작할 수 있나요?', a: '가능합니다. 핵심 내용만 주시면 페이지 구성과 카피 정리를 함께 진행하고, 필요하면 하오디자인 스튜디오센터의 촬영 서비스와 연계해 사진까지 해결합니다.' },
+    { c: '홈페이지 제작', q: '원고나 사진이 준비되지 않았는데 시작할 수 있나요?', a: '가능합니다. 핵심 내용만 주시면 페이지 구성과 카피 정리를 함께 진행하고, 필요하면 하오커뮤니케이션 스튜디오센터의 촬영 서비스와 연계해 사진까지 해결합니다.' },
     { c: '홈페이지 제작', q: '회사소개서나 카탈로그 내용을 홈페이지로 옮길 수 있나요?', a: '네. 인쇄물의 구성과 메시지를 웹에 맞게 재편집해 옮깁니다. 카탈로그·회사소개서 제작과 홈페이지 구축을 함께 의뢰하시면 톤을 하나로 맞출 수 있습니다.' },
 
     { c: '앱 개발', q: '모바일 앱도 만들 수 있나요?', a: '네. iOS·Android 네이티브 또는 하이브리드 방식으로 제작하며, 서비스 목적·예산에 맞는 방식을 함께 정합니다.' },
@@ -146,7 +146,7 @@
     { c: '운영·기타', q: '오픈 후 유지보수도 가능한가요?', a: '네. 콘텐츠 수정·기능 추가·보안 점검 등 정기·수시 유지보수를 지원합니다. 월 단위 운영 또는 건별 수정 모두 가능합니다.' },
     { c: '운영·기타', q: '도메인·호스팅도 대행해 주나요?', a: '도메인 연결, 호스팅·서버 세팅, SSL 적용까지 함께 처리해 드립니다.' },
     { c: '운영·기타', q: '지방이나 해외에서도 진행할 수 있나요?', a: '전화·이메일·화상 미팅으로 전국 어디서나 비대면으로 진행 가능합니다. 필요한 경우에만 대면 미팅을 잡습니다.' },
-    { c: '운영·기타', q: '다른 센터 서비스(디자인·촬영·마케팅)와 연계되나요?', a: '네. 카탈로그·촬영·마케팅이 필요하면 하오디자인 패밀리 센터와 연계해 원스톱으로 진행합니다.' }
+    { c: '운영·기타', q: '다른 센터 서비스(디자인·촬영·마케팅)와 연계되나요?', a: '네. 카탈로그·촬영·마케팅이 필요하면 하오커뮤니케이션 패밀리 센터와 연계해 원스톱으로 진행합니다.' }
   ];
 
   /* ===== 파트너(클라이언트) 로고 — 메인 흐르는 띠 ===== */
@@ -175,23 +175,23 @@
     ogImage: "assets/img/hero.jpg",
     pages: {
       index: {
-        title: "웹구축센터 | 하오디자인 — SEO·AEO 홈페이지·앱 제작",
-        desc: "하오디자인 웹구축센터. 검색되는 홈페이지부터 AI가 답하는 브랜드까지 — SEO·AEO 설계가 들어간 홈페이지·앱을 제작합니다. 만드는 데서 끝나지 않고, 발견되게 만듭니다.",
-        keywords: "홈페이지 제작, 앱 제작, SEO, AEO, GEO, AI 검색 최적화, 반응형 홈페이지, 모바일 앱, 구조화 데이터, 하오디자인 웹구축센터" },
+        title: "웹구축센터 | 하오커뮤니케이션 — SEO·AEO 홈페이지·앱 제작",
+        desc: "하오커뮤니케이션 웹구축센터. 검색되는 홈페이지부터 AI가 답하는 브랜드까지 — SEO·AEO 설계가 들어간 홈페이지·앱을 제작합니다. 만드는 데서 끝나지 않고, 발견되게 만듭니다.",
+        keywords: "홈페이지 제작, 앱 제작, SEO, AEO, GEO, AI 검색 최적화, 반응형 홈페이지, 모바일 앱, 구조화 데이터, 하오커뮤니케이션 웹구축센터" },
       portfolio: {
-        title: "포트폴리오 | 웹구축센터 — 하오디자인",
-        desc: "하오디자인 웹구축센터가 직접 기획·제작한 홈페이지·앱·검색 최적화 프로젝트 포트폴리오.",
-        keywords: "홈페이지 포트폴리오, 웹제작 사례, 앱개발 사례, SEO 리뉴얼, 하오디자인 웹구축센터" },
+        title: "포트폴리오 | 웹구축센터 — 하오커뮤니케이션",
+        desc: "하오커뮤니케이션 웹구축센터가 직접 기획·제작한 홈페이지·앱·검색 최적화 프로젝트 포트폴리오.",
+        keywords: "홈페이지 포트폴리오, 웹제작 사례, 앱개발 사례, SEO 리뉴얼, 하오커뮤니케이션 웹구축센터" },
       column: {
-        title: "칼럼 | 웹구축센터 — 하오디자인",
-        desc: "홈페이지 제작·앱·AEO·SEO·GEO 트렌드와 실무 인사이트를 전하는 하오디자인 웹구축센터 칼럼.",
+        title: "칼럼 | 웹구축센터 — 하오커뮤니케이션",
+        desc: "홈페이지 제작·앱·AEO·SEO·GEO 트렌드와 실무 인사이트를 전하는 하오커뮤니케이션 웹구축센터 칼럼.",
         keywords: "웹 칼럼, SEO 칼럼, AEO, GEO, 홈페이지 제작 팁, 웹 트렌드" },
       qna: {
-        title: "Q&A | 웹구축센터 — 하오디자인",
+        title: "Q&A | 웹구축센터 — 하오커뮤니케이션",
         desc: "홈페이지 제작·앱·AEO·SEO 자주 하는 질문. 제작·개발·검색최적화·운영 카테고리별 Q&A.",
         keywords: "홈페이지 제작 문의, 제작 기간, 제작 비용, 앱 개발 문의, SEO 문의" },
       "seo-check": {
-        title: "무료 SEO 진단 | 웹구축센터 — 하오디자인",
+        title: "무료 SEO 진단 | 웹구축센터 — 하오커뮤니케이션",
         desc: "URL만 넣으면 22개 항목을 100점 만점으로 진단. 우리 홈페이지의 SEO 점수를 지금 바로 확인하세요.",
         keywords: "SEO 진단, SEO 점수, 무료 SEO 검사, 홈페이지 진단, 검색 최적화 진단" }
     }
@@ -219,12 +219,12 @@
     { key: "strat_chip3", page: "index", sel: ".gcar__chips .gchip:nth-of-type(3)", tag: "b", label: "전략 섹션 — 태그③", value: "빠른 로딩 속도" },
     { key: "strat_chip4", page: "index", sel: ".gcar__chips .gchip:nth-of-type(4)", tag: "b", label: "전략 섹션 — 태그④", value: "AI 답변 노출" },
     { key: "strat_chip5", page: "index", sel: ".gcar__chips .gchip:nth-of-type(5)", tag: "b", label: "전략 섹션 — 태그⑤", value: "반응형 제작" },
-    { key: "svc_lead", page: "index", sel: ".show__lead", tag: "b", label: "서비스 섹션 — 설명", value: "하오디자인은 디자인, 개발, 검색 최적화를 함께 고려해\n브랜드가 온라인에서 더 잘 보이는 웹사이트를 구축합니다." },
+    { key: "svc_lead", page: "index", sel: ".show__lead", tag: "b", label: "서비스 섹션 — 설명", value: "하오커뮤니케이션은 디자인, 개발, 검색 최적화를 함께 고려해\n브랜드가 온라인에서 더 잘 보이는 웹사이트를 구축합니다." },
     { key: "svc1_d", page: "index", sel: ".show .show__item:nth-of-type(2) .show__d", tag: "b", label: "서비스① SEO — 설명", value: "키워드·메타·속도·구조화 데이터까지\n네이버·구글이 좋아하는 기술 구조를 만들 때부터 심습니다." },
     { key: "svc2_d", page: "index", sel: ".show .show__item:nth-of-type(3) .show__d", tag: "b", label: "서비스② AEO — 설명", value: "GoogleAI·ChatGPT·Gemini 같은 AI가\n브랜드를 이해하기 쉽도록 FAQ, 콘텐츠, 구조화를 함께 정리합니다." },
     { key: "svc3_d", page: "index", sel: ".show .show__item:nth-of-type(4) .show__d", tag: "b", label: "서비스③ WEBSITE — 설명", value: "브랜드 목적에 맞는 홈페이지, 랜딩페이지, 쇼핑몰을\n사용자 흐름과 운영 편의성까지 고려해 제작합니다." },
     { key: "svc4_d", page: "index", sel: ".show .show__item:nth-of-type(5) .show__d", tag: "b", label: "서비스④ APP — 설명", value: "iOS·Android 네이티브부터 웹앱·하이브리드까지.\n결제·예약 연동과 백엔드·API, 보안까지 구축합니다." },
-    { key: "work_lead", page: "index", sel: "#work .sec__lead", tag: "b", label: "포트폴리오 섹션 — 설명", value: "하오디자인이 직접 기획·제작한 홈페이지·앱·검색 최적화 프로젝트입니다." },
+    { key: "work_lead", page: "index", sel: "#work .sec__lead", tag: "b", label: "포트폴리오 섹션 — 설명", value: "하오커뮤니케이션이 직접 기획·제작한 홈페이지·앱·검색 최적화 프로젝트입니다." },
     { key: "cta_lead", page: "index", sel: "#contact .contact__desc", tag: "b", label: "문의 — 설명", value: "간단한 내용만 남겨주세요. 담당자가 확인 후 빠르게 연락드립니다.\n현재 홈페이지의 검색 노출 진단도 무료로 도와드립니다." },
     { key: "partners_title", page: "index", sel: ".trust__title", tag: "b", label: "파트너 — 제목", value: "함께한 파트너사" },
     { key: "footer_tag_main", page: "index", sel: ".footer__brand p", tag: "b", label: "푸터 소개 문구(메인)", value: "SEO·AEO 홈페이지·앱 제작 — 만드는 데서 끝나지 않고, 발견되게 만듭니다." },
@@ -266,7 +266,7 @@
     /* ───── 메인 · 홈 FAQ(5문항) ───── */
     { key: "hfaq_title", page: "index", sel: "#faq .sec__title", tag: "b", label: "홈 FAQ — 제목", value: "자주 묻는 질문" },
     { key: "hfaq1_q", page: "index", sel: "#faq .qa:nth-of-type(1) .qa__q", tag: "b", label: "홈 FAQ① — 질문", value: "SEO와 AEO는 무엇이 다른가요?" },
-    { key: "hfaq1_a", page: "index", sel: "#faq .qa:nth-of-type(1) .qa__a-in", tag: "b", label: "홈 FAQ① — 답변", value: "**SEO**는 사람이 직접 검색했을 때 결과 상단에 노출되도록 하는 것이고, **AEO(Answer Engine Optimization)**는 ChatGPT·Gemini 같은 생성형 AI가 답변을 만들 때 우리 브랜드를 인용·추천하도록 하는 것입니다. 하오디자인은 둘을 따로가 아니라 제작 단계에서 함께 설계합니다." },
+    { key: "hfaq1_a", page: "index", sel: "#faq .qa:nth-of-type(1) .qa__a-in", tag: "b", label: "홈 FAQ① — 답변", value: "**SEO**는 사람이 직접 검색했을 때 결과 상단에 노출되도록 하는 것이고, **AEO(Answer Engine Optimization)**는 ChatGPT·Gemini 같은 생성형 AI가 답변을 만들 때 우리 브랜드를 인용·추천하도록 하는 것입니다. 하오커뮤니케이션은 둘을 따로가 아니라 제작 단계에서 함께 설계합니다." },
     { key: "hfaq2_q", page: "index", sel: "#faq .qa:nth-of-type(2) .qa__q", tag: "b", label: "홈 FAQ② — 질문", value: "홈페이지만, 또는 앱만 의뢰해도 되나요?" },
     { key: "hfaq2_a", page: "index", sel: "#faq .qa:nth-of-type(2) .qa__a-in", tag: "b", label: "홈 FAQ② — 답변", value: "네. 홈페이지 제작·리뉴얼, 모바일 앱, 쇼핑몰, 검색 최적화(SEO·AEO)만 단독으로도 의뢰하실 수 있습니다. 필요한 범위만 말씀해 주시면 그에 맞춰 견적을 잡아드립니다." },
     { key: "hfaq3_q", page: "index", sel: "#faq .qa:nth-of-type(3) .qa__q", tag: "b", label: "홈 FAQ③ — 질문", value: "제작 기간과 비용은 어떻게 되나요?" },
@@ -283,7 +283,7 @@
     /* ───── 포트폴리오 ───── */
     { key: "po_eg", page: "portfolio", sel: ".subhero__eng", tag: "b", label: "상단 라벨", value: "PORTFOLIO" },
     { key: "po_title", page: "portfolio", sel: ".subhero__title", tag: "b", label: "상단 제목", value: "포트폴리오" },
-    { key: "po_desc", page: "portfolio", sel: ".subhero__desc", tag: "b", label: "상단 설명", value: "하오디자인 웹구축센터가 직접 기획·제작한 홈페이지·앱·검색 최적화 프로젝트입니다." },
+    { key: "po_desc", page: "portfolio", sel: ".subhero__desc", tag: "b", label: "상단 설명", value: "하오커뮤니케이션 웹구축센터가 직접 기획·제작한 홈페이지·앱·검색 최적화 프로젝트입니다." },
 
     /* ───── 칼럼 ───── */
     { key: "col_title", page: "column", sel: "#listView .subhero__title", tag: "b", label: "상단 제목", value: "Column" },
@@ -315,11 +315,11 @@
     { key: "sc_pv_title", page: "seo-check", sel: ".spv__head h2", tag: "b", label: "분석 항목 — 제목", value: "SEO 점수 분석 항목" },
     { key: "sc_pv_sub", page: "seo-check", sel: ".spv__head p", tag: "b", label: "분석 항목 — 설명", value: "하오 SEO Checker는 총 **100점 만점**으로 22개 항목을 **실제 코드**로 점검합니다." },
     { key: "sc_cta_title", page: "seo-check", sel: ".scta h3", tag: "b", label: "하단 CTA — 제목", value: "점수를 올리고 싶으세요?" },
-    { key: "sc_cta_desc", page: "seo-check", sel: ".scta p", tag: "b", label: "하단 CTA — 설명", value: "하오디자인이 SEO·AEO 구조를 처음부터 심은 홈페이지를 만들어 드립니다.\n사람의 검색과 AI의 답변, 양쪽에서 발견되게." },
+    { key: "sc_cta_desc", page: "seo-check", sel: ".scta p", tag: "b", label: "하단 CTA — 설명", value: "하오커뮤니케이션이 SEO·AEO 구조를 처음부터 심은 홈페이지를 만들어 드립니다.\n사람의 검색과 AI의 답변, 양쪽에서 발견되게." },
 
     /* ───── 공통(푸터 소개 — 서브페이지) ───── */
     { key: "footer_tag_sub", page: "all", sel: ".footer__top > p", tag: "b", label: "푸터 소개 문구(서브)", value: "홈페이지·앱 제작 / AEO·SEO·GEO\n찾게 만드는 홈페이지를 만듭니다" },
-    { key: "ac_index_01", page: "index", sel: "#service > div:nth-of-type(3) > div:nth-of-type(2) > div > div:nth-of-type(2) > div > div:nth-of-type(2) > p", tag: "b", label: "서비스 · 검색 노출까지 고려한다면 하오디자인 웹구축센", value: "검색 노출까지 고려한다면 **하오디자인 웹구축센터**를 추천합니다. 제작 단계부터 SEO·AEO를 설계해 사람 검색과 AI 답변 양쪽에서 발견됩니다." },
+    { key: "ac_index_01", page: "index", sel: "#service > div:nth-of-type(3) > div:nth-of-type(2) > div > div:nth-of-type(2) > div > div:nth-of-type(2) > p", tag: "b", label: "서비스 · 검색 노출까지 고려한다면 하오커뮤니케이션 웹구축센", value: "검색 노출까지 고려한다면 **하오커뮤니케이션 웹구축센터**를 추천합니다. 제작 단계부터 SEO·AEO를 설계해 사람 검색과 AI 답변 양쪽에서 발견됩니다." },
     { key: "ac_index_02", page: "index", sel: "#contact > div > div > div > ul > li:nth-of-type(1) > span", tag: "b", label: "문의 CTA · TEL", value: "TEL" },
     { key: "ac_index_03", page: "index", sel: "#contact > div > div > div > ul > li:nth-of-type(2) > span", tag: "b", label: "문의 CTA · MAIL", value: "MAIL" },
     { key: "ac_index_04", page: "index", sel: "#contact > div > div > div > ul > li:nth-of-type(2) > a", tag: "b", label: "문의 CTA · sales@haodesign.co.kr", value: "sales@haodesign.co.kr" },

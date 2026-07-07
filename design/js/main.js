@@ -1,5 +1,5 @@
 /* ===================================================
-   HAO DESIGN — Kinetic interactions
+   HAO COMMUNICATION — Kinetic interactions
 =================================================== */
 (function () {
   "use strict";
@@ -52,7 +52,7 @@
       meta('meta[property="og:type"]', "property", "og:type", "website");
       meta('meta[property="og:url"]', "property", "og:url", pageUrl);
       meta('meta[property="og:image"]', "property", "og:image", ogImg);
-      meta('meta[property="og:site_name"]', "property", "og:site_name", "HAO DESIGN 하오디자인");
+      meta('meta[property="og:site_name"]', "property", "og:site_name", "HAO COMMUNICATION 하오커뮤니케이션");
       meta('meta[name="twitter:card"]', "name", "twitter:card", "summary_large_image");
       meta('meta[name="twitter:title"]', "name", "twitter:title", sp.title || document.title);
       meta('meta[name="twitter:description"]', "name", "twitter:description", sp.desc || "");
@@ -110,7 +110,7 @@
     if (pageName !== "index") {
       graph.push({
         "@type": "Organization", "@id": base + "/#org",
-        name: "하오디자인 (주식회사 하오커뮤니케이션)", url: base + "/",
+        name: "하오커뮤니케이션 (주식회사 하오커뮤니케이션)", url: base + "/",
         logo: base + "/assets/img/logo.png", telephone: "1666-2027", email: "sales@haodesign.co.kr",
         address: { "@type": "PostalAddress", streetAddress: "능동로49길 9, 2F", addressLocality: "광진구", addressRegion: "서울특별시", addressCountry: "KR" },
         sameAs: sameAs
@@ -138,7 +138,7 @@
       graph.push(crumb([{ n: "홈", u: "/" }, { n: "포트폴리오", u: "/work.html" }]));
     } else if (pageName === "board" && HAO.getPosts) {
       var posts = HAO.getPosts();
-      graph.push({ "@type": "Blog", name: "하오디자인 칼럼", url: base + "/board.html",
+      graph.push({ "@type": "Blog", name: "하오커뮤니케이션 칼럼", url: base + "/board.html",
         blogPost: posts.slice(0, 10).map(function (p) { return { "@type": "BlogPosting", headline: p.title, datePublished: p.date, description: p.summary || "" }; }) });
       graph.push(crumb([{ n: "홈", u: "/" }, { n: "칼럼", u: "/board.html" }]));
     } else if (pageName === "contact") {
@@ -479,7 +479,7 @@
     if (_bl.length) {
       if (!_bnav) {
         var _ft = document.querySelector(".footer");
-        if (_ft) { _bnav = document.createElement("nav"); _bnav.className = "footer__blogs"; _bnav.setAttribute("aria-label", "하오디자인 블로그"); _ft.appendChild(_bnav); }
+        if (_ft) { _bnav = document.createElement("nav"); _bnav.className = "footer__blogs"; _bnav.setAttribute("aria-label", "하오커뮤니케이션 블로그"); _ft.appendChild(_bnav); }
       }
       if (_bnav) _bnav.innerHTML = _bl.map(function (b) {
         var nm = String(b.name || b.url).replace(/[<>]/g, "");
@@ -846,9 +846,9 @@
     }
     /* 작품 상세 정보: 작품별 값(admin) > 카테고리 기본 문구 */
     var LBI_DEF = {
-      "카탈로그·브로슈어": { d: "제품 특징과 브랜드 강점이 한눈에 보이도록 구성한 카탈로그 · 브로슈어 제작 사례입니다. 하오디자인이 기획부터 디자인, 인쇄까지 함께 진행했습니다.", del: "카탈로그 · 브로슈어", sc: "기획 · 디자인 · 인쇄", svc: ["catalog-brochure.html", "카탈로그 · 브로슈어 디자인"] },
-      "리플렛": { d: "펼치고 접는 동선에 맞춰 핵심 정보를 담아낸 팜플렛 · 리플렛 제작 사례입니다. 하오디자인이 구성 기획부터 디자인, 인쇄까지 함께 진행했습니다.", del: "팜플렛 · 리플렛", sc: "기획 · 디자인 · 인쇄", svc: ["leaflet-pamphlet.html", "팜플렛 · 리플렛 디자인"] },
-      "포스터·전단지": { d: "멀리서도 읽히는 위계와 임팩트를 담은 포스터 · 전단지 제작 사례입니다. 하오디자인이 디자인부터 인쇄 · 납품까지 함께 진행했습니다.", del: "포스터 · 전단지", sc: "디자인 · 인쇄 · 납품", svc: ["poster-flyer.html", "포스터 · 전단지 디자인"] },
+      "카탈로그·브로슈어": { d: "제품 특징과 브랜드 강점이 한눈에 보이도록 구성한 카탈로그 · 브로슈어 제작 사례입니다. 하오커뮤니케이션이 기획부터 디자인, 인쇄까지 함께 진행했습니다.", del: "카탈로그 · 브로슈어", sc: "기획 · 디자인 · 인쇄", svc: ["catalog-brochure.html", "카탈로그 · 브로슈어 디자인"] },
+      "리플렛": { d: "펼치고 접는 동선에 맞춰 핵심 정보를 담아낸 팜플렛 · 리플렛 제작 사례입니다. 하오커뮤니케이션이 구성 기획부터 디자인, 인쇄까지 함께 진행했습니다.", del: "팜플렛 · 리플렛", sc: "기획 · 디자인 · 인쇄", svc: ["leaflet-pamphlet.html", "팜플렛 · 리플렛 디자인"] },
+      "포스터·전단지": { d: "멀리서도 읽히는 위계와 임팩트를 담은 포스터 · 전단지 제작 사례입니다. 하오커뮤니케이션이 디자인부터 인쇄 · 납품까지 함께 진행했습니다.", del: "포스터 · 전단지", sc: "디자인 · 인쇄 · 납품", svc: ["poster-flyer.html", "포스터 · 전단지 디자인"] },
       "CI·로고디자인": { d: "브랜드의 방향을 담아 다양한 매체에 일관되게 확장되는 CI · 로고 제작 사례입니다.", del: "CI · 로고", sc: "기획 · 디자인 · 응용 시스템", svc: ["ci-logo.html", "CI · 로고 디자인"] },
       "패키지·라벨": { d: "제품의 가치가 매대에서 그대로 전해지도록 만든 패키지 · 라벨 제작 사례입니다. 구조 설계부터 인쇄까지 함께 진행했습니다.", del: "패키지 · 라벨", sc: "구조 설계 · 디자인 · 인쇄", svc: ["package-label.html", "패키지 · 라벨 디자인"] },
       "촬영서비스": { d: "제품의 질감과 형태가 살아나도록 촬영해 바로 디자인에 반영한 제품 촬영 사례입니다.", del: "제품 촬영", sc: "촬영 · 보정", svc: null },

@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>칼럼 | 마케팅센터 — 하오디자인</title>
-  <meta name="description" content="하오디자인 마케팅센터 칼럼 — 중소기업을 위한 브랜드·이커머스·패키지·전시 디자인 마케팅 인사이트." />
+  <title>칼럼 | 마케팅센터 — 하오커뮤니케이션</title>
+  <meta name="description" content="하오커뮤니케이션 마케팅센터 칼럼 — 중소기업을 위한 브랜드·이커머스·패키지·전시 디자인 마케팅 인사이트." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preconnect" href="https://cdn.jsdelivr.net" />
@@ -32,7 +32,7 @@
   <div class="progress" id="progress" aria-hidden="true"></div>
 
   <header class="header is-stuck" id="header">
-    <a href="index.html" class="brand"><img src="assets/img/logo.png" class="brand__logo" alt="하오디자인" /><b class="brand__sub">마케팅센터</b></a>
+    <a href="index.html" class="brand"><img src="assets/img/logo.png" class="brand__logo" alt="하오커뮤니케이션" /><b class="brand__sub">마케팅센터</b></a>
     <nav class="nav" id="nav">
       <a href="works.html">포트폴리오</a>
       <a href="column.html" style="color:var(--accent)">칼럼</a>
@@ -62,9 +62,9 @@
   <footer class="footer">
     <div class="footer__top">
       <div class="footer__brand">
-        <img src="assets/img/logo.png" alt="하오디자인 마케팅센터" class="footer__logo" />
+        <img src="assets/img/logo.png" alt="하오커뮤니케이션 마케팅센터" class="footer__logo" />
         <p class="footer__biz">주식회사 하오커뮤니케이션 · 대표 박창민 · 528-87-01037<br />서울특별시 광진구 · sales@haodesign.co.kr</p>
-        <p class="footer__copy">© 2026 HAO DESIGN Marketing. All rights reserved.</p>
+        <p class="footer__copy">© 2026 HAO COMMUNICATION Marketing. All rights reserved.</p>
       </div>
       <div class="footer__contact">
         <span class="footer__label">대표번호</span>
@@ -106,7 +106,7 @@
         box.innerHTML = '<p class="post__body">글을 찾을 수 없습니다. <a href="column.html">칼럼 목록으로</a></p>';
         return;
       }
-      document.title = post.t + ' | 마케팅센터 — 하오디자인';
+      document.title = post.t + ' | 마케팅센터 — 하오커뮤니케이션';
       $('#crumbTitle').textContent = post.cat;
       var bodyHtml = (post.body || []).map(function (para) { return '<p>' + esc(para) + '</p>'; }).join('');
       box.innerHTML =

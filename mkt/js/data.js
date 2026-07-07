@@ -97,17 +97,17 @@
   /* ===== 칼럼 글 — {id, cat, date, t, d, img, body[]} ===== */
   var DEFAULT_POSTS = [
     { id: 1, cat: '브랜딩', date: '2026.06.20', t: '작은 브랜드일수록 ‘첫인상’이 전부입니다', d: '로고·색·톤. 고객이 3초 안에 받는 인상이 브랜드의 신뢰를 결정합니다.', img: '../design/assets/work/work01.jpeg',
-      body: ['큰 기업은 광고로 인지도를 삽니다. 하지만 작은 브랜드에게 주어지는 시간은 단 몇 초입니다. 그 사이 고객은 로고, 색, 글씨체만 보고 ‘믿을 만한 곳인지’를 판단합니다.', '그래서 작은 브랜드일수록 첫인상이 곧 전부입니다. 잘 정돈된 로고와 일관된 색, 톤이 ‘이 브랜드는 제대로 한다’는 신뢰를 만듭니다.', '하오디자인은 브랜드의 결을 먼저 읽습니다. 무엇을 파는지가 아니라 어떤 인상을 남기고 싶은지부터 정리해 로고·컬러·톤앤매너를 설계합니다.', '첫인상은 한 번뿐입니다. 그 한 번을, 디자인으로 제대로 잡아 드립니다.'] },
+      body: ['큰 기업은 광고로 인지도를 삽니다. 하지만 작은 브랜드에게 주어지는 시간은 단 몇 초입니다. 그 사이 고객은 로고, 색, 글씨체만 보고 ‘믿을 만한 곳인지’를 판단합니다.', '그래서 작은 브랜드일수록 첫인상이 곧 전부입니다. 잘 정돈된 로고와 일관된 색, 톤이 ‘이 브랜드는 제대로 한다’는 신뢰를 만듭니다.', '하오커뮤니케이션은 브랜드의 결을 먼저 읽습니다. 무엇을 파는지가 아니라 어떤 인상을 남기고 싶은지부터 정리해 로고·컬러·톤앤매너를 설계합니다.', '첫인상은 한 번뿐입니다. 그 한 번을, 디자인으로 제대로 잡아 드립니다.'] },
     { id: 2, cat: '이커머스', date: '2026.06.14', t: '상세페이지 하나로 전환율이 달라진다', d: '같은 제품도 ‘어떻게 보여주느냐’에 따라 매출이 갈립니다.', img: '../voucher/assets/work/w379.jpg',
-      body: ['온라인에서 고객은 제품을 만질 수 없습니다. 오직 상세페이지 하나로 ‘살지 말지’를 결정합니다.', '같은 제품도 어떻게 보여주느냐에 따라 전환율이 크게 갈립니다. 사진의 톤, 정보의 순서, 신뢰를 주는 디테일까지 — 사는 순간까지의 흐름을 설계해야 합니다.', '하오디자인은 스마트스토어·자사몰 상세페이지를 ‘읽히는 한 편의 이야기’로 만듭니다. 스크롤을 따라 자연스럽게 구매로 이어지도록.', '좋은 제품이 안 팔린다면, 문제는 제품이 아니라 ‘보여주는 방식’일 수 있습니다.'] },
+      body: ['온라인에서 고객은 제품을 만질 수 없습니다. 오직 상세페이지 하나로 ‘살지 말지’를 결정합니다.', '같은 제품도 어떻게 보여주느냐에 따라 전환율이 크게 갈립니다. 사진의 톤, 정보의 순서, 신뢰를 주는 디테일까지 — 사는 순간까지의 흐름을 설계해야 합니다.', '하오커뮤니케이션은 스마트스토어·자사몰 상세페이지를 ‘읽히는 한 편의 이야기’로 만듭니다. 스크롤을 따라 자연스럽게 구매로 이어지도록.', '좋은 제품이 안 팔린다면, 문제는 제품이 아니라 ‘보여주는 방식’일 수 있습니다.'] },
     { id: 3, cat: '패키지', date: '2026.06.07', t: '패키지는 말없는 영업사원입니다', d: '진열대에서 손이 가게 만드는 패키지 디자인의 감성 포인트.', img: '../voucher/assets/work/w378.jpg',
-      body: ['진열대 위, 수십 개의 제품 사이에서 고객의 손이 가는 건 결국 ‘눈에 들어온’ 패키지입니다.', '패키지는 말없이 브랜드를 설명하는 영업사원입니다. 색과 형태, 한 줄의 카피가 제품의 가치를 대신 말해 줍니다.', '하오디자인은 진열 환경과 타깃을 고려해, 집어 들고 싶은 패키지를 디자인합니다. 보호 기능을 넘어 ‘사고 싶은 이유’를 담습니다.'] },
+      body: ['진열대 위, 수십 개의 제품 사이에서 고객의 손이 가는 건 결국 ‘눈에 들어온’ 패키지입니다.', '패키지는 말없이 브랜드를 설명하는 영업사원입니다. 색과 형태, 한 줄의 카피가 제품의 가치를 대신 말해 줍니다.', '하오커뮤니케이션은 진열 환경과 타깃을 고려해, 집어 들고 싶은 패키지를 디자인합니다. 보호 기능을 넘어 ‘사고 싶은 이유’를 담습니다.'] },
     { id: 4, cat: '콘텐츠', date: '2026.05.30', t: 'SNS 콘텐츠, 브랜드 톤부터 잡으세요', d: '게시물 하나하나가 아니라 ‘결’을 맞추면 작은 계정도 브랜드가 됩니다.', img: '../design/assets/work/work03.jpeg',
-      body: ['매일 게시물을 올려도 브랜드가 쌓이지 않는 이유는, 게시물 하나하나가 따로 놀기 때문입니다.', '중요한 건 개별 콘텐츠가 아니라 ‘결’입니다. 색, 폰트, 말투, 사진 톤을 맞추면 작은 계정도 하나의 브랜드처럼 보입니다.', '하오디자인은 브랜드의 톤앤매너를 먼저 정의하고, 그 안에서 일관된 콘텐츠를 설계합니다. 흩어진 게시물이 아니라 ‘브랜드 경험’이 되도록.'] },
+      body: ['매일 게시물을 올려도 브랜드가 쌓이지 않는 이유는, 게시물 하나하나가 따로 놀기 때문입니다.', '중요한 건 개별 콘텐츠가 아니라 ‘결’입니다. 색, 폰트, 말투, 사진 톤을 맞추면 작은 계정도 하나의 브랜드처럼 보입니다.', '하오커뮤니케이션은 브랜드의 톤앤매너를 먼저 정의하고, 그 안에서 일관된 콘텐츠를 설계합니다. 흩어진 게시물이 아니라 ‘브랜드 경험’이 되도록.'] },
     { id: 5, cat: '전시', date: '2026.05.22', t: '전시회, 부스 하나로 기억되게 하는 법', d: '수많은 부스 속에서 발길을 멈추게 하는 공간·그래픽 연출.', img: '../design/assets/work/work05.jpeg',
-      body: ['전시장에는 수백 개의 부스가 있습니다. 대부분은 지나치고, 몇 곳만 기억에 남습니다.', '차이는 ‘발길을 멈추게 하는’ 공간 연출에 있습니다. 멀리서도 읽히는 키 메시지, 머무르고 싶은 동선, 사진 찍고 싶은 포인트.', '하오디자인은 부스 그래픽부터 배너·카탈로그까지, 현장에서 브랜드가 기억되도록 오프라인 경험을 디자인합니다.'] },
+      body: ['전시장에는 수백 개의 부스가 있습니다. 대부분은 지나치고, 몇 곳만 기억에 남습니다.', '차이는 ‘발길을 멈추게 하는’ 공간 연출에 있습니다. 멀리서도 읽히는 키 메시지, 머무르고 싶은 동선, 사진 찍고 싶은 포인트.', '하오커뮤니케이션은 부스 그래픽부터 배너·카탈로그까지, 현장에서 브랜드가 기억되도록 오프라인 경험을 디자인합니다.'] },
     { id: 6, cat: '편집', date: '2026.05.15', t: '회사소개서가 거래의 첫 단추를 만든다', d: '잘 정리된 한 권의 소개서가 만드는 신뢰. 편집 디자인의 힘.', img: '../voucher/assets/work/w362.jpg',
-      body: ['B2B 거래는 한 권의 회사소개서에서 시작되는 경우가 많습니다. 잘 정리된 소개서는 ‘이 회사, 일을 제대로 하겠다’는 신뢰를 줍니다.', '정보의 위계, 인포그래픽, 읽기 좋은 레이아웃 — 편집 디자인의 완성도가 곧 회사의 인상이 됩니다.', '하오디자인은 복잡한 내용을 명확한 구조로 정리해, 받는 사람이 끝까지 읽고 싶은 소개서를 만듭니다.'] }
+      body: ['B2B 거래는 한 권의 회사소개서에서 시작되는 경우가 많습니다. 잘 정리된 소개서는 ‘이 회사, 일을 제대로 하겠다’는 신뢰를 줍니다.', '정보의 위계, 인포그래픽, 읽기 좋은 레이아웃 — 편집 디자인의 완성도가 곧 회사의 인상이 됩니다.', '하오커뮤니케이션은 복잡한 내용을 명확한 구조로 정리해, 받는 사람이 끝까지 읽고 싶은 소개서를 만듭니다.'] }
   ];
 
   /* ===== Q&A — {c, q, a} ===== */
@@ -121,7 +121,7 @@
     { c: '콘텐츠 제작', q: '소재 제작 기간은 얼마나 걸리나요?', a: '소재 유형과 분량에 따라 다르지만 일반 광고 소재는 보통 1~2주 내에 1차안을 전달합니다.' },
     { c: '운영·기타', q: '리포트는 어떻게 제공되나요?', a: '주·월 단위로 핵심 지표와 인사이트를 담은 리포트를 제공하며, 대시보드로 실시간 성과도 공유합니다.' },
     { c: '운영·기타', q: '계약 기간이 정해져 있나요?', a: '캠페인 단발성부터 월 단위 운영 대행까지 가능합니다. 목적에 맞는 형태를 함께 정합니다.' },
-    { c: '운영·기타', q: '다른 센터 서비스와 연계되나요?', a: '네. 홈페이지(웹구축센터)·촬영(스튜디오센터)·카탈로그(디자인센터)가 필요하면 하오디자인 패밀리 센터와 원스톱으로 진행합니다.' }
+    { c: '운영·기타', q: '다른 센터 서비스와 연계되나요?', a: '네. 홈페이지(웹구축센터)·촬영(스튜디오센터)·카탈로그(디자인센터)가 필요하면 하오커뮤니케이션 패밀리 센터와 원스톱으로 진행합니다.' }
   ];
 
   /* ===== 파트너(텍스트 카드) — {b: 브랜드, s: 설명} ===== */
@@ -148,28 +148,28 @@
     ogImage: "../design/assets/work/work01.jpeg",
     pages: {
       index: {
-        title: "마케팅센터 | 하오디자인 — 중소기업의 마케팅, 디자인으로 풀다",
-        desc: "하오디자인 마케팅센터. 중소기업의 이야기를 디자인으로 풀어내는 브랜드 마케팅 — 브랜드 콘텐츠, 이커머스 상세페이지·스마트스토어, 전시·박람회 부스까지.",
-        keywords: "중소기업 마케팅, 브랜드 디자인 마케팅, 이커머스 디자인, 상세페이지 제작, 전시 부스 디자인, 콘텐츠 마케팅, 하오디자인 마케팅센터" },
+        title: "마케팅센터 | 하오커뮤니케이션 — 중소기업의 마케팅, 디자인으로 풀다",
+        desc: "하오커뮤니케이션 마케팅센터. 중소기업의 이야기를 디자인으로 풀어내는 브랜드 마케팅 — 브랜드 콘텐츠, 이커머스 상세페이지·스마트스토어, 전시·박람회 부스까지.",
+        keywords: "중소기업 마케팅, 브랜드 디자인 마케팅, 이커머스 디자인, 상세페이지 제작, 전시 부스 디자인, 콘텐츠 마케팅, 하오커뮤니케이션 마케팅센터" },
       works: {
-        title: "Works | 마케팅센터 — 하오디자인",
-        desc: "하오디자인 마케팅센터 작업 사례 — 브랜드 콘텐츠, 이커머스 상세페이지, 패키지, 전시·부스, 비주얼 리뉴얼.",
+        title: "Works | 마케팅센터 — 하오커뮤니케이션",
+        desc: "하오커뮤니케이션 마케팅센터 작업 사례 — 브랜드 콘텐츠, 이커머스 상세페이지, 패키지, 전시·부스, 비주얼 리뉴얼.",
         keywords: "마케팅 포트폴리오, 브랜드 콘텐츠 사례, 이커머스 디자인, 패키지 디자인, 전시 부스" },
       services: {
-        title: "Services | 마케팅센터 — 하오디자인",
-        desc: "하오디자인 마케팅센터 서비스 — 브랜드 채널 운영, 콘텐츠 제작, 이커머스·패키지 디자인, 전시·부스, 인플루언서, 편집·인쇄, 글로벌 진출.",
+        title: "Services | 마케팅센터 — 하오커뮤니케이션",
+        desc: "하오커뮤니케이션 마케팅센터 서비스 — 브랜드 채널 운영, 콘텐츠 제작, 이커머스·패키지 디자인, 전시·부스, 인플루언서, 편집·인쇄, 글로벌 진출.",
         keywords: "브랜드 마케팅, 콘텐츠 제작, 이커머스 디자인, 패키지 디자인, 전시 부스, 인플루언서 마케팅" },
       column: {
-        title: "칼럼 | 마케팅센터 — 하오디자인",
-        desc: "퍼포먼스 마케팅·콘텐츠·브랜딩 인사이트. 하오디자인 마케팅센터 칼럼.",
+        title: "칼럼 | 마케팅센터 — 하오커뮤니케이션",
+        desc: "퍼포먼스 마케팅·콘텐츠·브랜딩 인사이트. 하오커뮤니케이션 마케팅센터 칼럼.",
         keywords: "마케팅 칼럼, 브랜딩, 이커머스, 패키지, 콘텐츠 마케팅" },
       qna: {
-        title: "Q&A | 마케팅센터 — 하오디자인",
-        desc: "퍼포먼스 마케팅·IMC·콘텐츠·광고 운영 자주 하는 질문. 하오디자인 마케팅센터 Q&A.",
+        title: "Q&A | 마케팅센터 — 하오커뮤니케이션",
+        desc: "퍼포먼스 마케팅·IMC·콘텐츠·광고 운영 자주 하는 질문. 하오커뮤니케이션 마케팅센터 Q&A.",
         keywords: "마케팅 문의, 광고비, 대행, 리포트, 퍼포먼스 마케팅" },
       detail: {
-        title: "칼럼 | 마케팅센터 — 하오디자인",
-        desc: "하오디자인 마케팅센터 칼럼 — 중소기업을 위한 브랜드·이커머스·패키지·전시 디자인 마케팅 인사이트.",
+        title: "칼럼 | 마케팅센터 — 하오커뮤니케이션",
+        desc: "하오커뮤니케이션 마케팅센터 칼럼 — 중소기업을 위한 브랜드·이커머스·패키지·전시 디자인 마케팅 인사이트.",
         keywords: "마케팅 칼럼, 브랜드 디자인, 이커머스, 패키지, 전시" }
     }
   };
@@ -182,7 +182,7 @@
     { key: "mk_sv_c2_t", page: "index", sel: "#services .svq:nth-of-type(2) .svq__tt", tag: "b", label: "서비스 STEP2 — 제목", value: "핵심 메시지 발굴 및\n마케팅 전략 수립" },
     { key: "mk_sv_c3_t", page: "index", sel: "#services .svq:nth-of-type(3) .svq__tt", tag: "b", label: "서비스 STEP3 — 제목", value: "마케팅 실행 (콘텐츠 제작\n+ 채널 운영 + 오프라인)" },
     { key: "mk_df_a_t", page: "index", sel: "#difference .dif-card--a .dif-head__t", tag: "b", label: "비교 — 왼쪽 카드 제목", value: "일반 외주 대행" },
-    { key: "mk_df_b_t", page: "index", sel: "#difference .dif-card--b .dif-head__t", tag: "b", label: "비교 — 하오 카드 제목", value: "하오디자인 마케팅센터" },
+    { key: "mk_df_b_t", page: "index", sel: "#difference .dif-card--b .dif-head__t", tag: "b", label: "비교 — 하오 카드 제목", value: "하오커뮤니케이션 마케팅센터" },
     { key: "mk_wk_more", page: "index", sel: "#works .pillbtn", tag: "b", label: "포트폴리오 — 더보기 버튼", value: "사례 더보기" },
     { key: "mk_sv_more", page: "index", sel: "#services .pillbtn", tag: "b", label: "서비스 — 자세히 버튼", value: "서비스 자세히 보기 →" },
     { key: "mk_ct_tel", page: "index", sel: ".mc-contact a[href^='tel']", tag: "b", label: "문의 — 전화번호", value: "1666-2027" },
@@ -206,7 +206,7 @@
     { key: "mk_wo_16", page: "works", sel: "#workGrid > a:nth-of-type(14) > div:nth-of-type(2) > h3", tag: "b", label: "전시 부스 그래픽", value: "전시 부스 그래픽" },
     { key: "mk_wo_17", page: "works", sel: "#workGrid > a:nth-of-type(15) > div:nth-of-type(2) > h3", tag: "b", label: "산업기자재 회사소개서", value: "산업기자재 회사소개서" },
     { key: "mk_wo_18", page: "works", sel: "footer > div > div:nth-of-type(1) > p:nth-of-type(1)", tag: "b", label: "주식회사 하오커뮤니케이션 · 대표 박창민 ·", value: "주식회사 하오커뮤니케이션 · 대표 박창민 · 528-87-01037\n서울특별시 광진구 · sales@haodesign.co.kr" },
-    { key: "mk_wo_19", page: "works", sel: "footer > div > div:nth-of-type(1) > p:nth-of-type(2)", tag: "b", label: "© 2026 HAO DESIGN Market", value: "© 2026 HAO DESIGN Marketing. All rights reserved." },
+    { key: "mk_wo_19", page: "works", sel: "footer > div > div:nth-of-type(1) > p:nth-of-type(2)", tag: "b", label: "© 2026 HAO COMMUNICATION Market", value: "© 2026 HAO COMMUNICATION Marketing. All rights reserved." },
     { key: "mk_wo_20", page: "works", sel: "footer > div > div:nth-of-type(2) > p", tag: "b", label: "09:30 ~ 18:30 (점심 13:00~", value: "09:30 ~ 18:30 (점심 13:00~14:00)" },
     { key: "mk_se_01", page: "services", sel: "#top > section:nth-of-type(2) > p", tag: "b", label: "Marketing Service", value: "Marketing Service" },
     { key: "mk_se_02", page: "services", sel: "#top > section:nth-of-type(2) > h2", tag: "b", label: "각 브랜드에 맞는 방식으로현실적인 해법을 제", value: "각 브랜드에 맞는 방식으로\n현실적인 해법을 제안합니다." },
@@ -214,24 +214,24 @@
     { key: "mk_se_04", page: "services", sel: "#top > section:nth-of-type(3) > h2", tag: "b", label: "하오는 이렇게 일합니다", value: "하오는 이렇게 일합니다" },
     { key: "mk_se_05", page: "services", sel: "#top > section:nth-of-type(3) > div:nth-of-type(2) > h3", tag: "b", label: "우리 브랜드엔 어떤 마케팅이 맞을까요?고민부", value: "우리 브랜드엔 어떤 마케팅이 맞을까요?\n고민부터 같이 시작하겠습니다." },
     { key: "mk_se_06", page: "services", sel: "footer > div > div:nth-of-type(1) > p:nth-of-type(1)", tag: "b", label: "주식회사 하오커뮤니케이션 · 대표 박창민 ·", value: "주식회사 하오커뮤니케이션 · 대표 박창민 · 528-87-01037\n서울특별시 광진구 · sales@haodesign.co.kr" },
-    { key: "mk_se_07", page: "services", sel: "footer > div > div:nth-of-type(1) > p:nth-of-type(2)", tag: "b", label: "© 2026 HAO DESIGN Market", value: "© 2026 HAO DESIGN Marketing. All rights reserved." },
+    { key: "mk_se_07", page: "services", sel: "footer > div > div:nth-of-type(1) > p:nth-of-type(2)", tag: "b", label: "© 2026 HAO COMMUNICATION Market", value: "© 2026 HAO COMMUNICATION Marketing. All rights reserved." },
     { key: "mk_se_08", page: "services", sel: "footer > div > div:nth-of-type(2) > p", tag: "b", label: "09:30 ~ 18:30 (점심 13:00~", value: "09:30 ~ 18:30 (점심 13:00~14:00)" },
     { key: "mk_co_01", page: "column", sel: "#top > section:nth-of-type(2) > p", tag: "b", label: "Insights", value: "Insights" },
     { key: "mk_co_02", page: "column", sel: "#top > section:nth-of-type(2) > h2", tag: "b", label: "최신 칼럼", value: "최신 칼럼" },
     { key: "mk_co_03", page: "column", sel: "footer > div > div:nth-of-type(1) > p:nth-of-type(1)", tag: "b", label: "주식회사 하오커뮤니케이션 · 대표 박창민 ·", value: "주식회사 하오커뮤니케이션 · 대표 박창민 · 528-87-01037\n서울특별시 광진구 · sales@haodesign.co.kr" },
-    { key: "mk_co_04", page: "column", sel: "footer > div > div:nth-of-type(1) > p:nth-of-type(2)", tag: "b", label: "© 2026 HAO DESIGN Market", value: "© 2026 HAO DESIGN Marketing. All rights reserved." },
+    { key: "mk_co_04", page: "column", sel: "footer > div > div:nth-of-type(1) > p:nth-of-type(2)", tag: "b", label: "© 2026 HAO COMMUNICATION Market", value: "© 2026 HAO COMMUNICATION Marketing. All rights reserved." },
     { key: "mk_co_05", page: "column", sel: "footer > div > div:nth-of-type(2) > p", tag: "b", label: "09:30 ~ 18:30 (점심 13:00~", value: "09:30 ~ 18:30 (점심 13:00~14:00)" },
     { key: "mk_qn_01", page: "qna", sel: "#top > section:nth-of-type(2) > p:nth-of-type(1)", tag: "b", label: "FAQ", value: "FAQ" },
     { key: "mk_qn_02", page: "qna", sel: "#qSearchBtn", tag: "b", label: "검색", value: "검색" },
     { key: "mk_qn_03", page: "qna", sel: "#qReset", tag: "b", label: "초기화", value: "초기화" },
     { key: "mk_qn_04", page: "qna", sel: "footer > div > div:nth-of-type(1) > p:nth-of-type(1)", tag: "b", label: "주식회사 하오커뮤니케이션 · 대표 박창민 ·", value: "주식회사 하오커뮤니케이션 · 대표 박창민 · 528-87-01037\n서울특별시 광진구 · sales@haodesign.co.kr" },
-    { key: "mk_qn_05", page: "qna", sel: "footer > div > div:nth-of-type(1) > p:nth-of-type(2)", tag: "b", label: "© 2026 HAO DESIGN Market", value: "© 2026 HAO DESIGN Marketing. All rights reserved." },
+    { key: "mk_qn_05", page: "qna", sel: "footer > div > div:nth-of-type(1) > p:nth-of-type(2)", tag: "b", label: "© 2026 HAO COMMUNICATION Market", value: "© 2026 HAO COMMUNICATION Marketing. All rights reserved." },
     { key: "mk_qn_06", page: "qna", sel: "footer > div > div:nth-of-type(2) > p", tag: "b", label: "09:30 ~ 18:30 (점심 13:00~", value: "09:30 ~ 18:30 (점심 13:00~14:00)" },
     { key: "mk_de_01", page: "detail", sel: "#top > section > h1", tag: "b", label: "마케팅 칼럼", value: "마케팅 칼럼" },
     { key: "mk_de_02", page: "detail", sel: "footer > div > div:nth-of-type(1) > p:nth-of-type(1)", tag: "b", label: "주식회사 하오커뮤니케이션 · 대표 박창민 ·", value: "주식회사 하오커뮤니케이션 · 대표 박창민 · 528-87-01037\n서울특별시 광진구 · sales@haodesign.co.kr" },
-    { key: "mk_de_03", page: "detail", sel: "footer > div > div:nth-of-type(1) > p:nth-of-type(2)", tag: "b", label: "© 2026 HAO DESIGN Market", value: "© 2026 HAO DESIGN Marketing. All rights reserved." },
+    { key: "mk_de_03", page: "detail", sel: "footer > div > div:nth-of-type(1) > p:nth-of-type(2)", tag: "b", label: "© 2026 HAO COMMUNICATION Market", value: "© 2026 HAO COMMUNICATION Marketing. All rights reserved." },
     { key: "mk_de_04", page: "detail", sel: "footer > div > div:nth-of-type(2) > p", tag: "b", label: "09:30 ~ 18:30 (점심 13:00~", value: "09:30 ~ 18:30 (점심 13:00~14:00)" },
-    { key: "mk_df_sub", page: "index", sel: "#difference .on__sub", tag: "b", label: "비교 — 부제", value: "하오디자인 마케팅센터는 스몰 브랜드와 중소기업의 성장을 위해\n**브랜드를 계속 맡는 전담팀**이라는 차별화된 방식으로 일합니다." },
+    { key: "mk_df_sub", page: "index", sel: "#difference .on__sub", tag: "b", label: "비교 — 부제", value: "하오커뮤니케이션 마케팅센터는 스몰 브랜드와 중소기업의 성장을 위해\n**브랜드를 계속 맡는 전담팀**이라는 차별화된 방식으로 일합니다." },
     { key: "mk_sv_eg", page: "index", sel: "#services .on__eg", tag: "b", label: "서비스 — 라벨", value: "SERVICES" },
     { key: "mk_sv_h", page: "index", sel: "#services .on__h", tag: "b", label: "서비스 — 제목", value: "하오는 이렇게\n**브랜드의 마케팅팀**이 됩니다" },
     { key: "mk_sv_sub", page: "index", sel: "#services .on__sub", tag: "b", label: "서비스 — 부제", value: "진단부터 전략, 실행까지 —\n마케팅팀이 하는 일을 하오가 그대로 해드립니다." },
@@ -248,9 +248,9 @@
     { key: "mk_ix_01", page: "index", sel: "#pin > div > p:nth-of-type(1)", tag: "b", label: "핀 · Scroll for more", value: "A brand that isn’t seen might as well not exist." },
     { key: "mk_ix_03", page: "index", sel: "#why > div > p:nth-of-type(1)", tag: "b", label: "문제 · WHY HAO", value: "WHY HAO" },
     { key: "mk_ix_04", page: "index", sel: "#why > div > h2", tag: "b", label: "문제 · 대표님, 마케팅팀이 없어서막막하신가요?", value: "마케팅팀이 없다는 이유로\n브랜드 성장이 멈춰있지 않나요?" },
-    { key: "mk_ix_05", page: "index", sel: "#why > div > p:nth-of-type(2)", tag: "b", label: "문제 · 스타트업·중소기업·1인 브랜드까지 — 마케팅", value: "스타트업부터 중소기업, 1인 브랜드까지 마케팅은 선택이 아니라 생존 조건이 되었습니다.\n하오디자인은 900개가 넘는 프로젝트에서 그 고민을 매일 마주해 왔습니다." },
+    { key: "mk_ix_05", page: "index", sel: "#why > div > p:nth-of-type(2)", tag: "b", label: "문제 · 스타트업·중소기업·1인 브랜드까지 — 마케팅", value: "스타트업부터 중소기업, 1인 브랜드까지 마케팅은 선택이 아니라 생존 조건이 되었습니다.\n하오커뮤니케이션은 900개가 넘는 프로젝트에서 그 고민을 매일 마주해 왔습니다." },
     { key: "mk_ix_06", page: "index", sel: "#difference > div > p:nth-of-type(1)", tag: "b", label: "비교 · DIFFERENCE", value: "DIFFERENCE" },
-    { key: "mk_ix_07", page: "index", sel: "#difference > div > h2", tag: "b", label: "비교 · 하오디자인 마케팅센터,일반 외주 대행과는 어", value: "하오디자인 마케팅센터,\n**일반 외주 대행과는 어떻게 다를까요?**" },
+    { key: "mk_ix_07", page: "index", sel: "#difference > div > h2", tag: "b", label: "비교 · 하오커뮤니케이션 마케팅센터,일반 외주 대행과는 어", value: "하오커뮤니케이션 마케팅센터,\n**일반 외주 대행과는 어떻게 다를까요?**" },
     { key: "mk_ix_08", page: "index", sel: "#difference > div > div > div:nth-of-type(1) > div:nth-of-type(2) > small", tag: "b", label: "비교 · 주요 활동", value: "주요 활동" },
     { key: "mk_ix_09", page: "index", sel: "#difference > div > div > div:nth-of-type(1) > div:nth-of-type(2) > p", tag: "b", label: "비교 · 요청받은 작업물 납품(건별 디자인 외주)", value: "요청받은 작업물 납품\n(건별 디자인 외주)" },
     { key: "mk_ix_10", page: "index", sel: "#difference > div > div > div:nth-of-type(1) > div:nth-of-type(3) > small", tag: "b", label: "비교 · 브랜드 이해도", value: "브랜드 이해도" },
@@ -285,7 +285,7 @@
     { key: "mk_ix_54", page: "index", sel: "#contact > div > div:nth-of-type(1) > p", tag: "b", label: "문의 · 마케팅팀이 없어도 괜찮습니다.하오가 우리 브", value: "마케팅팀이 없어도 괜찮습니다.\n**하오가 우리 브랜드의 마케팅팀**이 되어드릴게요.\n간단히 남겨주시면 빠르게 연락드립니다." },
     { key: "mk_ix_55", page: "index", sel: "#quoteForm > button", tag: "b", label: "문의 · 문의 보내기", value: "문의 보내기" },
     { key: "mk_ix_56", page: "index", sel: "footer > div > div:nth-of-type(1) > p:nth-of-type(1)", tag: "b", label: "푸터 · 주식회사 하오커뮤니케이션 · 대표 박창민 ·", value: "주식회사 하오커뮤니케이션 · 대표 박창민 · 528-87-01037\n서울특별시 광진구 · sales@haodesign.co.kr" },
-    { key: "mk_ix_57", page: "index", sel: "footer > div > div:nth-of-type(1) > p:nth-of-type(2)", tag: "b", label: "푸터 · © 2026 HAO DESIGN Market", value: "© 2026 HAO DESIGN Marketing. All rights reserved." },
+    { key: "mk_ix_57", page: "index", sel: "footer > div > div:nth-of-type(1) > p:nth-of-type(2)", tag: "b", label: "푸터 · © 2026 HAO COMMUNICATION Market", value: "© 2026 HAO COMMUNICATION Marketing. All rights reserved." },
     { key: "mk_ix_58", page: "index", sel: "footer > div > div:nth-of-type(2) > p", tag: "b", label: "푸터 · 09:30 ~ 18:30 (점심 13:00~", value: "09:30 ~ 18:30 (점심 13:00~14:00)" },
     { key: "mk_ch_01", page: "index", sel: ".on-chatgrp .on-chat:nth-child(1) p:nth-of-type(1)", tag: "b", label: "CASE1 — 질문", value: "마케팅팀이 없어서,\n어디서부터 시작해야 할지 모르겠어요." },
     { key: "mk_ch_02", page: "index", sel: ".on-chatgrp .on-chat:nth-child(1) p:nth-of-type(2)", tag: "b", label: "CASE1 — 말풍선①", value: "대표가 본업만으로도 벅찬데, 마케팅까지 챙길 여력이 없습니다." },

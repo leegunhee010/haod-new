@@ -1,4 +1,4 @@
-/* 하오디자인 마케팅센터 — main.js */
+/* 하오커뮤니케이션 마케팅센터 — main.js */
 (function () {
   'use strict';
   var $ = function (s, c) { return (c || document).querySelector(s); };

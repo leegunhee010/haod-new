@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>관리자 | 정부사업지원센터 — 하오디자인</title>
+  <title>관리자 | 정부사업지원센터 — 하오커뮤니케이션</title>
   <meta name="robots" content="noindex, nofollow" />
   <link rel="preconnect" href="https://cdn.jsdelivr.net" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
@@ -202,7 +202,7 @@
             <form class="frm" id="qnaForm" hidden style="margin-top:18px;padding-top:18px;border-top:2px solid var(--ink)">
               <input type="hidden" id="qIdx" />
               <div><label>카테고리</label>
-                <select id="qCat"><option>참여기업</option><option>바우처 운영</option><option>혁신바우처</option><option>판로개척</option><option>수행기관</option><option>하오디자인 문의</option></select>
+                <select id="qCat"><option>참여기업</option><option>바우처 운영</option><option>혁신바우처</option><option>판로개척</option><option>수행기관</option><option>하오커뮤니케이션 문의</option></select>
               </div>
               <div class="full"><label>질문</label><input type="text" id="qQ" required /></div>
               <div class="full"><label>답변</label><textarea id="qA" rows="4" required></textarea></div>
@@ -457,7 +457,7 @@
     });
 
     /* Q&A */
-    var CATS_Q = ["참여기업","바우처 운영","혁신바우처","판로개척","수행기관","하오디자인 문의"];
+    var CATS_Q = ["참여기업","바우처 운영","혁신바우처","판로개척","수행기관","하오커뮤니케이션 문의"];
     function renderQna() {
       var q = ($("qnaSearch").value || "").toLowerCase();
       var list = qna.filter(function (x) { return !q || (x.q + " " + x.a + " " + x.c).toLowerCase().indexOf(q) >= 0; });
