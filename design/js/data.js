@@ -195,13 +195,7 @@
   var DEFAULT_SOCIAL = {"blog":"https://blog.naver.com/xmfostlsh2","kakao":"https://pf.kakao.com/_exlVrxd","phone":"1666-2027","instagram":"https://www.instagram.com/haodesign_official/"};
 
   /* 푸터 하단 블로그 링크 (SEO·AEO — 관리자 '사이트 설정' 탭에서 수정) — {name, url} */
-  var DEFAULT_BLOGS = [
-    { name: "디자인 및 인쇄 전문 기업 하오디자인", url: "https://haodesign.tistory.com/" },
-    { name: "카탈로그 브로슈어 리플렛 전문디자인 하오디자인", url: "https://haodesign02.tistory.com/" },
-    { name: "홍보물 디자인 대행 하오디자인", url: "https://haodesign03.tistory.com/" },
-    { name: "전문디자인 하오디자인", url: "https://haodesign04.tistory.com/" },
-    { name: "홍보물 디자인 및 인쇄 하오디자인", url: "https://haodesign05.tistory.com/" }
-  ];
+  var DEFAULT_BLOGS = []; /* 하오커뮤니케이션 블로그 생기면 admin 사이트설정에서 추가 */
 
   /* SEO (관리자 'SEO 관리' 탭) — siteUrl + 페이지별 title/desc/keywords */
   var DEFAULT_SEO = {
