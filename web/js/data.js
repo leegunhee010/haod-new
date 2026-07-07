@@ -171,7 +171,7 @@
 
   /* ===== SEO ===== */
   var DEFAULT_SEO = {
-    siteUrl: "https://leegunhee010.github.io/haod-new", /* TEMP: haoc 도메인 연결 시 교체 */,
+    siteUrl: "https://leegunhee010.github.io/haod-new", /* TEMP: haoc 도메인 연결 시 교체 */
     ogImage: "assets/img/hero.jpg",
     pages: {
       index: {

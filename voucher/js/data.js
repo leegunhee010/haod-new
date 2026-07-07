@@ -137,7 +137,7 @@
   var DEFAULT_SOCIAL = { kakao: "", instagram: "", blog: "", phone: "1666-2027" };
 
   var DEFAULT_SEO = {
-    siteUrl: "https://leegunhee010.github.io/haod-new", /* TEMP: haoc 연결 시 교체 */,
+    siteUrl: "https://leegunhee010.github.io/haod-new", /* TEMP: haoc 연결 시 교체 */
     ogImage: "assets/img/big_slide_02.jpg",
     pages: {
       index: {
