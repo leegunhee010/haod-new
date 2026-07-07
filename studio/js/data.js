@@ -221,6 +221,11 @@
   
   /* ===== 페이지 사진 (관리자 '서비스 사진' 탭) — {key, page, sel, label, value} ===== */
   var DEFAULT_IMGS = [
+    { key: "img_ix_card1", page: "index", sel: ".ef-svc .ef-card:nth-child(1) .ef-card__media img", label: "메인 — 서비스카드① 제품·브랜드 촬영", value: "assets/haostudio/hs01.jpg" },
+    { key: "img_ix_card2", page: "index", sel: ".ef-svc .ef-card:nth-child(2) .ef-card__media img", label: "메인 — 서비스카드② 상세페이지 디자인", value: "assets/haostudio/hs04.jpg" },
+    { key: "img_ix_card3", page: "index", sel: ".ef-svc .ef-card:nth-child(3) .ef-card__media img", label: "메인 — 서비스카드③ 영상·릴스 콘텐츠", value: "assets/haostudio/hs07.jpg" },
+    { key: "img_ix_card4", page: "index", sel: ".ef-svc .ef-card:nth-child(4) .ef-card__media img", label: "메인 — 서비스카드④ 인·익스테리어 촬영", value: "assets/haostudio/in05.jpg" },
+    { key: "img_st_cover", page: "studio", sel: ".sst-cover > img", label: "스튜디오 소개 — 커버 이미지", value: "assets/haostudio/studio-cover.jpg" },
     { key: "img_photo_intro", page: "photo", sel: ".ssplit__img img", label: "제품촬영 — 소개 이미지", value: "assets/work-hd/thumb/w380.jpg" },
     { key: "img_photo_g1", page: "photo", sel: "#grid .wcard:nth-child(1) img", label: "제품촬영 — 사례1 (오뚜기 제품 촬영)", value: "assets/work-hd/thumb/w380.jpg" },
     { key: "img_photo_g2", page: "photo", sel: "#grid .wcard:nth-child(2) img", label: "제품촬영 — 사례2 (서울우유 제품 촬영)", value: "assets/work-hd/thumb/w379.jpg" },

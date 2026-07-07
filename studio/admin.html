@@ -196,7 +196,7 @@
         <section id="tab-svcimg" hidden>
           <div class="main__head"><h1>서비스 사진</h1><button class="btn btn--primary" id="imgSaveBtn">전체 저장</button></div>
           <div class="panel">
-            <p class="note" style="margin-bottom:12px">서비스 페이지(제품촬영 · 상세페이지 · 영상콘텐츠 · 인·익스테리어)의 <b>소개 이미지</b>와 <b>사례 사진</b>을 자리별로 교체합니다. 사진을 올리면 자동 리사이즈 후 서버에 저장되고, <b>초기화</b>를 누르면 기본 사진으로 돌아갑니다.</p>
+            <p class="note" style="margin-bottom:12px">메인 서비스 카드, 스튜디오 소개 커버, 서비스 페이지의 <b>소개 이미지</b>와 <b>사례 사진</b>을 자리별로 교체합니다. 사진을 올리면 자동 리사이즈 후 서버에 저장되고, <b>초기화</b>를 누르면 기본 사진으로 돌아갑니다.</p>
             <div class="frm" style="grid-template-columns:1fr"><div><label>페이지 선택</label><select id="imgPage"></select></div></div>
             <div id="imgRows" style="margin-top:14px"></div>
           </div>
@@ -393,7 +393,7 @@
 
   <div class="toast" id="toast">저장되었습니다</div>
 
-  <script src="js/data.js?v=13"></script>
+  <script src="js/data.js?v=14"></script>
   <script>
   HAO.ready.then(function () {
     "use strict";
@@ -556,7 +556,7 @@
     /* 서비스 사진 (hs_imgs — 자리별 이미지 교체) */
     var imgOv = {}; try { imgOv = JSON.parse(localStorage.getItem("hs_imgs")) || {}; } catch (e) { imgOv = {}; }
     var IMGS = HAO.getImgs ? HAO.getImgs() : [];
-    var IMG_PAGES = { photo: "제품·브랜드 촬영", detailpage: "상세페이지 디자인", video: "영상·릴스 콘텐츠", interior: "인·익스테리어 촬영" };
+    var IMG_PAGES = { index: "메인 페이지", studio: "스튜디오 소개", photo: "제품·브랜드 촬영", detailpage: "상세페이지 디자인", video: "영상·릴스 콘텐츠", interior: "인·익스테리어 촬영" };
     function imgPageList() { var seen = {}, arr = []; IMGS.forEach(function (c) { if (!seen[c.page]) { seen[c.page] = 1; arr.push(c.page); } }); return arr; }
     function renderImgRows() {
       var sel = $("imgPage");
