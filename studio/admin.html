@@ -441,7 +441,7 @@
     $("logoutBtn").addEventListener("click", function () { sessionStorage.removeItem("hs_admin"); localStorage.removeItem("hs_edit"); localStorage.removeItem("hub_session"); location.reload(); });
 
     /* 탭 */
-    var TABS = ["dash","hero","copy","works","rev","posts","qna","partners","inq","media","seo","set","acc"];
+    var TABS = ["dash","hero","copy","svcimg","works","rev","posts","qna","partners","inq","media","seo","set","acc"];
     document.querySelectorAll("#sideMenu button").forEach(function (b) {
       b.addEventListener("click", function () {
         document.querySelectorAll("#sideMenu button").forEach(function (x) { x.classList.remove("is-active"); });
