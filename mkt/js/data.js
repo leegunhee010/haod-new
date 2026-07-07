@@ -72,21 +72,21 @@
 
   /* ===== 기본 작업 사례 (works.html 전체) — {img, t, c} ===== */
   var DEFAULT_WORKS = [
-    { img: '../design/assets/work/work01.jpeg', t: '브랜드 카탈로그', c: '비주얼 리뉴얼' },
-    { img: '../voucher/assets/work/w379.jpg', t: '뷰티 디바이스 상세페이지', c: '이커머스 디자인' },
-    { img: '../design/assets/work/work03.jpeg', t: '제품 키비주얼', c: '브랜드 콘텐츠' },
-    { img: '../voucher/assets/work/w378.jpg', t: '건강식품 패키지', c: '패키지 디자인' },
-    { img: '../design/assets/work/work07.jpeg', t: '기업 회사소개서', c: '편집 디자인' },
-    { img: '../voucher/assets/work/w402.jpg', t: '수출 영문 카탈로그', c: '비주얼 리뉴얼' },
-    { img: '../design/assets/work/work12.jpeg', t: '브랜드 홍보 포스터', c: '브랜드 콘텐츠' },
-    { img: '../design/assets/work/work05.jpeg', t: '전시·박람회 홍보물', c: '전시·부스' },
-    { img: '../voucher/assets/work/w377.jpg', t: '생활용품 카탈로그', c: '편집 디자인' },
-    { img: '../design/assets/work/work09.jpeg', t: '브랜드 리플릿', c: '브랜드 콘텐츠' },
-    { img: '../voucher/assets/work/w380.jpg', t: '식품 다국어 브로슈어', c: '비주얼 리뉴얼' },
-    { img: '../design/assets/work/work16.jpeg', t: '제품 패키지·라벨', c: '패키지 디자인' },
-    { img: '../design/assets/work/work14.jpeg', t: '온라인 상세페이지', c: '이커머스 디자인' },
-    { img: '../design/assets/work/work18.jpeg', t: '전시 부스 그래픽', c: '전시·부스' },
-    { img: '../voucher/assets/work/w362.jpg', t: '산업기자재 회사소개서', c: '편집 디자인' }
+    { img: '../design/assets/work/work01.jpeg', t: '브랜드 카탈로그', c: '비주얼 리뉴얼', main: true },
+    { img: '../voucher/assets/work/w379.jpg', t: '뷰티 디바이스 상세페이지', c: '이커머스 디자인', main: true },
+    { img: '../design/assets/work/work03.jpeg', t: '제품 키비주얼', c: '브랜드 콘텐츠', main: true },
+    { img: '../voucher/assets/work/w378.jpg', t: '건강식품 패키지', c: '패키지 디자인', main: true },
+    { img: '../design/assets/work/work07.jpeg', t: '기업 회사소개서', c: '편집 디자인', main: true },
+    { img: '../voucher/assets/work/w402.jpg', t: '수출 영문 카탈로그', c: '비주얼 리뉴얼', main: true },
+    { img: '../design/assets/work/work12.jpeg', t: '브랜드 홍보 포스터', c: '브랜드 콘텐츠', main: true },
+    { img: '../design/assets/work/work05.jpeg', t: '전시·박람회 홍보물', c: '전시·부스', main: true },
+    { img: '../voucher/assets/work/w377.jpg', t: '생활용품 카탈로그', c: '편집 디자인', main: false },
+    { img: '../design/assets/work/work09.jpeg', t: '브랜드 리플릿', c: '브랜드 콘텐츠', main: false },
+    { img: '../voucher/assets/work/w380.jpg', t: '식품 다국어 브로슈어', c: '비주얼 리뉴얼', main: false },
+    { img: '../design/assets/work/work16.jpeg', t: '제품 패키지·라벨', c: '패키지 디자인', main: false },
+    { img: '../design/assets/work/work14.jpeg', t: '온라인 상세페이지', c: '이커머스 디자인', main: false },
+    { img: '../design/assets/work/work18.jpeg', t: '전시 부스 그래픽', c: '전시·부스', main: false },
+    { img: '../voucher/assets/work/w362.jpg', t: '산업기자재 회사소개서', c: '편집 디자인', main: false }
   ];
 
   /* ===== 메인 히어로 (단일) — lead1/lead2 = 영문 2줄, sub = 한글 슬로건 ===== */

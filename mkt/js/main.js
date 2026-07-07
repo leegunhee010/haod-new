@@ -31,7 +31,7 @@
     { img: '../design/assets/work/work05.jpeg', t: '전시·박람회 홍보물', c: '전시·부스' }
   ];
   function imgPath(f) { return (window.HAO && HAO.imgSrc) ? HAO.imgSrc(f) : f; }
-  var WORKS = (window.HAO && HAO.getWorks) ? HAO.getWorks().slice(0, 8) : FALLBACK_WORKS;
+  var WORKS = (window.HAO && HAO.getWorks) ? HAO.getWorks().filter(function (w) { return w.main !== false; }).slice(0, 12) : FALLBACK_WORKS; /* 메인 노출 체크(admin 작업 사례)된 것만 */
   var trackA = $('#worksTrackA'), trackB = $('#worksTrackB');
   function wcardHtml(w) {
     return '<div class="wcard" title="' + (w.t || '') + '"><div class="wcard__media" style="background-image:url(' + imgPath(w.img) + ')"></div></div>';

@@ -374,7 +374,7 @@
 
   <div class="toast" id="toast">저장되었습니다</div>
 
-  <script src="js/data.js?v=12"></script>
+  <script src="js/data.js?v=13"></script>
   <script>
   HAO.ready.then(function () {
     "use strict";
@@ -538,8 +538,9 @@
     function renderWorks() {
       $("workList").innerHTML = works.length ? works.map(function (w, i) {
         return '<div class="row"><img src="' + esc(HAO.imgSrc(w.img)) + '" alt="" />' +
-          '<div class="t"><b>' + esc(w.t) + "</b><small>" + esc(w.c) + "</small></div>" +
-          '<div class="ops"><button class="btn" data-w-edit="' + i + '">수정</button><button class="btn btn--danger" data-w-del="' + i + '">삭제</button></div></div>';
+          '<div class="t"><b>' + esc(w.t) + "</b><small>" + esc(w.c) + (w.main !== false ? ' · <span style="color:var(--accent);font-weight:700">메인노출</span>' : "") + "</small></div>" +
+          '<div class="ops"><label style="display:inline-flex;align-items:center;gap:6px;font-size:.85rem;cursor:pointer;margin-right:4px"><input type="checkbox" data-w-main="' + i + '"' + (w.main !== false ? " checked" : "") + ' style="width:auto" />메인</label>' +
+          '<button class="btn" data-w-edit="' + i + '">수정</button><button class="btn btn--danger" data-w-del="' + i + '">삭제</button></div></div>';
       }).join("") : '<p class="empty">등록된 작업이 없습니다.</p>';
     }
     var wForm = $("workForm");
@@ -563,6 +564,10 @@
       obj.d = $("wDesc").value.trim(); obj.ind = $("wInd").value.trim(); obj.del = $("wDel").value.trim(); obj.sc = $("wScope").value.trim();
       if (i >= 0) works[i] = Object.assign(works[i], obj); else works.unshift(obj);
       wForm.hidden = true; saveWorks();
+    });
+    $("workList").addEventListener("change", function (e) {
+      var mk = e.target.getAttribute("data-w-main");
+      if (mk !== null) { works[+mk].main = e.target.checked; saveWorks(); }
     });
     $("workList").addEventListener("click", function (e) {
       var ed = e.target.closest("[data-w-edit]"), dl = e.target.closest("[data-w-del]");
