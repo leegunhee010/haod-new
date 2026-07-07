@@ -111,7 +111,8 @@
 .header.on-dark:not(.is-stuck) .nav__center { color: #ffb9a6; }
 .header.on-dark:not(.is-stuck) .nav__div { background: rgba(255,255,255,.28); }
 .header.on-dark:not(.is-stuck) .burger span { background: #fff; }
-@media (max-width: 1200px) {
+/* 회사소개 추가로 1200->1380 상향 */
+@media (max-width: 1380px) {
   .nav { display: none; }
   .nav.is-open .nav__div { display: none; }
   .nav.is-open .nav__center { color: var(--accent); }

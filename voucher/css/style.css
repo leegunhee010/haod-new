@@ -1,4 +1,4 @@
-﻿@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&display=swap');
 /* ===================================================
    HAO COMMUNICATION — Kinetic / Editorial Renewal (Light)
 =================================================== */
@@ -62,7 +62,7 @@ img { display: block; max-width: 100%; }
 .brand { display: flex; align-items: center; gap: 12px; }
 .brand__logo { height: 30px; }
 .brand__sub { font-size: .82rem; font-weight: 600; color: var(--muted); letter-spacing: -.01em; padding-left: 12px; border-left: 1px solid var(--line); }
-.nav { display: flex; align-items: center; gap: clamp(15px, 1.7vw, 26px); }
+.nav { display: flex; align-items: center; white-space: nowrap; gap: clamp(15px, 1.7vw, 26px); }
 .nav__div { width: 1px; height: 15px; background: var(--line); align-self: center; }
 .nav__center { color: var(--accent); font-weight: 700; }
 .nav__center i { font-style: normal; opacity: .65; }
@@ -1143,13 +1143,13 @@ img { display: block; max-width: 100%; }
   .process { padding: clamp(80px,12vh,150px) clamp(20px,4vw,54px); }
 }
 /* 중간 폭: 센터 링크까지 많아 좁아지면 넘치므로 gap·폰트·패딩 압축 */
-@media (max-width: 1180px) {
+@media (max-width: 1400px) {
   .nav { gap: 13px; }
   .nav a { font-size: .86rem; }
   .header { padding-left: clamp(16px, 2.2vw, 32px); padding-right: clamp(16px, 2.2vw, 32px); }
 }
-/* 압축으로도 안 들어가는 폭부터는 버거 메뉴로 전환 */
-@media (max-width: 1100px) {
+/* 압축으로도 안 들어가는 폭부터는 버거 메뉴로 전환 (회사소개 추가로 1100->1300 상향) */
+@media (max-width: 1300px) {
   .nav { display: none; }
   .nav.is-open .nav__div { display: none; }
   .nav.is-open .nav__center { color: var(--accent); }

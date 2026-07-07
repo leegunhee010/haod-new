@@ -144,7 +144,7 @@ input[type="text"], input[type="tel"], input[type="email"], textarea { cursor: t
 .header .nav a { font-size: 19px; font-weight: 600; }
 .header .nav__div { height: 22px; }
 .header .header__cta { font-size: 18px; padding: 16px 38px; }
-/* 중간 폭: 메뉴가 많아 풀사이즈로는 ~1700px 아래서 두 줄로 넘침 → gap·폰트·패딩을 압축해 한 줄 유지 (버거 전환폭 1200px까지) */
+/* 중간 폭: 메뉴가 많아 풀사이즈로는 ~1700px 아래서 두 줄로 넘침 → gap·폰트·패딩을 압축해 한 줄 유지 (버거 전환폭 1380px까지) */
 @media (max-width: 1700px){
   .header { padding: 24px clamp(18px, 2.2vw, 38px); }
   .header.is-stuck { padding-top: 15px; padding-bottom: 15px; }
