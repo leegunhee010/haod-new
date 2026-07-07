@@ -111,6 +111,10 @@
 .header.on-dark:not(.is-stuck) .nav__center { color: #ffb9a6; }
 .header.on-dark:not(.is-stuck) .nav__div { background: rgba(255,255,255,.28); }
 .header.on-dark:not(.is-stuck) .burger span { background: #fff; }
+/* 로고: 다크 히어로 위(스크롤 전)=흰색, 스크롤 후 흰 헤더=컬러 */
+.brand__logo--white { display: none; }
+.header.on-dark:not(.is-stuck) .brand__logo--color { display: none; }
+.header.on-dark:not(.is-stuck) .brand__logo--white { display: inline-block; }
 /* 회사소개 추가로 1200->1380 상향 */
 @media (max-width: 1380px) {
   .nav { display: none; }
