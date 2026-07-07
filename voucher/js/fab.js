@@ -2,7 +2,7 @@
 (function () {
   function init() {
     document.querySelectorAll(".fab").forEach(function (el) { el.remove(); });
-    var S = { kakao: "https://pf.kakao.com/_exlVrxd", phone: "1666-2027" };
+    var S = { kakao: "", phone: "1666-2027" };
     try { if (window.HAO && HAO.getSocial) { var o = HAO.getSocial(); if (o && o.kakao) S.kakao = o.kakao; if (o && o.phone) S.phone = o.phone; } } catch (e) {}
     var ICON = {
       kakao: '<svg viewBox="0 0 24 24"><path d="M12 4C7 4 3 7.1 3 10.9c0 2.4 1.6 4.6 4.1 5.8-.2.6-.6 2.2-.7 2.6 0 .3.1.4.4.2.2-.1 2.5-1.7 3.5-2.4.5.1 1.1.1 1.7.1 5 0 9-3.1 9-6.9S17 4 12 4z"/></svg>',

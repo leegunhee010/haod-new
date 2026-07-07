@@ -192,7 +192,7 @@
   var DEFAULT_SETTINGS = { tel: "1666-2027", email: "sales@haodesign.co.kr" };
 
   /* 우측 하단 플로팅 빠른버튼 (관리자에서 링크 설정) — 비어있으면 그 버튼은 숨김 */
-  var DEFAULT_SOCIAL = {"blog":"https://blog.naver.com/xmfostlsh2","kakao":"https://pf.kakao.com/_exlVrxd","phone":"1666-2027","instagram":"https://www.instagram.com/haodesign_official/"};
+  var DEFAULT_SOCIAL = {"blog":"","kakao":"","phone":"1666-2027","instagram":""}; /* 하오커뮤니케이션 채널 생기면 admin에서 등록 */
 
   /* 푸터 하단 블로그 링크 (SEO·AEO — 관리자 '사이트 설정' 탭에서 수정) — {name, url} */
   var DEFAULT_BLOGS = []; /* 하오커뮤니케이션 블로그 생기면 admin 사이트설정에서 추가 */
