@@ -710,7 +710,7 @@ html.lenis,html.lenis body{height:auto}
 .footer__biz b{color:rgba(255,255,255,.7)}
 .footer__copy{display:block;margin-top:16px;font-size:.78rem;color:rgba(255,255,255,.4)}
 .footer__wordmark{margin-top:clamp(26px,5vh,52px);font-weight:800;letter-spacing:-.05em;line-height:.82;
-  font-size:clamp(3.2rem,14.5vw,12.5rem);white-space:nowrap;user-select:none;overflow:hidden;
+  font-size:clamp(2rem,8.1vw,7rem); /* HAOCOMMUNICATION 16자 기준 */white-space:nowrap;user-select:none;overflow:hidden;
   background:linear-gradient(180deg,rgba(255,255,255,.17),rgba(255,255,255,.02));
   -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
 .footer__wordmark em{font-style:normal;background:var(--grad);

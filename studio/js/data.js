@@ -1,5 +1,5 @@
 /* ===================================================
-   HAO STUDIO (스튜디오센터) — shared data layer
+   HAOC STUDIO (스튜디오센터) — shared data layer
    기본 데이터 + 관리자 오버라이드(Supabase 서버 + localStorage 캐시).
    · design 센터와 같은 Supabase 프로젝트를 공유하되, 키는 모두 "hs_" 접두사로 분리.
    · 견적문의는 공유 inquiries 테이블에 저장하되 type 앞에 "[스튜디오]" 표시로 구분.
@@ -150,7 +150,7 @@
 
   /* ===== 메인 히어로 슬라이드 (title 의 **단어** = em 강조) ===== */
   var DEFAULT_HERO = [
-    { eng: "HAO STUDIO · Lifestyle & Commerce", title: "브랜드를 더 브랜드답게,\n다양한 컨셉의 **촬영**", btn: "자세히 보기", href: "#service", img: "assets/hero/1.jpg" },
+    { eng: "HAOC STUDIO · Lifestyle & Commerce", title: "브랜드를 더 브랜드답게,\n다양한 컨셉의 **촬영**", btn: "자세히 보기", href: "#service", img: "assets/hero/1.jpg" },
     { eng: "Capturing Mood, Creating Distinctive Visuals", title: "브랜드 무드를 깊이 담아\n**차별화된** 비주얼 촬영", btn: "촬영 알아보기", href: "photo.html", img: "assets/hero/2.jpg" },
     { eng: "Building Brands Into Market Leaders", title: "브랜드의 가치를 높이는\n**성과 중심** 커머스 디자인", btn: "상세페이지 보기", href: "detailpage.html", img: "assets/hero/3.jpg" }
   ];
@@ -168,7 +168,7 @@
     { id: 2, title: '촬영 의뢰 전 준비하면 좋은 3가지', summary: '레퍼런스·컷 리스트·일정을 미리 정하면 결과가 달라진다.', date: '2026-05-10', img: 'assets/work-hd/thumb/w378.jpg', isNew: false,
       body: ['촬영 결과는 준비에서 절반이 결정됩니다. 의뢰 전 세 가지만 정리해도 훨씬 매끄럽게 진행됩니다.', '① 레퍼런스: 원하는 무드의 이미지 몇 장 ② 컷 리스트: 꼭 필요한 장면과 용도 ③ 일정: 납품 데드라인.', '이 정보가 명확할수록 콘티가 정확해지고, 재촬영 같은 리스크가 줄어듭니다.'] },
     { id: 1, title: '브랜드 톤을 사진으로 지키는 법', summary: '시즌마다 흔들리지 않는 비주얼 일관성 만들기.', date: '2026-04-29', img: 'assets/work-hd/thumb/w375.jpg', isNew: false,
-      body: ['브랜드는 한 장의 사진이 아니라 "쌓인 인상"으로 기억됩니다. 그래서 비주얼 톤의 일관성이 중요합니다.', '색온도, 배경, 소품 스타일, 여백의 규칙을 가이드로 정해두면 누가 찍어도 같은 브랜드처럼 보입니다.', '하오 스튜디오는 첫 촬영에서 톤 가이드를 함께 정리해, 다음 시즌에도 이어지는 비주얼을 만듭니다.'] }
+      body: ['브랜드는 한 장의 사진이 아니라 "쌓인 인상"으로 기억됩니다. 그래서 비주얼 톤의 일관성이 중요합니다.', '색온도, 배경, 소품 스타일, 여백의 규칙을 가이드로 정해두면 누가 찍어도 같은 브랜드처럼 보입니다.', '하오커뮤니케이션 스튜디오는 첫 촬영에서 톤 가이드를 함께 정리해, 다음 시즌에도 이어지는 비주얼을 만듭니다.'] }
   ];
 
   /* ===== Q&A ===== */
@@ -240,11 +240,11 @@
       index: {
         title: "스튜디오센터 | 하오커뮤니케이션 — 제품 촬영·상세페이지·콘텐츠 제작",
         desc: "하오커뮤니케이션 스튜디오센터. 제품·브랜드 촬영부터 상세페이지 디자인, 영상 콘텐츠, 보정·리터칭까지 — 브랜드에 필요한 모든 비주얼을 하나의 크리에이티브 시스템으로 설계합니다.",
-        keywords: "제품촬영, 상세페이지제작, 누끼촬영, 제품사진, 브랜드촬영, 영상콘텐츠, 릴스제작, 하오스튜디오" },
+        keywords: "제품촬영, 상세페이지제작, 누끼촬영, 제품사진, 브랜드촬영, 영상콘텐츠, 릴스제작, 하오커뮤니케이션 스튜디오" },
       studio: {
         title: "스튜디오 소개 | 스튜디오센터 — 하오커뮤니케이션",
-        desc: "하오스튜디오는 촬영·영상·디자인·AI 디렉션까지, 콘텐츠로 브랜드를 완성하는 전문 스튜디오입니다.",
-        keywords: "하오스튜디오, 콘텐츠스튜디오, 제품촬영스튜디오, 광진구 스튜디오, 촬영스튜디오" },
+        desc: "하오커뮤니케이션 스튜디오는 촬영·영상·디자인·AI 디렉션까지, 콘텐츠로 브랜드를 완성하는 전문 스튜디오입니다.",
+        keywords: "하오커뮤니케이션 스튜디오, 콘텐츠스튜디오, 제품촬영스튜디오, 광진구 스튜디오, 촬영스튜디오" },
       photo: {
         title: "제품·브랜드 촬영 | 스튜디오센터 — 하오커뮤니케이션",
         desc: "제품·브랜드 촬영 서비스. 스튜디오 촬영부터 현장·연출컷, 누끼·디테일컷까지 채널에 바로 쓰는 비주얼을 제작합니다.",
@@ -259,8 +259,8 @@
         keywords: "영상제작, 릴스제작, 숏폼제작, 제품영상, 브랜드필름, 영상콘텐츠" },
       portfolio: {
         title: "포트폴리오 | 스튜디오센터 — 하오커뮤니케이션",
-        desc: "하오스튜디오 제품·음식·뷰티·건강식품 촬영 포트폴리오. 실제 진행한 촬영 작업을 카테고리별로 확인하세요.",
-        keywords: "촬영포트폴리오, 제품촬영사례, 상세페이지포트폴리오, 하오스튜디오 작업" },
+        desc: "하오커뮤니케이션 스튜디오 제품·음식·뷰티·건강식품 촬영 포트폴리오. 실제 진행한 촬영 작업을 카테고리별로 확인하세요.",
+        keywords: "촬영포트폴리오, 제품촬영사례, 상세페이지포트폴리오, 하오커뮤니케이션 스튜디오 작업" },
       column: {
         title: "칼럼 | 스튜디오센터 — 하오커뮤니케이션",
         desc: "제품 촬영·상세페이지·영상 콘텐츠 실무 노하우. 더 잘 팔리는 비주얼을 만드는 하오커뮤니케이션 스튜디오센터 칼럼.",
@@ -299,9 +299,9 @@
     { key: "card4_d", page: "index", sel: ".ef-card:nth-child(4) .ef-card__d", tag: "b", label: "서비스카드④ 설명", value: "공간의 첫인상을 더 돋보이게 만드는\n감각적인 공간 전문 촬영" },
     { key: "folio_title", page: "index", sel: ".np-folio__title", tag: "em", label: "포트폴리오 — 제목", value: "다양한 **제품·브랜드 촬영**이 가능한\n전문 콘텐츠 스튜디오입니다." },
     { key: "review_title", page: "index", sel: ".ef-rev-head h2", tag: "b", label: "리뷰 — 제목", value: "Experience a change" },
-    { key: "review_desc", page: "index", sel: ".ef-rev-head p", tag: "b", label: "리뷰 — 설명", value: "눈에 보이는 결과물의 차이, 판매율의 변화를 경험하셨기 때문에\n하오 스튜디오를 다녀간 많은 담당자분들이 꾸준히 다시 찾아주십니다." },
+    { key: "review_desc", page: "index", sel: ".ef-rev-head p", tag: "b", label: "리뷰 — 설명", value: "눈에 보이는 결과물의 차이, 판매율의 변화를 경험하셨기 때문에\n하오커뮤니케이션 스튜디오를 다녀간 많은 담당자분들이 꾸준히 다시 찾아주십니다." },
     { key: "slogan_eng", page: "index", sel: ".ef-slogan__eng", tag: "em", label: "슬로건 — 영문", value: "More than expected,\nalways makes the **best effect**" },
-    { key: "slogan_sub", page: "index", sel: ".ef-slogan__sub", tag: "b", label: "슬로건 — 설명", value: "하오 스튜디오는 언제나 기대를 넘어, 브랜드의 고객까지 만족하는 최고의 결과물을 만듭니다." },
+    { key: "slogan_sub", page: "index", sel: ".ef-slogan__sub", tag: "b", label: "슬로건 — 설명", value: "하오커뮤니케이션 스튜디오는 언제나 기대를 넘어, 브랜드의 고객까지 만족하는 최고의 결과물을 만듭니다." },
     { key: "stat1_n", page: "index", sel: ".ef-stat:nth-child(1) strong", attr: "data-to", label: "지표① 숫자", value: "1603" },
     { key: "stat1_t", page: "index", sel: ".ef-stat:nth-child(1) em", tag: "b", label: "지표① 이름", value: "완료 프로젝트" },
     { key: "stat2_n", page: "index", sel: ".ef-stat:nth-child(2) strong", attr: "data-to", label: "지표② 숫자", value: "1203" },
@@ -310,7 +310,7 @@
     { key: "stat3_t", page: "index", sel: ".ef-stat:nth-child(3) em", tag: "b", label: "지표③ 이름", value: "누적 촬영 컷" },
     { key: "stat4_n", page: "index", sel: ".ef-stat:nth-child(4) strong", attr: "data-to", label: "지표④ 숫자", value: "98" },
     { key: "stat4_t", page: "index", sel: ".ef-stat:nth-child(4) em", tag: "b", label: "지표④ 이름", value: "재의뢰·만족도 (%)" },
-    { key: "partners_title", page: "index", sel: ".partners__head h2", tag: "b", label: "파트너 — 제목", value: "하오 스튜디오와 함께한 브랜드" },
+    { key: "partners_title", page: "index", sel: ".partners__head h2", tag: "b", label: "파트너 — 제목", value: "하오커뮤니케이션 스튜디오와 함께한 브랜드" },
     { key: "proc_title_i", page: "index", sel: ".process__head h2", tag: "b", label: "진행과정 — 제목", value: "진행 과정" },
     { key: "pst1_h", page: "index", sel: ".tstep:nth-child(2) h3", tag: "b", label: "진행과정① 제목", value: "문의 · 상담" },
     { key: "pst1_p", page: "index", sel: ".tstep:nth-child(2) p", tag: "b", label: "진행과정① 설명", value: "촬영 종류·컷 수·일정을 알려주시면 빠르게 상담해 드립니다." },
@@ -328,7 +328,7 @@
     { key: "ab_cover_t", page: "studio", sel: ".sst-cover__t", tag: "b", label: "커버 제목", value: "스튜디오 소개" },
     { key: "ab_intro_h", page: "studio", sel: ".sst-intro__h", tag: "b", label: "인트로 제목", value: "제품·푸드·뷰티까지,\n**콘텐츠로 브랜드를 완성**하는\n전문 스튜디오" },
     { key: "ab_intro_p1", page: "studio", sel: ".sst-intro__p p:nth-child(1)", tag: "b", label: "인트로 1문단", value: "하루에도 수만 개의 콘텐츠가 탄생하고 사라지는 미디어 시장, 그 화려함 속에서 우리는 **'고객만족'이라는 본질**에 집중했습니다." },
-    { key: "ab_intro_p2", page: "studio", sel: ".sst-intro__p p:nth-child(2)", tag: "b", label: "인트로 2문단", value: "하오스튜디오는 촬영·영상·디자인·AI 디렉션까지 한 팀이 함께 움직입니다. 고객이 눈으로 확인하고 피부로 느끼는 진정한 만족, 그 기준을 채우기 위해 잘하는 사람들이 모였습니다." },
+    { key: "ab_intro_p2", page: "studio", sel: ".sst-intro__p p:nth-child(2)", tag: "b", label: "인트로 2문단", value: "하오커뮤니케이션 스튜디오는 촬영·영상·디자인·AI 디렉션까지 한 팀이 함께 움직입니다. 고객이 눈으로 확인하고 피부로 느끼는 진정한 만족, 그 기준을 채우기 위해 잘하는 사람들이 모였습니다." },
     { key: "ab_intro_p3", page: "studio", sel: ".sst-intro__p p:nth-child(3)", tag: "b", label: "인트로 3문단", value: "잘하니까, 좋아하니까 — 그래서 HAO. 소통의 가치를 생각하며 브랜드의 한 컷을 끝까지 책임집니다." },
     { key: "ab_slogan_eng", page: "studio", sel: ".ef-slogan__eng", tag: "em", label: "슬로건 — 영문", value: "잘하니까, 좋아하니까\n그래서 **HAO**하다" },
     { key: "ab_slogan_sub", page: "studio", sel: ".ef-slogan__sub", tag: "b", label: "슬로건 — 설명", value: "Photography · Video · Design · AI Direction — 콘텐츠의 모든 과정을 한 팀이 함께합니다." },
@@ -345,7 +345,7 @@
     { key: "ph_title", page: "photo", sel: ".subhero__title", tag: "b", label: "상단 제목", value: "제품·브랜드 촬영" },
     { key: "ph_desc", page: "photo", sel: ".subhero__desc", tag: "b", label: "상단 설명", value: "스튜디오 촬영부터 현장 연출컷, 누끼·디테일컷까지 — 채널에 바로 쓰는 비주얼을 만듭니다." },
     { key: "ph_split_h", page: "photo", sel: ".ssplit__text h3", tag: "b", label: "소개 제목", value: "제품이 가장 좋아 보이는\n그 한 컷을 찾습니다" },
-    { key: "ph_split_p", page: "photo", sel: ".ssplit__text p", tag: "b", label: "소개 설명", value: "같은 제품이라도 빛과 각도, 배경 톤에 따라 인상이 완전히 달라집니다. 하오 스튜디오는 브랜드 무드를 먼저 정의하고, 그 톤 안에서 가장 설득력 있는 컷을 설계해 촬영합니다." },
+    { key: "ph_split_p", page: "photo", sel: ".ssplit__text p", tag: "b", label: "소개 설명", value: "같은 제품이라도 빛과 각도, 배경 톤에 따라 인상이 완전히 달라집니다. 하오커뮤니케이션 스튜디오는 브랜드 무드를 먼저 정의하고, 그 톤 안에서 가장 설득력 있는 컷을 설계해 촬영합니다." },
     { key: "ph_li1", page: "photo", sel: ".ssplit__list li:nth-child(1)", tag: "b", label: "포인트①", value: "배경·소품·조명까지 브랜드 톤에 맞춘 연출" },
     { key: "ph_li2", page: "photo", sel: ".ssplit__list li:nth-child(2)", tag: "b", label: "포인트②", value: "웹·인쇄·SNS 규격을 고려한 컷 구성" },
     { key: "ph_li3", page: "photo", sel: ".ssplit__list li:nth-child(3)", tag: "b", label: "포인트③", value: "촬영 당일 컨펌으로 재촬영 리스크 최소화" },
@@ -357,7 +357,7 @@
     { key: "in_title", page: "interior", sel: ".subhero__title", tag: "b", label: "상단 제목", value: "인·익스테리어 촬영" },
     { key: "in_desc", page: "interior", sel: ".subhero__desc", tag: "b", label: "상단 설명", value: "공간의 첫인상을 더 돋보이게 만드는 감각적인 공간 전문 촬영 — 카페·레스토랑·호텔·매장의 무드를 사진에 담습니다." },
     { key: "in_split_h", page: "interior", sel: ".ssplit__text h3", tag: "b", label: "소개 제목", value: "공간이 가진 무드를\n있는 그대로 담습니다" },
-    { key: "in_split_p", page: "interior", sel: ".ssplit__text p", tag: "b", label: "소개 설명", value: "같은 공간도 빛의 방향과 시간대, 화각에 따라 전혀 다른 인상이 됩니다. 하오 스튜디오는 공간의 콘셉트를 먼저 읽고, 자연광과 조명이 가장 좋은 순간을 잡아 손님이 방문하고 싶어지는 한 컷을 만듭니다." },
+    { key: "in_split_p", page: "interior", sel: ".ssplit__text p", tag: "b", label: "소개 설명", value: "같은 공간도 빛의 방향과 시간대, 화각에 따라 전혀 다른 인상이 됩니다. 하오커뮤니케이션 스튜디오는 공간의 콘셉트를 먼저 읽고, 자연광과 조명이 가장 좋은 순간을 잡아 손님이 방문하고 싶어지는 한 컷을 만듭니다." },
     { key: "in_li1", page: "interior", sel: ".ssplit__list li:nth-child(1)", tag: "b", label: "포인트①", value: "자연광·조명을 고려한 촬영 시간대 설계" },
     { key: "in_li2", page: "interior", sel: ".ssplit__list li:nth-child(2)", tag: "b", label: "포인트②", value: "전경 광각부터 소품 디테일까지 컷 구성" },
     { key: "in_li3", page: "interior", sel: ".ssplit__list li:nth-child(3)", tag: "b", label: "포인트③", value: "간판·파사드가 살아나는 익스테리어 촬영" },
@@ -417,7 +417,7 @@
 
     /* ───── 포트폴리오 ───── */
     { key: "po_title", page: "portfolio", sel: ".subhero__title", tag: "b", label: "상단 제목", value: "포트폴리오" },
-    { key: "po_desc", page: "portfolio", sel: ".subhero__desc", tag: "b", label: "상단 설명", value: "하오스튜디오가 실제 진행한 촬영·상세페이지 작업입니다. 클릭하면 크게 볼 수 있어요." },
+    { key: "po_desc", page: "portfolio", sel: ".subhero__desc", tag: "b", label: "상단 설명", value: "하오커뮤니케이션 스튜디오가 실제 진행한 촬영·상세페이지 작업입니다. 클릭하면 크게 볼 수 있어요." },
 
     /* ───── 칼럼 ───── */
     { key: "col_title", page: "column", sel: "#listView .subhero__title", tag: "b", label: "상단 제목", value: "Column" },
@@ -438,9 +438,9 @@
     { key: "st_index_10", page: "index", sel: "footer > div:nth-of-type(2) > div:nth-of-type(1) > h3", tag: "b", label: "Contact", value: "Contact" },
     { key: "st_index_11", page: "index", sel: "footer > div:nth-of-type(2) > div:nth-of-type(2) > h3", tag: "b", label: "센터", value: "센터" },
     { key: "st_index_12", page: "index", sel: "footer > div:nth-of-type(2) > div:nth-of-type(3) > h3", tag: "b", label: "스튜디오센터", value: "스튜디오센터" },
-    { key: "st_studio_01", page: "studio", sel: "#top > section:nth-of-type(1) > div > p", tag: "b", label: "ABOUT HAO STUDIO", value: "ABOUT HAO STUDIO" },
+    { key: "st_studio_01", page: "studio", sel: "#top > section:nth-of-type(1) > div > p", tag: "b", label: "ABOUT HAOC STUDIO", value: "ABOUT HAOC STUDIO" },
     { key: "st_studio_02", page: "studio", sel: "#top > section:nth-of-type(3) > div:nth-of-type(1) > p", tag: "b", label: "STUDIO SPACE", value: "STUDIO SPACE" },
-    { key: "st_studio_03", page: "studio", sel: "#top > section:nth-of-type(3) > div:nth-of-type(1) > h2", tag: "b", label: "콘텐츠가 만들어지는 하오 스튜디오의 공간", value: "콘텐츠가 만들어지는 **하오 스튜디오의 공간**" },
+    { key: "st_studio_03", page: "studio", sel: "#top > section:nth-of-type(3) > div:nth-of-type(1) > h2", tag: "b", label: "콘텐츠가 만들어지는 하오커뮤니케이션 스튜디오의 공간", value: "콘텐츠가 만들어지는 **하오커뮤니케이션 스튜디오의 공간**" },
     { key: "st_studio_04", page: "studio", sel: "#top > div:nth-of-type(1) > div:nth-of-type(1) > p", tag: "b", label: "STUDIO WORK", value: "STUDIO WORK" },
     { key: "st_studio_05", page: "studio", sel: "#top > div:nth-of-type(1) > div:nth-of-type(1) > h2", tag: "b", label: "실제 진행한 촬영 작업의 일부입니다.", value: "실제 진행한 **촬영 작업**의 일부입니다." },
     { key: "st_studio_06", page: "studio", sel: "#contact > div > div > p:nth-of-type(1)", tag: "b", label: "STUDIO INQUIRY", value: "STUDIO INQUIRY" },
@@ -539,7 +539,7 @@
     { key: "st_detailpage_22", page: "detailpage", sel: "footer > div:nth-of-type(2) > div:nth-of-type(3) > h3", tag: "b", label: "스튜디오센터", value: "스튜디오센터" },
     { key: "st_column1_01", page: "column-1", sel: "main > section:nth-of-type(1) > div > h1", tag: "b", label: "브랜드 톤을 사진으로 지키는 법", value: "브랜드 톤을 사진으로 지키는 법" },
     { key: "st_column1_02", page: "column-1", sel: "main > section:nth-of-type(2) > article > div:nth-of-type(2) > p:nth-of-type(2)", tag: "b", label: "색온도, 배경, 소품 스타일, 여백의 규칙을", value: "색온도, 배경, 소품 스타일, 여백의 규칙을 가이드로 정해두면 누가 찍어도 같은 브랜드처럼 보입니다." },
-    { key: "st_column1_03", page: "column-1", sel: "main > section:nth-of-type(2) > article > div:nth-of-type(2) > p:nth-of-type(3)", tag: "b", label: "하오 스튜디오는 첫 촬영에서 톤 가이드를 함", value: "하오 스튜디오는 첫 촬영에서 톤 가이드를 함께 정리해, 다음 시즌에도 이어지는 비주얼을 만듭니다." },
+    { key: "st_column1_03", page: "column-1", sel: "main > section:nth-of-type(2) > article > div:nth-of-type(2) > p:nth-of-type(3)", tag: "b", label: "하오커뮤니케이션 스튜디오는 첫 촬영에서 톤 가이드를 함", value: "하오커뮤니케이션 스튜디오는 첫 촬영에서 톤 가이드를 함께 정리해, 다음 시즌에도 이어지는 비주얼을 만듭니다." },
     { key: "st_column1_04", page: "column-1", sel: "footer > div:nth-of-type(2) > div:nth-of-type(1) > h3", tag: "b", label: "Contact", value: "Contact" },
     { key: "st_column1_05", page: "column-1", sel: "footer > div:nth-of-type(2) > div:nth-of-type(2) > h3", tag: "b", label: "센터", value: "센터" },
     { key: "st_column1_06", page: "column-1", sel: "footer > div:nth-of-type(2) > div:nth-of-type(3) > h3", tag: "b", label: "스튜디오센터", value: "스튜디오센터" },
