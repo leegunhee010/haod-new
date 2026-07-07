@@ -103,7 +103,7 @@
      렌더된 내용 기준으로 생성해 화면과 100% 일치하도록 함 (FAQ·서비스·칼럼은 관리자 수정 반영) */
   function injectSEO() {
     if (!window.HAO || !HAO.getSeo) return;
-    var base = (HAO.getSeo().siteUrl || "https://haodesign.co.kr").replace(/\/$/, "");
+    var base = (HAO.getSeo().siteUrl || "https://leegunhee010.github.io/haod-new/design").replace(/\/$/, "");
     var so = HAO.getSocial ? HAO.getSocial() : {};
     var sameAs = [so.instagram, so.blog, so.kakao].filter(Boolean);
     var graph = [];
