@@ -130,6 +130,19 @@
     { b: 'Kakao', s: '프리미어 파트너' }, { b: 'TikTok', s: '공식 파트너' }, { b: 'YouTube', s: '인증 대행사' }
   ];
 
+
+  /* ===== 페이지 사진 (관리자 '페이지 사진' 탭) — {key,page,sel,label,value} ===== */
+  var DEFAULT_IMGS = [
+    { key: "img_svc_1", page: "services", sel: "#svcGrid .svc-card:nth-child(1) img", label: "서비스 — 브랜드 채널 운영", value: "../design/assets/work/work03.jpeg" },
+    { key: "img_svc_2", page: "services", sel: "#svcGrid .svc-card:nth-child(2) img", label: "서비스 — 콘텐츠 제작", value: "../design/assets/work/work12.jpeg" },
+    { key: "img_svc_3", page: "services", sel: "#svcGrid .svc-card:nth-child(3) img", label: "서비스 — 이커머스 디자인", value: "../voucher/assets/work/w379.jpg" },
+    { key: "img_svc_4", page: "services", sel: "#svcGrid .svc-card:nth-child(4) img", label: "서비스 — 패키지 디자인", value: "../voucher/assets/work/w378.jpg" },
+    { key: "img_svc_5", page: "services", sel: "#svcGrid .svc-card:nth-child(5) img", label: "서비스 — 전시·박람회 부스", value: "../design/assets/work/work05.jpeg" },
+    { key: "img_svc_6", page: "services", sel: "#svcGrid .svc-card:nth-child(6) img", label: "서비스 — 인플루언서 마케팅", value: "../design/assets/work/work09.jpeg" },
+    { key: "img_svc_7", page: "services", sel: "#svcGrid .svc-card:nth-child(7) img", label: "서비스 — 편집·인쇄 디자인", value: "../voucher/assets/work/w362.jpg" },
+    { key: "img_svc_8", page: "services", sel: "#svcGrid .svc-card:nth-child(8) img", label: "서비스 — 글로벌 진출 디자인", value: "../voucher/assets/work/w402.jpg" }
+  ];
+
   /* ===== 사이트 설정 ===== */
   var DEFAULT_SETTINGS = {
     tel: "1666-2027",
@@ -375,6 +388,14 @@
       return DEFAULT_COPY.map(function (c) {
         var out = JSON.parse(JSON.stringify(c));
         if (typeof ov[c.key] === "string") out.value = ov[c.key];
+        return out;
+      });
+    },
+        getImgs: function () {
+      var ov = loadObj("hm_imgs", {});
+      return DEFAULT_IMGS.map(function (c) {
+        var out = JSON.parse(JSON.stringify(c));
+        if (typeof ov[c.key] === "string" && ov[c.key]) out.value = ov[c.key];
         return out;
       });
     },

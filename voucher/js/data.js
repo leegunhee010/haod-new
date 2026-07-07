@@ -500,6 +500,27 @@
     return JSON.parse(JSON.stringify(fallback));
   }
 
+
+  /* ===== 페이지 사진 (관리자 '페이지 사진' 탭) ===== */
+  var DEFAULT_IMGS = [
+    { key: "img_ctr_1", page: "index", sel: ".section3 .imgbox li:nth-child(1) .img img", label: "메인 — 디자인센터", value: "img/professionalism_1.jpg" },
+    { key: "img_ctr_2", page: "index", sel: ".section3 .imgbox li:nth-child(2) .img img", label: "메인 — 웹구축센터", value: "img/professionalism_2.jpg" },
+    { key: "img_ctr_3", page: "index", sel: ".section3 .imgbox li:nth-child(3) .img img", label: "메인 — 스튜디오센터", value: "img/professionalism_3.jpg" },
+    { key: "img_ctr_4", page: "index", sel: ".section3 .imgbox li:nth-child(4) .img img", label: "메인 — 마케팅센터", value: "img/professionalism_4.jpg" },
+    { key: "img_who_1", page: "index", sel: "#s-about .img-area .img.item1 img", label: "메인 — Who We Are 1 (하오커뮤니케이션 브로슈어 디자인 포트폴리)", value: "assets/work/w362.jpg" },
+    { key: "img_who_2", page: "index", sel: "#s-about .img-area .img.item2 img", label: "메인 — Who We Are 2 (하오커뮤니케이션 카탈로그 디자인 포트폴리)", value: "assets/work/w402.jpg" },
+    { key: "img_who_3", page: "index", sel: "#s-about .img-area .img.item3 img", label: "메인 — Who We Are 3 (하오커뮤니케이션 사업안내서 디자인 포트폴)", value: "assets/work/w393.jpg" },
+    { key: "img_who_4", page: "index", sel: "#s-about .img-area .img.item4 img", label: "메인 — Who We Are 4 (하오커뮤니케이션 기술 카탈로그 디자인 포)", value: "assets/work/w390.jpg" },
+    { key: "img_pf_1", page: "index", sel: "#pfWheel .pf-card:nth-child(1) .pf-img img", label: "메인 — 솔루션 카드1 (수출바우처 영문 카탈로그)", value: "assets/work/w402.jpg" },
+    { key: "img_pf_2", page: "index", sel: "#pfWheel .pf-card:nth-child(2) .pf-img img", label: "메인 — 솔루션 카드2 (도시정비사업 사업안내서)", value: "assets/work/w393.jpg" },
+    { key: "img_pf_3", page: "index", sel: "#pfWheel .pf-card:nth-child(3) .pf-img img", label: "메인 — 솔루션 카드3 (전력설비 기술 카탈로그)", value: "assets/work/w390.jpg" },
+    { key: "img_pf_4", page: "index", sel: "#pfWheel .pf-card:nth-child(4) .pf-img img", label: "메인 — 솔루션 카드4 (식품 수출 다국어 브로슈어)", value: "assets/work/w380.jpg" },
+    { key: "img_pf_5", page: "index", sel: "#pfWheel .pf-card:nth-child(5) .pf-img img", label: "메인 — 솔루션 카드5 (뷰티 디바이스 상세페이지)", value: "assets/work/w379.jpg" },
+    { key: "img_pf_6", page: "index", sel: "#pfWheel .pf-card:nth-child(6) .pf-img img", label: "메인 — 솔루션 카드6 (건강식품 패키지 디자인)", value: "assets/work/w378.jpg" },
+    { key: "img_pf_7", page: "index", sel: "#pfWheel .pf-card:nth-child(7) .pf-img img", label: "메인 — 솔루션 카드7 (생활용품 제품 카탈로그)", value: "assets/work/w377.jpg" },
+    { key: "img_pf_8", page: "index", sel: "#pfWheel .pf-card:nth-child(8) .pf-img img", label: "메인 — 솔루션 카드8 (산업기자재 회사소개서)", value: "assets/work/w362.jpg" }
+  ];
+
   /* ===== 통합 관리자(허브) 계정 — 모든 센터 공통 로그인 ===== */
   var HUB_ACCOUNTS = [{ id: "admin", pw: "haohub1234" }];
   function loadHubAccounts() {
@@ -528,6 +549,14 @@
     getCopy: function () {
       var ov = loadObj("hv_copy", {});
       return DEFAULT_COPY.map(function (c) { var out = JSON.parse(JSON.stringify(c)); if (typeof ov[c.key] === "string") { out.value = ov[c.key]; out.ov = true; } return out; });
+    },
+        getImgs: function () {
+      var ov = loadObj("hv_imgs", {});
+      return DEFAULT_IMGS.map(function (c) {
+        var out = JSON.parse(JSON.stringify(c));
+        if (typeof ov[c.key] === "string" && ov[c.key]) out.value = ov[c.key];
+        return out;
+      });
     },
     getSeo: function () {
       var ov = loadObj("hv_seo", {});

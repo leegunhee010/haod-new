@@ -114,6 +114,17 @@
       });
     } catch (e) {}
 
+    /* ---- 페이지 사진 (선택자 매핑, 관리자 '페이지 사진') ---- */
+    try {
+      if (HAO.getImgs) HAO.getImgs().forEach(function (c) {
+        if (c.page !== "all" && c.page !== page) return;
+        document.querySelectorAll(c.sel).forEach(function (el) {
+          if (el.tagName === "IMG") el.src = HAO.imgSrc ? HAO.imgSrc(c.value) : c.value;
+        });
+      });
+    } catch (e) {}
+
+
     /* ---- 사이트에서 바로 수정 (관리자 ?edit=1) ---- */
     try {
       if (/[?&]edit=1/.test(location.search) && localStorage.getItem("hm_edit") === "1") startEditMode("hm_copy");
