@@ -30,7 +30,7 @@
   transition: background .4s var(--ease), padding .4s var(--ease), box-shadow .4s var(--ease);
 }
 .header.is-stuck { background: rgba(255,255,255,.7); box-shadow: 0 1px 0 var(--line), 0 10px 30px -18px rgba(23,21,15,.25); padding-top: 12px; padding-bottom: 12px; }
-.brand { display: flex; align-items: center; gap: 12px; }
+.brand { display: flex; align-items: center; gap: 12px;  flex-shrink: 0; }
 .brand__logo { height: 30px; }
 .brand__sub { font-size: .68rem; letter-spacing: .25em; opacity: .55; font-weight: 600; }
 .nav { display: flex; align-items: center; gap: clamp(15px, 1.7vw, 26px); }
@@ -41,7 +41,7 @@
 .nav a::after { content: ""; position: absolute; left: 0; bottom: -4px; width: 0; height: 1px; background: var(--accent); transition: width .35s var(--ease); }
 .nav a:hover { color: var(--accent); }
 .nav a:hover::after { width: 100%; }
-.header__cta { display: inline-flex; gap: 8px; align-items: center; font-weight: 700; font-size: .92rem; border: 1px solid var(--accent); background: var(--accent); color: #fff; padding: 10px 22px; border-radius: 999px; transition: background .3s var(--ease), border-color .3s var(--ease); }
+.header__cta { display: inline-flex; gap: 8px; align-items: center; font-weight: 700; font-size: .92rem; border: 1px solid var(--accent); background: var(--accent); color: #fff; padding: 10px 22px; border-radius: 999px; transition: background .3s var(--ease), border-color .3s var(--ease);  flex-shrink: 0; white-space: nowrap; }
 .header__cta:hover { background: var(--ink); border-color: var(--ink); color: #fff; }
 .header__cta span { transition: transform .3s var(--ease); }
 .header__cta:hover span { transform: translateX(4px); }
