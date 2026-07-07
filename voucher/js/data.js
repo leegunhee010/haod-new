@@ -226,7 +226,7 @@
     /* ───── 메인 · 포트폴리오 ───── */
     { key: "vc_s9_eg", page: "index", sel: "#s-portfolio .tit-box > b", tag: "b", label: "포트폴리오 — 라벨", value: "Our Portfolios" },
     { key: "vc_s9_t1", page: "index", sel: "#s-portfolio .tit-box h3:nth-of-type(1)", tag: "b", label: "포트폴리오 — 제목①", value: "We are HAO" },
-    { key: "vc_s9_t2", page: "index", sel: "#s-portfolio .tit-box h3:nth-of-type(2)", tag: "b", label: "포트폴리오 — 제목②", value: "Design" },
+    { key: "vc_s9_t2", page: "index", sel: "#s-portfolio .tit-box h3:nth-of-type(2)", tag: "b", label: "포트폴리오 — 제목②", value: "Communication" },
     { key: "vc_s9_line1", page: "index", sel: "#s-portfolio .fill-text.line1", tag: "b", label: "포트폴리오 — 설명", value: "정부지원사업으로 완성한 하오커뮤니케이션의 결과물을 만나보세요." },
     { key: "vc_pf1_c", page: "index", sel: "#s-portfolio .pf-card:nth-child(1) .pf-cat", tag: "b", label: "PF카드① — 분류", value: "카탈로그 디자인" },
     { key: "vc_pf1_t", page: "index", sel: "#s-portfolio .pf-card:nth-child(1) .pf-title", tag: "b", label: "PF카드① — 제목", value: "영문 카탈로그" },
