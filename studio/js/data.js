@@ -218,7 +218,42 @@
   var DEFAULT_PARTNERS = [];
   for (var pi = 1; pi <= 29; pi++) { DEFAULT_PARTNERS.push("assets/partners-hs/hp" + (pi < 10 ? "0" + pi : pi) + ".png"); }
 
-  /* ===== 사이트 설정 ===== */
+  
+  /* ===== 페이지 사진 (관리자 '서비스 사진' 탭) — {key, page, sel, label, value} ===== */
+  var DEFAULT_IMGS = [
+    { key: "img_photo_intro", page: "photo", sel: ".ssplit__img img", label: "제품촬영 — 소개 이미지", value: "assets/work-hd/thumb/w380.jpg" },
+    { key: "img_photo_g1", page: "photo", sel: "#grid .wcard:nth-child(1) img", label: "제품촬영 — 사례1 (오뚜기 제품 촬영)", value: "assets/work-hd/thumb/w380.jpg" },
+    { key: "img_photo_g2", page: "photo", sel: "#grid .wcard:nth-child(2) img", label: "제품촬영 — 사례2 (서울우유 제품 촬영)", value: "assets/work-hd/thumb/w379.jpg" },
+    { key: "img_photo_g3", page: "photo", sel: "#grid .wcard:nth-child(3) img", label: "제품촬영 — 사례3 (연세유업 제품 촬영)", value: "assets/work-hd/thumb/w378.jpg" },
+    { key: "img_photo_g4", page: "photo", sel: "#grid .wcard:nth-child(4) img", label: "제품촬영 — 사례4 (리서쳐스 브랜드 촬영)", value: "assets/work-hd/thumb/w377.jpg" },
+    { key: "img_photo_g5", page: "photo", sel: "#grid .wcard:nth-child(5) img", label: "제품촬영 — 사례5 (열정코리아 제품 촬영)", value: "assets/work-hd/thumb/w376.jpg" },
+    { key: "img_photo_g6", page: "photo", sel: "#grid .wcard:nth-child(6) img", label: "제품촬영 — 사례6 (비스비바 제품 촬영)", value: "assets/work-hd/thumb/w375.jpg" },
+    { key: "img_detailpage_intro", page: "detailpage", sel: ".ssplit__img img", label: "상세페이지 — 소개 이미지", value: "assets/work-hd/thumb/w402.jpg" },
+    { key: "img_detailpage_g1", page: "detailpage", sel: "#grid .wcard:nth-child(1) img", label: "상세페이지 — 사례1 (해븐코리아 카탈로그)", value: "assets/work-hd/thumb/w402.jpg" },
+    { key: "img_detailpage_g2", page: "detailpage", sel: "#grid .wcard:nth-child(2) img", label: "상세페이지 — 사례2 (KFC 브로슈어)", value: "assets/work-hd/thumb/w399.jpg" },
+    { key: "img_detailpage_g3", page: "detailpage", sel: "#grid .wcard:nth-child(3) img", label: "상세페이지 — 사례3 (한우테크 카탈로그)", value: "assets/work-hd/thumb/w390.jpg" },
+    { key: "img_detailpage_g4", page: "detailpage", sel: "#grid .wcard:nth-child(4) img", label: "상세페이지 — 사례4 (자이 가이스트 카탈로그)", value: "assets/work-hd/thumb/w362.jpg" },
+    { key: "img_detailpage_g5", page: "detailpage", sel: "#grid .wcard:nth-child(5) img", label: "상세페이지 — 사례5 (명지대학교 리플렛)", value: "assets/work-hd/thumb/w404.jpg" },
+    { key: "img_detailpage_g6", page: "detailpage", sel: "#grid .wcard:nth-child(6) img", label: "상세페이지 — 사례6 (베이지안웍스 리플렛)", value: "assets/work-hd/thumb/w400.jpg" },
+    { key: "img_video_intro", page: "video", sel: ".ssplit__img img", label: "영상콘텐츠 — 소개 이미지", value: "assets/work-hd/thumb/w377.jpg" },
+    { key: "img_video_g1", page: "video", sel: "#grid .wcard:nth-child(1) img", label: "영상콘텐츠 — 사례1 (리서쳐스 브랜드 영상)", value: "assets/work-hd/thumb/w377.jpg" },
+    { key: "img_video_g2", page: "video", sel: "#grid .wcard:nth-child(2) img", label: "영상콘텐츠 — 사례2 (서울우유 제품 영상)", value: "assets/work-hd/thumb/w379.jpg" },
+    { key: "img_video_g3", page: "video", sel: "#grid .wcard:nth-child(3) img", label: "영상콘텐츠 — 사례3 (제스트업 숏폼)", value: "assets/work-hd/thumb/w385.jpg" },
+    { key: "img_video_g4", page: "video", sel: "#grid .wcard:nth-child(4) img", label: "영상콘텐츠 — 사례4 (노원구 홍보 영상)", value: "assets/work-hd/thumb/w391.jpg" },
+    { key: "img_video_g5", page: "video", sel: "#grid .wcard:nth-child(5) img", label: "영상콘텐츠 — 사례5 (신한라이프 광고 소재)", value: "assets/work-hd/thumb/w401.jpg" },
+    { key: "img_video_g6", page: "video", sel: "#grid .wcard:nth-child(6) img", label: "영상콘텐츠 — 사례6 (이화여대 브랜드 필름)", value: "assets/work-hd/thumb/w312.jpg" },
+    { key: "img_interior_intro", page: "interior", sel: ".ssplit__img img", label: "인·익스테리어 — 소개 이미지", value: "assets/haostudio/inf05.jpg" },
+    { key: "img_interior_g1", page: "interior", sel: "#grid .wcard:nth-child(1) img", label: "인·익스테리어 — 사례1 (BBRICK 카페 인테리어)", value: "assets/haostudio/in05.jpg" },
+    { key: "img_interior_g2", page: "interior", sel: "#grid .wcard:nth-child(2) img", label: "인·익스테리어 — 사례2 (1982웨이홈 카페)", value: "assets/haostudio/in06.jpg" },
+    { key: "img_interior_g3", page: "interior", sel: "#grid .wcard:nth-child(3) img", label: "인·익스테리어 — 사례3 (HAVEN 카페 인테리어)", value: "assets/haostudio/in02.jpg" },
+    { key: "img_interior_g4", page: "interior", sel: "#grid .wcard:nth-child(4) img", label: "인·익스테리어 — 사례4 (GIVENING COFFEE 익스테리어)", value: "assets/haostudio/in03.jpg" },
+    { key: "img_interior_g5", page: "interior", sel: "#grid .wcard:nth-child(5) img", label: "인·익스테리어 — 사례5 (424오마카세 인테리어)", value: "assets/haostudio/in07.jpg" },
+    { key: "img_interior_g6", page: "interior", sel: "#grid .wcard:nth-child(6) img", label: "인·익스테리어 — 사례6 (사이사 라운지)", value: "assets/haostudio/in08.jpg" },
+    { key: "img_interior_g7", page: "interior", sel: "#grid .wcard:nth-child(7) img", label: "인·익스테리어 — 사례7 (FROG 테라스)", value: "assets/haostudio/in04.jpg" },
+    { key: "img_interior_g8", page: "interior", sel: "#grid .wcard:nth-child(8) img", label: "인·익스테리어 — 사례8 (파라스파라 호텔 다이닝)", value: "assets/haostudio/in01.jpg" }
+  ];
+
+/* ===== 사이트 설정 ===== */
   var DEFAULT_SETTINGS = {
     tel: "1666-2027",
     email: "sales@haodesign.co.kr",
@@ -649,6 +684,14 @@
       return DEFAULT_COPY.map(function (c) {
         var out = JSON.parse(JSON.stringify(c));
         if (typeof ov[c.key] === "string") out.value = ov[c.key];
+        return out;
+      });
+    },
+        getImgs: function () {
+      var ov = loadObj("hs_imgs", {});
+      return DEFAULT_IMGS.map(function (c) {
+        var out = JSON.parse(JSON.stringify(c));
+        if (typeof ov[c.key] === "string" && ov[c.key]) out.value = ov[c.key];
         return out;
       });
     },
