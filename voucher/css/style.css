@@ -1328,8 +1328,10 @@ img { display: block; max-width: 100%; }
 .qcats .chip.is-active b { opacity: .85; }
 
 /* ===== 사업 페이지 (수출/혁신/판로개척) ===== */
-.taglist { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
-.taglist li { font-size: .9rem; font-weight: 600; color: var(--ink); background: var(--bg-2,#f6f4f0); border: 1px solid var(--line); padding: .55em .95em; border-radius: 999px; }
+.taglist { display: grid; grid-template-columns: repeat(auto-fill, minmax(155px, 1fr)); gap: 10px; margin-top: 24px; list-style: none; padding: 0; }
+.taglist li { display: flex; align-items: center; gap: 9px; font-size: .92rem; font-weight: 600; color: var(--ink); background: #fff; border: 1px solid var(--line); padding: 14px 16px; border-radius: 12px; }
+.taglist li::before { content: ""; flex: 0 0 auto; width: 5px; height: 5px; border-radius: 50%; background: rgba(23,21,15,.28); }
+@media (max-width: 560px) { .taglist { grid-template-columns: repeat(2, 1fr); } }
 .specgrid { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; margin-top: 24px; }
 .speccard { border: 1px solid var(--line); border-radius: 16px; padding: 26px; background: #fff; }
 .speccard h3 { font-size: 1.12rem; font-weight: 800; letter-spacing: -.02em; margin-bottom: 10px; }
