@@ -261,7 +261,7 @@ em{font-style:normal;color:var(--accent)}
 
 /* ===== 작업사례(#workGrid)만 포트폴리오 스타일 — 다른 센터 .np-item 통일 (column 블로그 카드와 분리) ===== */
 #workGrid{grid-template-columns:repeat(4,1fr);gap:0;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw)}
-#workGrid .colcard{position:relative;aspect-ratio:3/4;border:0;border-radius:0;overflow:hidden;background:var(--bg-soft)}
+#workGrid .colcard{position:relative;aspect-ratio:4/3;border:0;border-radius:0;overflow:hidden;background:var(--bg-soft)}
 #workGrid .colcard:hover{transform:none}
 #workGrid .colcard__media{position:absolute;inset:0;background-position:top center;transition:transform .8s var(--ease)}
 #workGrid .colcard:hover .colcard__media{transform:scale(1.06)}
@@ -275,6 +275,6 @@ em{font-style:normal;color:var(--accent)}
 #workGrid .colcard:hover::after{opacity:1;transform:none}
 @media(max-width:1180px){#workGrid{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:900px){#workGrid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:560px){#workGrid{grid-template-columns:1fr}#workGrid .colcard{aspect-ratio:4/3.4}}
+@media(max-width:560px){#workGrid{grid-template-columns:1fr}#workGrid .colcard{aspect-ratio:4/3}}
 @media(max-width:1024px){#workGrid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:600px){#workGrid{grid-template-columns:1fr}}

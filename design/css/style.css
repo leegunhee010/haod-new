@@ -303,7 +303,7 @@ img { display: block; max-width: 100%; }
 
 /* ---- portfolio gallery (studio-style, work.html only) ---- */
 .work__grid--folio { grid-template-columns: repeat(4, 1fr); gap: 0; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw); }
-.work__grid--folio .wcard { position: relative; aspect-ratio: 3 / 4; overflow: hidden; background: var(--bg-2); cursor: pointer; }
+.work__grid--folio .wcard { position: relative; aspect-ratio: 4 / 3; overflow: hidden; background: var(--bg-2); cursor: pointer; }
 .work__grid--folio .wcard__media { position: absolute; inset: 0; aspect-ratio: auto; border: 0; border-radius: 0; background: none; }
 .work__grid--folio .wcard__media img { transition: transform .8s var(--ease); }
 .work__grid--folio .wcard:hover .wcard__media img { transform: scale(1.05); }
@@ -317,7 +317,7 @@ img { display: block; max-width: 100%; }
 .work__grid--folio .wcard:hover::after { opacity: 1; transform: none; }
 @media (max-width: 1180px) { .work__grid--folio { grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 900px)  { .work__grid--folio { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 560px)  { .work__grid--folio { grid-template-columns: 1fr; } .work__grid--folio .wcard { aspect-ratio: 4 / 3.4; } }
+@media (max-width: 560px)  { .work__grid--folio { grid-template-columns: 1fr; } .work__grid--folio .wcard { aspect-ratio: 4 / 3; } }
 
 /* ---- portfolio filter — studio underline-link style (work.html only) ---- */
 .work__filter { gap: 6px clamp(18px, 2.4vw, 32px); margin: 30px 0 26px; }
