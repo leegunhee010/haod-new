@@ -336,6 +336,16 @@
                 <input type="file" id="pBodyImg" accept="image/*" hidden />
               </div>
               <div class="full"><label>요약 (비워두면 본문 앞부분이 자동으로 들어갑니다)</label><input type="text" id="pSummary" placeholder="목록 카드에 표시될 한 줄 요약" /></div>
+              <div class="full"><label>키워드 (쉼표로 구분 · 검색·AI 노출용)</label><input type="text" id="pKeywords" placeholder="예: 카탈로그 제작, 브로슈어 디자인, 인쇄" /></div>
+              <div class="full">
+                <label>자주 묻는 질문 (FAQ) <span style="font-weight:400;color:var(--muted);font-size:12px">— AI 검색(FAQPage 구조화 데이터)에 노출 + 글 하단에 표시</span></label>
+                <div id="pFaqRows"></div>
+                <button type="button" class="btn" id="pFaqAdd" style="margin-top:8px">+ 질문 추가</button>
+              </div>
+              <details class="full" style="margin-top:4px"><summary style="cursor:pointer;font-weight:600;font-size:.9rem;color:var(--muted)">고급 · 추가 구조화 데이터(JSON-LD) 직접 입력</summary>
+                <textarea id="pCustomLd" rows="6" placeholder='예: {"@context":"https://schema.org","@type":"HowTo","name":"..."}  — 여러 개면 [ {...}, {...} ]. 비우면 무시.' style="width:100%;margin-top:8px;font-family:monospace;font-size:.82rem;line-height:1.5"></textarea>
+                <p class="note" style="margin-top:6px">스키마를 아는 경우만 사용하세요. HowTo · Product · Review 등 어떤 스키마든 넣을 수 있고, 저장 시 JSON 유효성을 검사합니다.</p>
+              </details>
               <div class="full actions">
                 <button type="button" class="btn" id="pCancel">← 목록으로</button>
                 <button type="submit" class="btn btn--primary">저장</button>
@@ -898,11 +908,36 @@
         $("pImgKeep").value = p.img || "";
         if (/^data:/.test(p.img)) { $("pImgData").value = p.img; setPrev($("pPrev"), p.img); }
         else if (p.img) { setPrev($("pPrev"), HAO.imgSrc(p.img)); }
+        $("pKeywords").value = p.keywords || "";
+        $("pCustomLd").value = p.customLd || "";
+        renderFaqRows(p.faqs || []);
       } else {
         $("pTitle").value = ""; $("pSummary").value = ""; $("pEditor").innerHTML = "";
+        $("pKeywords").value = ""; $("pCustomLd").value = ""; renderFaqRows([]);
         $("pDate").value = new Date().toISOString().slice(0, 10);
       }
       $("pTitle").focus();
+    }
+
+    /* FAQ 반복 입력 (칼럼별) */
+    function renderFaqRows(faqs) {
+      $("pFaqRows").innerHTML = (faqs || []).map(function (f) {
+        return '<div data-faq-row style="border:1px solid var(--line);border-radius:10px;padding:10px;margin-bottom:8px">' +
+          '<input type="text" data-faq-q value="' + esc(f.q || "") + '" placeholder="질문" style="width:100%;margin-bottom:6px" />' +
+          '<textarea data-faq-a rows="2" placeholder="답변" style="width:100%">' + esc(f.a || "") + '</textarea>' +
+          '<button type="button" class="btn btn--danger" data-faq-del style="margin-top:6px;font-size:.8rem">삭제</button></div>';
+      }).join("");
+    }
+    $("pFaqAdd").addEventListener("click", function () {
+      var rows = collectFaqs(); rows.push({ q: "", a: "" }); renderFaqRows(rows);
+    });
+    $("pFaqRows").addEventListener("click", function (e) {
+      if (e.target.hasAttribute("data-faq-del")) { var rows = collectFaqs(); var idx = [].indexOf.call($("pFaqRows").querySelectorAll("[data-faq-row]"), e.target.closest("[data-faq-row]")); rows.splice(idx, 1); renderFaqRows(rows); }
+    });
+    function collectFaqs() {
+      return [].slice.call($("pFaqRows").querySelectorAll("[data-faq-row]")).map(function (r) {
+        return { q: r.querySelector("[data-faq-q]").value.trim(), a: r.querySelector("[data-faq-a]").value.trim() };
+      }).filter(function (f) { return f.q && f.a; });
     }
     function closePostForm() { $("postEditPanel").hidden = true; $("postListPanel").hidden = false; }
     $("pFile").addEventListener("change", function () {
@@ -958,6 +993,14 @@
         img: $("pImgData").value || $("pImgKeep").value,
         bodyHtml: html
       };
+      /* AEO/GEO: 키워드 · FAQ · 추가 구조화 데이터 */
+      var kw = $("pKeywords").value.trim(); if (kw) item.keywords = kw;
+      var faqs = collectFaqs(); if (faqs.length) item.faqs = faqs;
+      var cld = $("pCustomLd").value.trim();
+      if (cld) {
+        try { JSON.parse(cld); item.customLd = cld; }
+        catch (err) { if (!confirm("추가 구조화 데이터(JSON-LD)가 올바른 JSON 형식이 아닙니다.\n\n이 항목만 빼고 저장할까요? (취소하면 다시 수정)")) return; }
+      }
       if (id) { posts = posts.map(function (p) { return p.id === id ? item : p; }); }
       else { item.isNew = true; posts.unshift(item); }
       closePostForm(); savePosts();

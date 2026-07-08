@@ -68,6 +68,16 @@ function buildColumn(p, prev, next, HAO, shell) {
     description: summary, mainEntityOfPage: BASE + "/column-" + p.id + ".html",
     articleBody: articleBody,
   };
+  if (p.keywords) blog.keywords = String(p.keywords);
+  // FAQ → FAQPage 스키마 + 화면 표시
+  const faqs = Array.isArray(p.faqs) ? p.faqs.filter((f) => f && f.q && f.a) : [];
+  const faqLd = faqs.length ? { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faqs.map((f) => ({ "@type": "Question", name: stripHtml(f.q), acceptedAnswer: { "@type": "Answer", text: stripHtml(f.a) } })) } : null;
+  const faqLdBlock = faqLd ? '\n  <script type="application/ld+json">\n' + JSON.stringify(faqLd) + "\n  </script>" : "";
+  const faqHtml = faqs.length ? '\n    <section class="page page--tight" style="padding-top:0" aria-label="자주 하는 질문"><h2 class="page__title" style="max-width:820px;margin:0 auto 8px">자주 하는 질문</h2><div class="faq" style="max-width:820px;margin:0 auto">' +
+    faqs.map((f) => '<details class="faq__item"><summary><span class="faq__q">Q</span><b class="faq__qt">' + escAttr(f.q) + '</b><i aria-hidden="true"></i></summary><div class="faq__a"><p>' + escAttr(f.a) + "</p></div></details>").join("") + "</div></section>" : "";
+  // 고급: 추가 구조화 데이터(JSON-LD) — 저장 시 유효성 검증됨, 이중 안전차
+  let customBlock = "";
+  if (p.customLd) { try { const parsed = JSON.parse(p.customLd); customBlock = '\n  <script type="application/ld+json">\n' + JSON.stringify(parsed) + "\n  </script>"; } catch (e) { console.log("  ! column-" + p.id + " customLd JSON 오류 무시"); } }
   const crumb = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
     { "@type": "ListItem", position: 1, name: "디자인센터", item: BASE + "/" },
     { "@type": "ListItem", position: 2, name: "칼럼", item: BASE + "/board.html" },
@@ -82,7 +92,7 @@ function buildColumn(p, prev, next, HAO, shell) {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>${escAttr(title)} | 디자인센터 — 하오커뮤니케이션</title>
-  <meta name="description" content="${escAttr(summary)}" />
+  <meta name="description" content="${escAttr(summary)}" />${p.keywords ? '\n  <meta name="keywords" content="' + escAttr(p.keywords) + '" />' : ""}
   <link rel="canonical" href="${BASE}/column-${p.id}.html" />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="${escAttr(title)}" />
@@ -98,7 +108,7 @@ ${JSON.stringify(blog)}
   </script>
   <script type="application/ld+json">
 ${JSON.stringify(crumb)}
-  </script>
+  </script>${faqLdBlock}${customBlock}
 </head>
 <body>
   <div class="progress" id="progress" aria-hidden="true"></div>
@@ -115,7 +125,7 @@ ${JSON.stringify(crumb)}
       </div>
       <div class="post__nav">${prevLink}<a href="board.html" class="btn-round post__list"><span>목록으로</span></a>${nextLink}</div>
       <nav class="post__related" style="max-width:820px;margin:0 auto;padding:18px clamp(18px,4vw,24px);border-top:1px solid rgba(127,127,127,.2);font-size:.92rem">관련 페이지 — <a href="service.html">서비스 안내</a> · <a href="work.html">포트폴리오</a> · <a href="board.html">칼럼 더보기</a> · <a href="contact.html">견적 문의</a></nav>
-    </article></section>
+    </article></section>${faqHtml}
   </main>
   ${shell.footer}
   ${shell.tail}
@@ -134,14 +144,7 @@ function buildBoardGallery(posts, HAO) {
   }).join("");
 }
 
-(async function main() {
-  const HAO = loadHAO();
-  let posts = HAO.getPosts();
-  try {
-    const res = await fetch(SB_URL + "/rest/v1/overrides?select=v&k=eq.hao_posts", { headers: { apikey: SB_KEY, Authorization: "Bearer " + SB_KEY } });
-    if (res.ok) { const rows = await res.json(); if (rows[0] && Array.isArray(rows[0].v) && rows[0].v.length) { posts = rows[0].v; console.log("Supabase hao_posts 사용:", posts.length, "편"); } else console.log("Supabase 비어있음 → 기본 6편 사용"); }
-  } catch (e) { console.log("Supabase 조회 실패 → 기본 사용:", e.message); }
-
+function finishBake(posts, HAO) {
   const shell = extractShell();
   // 상세: id 오름차순으로 이전/다음
   const byId = posts.slice().sort((a, b) => a.id - b.id);
@@ -160,4 +163,20 @@ function buildBoardGallery(posts, HAO) {
   fs.writeFileSync(boardPath, board);
   console.log("  구움: board.html 목록 " + byNew.length + "편");
   console.log("완료. git add/commit/push 하면 배포됩니다.");
+}
+
+(async function main() {
+  const HAO = loadHAO();
+  let posts = HAO.getPosts();
+  // 테스트용: BAKE_POSTS_FILE 지정 시 그 JSON을 사용 (Supabase 미접속)
+  if (process.env.BAKE_POSTS_FILE) {
+    posts = JSON.parse(fs.readFileSync(process.env.BAKE_POSTS_FILE, "utf8"));
+    console.log("로컬 테스트 posts 사용:", posts.length, "편");
+    finishBake(posts, HAO); return;
+  }
+  try {
+    const res = await fetch(SB_URL + "/rest/v1/overrides?select=v&k=eq.hao_posts", { headers: { apikey: SB_KEY, Authorization: "Bearer " + SB_KEY } });
+    if (res.ok) { const rows = await res.json(); if (rows[0] && Array.isArray(rows[0].v) && rows[0].v.length) { posts = rows[0].v; console.log("Supabase hao_posts 사용:", posts.length, "편"); } else console.log("Supabase 비어있음 → 기본 6편 사용"); }
+  } catch (e) { console.log("Supabase 조회 실패 → 기본 사용:", e.message); }
+  finishBake(posts, HAO);
 })();
