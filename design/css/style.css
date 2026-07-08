@@ -301,6 +301,32 @@ img { display: block; max-width: 100%; }
 .wcard__title { font-size: 1.02rem; font-weight: 700; }
 .wcard__cat { font-size: .8rem; color: var(--accent); font-weight: 600; white-space: nowrap; }
 
+/* ---- portfolio gallery (studio-style, work.html only) ---- */
+.work__grid--folio { grid-template-columns: repeat(4, 1fr); gap: 0; }
+.work__grid--folio .wcard { position: relative; aspect-ratio: 3 / 4; overflow: hidden; background: var(--bg-2); cursor: pointer; }
+.work__grid--folio .wcard__media { position: absolute; inset: 0; aspect-ratio: auto; border: 0; border-radius: 0; background: none; }
+.work__grid--folio .wcard__media img { transition: transform .8s var(--ease); }
+.work__grid--folio .wcard:hover .wcard__media img { transform: scale(1.05); }
+.work__grid--folio .wcard::before { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, transparent 45%, rgba(15,13,10,.72) 100%); opacity: 0; transition: opacity .4s var(--ease); pointer-events: none; }
+.work__grid--folio .wcard:hover::before { opacity: 1; }
+.work__grid--folio .wcard__info { position: absolute; left: 0; right: 0; bottom: 0; z-index: 2; display: block; margin: 0; padding: 24px clamp(16px, 1.8vw, 26px); transform: translateY(12px); opacity: 0; transition: opacity .4s var(--ease), transform .4s var(--ease); pointer-events: none; }
+.work__grid--folio .wcard:hover .wcard__info { opacity: 1; transform: none; }
+.work__grid--folio .wcard__title { display: block; color: #fff; font-size: clamp(1.02rem, 1.4vw, 1.25rem); font-weight: 800; letter-spacing: -.02em; white-space: normal; }
+.work__grid--folio .wcard__cat { display: block; margin-top: 6px; color: var(--accent); font-size: .82rem; font-weight: 700; }
+.work__grid--folio .wcard::after { content: "↗"; position: absolute; top: 16px; right: 16px; z-index: 2; width: 42px; height: 42px; border-radius: 50%; background: #fff; color: var(--ink); display: grid; place-items: center; font-size: 1.1rem; font-weight: 700; opacity: 0; transform: translateY(8px) scale(.8); transition: opacity .35s var(--ease), transform .35s var(--ease); pointer-events: none; }
+.work__grid--folio .wcard:hover::after { opacity: 1; transform: none; }
+@media (max-width: 1180px) { .work__grid--folio { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 900px)  { .work__grid--folio { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px)  { .work__grid--folio { grid-template-columns: 1fr; } .work__grid--folio .wcard { aspect-ratio: 4 / 3.4; } }
+
+/* ---- portfolio filter — studio underline-link style (work.html only) ---- */
+.work__filter { gap: 6px clamp(18px, 2.4vw, 32px); margin: 30px 0 26px; }
+.work__filter .chip { background: none; border: 0; border-radius: 0; padding: 6px 1px; color: var(--muted); font-size: clamp(.96rem, 1.4vw, 1.08rem); font-weight: 700; letter-spacing: -.01em; position: relative; }
+.work__filter .chip::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: var(--accent); border-radius: 2px; transform: scaleX(0); transform-origin: left; transition: transform .35s var(--ease); }
+.work__filter .chip:hover { color: var(--ink); border: 0; }
+.work__filter .chip.is-active { background: none; color: var(--accent); border: 0; }
+.work__filter .chip.is-active::after { transform: scaleX(1); }
+
 /* ---- main-page mosaic variant ---- */
 .work__head--row { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; max-width: none; margin-bottom: 38px; }
 .work__morelink { display: inline-flex; align-items: center; gap: 9px; font-weight: 700; font-size: .98rem; color: var(--ink); border-bottom: 2px solid var(--accent); padding-bottom: 5px; white-space: nowrap; transition: gap .3s var(--ease), color .3s; }
