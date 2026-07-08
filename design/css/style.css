@@ -302,7 +302,7 @@ img { display: block; max-width: 100%; }
 .wcard__cat { font-size: .8rem; color: var(--accent); font-weight: 600; white-space: nowrap; }
 
 /* ---- portfolio gallery (studio-style, work.html only) ---- */
-.work__grid--folio { grid-template-columns: repeat(4, 1fr); gap: 0; }
+.work__grid--folio { grid-template-columns: repeat(4, 1fr); gap: 0; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw); }
 .work__grid--folio .wcard { position: relative; aspect-ratio: 3 / 4; overflow: hidden; background: var(--bg-2); cursor: pointer; }
 .work__grid--folio .wcard__media { position: absolute; inset: 0; aspect-ratio: auto; border: 0; border-radius: 0; background: none; }
 .work__grid--folio .wcard__media img { transition: transform .8s var(--ease); }
