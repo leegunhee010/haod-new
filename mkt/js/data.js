@@ -201,8 +201,6 @@
     { key: "mk_ct_tel", page: "index", sel: ".mc-contact a[href^='tel']", tag: "b", label: "문의 — 전화번호", value: "1666-2027" },
     { key: "mk_ct_mail", page: "index", sel: ".mc-contact a[href^='mailto']", tag: "b", label: "문의 — 이메일", value: "sales@haodesign.co.kr" },
     { key: "mk_ct_time", page: "index", sel: ".mc-contact .v", tag: "b", label: "문의 — 영업시간", value: "평일 09:30 – 18:30" },
-    { key: "mk_wo_01", page: "works", sel: "#top > section:nth-of-type(2) > p", tag: "b", label: "Portfolio", value: "Portfolio" },
-    { key: "mk_wo_02", page: "works", sel: "#top > section:nth-of-type(2) > h2", tag: "b", label: "작업 사례", value: "작업 사례" },
     { key: "mk_wo_03", page: "works", sel: "#workGrid > a:nth-of-type(1) > div:nth-of-type(2) > h3", tag: "b", label: "브랜드 카탈로그", value: "브랜드 카탈로그" },
     { key: "mk_wo_04", page: "works", sel: "#workGrid > a:nth-of-type(2) > div:nth-of-type(2) > h3", tag: "b", label: "뷰티 디바이스 상세페이지", value: "뷰티 디바이스 상세페이지" },
     { key: "mk_wo_05", page: "works", sel: "#workGrid > a:nth-of-type(3) > div:nth-of-type(2) > h3", tag: "b", label: "제품 키비주얼", value: "제품 키비주얼" },
@@ -229,12 +227,9 @@
     { key: "mk_se_06", page: "services", sel: "footer > div > div:nth-of-type(1) > p:nth-of-type(1)", tag: "b", label: "주식회사 하오커뮤니케이션 · 대표 박창민 ·", value: "주식회사 하오커뮤니케이션 · 대표 박창민 · 528-87-01037\n서울특별시 광진구 · sales@haodesign.co.kr" },
     { key: "mk_se_07", page: "services", sel: "footer > div > div:nth-of-type(1) > p:nth-of-type(2)", tag: "b", label: "© 2026 HAO COMMUNICATION Market", value: "© 2026 HAO COMMUNICATION Marketing. All rights reserved." },
     { key: "mk_se_08", page: "services", sel: "footer > div > div:nth-of-type(2) > p", tag: "b", label: "09:30 ~ 18:30 (점심 13:00~", value: "09:30 ~ 18:30 (점심 13:00~14:00)" },
-    { key: "mk_co_01", page: "column", sel: "#top > section:nth-of-type(2) > p", tag: "b", label: "Insights", value: "Insights" },
-    { key: "mk_co_02", page: "column", sel: "#top > section:nth-of-type(2) > h2", tag: "b", label: "최신 칼럼", value: "최신 칼럼" },
     { key: "mk_co_03", page: "column", sel: "footer > div > div:nth-of-type(1) > p:nth-of-type(1)", tag: "b", label: "주식회사 하오커뮤니케이션 · 대표 박창민 ·", value: "주식회사 하오커뮤니케이션 · 대표 박창민 · 528-87-01037\n서울특별시 광진구 · sales@haodesign.co.kr" },
     { key: "mk_co_04", page: "column", sel: "footer > div > div:nth-of-type(1) > p:nth-of-type(2)", tag: "b", label: "© 2026 HAO COMMUNICATION Market", value: "© 2026 HAO COMMUNICATION Marketing. All rights reserved." },
     { key: "mk_co_05", page: "column", sel: "footer > div > div:nth-of-type(2) > p", tag: "b", label: "09:30 ~ 18:30 (점심 13:00~", value: "09:30 ~ 18:30 (점심 13:00~14:00)" },
-    { key: "mk_qn_01", page: "qna", sel: "#top > section:nth-of-type(2) > p:nth-of-type(1)", tag: "b", label: "FAQ", value: "FAQ" },
     { key: "mk_qn_02", page: "qna", sel: "#qSearchBtn", tag: "b", label: "검색", value: "검색" },
     { key: "mk_qn_03", page: "qna", sel: "#qReset", tag: "b", label: "초기화", value: "초기화" },
     { key: "mk_qn_04", page: "qna", sel: "footer > div > div:nth-of-type(1) > p:nth-of-type(1)", tag: "b", label: "주식회사 하오커뮤니케이션 · 대표 박창민 ·", value: "주식회사 하오커뮤니케이션 · 대표 박창민 · 528-87-01037\n서울특별시 광진구 · sales@haodesign.co.kr" },
@@ -339,8 +334,7 @@
 
     /* ── Q&A ── */
     { key: "qna_title", page: "qna", sel: ".subhero__title", tag: "b", label: "상단 제목", value: "자주 하는 질문" },
-    { key: "mk_qna_desc", page: "qna", sel: ".subhero__desc", tag: "b", label: "상단 설명 ([문구](주소)=링크)", value: "퍼포먼스·IMC·콘텐츠 마케팅과 광고 운영에 대한 질문을 모았습니다. 찾는 답이 없으면 [문의하기](index.html#contact)를 이용해 주세요." },
-    { key: "qna_ptitle", page: "qna", sel: ".page__title", tag: "b", label: "섹션 제목", value: "무엇이 궁금하신가요" }
+    { key: "mk_qna_desc", page: "qna", sel: ".subhero__desc", tag: "b", label: "상단 설명 ([문구](주소)=링크)", value: "퍼포먼스·IMC·콘텐츠 마케팅과 광고 운영에 대한 질문을 모았습니다. 찾는 답이 없으면 [문의하기](index.html#contact)를 이용해 주세요." }
   ];
 
   /* ===== 로드 헬퍼 ===== */
