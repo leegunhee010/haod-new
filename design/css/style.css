@@ -554,7 +554,7 @@ img { display: block; max-width: 100%; }
 }
 .footer__logo { height: 36px; }
 .footer__top p { color: rgba(244,241,234,.55); font-size: .92rem; line-height: 1.6; }
-.footer__grid { max-width: var(--maxw); margin: 0 auto 48px; display: grid; grid-template-columns: 1.3fr 1fr auto; gap: 36px; }
+.footer__grid { max-width: var(--maxw); margin: 0 auto 48px; display: grid; grid-template-columns: 1.3fr 1fr auto auto; gap: 36px; }
 .footer__grid > div:last-child { justify-self: end; text-align: left; }
 .footer__grid h3 { font-size: .74rem; letter-spacing: .2em; text-transform: uppercase; color: var(--accent-2); margin-bottom: 16px; }
 .footer__grid a, .footer__grid span { display: block; color: rgba(244,241,234,.78); margin-bottom: 8px; font-size: .93rem; width: fit-content; transition: color .25s, transform .25s var(--ease); }
