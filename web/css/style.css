@@ -1367,6 +1367,13 @@ img { display: block; max-width: 100%; }
 @media (max-width: 1024px) { .np-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 640px) { .np-grid { grid-template-columns: 1fr; } .np-item { aspect-ratio: 16/10; } }
 
+/* 포트폴리오 그리드만 full-bleed 가로 갤러리 (홈 #workGrid과 분리) */
+#folio { grid-template-columns: repeat(4, 1fr); gap: 0; }
+#folio .np-item { aspect-ratio: 4 / 3; border-radius: 0; box-shadow: none; }
+@media (max-width: 1180px) { #folio { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 900px)  { #folio { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px)  { #folio { grid-template-columns: 1fr; } #folio .np-item { aspect-ratio: 4 / 3; } }
+
 /* 라이트박스 */
 body.lb-open { overflow: hidden; }
 .lb { position: fixed; inset: 0; z-index: 300; display: flex; align-items: center; justify-content: center; gap: clamp(8px,2vw,28px); padding: clamp(40px,6vw,70px); background: rgba(17,15,11,.92); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); opacity: 0; visibility: hidden; transition: opacity .35s var(--ease), visibility .35s; }
