@@ -23,6 +23,9 @@ const ROOT = path.resolve(__dirname, "..");
 const SB_URL = "https://oaqrjrrgntlqmyxxovfn.supabase.co";
 const SB_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9hcXJqcnJnbnRscW15eHhvdmZuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE1NjQzMTUsImV4cCI6MjA5NzE0MDMxNX0.3bOfZOXVKSoI9ELfE7ZjWETuxvjpNYHdCBSIMrbAGtU";
 const CENTERS = ["design", "studio", "web", "mkt", "voucher"];
+/* 굽지 않는 특수 위젯 카피 — boot.js가 런타임에 .word 스팬 등으로 재구성하는 항목.
+   정적 텍스트로 박으면 위젯이 깨지므로 제외(런타임 오버라이드로만 적용). */
+const SKIP_COPY_KEYS = new Set(["vc_hero_roll"]);
 
 /* -------- Supabase 오버라이드 전량 -------- */
 async function loadOverrides() {
@@ -135,6 +138,7 @@ function applyEdits(fp, edits) {
     const oCopy = ov.getCopy ? ov.getCopy() : [];
     const copyByPage = {};
     oCopy.forEach((c, i) => {
+      if (SKIP_COPY_KEYS.has(c.key)) return; // 특수 위젯 — 정적 굽기 제외
       if (!dCopy[i] || dCopy[i].value === c.value) return; // 오버라이드 아님
       (copyByPage[c.page] = copyByPage[c.page] || []).push(
         c.attr ? { sel: c.sel, mode: "attr", attr: c.attr, value: escAttr(c.value) }
