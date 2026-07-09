@@ -119,14 +119,7 @@
     function crumb(items) {
       return { "@type": "BreadcrumbList", itemListElement: items.map(function (it, i) { return { "@type": "ListItem", position: i + 1, name: it.n, item: base + it.u }; }) };
     }
-    if (pageName === "support") {
-      var faqs = [].map.call(document.querySelectorAll(".faq__item"), function (it) {
-        var q = it.querySelector(".faq__qt"), a = it.querySelector(".faq__a");
-        return (q && a) ? { "@type": "Question", name: q.textContent.trim(), acceptedAnswer: { "@type": "Answer", text: a.textContent.trim() } } : null;
-      }).filter(Boolean);
-      if (faqs.length) graph.push({ "@type": "FAQPage", mainEntity: faqs });
-      graph.push(crumb([{ n: "홈", u: "/" }, { n: "지원사업", u: "/support.html" }]));
-    } else if (pageName === "service" && HAO.getService) {
+    if (pageName === "service" && HAO.getService) {
       var cats = HAO.getService(), key = (location.search.match(/[?&]cat=([a-z]+)/) || [])[1]; if (!cats[key]) key = "catalog";
       var cat = cats[key];
       graph.push({ "@type": "Service", name: cat.label, serviceType: cat.label, description: (cat.desc || "").replace(/\n/g, " "), provider: { "@id": base + "/#org" }, areaServed: "KR" });

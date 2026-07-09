@@ -16,7 +16,7 @@ const ROOT = path.resolve(__dirname, "..");
 const BASE = "https://haodesign.co.kr";
 
 const PUBLIC = {
-  design:  ["index.html","about.html","service.html","work.html","board.html","contact.html","support.html"],
+  design:  ["index.html","about.html","service.html","work.html","board.html","contact.html"],
   studio:  ["index.html","studio.html","photo.html","detailpage.html","video.html","portfolio.html","column.html","qna.html"],
   web:     ["index.html","portfolio.html","column.html","qna.html","seo-check.html"],
   mkt:     ["index.html","works.html","services.html","column.html","qna.html"],

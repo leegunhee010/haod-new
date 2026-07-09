@@ -224,7 +224,6 @@
             <div style="display:flex;gap:8px;flex-wrap:wrap">
               <a class="btn" href="index.html?edit=1" target="_blank">메인 ↗</a>
               <a class="btn" href="about.html?edit=1" target="_blank">회사소개 ↗</a>
-              <a class="btn" href="support.html?edit=1" target="_blank">지원사업 ↗</a>
               <a class="btn" href="work.html?edit=1" target="_blank">포트폴리오 ↗</a>
               <a class="btn" href="board.html?edit=1" target="_blank">칼럼 ↗</a>
               <a class="btn" href="contact.html?edit=1" target="_blank">견적문의 ↗</a>
@@ -1007,7 +1006,7 @@
     });
 
     /* ---- 카피: 페이지별 드롭다운 ---- */
-    var COPY_PAGE_LABEL = { all: "공통 (전 페이지)", index: "메인", about: "회사소개", support: "지원사업", service: "서비스 (공통 섹션)", work: "포트폴리오", board: "칼럼", contact: "견적문의" };
+    var COPY_PAGE_LABEL = { all: "공통 (전 페이지)", index: "메인", about: "회사소개", service: "서비스 (공통 섹션)", work: "포트폴리오", board: "칼럼", contact: "견적문의" };
     var copyState = {};   /* key -> 현재 값 (전 페이지 통합 보관) */
     var copyMeta = {};    /* page -> [{key,label,value,attr}] */
     function renderCopy() {
@@ -1097,7 +1096,7 @@
 
     /* ---- SEO 관리 ---- */
     var seoData = HAO.getSeo();
-    var SEO_PAGES = { index: "메인", about: "회사소개", service: "서비스", work: "포트폴리오", board: "칼럼", support: "지원사업", contact: "견적문의" };
+    var SEO_PAGES = { index: "메인", about: "회사소개", service: "서비스", work: "포트폴리오", board: "칼럼", contact: "견적문의" };
     var SEO_FIELDS = [["title", "페이지 제목 (title) — 권장 35자 내외", 35], ["desc", "설명 (description) — 권장 80자 내외", 80], ["keywords", "키워드 (쉼표로 구분)", 0]];
     $("seoSiteUrl").value = seoData.siteUrl;
     $("seoOgImage").value = seoData.ogImage;
